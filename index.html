@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thuto Technologies | Society 5.0 Education Platform</title>
-    <meta name="description" content="AI-Augmented Education for South Africa - Empowering Professors, Guiding Students through Society 5.0 Innovation">
+    <title>ThutoTech | Society 5.0 AI Interface</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,51 +11,45 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        navy: {
-                            DEFAULT: '#0A2E5A',
-                            light: '#1A3E6A',
-                            dark: '#061D38'
-                        },
-                        gold: {
-                            DEFAULT: '#D4AF37',
-                            light: '#E5C44A',
-                            dark: '#B8960C'
-                        },
-                        cyan: '#00D9FF',
-                        orange: '#FF6B35',
-                        silver: '#C0C0C0'
+                        navy: { DEFAULT: '#0A2E5A', light: '#1A3E6A', dark: '#05182E' },
+                        gold: { DEFAULT: '#D4AF37', light: '#E5C44A' },
+                        cyan: { DEFAULT: '#00D9FF', glow: 'rgba(0, 217, 255, 0.6)' },
+                        silver: '#C0C0C0',
+                        orange: '#FF6B35'
                     },
                     fontFamily: {
-                        heading: ['Montserrat', 'sans-serif'],
-                        body: ['Open Sans', 'sans-serif']
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
                     },
                     animation: {
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'glow-pulse': 'glowPulse 2s ease-in-out infinite alternate',
+                        'circuit-flow': 'circuitFlow 2s linear infinite',
+                        'float': 'float 6s ease-in-out infinite'
                     },
                     keyframes: {
+                        glowPulse: {
+                            '0%': { boxShadow: '0 0 5px rgba(0, 217, 255, 0.4), 0 0 15px rgba(0, 217, 255, 0.2)' },
+                            '100%': { boxShadow: '0 0 20px rgba(0, 217, 255, 0.8), 0 0 40px rgba(0, 217, 255, 0.4)' }
+                        },
+                        circuitFlow: {
+                            '0%': { strokeDashoffset: '100' },
+                            '100%': { strokeDashoffset: '0' }
+                        },
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        glow: {
-                            '0%': { boxShadow: '0 0 5px #00D9FF, 0 0 10px #00D9FF' },
-                            '100%': { boxShadow: '0 0 20px #00D9FF, 0 0 30px #00D9FF' }
+                            '50%': { transform: 'translateY(-10px)' }
                         }
                     }
                 }
@@ -65,739 +58,410 @@
     </script>
 
     <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-            overflow-x: hidden;
+        /* 1. GLOW-MORPHISM & NEON DATA ACCENTS */
+        .glow-border {
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 217, 255, 0.15), inset 0 0 10px rgba(0, 217, 255, 0.05);
         }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
+        .glow-active {
+            border-color: rgba(0, 217, 255, 0.8);
+            box-shadow: 0 0 25px rgba(0, 217, 255, 0.4), inset 0 0 15px rgba(0, 217, 255, 0.1);
         }
-        .gradient-text {
-            background: linear-gradient(135deg, #D4AF37 0%, #00D9FF 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .progress-glow {
+            box-shadow: 0 0 10px rgba(0, 217, 255, 0.6);
         }
+
+        /* 2. GLASSMORPHISM + SKEUOMORPHIC CRESTS */
         .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(10, 46, 90, 0.4);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .navy-gradient {
-            background: linear-gradient(135deg, #0A2E5A 0%, #1A3E6A 50%, #061D38 100%);
+        .glass-card:hover {
+            border-color: rgba(212, 175, 55, 0.6);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
         }
-        .gold-gradient {
-            background: linear-gradient(135deg, #D4AF37 0%, #E5C44A 100%);
-        }
-        .cyber-grid {
-            background-image: 
-                linear-gradient(rgba(0, 217, 255, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 217, 255, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-        }
-        .particle {
-            position: absolute;
-            background: rgba(0, 217, 255, 0.5);
+        .glass-border-gold { border-color: rgba(212, 175, 55, 0.4); }
+        .glass-border-silver { border-color: rgba(192, 192, 192, 0.3); }
+
+        /* 3. AMBIENT AI ORB */
+        .ai-orb {
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #00D9FF, #0A2E5A);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.5), 0 0 40px rgba(0, 217, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .ai-orb:hover { transform: scale(1.1); box-shadow: 0 0 30px rgba(0, 217, 255, 0.7); }
+        .ai-orb.active { width: 380px; height: 500px; border-radius: 24px; }
+        .ai-chat-content { opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+        .ai-orb.active .ai-chat-content { opacity: 1; pointer-events: auto; }
+        .ai-orb-icon { transition: transform 0.3s; }
+        .ai-orb.active .ai-orb-icon { transform: rotate(180deg) scale(0); }
+
+        /* 4. HIGH-CONTRAST MICRO-INTERACTIONS */
+        .data-grid-hover {
+            background-image: linear-gradient(rgba(0, 217, 255, 0.05) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(0, 217, 255, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            transition: background-size 0.3s;
+        }
+        .data-grid-hover:hover { background-size: 10px 10px; }
+        
+        .circuit-loader {
+            stroke: #00D9FF;
+            stroke-width: 2;
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: circuitFlow 2s linear infinite;
+            fill: none;
+        }
+
+        /* 5. KINETIC TYPOGRAPHY */
+        .kinetic-number {
+            font-variant-numeric: tabular-nums;
+            transition: transform 0.2s;
+        }
+        .kinetic-number.updating { transform: translateY(-4px); opacity: 0.5; }
+
+        /* Background Grid */
+        .bg-grid {
+            background-image: 
+                linear-gradient(rgba(0, 217, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 217, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-ambient {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(0, 217, 255, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.06) 0%, transparent 50%);
             pointer-events: none;
+            z-index: 0;
         }
-        .hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .hover-lift:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 217, 255, 0.3);
-        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #05182E; }
+        ::-webkit-scrollbar-thumb { background: #1A3E6A; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #00D9FF; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body class="bg-navy-dark text-slate-200 font-sans antialiased min-h-screen relative">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-navy/95 backdrop-blur-md border-b border-gold/20 shadow-2xl" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <!-- Logo -->
-                <div class="flex items-center gap-3" data-aos="fade-right">
-                    <div class="relative">
-                        <div class="w-12 h-12 bg-gradient-to-br from-gold to-gold-light rounded-lg flex items-center justify-center shadow-lg">
-                            <i data-lucide="brain" class="w-7 h-7 text-navy"></i>
-                        </div>
-                        <div class="absolute -top-1 -right-1 w-4 h-4 bg-cyan rounded-full animate-pulse"></div>
-                    </div>
-                    <div>
-                        <span class="font-heading font-extrabold text-2xl text-white tracking-tight">
-                            THUTO<span class="text-gold">TECH</span>
-                        </span>
-                        <p class="text-xs text-slate-400">Society 5.0 Education Platform</p>
-                    </div>
+    <!-- Ambient Background -->
+    <div class="bg-ambient"></div>
+    <div class="fixed inset-0 bg-grid z-0"></div>
+
+    <!-- Navigation (Glassmorphism + Gold/Silver Accents) -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-card glass-border-gold rounded-b-2xl mx-4 mt-4 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold to-gold-light flex items-center justify-center shadow-lg">
+                    <i data-lucide="shield" class="w-6 h-6 text-navy-dark"></i>
                 </div>
-
-                <!-- Desktop Menu -->
-                <div class="hidden lg:flex items-center gap-8" data-aos="fade-left">
-                    <a href="#ecosystem" class="text-slate-300 hover:text-gold transition font-medium">Ecosystem</a>
-                    <a href="#society5" class="text-slate-300 hover:text-gold transition font-medium">Society 5.0</a>
-                    <a href="#mcp" class="text-slate-300 hover:text-gold transition font-medium">MCP Architecture</a>
-                    <a href="#impact" class="text-slate-300 hover:text-gold transition font-medium">Impact</a>
-                    <a href="#pilot" class="text-slate-300 hover:text-gold transition font-medium">Pilot</a>
-                    <button class="bg-gradient-to-r from-gold to-gold-light text-navy px-6 py-2.5 rounded-full font-bold hover:shadow-lg hover:scale-105 transition transform">
-                        Join Pilot
-                    </button>
+                <div>
+                    <h1 class="font-serif font-bold text-xl text-white tracking-wide">THUTOTECH</h1>
+                    <p class="text-xs text-silver font-mono tracking-wider">SOCIETY 5.0 INTERFACE</p>
                 </div>
-
-                <!-- Mobile Menu Button -->
-                <button class="lg:hidden text-white" id="mobileMenuBtn">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
-                </button>
             </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div class="lg:hidden hidden bg-navy-light border-t border-gold/20" id="mobileMenu">
-            <div class="px-4 py-4 space-y-3">
-                <a href="#ecosystem" class="block text-slate-300 hover:text-gold py-2">Ecosystem</a>
-                <a href="#society5" class="block text-slate-300 hover:text-gold py-2">Society 5.0</a>
-                <a href="#mcp" class="block text-slate-300 hover:text-gold py-2">MCP Architecture</a>
-                <a href="#impact" class="block text-slate-300 hover:text-gold py-2">Impact</a>
-                <button class="w-full bg-gold text-navy px-6 py-3 rounded-full font-bold mt-4">
-                    Join Pilot
+            
+            <div class="hidden md:flex items-center gap-8 font-mono text-sm">
+                <a href="#" class="text-cyan border-b-2 border-cyan pb-1">Dashboard</a>
+                <a href="#" class="text-slate-400 hover:text-white transition">MCP Nodes</a>
+                <a href="#" class="text-slate-400 hover:text-white transition">Analytics</a>
+                <button class="bg-orange/20 text-orange border border-orange/40 px-4 py-2 rounded-lg hover:bg-orange/30 transition font-medium">
+                    <i data-lucide="alert-triangle" class="w-4 h-4 inline mr-2"></i>Deadline: 3d
                 </button>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative min-h-screen navy-gradient flex items-center overflow-hidden pt-20">
-        <!-- Animated Background Elements -->
-        <div class="absolute inset-0 cyber-grid opacity-30"></div>
-        <div class="absolute top-20 left-10 w-72 h-72 bg-cyan/20 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div class="absolute bottom-20 right-10 w-96 h-96 bg-gold/10 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 1s;"></div>
+    <!-- Main Content -->
+    <main class="relative z-10 pt-24 pb-32 px-4 max-w-7xl mx-auto">
         
-        <!-- Floating Particles -->
-        <div id="particles" class="absolute inset-0 pointer-events-none"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <!-- Left Content -->
-                <div data-aos="fade-right" data-aos-duration="1000">
-                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full mb-6 border border-gold/30">
-                        <span class="w-2 h-2 bg-cyan rounded-full animate-pulse"></span>
-                        <span class="text-gold font-semibold text-sm">🇿 Proudly South African</span>
-                    </div>
-                    
-                    <h1 class="text-5xl lg:text-7xl font-heading font-extrabold text-white leading-tight mb-6">
-                        Empowering <br/>
-                        <span class="gradient-text">Education</span><br/>
-                        Through AI
-                    </h1>
-                    
-                    <p class="text-xl text-slate-300 mb-8 leading-relaxed max-w-2xl">
-                        Society 5.0's human-centered AI platform bridging the mentorship gap in South African education. 
-                        Offline-first. Multilingual. POPIA-compliant.
-                    </p>
-
-                    <div class="flex flex-wrap gap-4 mb-12">
-                        <button class="bg-gradient-to-r from-gold to-gold-light text-navy px-8 py-4 rounded-full font-bold text-lg hover:shadow-2xl hover:scale-105 transition transform flex items-center gap-2">
-                            <span>Explore Platform</span>
-                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                        </button>
-                        <button class="border-2 border-white/30 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition flex items-center gap-2">
-                            <i data-lucide="play-circle" class="w-5 h-5"></i>
-                            <span>Watch Demo</span>
-                        </button>
-                    </div>
-
-                    <!-- Stats -->
-                    <div class="grid grid-cols-3 gap-6">
-                        <div class="text-center" data-aos="zoom-in" data-aos-delay="200">
-                            <div class="text-3xl font-bold text-gold mb-1">28+</div>
-                            <div class="text-sm text-slate-400">Teachers</div>
-                        </div>
-                        <div class="text-center" data-aos="zoom-in" data-aos-delay="300">
-                            <div class="text-3xl font-bold text-cyan mb-1">1,022</div>
-                            <div class="text-sm text-slate-400">Learners</div>
-                        </div>
-                        <div class="text-center" data-aos="zoom-in" data-aos-delay="400">
-                            <div class="text-3xl font-bold text-orange mb-1">100%</div>
-                            <div class="text-sm text-slate-400">Offline Ready</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Content - 3D Visualization -->
-                <div class="relative" data-aos="fade-left" data-aos-duration="1000">
-                    <div class="relative animate-float">
-                        <!-- Main Card -->
-                        <div class="glass-card rounded-3xl p-8 border border-gold/20 shadow-2xl">
-                            <div class="flex items-center gap-3 mb-6">
-                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                                <span class="ml-4 text-slate-400 text-sm">ThutoTech MCP Dashboard</span>
-                            </div>
-                            
-                            <div class="space-y-4">
-                                <div class="bg-navy/50 rounded-xl p-4 border border-cyan/30">
-                                    <div class="flex items-center gap-3 mb-2">
-                                        <i data-lucide="brain" class="w-5 h-5 text-cyan"></i>
-                                        <span class="text-white font-semibold">AI Analysis Active</span>
-                                    </div>
-                                    <div class="h-2 bg-slate-700 rounded-full overflow-hidden">
-                                        <div class="h-full bg-gradient-to-r from-cyan to-gold w-3/4 animate-pulse"></div>
-                                    </div>
-                                </div>
-
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div class="bg-navy/30 rounded-xl p-4 border border-gold/20">
-                                        <i data-lucide="book-open" class="w-6 h-6 text-gold mb-2"></i>
-                                        <div class="text-2xl font-bold text-white">156</div>
-                                        <div class="text-xs text-slate-400">Lessons Generated</div>
-                                    </div>
-                                    <div class="bg-navy/30 rounded-xl p-4 border border-gold/20">
-                                        <i data-lucide="users" class="w-6 h-6 text-gold mb-2"></i>
-                                        <div class="text-2xl font-bold text-white">24/28</div>
-                                        <div class="text-xs text-slate-400">Active Teachers</div>
-                                    </div>
-                                </div>
-
-                                <div class="bg-gradient-to-r from-cyan/20 to-gold/20 rounded-xl p-4 border border-white/20">
-                                    <div class="flex items-center justify-between mb-2">
-                                        <span class="text-white font-semibold">Offline Mode</span>
-                                        <span class="text-cyan text-sm">Active</span>
-                                    </div>
-                                    <div class="flex items-center gap-2 text-sm text-slate-300">
-                                        <i data-lucide="wifi-off" class="w-4 h-4"></i>
-                                        <span>Local MCP Server Running</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Floating Elements -->
-                        <div class="absolute -top-6 -right-6 glass-card rounded-2xl p-4 border border-cyan/30 animate-float" style="animation-delay: 0.5s;">
-                            <i data-lucide="shield-check" class="w-8 h-8 text-cyan mb-1"></i>
-                            <div class="text-xs text-slate-300">POPIA Compliant</div>
-                        </div>
-
-                        <div class="absolute -bottom-6 -left-6 glass-card rounded-2xl p-4 border border-gold/30 animate-float" style="animation-delay: 1s;">
-                            <i data-lucide="globe" class="w-8 h-8 text-gold mb-1"></i>
-                            <div class="text-xs text-slate-300">Multilingual AI</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <i data-lucide="chevron-down" class="w-8 h-8 text-gold"></i>
-        </div>
-    </section>
-
-    <!-- Society 5.0 Section -->
-    <section id="society5" class="py-24 bg-white relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-cyan/5 to-transparent"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <div class="inline-flex items-center gap-2 bg-cyan/10 px-4 py-2 rounded-full mb-4">
-                    <i data-lucide="cpu" class="w-5 h-5 text-cyan"></i>
-                    <span class="text-cyan font-semibold">Society 5.0 Framework</span>
-                </div>
-                <h2 class="text-4xl lg:text-5xl font-heading font-bold text-navy mb-6">
-                    Human-Centered <span class="gradient-text">Technological Innovation</span>
-                </h2>
-                <p class="text-xl text-slate-600 max-w-3xl mx-auto">
-                    Aligning with Japan's Society 5.0 vision: integrating cyberspace and physical space to solve social challenges through AI while keeping humans at the center.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass-card rounded-2xl p-8 border border-gold/20 hover-lift" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 bg-gradient-to-br from-gold to-gold-light rounded-2xl flex items-center justify-center mb-6">
-                        <i data-lucide="users" class="w-8 h-8 text-navy"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-navy mb-3">Human-Centered AI</h3>
-                    <p class="text-slate-600">Technology serves educators and learners, not the other way around. AI augments human capability without replacing the teacher.</p>
-                </div>
-
-                <div class="glass-card rounded-2xl p-8 border border-cyan/20 hover-lift" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-16 h-16 bg-gradient-to-br from-cyan to-cyan/80 rounded-2xl flex items-center justify-center mb-6">
-                        <i data-lucide="network" class="w-8 h-8 text-navy"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-navy mb-3">Cyber-Physical Integration</h3>
-                    <p class="text-slate-600">Seamless connection between digital AI systems and physical classrooms through MCP architecture and offline-first design.</p>
-                </div>
-
-                <div class="glass-card rounded-2xl p-8 border border-orange/20 hover-lift" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-16 h-16 bg-gradient-to-br from-orange to-orange/80 rounded-2xl flex items-center justify-center mb-6">
-                        <i data-lucide="trending-up" class="w-8 h-8 text-navy"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-navy mb-3">Inclusive Growth</h3>
-                    <p class="text-slate-600">Bridging the digital divide with multilingual support, offline capabilities, and accessibility features for all South African learners.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Ecosystem Section -->
-    <section id="ecosystem" class="py-24 navy-gradient relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl lg:text-5xl font-heading font-bold text-white mb-6">
-                    The ThutoTech <span class="text-gold">Ecosystem</span>
-                </h2>
-                <p class="text-xl text-slate-300 max-w-3xl mx-auto">
-                    A vertically-integrated AI education platform spanning the entire South African learning journey.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Fundisa AI -->
-                <div class="glass-card rounded-2xl p-8 border border-gold/20 hover-lift group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 bg-gradient-to-br from-gold to-gold-light rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
-                        <i data-lucide="book-open" class="w-8 h-8 text-navy"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-3">Fundisa AI</h3>
-                    <p class="text-slate-300 mb-4">CAPS-aligned lesson generation for Foundation Phase teachers. Reduce admin by 70%.</p>
-                    <div class="flex items-center gap-2 text-gold text-sm">
-                        <i data-lucide="check-circle" class="w-4 h-4"></i>
-                        <span>Grades R-3</span>
-                    </div>
-                </div>
-
-                <!-- MatricMate AI -->
-                <div class="glass-card rounded-2xl p-8 border border-cyan/20 hover-lift group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-16 h-16 bg-gradient-to-br from-cyan to-cyan/80 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
-                        <i data-lucide="target" class="w-8 h-8 text-navy"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-3">MatricMate AI</h3>
-                    <p class="text-slate-300 mb-4">Matric exam prep & study support with multilingual assistance.</p>
-                    <div class="flex items-center gap-2 text-cyan text-sm">
-                        <i data-lucide="check-circle" class="w-4 h-4"></i>
-                        <span>Grade 12 Focus</span>
-                    </div>
-                </div>
-
-                <!-- SuperviseAI -->
-                <div class="glass-card rounded-2xl p-8 border border-orange/20 hover-lift group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-16 h-16 bg-gradient-to-br from-orange to-orange/80 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
-                        <i data-lucide="graduation-cap" class="w-8 h-8 text-navy"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-3">SuperviseAI</h3>
-                    <p class="text-slate-300 mb-4">AI-augmented postgraduate supervision with "Loop of Excellence" workflow.</p>
-                    <div class="flex items-center gap-2 text-orange text-sm">
-                        <i data-lucide="check-circle" class="w-4 h-4"></i>
-                        <span>Honours to PhD</span>
-                    </div>
-                </div>
-
-                <!-- Frictionless Learner -->
-                <div class="glass-card rounded-2xl p-8 border border-gold/20 hover-lift group" data-aos="fade-up" data-aos-delay="400">
-                    <div class="w-16 h-16 bg-gradient-to-br from-gold to-gold-light rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
-                        <i data-lucide="sparkles" class="w-8 h-8 text-navy"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-3">Frictionless Learner</h3>
-                    <p class="text-slate-300 mb-4">Predict+Connect peer tutoring platform with calendar integration.</p>
-                    <div class="flex items-center gap-2 text-gold text-sm">
-                        <i data-lucide="check-circle" class="w-4 h-4"></i>
-                        <span>University Students</span>
-                    </div>
-                </div>
-
-                <!-- Thuto Research Studio -->
-                <div class="glass-card rounded-2xl p-8 border border-cyan/20 hover-lift group" data-aos="fade-up" data-aos-delay="500">
-                    <div class="w-16 h-16 bg-gradient-to-br from-cyan to-cyan/80 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
-                        <i data-lucide="flask-conical" class="w-8 h-8 text-navy"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-3">Thuto Research Studio</h3>
-                    <p class="text-slate-300 mb-4">AI Research Mastery training with offline-first MCP architecture.</p>
-                    <div class="flex items-center gap-2 text-cyan text-sm">
-                        <i data-lucide="check-circle" class="w-4 h-4"></i>
-                        <span>Postgrad Researchers</span>
-                    </div>
-                </div>
-
-                <!-- Thuto AI Academy -->
-                <div class="glass-card rounded-2xl p-8 border border-orange/20 hover-lift group" data-aos="fade-up" data-aos-delay="600">
-                    <div class="w-16 h-16 bg-gradient-to-br from-orange to-orange/80 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
-                        <i data-lucide="award" class="w-8 h-8 text-navy"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-3">Thuto AI Academy</h3>
-                    <p class="text-slate-300 mb-4">ETDP SETA-aligned certifications for AI-enhanced teaching.</p>
-                    <div class="flex items-center gap-2 text-orange text-sm">
-                        <i data-lucide="check-circle" class="w-4 h-4"></i>
-                        <span>Professional Development</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MCP Architecture Section -->
-    <section id="mcp" class="py-24 bg-slate-50 relative overflow-hidden">
-        <div class="absolute inset-0 cyber-grid opacity-20"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div data-aos="fade-right">
-                    <div class="inline-flex items-center gap-2 bg-navy/10 px-4 py-2 rounded-full mb-4">
-                        <i data-lucide="cpu" class="w-5 h-5 text-navy"></i>
-                        <span class="text-navy font-semibold">MCP Architecture</span>
-                    </div>
-                    <h2 class="text-4xl lg:text-5xl font-heading font-bold text-navy mb-6">
-                        Model Context <span class="gradient-text">Protocol</span>
-                    </h2>
-                    <p class="text-xl text-slate-600 mb-8">
-                        The intelligent orchestration layer that connects Qwen AI, local databases, and external services while maintaining POPIA compliance and offline functionality.
-                    </p>
-
-                    <div class="space-y-6">
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 bg-navy rounded-xl flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="database" class="w-6 h-6 text-gold"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-bold text-navy mb-1">Local CAPS Database</h3>
-                                <p class="text-slate-600">Pre-loaded curriculum content accessible offline</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 bg-navy rounded-xl flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="shield" class="w-6 h-6 text-gold"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-bold text-navy mb-1">POPIA Compliance Layer</h3>
-                                <p class="text-slate-600">Automated data protection and privacy enforcement</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 bg-navy rounded-xl flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="globe" class="w-6 h-6 text-gold"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-bold text-navy mb-1">Multilingual Router</h3>
-                                <p class="text-slate-600">InkubaLM + NLLB for 11 SA languages</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 bg-navy rounded-xl flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="cloud" class="w-6 h-6 text-gold"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-bold text-navy mb-1">Smart Sync Engine</h3>
-                                <p class="text-slate-600">Automatic cloud sync when internet available</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="relative" data-aos="fade-left">
-                    <div class="glass-card rounded-3xl p-8 border border-navy/20 shadow-2xl">
-                        <div class="text-center mb-6">
-                            <h3 class="text-2xl font-bold text-navy mb-2">MCP Server Architecture</h3>
-                            <p class="text-slate-600">Modular, scalable, offline-first</p>
-                        </div>
-
-                        <div class="space-y-4">
-                            <div class="bg-navy/50 rounded-xl p-4 border-l-4 border-gold">
-                                <div class="flex items-center justify-between mb-2">
-                                    <span class="text-white font-semibold">Qwen3.6 Host</span>
-                                    <span class="text-cyan text-xs">Alibaba Cloud</span>
-                                </div>
-                                <div class="text-sm text-slate-300">Primary AI reasoning engine</div>
-                            </div>
-
-                            <div class="flex justify-center">
-                                <i data-lucide="arrow-down" class="w-6 h-6 text-gold"></i>
-                            </div>
-
-                            <div class="grid grid-cols-2 gap-3">
-                                <div class="bg-cyan/10 rounded-lg p-3 border border-cyan/30">
-                                    <div class="text-sm font-semibold text-navy">CAPS Server</div>
-                                    <div class="text-xs text-slate-600">Curriculum DB</div>
-                                </div>
-                                <div class="bg-cyan/10 rounded-lg p-3 border border-cyan/30">
-                                    <div class="text-sm font-semibold text-navy">Literature Server</div>
-                                    <div class="text-xs text-slate-600">Sabinet/SciELO</div>
-                                </div>
-                                <div class="bg-cyan/10 rounded-lg p-3 border border-cyan/30">
-                                    <div class="text-sm font-semibold text-navy">Compliance Server</div>
-                                    <div class="text-xs text-slate-600">POPIA Rules</div>
-                                </div>
-                                <div class="bg-cyan/10 rounded-lg p-3 border border-cyan/30">
-                                    <div class="text-sm font-semibold text-navy">Sync Server</div>
-                                    <div class="text-xs text-slate-600">Offline/Online</div>
-                                </div>
-                            </div>
-
-                            <div class="flex justify-center">
-                                <i data-lucide="arrow-down" class="w-6 h-6 text-gold"></i>
-                            </div>
-
-                            <div class="bg-gradient-to-r from-gold/20 to-cyan/20 rounded-xl p-4 border border-gold/30">
-                                <div class="text-center">
-                                    <div class="text-white font-semibold mb-1">All Platforms</div>
-                                    <div class="text-sm text-slate-300">Fundisa • MatricMate • SuperviseAI • Frictionless Learner</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Floating Badge -->
-                    <div class="absolute -top-4 -right-4 bg-gold text-navy px-4 py-2 rounded-full font-bold text-sm shadow-lg animate-pulse">
-                        100% Offline Capable
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Impact Section -->
-    <section id="impact" class="py-24 navy-gradient relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-4xl lg:text-5xl font-heading font-bold text-white mb-6">
-                    Measurable <span class="text-gold">Impact</span>
-                </h2>
-                <p class="text-xl text-slate-300 max-w-3xl mx-auto">
-                    Real results from our Glenhazel Primary School pilot programme.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-                <div class="glass-card rounded-2xl p-8 text-center border border-gold/20" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="text-5xl font-bold text-gold mb-2">70%</div>
-                    <div class="text-slate-300">Reduction in Teacher Admin Time</div>
-                </div>
-
-                <div class="glass-card rounded-2xl p-8 text-center border border-cyan/20" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="text-5xl font-bold text-cyan mb-2">5hrs</div>
-                    <div class="text-slate-300">Saved Per Teacher Per Week</div>
-                </div>
-
-                <div class="glass-card rounded-2xl p-8 text-center border border-orange/20" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="text-5xl font-bold text-orange mb-2">96%</div>
-                    <div class="text-slate-300">Platform Adoption Rate</div>
-                </div>
-
-                <div class="glass-card rounded-2xl p-8 text-center border border-gold/20" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="text-5xl font-bold text-gold mb-2">4.8/5</div>
-                    <div class="text-slate-300">Teacher Satisfaction Score</div>
-                </div>
-            </div>
-
-            <!-- Testimonial -->
-            <div class="glass-card rounded-3xl p-12 border border-gold/20 max-w-4xl mx-auto" data-aos="fade-up">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-16 h-16 bg-gradient-to-br from-gold to-gold-light rounded-full flex items-center justify-center">
-                        <i data-lucide="quote" class="w-8 h-8 text-navy"></i>
-                    </div>
-                    <div>
-                        <div class="text-white font-bold text-lg">Glenhazel Primary School</div>
-                        <div class="text-slate-400">Johannesburg, South Africa</div>
-                    </div>
-                </div>
-                <p class="text-xl text-slate-300 leading-relaxed mb-6">
-                    "ThutoTech has transformed how our teachers plan lessons. What used to take hours now takes minutes, and the quality has improved dramatically. The offline functionality is crucial for our context, and the multilingual support helps us serve our diverse community better."
-                </p>
-                <div class="flex items-center gap-2 text-gold">
-                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section id="pilot" class="py-24 bg-white relative overflow-hidden">
-        <div class="absolute inset-0 cyber-grid opacity-10"></div>
-        
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center" data-aos="zoom-in">
-            <h2 class="text-4xl lg:text-6xl font-heading font-bold text-navy mb-6">
-                Ready to Transform <span class="gradient-text">Education</span>?
+        <!-- Header Section -->
+        <header class="mb-12" data-aos="fade-up">
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-4">
+                Academic Excellence <span class="text-gold">|</span> Technological Innovation
             </h2>
-            <p class="text-xl text-slate-600 mb-12 max-w-3xl mx-auto">
-                Join our pilot programme and experience the future of AI-augmented education. 
-                Free for qualifying schools.
+            <p class="text-slate-400 max-w-2xl font-light">
+                Real-time AI-augmented supervision dashboard. MCP architecture active. 
+                Offline sync queued. POPIA compliance verified.
             </p>
+        </header>
 
-            <div class="flex flex-wrap justify-center gap-6 mb-12">
-                <button class="bg-gradient-to-r from-gold to-gold-light text-navy px-10 py-5 rounded-full font-bold text-lg hover:shadow-2xl hover:scale-105 transition transform">
-                    Apply for Pilot Programme
-                </button>
-                <button class="border-2 border-navy text-navy px-10 py-5 rounded-full font-bold text-lg hover:bg-navy hover:text-white transition">
-                    Schedule Demo
-                </button>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8 text-left max-w-3xl mx-auto">
-                <div class="flex items-start gap-3">
-                    <i data-lucide="check-circle" class="w-6 h-6 text-gold flex-shrink-0 mt-1"></i>
-                    <div>
-                        <div class="font-bold text-navy mb-1">Free Pilot</div>
-                        <div class="text-sm text-slate-600">10-week programme at no cost</div>
-                    </div>
-                </div>
-                <div class="flex items-start gap-3">
-                    <i data-lucide="check-circle" class="w-6 h-6 text-gold flex-shrink-0 mt-1"></i>
-                    <div>
-                        <div class="font-bold text-navy mb-1">Full Training</div>
-                        <div class="text-sm text-slate-600">Comprehensive teacher onboarding</div>
-                    </div>
-                </div>
-                <div class="flex items-start gap-3">
-                    <i data-lucide="check-circle" class="w-6 h-6 text-gold flex-shrink-0 mt-1"></i>
-                    <div>
-                        <div class="font-bold text-navy mb-1">Ongoing Support</div>
-                        <div class="text-sm text-slate-600">Dedicated WhatsApp support</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-navy-dark text-slate-400 py-16 border-t border-gold/20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-12 mb-12">
-                <div class="col-span-2">
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 bg-gold rounded-lg flex items-center justify-center">
-                            <i data-lucide="brain" class="w-6 h-6 text-navy"></i>
+        <!-- Dashboard Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            
+            <!-- 1. AI Processing Card (Glow-Morphism) -->
+            <div class="glass-card glass-border-gold rounded-2xl p-6 glow-active">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-cyan/20 flex items-center justify-center animate-pulse-slow">
+                            <i data-lucide="brain" class="w-5 h-5 text-cyan"></i>
                         </div>
-                        <span class="font-heading font-bold text-2xl text-white">THUTO<span class="text-gold">TECH</span></span>
+                        <div>
+                            <h3 class="font-serif text-lg font-semibold text-white">AI Analysis</h3>
+                            <p class="text-xs text-cyan font-mono">Qwen3.6 • MCP Active</p>
+                        </div>
                     </div>
-                    <p class="text-slate-400 mb-6 max-w-md">
-                        Empowering South African education through AI-augmented teaching and learning. 
-                        Society 5.0 principles. Human-centered innovation.
-                    </p>
-                    <div class="flex gap-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold hover:text-navy transition">
-                            <i data-lucide="linkedin" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold hover:text-navy transition">
-                            <i data-lucide="twitter" class="w-5 h-5"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold hover:text-navy transition">
-                            <i data-lucide="github" class="w-5 h-5"></i>
-                        </a>
+                    <span class="text-xs font-mono text-silver bg-navy-light px-2 py-1 rounded">LIVE</span>
+                </div>
+                
+                <div class="space-y-4">
+                    <div class="flex justify-between text-sm font-mono">
+                        <span class="text-slate-400">Processing</span>
+                        <span class="text-cyan kinetic-number" id="ai-progress">78%</span>
                     </div>
-                </div>
-
-                <div>
-                    <h4 class="text-white font-bold mb-4">Platform</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-gold transition">Fundisa AI</a></li>
-                        <li><a href="#" class="hover:text-gold transition">MatricMate AI</a></li>
-                        <li><a href="#" class="hover:text-gold transition">SuperviseAI</a></li>
-                        <li><a href="#" class="hover:text-gold transition">Frictionless Learner</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-white font-bold mb-4">Company</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-gold transition">About Us</a></li>
-                        <li><a href="#" class="hover:text-gold transition">Pilot Programme</a></li>
-                        <li><a href="#" class="hover:text-gold transition">BRICS Partnership</a></li>
-                        <li><a href="#" class="hover:text-gold transition">Contact</a></li>
-                    </ul>
+                    <div class="h-2 bg-navy-light rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-cyan to-blue-500 progress-glow rounded-full transition-all duration-1000" style="width: 78%"></div>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-slate-500">
+                        <i data-lucide="wifi" class="w-3 h-3"></i>
+                        <span>Local MCP Server • 12ms latency</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <div class="text-sm">
-                    © 2025 Thuto Technologies (Pty) Ltd. All rights reserved.
+            <!-- 2. Student Cohort Card (Glassmorphism + Silver Border) -->
+            <div class="glass-card glass-border-silver rounded-2xl p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-silver/20 flex items-center justify-center">
+                            <i data-lucide="users" class="w-5 h-5 text-silver"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-serif text-lg font-semibold text-white">Cohort Metrics</h3>
+                            <p class="text-xs text-silver font-mono">Glenhazel Primary • Grade 4-6</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex items-center gap-6 text-sm">
-                    <a href="#" class="hover:text-gold transition">Privacy Policy</a>
-                    <a href="#" class="hover:text-gold transition">POPIA Compliance</a>
-                    <span class="flex items-center gap-2">
-                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
-                        🇿🇦 Proudly South African
-                    </span>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-navy-light/50 rounded-xl p-4 border border-silver/20">
+                        <div class="text-3xl font-mono font-bold text-white mb-1 kinetic-number" data-target="24">0</div>
+                        <div class="text-xs text-slate-400">Active Students</div>
+                    </div>
+                    <div class="bg-navy-light/50 rounded-xl p-4 border border-silver/20">
+                        <div class="text-3xl font-mono font-bold text-gold mb-1 kinetic-number" data-target="92">0</div>
+                        <div class="text-xs text-slate-400">% Completion Rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Multilingual Router (Gold Accent + Data Grid) -->
+            <div class="glass-card glass-border-gold rounded-2xl p-6 data-grid-hover">
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center">
+                            <i data-lucide="globe" class="w-5 h-5 text-gold"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-serif text-lg font-semibold text-white">Language Router</h3>
+                            <p class="text-xs text-gold font-mono">InkubaLM + NLLB Pipeline</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between p-3 rounded-lg bg-navy-light/30 border border-transparent hover:border-gold/30 transition">
+                        <span class="text-sm font-medium">English</span>
+                        <span class="text-xs font-mono text-cyan">Primary</span>
+                    </div>
+                    <div class="flex items-center justify-between p-3 rounded-lg bg-navy-light/30 border border-transparent hover:border-gold/30 transition">
+                        <span class="text-sm font-medium">isiZulu</span>
+                        <span class="text-xs font-mono text-silver">Active</span>
+                    </div>
+                    <div class="flex items-center justify-between p-3 rounded-lg bg-navy-light/30 border border-transparent hover:border-gold/30 transition">
+                        <span class="text-sm font-medium">Afrikaans</span>
+                        <span class="text-xs font-mono text-silver">Cached</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </footer>
 
-    <!-- Initialize Scripts -->
+        <!-- 4. High-Contrast Data Table (Kinetic Typography + Micro-Interactions) -->
+        <div class="glass-card glass-border-silver rounded-2xl p-6 mb-8 overflow-hidden">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="font-serif text-xl font-semibold text-white">Assessment Pipeline</h3>
+                <div class="flex items-center gap-2">
+                    <button class="text-xs font-mono text-cyan border border-cyan/30 px-3 py-1.5 rounded hover:bg-cyan/10 transition">Export CSV</button>
+                    <button class="text-xs font-mono text-silver border border-silver/30 px-3 py-1.5 rounded hover:bg-silver/10 transition">Refresh</button>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm font-mono">
+                    <thead>
+                        <tr class="border-b border-silver/20 text-left">
+                            <th class="pb-4 text-slate-400 font-medium">Student ID</th>
+                            <th class="pb-4 text-slate-400 font-medium">Module</th>
+                            <th class="pb-4 text-slate-400 font-medium">AI Score</th>
+                            <th class="pb-4 text-slate-400 font-medium">Status</th>
+                            <th class="pb-4 text-slate-400 font-medium">Last Sync</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-silver/10">
+                        <tr class="hover:bg-cyan/5 transition group">
+                            <td class="py-4 text-white">STD-0042</td>
+                            <td class="py-4 text-slate-300">Mathematics Ch.4</td>
+                            <td class="py-4">
+                                <span class="text-cyan kinetic-number" data-target="87">0</span>%
+                                <div class="w-24 h-1 bg-navy-light rounded-full mt-1.5">
+                                    <div class="h-full bg-cyan rounded-full progress-glow" style="width: 87%"></div>
+                                </div>
+                            </td>
+                            <td class="py-4"><span class="px-2 py-1 rounded text-xs bg-green-500/20 text-green-400 border border-green-500/30">Approved</span></td>
+                            <td class="py-4 text-slate-500">2m ago</td>
+                        </tr>
+                        <tr class="hover:bg-cyan/5 transition group">
+                            <td class="py-4 text-white">STD-0118</td>
+                            <td class="py-4 text-slate-300">Natural Sciences Ch.2</td>
+                            <td class="py-4">
+                                <span class="text-orange kinetic-number" data-target="64">0</span>%
+                                <div class="w-24 h-1 bg-navy-light rounded-full mt-1.5">
+                                    <div class="h-full bg-orange rounded-full" style="width: 64%"></div>
+                                </div>
+                            </td>
+                            <td class="py-4"><span class="px-2 py-1 rounded text-xs bg-orange/20 text-orange border border-orange/30">Review</span></td>
+                            <td class="py-4 text-slate-500">5m ago</td>
+                        </tr>
+                        <tr class="hover:bg-cyan/5 transition group">
+                            <td class="py-4 text-white">STD-0205</td>
+                            <td class="py-4 text-slate-300">English FAL Essay</td>
+                            <td class="py-4">
+                                <span class="text-gold kinetic-number" data-target="91">0</span>%
+                                <div class="w-24 h-1 bg-navy-light rounded-full mt-1.5">
+                                    <div class="h-full bg-gold rounded-full" style="width: 91%"></div>
+                                </div>
+                            </td>
+                            <td class="py-4"><span class="px-2 py-1 rounded text-xs bg-cyan/20 text-cyan border border-cyan/30">Synced</span></td>
+                            <td class="py-4 text-slate-500">Offline Queue</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 5. Circuit Loading Micro-Interaction Demo -->
+        <div class="glass-card glass-border-gold rounded-2xl p-8 flex items-center justify-center gap-12 flex-wrap">
+            <div class="text-center">
+                <svg width="80" height="80" viewBox="0 0 80 80" class="mx-auto mb-3">
+                    <path class="circuit-loader" d="M 10 40 L 30 40 L 40 20 L 60 20 L 70 40 L 60 60 L 40 60 L 30 40" />
+                    <circle cx="40" cy="40" r="6" fill="#00D9FF" class="animate-pulse" />
+                </svg>
+                <p class="text-xs font-mono text-silver">Circuit Sync Active</p>
+            </div>
+            <div class="text-center">
+                <div class="w-20 h-20 mx-auto mb-3 rounded-full border-2 border-gold/30 flex items-center justify-center relative">
+                    <div class="absolute inset-2 rounded-full border border-cyan/50 animate-spin" style="animation-duration: 3s;"></div>
+                    <i data-lucide="shield-check" class="w-8 h-8 text-gold"></i>
+                </div>
+                <p class="text-xs font-mono text-silver">POPIA Verified</p>
+            </div>
+            <div class="text-center">
+                <div class="w-20 h-20 mx-auto mb-3 rounded-lg bg-navy-light border border-silver/20 flex items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-cyan/20 to-transparent translate-x-[-100%] animate-[shimmer_2s_infinite]"></div>
+                    <i data-lucide="database" class="w-8 h-8 text-silver"></i>
+                </div>
+                <p class="text-xs font-mono text-silver">Local Cache: 2.4GB</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- 3. AMBIENT AI ORB INTERFACE -->
+    <div class="ai-orb" id="aiOrb">
+        <i data-lucide="sparkles" class="ai-orb-icon w-6 h-6 text-white"></i>
+        <div class="ai-chat-content w-full h-full p-6 flex flex-col">
+            <div class="flex items-center justify-between mb-6">
+                <h4 class="font-serif text-lg text-white">Thuto AI Assistant</h4>
+                <button id="closeOrb" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+            </div>
+            <div class="flex-1 bg-navy-light/50 rounded-xl p-4 mb-4 border border-cyan/20 font-mono text-sm text-slate-300 space-y-2 overflow-y-auto">
+                <div class="text-cyan">> System initialized. MCP nodes active.</div>
+                <div class="text-slate-400">> How can I assist with your research pipeline today?</div>
+            </div>
+            <div class="flex gap-2">
+                <input type="text" placeholder="Ask about CAPS alignment, rubrics, or sync status..." 
+                       class="flex-1 bg-navy-light border border-silver/20 rounded-lg px-4 py-2 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan/50 font-mono">
+                <button class="bg-cyan/20 text-cyan border border-cyan/40 px-4 py-2 rounded-lg hover:bg-cyan/30 transition">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                </button>
+            </div>
+            <div class="mt-3 flex gap-2">
+                <span class="text-[10px] font-mono text-silver/60 bg-navy-light px-2 py-1 rounded">Voice Input Ready</span>
+                <span class="text-[10px] font-mono text-silver/60 bg-navy-light px-2 py-1 rounded">Context: Grade 5 Maths</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script>
-        // Initialize Lucide Icons
+        // Initialize Icons
         lucide.createIcons();
 
-        // Initialize AOS Animation Library
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 100
+        // AI Orb Interaction
+        const orb = document.getElementById('aiOrb');
+        const closeBtn = document.getElementById('closeOrb');
+        orb.addEventListener('click', () => orb.classList.add('active'));
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            orb.classList.remove('active');
         });
 
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        // Kinetic Number Animation
+        const animateNumbers = () => {
+            document.querySelectorAll('.kinetic-number').forEach(el => {
+                const target = parseInt(el.getAttribute('data-target'));
+                if (!target) return;
+                let current = 0;
+                const increment = target / 40;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    el.textContent = Math.floor(current);
+                }, 20);
+            });
+        };
 
-        // Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-2xl');
-            } else {
-                navbar.classList.remove('shadow-2xl');
-            }
-        });
-
-        // Particle Animation
-        function createParticles() {
-            const container = document.getElementById('particles');
-            const particleCount = 30;
-
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                
-                const size = Math.random() * 5 + 2;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.top = `${Math.random() * 100}%`;
-                particle.style.opacity = Math.random() * 0.5 + 0.2;
-                
-                const duration = Math.random() * 20 + 10;
-                particle.style.animation = `float ${duration}s ease-in-out infinite`;
-                particle.style.animationDelay = `${Math.random() * 5}s`;
-                
-                container.appendChild(particle);
-            }
-        }
-
-        createParticles();
-
-        // Smooth Scroll for Anchor Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    // Close mobile menu if open
-                    mobileMenu.classList.add('hidden');
+        // Intersection Observer for Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('kinetic-number')) {
+                        animateNumbers();
+                    }
                 }
             });
-        });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.kinetic-number').forEach(el => observer.observe(el));
+
+        // Shimmer Animation Keyframe Injection
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shimmer {
+                100% { transform: translateX(100%); }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
