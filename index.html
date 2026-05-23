@@ -1,1 +1,1613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thuto Tech — Empowering Education Through AI | Academic Excellence | Technological Innovation</title>
+<link rel="icon" href="https://image.qwenlm.ai/public_source/37477074-a716-46ec-a0e9-c69e80663fca/166ea1792-38b0-472a-8338-75da7771e1a5.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.8/index.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/space-grotesk@5.0.8/index.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.0.8/index.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --navy:#0A2463;
+  --navy-deep:#061844;
+  --navy-light:#1a3a7a;
+  --navy-soft:rgba(10,36,99,0.08);
+  --gold:#D4A017;
+  --gold-soft:#E8B248;
+  --gold-deep:#B8870F;
+  --gold-dim:rgba(212,160,23,0.12);
+  --gold-glow:rgba(212,160,23,0.35);
+  --white:#ffffff;
+  --off:#f7f8fc;
+  --paper:#fafbfd;
+  --ink:#0b1437;
+  --text:#2a3558;
+  --muted:#6b7494;
+  --line:#e3e7f1;
+  --line-soft:#eef1f8;
+  --violet:#5B4FCF;
+  --magenta:#C93B8E;
+  --blue:#1E6FD9;
+  --green:#1B8553;
+  --teal:#0E8C8C;
+  --amber:#D97706;
+  --red:#C1332B;
+  --black:#05070d;
+  --matte:#0a0f1a;
+  --panel:#111827;
+  --panel-2:#1a2332;
+  --panel-3:#243044;
+  --border:rgba(10,36,99,0.18);
+  --border-dim:rgba(255,255,255,0.06);
+  --gold-border:rgba(212,160,23,0.45);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  background:var(--white);color:var(--text);line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;color:var(--navy);letter-spacing:-0.02em;line-height:1.15}
+.mono{font-family:'JetBrains Mono',monospace}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.container{max-width:1400px;margin:0 auto;padding:0 28px}
+
+.brand-bar{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,0.96);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--line);
+}
+.brand-top{background:linear-gradient(90deg,var(--navy) 0%,var(--navy-light) 100%);color:var(--white)}
+.brand-top-inner{
+  max-width:1400px;margin:0 auto;padding:8px 28px;
+  display:flex;align-items:center;justify-content:space-between;
+  font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;
+}
+.brand-top-inner .left,.brand-top-inner .right{display:flex;align-items:center;gap:14px}
+.brand-top-inner .divider{width:1px;height:12px;background:rgba(255,255,255,0.25)}
+.brand-top-inner .pill{color:var(--gold-soft);font-weight:700}
+.brand-top-inner .right{color:rgba(255,255,255,0.85)}
+.brand-top-inner .live{display:flex;align-items:center;gap:6px;color:var(--gold-soft)}
+.brand-top-inner .live::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+.brand-nav{
+  max-width:1400px;margin:0 auto;padding:14px 28px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.logo-link{display:flex;align-items:center;gap:14px;text-decoration:none}
+.logo-img{height:54px;width:auto;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(10,36,99,0.12))}
+.logo-meta{display:flex;flex-direction:column;line-height:1.1}
+.logo-meta .tag1{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--gold-deep);letter-spacing:0.2em;font-weight:700;text-transform:uppercase}
+.logo-meta .tag2{font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:0.18em;margin-top:3px;text-transform:uppercase}
+.nav-tabs{display:flex;gap:2px;background:var(--off);padding:3px;border-radius:10px;border:1px solid var(--line)}
+.nav-tab{
+  padding:9px 16px;border-radius:7px;border:1px solid transparent;
+  background:transparent;color:var(--muted);cursor:pointer;
+  font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;
+  display:flex;flex-direction:column;align-items:flex-start;gap:2px;transition:all .2s;
+}
+.nav-tab:hover{color:var(--navy)}
+.nav-tab.active{background:var(--white);color:var(--navy);border-color:var(--line);box-shadow:0 2px 8px rgba(10,36,99,0.08)}
+.nav-tab .sub{font-size:8.5px;color:var(--gold-deep);font-family:'JetBrains Mono',monospace;letter-spacing:0.18em;font-weight:700}
+.nav-actions{display:flex;gap:10px;align-items:center}
+.btn{
+  padding:11px 20px;border-radius:8px;font-weight:600;font-size:13px;
+  display:inline-flex;align-items:center;gap:9px;cursor:pointer;
+  border:none;transition:all .25s;font-family:inherit;letter-spacing:0.01em;
+}
+.btn-navy{background:var(--navy);color:var(--white);box-shadow:0 4px 16px rgba(10,36,99,0.25)}
+.btn-navy:hover{background:var(--navy-light);transform:translateY(-1px);box-shadow:0 8px 24px rgba(10,36,99,0.3)}
+.btn-gold{background:var(--gold);color:var(--navy-deep);box-shadow:0 4px 16px var(--gold-glow)}
+.btn-gold:hover{background:var(--gold-soft);transform:translateY(-1px);box-shadow:0 8px 24px var(--gold-glow)}
+.btn-ghost{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}
+.btn-ghost:hover{background:var(--navy);color:var(--white)}
+
+.hero{
+  padding:80px 0 70px;
+  background:
+    radial-gradient(ellipse at 20% 30%,var(--navy-soft) 0%,transparent 55%),
+    radial-gradient(ellipse at 80% 70%,var(--gold-dim) 0%,transparent 55%),
+    var(--white);
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(10,36,99,0.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(10,36,99,0.04) 1px,transparent 1px);
+  background-size:52px 52px;
+  mask-image:radial-gradient(ellipse at center,black 30%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse at center,black 30%,transparent 75%);
+  pointer-events:none;
+}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;position:relative;z-index:1}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:7px 14px;border-radius:4px;
+  background:var(--gold-dim);border:1px solid var(--gold-border);
+  font-size:11px;color:var(--gold-deep);font-weight:700;
+  margin-bottom:22px;font-family:'JetBrains Mono',monospace;letter-spacing:0.12em;text-transform:uppercase;
+}
+.hero-badge::before{content:'◆';color:var(--gold)}
+.hero h1{font-size:clamp(38px,4.8vw,62px);margin-bottom:22px}
+.hero h1 .grad-gold{background:linear-gradient(135deg,var(--gold) 0%,var(--gold-deep) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero h1 .grad-navy{color:var(--navy)}
+.hero-sub{font-size:17px;color:var(--text);margin-bottom:30px;max-width:580px;line-height:1.65}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+.hero-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--white);box-shadow:0 8px 30px rgba(10,36,99,0.08)}
+.hero-metric{padding:18px 22px;border-right:1px solid var(--line)}
+.hero-metric:last-child{border-right:none}
+.hero-metric .l{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.14em;font-family:'JetBrains Mono',monospace;font-weight:600;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.hero-metric .l::before{content:'';width:5px;height:5px;background:var(--gold);border-radius:1px}
+.hero-metric .v{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:var(--navy);line-height:1}
+.hero-metric .v .u{font-size:14px;color:var(--gold-deep);font-family:'JetBrains Mono',monospace;margin-left:4px;font-weight:600}
+
+.hero-visual{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 70px rgba(10,36,99,0.18);background:var(--navy)}
+.hero-visual img{width:100%;display:block}
+.hero-visual::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(10,36,99,0.5) 100%);pointer-events:none}
+.hero-visual .hud{position:absolute;top:14px;left:14px;z-index:2;background:rgba(10,36,99,0.88);backdrop-filter:blur(10px);border:1px solid rgba(212,160,23,0.3);border-radius:8px;padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--white)}
+.hero-visual .hud .title{color:var(--gold);font-weight:700;letter-spacing:0.12em;margin-bottom:6px}
+.hero-visual .hud .row{margin-bottom:3px}
+.hero-visual .hud .row .v{color:var(--gold-soft);font-weight:700}
+.hero-visual .strip{position:absolute;bottom:14px;left:14px;right:14px;z-index:2;background:rgba(10,36,99,0.9);backdrop-filter:blur(10px);border:1px solid rgba(212,160,23,0.3);border-radius:8px;padding:10px 14px;display:flex;gap:12px;font-family:'JetBrains Mono',monospace;font-size:10px;overflow:hidden;white-space:nowrap;color:var(--white)}
+.strip .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);animation:pulse 1.2s infinite;flex-shrink:0;margin-top:4px}
+.strip .feed{overflow:hidden}
+.strip .feed span{display:inline-block;animation:scroll 45s linear infinite;padding-right:100px}
+@keyframes scroll{0%{transform:translateX(100%)}100%{transform:translateX(-100%)}}
+
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero-metrics{grid-template-columns:1fr}
+  .hero-metric{border-right:none;border-bottom:1px solid var(--line)}
+  .hero-metric:last-child{border-bottom:none}
+}
+
+section{padding:90px 0;position:relative}
+.section-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold-deep);text-transform:uppercase;letter-spacing:0.22em;margin-bottom:14px;font-weight:700}
+.section-eyebrow::before{content:'◆';color:var(--gold)}
+.section-title{font-size:clamp(30px,3.8vw,46px);margin-bottom:18px;max-width:860px}
+.section-title .gold{color:var(--gold-deep)}
+.section-title .navy{color:var(--navy)}
+.section-sub{font-size:16px;color:var(--text);max-width:760px;margin-bottom:48px;line-height:1.65}
+
+.ecosystem{background:var(--off);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.verticals{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.vertical-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:26px;position:relative;overflow:hidden;transition:all .3s;box-shadow:0 4px 20px rgba(10,36,99,0.04)}
+.vertical-card:hover{transform:translateY(-4px);border-color:var(--gold-border);box-shadow:0 20px 50px rgba(10,36,99,0.1)}
+.vertical-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--navy),var(--gold))}
+.v-header{display:flex;align-items:center;gap:10px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line-soft)}
+.v-header .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold-glow);animation:pulse 1.6s infinite}
+.v-header .label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--navy);letter-spacing:0.22em;font-weight:700}
+.v-product{padding:12px;border-radius:8px;background:var(--off);border:1px solid var(--line-soft);margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:all .2s;cursor:pointer}
+.v-product:hover{border-color:var(--gold-border);background:var(--white)}
+.v-product.current{background:linear-gradient(135deg,var(--gold-dim),rgba(10,36,99,0.03));border-color:var(--gold);box-shadow:0 4px 16px var(--gold-glow)}
+.v-product .p-name{font-size:13px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:8px}
+.v-product .p-name .tag{font-size:8px;color:var(--white);background:var(--navy);font-family:'JetBrains Mono',monospace;padding:2px 6px;border-radius:3px;letter-spacing:0.1em;font-weight:700}
+.v-product.current .p-name .tag{background:var(--gold);color:var(--navy-deep)}
+.v-product .p-tag{font-size:10px;color:var(--muted);margin-top:2px}
+.v-product .p-metric{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--navy);font-weight:700;text-align:right;white-space:nowrap}
+
+@media(max-width:980px){.verticals{grid-template-columns:1fr}}
+
+.marketplace{background:var(--white)}
+.mp-hero{border-radius:16px;overflow:hidden;position:relative;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);margin-bottom:40px;display:grid;grid-template-columns:1.2fr 1fr;align-items:stretch;color:var(--white)}
+.mp-hero-content{padding:44px;display:flex;flex-direction:column;justify-content:center}
+.mp-hero-content .section-eyebrow{color:var(--gold)}
+.mp-hero-content .section-eyebrow::before{color:var(--gold)}
+.mp-hero-content h2{font-size:32px;color:var(--white);margin-bottom:12px}
+.mp-hero-content h2 span{color:var(--gold)}
+.mp-hero-content p{font-size:14px;color:rgba(255,255,255,0.85);margin-bottom:22px;max-width:480px}
+.mp-search{background:var(--white);border-radius:10px;padding:5px;display:flex;gap:4px;max-width:480px;box-shadow:0 10px 30px rgba(0,0,0,0.2)}
+.mp-search input{flex:1;background:transparent;border:none;color:var(--navy);padding:10px 14px;font-size:13px;outline:none;font-family:inherit}
+.mp-search select{background:var(--off);border:none;color:var(--navy);padding:10px 14px;font-size:12px;border-radius:6px;outline:none;cursor:pointer;font-family:inherit}
+.mp-search button{padding:10px 18px;background:var(--gold);color:var(--navy-deep);border:none;border-radius:6px;cursor:pointer;font-weight:700;font-family:inherit}
+.mp-stats{display:flex;gap:24px;margin-top:24px;flex-wrap:wrap}
+.mp-stat .n{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;color:var(--gold)}
+.mp-stat .l{font-size:10px;color:rgba(255,255,255,0.7);font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;margin-top:2px}
+.mp-hero-visual{position:relative;overflow:hidden;min-height:320px}
+.mp-hero-visual img{width:100%;height:100%;object-fit:cover;opacity:0.85}
+.mp-hero-visual::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,transparent 40%),linear-gradient(0deg,var(--navy) 0%,transparent 30%)}
+.mp-hero-visual .badge{position:absolute;top:20px;right:20px;background:rgba(10,36,99,0.9);backdrop-filter:blur(10px);border:1px solid var(--gold-border);border-radius:6px;padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);display:flex;align-items:center;gap:6px;font-weight:700;letter-spacing:0.1em}
+
+.mp-categories{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:40px}
+.mp-cat{background:var(--white);border:1px solid var(--line);border-radius:10px;padding:18px 14px;text-align:center;cursor:pointer;transition:all .25s}
+.mp-cat:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 12px 30px rgba(10,36,99,0.08)}
+.mp-cat .icon{width:48px;height:48px;border-radius:10px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:20px;background:var(--navy);color:var(--gold)}
+.mp-cat h4{font-size:13px;margin-bottom:4px;color:var(--navy)}
+.mp-cat p{font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace}
+
+.mp-filter-bar{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;align-items:center}
+.mp-filter{padding:7px 14px;border-radius:100px;background:var(--off);border:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;font-weight:600}
+.mp-filter:hover{color:var(--navy);border-color:var(--navy)}
+.mp-filter.active{background:var(--navy);color:var(--white);border-color:var(--navy)}
+
+.mp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.mp-card{background:var(--white);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:all .25s;cursor:pointer}
+.mp-card:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 15px 40px rgba(10,36,99,0.12)}
+.mp-card .img{height:140px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);display:flex;align-items:center;justify-content:center;font-size:40px;color:var(--gold)}
+.mp-card .body{padding:16px}
+.mp-card .meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.mp-card .cat{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--navy);padding:3px 8px;background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:3px;letter-spacing:0.1em;font-weight:700}
+.mp-card .price{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--gold-deep);font-size:15px}
+.mp-card h4{font-size:14px;margin-bottom:6px;color:var(--navy)}
+.mp-card p{font-size:11px;color:var(--muted);line-height:1.5;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mp-card .seller{display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid var(--line-soft);font-size:11px}
+.mp-card .seller .who{display:flex;align-items:center;gap:8px}
+.mp-card .avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--gold));display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:700;font-size:10px}
+.mp-card .seller .name{color:var(--navy);font-weight:600}
+.mp-card .seller .uni{color:var(--muted);font-size:9px;font-family:'JetBrains Mono',monospace;margin-top:1px}
+.mp-card .rating{display:flex;align-items:center;gap:4px;color:var(--gold-deep);font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700}
+
+@media(max-width:980px){
+  .mp-hero{grid-template-columns:1fr}
+  .mp-categories{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:600px){.mp-categories{grid-template-columns:repeat(2,1fr)}}
+
+.lifecycle{background:linear-gradient(180deg,var(--navy-deep) 0%,var(--navy) 100%);color:var(--white)}
+.lifecycle h2,.lifecycle h3,.lifecycle h4{color:var(--white)}
+.lifecycle .section-eyebrow{color:var(--gold)}
+.lifecycle .section-title{color:var(--white)}
+.lifecycle .section-title .gold{color:var(--gold)}
+.lifecycle .section-sub{color:rgba(255,255,255,0.8)}
+.ledger-banner{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:24px;border-radius:12px;margin-bottom:30px;background:rgba(255,255,255,0.04);border:1px solid var(--gold-border);backdrop-filter:blur(10px)}
+.ledger-stat .l{font-size:10px;color:rgba(255,255,255,0.65);font-family:'JetBrains Mono',monospace;letter-spacing:0.12em;margin-bottom:8px}
+.ledger-stat .v{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:var(--gold);line-height:1}
+.ledger-stat .sub{font-size:9px;color:rgba(255,255,255,0.5);font-family:'JetBrains Mono',monospace;margin-top:4px;letter-spacing:0.1em}
+
+.lifecycle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.lifecycle-card{background:rgba(255,255,255,0.04);border:1px solid rgba(212,160,23,0.25);border-radius:12px;padding:22px;position:relative;overflow:hidden;backdrop-filter:blur(10px)}
+.lifecycle-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.lifecycle-card h3{font-size:17px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.lifecycle-card h3 .ico{width:28px;height:28px;border-radius:6px;background:var(--gold);color:var(--navy-deep);display:inline-flex;align-items:center;justify-content:center;font-size:13px}
+.lifecycle-card p{font-size:12px;color:rgba(255,255,255,0.7);margin-bottom:16px;line-height:1.55}
+.lifecycle-card label{font-size:10px;color:var(--gold);font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;display:block;margin-bottom:6px}
+.lifecycle-card select{width:100%;padding:10px;background:var(--navy-deep);color:white;border:1px solid var(--gold-border);border-radius:6px;font-family:inherit;font-size:12px;margin-bottom:12px;outline:none;cursor:pointer}
+.lifecycle-card select:focus{border-color:var(--gold)}
+.lifecycle-card button{width:100%;padding:11px;border:none;border-radius:6px;background:var(--gold);color:var(--navy-deep);font-weight:700;cursor:pointer;font-family:inherit;font-size:12px;transition:all .2s;letter-spacing:0.02em}
+.lifecycle-card button:hover{background:var(--gold-soft)}
+.console{margin-top:14px;background:var(--black);color:var(--gold);padding:12px;border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:10px;border:1px solid var(--gold-border);min-height:120px;max-height:150px;overflow-y:auto;white-space:pre-wrap;line-height:1.5}
+
+@media(max-width:980px){
+  .ledger-banner{grid-template-columns:repeat(2,1fr)}
+  .lifecycle-grid{grid-template-columns:1fr}
+}
+
+.safescholars{background:var(--off)}
+.ss-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:center;margin-bottom:40px}
+.ss-visual{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 60px rgba(10,36,99,0.15)}
+.ss-visual img{width:100%;display:block}
+.ss-visual::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 40%,rgba(10,36,99,0.3) 100%);pointer-events:none}
+.ss-visual .badge{position:absolute;top:14px;left:14px;z-index:2;background:rgba(10,36,99,0.92);backdrop-filter:blur(10px);border:1px solid var(--gold);border-radius:6px;padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);display:flex;align-items:center;gap:8px;font-weight:700;letter-spacing:0.08em}
+.ss-visual .badge::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);animation:pulse 1.2s infinite}
+.ss-visual .cap{position:absolute;top:14px;right:14px;z-index:2;background:rgba(193,51,43,0.95);border-radius:6px;padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:10px;color:white;display:flex;align-items:center;gap:6px;font-weight:700;letter-spacing:0.08em}
+.ss-visual .cap::before{content:'';width:6px;height:6px;border-radius:50%;background:white;animation:pulse 1s infinite}
+.ss-visual .stats{position:absolute;bottom:14px;left:14px;right:14px;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.ss-stat{background:rgba(10,36,99,0.92);backdrop-filter:blur(10px);border:1px solid rgba(212,160,23,0.3);border-radius:6px;padding:10px;text-align:center}
+.ss-stat .n{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:var(--gold)}
+.ss-stat .l{font-size:9px;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:0.1em;font-family:'JetBrains Mono',monospace;margin-top:2px}
+
+.ss-content h2{font-size:34px;margin-bottom:14px}
+.ss-content h2 span{color:var(--gold-deep)}
+.ss-content .sub{font-size:14px;color:var(--text);margin-bottom:24px;line-height:1.65}
+.ss-features{display:flex;flex-direction:column;gap:12px}
+.ss-feat{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:14px;background:var(--white);border:1px solid var(--line);border-radius:10px;transition:all .2s}
+.ss-feat:hover{border-color:var(--gold);transform:translateX(4px);box-shadow:0 8px 24px rgba(10,36,99,0.08)}
+.ss-feat .ico{width:44px;height:44px;border-radius:8px;background:var(--navy);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:16px}
+.ss-feat h4{font-size:13px;margin-bottom:3px;color:var(--navy)}
+.ss-feat p{font-size:11px;color:var(--muted);line-height:1.5}
+
+@media(max-width:980px){.ss-grid{grid-template-columns:1fr}}
+
+.ai-suite{background:var(--white);border-top:1px solid var(--line)}
+.ai-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.ai-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:26px;position:relative;overflow:hidden;transition:all .3s}
+.ai-card:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 20px 50px rgba(10,36,99,0.1)}
+.ai-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--navy),var(--gold))}
+.ai-card .ai-icon{width:54px;height:54px;border-radius:12px;background:var(--navy);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
+.ai-card h3{font-size:19px;margin-bottom:6px;color:var(--navy)}
+.ai-card .tag{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--gold-deep);letter-spacing:0.15em;margin-bottom:14px;display:block;font-weight:700}
+.ai-card p{font-size:13px;color:var(--text);margin-bottom:18px;line-height:1.6}
+.ai-card .metrics{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.ai-card .metric-row{display:flex;justify-content:space-between;padding:8px 12px;background:var(--off);border-radius:6px;font-size:11px;border:1px solid var(--line-soft)}
+.ai-card .metric-row .k{color:var(--muted)}
+.ai-card .metric-row .v{color:var(--navy);font-weight:700;font-family:'JetBrains Mono',monospace}
+.ai-card .btn-mini{width:100%;padding:10px;background:transparent;border:1.5px solid var(--navy);color:var(--navy);border-radius:6px;font-weight:600;cursor:pointer;font-family:inherit;font-size:12px;transition:all .2s}
+.ai-card .btn-mini:hover{background:var(--navy);color:var(--white)}
+
+@media(max-width:980px){.ai-grid{grid-template-columns:1fr}}
+
+.mobility{background:var(--off);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.mob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.mob-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:26px;position:relative;overflow:hidden;transition:all .3s}
+.mob-card:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 20px 50px rgba(10,36,99,0.1)}
+.mob-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--gold)}
+.mob-card .m-icon{width:52px;height:52px;border-radius:12px;background:var(--navy);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px;box-shadow:0 8px 24px rgba(10,36,99,0.2)}
+.mob-card h3{font-size:18px;margin-bottom:4px;color:var(--navy)}
+.mob-card .tag{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--gold-deep);letter-spacing:0.15em;margin-bottom:12px;display:block;font-weight:700}
+.mob-card p{font-size:13px;color:var(--text);margin-bottom:16px;line-height:1.6}
+.mob-card .specs{display:flex;flex-direction:column;gap:6px}
+.mob-card .spec{display:flex;justify-content:space-between;padding:8px 12px;background:var(--off);border-radius:5px;font-size:11px;font-family:'JetBrains Mono',monospace;border:1px solid var(--line-soft)}
+.mob-card .spec .k{color:var(--muted)}
+.mob-card .spec .v{color:var(--navy);font-weight:700}
+
+.drone-strip{margin-top:32px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);border:1px solid var(--gold-border);border-radius:14px;padding:26px;display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;color:var(--white)}
+.drone-strip .ico-wrap{width:60px;height:60px;border-radius:12px;background:var(--gold);color:var(--navy-deep);display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 0 30px var(--gold-glow)}
+.drone-strip h3{font-size:18px;margin-bottom:4px;color:var(--white)}
+.drone-strip h3 span{color:var(--gold)}
+.drone-strip p{font-size:13px;color:rgba(255,255,255,0.85);line-height:1.6}
+.drone-strip .stat-pill{padding:10px 16px;background:rgba(212,160,23,0.12);border:1px solid var(--gold-border);border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);font-weight:700;letter-spacing:0.1em}
+
+@media(max-width:980px){
+  .mob-grid{grid-template-columns:1fr}
+  .drone-strip{grid-template-columns:1fr;text-align:center}
+}
+
+.labs{background:var(--white);border-bottom:1px solid var(--line)}
+.labs-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.lab-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:28px;position:relative;overflow:hidden;transition:all .3s}
+.lab-card:hover{border-color:var(--gold);box-shadow:0 20px 50px rgba(10,36,99,0.1)}
+.lab-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--navy))}
+.lab-card .lab-icon{width:56px;height:56px;border-radius:12px;background:var(--gold-dim);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;color:var(--gold-deep);font-size:22px;margin-bottom:18px}
+.lab-card h3{font-size:22px;margin-bottom:6px;color:var(--navy)}
+.lab-card .tag{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold-deep);letter-spacing:0.15em;margin-bottom:14px;display:block;font-weight:700}
+.lab-card p{font-size:13px;color:var(--text);margin-bottom:20px;line-height:1.6}
+.lab-card .partners{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+.lab-card .partner{padding:5px 10px;background:var(--navy);color:var(--gold);border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;font-weight:600}
+.lab-card .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:14px;background:var(--off);border-radius:8px;border:1px solid var(--line-soft)}
+.lab-card .stat-row .s{text-align:center}
+.lab-card .stat-row .s .n{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;color:var(--navy)}
+.lab-card .stat-row .s .l{font-size:9px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;margin-top:2px}
+
+@media(max-width:980px){.labs-grid{grid-template-columns:1fr}}
+
+.integration{background:linear-gradient(180deg,var(--matte) 0%,var(--black) 100%);color:var(--white)}
+.integration h2,.integration h3{color:var(--white)}
+.integration .section-eyebrow{color:var(--gold)}
+.integration .section-title{color:var(--white)}
+.integration .section-title .gold{color:var(--gold)}
+.integration .section-sub{color:rgba(255,255,255,0.7)}
+.int-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.int-feed{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px;max-height:480px;overflow-y:auto}
+.int-feed h3{font-size:14px;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.int-feed h3 .live-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);animation:pulse 1.6s infinite}
+.int-feed .sub{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:0.1em;margin-bottom:16px}
+.int-item{display:grid;grid-template-columns:65px 16px 1fr auto;gap:10px;padding:10px;background:var(--matte);border-radius:6px;border:1px solid var(--border-dim);margin-bottom:6px;font-size:11px;align-items:center}
+.int-item .ts{color:rgba(255,255,255,0.5);font-family:'JetBrains Mono',monospace;font-size:10px}
+.int-item .ico{font-size:10px}
+.int-item .msg{color:var(--white)}
+.int-item .src{font-size:8px;color:rgba(255,255,255,0.5);font-family:'JetBrains Mono',monospace;padding:2px 6px;background:var(--panel-2);border-radius:3px;letter-spacing:0.1em;white-space:nowrap}
+
+.health-grid{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px}
+.health-grid h3{font-size:14px;margin-bottom:4px}
+.health-grid .sub{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:0.1em;margin-bottom:16px}
+.health-items{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.health-item{padding:10px;background:var(--matte);border:1px solid var(--border-dim);border-radius:6px;display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center}
+.health-item .dot{width:8px;height:8px;border-radius:50%;animation:pulse 2s infinite}
+.health-item .info .n{font-size:11px;font-weight:700;color:white}
+.health-item .info .v{font-size:9px;color:rgba(255,255,255,0.5);font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;margin-top:1px}
+.health-item .up{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700}
+
+@media(max-width:980px){.int-grid{grid-template-columns:1fr}}
+
+.cta-band{background:radial-gradient(ellipse at center,var(--navy-soft) 0%,transparent 65%),linear-gradient(135deg,var(--navy) 0%,var(--navy-deep) 100%);padding:80px 0;text-align:center;border-top:1px solid var(--gold-border);position:relative;overflow:hidden;color:var(--white)}
+.cta-band::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(212,160,23,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(212,160,23,0.06) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(ellipse at center,black 20%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at center,black 20%,transparent 70%)}
+.cta-band .container{position:relative;z-index:1}
+.cta-band h2{font-size:clamp(28px,3.6vw,44px);margin-bottom:18px;color:var(--white)}
+.cta-band h2 .gold{color:var(--gold)}
+.cta-band p{color:rgba(255,255,255,0.85);margin:0 auto 32px;max-width:640px;font-size:16px}
+.cta-band .ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+footer{background:var(--navy-deep);color:rgba(255,255,255,0.75);border-top:3px solid var(--gold);padding:56px 0 28px}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:36px;margin-bottom:40px}
+.footer-brand .logo-row{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.footer-brand .logo-row img{height:52px;background:var(--white);padding:6px;border-radius:8px}
+.footer-brand p{color:rgba(255,255,255,0.65);font-size:12px;line-height:1.6;max-width:300px;margin-bottom:18px}
+.popia{display:flex;align-items:center;gap:10px;padding:12px;background:rgba(212,160,23,0.1);border:1px solid var(--gold-border);border-radius:8px}
+.popia .ico{width:32px;height:32px;border-radius:7px;flex-shrink:0;background:var(--gold);color:var(--navy-deep);display:flex;align-items:center;justify-content:center;box-shadow:0 0 16px var(--gold-glow)}
+.popia .t{font-size:10.5px;line-height:1.4;color:rgba(255,255,255,0.85)}
+.popia .t strong{color:var(--gold);font-family:'Space Grotesk',sans-serif;display:block;margin-bottom:2px;font-size:12px}
+.popia .t span{color:rgba(255,255,255,0.55);font-size:9.5px}
+.footer-col h5{font-size:10px;color:var(--gold);font-family:'JetBrains Mono',monospace;letter-spacing:0.22em;font-weight:700;margin-bottom:16px;text-transform:uppercase}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.footer-col a{color:rgba(255,255,255,0.65);font-size:12px;display:flex;align-items:center;gap:6px;transition:color .2s}
+.footer-col a:hover{color:var(--gold)}
+.footer-col a::before{content:'›';color:var(--gold);opacity:0;transition:opacity .2s}
+.footer-col a:hover::before{opacity:1}
+.footer-bottom{padding-top:24px;border-top:1px solid rgba(212,160,23,0.2);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;font-size:10px;color:rgba(255,255,255,0.45);font-family:'JetBrains Mono',monospace;letter-spacing:0.02em}
+.footer-bottom .links{display:flex;gap:18px;flex-wrap:wrap}
+.footer-bottom .links a{color:rgba(255,255,255,0.5)}
+.footer-bottom .links a:hover{color:var(--gold)}
+.footer-bottom .jhb{color:var(--gold)}
+
+@media(max-width:980px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.footer-grid{grid-template-columns:1fr}}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(10,36,99,0.55);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:200;-webkit-backdrop-filter:blur(8px)}
+.modal-overlay.active{display:flex}
+.modal{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:30px;max-width:540px;width:90%;max-height:90vh;overflow-y:auto;position:relative;box-shadow:0 30px 80px rgba(10,36,99,0.4);border-top:4px solid var(--gold)}
+.modal .close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:var(--off);border:1px solid var(--line);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.modal .close:hover{color:var(--red);border-color:var(--red)}
+.modal h2{font-size:22px;margin-bottom:6px;display:flex;align-items:center;gap:10px;color:var(--navy)}
+.modal h2 .ico{color:var(--gold)}
+.modal > p{color:var(--muted);font-size:13px;margin-bottom:22px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;margin-bottom:6px;font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;font-weight:600}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:10px 12px;background:var(--white);border:1px solid var(--line);border-radius:6px;color:var(--navy);font-family:inherit;font-size:13px;outline:none;transition:border-color .2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold)}
+.form-group textarea{resize:vertical;min-height:90px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-submit{width:100%;padding:12px;margin-top:8px}
+
+.toast{position:fixed;bottom:24px;right:24px;z-index:300;background:var(--navy);border:1px solid var(--gold);color:white;padding:14px 20px;border-radius:8px;display:none;align-items:center;gap:10px;box-shadow:0 10px 30px rgba(10,36,99,0.35);font-size:13px}
+.toast.show{display:flex;animation:slideIn .3s ease}
+.toast .check{color:var(--gold)}
+@keyframes slideIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
+
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-track{background:var(--off)}
+::-webkit-scrollbar-thumb{background:var(--navy);border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:var(--navy-light)}
+
+.reveal{opacity:0;transform:translateY(24px);transition:all .7s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+@media(max-width:980px){
+  .nav-tabs{display:none}
+  .brand-top-inner .right span:not(.live){display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="brand-bar">
+  <div class="brand-top">
+    <div class="brand-top-inner">
+      <div class="left">
+        <span class="pill">◆ THUTO TECH</span>
+        <span class="divider"></span>
+        <span>EMPOWERING EDUCATION THROUGH AI</span>
+        <span class="divider"></span>
+        <span style="color:rgba(255,255,255,0.7)">ACADEMIC EXCELLENCE | TECHNOLOGICAL INNOVATION</span>
+      </div>
+      <div class="right">
+        <span>JSE: <span style="color:var(--gold-soft);font-weight:700">THU</span> +2.4%</span>
+        <span>v3.4.1</span>
+        <span id="clockTop">--:--:--</span>
+        <span class="live">ALL SYSTEMS NOMINAL</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="brand-nav">
+    <a href="#overview" class="logo-link">
+      <img src="https://image.qwenlm.ai/public_source/37477074-a716-46ec-a0e9-c69e80663fca/11790fede-73bf-4ffb-b332-14d586735583.png" alt="Thuto Tech" class="logo-img">
+      <div class="logo-meta">
+        <span class="tag1">Empowering Education Through AI</span>
+        <span class="tag2">Academic Excellence | Technological Innovation</span>
+      </div>
+    </a>
+
+    <div class="nav-tabs">
+      <button class="nav-tab active" data-target="overview">Overview<span class="sub">HOME</span></button>
+      <button class="nav-tab" data-target="marketplace">StudentMart<span class="sub">COMMERCE</span></button>
+      <button class="nav-tab" data-target="lifecycle">Graduate<span class="sub">LIFECYCLE</span></button>
+      <button class="nav-tab" data-target="safescholars">SafeScholars<span class="sub">IOT · PILOT</span></button>
+      <button class="nav-tab" data-target="ai">AI Suite<span class="sub">EDUCATION</span></button>
+      <button class="nav-tab" data-target="mobility">Mobility<span class="sub">SAFETY</span></button>
+    </div>
+
+    <div class="nav-actions">
+      <button class="btn btn-ghost" onclick="openModal('partnerModal')">Partner</button>
+      <button class="btn btn-navy" onclick="openModal('registerModal')">
+        <i class="fas fa-rocket"></i> Join Ecosystem
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="overview">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge">Sovereign SA Ecosystem · 3 Verticals · 10 Products</div>
+        <h1>
+          <span class="grad-navy">Academic Excellence.</span><br>
+          <span class="grad-gold">Technological Innovation.</span><br>
+          <span class="grad-navy">One Integrated Platform.</span>
+        </h1>
+        <p class="hero-sub">Thuto Tech unifies South Africa's education, mobility and research stack into a single sovereign ecosystem — from the learner's first smartwatch scan at Glenhazel Primary, through graduation at Wits, into professional practice. Every product feeds the whole.</p>
+        <div class="hero-ctas">
+          <button class="btn btn-navy" onclick="scrollToId('marketplace')">
+            <i class="fas fa-store"></i> Explore StudentMart
+          </button>
+          <button class="btn btn-gold" onclick="scrollToId('safescholars')">
+            <i class="fas fa-shield-alt"></i> SafeScholars Pilot
+          </button>
+          <button class="btn btn-ghost" onclick="scrollToId('lifecycle')">
+            <i class="fas fa-graduation-cap"></i> Graduate Lifecycle
+          </button>
+        </div>
+        <div class="hero-metrics">
+          <div class="hero-metric">
+            <div class="l">Ecosystem Uptime</div>
+            <div class="v">99.98<span class="u">%</span></div>
+          </div>
+          <div class="hero-metric">
+            <div class="l">Learners Served</div>
+            <div class="v">48.2<span class="u">K</span></div>
+          </div>
+          <div class="hero-metric">
+            <div class="l">Partner Schools</div>
+            <div class="v">47<span class="u">active</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <img src="https://image.qwenlm.ai/public_source/37477074-a716-46ec-a0e9-c69e80663fca/17b23d291-d5f4-4ca6-bdae-3abea3b18e60.png" alt="Thuto Tech ecosystem visualization">
+        <div class="hud">
+          <div class="title">◆ ECOSYSTEM STATUS</div>
+          <div class="row">Products <span class="v">10 / 10</span></div>
+          <div class="row">Verticals <span class="v">3 ACTIVE</span></div>
+          <div class="row">Gateways <span class="v">4 ONLINE</span></div>
+          <div class="row">Drones <span class="v">3 AIRBORNE</span></div>
+        </div>
+        <div class="strip">
+          <div class="dot"></div>
+          <div class="feed"><span>
+            ◆ Fundisa AI synced 847 learners to SASAMS &nbsp; · &nbsp;
+            ◆ SafeScholars trip TRP-0642 dispatched · CH 88 TR GP &nbsp; · &nbsp;
+            ◆ MatricMate pushed Grade 12 Maths homework · 12k recipients &nbsp; · &nbsp;
+            ◆ StudentMart processed R18,420 in campus transactions &nbsp; · &nbsp;
+            ◆ CampusLift completed 2,412 rides today · Wits + UJ + TUT &nbsp; · &nbsp;
+            ◆ Drone D-07 perimeter sweep complete · Glenhazel North &nbsp; · &nbsp;
+            ◆ Thuto AI Academy · 340 learners enrolled in MICT SETA pipeline
+          </span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ecosystem">
+  <div class="container">
+    <div class="section-eyebrow">The Thuto Ecosystem</div>
+    <h2 class="section-title">Three <span class="gold">Verticals</span>. Ten Products. One <span class="navy">Sovereign Stack</span>.</h2>
+    <p class="section-sub">Every product in the Thuto ecosystem feeds data, revenue and opportunity into the others — creating a closed-loop economy that serves South African youth from cradle to career.</p>
+
+    <div class="verticals">
+      <div class="vertical-card reveal">
+        <div class="v-header">
+          <div class="dot"></div>
+          <div class="label">Education Vertical</div>
+        </div>
+        <div class="v-product">
+          <div>
+            <div class="p-name">Fundisa AI</div>
+            <div class="p-tag">SASAMS · LURITS integration</div>
+          </div>
+          <div class="p-metric">847 SYNCED</div>
+        </div>
+        <div class="v-product">
+          <div>
+            <div class="p-name">MatricMate AI</div>
+            <div class="p-tag">NSC · IEB exam prep</div>
+          </div>
+          <div class="p-metric">12K USERS</div>
+        </div>
+        <div class="v-product current">
+          <div>
+            <div class="p-name">StudentMart SA <span class="tag">LIVE</span></div>
+            <div class="p-tag">Youth commerce · Zapper · Yoco</div>
+          </div>
+          <div class="p-metric">R48K TODAY</div>
+        </div>
+        <div class="v-product">
+          <div>
+            <div class="p-name">Frictionless Learner</div>
+            <div class="p-tag">Home Affairs · DBE verified</div>
+          </div>
+          <div class="p-metric">100% POPIA</div>
+        </div>
+      </div>
+
+      <div class="vertical-card reveal">
+        <div class="v-header">
+          <div class="dot"></div>
+          <div class="label">Labs & Academies</div>
+        </div>
+        <div class="v-product">
+          <div>
+            <div class="p-name">Thuto AI Academy</div>
+            <div class="p-tag">Youth upskilling · MICT SETA</div>
+          </div>
+          <div class="p-metric">340 ENROLLED</div>
+        </div>
+        <div class="v-product">
+          <div>
+            <div class="p-name">Thuto Research Studio</div>
+            <div class="p-tag">NRF · CSIR partnerships</div>
+          </div>
+          <div class="p-metric">12 PAPERS</div>
+        </div>
+      </div>
+
+      <div class="vertical-card reveal">
+        <div class="v-header">
+          <div class="dot"></div>
+          <div class="label">Mobility & Safety</div>
+        </div>
+        <div class="v-product current">
+          <div>
+            <div class="p-name">SafeScholars IoT <span class="tag">PILOT</span></div>
+            <div class="p-tag">PSIRA Grade A · CAP Security</div>
+          </div>
+          <div class="p-metric">ACTIVE NOW</div>
+        </div>
+        <div class="v-product">
+          <div>
+            <div class="p-name">CampusLift</div>
+            <div class="p-tag">Wits · UJ · TUT · Rhodes</div>
+          </div>
+          <div class="p-metric">2.4K RIDES</div>
+        </div>
+        <div class="v-product">
+          <div>
+            <div class="p-name">SecureLoRa Grid</div>
+            <div class="p-tag">Stage 8 immune · 72h backup</div>
+          </div>
+          <div class="p-metric">4/4 GW OK</div>
+        </div>
+        <div class="v-product">
+          <div>
+            <div class="p-name">Autonomous Drones</div>
+            <div class="p-tag">SACAA RPL · BVLOS certified</div>
+          </div>
+          <div class="p-metric">3 AIRBORNE</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="marketplace" id="marketplace">
+  <div class="container">
+    <div class="mp-hero reveal">
+      <div class="mp-hero-content">
+        <div class="section-eyebrow">StudentMart SA · Commerce Vertical</div>
+        <h2>Your Campus <span>Marketplace</span> for Everything.</h2>
+        <p>Buy, sell, offer services, run errands, book tutoring and find babysitters — all within your verified university community. Powered by Yoco and Zapper. Earnings flow into the central Thuto Student Funding Pool.</p>
+        <div class="mp-search">
+          <input type="text" placeholder="Search products, services, tutors..." id="mpSearchInput">
+          <select id="mpSearchCat">
+            <option value="all">All Categories</option>
+            <option value="products">Products</option>
+            <option value="services">Services</option>
+            <option value="errands">Errands</option>
+            <option value="tutoring">Tutoring</option>
+            <option value="babysitting">Babysitting</option>
+            <option value="employment">Employment</option>
+          </select>
+          <button onclick="performSearch()"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="mp-stats">
+          <div class="mp-stat"><div class="n">15,847</div><div class="l">ACTIVE STUDENTS</div></div>
+          <div class="mp-stat"><div class="n">8,214</div><div class="l">LIVE LISTINGS</div></div>
+          <div class="mp-stat"><div class="n">25+</div><div class="l">UNIVERSITIES</div></div>
+          <div class="mp-stat"><div class="n">4.8★</div><div class="l">AVG RATING</div></div>
+        </div>
+      </div>
+      <div class="mp-hero-visual">
+        <img src="https://image.qwenlm.ai/public_source/37477074-a716-46ec-a0e9-c69e80663fca/1d0458370-60e9-4a1d-b586-7061d27fdd0f.png" alt="SA university campus marketplace">
+        <div class="badge">🇿🇦 MADE FOR SA STUDENTS</div>
+      </div>
+    </div>
+
+    <div class="mp-categories reveal">
+      <div class="mp-cat" onclick="filterMp('products')">
+        <div class="icon"><i class="fas fa-laptop"></i></div>
+        <h4>Sell Products</h4>
+        <p>2.4K listings</p>
+      </div>
+      <div class="mp-cat" onclick="filterMp('services')">
+        <div class="icon"><i class="fas fa-tools"></i></div>
+        <h4>Offer Services</h4>
+        <p>1.8K listings</p>
+      </div>
+      <div class="mp-cat" onclick="filterMp('errands')">
+        <div class="icon"><i class="fas fa-running"></i></div>
+        <h4>Run Errands</h4>
+        <p>950 listings</p>
+      </div>
+      <div class="mp-cat" onclick="filterMp('tutoring')">
+        <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+        <h4>Tutoring</h4>
+        <p>1.2K listings</p>
+      </div>
+      <div class="mp-cat" onclick="filterMp('babysitting')">
+        <div class="icon"><i class="fas fa-baby"></i></div>
+        <h4>Babysitting</h4>
+        <p>640 listings</p>
+      </div>
+      <div class="mp-cat" onclick="filterMp('employment')">
+        <div class="icon"><i class="fas fa-briefcase"></i></div>
+        <h4>Employment</h4>
+        <p>780 listings</p>
+      </div>
+    </div>
+
+    <div class="mp-filter-bar reveal">
+      <button class="mp-filter active" data-cat="all" onclick="setMpFilter(this,'all')">◆ All</button>
+      <button class="mp-filter" data-cat="products" onclick="setMpFilter(this,'products')">📦 Products</button>
+      <button class="mp-filter" data-cat="services" onclick="setMpFilter(this,'services')">🛠 Services</button>
+      <button class="mp-filter" data-cat="errands" onclick="setMpFilter(this,'errands')">🏃 Errands</button>
+      <button class="mp-filter" data-cat="tutoring" onclick="setMpFilter(this,'tutoring')">📚 Tutoring</button>
+      <button class="mp-filter" data-cat="babysitting" onclick="setMpFilter(this,'babysitting')">👶 Babysitting</button>
+      <button class="mp-filter" data-cat="employment" onclick="setMpFilter(this,'employment')">💼 Employment</button>
+      <button class="mp-filter" style="margin-left:auto;background:var(--gold);color:var(--navy-deep);border-color:var(--gold);font-weight:700" onclick="openModal('postModal')">
+        <i class="fas fa-plus"></i> Post Listing
+      </button>
+    </div>
+
+    <div class="mp-grid" id="mpGrid"></div>
+  </div>
+</section>
+
+<section class="lifecycle" id="lifecycle">
+  <div class="container">
+    <div class="section-eyebrow reveal">Graduate Lifecycle · Practitioner Incubation</div>
+    <h2 class="section-title reveal">From <span class="gold">Final Year</span> to Private Practice.</h2>
+    <p class="section-sub reveal">Automates vacation work logging, shadow time verification, corporate interview distribution and direct industry placement — then incubates graduates into their own firms with zero-cost referrals that disrupt generational legacy networks.</p>
+
+    <div class="ledger-banner reveal">
+      <div class="ledger-stat">
+        <div class="l">CENTRAL STUDENT FUNDING POOL</div>
+        <div class="v" id="fundingText">R0.00</div>
+        <div class="sub">◆ FROM B2B SOFTWARE CREDITS</div>
+      </div>
+      <div class="ledger-stat">
+        <div class="l">VOCATIONAL SHADOW HOURS</div>
+        <div class="v" id="vacHoursText">1,820 hrs</div>
+        <div class="sub">◆ VERIFIED · ACCREDITED</div>
+      </div>
+      <div class="ledger-stat">
+        <div class="l">PLACEMENT PIPELINE</div>
+        <div class="v" id="placementText">412 students</div>
+        <div class="sub">◆ TIER-1 CORPORATE</div>
+      </div>
+      <div class="ledger-stat">
+        <div class="l">INCUBATED PRACTICES</div>
+        <div class="v" id="referralText">38 firms</div>
+        <div class="sub">◆ 100% REFERRAL RETENTION</div>
+      </div>
+    </div>
+
+    <div class="lifecycle-grid">
+      <div class="lifecycle-card reveal">
+        <h3><span class="ico"><i class="fas fa-graduation-cap"></i></span>Final-Year Lifecycle</h3>
+        <p>Automates vacation work logging, shadow time verification, corporate interview distribution and direct industry placement protocols.</p>
+        <label>◆ LIFECYCLE TRIGGER</label>
+        <select id="gradAction">
+          <option value="vac_work">Verify 40-Hour Medical/Legal Shadow Session</option>
+          <option value="interview_match">Execute Tier-1 Corporate Placement Interview</option>
+        </select>
+        <button onclick="runGradLifecycle()">Log Operational Milestone</button>
+        <div class="console" id="gradConsole">Awaiting lifecycle trigger event...</div>
+      </div>
+
+      <div class="lifecycle-card reveal">
+        <h3><span class="ico"><i class="fas fa-briefcase"></i></span>Enterprise Readiness</h3>
+        <p>Equips professionals (Healthcare, Banking, Assets) with hands-on exposure to production software — practice management billing lines, asset financial suites, ICD-10 coding.</p>
+        <label>◆ SECTOR SANDBOX</label>
+        <select id="proSector">
+          <option value="med_billing">Healthcare: Med-Aid Discovery Claims & Billing</option>
+          <option value="prop_asset">Commerce: Property Asset Valuation & Banking</option>
+        </select>
+        <button onclick="runProSandbox()">Initialize Software Module</button>
+        <div class="console" id="proConsole">Awaiting sandbox system injection...</div>
+      </div>
+
+      <div class="lifecycle-card reveal">
+        <h3><span class="ico"><i class="fas fa-brain"></i></span>Mental Health & Incubator</h3>
+        <p>Student support is <strong style="color:var(--gold)">always 100% free</strong>. Graduating practitioners receive free business setup and zero-cost client referrals — disrupting generational legacy networks.</p>
+        <label>◆ INCUBATION SERVICE</label>
+        <select id="wellnessAction">
+          <option value="free_student">Provide 100% Free Campus Crisis Consultation</option>
+          <option value="free_referral">Route Premium External Client (Free Referral)</option>
+        </select>
+        <button onclick="runWellnessIncubator()">Process Incubation Link</button>
+        <div class="console" id="wellnessConsole">Awaiting referral handshake node...</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="safescholars" id="safescholars">
+  <div class="container">
+    <div class="section-eyebrow reveal">SafeScholars IoT & Mobility · Flagship Pilot</div>
+    <h2 class="section-title reveal"><span class="gold">Predictive Security.</span> Orderly Transport. Empowered Youth.</h2>
+    <p class="section-sub reveal">The flagship product of the Mobility & Safety vertical. Currently live in pilot at Glenhazel Primary School (EMIS 5001234) — fully integrated with CAP Security Zone 7, Fundisa AI (SASAMS), and the SecureLoRa Grid.</p>
+
+    <div class="ss-grid">
+      <div class="ss-visual reveal">
+        <img src="https://image.qwenlm.ai/public_source/37477074-a716-46ec-a0e9-c69e80663fca/1b1bb9a8e-568c-4b81-bf1b-b43a3285dcc9.png" alt="SafeScholars IoT tactical map">
+        <div class="badge">◆ LIVE · GLENHAZEL PRIMARY</div>
+        <div class="cap">CAP ZONE 7 · LINKED</div>
+        <div class="stats">
+          <div class="ss-stat"><div class="n">97.2%</div><div class="l">LEARNERS ACCOUNTED</div></div>
+          <div class="ss-stat"><div class="n">3/3</div><div class="l">DRONES AIRBORNE</div></div>
+          <div class="ss-stat"><div class="n">0.8s</div><div class="l">ALERT LATENCY</div></div>
+        </div>
+      </div>
+
+      <div class="ss-content reveal">
+        <h2>Tactical <span>Oversight</span>. Zero Compromise.</h2>
+        <p class="sub">Real-time monitoring of all devices, vehicles and alert zones. Every sensor anomaly, vehicle alert and smartwatch panic trigger routes instantly to CAP Security's Advanced Command Centre.</p>
+        <div class="ss-features">
+          <div class="ss-feat">
+            <div class="ico"><i class="fas fa-shield-alt"></i></div>
+            <div>
+              <h4>CAP Security Tactical Link</h4>
+              <p>Armed response unit 7-Alpha on station at Gate A · 6th Street. Panic, overload and BAC fail events auto-dispatch with SAPS CAS logging.</p>
+            </div>
+          </div>
+          <div class="ss-feat">
+            <div class="ico"><i class="fas fa-wine-bottle"></i></div>
+            <div>
+              <h4>Bio-Lock Breathalyzers</h4>
+              <p>PRDP-verified drivers must pass integrated BAC check (SA professional limit: 0.02%) before ignition unlock. Tamper-sealed, cloud-audited.</p>
+            </div>
+          </div>
+          <div class="ss-feat">
+            <div class="ico"><i class="fas fa-satellite-dish"></i></div>
+            <div>
+              <h4>SecureLoRa Grid</h4>
+              <p>Stage 4 load shedding · Eskom down · gateway GW-GLH-04 on solar + LiFePO₄ backup. Tracking, smartwatches and perimeter sensors: 100% online.</p>
+            </div>
+          </div>
+          <div class="ss-feat">
+            <div class="ico"><i class="fas fa-helicopter"></i></div>
+            <div>
+              <h4>Autonomous Verification Drones</h4>
+              <p>SACAA RPL-licensed pilots. Perimeter sensors trigger instant BVLOS drone launch — average deploy time 3.2 seconds. D-07 currently sweeping 6th Street corridor.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ai-suite" id="ai">
+  <div class="container">
+    <div class="section-eyebrow reveal">Education Vertical · AI Suite</div>
+    <h2 class="section-title reveal"><span class="gold">Fundisa</span>. MatricMate. <span class="navy">Frictionless Learner</span>.</h2>
+    <p class="section-sub reveal">Three AI products serving the learner from enrolment through matric and beyond — fully integrated with DBE's SASAMS and LURITS systems, the IEB and NSC exam bodies, and Home Affairs identity verification.</p>
+
+    <div class="ai-grid">
+      <div class="ai-card reveal">
+        <div class="ai-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+        <h3>Fundisa AI</h3>
+        <span class="tag">TEACHING INTELLIGENCE · SASAMS · LURITS</span>
+        <p>Automates attendance capture, parent communication and curriculum pacing for SA educators. Syncs bidirectionally with DBE's SASAMS and LURITS.</p>
+        <div class="metrics">
+          <div class="metric-row"><span class="k">Schools live</span><span class="v">47</span></div>
+          <div class="metric-row"><span class="k">Learners synced</span><span class="v">12,847</span></div>
+          <div class="metric-row"><span class="k">Avg attendance</span><span class="v">96.2%</span></div>
+        </div>
+        <button class="btn-mini">Connect your school</button>
+      </div>
+
+      <div class="ai-card reveal">
+        <div class="ai-icon"><i class="fas fa-book-open"></i></div>
+        <h3>MatricMate AI</h3>
+        <span class="tag">NSC · IEB EXAM PREP COMPANION</span>
+        <p>Personalised AI tutor for Grade 10–12 learners preparing for NSC and IEB finals. Past papers, adaptive quizzes, essay marking, and live tutor matching via StudentMart.</p>
+        <div class="metrics">
+          <div class="metric-row"><span class="k">Active users</span><span class="v">12,410</span></div>
+          <div class="metric-row"><span class="k">Avg improvement</span><span class="v">+18%</span></div>
+          <div class="metric-row"><span class="k">Subjects</span><span class="v">24 NSC/IEB</span></div>
+        </div>
+        <button class="btn-mini">Start free trial</button>
+      </div>
+
+      <div class="ai-card reveal">
+        <div class="ai-icon"><i class="fas fa-id-card"></i></div>
+        <h3>Frictionless Learner</h3>
+        <span class="tag">ZERO-ADMIN ENROLMENT · POPIA</span>
+        <p>One-click school enrolment using Home Affairs-verified ID, DBE records and parent consent. Eliminates paperwork queues, maintains 100% POPIA compliance.</p>
+        <div class="metrics">
+          <div class="metric-row"><span class="k">Enrolments processed</span><span class="v">3,204</span></div>
+          <div class="metric-row"><span class="k">Paper saved</span><span class="v">48,000 pages</span></div>
+          <div class="metric-row"><span class="k">POPIA status</span><span class="v">100% ✓</span></div>
+        </div>
+        <button class="btn-mini">Enrol a learner</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mobility" id="mobility">
+  <div class="container">
+    <div class="section-eyebrow reveal">Mobility & Safety Vertical</div>
+    <h2 class="section-title reveal">Immune to <span class="gold">Blackouts</span>. Lethal to Crime.</h2>
+    <p class="section-sub reveal">Four products forming the physical backbone of the Thuto safety stack — built to keep operating when Eskom drops and criminals think the grid is dark.</p>
+
+    <div class="mob-grid">
+      <div class="mob-card reveal">
+        <div class="m-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>SafeScholars IoT</h3>
+        <span class="tag">PSIRA GRADE A · PILOT ACTIVE</span>
+        <p>Tactical monitoring of scholar transport, smartwatches and school perimeters. Linked to CAP Security and SAPS.</p>
+        <div class="specs">
+          <div class="spec"><span class="k">Fleet tracked</span><span class="v">384 EVs</span></div>
+          <div class="spec"><span class="k">Uptime</span><span class="v">99.98%</span></div>
+          <div class="spec"><span class="k">Response SLA</span><span class="v">4:30 avg</span></div>
+        </div>
+      </div>
+
+      <div class="mob-card reveal">
+        <div class="m-icon"><i class="fas fa-car"></i></div>
+        <h3>CampusLift</h3>
+        <span class="tag">CAMPUS COMMUTE PASS</span>
+        <p>Verified university students monetise their vehicles safely during downtime — picking up peers and school children. Anti-exploitation filters prevent syndicate access.</p>
+        <div class="specs">
+          <div class="spec"><span class="k">Universities</span><span class="v">Wits · UJ · TUT</span></div>
+          <div class="spec"><span class="k">Daily rides</span><span class="v">2,412</span></div>
+          <div class="spec"><span class="k">Drivers verified</span><span class="v">100%</span></div>
+        </div>
+      </div>
+
+      <div class="mob-card reveal">
+        <div class="m-icon"><i class="fas fa-broadcast-tower"></i></div>
+        <h3>SecureLoRa Grid</h3>
+        <span class="tag">LOAD-SHEDDING NETWORK</span>
+        <p>Independent LoRaWAN mesh on solar + LiFePO₄ backup. Zero cellular dependency. Zero airtime cost for parents. Stage 8 immune.</p>
+        <div class="specs">
+          <div class="spec"><span class="k">Gateways</span><span class="v">4 / 4 online</span></div>
+          <div class="spec"><span class="k">Backup</span><span class="v">72 hours</span></div>
+          <div class="spec"><span class="k">Latency</span><span class="v">184 ms</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drone-strip reveal">
+      <div class="ico-wrap"><i class="fas fa-helicopter"></i></div>
+      <div>
+        <h3>Autonomous Drones · <span>SACAA Certified</span></h3>
+        <p>Perimeter sensors trigger instant BVLOS drone launch. Average deploy: 3.2 seconds. Pilots RPL-licensed under SACAA Part 101. Night-rated. 3 units currently airborne over the Glenhazel pilot zone.</p>
+      </div>
+      <div class="stat-pill">3 AIRBORNE NOW</div>
+    </div>
+  </div>
+</section>
+
+<section class="labs">
+  <div class="container">
+    <div class="section-eyebrow reveal">Labs & Academies Vertical</div>
+    <h2 class="section-title reveal">Building the <span class="gold">Next Generation</span> of South African Technologists.</h2>
+    <p class="section-sub reveal">Two institutions dedicated to upskilling SA youth and advancing applied research — in partnership with MICT SETA, NRF and CSIR.</p>
+
+    <div class="labs-grid">
+      <div class="lab-card reveal">
+        <div class="lab-icon"><i class="fas fa-user-graduate"></i></div>
+        <h3>Thuto AI Academy</h3>
+        <span class="tag">YOUTH UPSKILLING · MICT SETA ACCREDITED</span>
+        <p>Intensive bootcamps in AI, IoT, cybersecurity and data science for township and rural youth. Graduates feed directly into the Thuto ecosystem — building SafeScholars drones, MatricMate models, and StudentMart infrastructure.</p>
+        <div class="partners">
+          <span class="partner">◆ MICT SETA</span>
+          <span class="partner">◆ YES4Youth</span>
+          <span class="partner">◆ Harambee</span>
+          <span class="partner">◆ Google SA</span>
+        </div>
+        <div class="stat-row">
+          <div class="s"><div class="n">340</div><div class="l">ENROLLED</div></div>
+          <div class="s"><div class="n">92%</div><div class="l">PLACEMENT</div></div>
+          <div class="s"><div class="n">14</div><div class="l">COHORTS</div></div>
+        </div>
+      </div>
+
+      <div class="lab-card reveal">
+        <div class="lab-icon"><i class="fas fa-microscope"></i></div>
+        <h3>Thuto Research Studio</h3>
+        <span class="tag">APPLIED RESEARCH · NRF · CSIR</span>
+        <p>Peer-reviewed research at the intersection of AI, education and public safety. Our papers inform DBE policy, shape SACAA drone regulations, and advance LoRaWAN mesh resilience under African conditions.</p>
+        <div class="partners">
+          <span class="partner">◆ NRF</span>
+          <span class="partner">◆ CSIR</span>
+          <span class="partner">◆ Wits CS</span>
+          <span class="partner">◆ UCT AI Lab</span>
+        </div>
+        <div class="stat-row">
+          <div class="s"><div class="n">12</div><div class="l">PAPERS</div></div>
+          <div class="s"><div class="n">4</div><div class="l">PATENTS</div></div>
+          <div class="s"><div class="n">R4.2M</div><div class="l">GRANTS</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="integration">
+  <div class="container">
+    <div class="section-eyebrow reveal">Live Ecosystem Data Flow</div>
+    <h2 class="section-title reveal">Every Product <span class="gold">Feeds</span> the Whole.</h2>
+    <p class="section-sub reveal">Real-time cross-product events showing how SafeScholars, Fundisa AI, StudentMart, MatricMate and the rest share data, revenue and opportunity in a single sovereign stack.</p>
+
+    <div class="int-grid">
+      <div class="int-feed reveal">
+        <h3><span class="live-dot"></span>Unified Incident Feed</h3>
+        <div class="sub">◆ CROSS-PRODUCT EVENTS · LIVE</div>
+        <div id="intFeedList"></div>
+      </div>
+
+      <div class="health-grid reveal">
+        <h3>System Health · All Verticals</h3>
+        <div class="sub">◆ 30-DAY UPTIME</div>
+        <div class="health-items" id="healthList"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2 class="reveal">Join the <span class="gold">Thuto Ecosystem</span>.</h2>
+    <p class="reveal">Whether you're a parent, a principal, a SGB chair, a security company or an investor — there's a place for you in South Africa's sovereign education stack.</p>
+    <div class="ctas reveal">
+      <button class="btn btn-gold" onclick="openModal('registerModal')"><i class="fas fa-rocket"></i> Join as Parent / SGB</button>
+      <button class="btn btn-ghost" style="color:white;border-color:white" onclick="openModal('partnerModal')"><i class="fas fa-handshake"></i> Partner with Thuto</button>
+      <button class="btn btn-ghost" style="color:white;border-color:white"><i class="fas fa-chart-line"></i> Investor Deck</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-row">
+          <img src="https://image.qwenlm.ai/public_source/37477074-a716-46ec-a0e9-c69e80663fca/166ea1792-38b0-472a-8338-75da7771e1a5.png" alt="Thuto Tech">
+          <div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;color:var(--gold)">THUTO TECH</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--gold-soft);letter-spacing:0.18em;margin-top:3px">EMPOWERING EDUCATION THROUGH AI</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;color:rgba(255,255,255,0.55);letter-spacing:0.2em;margin-top:2px">ACADEMIC EXCELLENCE | TECHNOLOGICAL INNOVATION</div>
+          </div>
+        </div>
+        <p>A sovereign South African technology ecosystem fusing education intelligence, youth commerce and load-shedding-proof mobility. Built in Johannesburg. Deployed in every school, campus and community that asks for it.</p>
+        <div class="popia">
+          <div class="ico"><i class="fas fa-shield-alt"></i></div>
+          <div class="t">
+            <strong>100% POPIA Compliant</strong>
+            <span>Child data end-to-end encrypted · Info Reg #IR-2024-8871</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Education</h5>
+        <ul>
+          <li><a href="#ai">Fundisa AI</a></li>
+          <li><a href="#ai">MatricMate AI</a></li>
+          <li><a href="#marketplace">StudentMart SA</a></li>
+          <li><a href="#ai">Frictionless Learner</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Mobility & Safety</h5>
+        <ul>
+          <li><a href="#safescholars">SafeScholars IoT</a></li>
+          <li><a href="#mobility">CampusLift</a></li>
+          <li><a href="#mobility">SecureLoRa Grid</a></li>
+          <li><a href="#mobility">Autonomous Drones</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Labs</h5>
+        <ul>
+          <li><a href="#overview">Thuto AI Academy</a></li>
+          <li><a href="#overview">Research Studio</a></li>
+          <li><a href="#lifecycle">Graduate Lifecycle</a></li>
+          <li><a href="#lifecycle">Practice Incubator</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">About Thuto Tech</a></li>
+          <li><a href="#">Investor Relations</a></li>
+          <li><a href="#">DBE / GDE Compliance</a></li>
+          <li><a href="#">POPIA Policy</a></li>
+          <li><a href="#">Careers · JHB</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 Thuto Tech (Pty) Ltd · CIPC 2024/481923/07 · PSIRA Grade A · VAT 4870284199 · ACADEMIC EXCELLENCE | TECHNOLOGICAL INNOVATION</div>
+      <div class="links">
+        <a href="#">Privacy</a>
+        <a href="#">POPIA</a>
+        <a href="#">DBE/GDE</a>
+        <a href="#">SACAA</a>
+        <a href="#">Investors</a>
+        <a href="#" class="jhb">● johannesburg</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="postModal">
+  <div class="modal">
+    <button class="close" onclick="closeModal('postModal')"><i class="fas fa-times"></i></button>
+    <h2><span class="ico"><i class="fas fa-plus-circle"></i></span>Post a Listing</h2>
+    <p>Reach 15,000+ verified SA students on StudentMart.</p>
+    <form onsubmit="submitListing(event)">
+      <div class="form-group">
+        <label>◆ LISTING TITLE</label>
+        <input type="text" placeholder="e.g., Calculus Tutoring Available" required id="listingTitle">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>◆ CATEGORY</label>
+          <select required id="listingCategory">
+            <option value="">Select</option>
+            <option value="products">Sell Product</option>
+            <option value="services">Offer Service</option>
+            <option value="errands">Run Errands</option>
+            <option value="tutoring">Tutoring</option>
+            <option value="babysitting">Babysitting</option>
+            <option value="employment">Employment</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>◆ PRICE (ZAR)</label>
+          <input type="number" placeholder="150" required id="listingPrice">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>◆ UNIVERSITY</label>
+          <select required id="listingUni">
+            <option value="">Select</option>
+            <option>Wits</option><option>UCT</option><option>UP (Tuks)</option>
+            <option>Stellenbosch</option><option>UJ</option><option>NWU (Pukke)</option>
+            <option>UKZN</option><option>Rhodes</option><option>TUT</option>
+            <option>DUT</option><option>UFS (Kovsies)</option><option>NMU (Mandela)</option>
+            <option>CPUT</option><option>Wits Education Campus</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>◆ PRICE TYPE</label>
+          <select id="listingPriceType">
+            <option value="fixed">Fixed</option>
+            <option value="hour">Per Hour</option>
+            <option value="negotiable">Negotiable</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>◆ DESCRIPTION</label>
+        <textarea placeholder="Describe what you're offering..." required id="listingDesc"></textarea>
+      </div>
+      <div class="form-group">
+        <label>◆ YOUR NAME</label>
+        <input type="text" placeholder="Full name" required id="listingName">
+      </div>
+      <button type="submit" class="btn btn-gold form-submit"><i class="fas fa-paper-plane"></i> Publish Listing</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="registerModal">
+  <div class="modal">
+    <button class="close" onclick="closeModal('registerModal')"><i class="fas fa-times"></i></button>
+    <h2><span class="ico"><i class="fas fa-user-plus"></i></span>Join Thuto Tech</h2>
+    <p>Parents, SGBs and learners — get access to the full ecosystem.</p>
+    <form onsubmit="handleRegister(event)">
+      <div class="form-row">
+        <div class="form-group"><label>◆ FIRST NAME</label><input type="text" required></div>
+        <div class="form-group"><label>◆ LAST NAME</label><input type="text" required></div>
+      </div>
+      <div class="form-group"><label>◆ EMAIL</label><input type="email" required></div>
+      <div class="form-group"><label>◆ I AM A...</label>
+        <select required>
+          <option value="">Select</option>
+          <option>Parent / Guardian</option>
+          <option>SGB Chair / Member</option>
+          <option>School Principal</option>
+          <option>University Student</option>
+          <option>Educator</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-navy form-submit">Create Account</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="partnerModal">
+  <div class="modal">
+    <button class="close" onclick="closeModal('partnerModal')"><i class="fas fa-times"></i></button>
+    <h2><span class="ico"><i class="fas fa-handshake"></i></span>Partner with Thuto</h2>
+    <p>Security companies, schools, universities and investors — let's build the future of SA education.</p>
+    <form onsubmit="handlePartner(event)">
+      <div class="form-group"><label>◆ ORGANISATION</label><input type="text" required></div>
+      <div class="form-group"><label>◆ PARTNERSHIP TYPE</label>
+        <select required>
+          <option value="">Select</option>
+          <option>Security Company (CAP, Fidelity, Chubb)</option>
+          <option>School / SGB</option>
+          <option>University</option>
+          <option>Corporate Sponsor</option>
+          <option>Investor</option>
+          <option>Government (DBE / GDE / WCED)</option>
+        </select>
+      </div>
+      <div class="form-group"><label>◆ CONTACT EMAIL</label><input type="email" required></div>
+      <div class="form-group"><label>◆ MESSAGE</label><textarea placeholder="Tell us about your organisation..."></textarea></div>
+      <button type="submit" class="btn btn-navy form-submit">Request Partnership Deck</button>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast"><i class="fas fa-check-circle check"></i><span id="toastMsg">Success!</span></div>
+
+<script>
+function updateClock(){
+  const now = new Date();
+  const t = now.toLocaleTimeString('en-ZA');
+  const el = document.getElementById('clockTop');
+  if(el) el.textContent = t;
+}
+setInterval(updateClock, 1000); updateClock();
+
+document.querySelectorAll('.nav-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const target = tab.dataset.target;
+    scrollToId(target);
+  });
+});
+function scrollToId(id){
+  const el = document.getElementById(id);
+  if(el){
+    const y = el.getBoundingClientRect().top + window.pageYOffset - 140;
+    window.scrollTo({top:y, behavior:'smooth'});
+  }
+}
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, {threshold:0.1, rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// =====================================================
+//  STUDENTMART LISTINGS — AUTHENTIC SA STUDENT VOICE
+//  Written in SA English with natural student slang
+//  from Joburg, Cape Town, Durban, Pretoria, Stellenbosch
+//  Terms: "lekker" (nice), "sharp" (good/ok), "now now"
+//  (shortly), "bru" (brother), "eish" (expression),
+//  "chommie" (friend), "res" (residence), "tut" (tutorial),
+//  "chow" (food), "robot" (traffic light), "bakkie" (pickup)
+// =====================================================
+const listings = [
+  {
+    id:1, title:"Calculus & Linear Algebra Tutoring — Sharp Prices",
+    category:"tutoring", price:"R150", priceType:"/hour",
+    description:"Howzit! 3rd year Maths major at Wits, got a disting in both CAL1 & CAL2. I'll help you smash those first-year modules — sessions at the Braamfontein library or online via Teams. No stress, we'll get you there.",
+    seller:"Thabo M.", initials:"TM", uni:"Wits", rating:4.9, reviews:47, icon:"fas fa-calculator"
+  },
+  {
+    id:2, title:"Woolies & Pick n Pay Grocery Runs — Now Now Delivery",
+    category:"errands", price:"R50", priceType:"/trip",
+    description:"Eish, too busy to shop? I'll hit Woolies, Checkers or PnP for you and drop off at your res within 2 hours. Braamfontein, Parktown & Auckland Park only. WhatsApp me your list, sharp sharp.",
+    seller:"Sipho K.", initials:"SK", uni:"UJ", rating:4.8, reviews:63, icon:"fas fa-shopping-cart"
+  },
+  {
+    id:3, title:"Reliable Babysitting — First Aid Certified",
+    category:"babysitting", price:"R80", priceType:"/hour",
+    description:"Molo! Education student at UCT, fully first aid certified with 3 years experience. Available evenings & weekends in Rondebosch, Claremont & Observatory. References from lecturers available on request.",
+    seller:"Naledi Z.", initials:"NZ", uni:"UCT", rating:5.0, reviews:28, icon:"fas fa-baby"
+  },
+  {
+    id:4, title:"MacBook Air M1 — Barely Used, Lekker Condition",
+    category:"products", price:"R12,500", priceType:"",
+    description:"Selling my 2021 MacBook Air M1 — 8GB RAM, 256GB SSD. Used it for my Honours thesis, barely touched it otherwise. Comes with charger, sleeve & AppleCare until 2027. Stellenbosch campus, can meet at The Deck.",
+    seller:"James V.", initials:"JV", uni:"Stellenbosch", rating:4.7, reviews:12, icon:"fas fa-laptop"
+  },
+  {
+    id:5, title:"Logo Design & Branding — Professional, Affordable",
+    category:"services", price:"R350", priceType:"",
+    description:"Visual Communications final-year at DUT. I'll design you a proper lekker logo with 3 concepts, unlimited revisions & full brand guidelines. Perfect for student entrepreneurs & side hustles. Portfolio on Instagram.",
+    seller:"Amahle D.", initials:"AD", uni:"DUT", rating:4.9, reviews:34, icon:"fas fa-paint-brush"
+  },
+  {
+    id:6, title:"Social Media Manager Needed — Part-Time, Remote",
+    category:"employment", price:"R4,000", priceType:"/month",
+    description:"Campus Eats in Hatfield (UP) looking for a student to run our TikTok & Insta. 10 hours a week, work from your res. Marketing or BCom students preferred. Must know your way around CapCut. Free chow on shift!",
+    seller:"Campus Eats", initials:"CE", uni:"UP (Tuks)", rating:4.6, reviews:8, icon:"fas fa-bullhorn"
+  },
+  {
+    id:7, title:"Engineering Textbook Bundle — 1st Year",
+    category:"products", price:"R200", priceType:"/set",
+    description:"Selling my full set of first-year engineering textbooks (Meriam, Stewart, etc). Some highlights but otherwise sharp condition. Selling as a bundle — perfect for any firsties starting at Pukke or NWU next year.",
+    seller:"Kagiso P.", initials:"KP", uni:"NWU (Pukke)", rating:4.5, reviews:5, icon:"fas fa-book"
+  },
+  {
+    id:8, title:"FAC, MAC & Tax Tutoring — CA(SA) Trainee",
+    category:"tutoring", price:"R200", priceType:"/hour",
+    description:"Hey bru, I'm a SAICA trainee at PwC Pretoria doing my CTA part-time at Tuks. Tutoring Financial Accounting, Management Accounting & Taxation. Group discounts available — meet at the Law Library or Zoom.",
+    seller:"Lerato N.", initials:"LN", uni:"UP (Tuks)", rating:4.8, reviews:52, icon:"fas fa-chart-line"
+  },
+  {
+    id:9, title:"Res Laundry Service — Pickup & Drop Off",
+    category:"errands", price:"R40", priceType:"/load",
+    description:"Tired of the res laundry queue? I'll fetch your washing, take it to the laundromat on Gale Street, and drop it back washed & folded. Howard College & Edgewood campuses. Same-day service if you book before 10am.",
+    seller:"Bongani M.", initials:"BM", uni:"UKZN", rating:4.7, reviews:41, icon:"fas fa-tshirt"
+  },
+  {
+    id:10, title:"Weekend Babysitter — Education Major",
+    category:"babysitting", price:"R100", priceType:"/hour",
+    description:"Sanibonani! BEd Foundation Phase student at Rhodes. Available weekends for kids aged 2-10. I bring my own activities & educational games. Police clearance & references from Makhanda families available.",
+    seller:"Zanele T.", initials:"ZT", uni:"Rhodes", rating:4.9, reviews:19, icon:"fas fa-child"
+  },
+  {
+    id:11, title:"Event Photography — Student Rates",
+    category:"services", price:"R500", priceType:"/event",
+    description:"National Diploma in Photography at TUT, shooting with a proper Canon R6 setup. Birthday parties, societies, small functions, portraits. 100 edited photos delivered within 3 days. Portfolio link in bio, chommie.",
+    seller:"Mandla S.", initials:"MS", uni:"TUT", rating:4.8, reviews:22, icon:"fas fa-camera"
+  },
+  {
+    id:12, title:"Research Assistant — Psychology Dept",
+    category:"employment", price:"R5,000", priceType:"/month",
+    description:"Psychology Dept at UCT seeking Honours student for 3-month research project. Data collection via Qualtrics + SPSS analysis. 15 hours/week, hybrid. Must have Ethics clearance. Great for your CV, bru.",
+    seller:"Prof. Smith", initials:"PS", uni:"UCT", rating:4.9, reviews:3, icon:"fas fa-flask"
+  },
+  {
+    id:13, title:"Second-Hand Mini Fridge — Perfect for Res",
+    category:"products", price:"R850", priceType:"",
+    description:"Barrydale mini fridge, 85L, works 100%. Used it in my Kovsies res for 2 years. Collection from Universitas, Bloemfontein. First come first served — DM me on WhatsApp.",
+    seller:"Pieter J.", initials:"PJ", uni:"UFS (Kovsies)", rating:4.6, reviews:7, icon:"fas fa-snowflake"
+  },
+  {
+    id:14, title:" isiZulu & isiXhosa Conversational Lessons",
+    category:"tutoring", price:"R120", priceType:"/hour",
+    description:"Molo! Native isiXhosa speaker from Langa, doing my MA in African Languages at UCT. Offering conversational lessons for international students & anyone wanting to learn the click sounds properly. Online or in person.",
+    seller:"Luthando N.", initials:"LN", uni:"UCT", rating:5.0, reviews:15, icon:"fas fa-language"
+  },
+  {
+    id:15, title:"Lekker Moving Help — Bakkie Available",
+    category:"errands", price:"R250", priceType:"/trip",
+    description:"Got a Ford Ranger bakkie — can help you move res, fetch furniture from Gumtree, or transport big items. Two chommies helping, so we're quick. Joburg metro only (Sandton, Rosebank, Braam, Auckland Park).",
+    seller:"Ricardo F.", initials:"RF", uni:"Wits", rating:4.9, reviews:31, icon:"fas fa-truck-pickup"
+  },
+  {
+    id:16, title:"Python & Data Science Tutoring — CS Honours",
+    category:"tutoring", price:"R180", priceType:"/hour",
+    description:"Howzit! CS Honours student at Stellenbosch, tutoring Python, Pandas, NumPy & basic ML. Great for Stats, Econ & Engineering students doing their first coding modules. Online or at the JS Gericke Library.",
+    seller:"Annika B.", initials:"AB", uni:"Stellenbosch", rating:4.8, reviews:26, icon:"fas fa-code"
+  }
+];
+
+function renderMp(filter='all'){
+  const grid = document.getElementById('mpGrid');
+  const filtered = filter === 'all' ? listings : listings.filter(l => l.category === filter);
+  grid.innerHTML = filtered.map(l => `
+    <div class="mp-card" data-cat="${l.category}">
+      <div class="img"><i class="${l.icon}"></i></div>
+      <div class="body">
+        <div class="meta">
+          <span class="cat">${catLabel(l.category)}</span>
+          <span class="price">${l.price}${l.priceType}</span>
+        </div>
+        <h4>${l.title}</h4>
+        <p>${l.description}</p>
+        <div class="seller">
+          <div class="who">
+            <div class="avatar">${l.initials}</div>
+            <div>
+              <div class="name">${l.seller}</div>
+              <div class="uni">◆ ${l.uni}</div>
+            </div>
+          </div>
+          <div class="rating"><i class="fas fa-star"></i> ${l.rating} (${l.reviews})</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+function catLabel(c){
+  return {products:'📦 PRODUCTS',services:'🛠 SERVICES',errands:'🏃 ERRANDS',tutoring:'📚 TUTORING',babysitting:'👶 BABYSITTING',employment:'💼 EMPLOYMENT'}[c] || c.toUpperCase();
+}
+function setMpFilter(btn, cat){
+  document.querySelectorAll('.mp-filter').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  renderMp(cat);
+}
+function filterMp(cat){
+  document.querySelectorAll('.mp-filter').forEach(t => {
+    t.classList.remove('active');
+    if(t.dataset.cat === cat) t.classList.add('active');
+  });
+  renderMp(cat);
+  scrollToId('marketplace');
+}
+function performSearch(){
+  const q = document.getElementById('mpSearchInput').value.toLowerCase();
+  const cat = document.getElementById('mpSearchCat').value;
+  const filtered = listings.filter(l => {
+    const matchCat = cat === 'all' || l.category === cat;
+    const matchQ = !q || l.title.toLowerCase().includes(q) || l.description.toLowerCase().includes(q);
+    return matchCat && matchQ;
+  });
+  const grid = document.getElementById('mpGrid');
+  if(filtered.length === 0){
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--muted)"><i class="fas fa-search" style="font-size:32px;margin-bottom:12px;display:block;color:var(--gold)"></i><h3 style="color:var(--navy)">No results found</h3><p>Eish — try different keywords, bru</p></div>';
+  } else {
+    const tmp = listings.slice();
+    listings.length = 0; listings.push(...filtered);
+    renderMp('all');
+    listings.length = 0; listings.push(...tmp);
+  }
+}
+function submitListing(e){
+  e.preventDefault();
+  const title = document.getElementById('listingTitle').value;
+  const category = document.getElementById('listingCategory').value;
+  const price = document.getElementById('listingPrice').value;
+  const uni = document.getElementById('listingUni').value;
+  const priceType = document.getElementById('listingPriceType').value;
+  const desc = document.getElementById('listingDesc').value;
+  const name = document.getElementById('listingName').value;
+  const ptl = priceType === 'hour' ? '/hour' : priceType === 'negotiable' ? ' (neg)' : '';
+  const ini = name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0,2);
+  const icons = {products:'fas fa-box',services:'fas fa-concierge-bell',errands:'fas fa-running',tutoring:'fas fa-chalkboard-teacher',babysitting:'fas fa-baby',employment:'fas fa-briefcase'};
+  listings.unshift({id:Date.now(),title,category,price:'R'+parseInt(price).toLocaleString(),priceType:ptl,description:desc,seller:name,initials:ini,uni,rating:5.0,reviews:0,icon:icons[category]||'fas fa-tag'});
+  renderMp('all');
+  closeModal('postModal');
+  e.target.reset();
+  showToast('Listing published to StudentMart! Sharp sharp 🎉');
+}
+
+let funding = 0, vacHours = 1820, placements = 412, practices = 38;
+function runGradLifecycle(){
+  const action = document.getElementById('gradAction').value;
+  const t = document.getElementById('gradConsole');
+  if(action === "vac_work"){
+    vacHours += 40;
+    document.getElementById('vacHoursText').textContent = vacHours.toLocaleString() + ' hrs';
+    t.textContent = JSON.stringify({status:"SHADOW_HOURS_VERIFIED",accreditationType:"Vocational Structural Requirements Completed",logGained:"+40 Hours Confirmed",corporateBEETracking:"Skills Development Data Matrix Compiled",ecosystemLink:"Data flows to Frictionless Learner profile"},null,2);
+  } else {
+    placements += 1;
+    document.getElementById('placementText').textContent = placements + ' students';
+    t.textContent = JSON.stringify({status:"INTERVIEW_ROUTED",candidateStream:"Final-Year Enterprise Stream",partnerNode:"Corporate Financial Placement Pool",readinessRating:"94% Match Optimization Index",linkedTo:"CampusLift for commute · MatricMate for prep"},null,2);
+  }
+}
+function runProSandbox(){
+  const sector = document.getElementById('proSector').value;
+  const t = document.getElementById('proConsole');
+  funding += 250;
+  document.getElementById('fundingText').textContent = 'R' + funding.toFixed(2);
+  if(sector === "med_billing"){
+    t.textContent = JSON.stringify({system:"HEALTHCARE_PRACTICE_MANAGEMENT",engine:"Live Medical Aid Billing Simulator",simulationRun:"ICD-10 Code Structure + Discovery Claims",b2bLicenseFeeAllocated:"+R250 to Thuto Central Fund",feedsInto:"Wellness Incubator for graduate practice setup"},null,2);
+  } else {
+    t.textContent = JSON.stringify({system:"ASSET_BANKING_INFRASTRUCTURE",engine:"Property Investment Portfolio Modeling",simulationRun:"Yield Optimization + Risk Analysis Grid",b2bLicenseFeeAllocated:"+R250 to Thuto Central Fund",feedsInto:"StudentMart SA property-services category"},null,2);
+  }
+}
+function runWellnessIncubator(){
+  const action = document.getElementById('wellnessAction').value;
+  const t = document.getElementById('wellnessConsole');
+  if(action === "free_student"){
+    t.textContent = JSON.stringify({tier:"STUDENT_CAMPUS_NETWORKING",serviceCost:"R0.00 (ALWAYS FREE FOR STUDENTS)",operation:"Crisis Support Handshake Completed",practicumHoursLogged:"+1.5 Hours to Trainee Logbook",feedsInto:"Graduate Lifecycle shadow hours"},null,2);
+  } else {
+    practices += 1;
+    document.getElementById('referralText').textContent = practices + ' firms';
+    t.style.color = '#E8B248';
+    t.textContent = JSON.stringify({tier:"PRACTITIONER_INCUBATION_GATEWAY",allocation:"FREE REFERRAL DISPATCHED",targetFirm:"Newly Incubated Graduate Practice Node",outcome:"Breaking Legacy Ratios & Client Monopolies",referralCostChargedToClient:"0% Commission (100% to Graduate)",crossProductLink:"Listed on StudentMart services · Frictionless Learner auto-onboarding"},null,2);
+    setTimeout(() => { t.style.color = '#D4A017'; }, 4000);
+  }
+}
+
+const feedTemplates = [
+  {src:'SafeScholars',color:'#D4A017',msg:'Trip TRP-{n} dispatched · CH 88 TR GP · PRDP verified'},
+  {src:'Fundisa AI',color:'#5B4FCF',msg:'SASAMS sync · {n} / 847 learners accounted at Glenhazel'},
+  {src:'MatricMate AI',color:'#C93B8E',msg:'Homework push queued · Grade 12 Maths · {n} recipients'},
+  {src:'StudentMart',color:'#D4A017',msg:'Transaction R{n} · tutoring · Wits → settled via Yoco'},
+  {src:'CampusLift',color:'#1E6FD9',msg:'Ride completed · UJ APK → Braamfontein · R48 · 5★'},
+  {src:'SecureLoRa',color:'#1B8553',msg:'Gateway GW-{n} heartbeat OK · Stage 4 · 184ms'},
+  {src:'Drones',color:'#D97706',msg:'D-{n} sweep complete · 6th Street corridor · no anomalies'},
+  {src:'Frictionless',color:'#0E8C8C',msg:'New learner enrolled · Parktown Primary · POPIA verified'},
+  {src:'Thuto Academy',color:'#D4A017',msg:'Cohort {n} graduated · 28 learners placed in ecosystem roles'},
+  {src:'CAP Security',color:'#C1332B',msg:'Unit 7-{a} perimeter check complete · all clear'},
+];
+function addFeedItem(){
+  const list = document.getElementById('intFeedList');
+  if(!list) return;
+  const t = feedTemplates[Math.floor(Math.random()*feedTemplates.length)];
+  const now = new Date();
+  const ts = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
+  const msg = t.msg.replace('{n}', Math.floor(Math.random()*900)+100).replace('{a}', ['Alpha','Bravo','Charlie'][Math.floor(Math.random()*3)]);
+  const item = document.createElement('div');
+  item.className = 'int-item';
+  item.innerHTML = `
+    <span class="ts">${ts}</span>
+    <span class="ico" style="color:${t.color}">●</span>
+    <span class="msg">${msg}</span>
+    <span class="src">${t.src.toUpperCase()}</span>
+  `;
+  list.insertBefore(item, list.firstChild);
+  while(list.children.length > 15) list.removeChild(list.lastChild);
+}
+for(let i=0;i<10;i++) addFeedItem();
+setInterval(addFeedItem, 3200);
+
+const healthSystems = [
+  {name:'SafeScholars IoT',vertical:'Mobility · Pilot',uptime:99.98,color:'#D4A017'},
+  {name:'SecureLoRa Grid',vertical:'Mobility',uptime:99.94,color:'#1B8553'},
+  {name:'CampusLift',vertical:'Mobility · 4 unis',uptime:99.87,color:'#1E6FD9'},
+  {name:'Autonomous Drones',vertical:'Mobility · SACAA',uptime:98.42,color:'#D97706'},
+  {name:'Fundisa AI',vertical:'Education · SASAMS',uptime:99.91,color:'#5B4FCF'},
+  {name:'MatricMate AI',vertical:'Education · NSC/IEB',uptime:99.76,color:'#C93B8E'},
+  {name:'StudentMart SA',vertical:'Education · Yoco',uptime:99.88,color:'#D4A017'},
+  {name:'Frictionless Learner',vertical:'Education · DBE',uptime:99.95,color:'#0E8C8C'},
+  {name:'Thuto AI Academy',vertical:'Labs · MICT SETA',uptime:99.67,color:'#D4A017'},
+  {name:'Research Studio',vertical:'Labs · NRF/CSIR',uptime:99.43,color:'#D4A017'},
+];
+function renderHealth(){
+  const el = document.getElementById('healthList');
+  if(!el) return;
+  el.innerHTML = healthSystems.map(s => `
+    <div class="health-item">
+      <div class="dot" style="background:${s.color};box-shadow:0 0 6px ${s.color}"></div>
+      <div class="info">
+        <div class="n">${s.name}</div>
+        <div class="v">${s.vertical.toUpperCase()}</div>
+      </div>
+      <div class="up" style="color:${s.color}">${s.uptime}%</div>
+    </div>
+  `).join('');
+}
+renderHealth();
+
+function openModal(id){
+  document.getElementById(id).classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id){
+  document.getElementById(id).classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.modal-overlay').forEach(o => {
+  o.addEventListener('click', e => {
+    if(e.target === o){ o.classList.remove('active'); document.body.style.overflow=''; }
+  });
+});
+function handleRegister(e){ e.preventDefault(); closeModal('registerModal'); showToast('Welcome to the Thuto ecosystem, chommie! 🎓'); }
+function handlePartner(e){ e.preventDefault(); closeModal('partnerModal'); showToast('Partnership request received. Deck incoming within 24h. 🤝'); }
+function showToast(msg){
+  const t = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 4000);
+}
+
+document.getElementById('mpSearchInput').addEventListener('keypress', e => { if(e.key==='Enter') performSearch(); });
+document.addEventListener('DOMContentLoaded', () => renderMp('all'));
+</script>
+
+</body>
+</html>
+
 
