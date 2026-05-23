@@ -3,96 +3,315 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thuto Technologies Ecosystem</title>
+    <title>Reggie Express | Thuto Technologies Conglomerate</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            background-color: #060913 !important; 
-            color: #ffffff !important; 
-            font-family: Arial, sans-serif; 
+        :root {
+            --navy: #0A2E5A;
+            --gold: #D4AF37;
+            --orange: #FF6B35;
+            --cyan: #00D9FF;
+            --emerald: #28A492;
+            --dark-bg: #0B0F19;
+            --panel-bg: #131A2C;
+            --border-color: #1F2E4D;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: #E2E8F0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            padding: 0;
+        }
+
+        /* Top Super-Header */
+        .parent-bar {
+            background-color: #051429;
+            color: var(--gold);
+            text-align: center;
+            padding: 12px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        /* Hero Banner */
+        header {
+            background: linear-gradient(135deg, var(--navy), #041226);
+            border-bottom: 4px solid var(--gold);
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #FFFFFF;
+            font-size: 46px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            color: var(--gold);
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            color: #94A3B8;
+            font-size: 17px;
+        }
+
+        /* Corporate Categorized Content Grid */
+        .main-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 25px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: #FFFFFF;
+            margin-bottom: 25px;
+            padding-left: 12px;
+            border-left: 4px solid var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .conglomerate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        /* Categorical Card Designs */
+        .company-card {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .company-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px -3px rgba(0, 0, 0, 0.4);
+        }
+
+        .company-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            border-radius: 12px 12px 0 0;
+        }
+
+        /* Structural Palette Allocation */
+        .cat-foundational::before { background-color: var(--gold); }
+        .cat-secondary::before { background-color: var(--orange); }
+        .cat-transactional::before { background-color: var(--cyan); }
+        .cat-wellness::before { background-color: var(--emerald); }
+
+        .meta-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .cat-foundational .meta-label { color: var(--gold); }
+        .cat-secondary .meta-label { color: var(--orange); }
+        .cat-transactional .meta-label { color: var(--cyan); }
+        .cat-wellness .meta-label { color: var(--emerald); }
+
+        .company-card h2 {
+            color: #FFFFFF;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .company-card p {
+            color: #94A3B8;
+            font-size: 14.5px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Identity Badge Rows */
+        .badge-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .identity-badge {
+            background-color: rgba(31, 46, 77, 0.4);
+            border: 1px solid var(--border-color);
+            color: #CBD5E1;
+            font-size: 11.5px;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        /* Centralized Technical Documents Registry Bar */
+        .docs-bar {
+            background: linear-gradient(90deg, #101726, #1E293B);
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--cyan);
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .docs-info h4 {
+            color: #FFFFFF;
+            margin-bottom: 4px;
+        }
+
+        .docs-info p {
+            color: #94A3B8;
+            font-size: 13.5px;
+        }
+
+        .docs-tag {
+            background-color: var(--navy);
+            color: var(--cyan);
+            border: 1px solid var(--cyan);
+            font-size: 11px;
+            font-weight: bold;
+            padding: 6px 14px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        footer {
+            text-align: center;
             padding: 40px 20px;
-            display: block !important;
+            margin-top: 60px;
+            border-top: 1px solid var(--border-color);
+            color: #64748B;
+            font-size: 13.5px;
         }
-        .wrapper { max-width: 1100px; margin: 0 auto; }
-        
-        header { 
-            text-align: center; 
-            margin-bottom: 50px; 
-            border-bottom: 3px solid #D4AF37; 
-            padding-bottom: 30px; 
-        }
-        .parent-brand { color: #D4AF37; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; font-size: 14px; margin-bottom: 10px; }
-        h1 { font-size: 38px; color: #ffffff; letter-spacing: 1px; }
-        
-        .grid-container { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 25px; 
-            margin-top: 30px;
-        }
-        .card { 
-            background: #111C2E; 
-            border: 1px solid #1F3656; 
-            border-radius: 10px; 
-            padding: 30px; 
-            min-height: 220px;
-            display: block;
-        }
-        
-        /* Layer Accent Colors matching your Categorical Design Guide */
-        .foundational { border-top: 6px solid #D4AF37; }
-        .secondary { border-top: 6px solid #FF6B35; }
-        .transactional { border-top: 6px solid #00D9FF; }
-        .wellness { border-top: 6px solid #28A492; }
-        
-        .layer-lbl { font-size: 11px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 1px; }
-        .foundational .layer-lbl { color: #D4AF37; }
-        .secondary .layer-lbl { color: #FF6B35; }
-        .transactional .layer-lbl { color: #00D9FF; }
-        .wellness .layer-lbl { color: #28A492; }
-        
-        h2 { font-size: 24px; color: #ffffff; margin-bottom: 12px; }
-        p { color: #a3a3a3; font-size: 14px; line-height: 1.6; }
-        
-        footer { text-align: center; margin-top: 60px; color: #4b5563; font-size: 13px; }
     </style>
 </head>
 <body>
-    <div class="wrapper">
-        <header>
-            <div class="parent-brand">REGGIE EXPRESS CONGLOMERATE</div>
-            <h1>THUTOTECH ECOSYSTEM</h1>
-        </header>
 
-        <div class="grid-container">
-            <div class="card foundational">
-                <div class="layer-lbl">Foundational Layer (Primary School)</div>
-                <h2>Fundisa AI</h2>
-                <p>AI learning framework tailored for foundational phase education (Grades R-7), establishing deep core baseline literacies.</p>
+    <div class="parent-bar">Parent Company: Reggie Express</div>
+
+    <header>
+        <div class="header-content">
+            <div class="subtitle">Ecosystem Identity Portfolio</div>
+            <h1>Thuto Technologies</h1>
+            <p>A Unified South African Multidisciplinary Infrastructure Engine Layered by Domain Specialization</p>
+        </div>
+    </header>
+
+    <div class="main-container">
+        
+        <div class="section-title">Ecosystem Subsidiaries Portfolio Matrix</div>
+        
+        <div class="conglomerate-grid">
+            
+            <div class="company-card cat-foundational">
+                <div>
+                    <div class="meta-label">Foundational Layer (Primary Phase)</div>
+                    <h2>Fundisa AI</h2>
+                    <p>Core AI learning engine targeting South African primary school development (Grades R-7). Focuses on building language capability and logic tracking metrics for instructors.</p>
+                </div>
+                <div class="badge-row">
+                    <span class="identity-badge">#D4AF37</span>
+                    <span class="identity-badge">Primary AI</span>
+                </div>
             </div>
 
-            <div class="card secondary">
-                <div class="layer-lbl">Secondary Layer (Matric Prep)</div>
-                <h2>MatricMate AI</h2>
-                <p>Comprehensive high school senior study matrices, targeted question generation, and real-time trial assessment scoreboards.</p>
+            <div class="company-card cat-secondary">
+                <div>
+                    <div class="meta-label">Secondary Layer (NSC Preparation)</div>
+                    <h2>MatricMate AI</h2>
+                    <p>Premium National Senior Certificate exam preparation database. Leverages dynamic trial examination compilers and performance tracking tools to measure matric results readiness.</p>
+                </div>
+                <div class="badge-row">
+                    <span class="identity-badge">#FF6B35</span>
+                    <span class="identity-badge">NSC Matric Prep</span>
+                </div>
             </div>
 
-            <div class="card transactional">
-                <div class="layer-lbl">Transactional Layer (Commerce)</div>
-                <h2>StudentMart SA</h2>
-                <p>Localized campus infrastructure engine facilitating internal vendor registries, digital marketplace setups, and micro-commissions.</p>
+            <div class="company-card cat-transactional">
+                <div>
+                    <div class="meta-label">Transactional Layer (Campus Commerce)</div>
+                    <h2>StudentMart SA</h2>
+                    <p>The core marketplace environment enabling safe student transactions, local business listings, trade verification, and automated support commission channels.</p>
+                </div>
+                <div class="badge-row">
+                    <span class="identity-badge">#00D9FF</span>
+                    <span class="identity-badge">Campus Trade</span>
+                </div>
             </div>
 
-            <div class="card wellness">
-                <div class="layer-lbl">Wellness Layer (Campus Community)</div>
-                <h2>Mental Health Central</h2>
-                <p>Direct ecosystem peer counseling services and automated matching mechanics for local healthcare training practitioners.</p>
+            <div class="company-card cat-wellness">
+                <div>
+                    <div class="meta-label">Wellness Layer (Community Healthcare)</div>
+                    <h2>Mental Health Central</h2>
+                    <p>Always 100% free student mental health platform. Connects incoming clinical practitioners with internal student needs, validating shadow hours and building client portfolios.</p>
+                </div>
+                <div class="badge-row">
+                    <span class="identity-badge">#28A492</span>
+                    <span class="identity-badge">Free Counseling</span>
+                </div>
             </div>
+
         </div>
 
-        <footer>
-            &copy; 2026 Thuto Technologies PTY LTD. All Rights Reserved.
-        </footer>
+        <div class="section-title">Shared Technical Architecture</div>
+        
+        <div class="docs-bar">
+            <div class="docs-info">
+                <h4>mcp-architecture/</h4>
+                <p>Shared Model Context Protocol technical configurations, POPIA privacy guidelines, and multi-ledger microservice sync structures.</p>
+            </div>
+            <div class="docs-tag">Ecosystem Core Docs</div>
+        </div>
+
     </div>
+
+    <footer>
+        &copy; 2026 Thuto Technologies PTY LTD / Reggie Express. All Corporate Properties Registered in South Africa.
+    </footer>
+
 </body>
 </html>
