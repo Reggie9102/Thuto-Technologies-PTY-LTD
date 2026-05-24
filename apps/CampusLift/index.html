@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<!-- THUTO ECOSYSTEM BAR - Paste this at top of <body> on EVERY site -->
+<div id="thuto-ecosystem-bar" style="
+  background: #0A2E5A;
+  color: white;
+  padding: 8px 16px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 13px;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+">
+  <a href="https://reggie9102.github.io/Thuto-Technologies-PTY-LTD-830e1b6a/" 
+     style="color: #D4AF37; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 16px;">🎓</span>
+    <span>ThutoTech</span>
+  </a>
+  
+  <nav id="thuto-ecosystem-nav" style="display: flex; gap: 4px; flex-wrap: wrap; align-items: center;">
+    <a href="https://reggie9102.github.io/Thuto-Technologies-PTY-LTD-830e1b6a/apps/fundisa-ai/" 
+       data-product="fundisa"
+       style="color: white; text-decoration: none; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 500; transition: all 0.2s;">
+      📚 Fundisa AI
+    </a>
+    <a href="https://reggie9102.github.io/Thuto-Technologies-PTY-LTD-830e1b6a/apps/matricmate-ai/" 
+       data-product="matricmate"
+       style="color: white; text-decoration: none; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 500; transition: all 0.2s;">
+      🎯 MatricMate
+    </a>
+    <a href="https://reggie9102.github.io/Thuto-Technologies-PTY-LTD-830e1b6a/apps/studentmart-port/" 
+       data-product="studentmart"
+       style="color: white; text-decoration: none; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 500; transition: all 0.2s;">
+      🛒 StudentMart
+    </a>
+    <a href="https://reggie9102.github.io/Thuto-Technologies-PTY-LTD-830e1b6a/apps/campuslift/" 
+       data-product="campuslift"
+       style="color: white; text-decoration: none; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 500; transition: all 0.2s;">
+      🚗 CampusLift
+    </a>
+    <a href="https://reggie9102.github.io/Thuto-Technologies-PTY-LTD-830e1b6a/apps/thuto-academy/" 
+       data-product="academy"
+       style="color: white; text-decoration: none; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 500; transition: all 0.2s;">
+      🎓 Academy
+    </a>
+    <a href="https://reggie9102.github.io/Thuto-Technologies-PTY-LTD-830e1b6a/apps/research-studio/" 
+       data-product="research"
+       style="color: white; text-decoration: none; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 500; transition: all 0.2s;">
+      🔬 Research
+    </a>
+  </nav>
+</div>
+
+<style>
+  #thuto-ecosystem-nav a:hover {
+    background: rgba(212, 175, 55, 0.2) !important;
+    color: #D4AF37 !important;
+  }
+  #thuto-ecosystem-nav a.active {
+    background: #D4AF37 !important;
+    color: #0A2E5A !important;
+    font-weight: 700 !important;
+  }
+  @media (max-width: 768px) {
+    #thuto-ecosystem-bar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    #thuto-ecosystem-nav {
+      width: 100%;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    #thuto-ecosystem-nav a {
+      white-space: nowrap;
+    }
+  }
+</style>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CampusLift – Verified Student-to-Student Rides</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.0/index.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<style>
+  *{font-family:'Inter',sans-serif;scroll-behavior:smooth}
+  body{background:#0a0f1e;color:#e2e8f0;overflow-x:hidden}
+  .gradient-text{background:linear-gradient(135deg,#10b981 0%,#06b6d4 50%,#8b5cf6 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .gradient-primary{background:linear-gradient(135deg,#10b981 0%,#059669 100%)}
+  .gradient-hero{background:linear-gradient(135deg,#0ea5e9 0%,#10b981 50%,#84cc16 100%)}
+  .gradient-blue{background:linear-gradient(135deg,#3b82f6 0%,#1e40af 100%)}
+  .gradient-orange{background:linear-gradient(135deg,#f59e0b 0%,#dc2626 100%)}
+  .gradient-purple{background:linear-gradient(135deg,#8b5cf6 0%,#6366f1 100%)}
+  .gradient-glow{background:radial-gradient(ellipse at top,rgba(16,185,129,.15),transparent 50%),radial-gradient(ellipse at bottom right,rgba(139,92,246,.15),transparent 50%)}
+  .glass{background:rgba(15,23,42,.6);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08)}
+  .glass-strong{background:rgba(15,23,42,.8);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.1)}
+  .card-dark{background:linear-gradient(135deg,rgba(30,41,59,.6),rgba(15,23,42,.8));border:1px solid rgba(255,255,255,.08);transition:all .3s}
+  .card-dark:hover{border-color:rgba(16,185,129,.4);transform:translateY(-4px)}
+  .grid-pattern{background-image:linear-gradient(rgba(148,163,184,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.06) 1px,transparent 1px);background-size:40px 40px}
+  .noise{position:absolute;inset:0;opacity:.03;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.3;pointer-events:none}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;border-radius:14px;font-weight:600;transition:all .2s;cursor:pointer;border:none;font-size:15px}
+  .btn-primary{background:linear-gradient(135deg,#10b981,#059669);color:white;box-shadow:0 10px 30px -8px rgba(16,185,129,.5)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 20px 40px -10px rgba(16,185,129,.6)}
+  .btn-ghost{background:rgba(255,255,255,.05);color:white;border:1px solid rgba(255,255,255,.1)}
+  .btn-ghost:hover{background:rgba(255,255,255,.1)}
+  .chip{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600}
+  .chip-green{background:rgba(16,185,129,.15);color:#34d399;border:1px solid rgba(16,185,129,.3)}
+  .chip-blue{background:rgba(59,130,246,.15);color:#60a5fa;border:1px solid rgba(59,130,246,.3)}
+  .chip-purple{background:rgba(139,92,246,.15);color:#a78bfa;border:1px solid rgba(139,92,246,.3)}
+
+  /* Phone mockup */
+  .phone-mockup{width:300px;height:620px;background:#0f172a;border-radius:42px;box-shadow:0 50px 100px -20px rgba(0,0,0,.6),0 0 0 10px #1e293b,0 0 0 12px #334155;position:relative;overflow:hidden}
+  .phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:100px;height:24px;background:#000;border-radius:0 0 18px 18px;z-index:100}
+  .phone-screen{position:absolute;inset:0;overflow:hidden}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+  .float{animation:float 6s ease-in-out infinite}
+  @keyframes pulseGlow{0%,100%{box-shadow:0 4px 12px rgba(16,185,129,.5)}50%{box-shadow:0 4px 30px rgba(16,185,129,.9),0 0 0 16px rgba(16,185,129,.15)}}
+  .pickup-marker{width:26px;height:26px;border-radius:50%;background:#10b981;border:3px solid white;display:flex;align-items:center;justify-content:center;color:white;font-size:10px;animation:pulseGlow 2s infinite}
+  .parking-spot{width:22px;height:11px;border-radius:3px;position:absolute;border:1px solid rgba(255,255,255,.4)}
+  @keyframes carMove{0%,100%{transform:translate(0,0)}50%{transform:translate(120px,40px)}}
+  .car-moving{animation:carMove 6s ease-in-out infinite}
+  @keyframes dash{to{stroke-dashoffset:-200}}
+  .route-line{stroke-dasharray:6 4;animation:dash 15s linear infinite}
+
+  /* Scroll reveal */
+  .reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.4,0,.2,1)}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+
+  /* FAQ */
+  details summary{cursor:pointer;list-style:none}
+  details summary::-webkit-details-marker{display:none}
+  details[open] .faq-icon{transform:rotate(45deg)}
+  .faq-icon{transition:transform .3s}
+
+  /* Pricing toggle */
+  .price-switch{position:relative;width:52px;height:28px;background:#334155;border-radius:14px;cursor:pointer;transition:background .2s}
+  .price-switch.yearly{background:#10b981}
+  .price-switch::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;background:white;border-radius:50%;transition:transform .2s}
+  .price-switch.yearly::after{transform:translateX(24px)}
+
+  /* Marquee */
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .marquee{display:flex;gap:4rem;animation:marquee 30s linear infinite;width:max-content}
+
+  /* Mobile nav */
+  .mobile-nav{transform:translateY(-100%);transition:transform .3s}
+  .mobile-nav.open{transform:translateY(0)}
+
+  .stat-num{font-variant-numeric:tabular-nums}
+  
+  /* Hero image */
+  .hero-img{background-size:cover;background-position:center;border-radius:24px}
+  
+  /* Glow ring */
+  .glow-ring{position:absolute;border-radius:50%;border:1px solid rgba(16,185,129,.3);pointer-events:none}
+</style>
+</head>
+<body class="relative">
+
+<!-- ========== NAVIGATION ========== -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-2">
+      <div class="w-10 h-10 gradient-primary rounded-xl flex items-center justify-center shadow-lg">
+        <i class="fas fa-car-side text-white"></i>
+      </div>
+      <span class="font-black text-xl text-white">CampusLift</span>
+    </a>
+    <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300">
+      <a href="#features" class="hover:text-white transition">Features</a>
+      <a href="#parkme" class="hover:text-white transition">Campus-ParkMe</a>
+      <a href="#safety" class="hover:text-white transition">Safety</a>
+      <a href="#iot" class="hover:text-white transition">IoT</a>
+      <a href="#schedule" class="hover:text-white transition">Time Management</a>
+      <a href="#pricing" class="hover:text-white transition">Pricing</a>
+      <a href="#faq" class="hover:text-white transition">FAQ</a>
+    </div>
+    <div class="hidden lg:flex items-center gap-3">
+      <button class="text-slate-300 hover:text-white font-medium text-sm px-4 py-2">Sign In</button>
+      <button class="btn btn-primary !py-2.5 !px-5 !text-sm">
+        <i class="fab fa-apple"></i> Download App
+      </button>
+    </div>
+    <button id="mobile-toggle" class="lg:hidden w-10 h-10 rounded-lg glass flex items-center justify-center text-white">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+  <div id="mobile-nav" class="mobile-nav lg:hidden glass-strong">
+    <div class="px-6 py-6 flex flex-col gap-4">
+      <a href="#features" class="text-slate-300">Features</a>
+      <a href="#parkme" class="text-slate-300">Campus-ParkMe</a>
+      <a href="#safety" class="text-slate-300">Safety</a>
+      <a href="#iot" class="text-slate-300">IoT</a>
+      <a href="#pricing" class="text-slate-300">Pricing</a>
+      <button class="btn btn-primary w-full">Download App</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="relative min-h-screen pt-32 pb-20 overflow-hidden gradient-glow">
+  <div class="noise"></div>
+  <div class="grid-pattern absolute inset-0 opacity-60"></div>
+  <div class="blob bg-emerald-500" style="width:500px;height:500px;top:-100px;left:-100px"></div>
+  <div class="blob bg-purple-500" style="width:400px;height:400px;bottom:-100px;right:-50px"></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="reveal">
+        <div class="chip chip-green mb-6">
+          <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+          Verified Student Rideshare · South Africa
+        </div>
+        <h1 class="text-5xl lg:text-7xl font-black leading-[1.05] tracking-tight mb-6 text-white">
+          The ride home after <span class="gradient-text">8am lectures</span> just got safer.
+        </h1>
+        <p class="text-lg lg:text-xl text-slate-400 mb-8 max-w-xl leading-relaxed">
+          CampusLift connects <strong class="text-white">verified students with verified students</strong> for affordable, safe, on-time rides across campus and beyond. Free Campus-ParkMe app included.
+        </p>
+        <div class="flex flex-wrap gap-3 mb-10">
+          <button class="btn btn-primary">
+            <i class="fab fa-apple"></i> App Store
+          </button>
+          <button class="btn btn-primary">
+            <i class="fab fa-google-play"></i> Google Play
+          </button>
+          <button class="btn btn-ghost">
+            <i class="fas fa-play"></i> Watch Demo
+          </button>
+        </div>
+        <div class="grid grid-cols-3 gap-6 max-w-md">
+          <div>
+            <p class="text-3xl font-black text-white stat-num" data-target="12450">0</p>
+            <p class="text-xs text-slate-400 uppercase tracking-wider mt-1">Verified Students</p>
+          </div>
+          <div>
+            <p class="text-3xl font-black text-white stat-num" data-target="47">0</p>
+            <p class="text-xs text-slate-400 uppercase tracking-wider mt-1">Campuses</p>
+          </div>
+          <div>
+            <p class="text-3xl font-black text-emerald-400 stat-num">99.2%</p>
+            <p class="text-xs text-slate-400 uppercase tracking-wider mt-1">Safe Rides</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phone Mockup -->
+      <div class="relative reveal flex justify-center">
+        <div class="absolute -top-20 -left-20 w-40 h-40 bg-emerald-500/20 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-20 -right-20 w-60 h-60 bg-purple-500/20 rounded-full blur-3xl"></div>
+        
+        <div class="phone-mockup float relative z-10">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <!-- Mini app preview -->
+            <div class="h-full w-full bg-slate-50 flex flex-col">
+              <div class="gradient-primary pt-12 pb-6 px-5 rounded-b-3xl text-white">
+                <div class="flex items-center gap-2 mb-3">
+                  <div class="w-8 h-8 rounded-full bg-white/20"></div>
+                  <div>
+                    <p class="text-[10px] text-white/70">Good morning</p>
+                    <p class="text-xs font-bold">Thandi M.</p>
+                  </div>
+                  <span class="ml-auto text-[9px] bg-white/20 px-2 py-1 rounded-full"><i class="fas fa-check"></i> Verified</span>
+                </div>
+                <p class="text-lg font-black">Where to today?</p>
+              </div>
+              <div class="p-4 -mt-4 flex-1">
+                <div class="bg-white rounded-xl p-3 shadow-lg mb-3">
+                  <div class="flex items-center gap-2 mb-2 pb-2 border-b">
+                    <div class="w-2 h-2 bg-emerald-500 rounded-full"></div>
+                    <p class="text-[10px] text-slate-600 flex-1">Main Library</p>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <p class="text-[10px] text-slate-900 font-bold flex-1">Braamfontein Campus</p>
+                  </div>
+                </div>
+                <div class="bg-blue-50 rounded-xl p-3 mb-3 flex items-center gap-2">
+                  <i class="fas fa-clock text-blue-600 text-xs"></i>
+                  <div class="flex-1">
+                    <p class="text-[10px] font-bold text-slate-900">Eng 201 · 14:00</p>
+                    <p class="text-[9px] text-slate-500">Leave by 13:30</p>
+                  </div>
+                </div>
+                <p class="text-[10px] font-black text-slate-900 mb-2">Available Drivers</p>
+                <div class="bg-white rounded-xl p-2.5 mb-2 flex items-center gap-2 border-2 border-emerald-500">
+                  <div class="w-9 h-9 rounded-full gradient-purple"></div>
+                  <div class="flex-1">
+                    <p class="text-[10px] font-bold">Sipho N. <i class="fas fa-check text-emerald-500 text-[8px]"></i></p>
+                    <p class="text-[8px] text-slate-500">VW Polo · 3 min</p>
+                  </div>
+                  <p class="text-[10px] font-black">R35</p>
+                </div>
+                <div class="bg-white rounded-xl p-2.5 flex items-center gap-2">
+                  <div class="w-9 h-9 rounded-full gradient-blue"></div>
+                  <div class="flex-1">
+                    <p class="text-[10px] font-bold">Lebo K. <i class="fas fa-check text-emerald-500 text-[8px]"></i></p>
+                    <p class="text-[8px] text-slate-500">Starlet · 5 min</p>
+                  </div>
+                  <p class="text-[10px] font-black">R28</p>
+                </div>
+                <button class="w-full gradient-primary text-white rounded-xl py-2.5 mt-3 text-xs font-bold">Book Ride</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating cards around phone -->
+        <div class="absolute top-10 -left-4 glass-strong rounded-2xl p-3 hidden md:flex items-center gap-2 float" style="animation-delay:-2s">
+          <div class="w-9 h-9 bg-emerald-500/20 rounded-lg flex items-center justify-center">
+            <i class="fas fa-shield-halved text-emerald-400 text-sm"></i>
+          </div>
+          <div>
+            <p class="text-xs font-bold text-white">ID Verified</p>
+            <p class="text-[10px] text-slate-400">Student #2023145678</p>
+          </div>
+        </div>
+        <div class="absolute bottom-32 -right-4 glass-strong rounded-2xl p-3 hidden md:flex items-center gap-2 float" style="animation-delay:-4s">
+          <div class="w-9 h-9 bg-blue-500/20 rounded-lg flex items-center justify-center">
+            <i class="fas fa-square-parking text-blue-400 text-sm"></i>
+          </div>
+          <div>
+            <p class="text-xs font-bold text-white">ParkMe: A12</p>
+            <p class="text-[10px] text-slate-400">Spot reserved · FREE</p>
+          </div>
+        </div>
+        <div class="absolute top-40 -right-8 glass-strong rounded-2xl p-3 hidden md:flex items-center gap-2 float" style="animation-delay:-1s">
+          <div class="w-9 h-9 bg-purple-500/20 rounded-lg flex items-center justify-center">
+            <i class="fas fa-tower-broadcast text-purple-400 text-sm"></i>
+          </div>
+          <div>
+            <p class="text-xs font-bold text-white">IoT Active</p>
+            <p class="text-[10px] text-slate-400">Speed · 48 km/h</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TRUST BAR ========== -->
+<section class="py-12 border-y border-white/5 bg-black/20">
+  <div class="max-w-7xl mx-auto px-6">
+    <p class="text-center text-sm text-slate-500 mb-8 uppercase tracking-widest">Trusted across top South African universities</p>
+    <div class="overflow-hidden">
+      <div class="marquee">
+        <div class="flex items-center gap-16 text-2xl font-black text-slate-500">
+          <span>🎓 Wits University</span><span>🎓 UCT</span><span>🎓 Stellenbosch</span><span>🎓 UP Tuks</span><span>🎓 UJ</span><span>🎓 NWU</span><span>🎓 Rhodes</span><span>🎓 UKZN</span><span>🎓 CPUT</span><span>🎓 UWC</span>
+        </div>
+        <div class="flex items-center gap-16 text-2xl font-black text-slate-500">
+          <span>🎓 Wits University</span><span>🎓 UCT</span><span>🎓 Stellenbosch</span><span>🎓 UP Tuks</span><span>🎓 UJ</span><span>🎓 NWU</span><span>🎓 Rhodes</span><span>🎓 UKZN</span><span>🎓 CPUT</span><span>🎓 UWC</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FEATURES ========== -->
+<section id="features" class="py-24 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <div class="chip chip-blue mx-auto mb-4">
+        <i class="fas fa-sparkles"></i> Core Features
+      </div>
+      <h2 class="text-4xl lg:text-6xl font-black text-white mb-4">Built for the <span class="gradient-text">student life</span></h2>
+      <p class="text-slate-400 max-w-2xl mx-auto text-lg">Every feature designed around what students actually need: safety, affordability, punctuality, and peace of mind.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+      <div class="card-dark rounded-3xl p-8">
+        <div class="w-14 h-14 gradient-primary rounded-2xl flex items-center justify-center mb-5">
+          <i class="fas fa-user-shield text-white text-xl"></i>
+        </div>
+        <h3 class="text-xl font-black text-white mb-2">Triple Verification</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Every user must provide university email, student number (registrar-verified), and current proof of registration. No outsiders. Ever.</p>
+      </div>
+      <div class="card-dark rounded-3xl p-8">
+        <div class="w-14 h-14 gradient-blue rounded-2xl flex items-center justify-center mb-5">
+          <i class="fas fa-square-parking text-white text-xl"></i>
+        </div>
+        <h3 class="text-xl font-black text-white mb-2">Free Campus-ParkMe</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Companion app that maps every parking bay in real-time and designates safe pickup zones. Always free for students.</p>
+      </div>
+      <div class="card-dark rounded-3xl p-8">
+        <div class="w-14 h-14 gradient-orange rounded-2xl flex items-center justify-center mb-5">
+          <i class="fas fa-triangle-exclamation text-white text-xl"></i>
+        </div>
+        <h3 class="text-xl font-black text-white mb-2">Learner Safety Tech</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">SOS panic button, trusted contact sharing, live GPS tracking, encrypted audio, and 24/7 campus security hotline.</p>
+      </div>
+      <div class="card-dark rounded-3xl p-8">
+        <div class="w-14 h-14 gradient-purple rounded-2xl flex items-center justify-center mb-5">
+          <i class="fas fa-clock text-white text-xl"></i>
+        </div>
+        <h3 class="text-xl font-black text-white mb-2">Smart Time Management</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Syncs with your university calendar, auto-suggests departure times, and rebooks automatically when traffic spikes.</p>
+      </div>
+      <div class="card-dark rounded-3xl p-8">
+        <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center mb-5">
+          <i class="fas fa-tower-broadcast text-white text-xl"></i>
+        </div>
+        <h3 class="text-xl font-black text-white mb-2">IoT Vehicle Sensors</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">Real-time speed, braking, tyre pressure, engine diagnostics, and geo-fencing for every connected driver's car.</p>
+      </div>
+      <div class="card-dark rounded-3xl p-8">
+        <div class="w-14 h-14 bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl flex items-center justify-center mb-5">
+          <i class="fas fa-coins text-white text-xl"></i>
+        </div>
+        <h3 class="text-xl font-black text-white mb-2">Student-Friendly Pricing</h3>
+        <p class="text-slate-400 text-sm leading-relaxed">No surge pricing. Split fares with friends. Earn credits by driving. Average R25–45 per campus ride.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CAMPUS-PARKME ========== -->
+<section id="parkme" class="py-24 relative overflow-hidden">
+  <div class="blob bg-blue-500" style="width:400px;height:400px;top:10%;right:-100px"></div>
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal order-2 lg:order-1">
+        <div class="chip chip-blue mb-4">
+          <i class="fas fa-gift"></i> 100% Free · Forever
+        </div>
+        <h2 class="text-4xl lg:text-5xl font-black text-white mb-6 leading-tight">Campus-ParkMe<br/><span class="gradient-text">never hunt for parking again.</span></h2>
+        <p class="text-slate-400 text-lg mb-8 leading-relaxed">Included free with CampusLift. See every parking bay, EV charger, disabled spot, and designated pickup zone on a live campus map.</p>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 bg-emerald-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-satellite-dish text-emerald-400"></i>
+            </div>
+            <div>
+              <p class="font-bold text-white">Live Bay Occupancy</p>
+              <p class="text-sm text-slate-400">Ground sensors update every 5 seconds. Know before you drive.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 bg-blue-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-person-shelter text-blue-400"></i>
+            </div>
+            <div>
+              <p class="font-bold text-white">Designated Safe Pickup Zones</p>
+              <p class="text-sm text-slate-400">Well-lit, CCTV-monitored spots for driver hand-off. Never meet a stranger in a dark corner.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 bg-purple-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-route text-purple-400"></i>
+            </div>
+            <div>
+              <p class="font-bold text-white">In-App Navigation</p>
+              <p class="text-sm text-slate-400">Turn-by-turn walking directions from your bay to your lecture hall.</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary"><i class="fas fa-square-parking"></i> Download ParkMe Free</button>
+      </div>
+
+      <!-- ParkMe Visual -->
+      <div class="reveal order-1 lg:order-2">
+        <div class="relative rounded-3xl overflow-hidden aspect-square max-w-lg mx-auto border border-white/10 shadow-2xl" style="background-image:url('https://image.qwenlm.ai/public_source/57a36a79-dfe1-42a8-90c0-e795d185844a/12c0b9cf9-2083-4547-b5b3-a5589a840361.png');background-size:cover;background-position:center">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40"></div>
+          
+          <svg class="absolute inset-0 w-full h-full" viewBox="0 0 500 500" preserveAspectRatio="none">
+            <path d="M 60 100 Q 200 150 250 200 T 440 350" stroke="#10b981" stroke-width="4" fill="none" class="route-line"/>
+          </svg>
+
+          <!-- Parking spots grid -->
+          <div class="absolute top-20 left-12 grid grid-cols-6 gap-1">
+            <div class="parking-spot bg-emerald-500"></div><div class="parking-spot bg-red-500"></div><div class="parking-spot bg-emerald-500"></div><div class="parking-spot bg-red-500"></div><div class="parking-spot bg-emerald-500"></div><div class="parking-spot bg-emerald-500"></div>
+            <div class="parking-spot bg-red-500"></div><div class="parking-spot bg-red-500"></div><div class="parking-spot bg-emerald-500"></div><div class="parking-spot bg-red-500"></div><div class="parking-spot bg-emerald-500"></div><div class="parking-spot bg-red-500"></div>
+            <div class="parking-spot bg-emerald-500"></div><div class="parking-spot bg-red-500"></div><div class="parking-spot bg-emerald-500"></div><div class="parking-spot bg-emerald-500"></div><div class="parking-spot bg-red-500"></div><div class="parking-spot bg-red-500"></div>
+          </div>
+
+          <div class="absolute top-52 right-14 grid grid-cols-5 gap-1">
+            <div class="parking-spot bg-emerald-500"></div><div class="parking-spot bg-red-500"></div><div class="parking-spot bg-emerald-500"></div><div class="parking-spot bg-red-500"></div><div class="parking-spot bg-emerald-500"></div>
+            <div class="parking-spot bg-red-500"></div><div class="parking-spot bg-emerald-500"></div><div class="parking-spot bg-emerald-500"></div><div class="parking-spot bg-red-500"></div><div class="parking-spot bg-red-500"></div>
+          </div>
+
+          <!-- Pickup markers -->
+          <div class="pickup-marker absolute" style="top:65%;left:30%"><i class="fas fa-person"></i></div>
+          <div class="pickup-marker absolute" style="top:75%;left:65%"><i class="fas fa-person"></i></div>
+
+          <!-- You -->
+          <div class="absolute w-4 h-4 bg-blue-500 rounded-full border-4 border-white" style="top:42%;left:45%;box-shadow:0 0 0 10px rgba(59,130,246,.3)"></div>
+
+          <!-- Overlay cards -->
+          <div class="absolute top-4 left-4 right-4 glass-strong rounded-2xl p-3 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i class="fas fa-map-location-dot text-emerald-400"></i>
+              <span class="font-bold text-sm text-white">Main Campus</span>
+            </div>
+            <span class="chip chip-green !py-1">LIVE</span>
+          </div>
+
+          <div class="absolute bottom-4 left-4 right-4 glass-strong rounded-2xl p-4">
+            <div class="grid grid-cols-3 gap-3 text-center">
+              <div>
+                <p class="text-2xl font-black text-emerald-400">42</p>
+                <p class="text-[10px] text-slate-400 uppercase">Open</p>
+              </div>
+              <div>
+                <p class="text-2xl font-black text-red-400">114</p>
+                <p class="text-[10px] text-slate-400 uppercase">Taken</p>
+              </div>
+              <div>
+                <p class="text-2xl font-black text-blue-400">3</p>
+                <p class="text-[10px] text-slate-400 uppercase">Pickups</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SAFETY ========== -->
+<section id="safety" class="py-24 relative overflow-hidden">
+  <div class="blob bg-red-500" style="width:400px;height:400px;top:10%;left:-100px"></div>
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="text-center mb-16 reveal">
+      <div class="chip chip-purple mx-auto mb-4">
+        <i class="fas fa-shield-halved"></i> Learner Safety Protocol
+      </div>
+      <h2 class="text-4xl lg:text-6xl font-black text-white mb-4">Safety isn't a feature.<br/><span class="gradient-text">It's the foundation.</span></h2>
+      <p class="text-slate-400 max-w-2xl mx-auto text-lg">We borrow proven learner-transport safety tech and adapt it for student rides — so every journey home is a safe one.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 reveal">
+      <div class="card-dark rounded-2xl p-6 border-t-4 border-emerald-500">
+        <i class="fas fa-fingerprint text-emerald-400 text-3xl mb-4"></i>
+        <h4 class="font-black text-white mb-2">Identity Lock</h4>
+        <p class="text-sm text-slate-400">Student ID + registrar cross-check + live photo verification before every ride.</p>
+      </div>
+      <div class="card-dark rounded-2xl p-6 border-t-4 border-blue-500">
+        <i class="fas fa-share-nodes text-blue-400 text-3xl mb-4"></i>
+        <h4 class="font-black text-white mb-2">Live Trip Sharing</h4>
+        <p class="text-sm text-slate-400">Parents, roommates or trusted contacts watch your ride in real-time.</p>
+      </div>
+      <div class="card-dark rounded-2xl p-6 border-t-4 border-red-500">
+        <i class="fas fa-bell text-red-400 text-3xl mb-4"></i>
+        <h4 class="font-black text-white mb-2">One-Tap SOS</h4>
+        <p class="text-sm text-slate-400">Instant alert to campus security, SAPS, and your trusted contacts with GPS pin.</p>
+      </div>
+      <div class="card-dark rounded-2xl p-6 border-t-4 border-purple-500">
+        <i class="fas fa-microphone text-purple-400 text-3xl mb-4"></i>
+        <h4 class="font-black text-white mb-2">Encrypted Audio</h4>
+        <p class="text-sm text-slate-400">End-to-end encrypted trip audio stored 72 hours for dispute resolution.</p>
+      </div>
+      <div class="card-dark rounded-2xl p-6 border-t-4 border-orange-500">
+        <i class="fas fa-road text-orange-400 text-3xl mb-4"></i>
+        <h4 class="font-black text-white mb-2">Geo-Fencing</h4>
+        <p class="text-sm text-slate-400">Alerts trigger if a driver deviates from the planned route.</p>
+      </div>
+      <div class="card-dark rounded-2xl p-6 border-t-4 border-cyan-500">
+        <i class="fas fa-car-burst text-cyan-400 text-3xl mb-4"></i>
+        <h4 class="font-black text-white mb-2">Plate Match</h4>
+        <p class="text-sm text-slate-400">You only get in when the license plate matches what's in-app. Photo proof logged.</p>
+      </div>
+      <div class="card-dark rounded-2xl p-6 border-t-4 border-pink-500">
+        <i class="fas fa-user-group text-pink-400 text-3xl mb-4"></i>
+        <h4 class="font-black text-white mb-2">Students Only</h4>
+        <p class="text-sm text-slate-400">No commercial drivers, no strangers. Only verified peers behind the wheel.</p>
+      </div>
+      <div class="card-dark rounded-2xl p-6 border-t-4 border-yellow-500">
+        <i class="fas fa-star text-yellow-400 text-3xl mb-4"></i>
+        <h4 class="font-black text-white mb-2">Two-Way Ratings</h4>
+        <p class="text-sm text-slate-400">Community-policed. Bad actors removed within 24 hours of verified reports.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== IoT SECTION ========== -->
+<section id="iot" class="py-24 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="reveal">
+        <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+          <img src="https://image.qwenlm.ai/public_source/57a36a79-dfe1-42a8-90c0-e795d185844a/1628edccb-4e48-45f2-9b0b-4ae673ef885b.png" alt="IoT network" class="w-full h-auto"/>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="chip chip-purple mb-4">
+          <i class="fas fa-tower-broadcast"></i> IoT Safety Hub
+        </div>
+        <h2 class="text-4xl lg:text-5xl font-black text-white mb-6 leading-tight">Your ride is <span class="gradient-text">instrumented</span>, not just insured.</h2>
+        <p class="text-slate-400 text-lg mb-8 leading-relaxed">Connected OBD-II sensors in student driver vehicles stream live telemetry — the same tech learner-transport fleets use to protect school children.</p>
+
+        <div class="grid grid-cols-2 gap-3 mb-8">
+          <div class="card-dark rounded-xl p-4">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs text-slate-400"><i class="fas fa-gauge-high text-blue-400"></i> Speed</span>
+              <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+            </div>
+            <p class="text-2xl font-black text-white">48 <span class="text-xs text-slate-400">km/h</span></p>
+          </div>
+          <div class="card-dark rounded-xl p-4">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs text-slate-400"><i class="fas fa-oil-can text-orange-400"></i> Engine</span>
+              <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+            </div>
+            <p class="text-2xl font-black text-white">OK</p>
+          </div>
+          <div class="card-dark rounded-xl p-4">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs text-slate-400"><i class="fas fa-gas-pump text-red-400"></i> Fuel</span>
+              <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+            </div>
+            <p class="text-2xl font-black text-white">68<span class="text-xs text-slate-400">%</span></p>
+          </div>
+          <div class="card-dark rounded-xl p-4">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs text-slate-400"><i class="fas fa-tire text-cyan-400"></i> Tyres</span>
+              <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+            </div>
+            <p class="text-2xl font-black text-white">220<span class="text-xs text-slate-400">kPa</span></p>
+          </div>
+        </div>
+
+        <button class="btn btn-primary"><i class="fas fa-microchip"></i> Learn About Our Sensors</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TIME MANAGEMENT ========== -->
+<section id="schedule" class="py-24 relative overflow-hidden">
+  <div class="blob bg-orange-500" style="width:400px;height:400px;bottom:-100px;right:-100px"></div>
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="text-center mb-16 reveal">
+      <div class="chip chip-green mx-auto mb-4">
+        <i class="fas fa-clock"></i> Time Management
+      </div>
+      <h2 class="text-4xl lg:text-6xl font-black text-white mb-4">Never miss a <span class="gradient-text">lecture again.</span></h2>
+      <p class="text-slate-400 max-w-2xl mx-auto text-lg">CampusLift knows your timetable, traffic patterns, and walking times. It tells you exactly when to leave — and books the ride for you.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-6 reveal">
+      <!-- Schedule card -->
+      <div class="lg:col-span-2 card-dark rounded-3xl p-8">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <p class="text-xs text-slate-400 uppercase tracking-wider">Today · Sunday 24 May</p>
+            <h3 class="text-2xl font-black text-white">Your smart day</h3>
+          </div>
+          <div class="chip chip-green"><i class="fas fa-fire"></i> 7-day streak</div>
+        </div>
+        <div class="space-y-3">
+          <div class="flex items-center gap-4 p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl">
+            <div class="text-center">
+              <p class="text-2xl font-black text-emerald-400">14:00</p>
+              <p class="text-[10px] text-slate-400">1.5 hrs</p>
+            </div>
+            <div class="flex-1">
+              <p class="font-bold text-white">Engineering 201 · Room 304</p>
+              <p class="text-xs text-slate-400">Leave by 13:30 · 18 min ride</p>
+            </div>
+            <span class="chip chip-green"><i class="fas fa-car"></i> Booked</span>
+          </div>
+          <div class="flex items-center gap-4 p-4 bg-white/5 border border-white/10 rounded-2xl">
+            <div class="text-center">
+              <p class="text-2xl font-black text-blue-400">16:00</p>
+              <p class="text-[10px] text-slate-400">2 hrs</p>
+            </div>
+            <div class="flex-1">
+              <p class="font-bold text-white">Maths Study Group · Library L2</p>
+              <p class="text-xs text-slate-400">Leave by 15:40</p>
+            </div>
+            <button class="btn btn-primary !py-2 !px-4 !text-xs">Book</button>
+          </div>
+          <div class="flex items-center gap-4 p-4 bg-white/5 border border-white/10 rounded-2xl">
+            <div class="text-center">
+              <p class="text-2xl font-black text-purple-400">18:30</p>
+              <p class="text-[10px] text-slate-400">1 hr</p>
+            </div>
+            <div class="flex-1">
+              <p class="font-bold text-white">Gym · Sports Complex</p>
+              <p class="text-xs text-slate-400">8 min walk · no ride needed</p>
+            </div>
+            <span class="chip chip-purple"><i class="fas fa-person-walking"></i> Walk</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats card -->
+      <div class="space-y-6">
+        <div class="card-dark rounded-3xl p-8 text-center">
+          <div class="relative inline-block mb-4">
+            <svg width="120" height="120">
+              <circle cx="60" cy="60" r="50" stroke="#1e293b" stroke-width="10" fill="none"/>
+              <circle cx="60" cy="60" r="50" stroke="url(#grad)" stroke-width="10" fill="none" stroke-dasharray="314" stroke-dashoffset="90" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+              <defs>
+                <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#10b981"/>
+                  <stop offset="100%" stop-color="#8b5cf6"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="absolute inset-0 flex flex-col items-center justify-center">
+              <p class="text-3xl font-black text-white">70%</p>
+              <p class="text-[10px] text-slate-400">on-time</p>
+            </div>
+          </div>
+          <p class="font-black text-white text-lg">Time Score</p>
+          <p class="text-xs text-slate-400 mt-2">Early to 14/20 classes this month</p>
+        </div>
+        <div class="card-dark rounded-3xl p-6">
+          <p class="text-xs text-slate-400 uppercase tracking-wider mb-3">Smart Reminders</p>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-center justify-between">
+              <span class="text-slate-300"><i class="fas fa-bell text-blue-400 mr-2"></i>Early departure</span>
+              <span class="text-emerald-400"><i class="fas fa-toggle-on"></i></span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-slate-300"><i class="fas fa-traffic-light text-orange-400 mr-2"></i>Traffic rebook</span>
+              <span class="text-emerald-400"><i class="fas fa-toggle-on"></i></span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-slate-300"><i class="fas fa-calendar-check text-purple-400 mr-2"></i>Calendar sync</span>
+              <span class="text-emerald-400"><i class="fas fa-toggle-on"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== HOW IT WORKS ========== -->
+<section class="py-24 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <div class="chip chip-blue mx-auto mb-4">
+        <i class="fas fa-list-ol"></i> How It Works
+      </div>
+      <h2 class="text-4xl lg:text-6xl font-black text-white mb-4">From sign-up to <span class="gradient-text">safe drop-off</span></h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+      <div class="card-dark rounded-3xl p-8 relative">
+        <span class="absolute top-6 right-6 text-6xl font-black text-white/5">01</span>
+        <div class="w-14 h-14 gradient-primary rounded-2xl flex items-center justify-center mb-5">
+          <i class="fas fa-id-card text-white text-xl"></i>
+        </div>
+        <h4 class="font-black text-white text-xl mb-2">Verify Yourself</h4>
+        <p class="text-sm text-slate-400">University email, student number, and proof of registration. Takes 3 minutes.</p>
+      </div>
+      <div class="card-dark rounded-3xl p-8 relative">
+        <span class="absolute top-6 right-6 text-6xl font-black text-white/5">02</span>
+        <div class="w-14 h-14 gradient-blue rounded-2xl flex items-center justify-center mb-5">
+          <i class="fas fa-map-location-dot text-white text-xl"></i>
+        </div>
+        <h4 class="font-black text-white text-xl mb-2">Pick a Safe Zone</h4>
+        <p class="text-sm text-slate-400">Choose a well-lit, CCTV-monitored pickup point from Campus-ParkMe.</p>
+      </div>
+      <div class="card-dark rounded-3xl p-8 relative">
+        <span class="absolute top-6 right-6 text-6xl font-black text-white/5">03</span>
+        <div class="w-14 h-14 gradient-purple rounded-2xl flex items-center justify-center mb-5">
+          <i class="fas fa-user-check text-white text-xl"></i>
+        </div>
+        <h4 class="font-black text-white text-xl mb-2">Match with a Peer</h4>
+        <p class="text-sm text-slate-400">Only verified student drivers show up. Check plate, photo, rating.</p>
+      </div>
+      <div class="card-dark rounded-3xl p-8 relative">
+        <span class="absolute top-6 right-6 text-6xl font-black text-white/5">04</span>
+        <div class="w-14 h-14 gradient-orange rounded-2xl flex items-center justify-center mb-5">
+          <i class="fas fa-shield-check text-white text-xl"></i>
+        </div>
+        <h4 class="font-black text-white text-xl mb-2">Ride · Track · Arrive</h4>
+        <p class="text-sm text-slate-400">Live GPS, IoT telemetry, trip shared with trusted contact. Arrive safely.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== STATS ========== -->
+<section class="py-20 relative">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="rounded-3xl p-12 lg:p-16 bg-gradient-to-br from-emerald-600 via-teal-700 to-cyan-800 relative overflow-hidden">
+      <div class="noise"></div>
+      <div class="absolute inset-0 grid-pattern opacity-30"></div>
+      <div class="relative grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h3 class="text-3xl lg:text-5xl font-black text-white mb-4 leading-tight">We've already moved a small city of students.</h3>
+          <p class="text-white/80 text-lg">CampusLift is reducing carbon, saving students money, and getting people to class on time.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-6">
+          <div>
+            <p class="text-5xl font-black text-white stat-num" data-target="128400">0</p>
+            <p class="text-sm text-white/70 uppercase tracking-wider mt-1">Rides Completed</p>
+          </div>
+          <div>
+            <p class="text-5xl font-black text-white">R4.2<span class="text-2xl">M</span></p>
+            <p class="text-sm text-white/70 uppercase tracking-wider mt-1">Saved vs Uber</p>
+          </div>
+          <div>
+            <p class="text-5xl font-black text-white">142<span class="text-2xl">t</span></p>
+            <p class="text-sm text-white/70 uppercase tracking-wider mt-1">CO₂ Avoided</p>
+          </div>
+          <div>
+            <p class="text-5xl font-black text-white">4.9<span class="text-2xl">★</span></p>
+            <p class="text-sm text-white/70 uppercase tracking-wider mt-1">Avg Rating</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TESTIMONIALS ========== -->
+<section class="py-24">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <div class="chip chip-purple mx-auto mb-4">
+        <i class="fas fa-quote-left"></i> Student Voices
+      </div>
+      <h2 class="text-4xl lg:text-6xl font-black text-white">Campus is <span class="gradient-text">talking.</span></h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 reveal">
+      <div class="card-dark rounded-3xl p-8">
+        <div class="flex items-center gap-1 text-yellow-400 mb-4">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="text-slate-300 mb-6 leading-relaxed">"As a first-year from Limpopo, I was nervous about getting around Jozi. CampusLift feels like a big-sibling service — everyone's verified, everyone's a student. It's safe."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-full gradient-primary flex items-center justify-center text-white font-black">TM</div>
+          <div>
+            <p class="font-bold text-white">Thandi M.</p>
+            <p class="text-xs text-slate-400">BCom · Wits · 1st year</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-dark rounded-3xl p-8">
+        <div class="flex items-center gap-1 text-yellow-400 mb-4">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="text-slate-300 mb-6 leading-relaxed">"I earn R1,200/month driving between my lectures. The IoT sensor setup made my mom comfortable with me driving for the app — she can see the speed live."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-full gradient-blue flex items-center justify-center text-white font-black">SN</div>
+          <div>
+            <p class="font-bold text-white">Sipho N.</p>
+            <p class="text-xs text-slate-400">BCom · Wits · 3rd year driver</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-dark rounded-3xl p-8">
+        <div class="flex items-center gap-1 text-yellow-400 mb-4">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="text-slate-300 mb-6 leading-relaxed">"ParkMe saved my life during exams. I used to circle for 20 minutes looking for a bay. Now I know exactly where to go before I even leave home."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-full gradient-purple flex items-center justify-center text-white font-black">LK</div>
+          <div>
+            <p class="font-bold text-white">Lebo K.</p>
+            <p class="text-xs text-slate-400">MSc Engineering · UCT</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PRICING ========== -->
+<section id="pricing" class="py-24 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <div class="chip chip-green mx-auto mb-4">
+        <i class="fas fa-tag"></i> Pricing
+      </div>
+      <h2 class="text-4xl lg:text-6xl font-black text-white mb-4">Built for <span class="gradient-text">student budgets.</span></h2>
+      <p class="text-slate-400 text-lg mb-8">No surge pricing. No hidden fees. Cancel anytime.</p>
+
+      <div class="inline-flex items-center gap-3 glass-strong rounded-full px-5 py-2">
+        <span class="text-sm font-semibold" id="monthly-label">Monthly</span>
+        <div id="price-switch" class="price-switch" onclick="togglePrice()"></div>
+        <span class="text-sm font-semibold text-slate-400" id="yearly-label">Yearly <span class="chip chip-green !py-0 !text-[10px]">-30%</span></span>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 reveal">
+      <!-- ParkMe -->
+      <div class="card-dark rounded-3xl p-8">
+        <div class="w-12 h-12 gradient-blue rounded-xl flex items-center justify-center mb-4">
+          <i class="fas fa-square-parking text-white"></i>
+        </div>
+        <h3 class="text-2xl font-black text-white mb-1">Campus-ParkMe</h3>
+        <p class="text-slate-400 text-sm mb-6">Parking map · Pickup zones</p>
+        <div class="mb-6">
+          <span class="text-5xl font-black text-white">R0</span>
+          <span class="text-slate-400">/forever</span>
+        </div>
+        <ul class="space-y-3 text-sm mb-8">
+          <li class="flex items-center gap-2 text-slate-300"><i class="fas fa-check text-emerald-400"></i> Live parking bay map</li>
+          <li class="flex items-center gap-2 text-slate-300"><i class="fas fa-check text-emerald-400"></i> Safe pickup zones</li>
+          <li class="flex items-center gap-2 text-slate-300"><i class="fas fa-check text-emerald-400"></i> In-app navigation</li>
+          <li class="flex items-center gap-2 text-slate-300"><i class="fas fa-check text-emerald-400"></i> EV charger finder</li>
+          <li class="flex items-center gap-2 text-slate-300"><i class="fas fa-check text-emerald-400"></i> Works without rides</li>
+        </ul>
+        <button class="btn btn-ghost w-full">Get ParkMe Free</button>
+      </div>
+
+      <!-- Rider -->
+      <div class="rounded-3xl p-8 bg-gradient-to-br from-emerald-600 to-teal-700 relative overflow-hidden border border-emerald-400/30">
+        <div class="absolute top-4 right-4 chip bg-white/20 text-white">MOST POPULAR</div>
+        <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-4">
+          <i class="fas fa-car text-white"></i>
+        </div>
+        <h3 class="text-2xl font-black text-white mb-1">Rider</h3>
+        <p class="text-white/80 text-sm mb-6">Verified rides between students</p>
+        <div class="mb-6">
+          <span class="text-5xl font-black text-white price-value">R49</span>
+          <span class="text-white/80 price-period">/month</span>
+        </div>
+        <ul class="space-y-3 text-sm mb-8 text-white">
+          <li class="flex items-center gap-2"><i class="fas fa-check"></i> Everything in ParkMe</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check"></i> Unlimited ride booking</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check"></i> Smart schedule sync</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check"></i> SOS + live trip share</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check"></i> Priority driver matching</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check"></i> 24/7 support</li>
+        </ul>
+        <button class="btn bg-white text-emerald-700 w-full">Start Riding</button>
+      </div>
+
+      <!-- Driver -->
+      <div class="card-dark rounded-3xl p-8">
+        <div class="w-12 h-12 gradient-purple rounded-xl flex items-center justify-center mb-4">
+          <i class="fas fa-key text-white"></i>
+        </div>
+        <h3 class="text-2xl font-black text-white mb-1">Driver</h3>
+        <p class="text-slate-400 text-sm mb-6">Earn while you drive to class</p>
+        <div class="mb-6">
+          <span class="text-5xl font-black text-white">Free</span>
+        </div>
+        <ul class="space-y-3 text-sm mb-8">
+          <li class="flex items-center gap-2 text-slate-300"><i class="fas fa-check text-emerald-400"></i> Keep 85% of every fare</li>
+          <li class="flex items-center gap-2 text-slate-300"><i class="fas fa-check text-emerald-400"></i> Free IoT sensor kit</li>
+          <li class="flex items-center gap-2 text-slate-300"><i class="fas fa-check text-emerald-400"></i> Fuel & maintenance perks</li>
+          <li class="flex items-center gap-2 text-slate-300"><i class="fas fa-check text-emerald-400"></i> Driver insurance included</li>
+          <li class="flex items-center gap-2 text-slate-300"><i class="fas fa-check text-emerald-400"></i> Instant payouts</li>
+        </ul>
+        <button class="btn btn-primary w-full">Apply to Drive</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section id="faq" class="py-24">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <div class="chip chip-blue mx-auto mb-4">
+        <i class="fas fa-circle-question"></i> FAQ
+      </div>
+      <h2 class="text-4xl lg:text-5xl font-black text-white">Questions, <span class="gradient-text">answered.</span></h2>
+    </div>
+
+    <div class="space-y-3 reveal">
+      <details class="card-dark rounded-2xl p-6 group">
+        <summary class="flex items-center justify-between">
+          <span class="font-bold text-white text-lg">Who can use CampusLift?</span>
+          <i class="fas fa-plus faq-icon text-emerald-400"></i>
+        </summary>
+        <p class="text-slate-400 mt-4">Only currently registered students at participating universities. We verify via university email, student number cross-check with the registrar, and proof of registration. Non-students, alumni, and staff cannot sign up.</p>
+      </details>
+      <details class="card-dark rounded-2xl p-6">
+        <summary class="flex items-center justify-between">
+          <span class="font-bold text-white text-lg">Is Campus-ParkMe really free?</span>
+          <i class="fas fa-plus faq-icon text-emerald-400"></i>
+        </summary>
+        <p class="text-slate-400 mt-4">Yes. ParkMe is a standalone companion app that's free forever. You don't even need to book rides to use it — it's our way of making every campus better for every student.</p>
+      </details>
+      <details class="card-dark rounded-2xl p-6">
+        <summary class="flex items-center justify-between">
+          <span class="font-bold text-white text-lg">What IoT sensors are installed in driver cars?</span>
+          <i class="fas fa-plus faq-icon text-emerald-400"></i>
+        </summary>
+        <p class="text-slate-400 mt-4">A small OBD-II dongle (plugs into the car's diagnostic port in 30 seconds) streams speed, engine health, fuel, tyre pressure, harsh braking and geo-fence data. The kit is provided free to every approved driver.</p>
+      </details>
+      <details class="card-dark rounded-2xl p-6">
+        <summary class="flex items-center justify-between">
+          <span class="font-bold text-white text-lg">How does the SOS button work?</span>
+          <i class="fas fa-plus faq-icon text-emerald-400"></i>
+        </summary>
+        <p class="text-slate-400 mt-4">One tap triggers: (1) call to campus security, (2) SMS with live GPS pin to your trusted contacts, (3) encrypted audio recording starts, (4) trip flagged in our 24/7 safety control room. Response time under 90 seconds on average.</p>
+      </details>
+      <details class="card-dark rounded-2xl p-6">
+        <summary class="flex items-center justify-between">
+          <span class="font-bold text-white text-lg">How do you ensure drivers are safe?</span>
+          <i class="fas fa-plus faq-icon text-emerald-400"></i>
+        </summary>
+        <p class="text-slate-400 mt-4">Every driver is a verified student with a valid license, roadworthy vehicle, clean criminal record, and passed defensive-driving module. IoT sensors continuously monitor driving behaviour — three safety strikes and the account is suspended pending review.</p>
+      </details>
+      <details class="card-dark rounded-2xl p-6">
+        <summary class="flex items-center justify-between">
+          <span class="font-bold text-white text-lg">Can my parents track my rides?</span>
+          <i class="fas fa-plus faq-icon text-emerald-400"></i>
+        </summary>
+        <p class="text-slate-400 mt-4">Yes — add up to 5 trusted contacts. They get a link (no app required) to watch your ride live, receive arrival notifications, and trigger SOS on your behalf if you don't respond.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA ========== -->
+<section class="py-24 relative overflow-hidden">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="rounded-3xl p-12 lg:p-20 text-center bg-gradient-to-br from-slate-800 via-slate-900 to-black relative overflow-hidden border border-white/10">
+      <div class="noise"></div>
+      <div class="blob bg-emerald-500" style="width:400px;height:400px;top:-200px;left:-100px"></div>
+      <div class="blob bg-purple-500" style="width:400px;height:400px;bottom:-200px;right:-100px"></div>
+      <div class="relative">
+        <div class="chip chip-green mx-auto mb-6">
+          <i class="fas fa-rocket"></i> Available now at 47 campuses
+        </div>
+        <h2 class="text-4xl lg:text-6xl font-black text-white mb-6 leading-tight">Your next ride home<br/>shouldn't feel like a <span class="gradient-text">gamble.</span></h2>
+        <p class="text-slate-400 text-lg mb-10 max-w-2xl mx-auto">Join 12,450+ verified students already riding smarter, safer, and on time with CampusLift.</p>
+        <div class="flex flex-wrap gap-3 justify-center">
+          <button class="btn btn-primary !px-8 !py-4">
+            <i class="fab fa-apple"></i> Download for iOS
+          </button>
+          <button class="btn btn-primary !px-8 !py-4">
+            <i class="fab fa-google-play"></i> Download for Android
+          </button>
+        </div>
+        <p class="text-slate-500 text-sm mt-6"><i class="fas fa-gift text-emerald-400"></i> Free ParkMe included · 30-day rider trial</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="border-t border-white/5 py-16">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-10 h-10 gradient-primary rounded-xl flex items-center justify-center">
+            <i class="fas fa-car-side text-white"></i>
+          </div>
+          <span class="font-black text-xl text-white">CampusLift</span>
+        </div>
+        <p class="text-slate-400 text-sm mb-6 max-w-md">Verified student-to-student rides across South Africa. Safe, affordable, on time. Including the free Campus-ParkMe app.</p>
+        <div class="flex gap-3">
+          <a href="#" class="w-10 h-10 glass rounded-lg flex items-center justify-center text-slate-300 hover:text-white"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="w-10 h-10 glass rounded-lg flex items-center justify-center text-slate-300 hover:text-white"><i class="fab fa-tiktok"></i></a>
+          <a href="#" class="w-10 h-10 glass rounded-lg flex items-center justify-center text-slate-300 hover:text-white"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" class="w-10 h-10 glass rounded-lg flex items-center justify-center text-slate-300 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div>
+        <p class="font-black text-white mb-4 text-sm uppercase tracking-wider">Product</p>
+        <ul class="space-y-2 text-sm text-slate-400">
+          <li><a href="#features" class="hover:text-white">Features</a></li>
+          <li><a href="#parkme" class="hover:text-white">Campus-ParkMe</a></li>
+          <li><a href="#safety" class="hover:text-white">Safety</a></li>
+          <li><a href="#iot" class="hover:text-white">IoT Sensors</a></li>
+          <li><a href="#pricing" class="hover:text-white">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-black text-white mb-4 text-sm uppercase tracking-wider">Company</p>
+        <ul class="space-y-2 text-sm text-slate-400">
+          <li><a href="#" class="hover:text-white">About</a></li>
+          <li><a href="#" class="hover:text-white">Careers</a></li>
+          <li><a href="#" class="hover:text-white">Press</a></li>
+          <li><a href="#" class="hover:text-white">Partner with us</a></li>
+          <li><a href="#" class="hover:text-white">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-black text-white mb-4 text-sm uppercase tracking-wider">Legal</p>
+        <ul class="space-y-2 text-sm text-slate-400">
+          <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+          <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+          <li><a href="#" class="hover:text-white">Safety Charter</a></li>
+          <li><a href="#" class="hover:text-white">POPIA Compliance</a></li>
+          <li><a href="#" class="hover:text-white">Report an incident</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-slate-500">© 2026 CampusLift (Pty) Ltd · Registered in South Africa · 2024/123456/07</p>
+      <div class="flex items-center gap-4 text-xs text-slate-500">
+        <span><i class="fas fa-shield-halved text-emerald-400"></i> POPIA Compliant</span>
+        <span><i class="fas fa-lock text-emerald-400"></i> End-to-end encrypted</span>
+        <span><i class="fas fa-heart text-red-400"></i> Made in SA</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navbar background on scroll
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 20){
+      nav.classList.add('glass-strong');
+    } else {
+      nav.classList.remove('glass-strong');
+    }
+  });
+
+  // Mobile nav
+  document.getElementById('mobile-toggle').addEventListener('click', () => {
+    document.getElementById('mobile-nav').classList.toggle('open');
+  });
+  document.querySelectorAll('#mobile-nav a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('mobile-nav').classList.remove('open');
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        // Stat counter
+        e.target.querySelectorAll('[data-target]').forEach(el => {
+          const target = parseInt(el.dataset.target);
+          if(target && !el.dataset.counted){
+            el.dataset.counted = '1';
+            let cur = 0;
+            const step = Math.max(1, Math.ceil(target/60));
+            const t = setInterval(() => {
+              cur += step;
+              if(cur >= target){cur = target; clearInterval(t)}
+              el.textContent = cur.toLocaleString();
+            }, 25);
+          }
+        });
+      }
+    });
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Pricing toggle
+  const monthlyPrices = ['R49','/month'];
+  const yearlyPrices = ['R34','/month'];
+  function togglePrice(){
+    const sw = document.getElementById('price-switch');
+    sw.classList.toggle('yearly');
+    const isYearly = sw.classList.contains('yearly');
+    const vals = isYearly ? yearlyPrices : monthlyPrices;
+    document.querySelector('.price-value').textContent = vals[0];
+    document.querySelector('.price-period').textContent = vals[1];
+    document.getElementById('monthly-label').classList.toggle('text-slate-400', isYearly);
+    document.getElementById('monthly-label').classList.toggle('text-white', !isYearly);
+    document.getElementById('yearly-label').classList.toggle('text-slate-400', !isYearly);
+  }
+</script>
+</body>
+</html>
+<script>
+  // Auto-highlight current product in ecosystem bar
+  (function() {
+    const path = window.location.pathname.toLowerCase();
+    const productMap = {
+      'fundisa': 'fundisa',
+      'matricmate': 'matricmate',
+      'studentmart': 'studentmart',
+      'campuslift': 'campuslift',
+      'thuto-academy': 'academy',
+      'research-studio': 'research'
+    };
+    
+    Object.entries(productMap).forEach(([pathKey, productKey]) => {
+      if (path.includes(pathKey)) {
+        const link = document.querySelector(`#thuto-ecosystem-nav a[data-product="${productKey}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  })();
+</script>
