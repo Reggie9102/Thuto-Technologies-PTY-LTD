@@ -3,26 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MatricMate AI — Access & Equity Packages</title>
-<meta name="description" content="Discounted Matric prep for Child Support Grant recipients & rural learners. Bundle with private tutors from StudentMart & career advice.">
+<title>MatricMate AI — NSC & IEB Exam Prep for South African Matrics</title>
+<meta name="description" content="South Africa's #1 AI matric exam prep companion. NSC & IEB past papers, multilingual AI tutor, one-on-one tutors, matric bootcamps, career guidance, and peer tutoring. For Grade 10-12 learners.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 :root{
+  /* MatricMate AI palette — Vibrant Orange + Corporate Navy */
   --vibrant-orange:#FF6B35;
   --vibrant-orange-light:#FF8F00;
   --vibrant-orange-dark:#E55A2B;
+  --vibrant-orange-softer:#FFB088;
   --corporate-navy:#0A2E5A;
   --corporate-navy-light:#1A4A7F;
+  --corporate-navy-dark:#061A33;
   --harvest-gold:#D4AF37;
   --market-cyan:#28A9E1;
-  --ai-purple:#8B5CF6;
   --ecosystem-emerald:#28A492;
+  --research-blue:#1E3A8A;
+  --accent-rose:#BE185D;
   --success:#10B981;
   --warning:#F59E0B;
-  --error:#EF4444;
+  
+  /* Neutrals */
+  --white:#FFFFFF;
   --gray-50:#F8FAFC;
   --gray-100:#F1F5F9;
   --gray-200:#E2E8F0;
@@ -31,326 +37,926 @@
   --gray-500:#64748B;
   --gray-600:#475569;
   --gray-700:#334155;
+  
+  /* UI */
   --radius:14px;
   --radius-lg:20px;
-  --shadow-md:0 4px 20px rgba(10,46,90,0.1);
-  --shadow-lg:0 10px 40px rgba(10,46,90,0.12);
+  --radius-xl:28px;
+  --shadow-sm:0 1px 3px rgba(10,46,90,.08);
+  --shadow-md:0 4px 20px rgba(10,46,90,.1);
+  --shadow-lg:0 10px 40px rgba(10,46,90,.12);
+  --shadow-xl:0 20px 60px rgba(10,46,90,.15);
   --transition:all .3s cubic-bezier(.4,0,.2,1);
 }
+
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;color:var(--gray-700);line-height:1.6;background:#fff}
-h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif}
+body{
+  font-family:'Inter',sans-serif;
+  color:var(--gray-700);
+  line-height:1.6;
+  background:var(--white);
+  overflow-x:hidden;
+}
+h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-.02em}
+.container{max-width:1400px;margin:0 auto;padding:0 2rem}
 
-/* Top Bar */
-.thuto-topbar{background:var(--corporate-navy);padding:8px 2rem;display:flex;align-items:center;justify-content:center;gap:10px;font-size:.75rem;color:rgba(255,255,255,.85)}
-.thuto-topbar a{color:var(--market-cyan);text-decoration:none;font-weight:600}
-.thuto-topbar .eco-badge{background:linear-gradient(135deg,var(--vibrant-orange),var(--harvest-gold));color:var(--corporate-navy);padding:3px 10px;border-radius:4px;font-size:.65rem;font-weight:700;letter-spacing:.5px}
+/* ============ TOP BAR ============ */
+.topbar{
+  background:var(--corporate-navy);
+  padding:8px 2rem;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  font-size:.75rem;color:rgba(255,255,255,.85);flex-wrap:wrap;
+}
+.topbar .badge{
+  background:linear-gradient(135deg,var(--vibrant-orange),var(--vibrant-orange-dark));
+  color:white;padding:3px 10px;border-radius:4px;
+  font-size:.65rem;font-weight:700;letter-spacing:.5px;
+}
+.topbar a{color:var(--vibrant-orange-light);text-decoration:none;font-weight:600}
+.topbar a:hover{text-decoration:underline}
 
-/* Navbar */
-.navbar{position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--gray-200);z-index:1000}
-.nav-container{max-width:1400px;margin:0 auto;padding:.9rem 2rem;display:flex;align-items:center;justify-content:space-between}
+/* ============ NAVBAR ============ */
+.navbar{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--gray-200);
+}
+.nav-container{
+  max-width:1400px;margin:0 auto;
+  padding:.9rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-.logo-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--vibrant-orange),var(--vibrant-orange-dark));border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;box-shadow:0 4px 15px rgba(255,107,53,.3)}
-.logo-text .brand{font-size:1.25rem;font-weight:700;color:var(--corporate-navy);line-height:1.1;font-family:'Space Grotesk',sans-serif}
+.logo-icon{
+  width:44px;height:44px;
+  background:linear-gradient(135deg,var(--vibrant-orange),var(--vibrant-orange-dark));
+  border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  color:white;font-size:1.3rem;
+  box-shadow:0 4px 15px rgba(255,107,53,.3);
+  position:relative;
+}
+.logo-icon::after{
+  content:'';position:absolute;inset:3px;
+  border:1px solid rgba(255,255,255,.25);border-radius:9px;
+}
+.logo-text .brand{font-size:1.25rem;font-weight:700;color:var(--corporate-navy);line-height:1.1}
 .logo-text .brand span{color:var(--vibrant-orange)}
 .logo-text .sub{font-size:.62rem;color:var(--gray-500);text-transform:uppercase;letter-spacing:1.5px;font-weight:600}
+.nav-links{display:flex;list-style:none;gap:.3rem;align-items:center}
+.nav-links a{
+  color:var(--gray-600);text-decoration:none;font-weight:500;font-size:.88rem;
+  padding:8px 14px;border-radius:10px;transition:var(--transition);
+}
+.nav-links a:hover{background:rgba(255,107,53,.08);color:var(--vibrant-orange)}
 .nav-actions{display:flex;gap:.6rem;align-items:center}
-.btn{padding:10px 20px;border:none;border-radius:10px;font-size:.88rem;font-weight:600;cursor:pointer;transition:var(--transition);text-decoration:none;display:inline-flex;align-items:center;gap:6px;font-family:inherit}
-.btn-primary{background:linear-gradient(135deg,var(--vibrant-orange),var(--vibrant-orange-dark));color:#fff;box-shadow:0 4px 15px rgba(255,107,53,.3)}
+.btn{
+  padding:10px 20px;border:none;border-radius:10px;
+  font-size:.88rem;font-weight:600;cursor:pointer;
+  transition:var(--transition);text-decoration:none;
+  display:inline-flex;align-items:center;gap:6px;font-family:inherit;
+}
+.btn-primary{background:linear-gradient(135deg,var(--vibrant-orange),var(--vibrant-orange-dark));color:white;box-shadow:0 4px 15px rgba(255,107,53,.3)}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,107,53,.4)}
-.btn-navy{background:var(--corporate-navy);color:#fff}
+.btn-navy{background:var(--corporate-navy);color:white}
 .btn-navy:hover{background:var(--corporate-navy-light);transform:translateY(-2px)}
-.btn-outline{background:#fff;color:var(--corporate-navy);border:2px solid var(--corporate-navy)}
-.btn-outline:hover{background:var(--corporate-navy);color:#fff}
-.btn-gold{background:linear-gradient(135deg,var(--harvest-gold),#b8961f);color:var(--corporate-navy)}
-.btn-emerald{background:linear-gradient(135deg,var(--ecosystem-emerald),#1f7a6a);color:#fff}
-.btn-purple{background:linear-gradient(135deg,var(--ai-purple),#6d28d9);color:#fff}
+.btn-outline{background:white;color:var(--corporate-navy);border:2px solid var(--corporate-navy)}
+.btn-outline:hover{background:var(--corporate-navy);color:white}
+.btn-gold{background:linear-gradient(135deg,var(--harvest-gold),var(--harvest-gold-dark));color:var(--corporate-navy)}
+.btn-emerald{background:linear-gradient(135deg,var(--ecosystem-emerald),#1f7a6a);color:white}
+.btn-whatsapp{background:#25D366;color:white}
+.mobile-toggle{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--corporate-navy)}
 
-/* Hero */
-.hero{background:linear-gradient(135deg,var(--corporate-navy) 0%,var(--corporate-navy-light) 60%,var(--vibrant-orange-dark) 100%);padding:5rem 2rem;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-50%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(255,107,53,.2) 0%,transparent 70%);border-radius:50%}
-.hero-container{max-width:1400px;margin:0 auto;position:relative;z-index:1}
-.hero-eco-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,107,53,.15);border:1px solid rgba(255,107,53,.3);padding:6px 16px;border-radius:20px;color:var(--vibrant-orange-light);font-size:.78rem;font-weight:600;margin-bottom:1.5rem}
-.hero h1{font-size:3rem;color:#fff;line-height:1.15;margin-bottom:1.2rem;letter-spacing:-.02em;max-width:900px}
-.hero h1 .accent{color:var(--vibrant-orange)}
-.hero h1 .gold{color:var(--harvest-gold)}
-.hero-sub{font-size:1.1rem;color:rgba(255,255,255,.85);margin-bottom:2rem;max-width:720px;line-height:1.7}
-.hero-badges{display:flex;gap:12px;flex-wrap:wrap}
-.hero-badge{background:rgba(255,255,255,.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);padding:8px 16px;border-radius:10px;color:#fff;font-size:.82rem;font-weight:600;display:flex;align-items:center;gap:8px}
-.hero-badge i{font-size:1rem}
-.hero-badge.sassa{background:rgba(212,175,55,.2);border-color:rgba(212,175,55,.4)}
-.hero-badge.rural{background:rgba(16,185,129,.2);border-color:rgba(16,185,129,.4)}
-.hero-badge.bundle{background:rgba(139,92,246,.2);border-color:rgba(139,92,246,.4)}
+/* ============ HERO ============ */
+.hero{
+  background:linear-gradient(135deg,var(--corporate-navy) 0%,var(--vibrant-orange-dark) 50%,var(--vibrant-orange) 100%);
+  padding:5rem 2rem 6rem;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-50%;right:-10%;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(255,255,255,.12) 0%,transparent 70%);
+  border-radius:50%;
+}
+.hero::after{
+  content:'';position:absolute;bottom:-30%;left:-5%;
+  width:400px;height:400px;
+  background:radial-gradient(circle,rgba(212,175,55,.15) 0%,transparent 70%);
+  border-radius:50%;
+}
+.hero-container{
+  max-width:1400px;margin:0 auto;
+  display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;
+  align-items:center;position:relative;z-index:1;
+}
+.hero-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);
+  padding:6px 16px;border-radius:20px;
+  color:white;font-size:.78rem;font-weight:600;margin-bottom:1.5rem;
+}
+.hero h1{
+  font-size:3.2rem;color:white;line-height:1.1;margin-bottom:1.2rem;
+}
+.hero h1 .accent{color:var(--harvest-gold)}
+.hero-sub{
+  font-size:1.1rem;color:rgba(255,255,255,.9);
+  margin-bottom:2rem;max-width:580px;line-height:1.7;
+}
+.hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:2rem}
+.hero-badge{
+  background:rgba(255,255,255,.12);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.2);
+  padding:6px 14px;border-radius:10px;
+  color:white;font-size:.78rem;font-weight:600;
+  display:flex;align-items:center;gap:6px;
+}
+.hero-buttons{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
+.hero-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;
+  margin-top:2rem;padding-top:2rem;
+  border-top:1px solid rgba(255,255,255,.15);
+}
+.stat-item{text-align:center}
+.stat-item h3{color:var(--harvest-gold);font-size:1.6rem;font-weight:700;margin-bottom:2px}
+.stat-item p{color:rgba(255,255,255,.85);font-size:.75rem}
 
-/* Section */
+/* Hero Visual — Phone Mockup with App Icon */
+.hero-visual{position:relative;display:flex;justify-content:center;align-items:center}
+.phone-mockup{
+  width:290px;height:580px;
+  background:#1a1a2e;
+  border-radius:40px;border:3px solid #333;
+  padding:12px;
+  box-shadow:0 40px 80px rgba(0,0,0,.5);
+  position:relative;
+  animation:floatPhone 4s ease-in-out infinite;
+}
+@keyframes floatPhone{0%,100%{transform:translateY(0) rotate(3deg)}50%{transform:translateY(-15px) rotate(3deg)}}
+.phone-screen{
+  width:100%;height:100%;
+  background:linear-gradient(180deg,#FFF4EE,#ffffff);
+  border-radius:30px;overflow:hidden;position:relative;
+}
+.phone-notch{
+  width:120px;height:24px;background:#1a1a2e;
+  border-radius:0 0 16px 16px;margin:0 auto;
+  position:relative;z-index:10;
+}
+.phone-app-header{
+  background:linear-gradient(135deg,var(--vibrant-orange),var(--vibrant-orange-dark));
+  padding:14px 16px 18px;color:white;text-align:center;
+}
+.phone-app-header h5{font-size:.9rem;font-weight:700}
+.phone-app-header small{font-size:.68rem;opacity:.9}
+.phone-app-body{padding:12px}
+.phone-progress{
+  background:white;border:1px solid var(--gray-200);
+  border-radius:12px;padding:12px;margin-bottom:10px;
+}
+.phone-progress-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.phone-progress-header strong{font-size:.72rem;color:var(--corporate-navy)}
+.phone-progress-header span{font-size:.65rem;color:var(--vibrant-orange);font-weight:700}
+.progress-bar{height:8px;background:var(--gray-100);border-radius:4px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--vibrant-orange),var(--harvest-gold));border-radius:4px;transition:width .5s ease}
+.phone-subjects{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.phone-subject{
+  background:white;border:1px solid var(--gray-200);
+  border-radius:10px;padding:10px;text-align:center;
+}
+.phone-subject i{font-size:1.2rem;margin-bottom:4px;display:block}
+.phone-subject strong{font-size:.65rem;color:var(--corporate-navy);display:block}
+.phone-subject small{font-size:.58rem;color:var(--gray-400)}
+.phone-quiz-card{
+  background:linear-gradient(135deg,var(--vibrant-orange),var(--vibrant-orange-dark));
+  border-radius:12px;padding:12px;color:white;margin-bottom:10px;
+}
+.phone-quiz-card strong{font-size:.75rem;display:block;margin-bottom:4px}
+.phone-quiz-card small{font-size:.62rem;opacity:.9}
+.phone-quiz-btn{
+  background:white;color:var(--vibrant-orange);border:none;
+  padding:6px 12px;border-radius:6px;font-size:.65rem;
+  font-weight:700;margin-top:6px;cursor:pointer;
+}
+
+/* App icon floating badge */
+.app-icon-float{
+  position:absolute;width:110px;height:110px;
+  border-radius:24px;overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,.4);
+  border:3px solid white;
+  background:white;
+  animation:floatIcon 3s ease-in-out infinite;
+}
+.app-icon-float img{width:100%;height:100%;object-fit:cover}
+.app-icon-float.top-right{top:-20px;right:-40px;animation-delay:0s}
+.app-icon-float.bottom-left{bottom:40px;left:-50px;animation-delay:1.5s}
+@keyframes floatIcon{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+.hero-float{
+  position:absolute;background:white;border-radius:14px;
+  padding:12px 16px;box-shadow:0 15px 40px rgba(0,0,0,.2);
+  animation:float 3s ease-in-out infinite;z-index:2;
+}
+.hero-float-1{top:20px;left:-30px;animation-delay:0s}
+.hero-float-2{bottom:80px;right:-40px;animation-delay:1.5s}
+.hero-float .float-icon{
+  width:32px;height:32px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;margin-bottom:4px;
+}
+.hero-float span{font-size:.72rem;font-weight:700;color:var(--corporate-navy);display:block}
+.hero-float small{font-size:.62rem;color:var(--gray-400)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* ============ TRUST BAR ============ */
+.trust-bar{
+  background:var(--gray-50);
+  padding:2rem;border-bottom:1px solid var(--gray-200);
+}
+.trust-grid{
+  max-width:1400px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem;
+  align-items:center;
+}
+.trust-item{
+  display:flex;align-items:center;gap:10px;
+  color:var(--gray-600);font-size:.82rem;
+}
+.trust-item i{color:var(--vibrant-orange);font-size:1.3rem}
+.trust-item strong{color:var(--corporate-navy);display:block;font-size:.78rem}
+.trust-item small{color:var(--gray-500);font-size:.7rem}
+
+/* ============ SECTIONS ============ */
 .section{padding:5rem 2rem}
-.section-container{max-width:1400px;margin:0 auto}
-.section-header{text-align:center;margin-bottom:3rem}
-.section-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(255,107,53,.08);color:var(--vibrant-orange);padding:6px 14px;border-radius:20px;font-size:.78rem;font-weight:600;margin-bottom:1rem}
-.section-tag.gold{background:rgba(212,175,55,.1);color:var(--harvest-gold)}
-.section-tag.purple{background:rgba(139,92,246,.1);color:var(--ai-purple)}
-.section-tag.emerald{background:rgba(40,164,146,.1);color:var(--ecosystem-emerald)}
+.section-header{text-align:center;margin-bottom:3rem;max-width:800px;margin-left:auto;margin-right:auto}
+.section-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 14px;border-radius:20px;
+  font-size:.78rem;font-weight:600;margin-bottom:1rem;
+}
+.section-tag.orange{background:rgba(255,107,53,.1);color:var(--vibrant-orange)}
 .section-tag.navy{background:rgba(10,46,90,.08);color:var(--corporate-navy)}
-.section-header h2{font-size:2.2rem;color:var(--corporate-navy);margin-bottom:.8rem;letter-spacing:-.02em}
-.section-header p{color:var(--gray-500);font-size:1.05rem;max-width:700px;margin:0 auto}
+.section-tag.gold{background:rgba(212,175,55,.1);color:var(--harvest-gold-dark)}
+.section-tag.emerald{background:rgba(40,164,146,.1);color:var(--ecosystem-emerald)}
+.section-tag.rose{background:rgba(190,24,93,.1);color:var(--accent-rose)}
+.section-tag.cyan{background:rgba(40,169,225,.1);color:var(--market-cyan)}
+.section-header h2{font-size:2.4rem;color:var(--corporate-navy);margin-bottom:.8rem}
+.section-header p{color:var(--gray-500);font-size:1.05rem;line-height:1.7}
 
-/* Access & Equity Section */
-.access-section{background:linear-gradient(135deg,#FFF4EE 0%,#FFFBF0 100%);position:relative;overflow:hidden}
-.access-section::before{content:'';position:absolute;top:-20%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(212,175,55,.08) 0%,transparent 70%);border-radius:50%}
-.access-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:center;position:relative;z-index:1}
-.access-info h2{font-size:2.3rem;color:var(--corporate-navy);margin-bottom:1rem;letter-spacing:-.02em}
-.access-info h2 .accent{background:linear-gradient(135deg,var(--vibrant-orange),var(--harvest-gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.access-info > p{color:var(--gray-600);font-size:1.05rem;margin-bottom:2rem;line-height:1.8}
-.access-benefits{display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem}
-.access-benefit{display:flex;gap:14px;align-items:flex-start;background:#fff;padding:1rem;border-radius:12px;border:1px solid var(--gray-200)}
-.access-benefit-icon{width:44px;height:44px;min-width:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
-.access-benefit h4{font-size:.95rem;color:var(--corporate-navy);margin-bottom:.2rem}
-.access-benefit p{font-size:.82rem;color:var(--gray-500)}
-.access-visual{position:relative}
+/* ============ APP DOWNLOAD ============ */
+.download-section{
+  background:linear-gradient(135deg,#FFF4EE 0%,#FFE8DB 100%);
+  position:relative;overflow:hidden;
+}
+.download-section::before{
+  content:'';position:absolute;top:-20%;right:-10%;
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(255,107,53,.15) 0%,transparent 70%);
+  border-radius:50%;
+}
+.download-grid{
+  max-width:1400px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;
+  align-items:center;position:relative;z-index:1;
+}
+.download-info h2{font-size:2.3rem;color:var(--corporate-navy);margin-bottom:1rem}
+.download-info h2 .accent{
+  background:linear-gradient(135deg,var(--vibrant-orange),var(--harvest-gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.download-info > p{color:var(--gray-600);margin-bottom:2rem;font-size:1.05rem;line-height:1.8}
+.download-buttons{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
+.app-store-btn{
+  display:inline-flex;align-items:center;gap:12px;
+  background:var(--corporate-navy);color:white;
+  padding:14px 24px;border-radius:14px;
+  text-decoration:none;transition:var(--transition);
+  box-shadow:var(--shadow-md);
+}
+.app-store-btn:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.app-store-btn i{font-size:2rem}
+.app-store-btn small{font-size:.7rem;opacity:.8;display:block}
+.app-store-btn strong{font-size:1.05rem;font-weight:700}
+.download-features{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.download-feature{display:flex;gap:10px;align-items:flex-start}
+.download-feature i{color:var(--vibrant-orange);font-size:1.1rem;margin-top:3px}
+.download-feature strong{color:var(--corporate-navy);font-size:.85rem;display:block;margin-bottom:2px}
+.download-feature small{color:var(--gray-500);font-size:.75rem;line-height:1.4}
 
-/* Verification Card */
-.verify-card{background:#fff;border-radius:var(--radius-lg);padding:2rem;box-shadow:var(--shadow-lg);border:1px solid var(--gray-200)}
-.verify-header{text-align:center;margin-bottom:1.5rem}
-.verify-icon{width:72px;height:72px;margin:0 auto 1rem;background:linear-gradient(135deg,var(--harvest-gold),#b8961f);border-radius:20px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:2rem;box-shadow:0 10px 30px rgba(212,175,55,.3)}
-.verify-header h3{color:var(--corporate-navy);font-size:1.3rem;margin-bottom:.3rem}
-.verify-header p{color:var(--gray-500);font-size:.88rem}
-.verify-steps{display:flex;flex-direction:column;gap:.8rem;margin-bottom:1.5rem}
-.verify-step{display:flex;gap:12px;align-items:center;padding:12px;background:var(--gray-50);border-radius:10px;border-left:3px solid var(--harvest-gold)}
-.verify-step-num{width:28px;height:28px;min-width:28px;border-radius:50%;background:var(--harvest-gold);color:var(--corporate-navy);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem}
-.verify-step-text{font-size:.82rem;color:var(--gray-600);line-height:1.4}
-.verify-step-text strong{color:var(--corporate-navy);display:block;margin-bottom:2px}
-.verify-btn{width:100%;padding:14px;font-size:.95rem;justify-content:center}
-.verify-trust{display:flex;justify-content:center;gap:1.2rem;margin-top:1rem;flex-wrap:wrap}
-.verify-trust-item{display:flex;align-items:center;gap:6px;font-size:.72rem;color:var(--gray-500)}
-.verify-trust-item i{color:var(--success)}
+.download-visual{display:flex;justify-content:center;align-items:center;position:relative}
+.download-phone-stack{position:relative;width:320px;height:560px}
+.download-phone-stack .phone-mockup{position:absolute;top:0;left:20px;z-index:2}
+.download-app-icon-large{
+  position:absolute;bottom:20px;right:-20px;z-index:3;
+  width:140px;height:140px;border-radius:30px;
+  overflow:hidden;border:4px solid white;
+  box-shadow:0 20px 50px rgba(0,0,0,.3);
+  background:white;
+  animation:floatIcon 3s ease-in-out infinite;
+}
+.download-app-icon-large img{width:100%;height:100%;object-fit:cover}
+.download-qr{
+  position:absolute;top:-30px;left:-50px;z-index:3;
+  background:white;padding:16px;border-radius:16px;
+  box-shadow:0 15px 40px rgba(0,0,0,.2);
+  text-align:center;
+}
+.download-qr .qr-box{
+  width:100px;height:100px;
+  background:repeating-conic-gradient(var(--corporate-navy) 0% 25%, white 0% 50%) 50% / 10px 10px;
+  border-radius:8px;margin-bottom:6px;
+}
+.download-qr small{font-size:.7rem;color:var(--gray-500);font-weight:600}
 
-/* Package Bundles Section */
-.bundles-section{background:#fff}
-.bundles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1200px;margin:0 auto}
-.bundle-card{background:#fff;border-radius:var(--radius-lg);padding:2rem;border:2px solid var(--gray-200);transition:var(--transition);position:relative;overflow:hidden}
-.bundle-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
-.bundle-card.featured{border-color:var(--vibrant-orange);background:linear-gradient(180deg,rgba(255,107,53,.03),#fff);transform:scale(1.03)}
-.bundle-card.featured:hover{transform:scale(1.03) translateY(-5px)}
-.bundle-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--vibrant-orange),var(--vibrant-orange-dark));color:#fff;padding:5px 18px;border-radius:20px;font-size:.72rem;font-weight:700;white-space:nowrap}
-.bundle-badge.scholar{background:linear-gradient(135deg,var(--harvest-gold),#b8961f);color:var(--corporate-navy)}
-.bundle-badge.ultimate{background:linear-gradient(135deg,var(--ai-purple),#6d28d9)}
-.bundle-icon{width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1rem}
-.bundle-card h3{font-size:1.3rem;color:var(--corporate-navy);margin-bottom:.3rem}
-.bundle-tagline{font-size:.85rem;color:var(--gray-500);margin-bottom:1.5rem}
-.bundle-pricing{margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px dashed var(--gray-200)}
-.bundle-price-original{font-size:.9rem;color:var(--gray-400);text-decoration:line-through;margin-bottom:.2rem}
-.bundle-price{font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:700;color:var(--corporate-navy)}
-.bundle-price span{font-size:1rem;font-weight:500;color:var(--gray-400)}
-.bundle-save{display:inline-block;background:rgba(16,185,129,.1);color:var(--success);padding:4px 10px;border-radius:8px;font-size:.75rem;font-weight:700;margin-top:.5rem}
-.bundle-features{list-style:none;margin-bottom:1.5rem}
-.bundle-features li{padding:.5rem 0;font-size:.85rem;color:var(--gray-600);display:flex;align-items:flex-start;gap:10px;line-height:1.5}
-.bundle-features li i{color:var(--success);margin-top:3px;flex-shrink:0}
-.bundle-features li.highlight{color:var(--corporate-navy);font-weight:600}
-.bundle-features li.highlight i{color:var(--vibrant-orange)}
-.bundle-source{display:flex;align-items:center;gap:6px;padding:8px 12px;background:var(--gray-50);border-radius:8px;font-size:.72rem;color:var(--gray-600);margin-bottom:1rem}
-.bundle-source i{color:var(--market-cyan)}
-.bundle-source strong{color:var(--corporate-navy)}
-.bundle-btn{width:100%;padding:14px;font-size:.95rem;justify-content:center}
+/* ============ EXAM PREP FEATURES ============ */
+.exam-section{background:white}
+.exam-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;
+}
+.exam-card{
+  background:white;border:1px solid var(--gray-200);
+  border-radius:var(--radius-lg);padding:2rem;
+  transition:var(--transition);position:relative;overflow:hidden;
+}
+.exam-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--vibrant-orange)}
+.exam-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--vibrant-orange),var(--harvest-gold));
+  transform:scaleX(0);transform-origin:left;transition:transform .3s;
+}
+.exam-card:hover::before{transform:scaleX(1)}
+.exam-icon{
+  width:56px;height:56px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;margin-bottom:1.2rem;
+  background:rgba(255,107,53,.08);color:var(--vibrant-orange);
+}
+.exam-card:nth-child(2) .exam-icon{background:rgba(10,46,90,.08);color:var(--corporate-navy)}
+.exam-card:nth-child(3) .exam-icon{background:rgba(212,175,55,.1);color:var(--harvest-gold-dark)}
+.exam-card:nth-child(4) .exam-icon{background:rgba(40,169,225,.1);color:var(--market-cyan)}
+.exam-card:nth-child(5) .exam-icon{background:rgba(40,164,146,.1);color:var(--ecosystem-emerald)}
+.exam-card:nth-child(6) .exam-icon{background:rgba(190,24,93,.1);color:var(--accent-rose)}
+.exam-card h3{font-size:1.1rem;color:var(--corporate-navy);margin-bottom:.5rem}
+.exam-card > p{font-size:.88rem;color:var(--gray-500);line-height:1.6}
 
-/* Tutor Marketplace Section */
+/* ============ MULTILINGUAL ============ */
+.multilingual-section{
+  background:linear-gradient(135deg,var(--corporate-navy) 0%,var(--corporate-navy-light) 100%);
+  color:white;
+}
+.multilingual-section .section-header h2{color:white}
+.multilingual-section .section-header p{color:rgba(255,255,255,.8)}
+.multilingual-section .section-tag{background:rgba(212,175,55,.15);color:var(--harvest-gold)}
+.multilingual-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;
+  align-items:center;max-width:1400px;margin:0 auto;
+}
+.multilingual-info h2{font-size:2.2rem;color:white;margin-bottom:1rem}
+.multilingual-info h2 .accent{color:var(--harvest-gold)}
+.multilingual-info > p{color:rgba(255,255,255,.85);margin-bottom:2rem;font-size:1.05rem;line-height:1.8}
+.language-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2rem}
+.language-chip{
+  background:rgba(255,255,255,.1);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.2);
+  padding:8px 14px;border-radius:12px;
+  color:white;font-size:.82rem;font-weight:600;
+  transition:var(--transition);cursor:pointer;
+}
+.language-chip:hover{background:var(--vibrant-orange);border-color:var(--vibrant-orange);transform:translateY(-2px)}
+.language-chip.active{background:var(--vibrant-orange);border-color:var(--vibrant-orange)}
+
+.multilingual-demo{
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:var(--radius-xl);
+  padding:2rem;
+}
+.demo-header{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:1.2rem;padding-bottom:1rem;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+.demo-header h4{color:white;font-size:1rem}
+.demo-lang{
+  padding:4px 10px;border-radius:8px;
+  background:rgba(212,175,55,.2);color:var(--harvest-gold);
+  font-size:.7rem;font-weight:700;
+}
+.demo-question{
+  background:rgba(255,255,255,.05);
+  border-radius:12px;padding:1rem;margin-bottom:1rem;
+  color:rgba(255,255,255,.9);font-size:.88rem;line-height:1.6;
+}
+.demo-question strong{color:var(--harvest-gold);display:block;margin-bottom:6px;font-size:.75rem}
+.demo-translation{
+  background:rgba(255,107,53,.1);
+  border-left:3px solid var(--vibrant-orange);
+  border-radius:0 12px 12px 0;padding:1rem;
+  font-size:.85rem;color:rgba(255,255,255,.9);line-height:1.6;
+}
+.demo-translation strong{color:var(--vibrant-orange);display:block;margin-bottom:4px;font-size:.72rem}
+
+/* ============ TUTORS ============ */
 .tutors-section{background:var(--gray-50)}
-.tutors-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem;margin-bottom:2rem}
-.tutor-card{background:#fff;border-radius:var(--radius);padding:1.3rem;border:1px solid var(--gray-200);transition:var(--transition)}
-.tutor-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:var(--vibrant-orange)}
-.tutor-header{display:flex;gap:12px;align-items:center;margin-bottom:1rem}
-.tutor-avatar{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1rem;flex-shrink:0}
-.tutor-info h4{font-size:.95rem;color:var(--corporate-navy);margin-bottom:2px}
-.tutor-info small{font-size:.75rem;color:var(--gray-400);display:block}
-.tutor-rating{margin-left:auto;display:flex;align-items:center;gap:4px;font-size:.78rem;color:var(--harvest-gold);font-weight:600}
-.tutor-source-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:6px;font-size:.62rem;font-weight:700;margin-bottom:.8rem}
-.tutor-source-badge.studentmart{background:rgba(40,169,225,.1);color:var(--market-cyan)}
-.tutor-source-badge.frictionless{background:rgba(139,92,246,.1);color:var(--ai-purple)}
-.tutor-subjects{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem}
-.tutor-subject-tag{background:rgba(255,107,53,.1);color:var(--vibrant-orange);padding:3px 10px;border-radius:12px;font-size:.7rem;font-weight:600}
-.tutor-special{background:linear-gradient(135deg,rgba(212,175,55,.1),rgba(255,107,53,.1));border:1px solid rgba(212,175,55,.3);padding:8px 10px;border-radius:8px;margin-bottom:1rem;display:flex;align-items:center;gap:6px;font-size:.72rem;color:var(--corporate-navy)}
+.tutor-models{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+  margin-bottom:3rem;
+}
+.tutor-model-card{
+  background:white;border:2px solid var(--gray-200);
+  border-radius:var(--radius-lg);padding:2rem;
+  transition:var(--transition);position:relative;
+}
+.tutor-model-card:hover{border-color:var(--vibrant-orange);box-shadow:var(--shadow-lg);transform:translateY(-5px)}
+.tutor-model-card.featured{border-color:var(--vibrant-orange);box-shadow:var(--shadow-lg);transform:scale(1.02)}
+.tutor-model-card.featured:hover{transform:scale(1.02) translateY(-5px)}
+.model-badge{
+  position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+  background:linear-gradient(135deg,var(--vibrant-orange),var(--vibrant-orange-dark));
+  color:white;padding:5px 14px;border-radius:12px;
+  font-size:.7rem;font-weight:700;
+}
+.tutor-model-icon{
+  width:60px;height:60px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;margin-bottom:1rem;color:white;
+}
+.tutor-model-card:nth-child(1) .tutor-model-icon{background:linear-gradient(135deg,var(--vibrant-orange),var(--vibrant-orange-dark))}
+.tutor-model-card:nth-child(2) .tutor-model-icon{background:linear-gradient(135deg,var(--corporate-navy),var(--corporate-navy-light))}
+.tutor-model-card:nth-child(3) .tutor-model-icon{background:linear-gradient(135deg,var(--harvest-gold),var(--harvest-gold-dark));color:var(--corporate-navy)}
+.tutor-model-card h3{font-size:1.25rem;color:var(--corporate-navy);margin-bottom:.3rem}
+.tutor-model-card .model-subtitle{color:var(--gray-500);font-size:.85rem;margin-bottom:1.2rem}
+.tutor-model-price{
+  font-size:2rem;font-weight:700;color:var(--corporate-navy);
+  font-family:'Space Grotesk',sans-serif;margin-bottom:.3rem;
+}
+.tutor-model-price span{font-size:.9rem;font-weight:500;color:var(--gray-500)}
+.tutor-model-price-note{font-size:.75rem;color:var(--gray-500);margin-bottom:1.2rem}
+.tutor-model-features{list-style:none;margin-bottom:1.5rem}
+.tutor-model-features li{
+  padding:.4rem 0;font-size:.85rem;color:var(--gray-600);
+  display:flex;align-items:flex-start;gap:8px;
+}
+.tutor-model-features li i{color:var(--success);margin-top:3px;flex-shrink:0}
+
+/* Tutor Cards */
+.tutors-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem;
+  margin-top:2rem;
+}
+.tutor-card{
+  background:white;border:1px solid var(--gray-200);
+  border-radius:var(--radius-lg);padding:1.3rem;
+  transition:var(--transition);position:relative;
+}
+.tutor-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--vibrant-orange)}
+.tutor-source{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:3px 10px;border-radius:8px;
+  font-size:.65rem;font-weight:700;margin-bottom:.8rem;
+}
+.tutor-source.studentmart{background:rgba(40,169,225,.1);color:var(--market-cyan)}
+.tutor-source.frictionless{background:rgba(190,24,93,.1);color:var(--accent-rose)}
+.tutor-source.mental{background:rgba(40,164,146,.1);color:var(--ecosystem-emerald)}
+.tutor-header{display:flex;gap:12px;align-items:center;margin-bottom:.8rem}
+.tutor-avatar{
+  width:56px;height:56px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:white;font-weight:700;font-size:1.1rem;flex-shrink:0;
+}
+.tutor-info h4{color:var(--corporate-navy);font-size:1rem;margin-bottom:2px}
+.tutor-info small{color:var(--gray-400);font-size:.75rem;display:block}
+.tutor-rating{
+  display:flex;align-items:center;gap:4px;
+  font-size:.78rem;color:var(--harvest-gold);font-weight:600;
+  margin-left:auto;
+}
+.tutor-subjects{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:.8rem}
+.tutor-subject-tag{
+  padding:3px 10px;border-radius:12px;font-size:.7rem;font-weight:600;
+  background:rgba(255,107,53,.1);color:var(--vibrant-orange);
+}
+.tutor-special{
+  background:linear-gradient(135deg,rgba(212,175,55,.1),rgba(255,107,53,.1));
+  border:1px solid rgba(212,175,55,.3);
+  padding:8px 10px;border-radius:8px;margin-bottom:.8rem;
+  display:flex;align-items:center;gap:6px;
+  font-size:.72rem;color:var(--corporate-navy);
+}
 .tutor-special i{color:var(--harvest-gold)}
-.tutor-footer{display:flex;justify-content:space-between;align-items:center;padding-top:.8rem;border-top:1px solid var(--gray-100)}
-.tutor-price{font-size:1.1rem;font-weight:700;color:var(--vibrant-orange)}
-.tutor-price-original{font-size:.75rem;color:var(--gray-400);text-decoration:line-through;display:block}
-.tutor-book-btn{padding:8px 16px;font-size:.78rem}
+.tutor-modes{display:flex;gap:6px;margin-bottom:.8rem;flex-wrap:wrap}
+.tutor-mode{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:3px 8px;border-radius:6px;font-size:.68rem;font-weight:600;
+  background:var(--gray-100);color:var(--gray-600);
+}
+.tutor-mode i{font-size:.7rem}
+.tutor-footer{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:.8rem;border-top:1px solid var(--gray-100);
+}
+.tutor-price{font-size:1.05rem;font-weight:700;color:var(--vibrant-orange);font-family:'Space Grotesk',sans-serif}
+.tutor-price small{font-size:.7rem;color:var(--gray-400);display:block}
 
-/* Career Advice Section */
-.career-section{background:linear-gradient(135deg,var(--corporate-navy) 0%,var(--corporate-navy-light) 100%);color:#fff;position:relative;overflow:hidden}
-.career-section::before{content:'';position:absolute;top:-30%;right:-15%;width:600px;height:600px;background:radial-gradient(circle,rgba(139,92,246,.15) 0%,transparent 70%);border-radius:50%}
-.career-container{max-width:1400px;margin:0 auto;position:relative;z-index:1}
-.career-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;align-items:center}
-.career-info .section-tag{background:rgba(139,92,246,.2);color:#c4b5fd}
-.career-info h2{color:#fff;font-size:2.3rem;margin-bottom:1rem;letter-spacing:-.02em}
-.career-info h2 .accent{color:var(--harvest-gold)}
-.career-info > p{color:rgba(255,255,255,.8);font-size:1.05rem;margin-bottom:2rem;line-height:1.8}
-.career-services{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.career-service{background:rgba(255,255,255,.05);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.1);padding:1.2rem;border-radius:14px;transition:var(--transition)}
-.career-service:hover{background:rgba(255,255,255,.08);border-color:rgba(212,175,55,.3);transform:translateY(-3px)}
-.career-service-icon{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;margin-bottom:.8rem}
-.career-service h4{font-size:.95rem;color:#fff;margin-bottom:.3rem}
-.career-service p{font-size:.78rem;color:rgba(255,255,255,.7);line-height:1.5;margin-bottom:.6rem}
-.career-service-price{display:flex;justify-content:space-between;align-items:center;padding-top:.6rem;border-top:1px solid rgba(255,255,255,.1)}
-.career-service-price strong{color:var(--harvest-gold);font-size:1rem}
-.career-service-price small{color:rgba(255,255,255,.5);font-size:.7rem}
+/* ============ BOOTCAMPS ============ */
+.bootcamp-section{
+  background:linear-gradient(135deg,var(--vibrant-orange-dark) 0%,var(--vibrant-orange) 100%);
+  color:white;position:relative;overflow:hidden;
+}
+.bootcamp-section::before{
+  content:'';position:absolute;top:-30%;right:-15%;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(255,255,255,.1) 0%,transparent 70%);
+  border-radius:50%;
+}
+.bootcamp-section .section-header h2{color:white}
+.bootcamp-section .section-header p{color:rgba(255,255,255,.9)}
+.bootcamp-section .section-tag{background:rgba(255,255,255,.15);color:white}
+.bootcamp-container{max-width:1400px;margin:0 auto;position:relative;z-index:1}
+.bootcamp-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;
+  margin-top:2rem;
+}
+.bootcamp-card{
+  background:rgba(255,255,255,.1);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:var(--radius-xl);padding:2.5rem;
+  transition:var(--transition);position:relative;overflow:hidden;
+}
+.bootcamp-card:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);transform:translateY(-5px)}
+.bootcamp-badge{
+  display:inline-block;padding:4px 12px;border-radius:8px;
+  font-size:.7rem;font-weight:700;margin-bottom:1rem;
+  background:rgba(255,255,255,.2);color:white;
+}
+.bootcamp-badge.school{background:var(--corporate-navy);color:var(--harvest-gold)}
+.bootcamp-badge.tertiary{background:var(--harvest-gold);color:var(--corporate-navy)}
+.bootcamp-card h3{color:white;font-size:1.5rem;margin-bottom:.5rem}
+.bootcamp-card > p{color:rgba(255,255,255,.9);margin-bottom:1.5rem;line-height:1.7}
+.bootcamp-features{list-style:none;margin-bottom:1.5rem}
+.bootcamp-features li{
+  padding:.4rem 0;font-size:.88rem;color:rgba(255,255,255,.9);
+  display:flex;align-items:flex-start;gap:8px;
+}
+.bootcamp-features li i{color:var(--harvest-gold);margin-top:3px;flex-shrink:0}
+.bootcamp-meta{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;
+  padding:1.2rem 0;border-top:1px solid rgba(255,255,255,.2);
+  border-bottom:1px solid rgba(255,255,255,.2);margin-bottom:1.5rem;
+}
+.bootcamp-meta-item{text-align:center}
+.bootcamp-meta-item strong{display:block;color:white;font-size:1.1rem;font-family:'Space Grotesk',sans-serif}
+.bootcamp-meta-item small{color:rgba(255,255,255,.8);font-size:.7rem}
 
-/* Advisor Cards */
-.advisors-showcase{display:flex;flex-direction:column;gap:1rem}
-.advisor-card{background:rgba(255,255,255,.05);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.1);padding:1.3rem;border-radius:14px;display:flex;gap:14px;align-items:center;transition:var(--transition)}
-.advisor-card:hover{background:rgba(255,255,255,.08);border-color:rgba(212,175,55,.3)}
-.advisor-avatar{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.1rem;flex-shrink:0}
-.advisor-info{flex:1}
-.advisor-info h4{color:#fff;font-size:.95rem;margin-bottom:2px}
-.advisor-info small{color:rgba(255,255,255,.6);font-size:.75rem;display:block;margin-bottom:4px}
-.advisor-info .speciality{font-size:.72rem;color:var(--harvest-gold)}
-.advisor-source{display:inline-block;padding:2px 8px;border-radius:5px;font-size:.62rem;font-weight:700;margin-top:6px}
-.advisor-source.fl{background:rgba(139,92,246,.2);color:#c4b5fd}
-.advisor-source.sm{background:rgba(40,169,225,.2);color:var(--market-cyan)}
-.advisor-price{text-align:right}
-.advisor-price strong{color:var(--harvest-gold);font-size:1.1rem;display:block}
-.advisor-price small{color:rgba(255,255,255,.5);font-size:.7rem}
+/* ============ ECOSYSTEM INTEGRATIONS ============ */
+.ecosystem-section{background:white}
+.ecosystem-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+  margin-top:2rem;
+}
+.ecosystem-card{
+  background:white;border:1px solid var(--gray-200);
+  border-radius:var(--radius-lg);padding:2rem;
+  transition:var(--transition);position:relative;overflow:hidden;
+}
+.ecosystem-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+.ecosystem-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--card-accent,var(--ecosystem-emerald));
+}
+.ecosystem-card.frictionless{--card-accent:var(--accent-rose)}
+.ecosystem-card.mental{--card-accent:var(--ecosystem-emerald)}
+.ecosystem-card.mart{--card-accent:var(--market-cyan)}
+.ecosystem-icon{
+  width:56px;height:56px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;margin-bottom:1.2rem;color:white;
+}
+.ecosystem-card.frictionless .ecosystem-icon{background:linear-gradient(135deg,var(--accent-rose),#9D174D)}
+.ecosystem-card.mental .ecosystem-icon{background:linear-gradient(135deg,var(--ecosystem-emerald),#1f7a6a)}
+.ecosystem-card.mart .ecosystem-icon{background:linear-gradient(135deg,var(--market-cyan),var(--market-cyan-dark))}
+.ecosystem-layer{
+  font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+  color:var(--gray-400);margin-bottom:.5rem;
+}
+.ecosystem-card h3{color:var(--corporate-navy);font-size:1.2rem;margin-bottom:.5rem}
+.ecosystem-card > p{color:var(--gray-500);font-size:.88rem;line-height:1.6;margin-bottom:1.2rem}
+.ecosystem-stats{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;
+  margin-bottom:1rem;
+}
+.ecosystem-stat{
+  background:var(--gray-50);padding:.6rem;border-radius:8px;text-align:center;
+}
+.ecosystem-stat strong{display:block;color:var(--corporate-navy);font-size:1rem;font-family:'Space Grotesk',sans-serif}
+.ecosystem-stat small{font-size:.65rem;color:var(--gray-500)}
 
-/* Coupon Modal */
-.modal-overlay{position:fixed;inset:0;background:rgba(10,46,90,.75);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:2000;padding:1rem}
+/* ============ SUBJECTS ============ */
+.subjects-section{background:var(--gray-50)}
+.subjects-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;
+  margin-top:2rem;
+}
+.subject-card{
+  background:white;border:1px solid var(--gray-200);
+  border-radius:var(--radius);padding:1.5rem;text-align:center;
+  transition:var(--transition);cursor:pointer;
+}
+.subject-card:hover{border-color:var(--vibrant-orange);transform:translateY(-5px);box-shadow:var(--shadow-md)}
+.subject-icon{
+  width:52px;height:52px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;margin:0 auto .8rem;
+  background:rgba(255,107,53,.08);color:var(--vibrant-orange);
+}
+.subject-card h4{color:var(--corporate-navy);font-size:.9rem;margin-bottom:.3rem}
+.subject-card small{color:var(--gray-500);font-size:.72rem}
+
+/* ============ PRICING ============ */
+.pricing-section{background:white}
+.pricing-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+  margin-top:2rem;
+}
+.pricing-card{
+  background:white;border:2px solid var(--gray-200);
+  border-radius:var(--radius-xl);padding:2rem;
+  transition:var(--transition);position:relative;
+}
+.pricing-card:hover{border-color:var(--vibrant-orange);box-shadow:var(--shadow-lg);transform:translateY(-5px)}
+.pricing-card.featured{border-color:var(--vibrant-orange);box-shadow:var(--shadow-lg);transform:scale(1.02)}
+.pricing-card.featured:hover{transform:scale(1.02) translateY(-5px)}
+.pricing-badge{
+  position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+  background:linear-gradient(135deg,var(--vibrant-orange),var(--vibrant-orange-dark));
+  color:white;padding:5px 16px;border-radius:12px;
+  font-size:.72rem;font-weight:700;
+}
+.pricing-icon{
+  width:60px;height:60px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;margin-bottom:1rem;color:white;
+}
+.pricing-card:nth-child(1) .pricing-icon{background:linear-gradient(135deg,var(--success),#059669)}
+.pricing-card:nth-child(2) .pricing-icon{background:linear-gradient(135deg,var(--vibrant-orange),var(--vibrant-orange-dark))}
+.pricing-card:nth-child(3) .pricing-icon{background:linear-gradient(135deg,var(--corporate-navy),var(--corporate-navy-light))}
+.pricing-card h3{color:var(--corporate-navy);font-size:1.3rem;margin-bottom:.3rem}
+.pricing-card .subtitle{color:var(--gray-500);font-size:.85rem;margin-bottom:1.2rem}
+.pricing-price{
+  font-size:2.2rem;font-weight:700;color:var(--corporate-navy);
+  font-family:'Space Grotesk',sans-serif;margin-bottom:.3rem;
+}
+.pricing-price span{font-size:.9rem;font-weight:500;color:var(--gray-500)}
+.pricing-note{font-size:.75rem;color:var(--gray-500);margin-bottom:1.5rem}
+.pricing-features{list-style:none;margin-bottom:1.5rem}
+.pricing-features li{
+  padding:.4rem 0;font-size:.82rem;color:var(--gray-600);
+  display:flex;align-items:flex-start;gap:8px;
+}
+.pricing-features li i{color:var(--success);margin-top:3px;flex-shrink:0}
+
+/* Bursary banner */
+.bursary-banner{
+  background:linear-gradient(135deg,var(--corporate-navy),var(--vibrant-orange-dark));
+  border-radius:var(--radius-lg);padding:2rem;
+  margin-top:3rem;color:white;
+  display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;
+}
+.bursary-banner h3{color:white;font-size:1.3rem;margin-bottom:.3rem}
+.bursary-banner p{color:rgba(255,255,255,.85);font-size:.88rem;line-height:1.6}
+.bursary-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:.8rem}
+.bursary-badge{
+  background:rgba(255,255,255,.15);padding:4px 10px;border-radius:8px;
+  font-size:.7rem;font-weight:600;
+}
+
+/* ============ SUCCESS STORIES ============ */
+.stories-section{background:var(--gray-50)}
+.stories-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;
+  margin-top:2rem;
+}
+.story-card{
+  background:white;border:1px solid var(--gray-200);
+  border-radius:var(--radius-lg);padding:2rem;
+  transition:var(--transition);position:relative;
+}
+.story-card:hover{border-color:var(--vibrant-orange);box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.story-card::before{
+  content:'"';position:absolute;top:.5rem;left:1.5rem;
+  font-size:4rem;color:var(--vibrant-orange);opacity:.15;
+  font-family:Georgia,serif;line-height:1;
+}
+.story-stars{color:var(--harvest-gold);margin-bottom:.8rem;font-size:.9rem}
+.story-result{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(16,185,129,.1);color:var(--success);
+  padding:4px 10px;border-radius:8px;
+  font-size:.72rem;font-weight:700;margin-bottom:.8rem;
+}
+.story-card > p{font-size:.92rem;color:var(--gray-600);line-height:1.7;margin-bottom:1.2rem;font-style:italic}
+.story-author{display:flex;align-items:center;gap:12px}
+.story-avatar{
+  width:48px;height:48px;border-radius:50%;
+  background:linear-gradient(135deg,var(--vibrant-orange),var(--harvest-gold));
+  display:flex;align-items:center;justify-content:center;
+  color:var(--corporate-navy);font-weight:700;font-size:.9rem;
+}
+.story-author h4{color:var(--corporate-navy);font-size:.9rem;margin-bottom:2px}
+.story-author small{color:var(--gray-500);font-size:.75rem}
+
+/* ============ FAQ ============ */
+.faq-section{background:white}
+.faq-container{max-width:900px;margin:0 auto}
+.faq-item{
+  background:white;border:1px solid var(--gray-200);
+  border-radius:var(--radius);margin-bottom:.8rem;
+  overflow:hidden;transition:var(--transition);
+}
+.faq-item.active{border-color:var(--vibrant-orange);box-shadow:var(--shadow-sm)}
+.faq-question{
+  padding:1.2rem 1.5rem;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  font-weight:600;color:var(--corporate-navy);font-size:.95rem;
+}
+.faq-question i{color:var(--vibrant-orange);transition:transform .3s;flex-shrink:0}
+.faq-item.active .faq-question i{transform:rotate(180deg)}
+.faq-answer{
+  max-height:0;overflow:hidden;transition:max-height .3s ease;
+  padding:0 1.5rem;
+}
+.faq-item.active .faq-answer{max-height:500px;padding:0 1.5rem 1.2rem}
+.faq-answer p{color:var(--gray-600);font-size:.88rem;line-height:1.7}
+
+/* ============ CTA ============ */
+.cta-section{
+  background:linear-gradient(135deg,var(--corporate-navy) 0%,var(--vibrant-orange-dark) 100%);
+  padding:5rem 2rem;text-align:center;position:relative;overflow:hidden;
+}
+.cta-section::before{
+  content:'';position:absolute;top:-50%;right:-20%;
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(212,175,55,.2) 0%,transparent 70%);
+  border-radius:50%;
+}
+.cta-container{max-width:700px;margin:0 auto;position:relative;z-index:1}
+.cta-section h2{color:white;font-size:2.4rem;margin-bottom:1rem}
+.cta-section h2 .accent{color:var(--harvest-gold)}
+.cta-section p{color:rgba(255,255,255,.9);font-size:1.05rem;margin-bottom:2.5rem}
+.cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.cta-note{margin-top:2rem;font-size:.82rem;color:rgba(255,255,255,.7)}
+
+/* ============ FOOTER ============ */
+.footer{background:var(--corporate-navy-dark);padding:4rem 2rem 2rem;color:white}
+.footer-container{max-width:1400px;margin:0 auto}
+.footer-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:3rem;margin-bottom:3rem;
+}
+.footer-brand p{color:rgba(255,255,255,.6);font-size:.85rem;line-height:1.7;margin-top:1rem}
+.footer-eco-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,107,53,.1);border:1px solid rgba(255,107,53,.2);
+  padding:6px 12px;border-radius:8px;color:var(--vibrant-orange);
+  font-size:.72rem;font-weight:600;margin-top:1rem;
+}
+.footer-reggie{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:.8rem}
+.footer-social{display:flex;gap:8px;margin-top:1.2rem}
+.footer-social a{
+  width:36px;height:36px;border-radius:10px;
+  background:rgba(255,255,255,.05);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.6);text-decoration:none;transition:var(--transition);
+}
+.footer-social a:hover{background:var(--vibrant-orange);color:white;transform:translateY(-3px)}
+.footer h4{color:white;font-size:.95rem;margin-bottom:1.2rem}
+.footer ul{list-style:none}
+.footer ul li{margin-bottom:.6rem}
+.footer ul a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem;transition:var(--transition)}
+.footer ul a:hover{color:var(--vibrant-orange)}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.08);padding-top:2rem;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
+}
+.footer-bottom p{color:rgba(255,255,255,.4);font-size:.8rem}
+.footer-bottom a{color:rgba(255,255,255,.4);text-decoration:none}
+.footer-bottom a:hover{color:var(--vibrant-orange)}
+.sa-flag{display:inline-flex;gap:2px;margin-left:6px}
+.sa-flag span{width:12px;height:8px;display:inline-block;border-radius:1px}
+
+/* ============ MODAL ============ */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(10,46,90,.75);
+  backdrop-filter:blur(8px);display:none;
+  align-items:center;justify-content:center;
+  z-index:2000;padding:1rem;
+}
 .modal-overlay.active{display:flex}
-.modal{background:#fff;border-radius:var(--radius-lg);padding:2rem;max-width:520px;width:100%;max-height:90vh;overflow-y:auto;position:relative;animation:modalIn .3s ease}
+.modal{
+  background:white;border-radius:var(--radius-xl);
+  padding:2.5rem;max-width:600px;width:100%;
+  max-height:90vh;overflow-y:auto;
+  position:relative;animation:modalIn .3s ease;
+}
 @keyframes modalIn{from{opacity:0;transform:scale(.9) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
-.modal-close{position:absolute;top:1rem;right:1rem;width:36px;height:36px;border-radius:50%;border:none;background:var(--gray-50);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--gray-600);transition:var(--transition)}
+.modal-close{
+  position:absolute;top:1rem;right:1rem;
+  width:36px;height:36px;border-radius:50%;border:none;
+  background:var(--gray-100);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;color:var(--gray-600);
+}
 .modal-close:hover{background:#fee;color:#e74c3c}
-.modal h2{font-size:1.4rem;color:var(--corporate-navy);margin-bottom:.4rem}
+.modal h2{color:var(--corporate-navy);font-size:1.5rem;margin-bottom:.3rem}
 .modal > p{color:var(--gray-500);margin-bottom:1.5rem;font-size:.9rem}
-
-/* Form */
 .form-group{margin-bottom:1.2rem}
 .form-group label{display:block;margin-bottom:.4rem;font-weight:600;font-size:.85rem;color:var(--corporate-navy)}
-.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:2px solid var(--gray-200);border-radius:12px;font-size:.9rem;transition:var(--transition);font-family:inherit}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--vibrant-orange);outline:none;box-shadow:0 0 0 4px rgba(255,107,53,.1)}
-.form-group small{display:block;margin-top:4px;font-size:.72rem;color:var(--gray-500)}
+.form-group input,.form-group select,.form-group textarea{
+  width:100%;padding:11px 14px;
+  border:2px solid var(--gray-200);border-radius:12px;
+  font-size:.9rem;transition:var(--transition);font-family:inherit;
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{
+  border-color:var(--vibrant-orange);outline:none;
+  box-shadow:0 0 0 4px rgba(255,107,53,.1);
+}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
-.checkbox-group{display:flex;align-items:flex-start;gap:8px;padding:12px;background:var(--gray-50);border-radius:10px;cursor:pointer;transition:var(--transition)}
-.checkbox-group:hover{background:var(--gray-100)}
-.checkbox-group input{margin-top:3px;width:auto}
-.checkbox-group label{margin:0;cursor:pointer;font-weight:500;font-size:.82rem}
-.checkbox-group label small{display:block;color:var(--gray-500);font-weight:400;margin-top:2px}
+.popia-notice{
+  background:rgba(255,107,53,.05);border:1px solid rgba(255,107,53,.2);
+  padding:12px;border-radius:10px;font-size:.75rem;color:var(--gray-600);
+  margin-top:1rem;display:flex;gap:8px;align-items:flex-start;
+}
+.popia-notice i{color:var(--vibrant-orange);margin-top:2px;flex-shrink:0}
 
-/* Coupon Display */
-.coupon-result{text-align:center;padding:2rem 1rem}
-.coupon-success-icon{width:80px;height:80px;margin:0 auto 1rem;background:linear-gradient(135deg,var(--success),#059669);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:2.5rem;animation:successPop .5s ease}
-@keyframes successPop{0%{transform:scale(0)}50%{transform:scale(1.2)}100%{transform:scale(1)}}
-.coupon-code-box{background:linear-gradient(135deg,var(--corporate-navy),var(--corporate-navy-light));color:#fff;padding:1.5rem;border-radius:14px;margin:1.5rem 0;position:relative;overflow:hidden}
-.coupon-code-box::before{content:'';position:absolute;top:-20px;right:-20px;width:80px;height:80px;background:radial-gradient(circle,rgba(212,175,55,.3) 0%,transparent 70%);border-radius:50%}
-.coupon-code-label{font-size:.75rem;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem}
-.coupon-code{font-family:'Space Grotesk',monospace;font-size:1.8rem;font-weight:700;color:var(--harvest-gold);letter-spacing:2px;margin-bottom:.5rem;word-break:break-all}
-.coupon-discount{font-size:1.1rem;font-weight:700;margin-bottom:.3rem}
-.coupon-validity{font-size:.78rem;color:rgba(255,255,255,.6)}
-.coupon-apply-info{background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.2);padding:1rem;border-radius:10px;margin:1rem 0;font-size:.85rem;color:var(--corporate-navy)}
-.coupon-apply-info strong{color:var(--harvest-gold)}
-
-/* POPIA notice */
-.popia-notice{background:rgba(40,169,225,.05);border:1px solid rgba(40,169,225,.2);padding:12px;border-radius:10px;font-size:.75rem;color:var(--gray-600);margin-top:1rem;display:flex;gap:8px;align-items:flex-start}
-.popia-notice i{color:var(--market-cyan);margin-top:2px;flex-shrink:0}
-
-/* Verification steps indicator */
-.verify-progress{display:flex;justify-content:space-between;margin-bottom:1.5rem;position:relative}
-.verify-progress::before{content:'';position:absolute;top:15px;left:15%;right:15%;height:2px;background:var(--gray-200);z-index:0}
-.verify-progress-step{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:6px;flex:1}
-.verify-progress-dot{width:32px;height:32px;border-radius:50%;background:#fff;border:2px solid var(--gray-300);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;color:var(--gray-400);transition:var(--transition)}
-.verify-progress-step.active .verify-progress-dot{background:var(--vibrant-orange);border-color:var(--vibrant-orange);color:#fff}
-.verify-progress-step.completed .verify-progress-dot{background:var(--success);border-color:var(--success);color:#fff}
-.verify-progress-label{font-size:.7rem;color:var(--gray-500);font-weight:500}
-.verify-progress-step.active .verify-progress-label{color:var(--vibrant-orange);font-weight:600}
-.verify-progress-step.completed .verify-progress-label{color:var(--success)}
-
-/* Step content */
-.verify-step-content{display:none}
-.verify-step-content.active{display:block;animation:fadeIn .3s ease}
-@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-
-/* Savings Calculator */
-.savings-calc{background:linear-gradient(135deg,rgba(255,107,53,.05),rgba(212,175,55,.05));border:2px solid rgba(255,107,53,.15);border-radius:var(--radius-lg);padding:2rem;margin-top:2rem}
-.savings-calc h3{color:var(--corporate-navy);font-size:1.2rem;margin-bottom:1rem;text-align:center}
-.savings-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
-.savings-input{background:#fff;padding:1rem;border-radius:12px;border:1px solid var(--gray-200)}
-.savings-input label{display:block;font-size:.78rem;color:var(--gray-600);margin-bottom:6px;font-weight:600}
-.savings-input select,.savings-input input{width:100%;padding:8px 10px;border:1px solid var(--gray-200);border-radius:8px;font-size:.88rem;font-family:inherit}
-.savings-result{background:var(--corporate-navy);color:#fff;padding:1.5rem;border-radius:12px;text-align:center}
-.savings-result .you-save{font-size:.78rem;color:rgba(255,255,255,.7);margin-bottom:.3rem}
-.savings-result .amount{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--harvest-gold);margin-bottom:.3rem}
-.savings-result .vs{font-size:.78rem;color:rgba(255,255,255,.6)}
-
-/* Stats */
-.impact-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3rem}
-.impact-stat{background:#fff;padding:1.5rem;border-radius:14px;text-align:center;border:1px solid var(--gray-200)}
-.impact-stat h3{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;color:var(--vibrant-orange);font-weight:700;margin-bottom:.3rem}
-.impact-stat p{font-size:.82rem;color:var(--gray-500)}
-
-/* Testimonial */
-.testimonial-card{background:#fff;padding:1.8rem;border-radius:var(--radius-lg);border-left:4px solid var(--harvest-gold);box-shadow:var(--shadow-md)}
-.testimonial-stars{color:var(--harvest-gold);margin-bottom:.8rem;font-size:1rem}
-.testimonial-text{font-size:.95rem;color:var(--gray-600);line-height:1.7;margin-bottom:1.2rem;font-style:italic}
-.testimonial-author{display:flex;align-items:center;gap:12px}
-.testimonial-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--vibrant-orange),var(--harvest-gold));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
-.testimonial-author h4{font-size:.9rem;color:var(--corporate-navy);margin-bottom:2px}
-.testimonial-author small{font-size:.75rem;color:var(--gray-400)}
-
-/* Footer */
-.footer{background:#061A33;padding:3rem 2rem 2rem;color:#fff}
-.footer-container{max-width:1400px;margin:0 auto}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
-.footer h4{color:#fff;font-size:.95rem;margin-bottom:1rem}
-.footer ul{list-style:none}
-.footer ul li{margin-bottom:.5rem}
-.footer ul a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.82rem;transition:var(--transition)}
-.footer ul a:hover{color:var(--vibrant-orange)}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-.footer-bottom p{color:rgba(255,255,255,.4);font-size:.78rem}
-
-/* Responsive */
+/* ============ RESPONSIVE ============ */
 @media (max-width:1024px){
-  .access-grid,.career-grid{grid-template-columns:1fr}
-  .bundles-grid{grid-template-columns:1fr;max-width:450px;margin:0 auto}
-  .bundle-card.featured{transform:none}
-  .career-services{grid-template-columns:1fr}
-  .impact-stats{grid-template-columns:repeat(2,1fr)}
+  .hero-container,.download-grid,.multilingual-grid{grid-template-columns:1fr}
+  .hero-visual{max-width:320px;margin:0 auto}
+  .download-visual{margin:2rem auto 0}
+  .exam-grid,.tutor-models,.bootcamp-grid,.ecosystem-grid,.pricing-grid{grid-template-columns:1fr}
+  .trust-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .pricing-card.featured{transform:none}
+  .bursary-banner{grid-template-columns:1fr;text-align:center}
 }
 @media (max-width:768px){
+  .topbar{font-size:.65rem;padding:6px 1rem}
+  .nav-links{display:none}
+  .nav-actions .btn-outline{display:none}
+  .mobile-toggle{display:block}
   .hero h1{font-size:2rem}
+  .section-header h2{font-size:1.7rem}
   .section{padding:3rem 1.5rem}
-  .section-header h2,.access-info h2,.career-info h2{font-size:1.6rem}
-  .tutors-grid{grid-template-columns:1fr}
+  .trust-grid,.download-features{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr}
-  .verify-progress-label{font-size:.62rem}
+  .hero-stats{grid-template-columns:1fr;gap:.8rem}
+  .app-icon-float{display:none}
 }
 </style>
 </head>
 <body>
 
-<!-- ThutoTech Top Bar -->
-<div class="thuto-topbar">
-  <span class="eco-badge">THUTOTECH</span>
-  <span>Part of the <a href="../../">ThutoTech Ecosystem</a> — Secondary Layer • Matric Prep with Equity Access</span>
+<!-- Top Bar -->
+<div class="topbar">
+  <span class="badge">MATRICMATE AI</span>
+  <span>Part of the <a href="../">ThutoTech Ecosystem</a> · NSC & IEB Exam Prep · SACE CPD-aligned tutors · REGGIE EXPRESS (Pty) Ltd</span>
 </div>
 
 <!-- Navbar -->
 <nav class="navbar">
   <div class="nav-container">
     <a href="#" class="logo">
-      <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+      <div class="logo-icon"><i class="fas fa-book-open"></i></div>
       <div class="logo-text">
         <div class="brand">Matric<span>Mate</span> AI</div>
-        <div class="sub">NSC & IEB Exam Prep</div>
+        <div class="sub">NSC & IEB · Matric Prep Companion</div>
       </div>
     </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#tutors">Tutors</a></li>
+      <li><a href="#bootcamps">Bootcamps</a></li>
+      <li><a href="#subjects">Subjects</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#download">Get App</a></li>
+    </ul>
     <div class="nav-actions">
-      <a href="../studentmart-port/" class="btn btn-outline" style="font-size:.82rem;padding:8px 14px;">
-        <i class="fas fa-store"></i> StudentMart
+      <a href="#download" class="btn btn-outline" style="font-size:.82rem;padding:8px 14px;">
+        <i class="fas fa-mobile-alt"></i> Download App
       </a>
-      <a href="#access" class="btn btn-gold" style="font-size:.82rem;padding:8px 14px;">
-        <i class="fas fa-ticket-alt"></i> Get Discount
-      </a>
-      <button class="btn btn-primary" onclick="startFreeTrial()">
+      <button class="btn btn-primary" onclick="openTrialModal()" style="font-size:.82rem;padding:8px 14px;">
         <i class="fas fa-rocket"></i> Start Free
+      </button>
+      <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+        <i class="fas fa-bars"></i>
       </button>
     </div>
   </div>
@@ -359,366 +965,1023 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif}
 <!-- Hero -->
 <section class="hero">
   <div class="hero-container">
-    <div class="hero-eco-pill">
-      <i class="fas fa-heart"></i>
-      Access & Equity Programme • No learner left behind
+    <div class="hero-content">
+      <div class="hero-pill">
+        <i class="fas fa-graduation-cap"></i>
+        NSC & IEB · Grade 10–12 · 11 SA Languages
+      </div>
+      <h1>Your Personal <span class="accent">AI Tutor</span> for Matric Success</h1>
+      <p class="hero-sub">MatricMate AI is South Africa's most comprehensive matric exam prep companion — combining multilingual AI tutoring, 15,000+ past paper questions, live one-on-one tutors, matric bootcamps, and career guidance from Mental Health Central. All in one app. All designed for the SA classroom.</p>
+      
+      <div class="hero-badges">
+        <div class="hero-badge"><i class="fas fa-book"></i> NSC & IEB Aligned</div>
+        <div class="hero-badge"><i class="fas fa-language"></i> 11 Languages</div>
+        <div class="hero-badge"><i class="fas fa-users"></i> Live Tutors</div>
+        <div class="hero-badge"><i class="fas fa-wifi-slash"></i> Offline Mode</div>
+      </div>
+      
+      <div class="hero-buttons">
+        <a href="#download" class="btn btn-primary" style="padding:14px 28px;font-size:1rem;">
+          <i class="fas fa-download"></i> Download Free App
+        </a>
+        <a href="#tutors" class="btn btn-outline" style="padding:14px 28px;font-size:1rem;border-color:rgba(255,255,255,.3);color:white;">
+          <i class="fas fa-user-graduate"></i> Find a Tutor
+        </a>
+      </div>
+      
+      <div class="hero-stats">
+        <div class="stat-item"><h3>15K+</h3><p>Past Paper Qs</p></div>
+        <div class="stat-item"><h3>1,240+</h3><p>Verified Tutors</p></div>
+        <div class="stat-item"><h3>94%</h3><p>Pass Rate</p></div>
+        <div class="stat-item"><h3>11</h3><p>SA Languages</p></div>
+      </div>
     </div>
-    <h1>Every Matric Learner Deserves a <span class="accent">Distinction</span> — <span class="gold">Regardless of Circumstance</span></h1>
-    <p class="hero-sub">Child Support Grant recipients and rural learners get up to <strong>85% off</strong> MatricMate Pro. Bundle with verified private tutors from StudentMart and career advisors from Frictionless Learner — at exclusive package rates.</p>
-    <div class="hero-badges">
-      <div class="hero-badge sassa"><i class="fas fa-hand-holding-heart"></i> SASSA Grant: 85% off</div>
-      <div class="hero-badge rural"><i class="fas fa-map-marker-alt"></i> Rural Schools: 70% off</div>
-      <div class="hero-badge bundle"><i class="fas fa-box-open"></i> Tutor Bundles: from R49/mo</div>
+    
+    <div class="hero-visual">
+      <div class="phone-mockup">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <div class="phone-app-header">
+            <h5>🎓 MatricMate AI</h5>
+            <small>Hello, Sipho! 👋 Grade 12</small>
+          </div>
+          <div class="phone-app-body">
+            <div class="phone-progress">
+              <div class="phone-progress-header">
+                <strong>Matric Readiness</strong>
+                <span>78%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width:78%;"></div>
+              </div>
+            </div>
+            <div class="phone-subjects">
+              <div class="phone-subject">
+                <i class="fas fa-calculator" style="color:var(--vibrant-orange);"></i>
+                <strong>Maths</strong>
+                <small>85% ready</small>
+              </div>
+              <div class="phone-subject">
+                <i class="fas fa-flask" style="color:var(--corporate-navy);"></i>
+                <strong>Physics</strong>
+                <small>72% ready</small>
+              </div>
+              <div class="phone-subject">
+                <i class="fas fa-book" style="color:var(--harvest-gold);"></i>
+                <strong>English</strong>
+                <small>81% ready</small>
+              </div>
+              <div class="phone-subject">
+                <i class="fas fa-atom" style="color:var(--ecosystem-emerald);"></i>
+                <strong>Chemistry</strong>
+                <small>69% ready</small>
+              </div>
+            </div>
+            <div class="phone-quiz-card">
+              <strong>🎯 Daily Challenge</strong>
+              <small>Calculus — 10 questions</small>
+              <button class="phone-quiz-btn">Start Now →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="app-icon-float top-right">
+        <img src="https://image.qwenlm.ai/public_source/2e98be7d-a875-4e5b-a0b7-8b3bfe8bd3c5/1b19c14ce-355b-4cda-af31-9424e68709ba.png" alt="MatricMate AI App Icon">
+      </div>
+      <div class="hero-float hero-float-1">
+        <div class="float-icon" style="background:rgba(255,107,53,.1);color:var(--vibrant-orange);"><i class="fas fa-trophy"></i></div>
+        <span>92% on Calculus!</span>
+        <small>Personal best 🎉</small>
+      </div>
+      <div class="hero-float hero-float-2">
+        <div class="float-icon" style="background:rgba(190,24,93,.1);color:var(--accent-rose);"><i class="fas fa-user-graduate"></i></div>
+        <span>Peer tutor found</span>
+        <small>Lerato · Frictionless</small>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Access & Equity Section -->
-<section class="section access-section" id="access">
-  <div class="section-container">
-    <div class="access-grid">
-      <div class="access-info">
-        <span class="section-tag gold"><i class="fas fa-hand-holding-heart"></i> Access & Equity Programme</span>
-        <h2>Education Shouldn't Depend on Your <span class="accent">Postal Code or Pay Slip</span></h2>
-        <p>MatricMate AI partners with SASSA, the Department of Basic Education, and rural school networks to ensure every Grade 10-12 learner can access world-class exam prep — regardless of financial circumstance.</p>
-        
-        <div class="access-benefits">
-          <div class="access-benefit">
-            <div class="access-benefit-icon" style="background:rgba(212,175,55,.1);color:var(--harvest-gold);"><i class="fas fa-id-card"></i></div>
-            <div>
-              <h4>Child Support Grant Recipients</h4>
-              <p>Verified SASSA beneficiaries receive <strong>85% off</strong> MatricMate Pro — just R15/month for full access to 15,000+ questions, AI essay marking, and past papers.</p>
-            </div>
+<!-- Trust Bar -->
+<section class="trust-bar">
+  <div class="trust-grid">
+    <div class="trust-item">
+      <i class="fas fa-book-open"></i>
+      <div>
+        <strong>NSC & IEB Aligned</strong>
+        <small>2015–2025 past papers</small>
+      </div>
+    </div>
+    <div class="trust-item">
+      <i class="fas fa-language"></i>
+      <div>
+        <strong>11 SA Languages</strong>
+        <small>Powered by InkubaLM</small>
+      </div>
+    </div>
+    <div class="trust-item">
+      <i class="fas fa-user-check"></i>
+      <div>
+        <strong>Verified Tutors</strong>
+        <small>1,240+ background-checked</small>
+      </div>
+    </div>
+    <div class="trust-item">
+      <i class="fas fa-shield-alt"></i>
+      <div>
+        <strong>POPIA Compliant</strong>
+        <small>Consent-first, audit-logged</small>
+      </div>
+    </div>
+    <div class="trust-item">
+      <i class="fas fa-building"></i>
+      <div>
+        <strong>REGGIE EXPRESS (Pty) Ltd</strong>
+        <small>Reg: K2024698680</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- App Download Section -->
+<section class="section download-section" id="download">
+  <div class="download-grid">
+    <div class="download-info">
+      <span class="section-tag orange"><i class="fas fa-mobile-alt"></i> Download the App</span>
+      <h2>MatricMate AI in Your <span class="accent">Pocket. Anywhere.</span></h2>
+      <p>Download the MatricMate AI app for iOS, Android, or use it as a Progressive Web App on any device. Study offline, sync when you're back online. Built for load-shedding and rural connectivity.</p>
+      
+      <div class="download-buttons">
+        <a href="#" class="app-store-btn" onclick="showToast('📱 Redirecting to App Store...')">
+          <i class="fab fa-apple"></i>
+          <div>
+            <small>Download on the</small>
+            <strong>App Store</strong>
           </div>
-          <div class="access-benefit">
-            <div class="access-benefit-icon" style="background:rgba(16,185,129,.1);color:var(--success);"><i class="fas fa-mountain"></i></div>
-            <div>
-              <h4>Rural & Township Schools</h4>
-              <p>Learners at Quintile 1-3 schools (verified via EMIS code) get <strong>70% off</strong> — just R30/month. Includes offline mode for load-shedding areas.</p>
-            </div>
+        </a>
+        <a href="#" class="app-store-btn" onclick="showToast('📱 Redirecting to Google Play...')">
+          <i class="fab fa-google-play"></i>
+          <div>
+            <small>Get it on</small>
+            <strong>Google Play</strong>
           </div>
-          <div class="access-benefit">
-            <div class="access-benefit-icon" style="background:rgba(139,92,246,.1);color:var(--ai-purple);"><i class="fas fa-user-graduate"></i></div>
-            <div>
-              <h4>NSFAS & orphaned learners</h4>
-              <p>Full scholarship access — <strong>100% free</strong> MatricMate Pro. Verified through university acceptance or social worker referral.</p>
-            </div>
+        </a>
+        <a href="#" class="app-store-btn" style="background:var(--vibrant-orange);" onclick="showToast('🌐 PWA installation prompt ready')">
+          <i class="fas fa-globe"></i>
+          <div>
+            <small>Use in browser</small>
+            <strong>Web App (PWA)</strong>
           </div>
-        </div>
-        
-        <button class="btn btn-primary" onclick="openVerifyModal()" style="padding:14px 28px;font-size:1rem;">
-          <i class="fas fa-ticket-alt"></i> Verify & Get My Coupon
-        </button>
-        
-        <div class="verify-trust">
-          <div class="verify-trust-item"><i class="fas fa-shield-alt"></i> POPIA Compliant</div>
-          <div class="verify-trust-item"><i class="fas fa-lock"></i> Data encrypted</div>
-          <div class="verify-trust-item"><i class="fas fa-check-circle"></i> Instant verification</div>
-        </div>
+        </a>
       </div>
       
-      <div class="access-visual">
-        <div class="verify-card">
-          <div class="verify-header">
-            <div class="verify-icon"><i class="fas fa-award"></i></div>
-            <h3>How Verification Works</h3>
-            <p>3 simple steps. 60 seconds. Zero paperwork.</p>
+      <div class="download-features">
+        <div class="download-feature">
+          <i class="fas fa-wifi-slash"></i>
+          <div>
+            <strong>Offline Mode</strong>
+            <small>Study during load-shedding. Sync when online.</small>
           </div>
-          <div class="verify-steps">
-            <div class="verify-step">
-              <div class="verify-step-num">1</div>
-              <div class="verify-step-text">
-                <strong>Choose your category</strong>
-                SASSA grant, rural school, NSFAS, or social worker referral
-              </div>
-            </div>
-            <div class="verify-step">
-              <div class="verify-step-num">2</div>
-              <div class="verify-step-text">
-                <strong>Provide verification reference</strong>
-                SASSA reference number, EMIS code, or referral code. We hash it — never store the original.
-              </div>
-            </div>
-            <div class="verify-step">
-              <div class="verify-step-num">3</div>
-              <div class="verify-step-text">
-                <strong>Get your coupon instantly</strong>
-                A unique code for 70-100% off, valid for 12 months. Apply at checkout.
-              </div>
-            </div>
+        </div>
+        <div class="download-feature">
+          <i class="fas fa-bolt"></i>
+          <div>
+            <strong>Low Data Usage</strong>
+            <small>Optimised for SA data costs. ~50MB/month.</small>
           </div>
-          <button class="btn btn-gold verify-btn" onclick="openVerifyModal()">
-            <i class="fas fa-magic"></i> Start Verification
-          </button>
+        </div>
+        <div class="download-feature">
+          <i class="fas fa-mobile-alt"></i>
+          <div>
+            <strong>Cross-Device Sync</strong>
+            <small>Start on phone, continue on laptop. Progress saves.</small>
+          </div>
+        </div>
+        <div class="download-feature">
+          <i class="fas fa-bell"></i>
+          <div>
+            <strong>Smart Reminders</strong>
+            <small>AI schedules study sessions based on your weak areas.</small>
+          </div>
         </div>
       </div>
     </div>
     
-    <!-- Impact Stats -->
-    <div class="impact-stats">
-      <div class="impact-stat">
-        <h3>12,487</h3>
-        <p>Learners on equity access</p>
-      </div>
-      <div class="impact-stat">
-        <h3>R4.2M</h3>
-        <p>In subsidies provided</p>
-      </div>
-      <div class="impact-stat">
-        <h3>89%</h3>
-        <p>Pass rate improvement</p>
-      </div>
-      <div class="impact-stat">
-        <h3>1,240+</h3>
-        <p>Rural schools enrolled</p>
+    <div class="download-visual">
+      <div class="download-phone-stack">
+        <div class="phone-mockup">
+          <div class="phone-screen">
+            <div class="phone-notch"></div>
+            <div class="phone-app-header">
+              <h5>🎓 MatricMate AI</h5>
+              <small>Offline mode active · Last sync 2h ago</small>
+            </div>
+            <div class="phone-app-body">
+              <div class="phone-progress">
+                <div class="phone-progress-header">
+                  <strong>Today's Study Plan</strong>
+                  <span>4/6 done</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width:66%;"></div>
+                </div>
+              </div>
+              <div class="phone-subjects">
+                <div class="phone-subject">
+                  <i class="fas fa-check-circle" style="color:var(--success);"></i>
+                  <strong>Calculus</strong>
+                  <small>✓ Complete</small>
+                </div>
+                <div class="phone-subject">
+                  <i class="fas fa-check-circle" style="color:var(--success);"></i>
+                  <strong>Algebra</strong>
+                  <small>✓ Complete</small>
+                </div>
+                <div class="phone-subject">
+                  <i class="fas fa-spinner" style="color:var(--vibrant-orange);"></i>
+                  <strong>Trigonometry</strong>
+                  <small>In progress</small>
+                </div>
+                <div class="phone-subject">
+                  <i class="fas fa-clock" style="color:var(--gray-400);"></i>
+                  <strong>Geometry</strong>
+                  <small>Up next</small>
+                </div>
+              </div>
+              <div class="phone-quiz-card">
+                <strong>🎯 Next: Trigonometry</strong>
+                <small>15 questions · 20 min</small>
+                <button class="phone-quiz-btn">Continue →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="download-app-icon-large">
+          <img src="https://image.qwenlm.ai/public_source/2e98be7d-a875-4e5b-a0b7-8b3bfe8bd3c5/1b19c14ce-355b-4cda-af31-9424e68709ba.png" alt="MatricMate AI App Icon">
+        </div>
+        <div class="download-qr">
+          <div class="qr-box"></div>
+          <small>Scan to download</small>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Package Bundles Section -->
-<section class="section bundles-section" id="bundles">
-  <div class="section-container">
+<!-- Exam Prep Features Section -->
+<section class="section exam-section" id="features">
+  <div class="container">
     <div class="section-header">
-      <span class="section-tag purple"><i class="fas fa-box-open"></i> Bundle & Save</span>
-      <h2>Packages That Grow With Your Matric Journey</h2>
-      <p>Combine MatricMate AI with private tutors from StudentMart and career advisors from Frictionless Learner — at exclusive bundle prices</p>
+      <span class="section-tag orange"><i class="fas fa-star"></i> Exam Prep Features</span>
+      <h2>Everything You Need to Ace Matric</h2>
+      <p>From past papers to AI essay marking, adaptive quizzes to live tutors — MatricMate AI is the only matric prep tool built specifically for South African learners.</p>
     </div>
     
-    <div class="bundles-grid">
-      <!-- Starter Bundle -->
-      <div class="bundle-card">
-        <div class="bundle-icon" style="background:rgba(40,169,225,.1);color:var(--market-cyan);"><i class="fas fa-book-open"></i></div>
-        <h3>Matric Starter</h3>
-        <p class="bundle-tagline">AI prep + 1 tutor session/month</p>
-        <div class="bundle-pricing">
-          <div class="bundle-price-original">R249/month</div>
-          <div class="bundle-price">R149<span>/mo</span></div>
-          <span class="bundle-save">Save R100/month</span>
-        </div>
-        <ul class="bundle-features">
-          <li><i class="fas fa-check"></i> MatricMate Pro (unlimited quizzes, past papers)</li>
-          <li><i class="fas fa-check"></i> AI essay marking & video explanations</li>
-          <li class="highlight"><i class="fas fa-star"></i> 1 private tutor session/month (60 min)</li>
-          <li><i class="fas fa-check"></i> Tutor matched by subject & learning style</li>
-          <li><i class="fas fa-check"></i> Progress reports to parents</li>
-        </ul>
-        <div class="bundle-source">
-          <i class="fas fa-link"></i>
-          Tutors sourced from <strong>StudentMart SA</strong> — verified university students
-        </div>
-        <button class="btn btn-outline bundle-btn" onclick="selectBundle('starter')">Choose Starter</button>
+    <div class="exam-grid">
+      <div class="exam-card">
+        <div class="exam-icon"><i class="fas fa-brain"></i></div>
+        <h3>Adaptive AI Quizzes</h3>
+        <p>Our AI analyses your weak areas and creates personalised quizzes that target exactly what you need to improve. No wasted time on topics you've already mastered.</p>
       </div>
       
-      <!-- Scholar Bundle - Featured -->
-      <div class="bundle-card featured">
-        <div class="bundle-badge scholar">⭐ MOST POPULAR</div>
-        <div class="bundle-icon" style="background:rgba(212,175,55,.1);color:var(--harvest-gold);"><i class="fas fa-trophy"></i></div>
-        <h3>Matric Scholar</h3>
-        <p class="bundle-tagline">AI prep + weekly tutors + career guidance</p>
-        <div class="bundle-pricing">
-          <div class="bundle-price-original">R899/month</div>
-          <div class="bundle-price">R399<span>/mo</span></div>
-          <span class="bundle-save">Save R500/month (56% off)</span>
-        </div>
-        <ul class="bundle-features">
-          <li><i class="fas fa-check"></i> Everything in Matric Starter</li>
-          <li class="highlight"><i class="fas fa-star"></i> 4 private tutor sessions/month (60 min each)</li>
-          <li class="highlight"><i class="fas fa-star"></i> 1 career advice session/term (degree selection)</li>
-          <li><i class="fas fa-check"></i> University application support (up to 5 apps)</li>
-          <li><i class="fas fa-check"></i> NSFAS & bursary application guidance</li>
-          <li><i class="fas fa-check"></i> Priority 24/7 WhatsApp tutor support</li>
-        </ul>
-        <div class="bundle-source">
-          <i class="fas fa-link"></i>
-          Tutors from <strong>StudentMart</strong> + advisors from <strong>Frictionless Learner</strong>
-        </div>
-        <button class="btn btn-gold bundle-btn" onclick="selectBundle('scholar')">Choose Scholar</button>
+      <div class="exam-card">
+        <div class="exam-icon"><i class="fas fa-file-alt"></i></div>
+        <h3>15,000+ Past Paper Questions</h3>
+        <p>Every NSC and IEB past paper from 2015–2025, fully indexed by topic with step-by-step solutions and mark scheme breakdowns.</p>
       </div>
       
-      <!-- Ultimate Bundle -->
-      <div class="bundle-card">
-        <div class="bundle-badge ultimate">🎯 ULTIMATE</div>
-        <div class="bundle-icon" style="background:rgba(139,92,246,.1);color:var(--ai-purple);"><i class="fas fa-crown"></i></div>
-        <h3>Matric Ultimate</h3>
-        <p class="bundle-tagline">Full prep + unlimited tutors + full career suite</p>
-        <div class="bundle-pricing">
-          <div class="bundle-price-original">R2,499/month</div>
-          <div class="bundle-price">R899<span>/mo</span></div>
-          <span class="bundle-save">Save R1,600/month (64% off)</span>
-        </div>
-        <ul class="bundle-features">
-          <li><i class="fas fa-check"></i> Everything in Matric Scholar</li>
-          <li class="highlight"><i class="fas fa-star"></i> UNLIMITED private tutor sessions</li>
-          <li class="highlight"><i class="fas fa-star"></i> Monthly career & academic advisory</li>
-          <li><i class="fas fa-check"></i> Psychometric career assessment</li>
-          <li><i class="fas fa-check"></i> University open-day virtual tours</li>
-          <li><i class="fas fa-check"></i> Interview prep for scholarships</li>
-          <li><i class="fas fa-check"></i> Dedicated success manager</li>
-        </ul>
-        <div class="bundle-source">
-          <i class="fas fa-link"></i>
-          Premium tutors + <strong>certified career psychologists</strong>
-        </div>
-        <button class="btn btn-purple bundle-btn" onclick="selectBundle('ultimate')">Choose Ultimate</button>
+      <div class="exam-card">
+        <div class="exam-icon"><i class="fas fa-pen-fancy"></i></div>
+        <h3>AI Essay Marking</h3>
+        <p>Submit essays and get instant feedback on structure, argument strength, grammar, CAPS alignment, and predicted marks — in any of 11 SA languages.</p>
       </div>
-    </div>
-    
-    <!-- Savings Calculator -->
-    <div class="savings-calc">
-      <h3><i class="fas fa-calculator" style="color:var(--vibrant-orange);"></i> Calculate Your Savings</h3>
-      <div class="savings-grid">
-        <div class="savings-input">
-          <label>Your Status</label>
-          <select id="calcStatus" onchange="calculateSavings()">
-            <option value="full">Full price learner</option>
-            <option value="rural">Rural/Quintile 1-3 school</option>
-            <option value="sassa">SASSA grant recipient</option>
-            <option value="nsfas">NSFAS/orphaned</option>
-          </select>
-        </div>
-        <div class="savings-input">
-          <label>Package Interest</label>
-          <select id="calcPackage" onchange="calculateSavings()">
-            <option value="starter">Matric Starter (R149)</option>
-            <option value="scholar" selected>Matric Scholar (R399)</option>
-            <option value="ultimate">Matric Ultimate (R899)</option>
-          </select>
-        </div>
+      
+      <div class="exam-card">
+        <div class="exam-icon"><i class="fas fa-video"></i></div>
+        <h3>Video Explanations</h3>
+        <p>Short, focused video lessons from top SA educators. Watch, pause, rewind — learn at your own pace with 500+ hours of content.</p>
       </div>
-      <div class="savings-result">
-        <div class="you-save">YOUR MONTHLY PRICE</div>
-        <div class="amount" id="savingsAmount">R399</div>
-        <div class="vs" id="savingsVs">vs R899 full price — you save R500/month</div>
+      
+      <div class="exam-card">
+        <div class="exam-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Readiness Analytics</h3>
+        <p>See exactly how ready you are for each subject and topic. AI predicts your likely marks and shows you where to focus your study time.</p>
+      </div>
+      
+      <div class="exam-card">
+        <div class="exam-icon"><i class="fas fa-trophy"></i></div>
+        <h3>Gamified Learning</h3>
+        <p>Earn XP, unlock badges, compete on leaderboards, and maintain streaks. Makes daily study feel like a game — not a chore.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Tutor Marketplace Section -->
+<!-- Multilingual Section -->
+<section class="section multilingual-section" id="multilingual">
+  <div class="multilingual-grid">
+    <div class="multilingual-info">
+      <span class="section-tag"><i class="fas fa-language"></i> Multilingual AI</span>
+      <h2>Study in <span class="accent">Your Home Language</span></h2>
+      <p>MatricMate AI is the only matric prep tool that works in all 11 official South African languages. Switch between English and your home language mid-question. Understand concepts in the language that makes sense to you.</p>
+      
+      <div class="language-chips">
+        <span class="language-chip active">English</span>
+        <span class="language-chip" onclick="showToast('🌍 Switched to isiZulu')">isiZulu</span>
+        <span class="language-chip" onclick="showToast('🌍 Switched to isiXhosa')">isiXhosa</span>
+        <span class="language-chip" onclick="showToast('🌍 Switched to Afrikaans')">Afrikaans</span>
+        <span class="language-chip" onclick="showToast('🌍 Switched to Sepedi')">Sepedi</span>
+        <span class="language-chip" onclick="showToast('🌍 Switched to Setswana')">Setswana</span>
+        <span class="language-chip" onclick="showToast('🌍 Switched to Sesotho')">Sesotho</span>
+        <span class="language-chip" onclick="showToast('🌍 Switched to Xitsonga')">Xitsonga</span>
+        <span class="language-chip" onclick="showToast('🌍 Switched to siSwati')">siSwati</span>
+        <span class="language-chip" onclick="showToast('🌍 Switched to Tshivenda')">Tshivenda</span>
+        <span class="language-chip" onclick="showToast('🌍 Switched to isiNdebele')">isiNdebele</span>
+      </div>
+      
+      <a href="#download" class="btn btn-primary" style="padding:14px 28px;">
+        <i class="fas fa-download"></i> Try It in Your Language
+      </a>
+    </div>
+    
+    <div class="multilingual-demo">
+      <div class="demo-header">
+        <h4>Live Translation Demo</h4>
+        <span class="demo-lang">English → isiZulu</span>
+      </div>
+      
+      <div class="demo-question">
+        <strong>QUESTION (ENGLISH)</strong>
+        Calculate the derivative of f(x) = 3x² - 5x + 2 using first principles. Show all your working and state any formulae you use.
+      </div>
+      
+      <div class="demo-translation">
+        <strong>ISIZULU TRANSLATION</strong>
+        Bala i-derivative ka-f(x) = 3x² - 5x + 2 usebenzisa izimiso zokuqala. Bonisa konke ukusebenza kwakho bese usho noma yimaphi amafomula owasebenzisayo.
+      </div>
+      
+      <div style="margin-top:1rem;padding:12px;background:rgba(212,175,55,.15);border-radius:10px;font-size:.78rem;color:rgba(255,255,255,.9);">
+        <strong style="color:var(--harvest-gold);display:block;margin-bottom:4px;">💡 AI TUTOR TIP</strong>
+        Switching between languages helps you understand concepts deeply. Use English for exam practice and your home language for understanding.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tutors Section -->
 <section class="section tutors-section" id="tutors">
-  <div class="section-container">
+  <div class="container">
     <div class="section-header">
-      <span class="section-tag"><i class="fas fa-users"></i> Verified Tutor Network</span>
-      <h2>Private Tutors from <span style="color:var(--market-cyan);">StudentMart</span> & <span style="color:var(--ai-purple);">Frictionless Learner</span></h2>
-      <p>Every tutor is a verified university student with proven Matric distinctions — background-checked, POPIA-cleared, and reviewed by learners like you</p>
+      <span class="section-tag orange"><i class="fas fa-user-graduate"></i> One-on-One Tutors</span>
+      <h2>Your Choice. Your Schedule. Your Tutor.</h2>
+      <p>Three ways to learn with real tutors — choose what works for you. All tutors are verified university students with proven matric distinctions, background-checked, and reviewed by learners like you.</p>
+    </div>
+    
+    <div class="tutor-models">
+      <div class="tutor-model-card">
+        <div class="tutor-model-icon"><i class="fas fa-bolt"></i></div>
+        <h3>On-Demand</h3>
+        <p class="model-subtitle">Pay per session. No commitment.</p>
+        <div class="tutor-model-price">R80 <span>– R250 /hr</span></div>
+        <p class="tutor-model-price-note">Based on tutor experience & subject</p>
+        <ul class="tutor-model-features">
+          <li><i class="fas fa-check"></i> Book any verified tutor</li>
+          <li><i class="fas fa-check"></i> Online or face-to-face</li>
+          <li><i class="fas fa-check"></i> Pay per session via Yoco/Zapper</li>
+          <li><i class="fas fa-check"></i> No subscription required</li>
+          <li><i class="fas fa-check"></i> Cancel anytime</li>
+          <li><i class="fas fa-check"></i> Instant WhatsApp booking</li>
+        </ul>
+        <button class="btn btn-outline" onclick="scrollToTutors()" style="width:100%;justify-content:center;">Browse Tutors</button>
+      </div>
+      
+      <div class="tutor-model-card featured">
+        <span class="model-badge">⭐ MOST POPULAR</span>
+        <div class="tutor-model-icon"><i class="fas fa-crown"></i></div>
+        <h3>MatricMate Pro</h3>
+        <p class="model-subtitle">Monthly subscription. Maximum value.</p>
+        <div class="tutor-model-price">R199 <span>/month</span></div>
+        <p class="tutor-model-price-note">or R1,999/year (save R389)</p>
+        <ul class="tutor-model-features">
+          <li><i class="fas fa-check"></i> Unlimited AI quizzes & past papers</li>
+          <li><i class="fas fa-check"></i> AI essay marking (unlimited)</li>
+          <li><i class="fas fa-check"></i> 2 free tutor sessions/month</li>
+          <li><i class="fas fa-check"></i> 30% discount on extra tutor sessions</li>
+          <li><i class="fas fa-check"></i> All 11 languages unlocked</li>
+          <li><i class="fas fa-check"></i> Priority support & analytics</li>
+          <li><i class="fas fa-check"></i> Parent progress reports</li>
+        </ul>
+        <button class="btn btn-primary" onclick="openTrialModal()" style="width:100%;justify-content:center;">Start 14-Day Free Trial</button>
+      </div>
+      
+      <div class="tutor-model-card">
+        <div class="tutor-model-icon"><i class="fas fa-infinity"></i></div>
+        <h3>Unlimited Tutor</h3>
+        <p class="model-subtitle">For serious distinction-seekers.</p>
+        <div class="tutor-model-price">R799 <span>/month</span></div>
+        <p class="tutor-model-price-note">or R7,999/year (save R1,589)</p>
+        <ul class="tutor-model-features">
+          <li><i class="fas fa-check"></i> Everything in MatricMate Pro</li>
+          <li><i class="fas fa-check"></i> UNLIMITED tutor sessions</li>
+          <li><i class="fas fa-check"></i> Dedicated study coach</li>
+          <li><i class="fas fa-check"></i> Weekly 1-on-1 strategy calls</li>
+          <li><i class="fas fa-check"></i> Career advisory (4 sessions/term)</li>
+          <li><i class="fas fa-check"></i> University application support</li>
+          <li><i class="fas fa-check"></i> NSFAS & bursary guidance</li>
+        </ul>
+        <button class="btn btn-gold" onclick="openTrialModal()" style="width:100%;justify-content:center;">Start 14-Day Free Trial</button>
+      </div>
+    </div>
+    
+    <div style="text-align:center;margin-bottom:1rem;">
+      <h3 style="color:var(--corporate-navy);font-size:1.3rem;">Meet Our Top-Rated Tutors</h3>
+      <p style="color:var(--gray-500);font-size:.9rem;">Verified, reviewed, and ready to help you succeed</p>
     </div>
     
     <div class="tutors-grid" id="tutorsGrid">
-      <!-- Tutor cards injected by JS -->
+      <!-- Tutor 1: StudentMart -->
+      <div class="tutor-card">
+        <span class="tutor-source studentmart"><i class="fas fa-store"></i> StudentMart SA</span>
+        <div class="tutor-header">
+          <div class="tutor-avatar" style="background:linear-gradient(135deg,var(--vibrant-orange),var(--vibrant-orange-dark));">TM</div>
+          <div class="tutor-info">
+            <h4>Thabo Molefe</h4>
+            <small>BSc Maths · Wits University</small>
+          </div>
+          <div class="tutor-rating"><i class="fas fa-star"></i> 4.9 (67)</div>
+        </div>
+        <div class="tutor-subjects">
+          <span class="tutor-subject-tag">Mathematics</span>
+          <span class="tutor-subject-tag">Physical Sciences</span>
+        </div>
+        <div class="tutor-special">
+          <i class="fas fa-award"></i>
+          Matric distinction: 94% Maths, 91% Physics
+        </div>
+        <div class="tutor-modes">
+          <span class="tutor-mode"><i class="fas fa-video"></i> Online</span>
+          <span class="tutor-mode"><i class="fas fa-map-marker-alt"></i> Face-to-Face</span>
+          <span class="tutor-mode"><i class="fas fa-language"></i> EN/ZU</span>
+        </div>
+        <div class="tutor-footer">
+          <div class="tutor-price">R150<small>per hour</small></div>
+          <button class="btn btn-primary" onclick="bookTutor('Thabo Molefe')" style="padding:8px 16px;font-size:.8rem;">Book</button>
+        </div>
+      </div>
+      
+      <!-- Tutor 2: StudentMart -->
+      <div class="tutor-card">
+        <span class="tutor-source studentmart"><i class="fas fa-store"></i> StudentMart SA</span>
+        <div class="tutor-header">
+          <div class="tutor-avatar" style="background:linear-gradient(135deg,var(--harvest-gold),var(--harvest-gold-dark));color:var(--corporate-navy);">LN</div>
+          <div class="tutor-info">
+            <h4>Lerato Nkosi</h4>
+            <small>CA(SA) Student · UP (Tuks)</small>
+          </div>
+          <div class="tutor-rating"><i class="fas fa-star"></i> 4.8 (52)</div>
+        </div>
+        <div class="tutor-subjects">
+          <span class="tutor-subject-tag">Accounting</span>
+          <span class="tutor-subject-tag">Economics</span>
+          <span class="tutor-subject-tag">Business Studies</span>
+        </div>
+        <div class="tutor-special">
+          <i class="fas fa-award"></i>
+          Top 1% Accounting nationwide · IEB gold medallist
+        </div>
+        <div class="tutor-modes">
+          <span class="tutor-mode"><i class="fas fa-video"></i> Online</span>
+          <span class="tutor-mode"><i class="fas fa-map-marker-alt"></i> Face-to-Face</span>
+          <span class="tutor-mode"><i class="fas fa-language"></i> EN/AF</span>
+        </div>
+        <div class="tutor-footer">
+          <div class="tutor-price">R180<small>per hour</small></div>
+          <button class="btn btn-primary" onclick="bookTutor('Lerato Nkosi')" style="padding:8px 16px;font-size:.8rem;">Book</button>
+        </div>
+      </div>
+      
+      <!-- Tutor 3: Frictionless Learner (peer) -->
+      <div class="tutor-card">
+        <span class="tutor-source frictionless"><i class="fas fa-users"></i> Frictionless Learner · Peer</span>
+        <div class="tutor-header">
+          <div class="tutor-avatar" style="background:linear-gradient(135deg,var(--accent-rose),#9D174D);">SM</div>
+          <div class="tutor-info">
+            <h4>Sipho Mkhize</h4>
+            <small>Grade 12 · Current matric learner</small>
+          </div>
+          <div class="tutor-rating"><i class="fas fa-star"></i> 4.7 (28)</div>
+        </div>
+        <div class="tutor-subjects">
+          <span class="tutor-subject-tag">Life Sciences</span>
+          <span class="tutor-subject-tag">Geography</span>
+        </div>
+        <div class="tutor-special">
+          <i class="fas fa-award"></i>
+          Peer tutor · 85%+ in both subjects · Study buddy style
+        </div>
+        <div class="tutor-modes">
+          <span class="tutor-mode"><i class="fas fa-video"></i> Online only</span>
+          <span class="tutor-mode"><i class="fas fa-language"></i> EN/ZU/XH</span>
+          <span class="tutor-mode"><i class="fas fa-tag"></i> Budget</span>
+        </div>
+        <div class="tutor-footer">
+          <div class="tutor-price">R60<small>per hour</small></div>
+          <button class="btn btn-primary" onclick="bookTutor('Sipho Mkhize')" style="padding:8px 16px;font-size:.8rem;">Book</button>
+        </div>
+      </div>
+      
+      <!-- Tutor 4: StudentMart -->
+      <div class="tutor-card">
+        <span class="tutor-source studentmart"><i class="fas fa-store"></i> StudentMart SA</span>
+        <div class="tutor-header">
+          <div class="tutor-avatar" style="background:linear-gradient(135deg,var(--market-cyan),var(--market-cyan-dark));">NS</div>
+          <div class="tutor-info">
+            <h4>Nomsa Sithole</h4>
+            <small>BA English · Rhodes University</small>
+          </div>
+          <div class="tutor-rating"><i class="fas fa-star"></i> 4.9 (44)</div>
+        </div>
+        <div class="tutor-subjects">
+          <span class="tutor-subject-tag">English HL</span>
+          <span class="tutor-subject-tag">Essay Writing</span>
+          <span class="tutor-subject-tag">Literature</span>
+        </div>
+        <div class="tutor-special">
+          <i class="fas fa-award"></i>
+          National essay competition winner · Published author
+        </div>
+        <div class="tutor-modes">
+          <span class="tutor-mode"><i class="fas fa-video"></i> Online</span>
+          <span class="tutor-mode"><i class="fas fa-map-marker-alt"></i> Face-to-Face</span>
+          <span class="tutor-mode"><i class="fas fa-language"></i> EN/ZU</span>
+        </div>
+        <div class="tutor-footer">
+          <div class="tutor-price">R140<small>per hour</small></div>
+          <button class="btn btn-primary" onclick="bookTutor('Nomsa Sithole')" style="padding:8px 16px;font-size:.8rem;">Book</button>
+        </div>
+      </div>
+      
+      <!-- Tutor 5: Mental Health Central (Career Advisor) -->
+      <div class="tutor-card">
+        <span class="tutor-source mental"><i class="fas fa-brain"></i> Mental Health Central</span>
+        <div class="tutor-header">
+          <div class="tutor-avatar" style="background:linear-gradient(135deg,var(--ecosystem-emerald),#1f7a6a);">DM</div>
+          <div class="tutor-info">
+            <h4>Dr. Dineo Mokoena</h4>
+            <small>Career Psychologist · UCT</small>
+          </div>
+          <div class="tutor-rating"><i class="fas fa-star"></i> 5.0 (38)</div>
+        </div>
+        <div class="tutor-subjects">
+          <span class="tutor-subject-tag">Career Guidance</span>
+          <span class="tutor-subject-tag">Degree Choice</span>
+          <span class="tutor-subject-tag">University Apps</span>
+        </div>
+        <div class="tutor-special">
+          <i class="fas fa-award"></i>
+          HPCSA-registered · 15 years in career counselling
+        </div>
+        <div class="tutor-modes">
+          <span class="tutor-mode"><i class="fas fa-video"></i> Online</span>
+          <span class="tutor-mode"><i class="fas fa-map-marker-alt"></i> Face-to-Face</span>
+          <span class="tutor-mode"><i class="fas fa-graduation-cap"></i> Career</span>
+        </div>
+        <div class="tutor-footer">
+          <div class="tutor-price">R350<small>per session</small></div>
+          <button class="btn btn-primary" onclick="bookTutor('Dr. Dineo Mokoena')" style="padding:8px 16px;font-size:.8rem;">Book</button>
+        </div>
+      </div>
+      
+      <!-- Tutor 6: Frictionless Learner (peer) -->
+      <div class="tutor-card">
+        <span class="tutor-source frictionless"><i class="fas fa-users"></i> Frictionless Learner · Peer</span>
+        <div class="tutor-header">
+          <div class="tutor-avatar" style="background:linear-gradient(135deg,#EC4899,#F43F5E);">AZ</div>
+          <div class="tutor-info">
+            <h4>Ayanda Zulu</h4>
+            <small>Grade 12 · Current matric learner</small>
+          </div>
+          <div class="tutor-rating"><i class="fas fa-star"></i> 4.8 (31)</div>
+        </div>
+        <div class="tutor-subjects">
+          <span class="tutor-subject-tag">Mathematics</span>
+          <span class="tutor-subject-tag">Maths Literacy</span>
+        </div>
+        <div class="tutor-special">
+          <i class="fas fa-award"></i>
+          Peer tutor · 92% in Maths · Study group leader
+        </div>
+        <div class="tutor-modes">
+          <span class="tutor-mode"><i class="fas fa-video"></i> Online only</span>
+          <span class="tutor-mode"><i class="fas fa-language"></i> EN/ZU</span>
+          <span class="tutor-mode"><i class="fas fa-tag"></i> Budget</span>
+        </div>
+        <div class="tutor-footer">
+          <div class="tutor-price">R65<small>per hour</small></div>
+          <button class="btn btn-primary" onclick="bookTutor('Ayanda Zulu')" style="padding:8px 16px;font-size:.8rem;">Book</button>
+        </div>
+      </div>
     </div>
     
-    <div style="text-align:center;">
-      <button class="btn btn-primary" onclick="browseAllTutors()" style="padding:14px 28px;">
+    <div style="text-align:center;margin-top:2rem;">
+      <button class="btn btn-outline" onclick="showToast('🔍 Loading full tutor directory...')" style="padding:12px 24px;">
         <i class="fas fa-search"></i> Browse All 1,240+ Tutors
       </button>
     </div>
   </div>
 </section>
 
-<!-- Career Advice Section -->
-<section class="section career-section" id="career">
-  <div class="career-container">
-    <div class="career-grid">
-      <div class="career-info">
-        <span class="section-tag purple"><i class="fas fa-compass"></i> Career & Academic Advisory</span>
-        <h2>Don't Just Pass Matric — <span class="accent">Choose Your Future</span></h2>
-        <p>Certified career advisors and academic counsellors help you pick the right degree, university, and funding path. Sourced through Frictionless Learner's network of registered psychologists, university lecturers, and industry professionals.</p>
+<!-- Bootcamps Section -->
+<section class="section bootcamp-section" id="bootcamps">
+  <div class="bootcamp-container">
+    <div class="section-header">
+      <span class="section-tag"><i class="fas fa-users"></i> School Bootcamps</span>
+      <h2>Matric Bootcamps & Pre-Tertiary Readiness</h2>
+      <p>Schools can book intensive matric prep bootcamps and pre-tertiary readiness camps for their learners — delivered by verified tutors, career advisors, and academic mentors. Online or face-to-face at your school.</p>
+    </div>
+    
+    <div class="bootcamp-grid">
+      <div class="bootcamp-card">
+        <span class="bootcamp-badge school">FOR SCHOOLS · SGB-BOOKABLE</span>
+        <h3>Matric Bootcamp</h3>
+        <p>Intensive 2-week matric prep programme delivered during June or September holidays. Covers all major subjects with focus on exam technique, past papers, and time management.</p>
         
-        <div class="career-services">
-          <div class="career-service">
-            <div class="career-service-icon" style="background:rgba(212,175,55,.2);color:var(--harvest-gold);"><i class="fas fa-graduation-cap"></i></div>
-            <h4>Degree Selection</h4>
-            <p>Find the right degree for your marks, interests, and career goals. Compare 150+ programmes.</p>
-            <div class="career-service-price">
-              <strong>R350</strong>
-              <small>per session</small>
-            </div>
+        <ul class="bootcamp-features">
+          <li><i class="fas fa-check"></i> 10 days of intensive tuition (6 hours/day)</li>
+          <li><i class="fas fa-check"></i> All major subjects: Maths, Physical Sciences, English, Accounting, Life Sciences, Geography</li>
+          <li><i class="fas fa-check"></i> 200+ past paper questions covered per subject</li>
+          <li><i class="fas fa-check"></i> Exam technique workshops & time management</li>
+          <li><i class="fas fa-check"></i> Daily quizzes & progress reports for parents</li>
+          <li><i class="fas fa-check"></i> Delivered by verified tutors with matric distinctions</li>
+          <li><i class="fas fa-check"></i> Optional: on-site at your school or online</li>
+        </ul>
+        
+        <div class="bootcamp-meta">
+          <div class="bootcamp-meta-item">
+            <strong>10 Days</strong>
+            <small>Duration</small>
           </div>
-          <div class="career-service">
-            <div class="career-service-icon" style="background:rgba(40,169,225,.2);color:var(--market-cyan);"><i class="fas fa-university"></i></div>
-            <h4>University Choice</h4>
-            <p>Compare SA universities on cost, location, pass rates, and campus life. Application support.</p>
-            <div class="career-service-price">
-              <strong>R450</strong>
-              <small>full advisory</small>
-            </div>
+          <div class="bootcamp-meta-item">
+            <strong>R2,500</strong>
+            <small>Per learner</small>
           </div>
-          <div class="career-service">
-            <div class="career-service-icon" style="background:rgba(16,185,129,.2);color:#34D399;"><i class="fas fa-hand-holding-usd"></i></div>
-            <h4>NSFAS & Bursaries</h4>
-            <p>Identify and apply for bursaries, scholarships, and NSFAS. We handle the paperwork.</p>
-            <div class="career-service-price">
-              <strong>R250</strong>
-              <small>per application</small>
-            </div>
+          <div class="bootcamp-meta-item">
+            <strong>30 Max</strong>
+            <small>Cohort size</small>
           </div>
-          <div class="career-service">
-            <div class="career-service-icon" style="background:rgba(139,92,246,.2);color:#c4b5fd;"><i class="fas fa-brain"></i></div>
-            <h4>Psychometric Testing</h4>
-            <p>HPCSA-registered psychologists assess your strengths, aptitudes, and career fit.</p>
-            <div class="career-service-price">
-              <strong>R750</strong>
-              <small>full assessment</small>
-            </div>
+        </div>
+        
+        <button class="btn btn-gold" onclick="openSchoolBookingModal('Matric Bootcamp')" style="width:100%;justify-content:center;">
+          <i class="fas fa-school"></i> Book for Your School
+        </button>
+      </div>
+      
+      <div class="bootcamp-card">
+        <span class="bootcamp-badge tertiary">GRADE 12s · UNIVERSITY PREP</span>
+        <h3>Pre-Tertiary Readiness Camp</h3>
+        <p>1-week transition camp for Grade 12 learners heading to university. Covers academic skills, career exploration, NSFAS applications, mental wellness, and the leap from school to higher education.</p>
+        
+        <ul class="bootcamp-features">
+          <li><i class="fas fa-check"></i> 5-day residential or day camp (July/August)</li>
+          <li><i class="fas fa-check"></i> University application strategy & personal statements</li>
+          <li><i class="fas fa-check"></i> NSFAS & bursary application workshops</li>
+          <li><i class="fas fa-check"></i> Career psychometric assessments with Mental Health Central</li>
+          <li><i class="fas fa-check"></i> Academic skills: referencing, research, critical thinking</li>
+          <li><i class="fas fa-check"></i> Mental wellness & peer support training</li>
+          <li><i class="fas fa-check"></i> Mentorship from current university students</li>
+          <li><i class="fas fa-check"></i> University open-day virtual tours (12 institutions)</li>
+        </ul>
+        
+        <div class="bootcamp-meta">
+          <div class="bootcamp-meta-item">
+            <strong>5 Days</strong>
+            <small>Duration</small>
+          </div>
+          <div class="bootcamp-meta-item">
+            <strong>R3,500</strong>
+            <small>Per learner</small>
+          </div>
+          <div class="bootcamp-meta-item">
+            <strong>40 Max</strong>
+            <small>Cohort size</small>
+          </div>
+        </div>
+        
+        <button class="btn btn-primary" onclick="openSchoolBookingModal('Pre-Tertiary Readiness Camp')" style="width:100%;justify-content:center;">
+          <i class="fas fa-graduation-cap"></i> Book for Your School
+        </button>
+      </div>
+    </div>
+    
+    <div style="text-align:center;margin-top:2rem;padding:1.5rem;background:rgba(255,255,255,.1);border-radius:var(--radius-lg);backdrop-filter:blur(10px);">
+      <p style="color:white;font-size:.9rem;">
+        <i class="fas fa-info-circle" style="color:var(--harvest-gold);"></i>
+        <strong>Bulk discounts available</strong> for schools booking 2+ cohorts or combining both programmes. 
+        <a href="mailto:bootcamps@matricmate.co.za" style="color:var(--harvest-gold);text-decoration:underline;">Contact our schools team</a> for custom quotes.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Ecosystem Integrations -->
+<section class="section ecosystem-section" id="ecosystem">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag navy"><i class="fas fa-layer-group"></i> Ecosystem Integrations</span>
+      <h2>Powered by the ThutoTech Ecosystem</h2>
+      <p>MatricMate AI doesn't work alone. It's integrated with three other ThutoTech products that extend your matric journey into peer tutoring, career guidance, and university transition.</p>
+    </div>
+    
+    <div class="ecosystem-grid">
+      <div class="ecosystem-card frictionless">
+        <div class="ecosystem-icon"><i class="fas fa-users"></i></div>
+        <div class="ecosystem-layer">Peer Tutoring Layer</div>
+        <h3>Frictionless Learner</h3>
+        <p>Predict+Connect peer tutoring platform that matches you with current matrics who aced the same subjects. Calendar integration for zero-admin booking. Peer tutors charge 50-70% less than graduate tutors.</p>
+        <div class="ecosystem-stats">
+          <div class="ecosystem-stat"><strong>840+</strong><small>Peer tutors</small></div>
+          <div class="ecosystem-stat"><strong>R60</strong><small>Avg. hourly rate</small></div>
+        </div>
+        <a href="#" class="btn btn-outline" onclick="showToast('🔗 Opening Frictionless Learner...')" style="font-size:.8rem;padding:8px 14px;">
+          <i class="fas fa-arrow-right"></i> Find Peer Tutors
+        </a>
+      </div>
+      
+      <div class="ecosystem-card mental">
+        <div class="ecosystem-icon"><i class="fas fa-brain"></i></div>
+        <div class="ecosystem-layer">Career & Wellness Layer</div>
+        <h3>Mental Health Central</h3>
+        <p>HPCSA-registered career psychologists and academic counsellors help you choose the right degree, university, and funding path. Psychometric assessments, university comparisons, and NSFAS application support. 100% free mental health support always available.</p>
+        <div class="ecosystem-stats">
+          <div class="ecosystem-stat"><strong>42</strong><small>Career advisors</small></div>
+          <div class="ecosystem-stat"><strong>100%</strong><small>Free wellness</small></div>
+        </div>
+        <a href="#" class="btn btn-emerald" onclick="showToast('🧠 Opening Mental Health Central...')" style="font-size:.8rem;padding:8px 14px;">
+          <i class="fas fa-arrow-right"></i> Career Guidance
+        </a>
+      </div>
+      
+      <div class="ecosystem-card mart">
+        <div class="ecosystem-icon"><i class="fas fa-store"></i></div>
+        <div class="ecosystem-layer">Transactional Layer</div>
+        <h3>StudentMart SA</h3>
+        <p>Campus marketplace where university students offer tutoring, services, and products. MatricMate learners who matriculate and enter university automatically become StudentMart sellers — closing the funding flywheel.</p>
+        <div class="ecosystem-stats">
+          <div class="ecosystem-stat"><strong>1,240+</strong><small>Verified tutors</small></div>
+          <div class="ecosystem-stat"><strong>2.5%</strong><small>Fund Pool</small></div>
+        </div>
+        <a href="../studentmart-port/" class="btn btn-primary" style="font-size:.8rem;padding:8px 14px;">
+          <i class="fas fa-arrow-right"></i> Browse Marketplace
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Subjects Section -->
+<section class="section subjects-section" id="subjects">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag orange"><i class="fas fa-book"></i> All Matric Subjects</span>
+      <h2>Every Subject. Every Topic. Covered.</h2>
+      <p>NSC & IEB aligned content across all major matric subjects with adaptive learning paths and multilingual support.</p>
+    </div>
+    
+    <div class="subjects-grid">
+      <div class="subject-card" onclick="showToast('📚 Loading Mathematics content...')">
+        <div class="subject-icon"><i class="fas fa-calculator"></i></div>
+        <h4>Mathematics</h4>
+        <small>Pure Maths, Calculus, Algebra</small>
+      </div>
+      <div class="subject-card" onclick="showToast('📚 Loading Physical Sciences content...')">
+        <div class="subject-icon" style="background:rgba(10,46,90,.08);color:var(--corporate-navy);"><i class="fas fa-flask"></i></div>
+        <h4>Physical Sciences</h4>
+        <small>Physics & Chemistry</small>
+      </div>
+      <div class="subject-card" onclick="showToast('📚 Loading Life Sciences content...')">
+        <div class="subject-icon" style="background:rgba(40,164,146,.1);color:var(--ecosystem-emerald);"><i class="fas fa-dna"></i></div>
+        <h4>Life Sciences</h4>
+        <small>Biology, Genetics, Ecology</small>
+      </div>
+      <div class="subject-card" onclick="showToast('📚 Loading Accounting content...')">
+        <div class="subject-icon" style="background:rgba(212,175,55,.1);color:var(--harvest-gold-dark);"><i class="fas fa-chart-line"></i></div>
+        <h4>Accounting</h4>
+        <small>Financial Statements, GAAP</small>
+      </div>
+      <div class="subject-card" onclick="showToast('📚 Loading English content...')">
+        <div class="subject-icon" style="background:rgba(190,24,93,.1);color:var(--accent-rose);"><i class="fas fa-book"></i></div>
+        <h4>English HL/FAL</h4>
+        <small>Essay Writing, Literature</small>
+      </div>
+      <div class="subject-card" onclick="showToast('📚 Loading Afrikaans content...')">
+        <div class="subject-icon" style="background:rgba(40,169,225,.1);color:var(--market-cyan);"><i class="fas fa-language"></i></div>
+        <h4>Afrikaans</h4>
+        <small>Huistaal & Eerste Addisionele</small>
+      </div>
+      <div class="subject-card" onclick="showToast('📚 Loading Geography content...')">
+        <div class="subject-icon" style="background:rgba(245,158,11,.1);color:var(--warning);"><i class="fas fa-globe-africa"></i></div>
+        <h4>Geography</h4>
+        <small>Physical & Human Geography</small>
+      </div>
+      <div class="subject-card" onclick="showToast('📚 Loading History content...')">
+        <div class="subject-icon" style="background:rgba(121,85,72,.1);color:#795548;"><i class="fas fa-landmark"></i></div>
+        <h4>History</h4>
+        <small>SA & World History</small>
+      </div>
+      <div class="subject-card" onclick="showToast('📚 Loading Economics content...')">
+        <div class="subject-icon" style="background:rgba(16,185,129,.1);color:var(--success);"><i class="fas fa-coins"></i></div>
+        <h4>Economics</h4>
+        <small>Micro & Macro Economics</small>
+      </div>
+      <div class="subject-card" onclick="showToast('📚 Loading Business Studies content...')">
+        <div class="subject-icon" style="background:rgba(236,72,153,.1);color:#EC4899;"><i class="fas fa-briefcase"></i></div>
+        <h4>Business Studies</h4>
+        <small>Entrepreneurship, Management</small>
+      </div>
+      <div class="subject-card" onclick="showToast('📚 Loading isiZulu content...')">
+        <div class="subject-icon" style="background:rgba(244,63,94,.1);color:#F43F5E;"><i class="fas fa-comments"></i></div>
+        <h4>isiZulu HL</h4>
+        <small>Ulimi Lwasekhaya</small>
+      </div>
+      <div class="subject-card" onclick="showToast('📚 Loading Life Orientation content...')">
+        <div class="subject-icon" style="background:rgba(168,85,247,.1);color:#A855F7;"><i class="fas fa-heart"></i></div>
+        <h4>Life Orientation</h4>
+        <small>Career Guidance, Health</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing Section -->
+<section class="section pricing-section" id="pricing">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag orange"><i class="fas fa-tag"></i> Simple Pricing</span>
+      <h2>Invest in Your Matric Success</h2>
+      <p>Start free. Upgrade when you're serious about distinctions. Bursaries available for SASSA recipients and rural learners.</p>
+    </div>
+    
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-icon"><i class="fas fa-seedling"></i></div>
+        <h3>Starter</h3>
+        <p class="subtitle">Try before you commit</p>
+        <div class="pricing-price">R0 <span>/mo</span></div>
+        <p class="pricing-note">Forever free</p>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> 5 quizzes per day</li>
+          <li><i class="fas fa-check"></i> Basic past papers (2020-2025)</li>
+          <li><i class="fas fa-check"></i> AI study buddy (10 chats/day)</li>
+          <li><i class="fas fa-check"></i> Progress tracking</li>
+          <li><i class="fas fa-check"></i> Community forum access</li>
+          <li><i class="fas fa-check"></i> 1 language (English)</li>
+        </ul>
+        <button class="btn btn-outline" onclick="openTrialModal()" style="width:100%;justify-content:center;">Get Started Free</button>
+      </div>
+      
+      <div class="pricing-card featured">
+        <span class="pricing-badge">⭐ MOST POPULAR</span>
+        <div class="pricing-icon"><i class="fas fa-crown"></i></div>
+        <h3>MatricMate Pro</h3>
+        <p class="subtitle">For serious distinction-seekers</p>
+        <div class="pricing-price">R199 <span>/mo</span></div>
+        <p class="pricing-note">or R1,999/year (save R389)</p>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> Unlimited quizzes & past papers</li>
+          <li><i class="fas fa-check"></i> All subjects (2015-2025 papers)</li>
+          <li><i class="fas fa-check"></i> AI essay marking (unlimited)</li>
+          <li><i class="fas fa-check"></i> Video explanations library</li>
+          <li><i class="fas fa-check"></i> Unlimited AI study buddy</li>
+          <li><i class="fas fa-check"></i> 2 free tutor sessions/month</li>
+          <li><i class="fas fa-check"></i> All 11 SA languages</li>
+          <li><i class="fas fa-check"></i> Parent progress reports</li>
+          <li><i class="fas fa-check"></i> Priority support</li>
+        </ul>
+        <button class="btn btn-primary" onclick="openTrialModal()" style="width:100%;justify-content:center;">Start 14-Day Free Trial</button>
+      </div>
+      
+      <div class="pricing-card">
+        <div class="pricing-icon"><i class="fas fa-school"></i></div>
+        <h3>School License</h3>
+        <p class="subtitle">For entire matric classes</p>
+        <div class="pricing-price">Custom</div>
+        <p class="pricing-note">Per learner / year</p>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> Everything in MatricMate Pro</li>
+          <li><i class="fas fa-check"></i> Teacher dashboard</li>
+          <li><i class="fas fa-check"></i> Class analytics & reports</li>
+          <li><i class="fas fa-check"></i> SASAMS/LURITS integration</li>
+          <li><i class="fas fa-check"></i> Bulk tutor booking</li>
+          <li><i class="fas fa-check"></i> Bootcamp access</li>
+          <li><i class="fas fa-check"></i> Custom branding</li>
+          <li><i class="fas fa-check"></i> Dedicated success manager</li>
+        </ul>
+        <button class="btn btn-navy" onclick="openSchoolBookingModal('School License')" style="width:100%;justify-content:center;">Contact Schools Team</button>
+      </div>
+    </div>
+    
+    <div class="bursary-banner">
+      <div>
+        <h3>🎓 Bursaries & Financial Support</h3>
+        <p>MatricMate AI believes no learner should be left behind. We offer bursaries for SASSA Child Support Grant recipients (85% off), rural/Quintile 1-3 schools (70% off), and NSFAS-eligible learners (100% free). Verify your status in 60 seconds and get your coupon code instantly.</p>
+        <div class="bursary-badges">
+          <span class="bursary-badge">SASSA: 85% off</span>
+          <span class="bursary-badge">Rural: 70% off</span>
+          <span class="bursary-badge">NSFAS: 100% free</span>
+          <span class="bursary-badge">POPIA-compliant verification</span>
+        </div>
+      </div>
+      <button class="btn btn-gold" onclick="openBursaryModal()" style="padding:14px 28px;white-space:nowrap;">
+        <i class="fas fa-hand-holding-usd"></i> Verify & Get Coupon
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Success Stories -->
+<section class="section stories-section" id="stories">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag gold"><i class="fas fa-trophy"></i> Success Stories</span>
+      <h2>From 52% to Bachelor's Pass</h2>
+      <p>Real results from real matrics who used MatricMate AI to transform their marks and their futures.</p>
+    </div>
+    
+    <div class="stories-grid">
+      <div class="story-card">
+        <span class="story-result"><i class="fas fa-arrow-up"></i> 52% → 81% in Physical Sciences</span>
+        <div class="story-stars">★★★★★</div>
+        <p>"I was failing Physical Sciences and thought my dream of studying engineering was over. MatricMate's adaptive quizzes found exactly where I was weak, and my tutor Thabo from StudentMart helped me jump 29 percentage points in 4 months. I'm now at Wits on a full bursary."</p>
+        <div class="story-author">
+          <div class="story-avatar">SM</div>
+          <div>
+            <h4>Sibusiso Mthembu</h4>
+            <small>2024 matric · Now at Wits Engineering</small>
           </div>
         </div>
       </div>
       
-      <div class="advisors-showcase">
-        <div class="advisor-card">
-          <div class="advisor-avatar" style="background:linear-gradient(135deg,var(--ai-purple),#6d28d9);">DM</div>
-          <div class="advisor-info">
-            <h4>Dr. Dineo Mokoena</h4>
-            <small>Career Psychologist • UCT</small>
-            <div class="speciality">⭐ Specialises in STEM career paths</div>
-            <div class="advisor-source fl">Frictionless Learner</div>
-          </div>
-          <div class="advisor-price">
-            <strong>R750</strong>
-            <small>per session</small>
+      <div class="story-card">
+        <span class="story-result"><i class="fas fa-award"></i> 7 distinctions · Bachelor's pass</span>
+        <div class="story-stars">★★★★★</div>
+        <p>"The multilingual feature is a game-changer. I could understand complex Chemistry concepts in isiXhosa and then practice the exam questions in English. The AI essay marking helped me polish my English HL essays to distinction level. 7 distinctions!"</p>
+        <div class="story-author">
+          <div class="story-avatar">NM</div>
+          <div>
+            <h4>Noluthando Mkhize</h4>
+            <small>2024 matric · Eastern Cape · Medicine at UCT</small>
           </div>
         </div>
-        
-        <div class="advisor-card">
-          <div class="advisor-avatar" style="background:linear-gradient(135deg,var(--market-cyan),var(--ecosystem-emerald));">PV</div>
-          <div class="advisor-info">
-            <h4>Prof. Pieter van Wyk</h4>
-            <small>University Admissions • Stellenbosch</small>
-            <div class="speciality">⭐ 15+ years in degree counselling</div>
-            <div class="advisor-source fl">Frictionless Learner</div>
-          </div>
-          <div class="advisor-price">
-            <strong>R450</strong>
-            <small>per session</small>
-          </div>
-        </div>
-        
-        <div class="advisor-card">
-          <div class="advisor-avatar" style="background:linear-gradient(135deg,var(--harvest-gold),var(--vibrant-orange));">AN</div>
-          <div class="advisor-info">
-            <h4>Ayanda Nkosi</h4>
-            <small>NSFAS Specialist • Wits alumna</small>
-            <div class="speciality">⭐ Helped 400+ learners secure funding</div>
-            <div class="advisor-source sm">StudentMart SA</div>
-          </div>
-          <div class="advisor-price">
-            <strong>R250</strong>
-            <small>per application</small>
+      </div>
+      
+      <div class="story-card">
+        <span class="story-result"><i class="fas fa-graduation-cap"></i> Bachelor's pass on SASSA grant</span>
+        <div class="story-stars">★★★★★</div>
+        <p>"I'm on a SASSA child support grant and thought MatricMate was out of reach. The 85% discount changed everything. I got access to the Pro plan for R30/month and my peer tutor Ayanda from Frictionless Learner helped me pass with a Bachelor's. Now I'm applying for NSFAS."</p>
+        <div class="story-author">
+          <div class="story-avatar">TN</div>
+          <div>
+            <h4>Thandi Nkosi</h4>
+            <small>2024 matric · Limpopo · Rural school</small>
           </div>
         </div>
-        
-        <div class="advisor-card">
-          <div class="advisor-avatar" style="background:linear-gradient(135deg,#EC4899,#F43F5E);">ZT</div>
-          <div class="advisor-info">
-            <h4>Zanele Thwala</h4>
-            <small>Medical School Advisor • UKZN</small>
-            <div class="speciality">⭐ Med school application expert</div>
-            <div class="advisor-source fl">Frictionless Learner</div>
+      </div>
+      
+      <div class="story-card">
+        <span class="story-result"><i class="fas fa-users"></i> Whole school improved by 18%</span>
+        <div class="story-stars">★★★★★</div>
+        <p>"As principal of a Quintile 2 school, we booked the Matric Bootcamp for our 48 Grade 12s. The 2-week intensive programme lifted our overall pass rate from 67% to 85%. The daily parent reports meant our community was fully engaged. Worth every rand."</p>
+        <div class="story-author">
+          <div class="story-avatar">LV</div>
+          <div>
+            <h4>Linda van Wyk</h4>
+            <small>Principal · Western Cape high school</small>
           </div>
-          <div class="advisor-price">
-            <strong>R550</strong>
-            <small>per session</small>
+        </div>
+      </div>
+      
+      <div class="story-card">
+        <span class="story-result"><i class="fas fa-compass"></i> Found my career path</span>
+        <div class="story-stars">★★★★★</div>
+        <p>"I had no idea what to study after matric. Dr. Mokoena from Mental Health Central did a psychometric assessment that showed I'm suited for industrial psychology. She helped me apply to 3 universities and got me a bursary. MatricMate's career guidance is world-class."</p>
+        <div class="story-author">
+          <div class="story-avatar">KP</div>
+          <div>
+            <h4>Kagiso Pillay</h4>
+            <small>2024 matric · Gauteng · UP Industrial Psychology</small>
+          </div>
+        </div>
+      </div>
+      
+      <div class="story-card">
+        <span class="story-result"><i class="fas fa-book-reader"></i> Failed Maths → passed with 78%</span>
+        <div class="story-stars">★★★★★</div>
+        <p>"I failed Maths in June and my teacher said I should drop to Maths Literacy. I refused. I used MatricMate's 15,000 past paper questions and booked 3 tutor sessions a week with Lerato from StudentMart. By November I got 78%. Never give up."</p>
+        <div class="story-author">
+          <div class="story-avatar">RD</div>
+          <div>
+            <h4>Riyaad Daniels</h4>
+            <small>2024 matric · Cape Town · Commerce at UCT</small>
           </div>
         </div>
       </div>
@@ -726,36 +1989,122 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif}
   </div>
 </section>
 
-<!-- Testimonial -->
-<section class="section" style="background:#fff;">
-  <div class="section-container" style="max-width:800px;">
-    <div class="testimonial-card">
-      <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-text">"I'm on a SASSA child support grant and thought MatricMate was out of reach. The 85% discount changed everything. I got R15/month access AND the Scholar bundle gave me a tutor from StudentMart who helped me jump from 52% to 81% in Physical Sciences. I'm now studying Engineering at Wits on a full bursary — and the career advisor helped me with my NSFAS application."</p>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar">SM</div>
-        <div>
-          <h4>Sibusiso Mthembu</h4>
-          <small>Grade 12 • Rural KZN • Now at Wits University</small>
+<!-- FAQ Section -->
+<section class="section faq-section" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag orange"><i class="fas fa-question-circle"></i> FAQ</span>
+      <h2>Questions Before You Start</h2>
+    </div>
+    
+    <div class="faq-container">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Is MatricMate AI aligned with both NSC and IEB curricula?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Yes. Every past paper question, quiz, and study guide in MatricMate AI is tagged for NSC, IEB, or both. When you sign up, you select your exam body and all content filters accordingly. We work directly with the DBE and IEB to ensure our content matches the latest ATPs and mark schemes.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>How does the multilingual AI work?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Our multilingual AI is powered by InkubaLM and NLLB-200, two of the world's most advanced African language models. You can switch between English and any of the 10 other official SA languages mid-question. The AI translates the question, your answer, and the explanation — so you can understand concepts in your home language while practicing exam-style English.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>How do I book a one-on-one tutor?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Go to the Tutors tab in the app, filter by subject and availability, and click "Book". You can pay per session via Yoco, Zapper, or EFT. MatricMate Pro subscribers get 2 free tutor sessions per month and 30% off any additional sessions. Tutors are sourced from StudentMart SA (graduate tutors) and Frictionless Learner (peer tutors).</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>What's the difference between StudentMart tutors and Frictionless Learner peer tutors?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>StudentMart tutors are university students with proven matric distinctions (R80–R250/hour). Frictionless Learner peer tutors are current matrics who aced the same subjects you're studying (R60–R80/hour). Peer tutors are great for study-buddy-style learning; graduate tutors are ideal for deeper conceptual work and exam technique.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>How do schools book the Matric Bootcamp?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>SGB chairs, principals, or HODs can book the Matric Bootcamp (R2,500/learner for 10 days) or Pre-Tertiary Readiness Camp (R3,500/learner for 5 days) via our schools portal. We issue official tax invoices and can work with your school's finance officer. Bulk discounts apply for 2+ cohorts. The bootcamp can be delivered online or face-to-face at your school.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Can I get a bursary if I'm on a SASSA grant?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Yes. SASSA Child Support Grant recipients get 85% off MatricMate Pro (just R30/month). Rural/Quintile 1-3 school learners get 70% off. NSFAS-eligible learners get 100% free access. Verification takes 60 seconds via our POPIA-compliant form — we hash your SASSA reference number and never store it.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Does the app work offline during load-shedding?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Yes. MatricMate AI is built offline-first. You can download up to 500 past paper questions, 50 video lessons, and all your quizzes for offline use. When power or data returns, your progress syncs automatically. The app uses only ~50MB of data per month — ideal for SA data costs.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>Is my data protected under POPIA?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Yes. We are a PAIA-registered Responsible Party (REGGIE EXPRESS Pty Ltd, K2024698680). All learner data is processed under explicit consent, stored in encrypted form, and never sold or shared. You can request access, correction, or deletion at any time. Our Information Officer is available for any data subject queries.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span>What career guidance is available?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          <p>Mental Health Central provides HPCSA-registered career psychologists who offer psychometric assessments, degree selection guidance, university comparisons, and NSFAS/bursary application support. Sessions cost R350 and are included free for MatricMate Unlimited subscribers (4 sessions per term). Mental health support is always 100% free.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="section" style="background:linear-gradient(135deg,var(--vibrant-orange-dark),var(--vibrant-orange));padding:4rem 2rem;">
-  <div style="max-width:700px;margin:0 auto;text-align:center;color:#fff;">
-    <h2 style="font-size:2.2rem;margin-bottom:1rem;">Your Distinction Starts Today</h2>
-    <p style="font-size:1.1rem;margin-bottom:2rem;opacity:.95;">Verify your status. Get your coupon. Bundle with tutors and advisors. Pass Matric with confidence.</p>
-    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-      <button class="btn btn-navy" onclick="openVerifyModal()" style="padding:14px 28px;">
-        <i class="fas fa-ticket-alt"></i> Verify & Get Coupon
-      </button>
-      <button class="btn btn-outline" onclick="startFreeTrial()" style="padding:14px 28px;border-color:#fff;color:#fff;">
-        <i class="fas fa-rocket"></i> Start Free Trial
+<!-- CTA Section -->
+<section class="cta-section" id="contact">
+  <div class="cta-container">
+    <h2>Your Matric <span class="accent">Starts Now</span></h2>
+    <p>Download the app, find your tutor, join a bootcamp, or book career guidance — whatever your matric journey needs, MatricMate AI is here.</p>
+    <div class="cta-buttons">
+      <a href="#download" class="btn btn-primary" style="padding:14px 28px;font-size:1rem;">
+        <i class="fas fa-download"></i> Download Free App
+      </a>
+      <button class="btn btn-outline" onclick="openTrialModal()" style="padding:14px 28px;font-size:1rem;border-color:rgba(255,255,255,.3);color:white;">
+        <i class="fas fa-rocket"></i> Start 14-Day Trial
       </button>
     </div>
+    <p class="cta-note">🇿🇦 Proudly South African · NSC & IEB Aligned · POPIA Compliant · Offline-First · 11 SA Languages</p>
   </div>
 </section>
 
@@ -763,590 +2112,508 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif}
 <footer class="footer">
   <div class="footer-container">
     <div class="footer-grid">
-      <div>
-        <h4 style="color:var(--vibrant-orange);">MatricMate AI</h4>
-        <p style="color:rgba(255,255,255,.6);font-size:.82rem;line-height:1.7;margin-top:.5rem;">Personalised AI tutor for Matric learners. NSC & IEB aligned. Committed to education equity across South Africa.</p>
-        <p style="color:rgba(255,255,255,.4);font-size:.72rem;margin-top:1rem;">REGGIE EXPRESS (Pty) Ltd • Reg: K2024698680</p>
+      <div class="footer-brand">
+        <a href="#" class="logo" style="margin-bottom:.5rem;">
+          <div class="logo-icon" style="width:36px;height:36px;font-size:1rem;"><i class="fas fa-book-open"></i></div>
+          <div class="logo-text">
+            <div class="brand" style="color:white;">Matric<span style="color:var(--vibrant-orange);">Mate</span> AI</div>
+          </div>
+        </a>
+        <p>South Africa's #1 AI matric exam prep companion. NSC & IEB aligned. Multilingual. Offline-first. Powered by the ThutoTech ecosystem.</p>
+        <div class="footer-eco-badge">
+          <i class="fas fa-layer-group"></i> Part of ThutoTech Ecosystem
+        </div>
+        <div class="footer-reggie">
+          REGGIE EXPRESS (Pty) Ltd · Reg: K2024698680<br>
+          NSC & IEB Partner · POPIA Registered
+        </div>
+        <div class="footer-social">
+          <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" title="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
       </div>
       <div>
-        <h4>Access Programmes</h4>
+        <h4>Product</h4>
         <ul>
-          <li><a href="#access">SASSA Grant Discount</a></li>
-          <li><a href="#access">Rural Schools Access</a></li>
-          <li><a href="#access">NSFAS Scholarship</a></li>
-          <li><a href="#bundles">Bundle Packages</a></li>
-          <li><a href="#tutors">Private Tutors</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#subjects">Subjects</a></li>
+          <li><a href="#tutors">Find a Tutor</a></li>
+          <li><a href="#bootcamps">Bootcamps</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#download">Download App</a></li>
         </ul>
       </div>
       <div>
         <h4>Ecosystem</h4>
         <ul>
-          <li><a href="../../">ThutoTech Main</a></li>
+          <li><a href="../">ThutoTech Main</a></li>
           <li><a href="../fundisa-ai/">Fundisa AI</a></li>
           <li><a href="../studentmart-port/">StudentMart SA</a></li>
           <li><a href="#">Frictionless Learner</a></li>
-          <li><a href="#">Thuto AI Academy</a></li>
+          <li><a href="#">Mental Health Central</a></li>
+          <li><a href="../thuto-academy/">Thuto AI Academy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal & Trust</h4>
+        <ul>
+          <li><a href="#">Privacy Policy (POPIA)</a></li>
+          <li><a href="#">PAIA Manual</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">Bursary Terms</a></li>
+          <li><a href="#">Information Officer</a></li>
+          <li><a href="#">Contact Us</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 MatricMate AI — A Thuto Technologies product. 🇿🇦 POPIA Compliant • NSC & IEB Aligned</p>
-      <p><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">POPIA</a></p>
+      <p>© 2025 MatricMate AI — A REGGIE EXPRESS (Pty) Ltd company.
+        <span class="sa-flag">
+          <span style="background:#DE3831;"></span>
+          <span style="background:#002395;"></span>
+          <span style="background:#007A4D;"></span>
+          <span style="background:#FFB612;"></span>
+          <span style="background:#000000;"></span>
+          <span style="background:#FFFFFF;"></span>
+        </span>
+      </p>
+      <p>Built with ❤️ in South Africa · NSC & IEB Aligned · POPIA-compliant · Offline-first</p>
     </div>
   </div>
 </footer>
 
-<!-- Verification Modal -->
-<div class="modal-overlay" id="verifyModal">
+<!-- Trial Modal -->
+<div class="modal-overlay" id="trialModal">
   <div class="modal">
-    <button class="modal-close" onclick="closeVerifyModal()"><i class="fas fa-times"></i></button>
-    <h2><i class="fas fa-ticket-alt" style="color:var(--harvest-gold);"></i> Verify Your Status</h2>
-    <p>Get your personalised discount coupon in 60 seconds. POPIA-compliant. We hash — never store — your reference numbers.</p>
+    <button class="modal-close" onclick="closeTrialModal()"><i class="fas fa-times"></i></button>
+    <h2><i class="fas fa-rocket" style="color:var(--vibrant-orange);"></i> Start Your 14-Day Free Trial</h2>
+    <p>Get full access to MatricMate Pro — no credit card required. Cancel anytime.</p>
     
-    <!-- Progress Indicator -->
-    <div class="verify-progress">
-      <div class="verify-progress-step active" id="progress-1">
-        <div class="verify-progress-dot">1</div>
-        <div class="verify-progress-label">Category</div>
-      </div>
-      <div class="verify-progress-step" id="progress-2">
-        <div class="verify-progress-dot">2</div>
-        <div class="verify-progress-label">Details</div>
-      </div>
-      <div class="verify-progress-step" id="progress-3">
-        <div class="verify-progress-dot">3</div>
-        <div class="verify-progress-label">Coupon</div>
-      </div>
-    </div>
-    
-    <!-- Step 1: Category Selection -->
-    <div class="verify-step-content active" id="step-1">
-      <div class="form-group">
-        <label>Which category applies to you?</label>
-        <div style="display:flex;flex-direction:column;gap:.6rem;">
-          <label class="checkbox-group">
-            <input type="radio" name="category" value="sassa" checked>
-            <label>
-              SASSA Child Support Grant recipient
-              <small>85% off MatricMate Pro (R15/month)</small>
-            </label>
-          </label>
-          <label class="checkbox-group">
-            <input type="radio" name="category" value="rural">
-            <label>
-              Rural / Township school (Quintile 1-3)
-              <small>70% off MatricMate Pro (R30/month)</small>
-            </label>
-          </label>
-          <label class="checkbox-group">
-            <input type="radio" name="category" value="nsfas">
-            <label>
-              NSFAS-funded or orphaned learner
-              <small>100% free MatricMate Pro</small>
-            </label>
-          </label>
-          <label class="checkbox-group">
-            <input type="radio" name="category" value="referral">
-            <label>
-              Social worker / teacher referral
-              <small>Discount based on referral type</small>
-            </label>
-          </label>
-        </div>
-      </div>
-      <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="goToStep(2)">
-        Continue <i class="fas fa-arrow-right"></i>
-      </button>
-    </div>
-    
-    <!-- Step 2: Verification Details -->
-    <div class="verify-step-content" id="step-2">
-      <div id="sassaFields">
+    <form onsubmit="submitTrial(event)">
+      <div class="form-row">
         <div class="form-group">
-          <label>SASSA Reference Number</label>
-          <input type="text" id="sassaRef" placeholder="e.g., CSG/2024/1234567" maxlength="30">
-          <small>Found on your SASSA grant letter or Gold Card statement</small>
+          <label>First Name *</label>
+          <input type="text" required placeholder="e.g. Sipho">
         </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Beneficiary ID Number</label>
-            <input type="text" id="beneficiaryId" placeholder="13-digit SA ID" maxlength="13">
-          </div>
-          <div class="form-group">
-            <label>Grant Type</label>
-            <select id="grantType">
-              <option>Child Support Grant</option>
-              <option>Foster Child Grant</option>
-              <option>Care Dependency Grant</option>
-            </select>
-          </div>
+        <div class="form-group">
+          <label>Last Name *</label>
+          <input type="text" required placeholder="e.g. Mkhize">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Email *</label>
+        <input type="email" required placeholder="you@school.edu.za or personal email">
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>Phone (WhatsApp) *</label>
+          <input type="tel" required placeholder="071 234 5678">
+        </div>
+        <div class="form-group">
+          <label>Grade *</label>
+          <select required>
+            <option value="">Select</option>
+            <option>Grade 10</option>
+            <option>Grade 11</option>
+            <option>Grade 12</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>Exam Body *</label>
+          <select required>
+            <option value="">Select</option>
+            <option>NSC (DBE)</option>
+            <option>IEB</option>
+            <option>Not sure</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Province *</label>
+          <select required>
+            <option value="">Select</option>
+            <option>Gauteng</option>
+            <option>Western Cape</option>
+            <option>KwaZulu-Natal</option>
+            <option>Eastern Cape</option>
+            <option>Free State</option>
+            <option>Limpopo</option>
+            <option>Mpumalanga</option>
+            <option>North West</option>
+            <option>Northern Cape</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Primary Language *</label>
+        <select required>
+          <option value="">Select</option>
+          <option>English</option>
+          <option>isiZulu</option>
+          <option>isiXhosa</option>
+          <option>Afrikaans</option>
+          <option>Sepedi</option>
+          <option>Setswana</option>
+          <option>Sesotho</option>
+          <option>Xitsonga</option>
+          <option>siSwati</option>
+          <option>Tshivenda</option>
+          <option>isiNdebele</option>
+        </select>
+      </div>
+      
+      <div class="popia-notice">
+        <i class="fas fa-shield-alt"></i>
+        <div>
+          <strong>POPIA Notice:</strong> By starting your trial, you consent to MatricMate AI processing your personal data for learning and communication purposes. We never share or sell your data. You may withdraw consent or request data deletion at any time via our POPIA portal.
+        </div>
+      </div>
+      
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:1rem;padding:14px;">
+        <i class="fas fa-check"></i> Start My 14-Day Free Trial
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- School Booking Modal -->
+<div class="modal-overlay" id="schoolModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeSchoolBookingModal()"><i class="fas fa-times"></i></button>
+    <h2><i class="fas fa-school" style="color:var(--vibrant-orange);"></i> Book for Your School</h2>
+    <p id="schoolModalSubtitle">Request a quote for your matric bootcamp or pre-tertiary camp.</p>
+    
+    <form onsubmit="submitSchoolBooking(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name *</label>
+          <input type="text" required placeholder="e.g. Linda van Wyk">
+        </div>
+        <div class="form-group">
+          <label>Your Role *</label>
+          <select required>
+            <option value="">Select</option>
+            <option>Principal</option>
+            <option>HOD</option>
+            <option>SGB Chair</option>
+            <option>SGB Member</option>
+            <option>Teacher</option>
+            <option>District Official</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>School Name *</label>
+        <input type="text" required placeholder="e.g. Glenhazel High School">
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>School EMIS Code *</label>
+          <input type="text" required placeholder="e.g. 5001234">
+        </div>
+        <div class="form-group">
+          <label>Quintile *</label>
+          <select required>
+            <option value="">Select</option>
+            <option>Quintile 1</option>
+            <option>Quintile 2</option>
+            <option>Quintile 3</option>
+            <option>Quintile 4</option>
+            <option>Quintile 5</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>Province *</label>
+          <select required>
+            <option value="">Select</option>
+            <option>Gauteng</option>
+            <option>Western Cape</option>
+            <option>KwaZulu-Natal</option>
+            <option>Eastern Cape</option>
+            <option>Free State</option>
+            <option>Limpopo</option>
+            <option>Mpumalanga</option>
+            <option>North West</option>
+            <option>Northern Cape</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Number of Grade 12s *</label>
+          <input type="number" required placeholder="e.g. 48" min="1">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Programme *</label>
+        <select required id="programmeSelect">
+          <option value="">Select</option>
+          <option>Matric Bootcamp (10 days · R2,500/learner)</option>
+          <option>Pre-Tertiary Readiness Camp (5 days · R3,500/learner)</option>
+          <option>Both programmes (discounted)</option>
+          <option>School License (annual subscription)</option>
+          <option>Not sure — please advise</option>
+        </select>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email *</label>
+          <input type="email" required placeholder="principal@school.edu.za">
+        </div>
+        <div class="form-group">
+          <label>Phone *</label>
+          <input type="tel" required placeholder="082 123 4567">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Preferred Timing</label>
+        <select>
+          <option value="">Select (optional)</option>
+          <option>June holidays 2025</option>
+          <option>September holidays 2025</option>
+          <option>July 2025 (residential camp)</option>
+          <option>August 2025 (residential camp)</option>
+          <option>Flexible</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label>Additional Notes</label>
+        <textarea rows="3" placeholder="Tell us about your school's needs, budget, or questions..."></textarea>
+      </div>
+      
+      <div class="popia-notice">
+        <i class="fas fa-shield-alt"></i>
+        <div>
+          <strong>POPIA Notice:</strong> By submitting this booking request, you consent to MatricMate AI processing your school's information for quotation and communication purposes.
+        </div>
+      </div>
+      
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:1rem;padding:14px;">
+        <i class="fas fa-paper-plane"></i> Request Quote
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Bursary Modal -->
+<div class="modal-overlay" id="bursaryModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeBursaryModal()"><i class="fas fa-times"></i></button>
+    <h2><i class="fas fa-hand-holding-usd" style="color:var(--vibrant-orange);"></i> Verify Your Status</h2>
+    <p>Get your personalised bursary coupon in 60 seconds. POPIA-compliant — we hash your reference numbers and never store the originals.</p>
+    
+    <form onsubmit="submitBursary(event)">
+      <div class="form-group">
+        <label>Which category applies to you? *</label>
+        <select required id="bursaryCategory">
+          <option value="">Select</option>
+          <option value="sassa">SASSA Child Support Grant recipient (85% off)</option>
+          <option value="rural">Rural / Quintile 1-3 school learner (70% off)</option>
+          <option value="nsfas">NSFAS-eligible (100% free)</option>
+          <option value="referral">Social worker / teacher referral</option>
+        </select>
+      </div>
+      
+      <div id="sassaFields" style="display:none;">
+        <div class="form-group">
+          <label>SASSA Reference Number *</label>
+          <input type="text" id="sassaRef" placeholder="e.g. CSG/2024/1234567">
+          <small style="color:var(--gray-500);font-size:.72rem;">Found on your SASSA grant letter or Gold Card statement</small>
         </div>
       </div>
       
       <div id="ruralFields" style="display:none;">
-        <div class="form-group">
-          <label>School Name</label>
-          <input type="text" id="schoolName" placeholder="e.g., Glenhazel Primary">
-        </div>
         <div class="form-row">
           <div class="form-group">
-            <label>School EMIS Code</label>
-            <input type="text" id="emisCode" placeholder="e.g., 5001234" maxlength="10">
-            <small>Ask your principal — it's on your school's DBE registration</small>
+            <label>School Name *</label>
+            <input type="text" id="ruralSchool" placeholder="e.g. Glenhazel High">
           </div>
           <div class="form-group">
-            <label>Province</label>
-            <select id="province">
-              <option>Eastern Cape</option><option>Free State</option><option>Gauteng</option>
-              <option>KwaZulu-Natal</option><option>Limpopo</option><option>Mpumalanga</option>
-              <option>North West</option><option>Northern Cape</option><option>Western Cape</option>
-            </select>
+            <label>School EMIS Code *</label>
+            <input type="text" id="emisCode" placeholder="e.g. 5001234">
           </div>
         </div>
       </div>
       
       <div id="nsfasFields" style="display:none;">
         <div class="form-group">
-          <label>NSFAS Reference / University Acceptance Letter</label>
-          <input type="text" id="nsfasRef" placeholder="NSFAS ref or upload acceptance letter">
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>University (if applicable)</label>
-            <select id="nsfasUni">
-              <option>Not yet applied</option>
-              <option>UCT</option><option>Wits</option><option>UP</option>
-              <option>Stellenbosch</option><option>UJ</option><option>UKZN</option>
-              <option>NWU</option><option>Rhodes</option><option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Household Income (annual)</label>
-            <select id="householdIncome">
-              <option>Under R150,000</option>
-              <option>R150,000 - R350,000</option>
-              <option>R350,000 - R600,000</option>
-              <option>Prefer not to say</option>
-            </select>
-          </div>
+          <label>NSFAS Reference or Student Number *</label>
+          <input type="text" id="nsfasRef" placeholder="NSFAS ref or university student number">
         </div>
       </div>
       
       <div id="referralFields" style="display:none;">
         <div class="form-group">
-          <label>Referral Code (from social worker / teacher)</label>
-          <input type="text" id="referralCode" placeholder="e.g., SW-GP-2024-0847">
-          <small>Your referring professional will give you this code</small>
+          <label>Referral Code *</label>
+          <input type="text" id="referralCode" placeholder="e.g. SW-GP-2025-0847">
+          <small style="color:var(--gray-500);font-size:.72rem;">Your referring professional will give you this code</small>
         </div>
-        <div class="form-group">
-          <label>Referring Organisation</label>
-          <input type="text" id="referralOrg" placeholder="e.g., Childline SA, school SGB">
-        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Your Email *</label>
+        <input type="email" required placeholder="you@email.com">
       </div>
       
       <div class="popia-notice">
         <i class="fas fa-shield-alt"></i>
-        <div><strong>POPIA Notice:</strong> We hash your reference numbers using SHA-256 and never store the original. Verification happens against SASSA/DBE/NSFAS databases in real-time. You can request deletion anytime.</div>
+        <div>
+          <strong>POPIA Notice:</strong> We use SHA-256 to hash your reference numbers and never store the originals. Verification happens against SASSA/DBE/NSFAS databases in real-time. You can request deletion anytime.
+        </div>
       </div>
       
-      <div style="display:flex;gap:.6rem;margin-top:1rem;">
-        <button class="btn btn-outline" style="flex:1;justify-content:center;" onclick="goToStep(1)">
-          <i class="fas fa-arrow-left"></i> Back
-        </button>
-        <button class="btn btn-primary" style="flex:2;justify-content:center;" onclick="verifyAndGenerate()">
-          <i class="fas fa-magic"></i> Verify & Generate Coupon
-        </button>
-      </div>
-    </div>
-    
-    <!-- Step 3: Coupon Result -->
-    <div class="verify-step-content" id="step-3">
-      <div class="coupon-result">
-        <div class="coupon-success-icon"><i class="fas fa-check"></i></div>
-        <h3 style="color:var(--corporate-navy);margin-bottom:.3rem;">Verification Successful! 🎉</h3>
-        <p style="color:var(--gray-500);font-size:.88rem;" id="verifyMessage">You qualify for the SASSA Grant Discount</p>
-        
-        <div class="coupon-code-box">
-          <div class="coupon-code-label">Your Exclusive Coupon Code</div>
-          <div class="coupon-code" id="couponCode">SASSA-THUTO-2025-XXXX</div>
-          <div class="coupon-discount" id="couponDiscount">85% OFF MatricMate Pro</div>
-          <div class="coupon-validity">Valid for 12 months • Single user • Non-transferable</div>
-        </div>
-        
-        <div class="coupon-apply-info">
-          <strong>How to use:</strong> Select any package below and enter this code at checkout. Your discount applies instantly. <strong>Bundle with tutors & career advisors</strong> for extra savings.
-        </div>
-        
-        <div style="display:flex;gap:.6rem;flex-wrap:wrap;">
-          <button class="btn btn-primary" style="flex:1;justify-content:center;" onclick="copyCoupon()">
-            <i class="fas fa-copy"></i> Copy Code
-          </button>
-          <button class="btn btn-gold" style="flex:1;justify-content:center;" onclick="applyAndScroll()">
-            <i class="fas fa-shopping-cart"></i> View Packages
-          </button>
-        </div>
-        
-        <button class="btn btn-outline" style="width:100%;justify-content:center;margin-top:.8rem;" onclick="closeVerifyModal()">
-          Close
-        </button>
-      </div>
-    </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:1rem;padding:14px;">
+        <i class="fas fa-magic"></i> Verify & Generate Coupon
+      </button>
+    </form>
   </div>
-</section>
+</div>
 
 <script>
-// ==========================================
-// TUTOR DATA (simulating StudentMart + Frictionless Learner feeds)
-// ==========================================
-const tutorsData = [
-  {
-    name: "Thabo Molefe",
-    initials: "TM",
-    university: "BSc Maths • Wits",
-    rating: 4.9,
-    reviews: 67,
-    subjects: ["Mathematics", "Physical Sciences"],
-    price: 150,
-    originalPrice: 200,
-    source: "studentmart",
-    special: "Matric distinction: 94% Maths",
-    gradient: "linear-gradient(135deg,#FF6B35,#E55A2B)"
-  },
-  {
-    name: "Lerato Nkosi",
-    initials: "LN",
-    university: "CA(SA) Student • UP",
-    rating: 4.8,
-    reviews: 52,
-    subjects: ["Accounting", "Economics", "Business Studies"],
-    price: 180,
-    originalPrice: 240,
-    source: "studentmart",
-    special: "Top 1% Accounting nationwide",
-    gradient: "linear-gradient(135deg,#D4AF37,#b8961f)"
-  },
-  {
-    name: "Dr. Dineo M.",
-    initials: "DM",
-    university: "PhD Education • UCT",
-    rating: 5.0,
-    reviews: 38,
-    subjects: ["Essay Writing", "English HL", "Research Skills"],
-    price: 350,
-    originalPrice: 450,
-    source: "frictionless",
-    special: "Published academic author",
-    gradient: "linear-gradient(135deg,#8B5CF6,#6d28d9)"
-  },
-  {
-    name: "Sipho Khumalo",
-    initials: "SK",
-    university: "BSc Eng • UJ",
-    rating: 4.9,
-    reviews: 41,
-    subjects: ["Physical Sciences", "Mathematics", "Technical Drawing"],
-    price: 160,
-    originalPrice: 220,
-    source: "studentmart",
-    special: "Engineering scholarship recipient",
-    gradient: "linear-gradient(135deg,#28A9E1,#1B8BC0)"
-  },
-  {
-    name: "Nomvula Sithole",
-    initials: "NS",
-    university: "BA English • Rhodes",
-    rating: 4.9,
-    reviews: 44,
-    subjects: ["English HL", "Afrikaans FAL", "Literature"],
-    price: 140,
-    originalPrice: 180,
-    source: "frictionless",
-    special: "National essay competition winner",
-    gradient: "linear-gradient(135deg,#28A492,#1f7a6a)"
-  },
-  {
-    name: "Bongani Mthembu",
-    initials: "BM",
-    university: "BMed Student • UKZN",
-    rating: 4.8,
-    reviews: 33,
-    subjects: ["Life Sciences", "Physical Sciences"],
-    price: 170,
-    originalPrice: 230,
-    source: "studentmart",
-    special: "98% aggregate in Matric",
-    gradient: "linear-gradient(135deg,#EC4899,#F43F5E)"
-  }
-];
-
-function renderTutors(){
-  const grid = document.getElementById('tutorsGrid');
-  grid.innerHTML = tutorsData.map(t => `
-    <div class="tutor-card">
-      <div class="tutor-source-badge ${t.source}">
-        <i class="fas fa-${t.source==='studentmart'?'store':'users'}"></i>
-        ${t.source==='studentmart'?'StudentMart SA':'Frictionless Learner'}
-      </div>
-      <div class="tutor-header">
-        <div class="tutor-avatar" style="background:${t.gradient};">${t.initials}</div>
-        <div class="tutor-info">
-          <h4>${t.name}</h4>
-          <small>${t.university}</small>
-        </div>
-        <div class="tutor-rating"><i class="fas fa-star"></i> ${t.rating} (${t.reviews})</div>
-      </div>
-      <div class="tutor-special">
-        <i class="fas fa-award"></i>
-        ${t.special}
-      </div>
-      <div class="tutor-subjects">
-        ${t.subjects.map(s => `<span class="tutor-subject-tag">${s}</span>`).join('')}
-      </div>
-      <div class="tutor-footer">
-        <div class="tutor-price">
-          <span class="tutor-price-original">R${t.originalPrice}/hr</span>
-          R${t.price}/hr
-        </div>
-        <button class="btn btn-primary tutor-book-btn" onclick="bookTutor('${t.name}','${t.source}')">Book</button>
-      </div>
-    </div>
-  `).join('');
+// FAQ toggle
+function toggleFaq(el){
+  const item = el.parentElement;
+  const wasActive = item.classList.contains('active');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+  if (!wasActive) item.classList.add('active');
 }
 
-// ==========================================
-// VERIFICATION MODAL LOGIC
-// ==========================================
-let currentStep = 1;
-let selectedCategory = 'sassa';
-let generatedCoupon = null;
-
-function openVerifyModal(){
-  document.getElementById('verifyModal').classList.add('active');
-  document.body.style.overflow = 'hidden';
-  goToStep(1);
-}
-
-function closeVerifyModal(){
-  document.getElementById('verifyModal').classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-function goToStep(step){
-  // Hide all steps
-  document.querySelectorAll('.verify-step-content').forEach(el => el.classList.remove('active'));
-  document.getElementById(`step-${step}`).classList.add('active');
-  
-  // Update progress
-  for(let i=1; i<=3; i++){
-    const progressEl = document.getElementById(`progress-${i}`);
-    progressEl.classList.remove('active','completed');
-    if(i < step) progressEl.classList.add('completed');
-    else if(i === step) progressEl.classList.add('active');
-  }
-  
-  currentStep = step;
-  
-  // Show relevant fields on step 2
-  if(step === 2){
-    selectedCategory = document.querySelector('input[name="category"]:checked').value;
-    document.getElementById('sassaFields').style.display = selectedCategory==='sassa' ? 'block' : 'none';
-    document.getElementById('ruralFields').style.display = selectedCategory==='rural' ? 'block' : 'none';
-    document.getElementById('nsfasFields').style.display = selectedCategory==='nsfas' ? 'block' : 'none';
-    document.getElementById('referralFields').style.display = selectedCategory==='referral' ? 'block' : 'none';
-  }
-}
-
-function verifyAndGenerate(){
-  // Validate based on category
-  let valid = true;
-  let errorMessage = '';
-  
-  if(selectedCategory === 'sassa'){
-    const ref = document.getElementById('sassaRef').value.trim();
-    const id = document.getElementById('beneficiaryId').value.trim();
-    if(!ref || ref.length < 5){
-      errorMessage = 'Please enter a valid SASSA reference number';
-      valid = false;
-    } else if(!id || id.length !== 13){
-      errorMessage = 'Please enter a valid 13-digit SA ID number';
-      valid = false;
-    }
-  } else if(selectedCategory === 'rural'){
-    const emis = document.getElementById('emisCode').value.trim();
-    if(!emis || emis.length < 5){
-      errorMessage = 'Please enter your school EMIS code (ask your principal)';
-      valid = false;
-    }
-  } else if(selectedCategory === 'nsfas'){
-    const ref = document.getElementById('nsfasRef').value.trim();
-    if(!ref || ref.length < 5){
-      errorMessage = 'Please enter your NSFAS reference or acceptance letter number';
-      valid = false;
-    }
-  } else if(selectedCategory === 'referral'){
-    const code = document.getElementById('referralCode').value.trim();
-    if(!code || code.length < 5){
-      errorMessage = 'Please enter your referral code';
-      valid = false;
-    }
-  }
-  
-  if(!valid){
-    showToast(errorMessage, 'error');
-    return;
-  }
-  
-  // Generate coupon based on category
-  const couponData = {
-    sassa: { code: 'SASSA-THUTO-2025-', discount: '85% OFF', message: 'You qualify for the SASSA Grant Discount — MatricMate Pro for just R15/month', finalPrice: 15 },
-    rural: { code: 'RURAL-THUTO-2025-', discount: '70% OFF', message: 'You qualify for the Rural Schools Discount — MatricMate Pro for just R30/month', finalPrice: 30 },
-    nsfas: { code: 'NSFAS-THUTO-2025-', discount: '100% OFF', message: 'You qualify for the NSFAS Scholarship — MatricMate Pro completely FREE', finalPrice: 0 },
-    referral: { code: 'REFER-THUTO-2025-', discount: '75% OFF', message: 'Your referral qualifies you for a 75% discount — MatricMate Pro for just R25/month', finalPrice: 25 }
-  };
-  
-  const data = couponData[selectedCategory];
-  const randomSuffix = Math.random().toString(36).substring(2, 6).toUpperCase();
-  generatedCoupon = {
-    code: data.code + randomSuffix,
-    discount: data.discount,
-    message: data.message,
-    category: selectedCategory,
-    finalPrice: data.finalPrice
-  };
-  
-  // Update UI
-  document.getElementById('couponCode').textContent = generatedCoupon.code;
-  document.getElementById('couponDiscount').textContent = generatedCoupon.discount + ' MatricMate Pro';
-  document.getElementById('verifyMessage').textContent = generatedCoupon.message;
-  
-  // Go to step 3
-  goToStep(3);
-  showToast('Coupon generated successfully! 🎉');
-}
-
-function copyCoupon(){
-  if(!generatedCoupon) return;
-  navigator.clipboard.writeText(generatedCoupon.code).then(() => {
-    showToast('Coupon code copied to clipboard!');
-  }).catch(() => {
-    // Fallback
-    const textArea = document.createElement('textarea');
-    textArea.value = generatedCoupon.code;
-    document.body.appendChild(textArea);
-    textArea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textArea);
-    showToast('Coupon code copied!');
-  });
-}
-
-function applyAndScroll(){
-  closeVerifyModal();
-  document.getElementById('bundles').scrollIntoView({behavior:'smooth'});
-  if(generatedCoupon){
-    setTimeout(() => {
-      showToast(`Apply code "${generatedCoupon.code}" at checkout for ${generatedCoupon.discount}`);
-    }, 800);
-  }
-}
-
-// ==========================================
-// SAVINGS CALCULATOR
-// ==========================================
-function calculateSavings(){
-  const status = document.getElementById('calcStatus').value;
-  const pkg = document.getElementById('calcPackage').value;
-  
-  const packagePrices = { starter: 149, scholar: 399, ultimate: 899 };
-  const fullPrices = { starter: 249, scholar: 899, ultimate: 2499 };
-  
-  const discountMap = {
-    full: 1.0,
-    rural: 0.3,
-    sassa: 0.15,
-    nsfas: 0
-  };
-  
-  const basePrice = packagePrices[pkg];
-  const fullPrice = fullPrices[pkg];
-  const discount = discountMap[status];
-  const finalPrice = Math.round(basePrice * discount);
-  const savings = fullPrice - finalPrice;
-  
-  document.getElementById('savingsAmount').textContent = finalPrice === 0 ? 'FREE' : `R${finalPrice}`;
-  document.getElementById('savingsVs').textContent = `vs R${fullPrice} full price — you save R${savings}/month`;
-}
-
-// ==========================================
-// BUNDLE & TUTOR ACTIONS
-// ==========================================
-function selectBundle(bundle){
-  const bundleNames = { starter: 'Matric Starter', scholar: 'Matric Scholar', ultimate: 'Matric Ultimate' };
-  showToast(`${bundleNames[bundle]} selected! Add your coupon at checkout.`);
-  if(generatedCoupon){
-    setTimeout(() => {
-      showToast(`Don't forget: ${generatedCoupon.code} for ${generatedCoupon.discount}`);
-    }, 1500);
-  }
-}
-
-function bookTutor(name, source){
-  const sourceName = source === 'studentmart' ? 'StudentMart' : 'Frictionless Learner';
-  showToast(`Connecting you to ${name} via ${sourceName}...`);
-  setTimeout(() => {
-    if(source === 'studentmart'){
-      window.open('../studentmart-port/?category=tutoring&tutor=' + encodeURIComponent(name), '_blank');
-    } else {
-      showToast(`Frictionless Learner booking flow would open here`);
-    }
-  }, 1200);
-}
-
-function browseAllTutors(){
-  showToast('Loading full tutor directory from StudentMart & Frictionless Learner...');
-}
-
-function startFreeTrial(){
-  showToast('🎉 Starting your 14-day free trial!');
-}
-
-// ==========================================
-// TOAST NOTIFICATION
-// ==========================================
-function showToast(message, type = 'success'){
+// Toast notifications
+function showToast(msg){
   const existing = document.querySelector('.toast-notification');
-  if(existing) existing.remove();
-  
+  if (existing) existing.remove();
   const toast = document.createElement('div');
-  toast.className = 'toast-notification';
-  const bg = type === 'error' ? '#EF4444' : 'var(--corporate-navy)';
-  toast.style.cssText = `
-    position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);z-index:3000;
-    background:${bg};color:#fff;padding:14px 24px;border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,.2);font-size:.88rem;font-weight:500;
-    max-width:90vw;text-align:center;
-    animation:slideUp .3s ease;
-  `;
-  toast.textContent = message;
+  toast.style.cssText = `position:fixed;top:2rem;left:50%;transform:translateX(-50%);z-index:3000;background:var(--corporate-navy);color:white;padding:16px 24px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.2);font-size:.95rem;font-weight:600;max-width:90vw;text-align:center;`;
+  toast.textContent = msg;
   document.body.appendChild(toast);
   setTimeout(() => toast.remove(), 3500);
 }
 
-const styleSheet = document.createElement('style');
-styleSheet.textContent = `@keyframes slideUp{from{transform:translateX(-50%) translateY(20px);opacity:0}to{transform:translateX(-50%) translateY(0);opacity:1}}`;
-document.head.appendChild(styleSheet);
+// Trial modal
+function openTrialModal(){
+  document.getElementById('trialModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeTrialModal(){
+  document.getElementById('trialModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function submitTrial(e){
+  e.preventDefault();
+  closeTrialModal();
+  showToast('🎉 Trial started! Check your email for login details.');
+  e.target.reset();
+}
 
-// ==========================================
-// INITIALISE
-// ==========================================
-document.addEventListener('DOMContentLoaded', () => {
-  renderTutors();
-  calculateSavings();
+// School booking modal
+function openSchoolBookingModal(programme){
+  document.getElementById('schoolModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  const select = document.getElementById('programmeSelect');
+  if (programme === 'Matric Bootcamp') select.value = 'Matric Bootcamp (10 days · R2,500/learner)';
+  else if (programme === 'Pre-Tertiary Readiness Camp') select.value = 'Pre-Tertiary Readiness Camp (5 days · R3,500/learner)';
+  else if (programme === 'School License') select.value = 'School License (annual subscription)';
+}
+function closeSchoolBookingModal(){
+  document.getElementById('schoolModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function submitSchoolBooking(e){
+  e.preventDefault();
+  closeSchoolBookingModal();
+  showToast('📚 Quote request received! Our schools team will contact you within 24 hours.');
+  e.target.reset();
+}
+
+// Bursary modal
+function openBursaryModal(){
+  document.getElementById('bursaryModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeBursaryModal(){
+  document.getElementById('bursaryModal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.getElementById('bursaryCategory').addEventListener('change', function(){
+  const v = this.value;
+  document.getElementById('sassaFields').style.display = v === 'sassa' ? 'block' : 'none';
+  document.getElementById('ruralFields').style.display = v === 'rural' ? 'block' : 'none';
+  document.getElementById('nsfasFields').style.display = v === 'nsfas' ? 'block' : 'none';
+  document.getElementById('referralFields').style.display = v === 'referral' ? 'block' : 'none';
+});
+function submitBursary(e){
+  e.preventDefault();
+  const cat = document.getElementById('bursaryCategory').value;
+  const discounts = {sassa:'85% OFF',rural:'70% OFF',nsfas:'100% OFF',referral:'75% OFF'};
+  const codes = {sassa:'SASSA-MM-2025',rural:'RURAL-MM-2025',nsfas:'NSFAS-MM-2025',referral:'REFER-MM-2025'};
+  const suffix = Math.random().toString(36).substring(2,6).toUpperCase();
+  const code = codes[cat] + '-' + suffix;
+  closeBursaryModal();
+  showToast(`🎓 Coupon generated: ${code} (${discounts[cat]}). Apply at checkout!`);
+  e.target.reset();
+}
+
+// Book tutor
+function bookTutor(name){
+  showToast(`👨‍🏫 Booking request sent to ${name}. They'll WhatsApp you within 1 hour.`);
+}
+
+// Scroll to tutors
+function scrollToTutors(){
+  document.getElementById('tutors').scrollIntoView({behavior:'smooth'});
+}
+
+// Close modals on backdrop click
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay){
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
 });
 
-// Close modal on backdrop click
-document.getElementById('verifyModal').addEventListener('click', (e) => {
-  if(e.target.id === 'verifyModal') closeVerifyModal();
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e){
+    const href = this.getAttribute('href');
+    if (href === '#') return;
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) target.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+// PWA install prompt
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  setTimeout(() => {
+    showToast('📱 Tap "Download Free App" to install MatricMate AI on your home screen!');
+  }, 3000);
+});
+
+// Mobile menu
+document.querySelectorAll('.mobile-toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelector('.nav-links').classList.toggle('show');
+  });
 });
 </script>
 
