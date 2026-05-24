@@ -1,0 +1,10 @@
+# Ignore node_modules
+node_modules/
+mcp/node_modules/
+
+# Ignore logs
+mcp/logs/
+
+# Ignore environment files
+.env
+mcp/.env
