@@ -577,6 +577,391 @@
         }
     </script>
 
+<!-- Supabase Client -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+// ==========================================
+// STUDENTMART LIVE INTEGRATION
+// Replace YOUR_SUPABASE_URL and YOUR_ANON_KEY
+// ==========================================
+const SUPABASE_URL = 'YOUR_SUPABASE_URL'       // e.g. https://abcxyz.supabase.co
+const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY'      // from Settings > API
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+
+// ==========================================
+// STATE
+// ==========================================
+let currentUser = null
+let cart = []
+let allListings = []
+let activeFilter = 'all'
+
+// ==========================================
+// AUTH - Magic Link (no passwords!)
+// ==========================================
+async function signIn(email) {
+  const { error } = await supabase.auth.signInWithOtp({ email })
+  if (error) {
+    showToast('Error: ' + error.message, 'error')
+  } else {
+    showToast('✉️ Check your email for the login link!')
+  }
+}
+
+async function signOut() {
+  await supabase.auth.signOut()
+  currentUser = null
+  cart = []
+  updateCartCount()
+  showToast('Signed out')
+  renderAuthUI()
+}
+
+// Listen for auth state changes
+supabase.auth.onAuthStateChange((event, session) => {
+  currentUser = session?.user || null
+  renderAuthUI()
+  if (currentUser) {
+    loadCart()
+  }
+})
+
+function renderAuthUI() {
+  const authBtn = document.getElementById('authButton')
+  if (!authBtn) return
+  if (currentUser) {
+    authBtn.innerHTML = `<i class="fas fa-user-check"></i> ${currentUser.email.split('@')[0]}`
+    authBtn.onclick = signOut
+  } else {
+    authBtn.innerHTML = `<i class="fas fa-sign-in-alt"></i> Sign In`
+    authBtn.onclick = showAuthModal
+  }
+}
+
+function showAuthModal() {
+  const email = prompt('Enter your university email for a magic login link:')
+  if (email && email.includes('@')) signIn(email)
+}
+
+// ==========================================
+// LISTINGS - Load from Supabase
+// ==========================================
+async function loadListings(filter = 'all') {
+  activeFilter = filter
+  let query = supabase
+    .from('listings')
+    .select('*')
+    .eq('is_active', true)
+    .order('created_at', { ascending: false })
+  
+  if (filter !== 'all') {
+    query = query.eq('category', filter)
+  }
+  
+  const { data, error } = await query
+  if (error) {
+    console.error('Load listings error:', error)
+    return
+  }
+  
+  allListings = data || []
+  renderListings(allListings)
+}
+
+function renderListings(listings) {
+  const grid = document.getElementById('listingsGrid')
+  if (!grid) return
+  
+  if (listings.length === 0) {
+    grid.innerHTML = `
+      <div style="grid-column: 1/-1; text-align:center; padding:3rem; color: var(--gray-500);">
+        <i class="fas fa-inbox" style="font-size:3rem; margin-bottom:1rem; display:block;"></i>
+        <h3>No listings yet in this category</h3>
+        <p>Be the first to post!</p>
+      </div>`
+    return
+  }
+  
+  grid.innerHTML = listings.map(l => `
+    <div class="listing-card">
+      <div class="listing-img" style="background: linear-gradient(135deg, var(--gray-50), var(--gray-100));">
+        ${l.ai_generated ? '<span class="listing-badge ai"><i class="fas fa-wand-magic-sparkles"></i> AI</span>' : ''}
+        ${l.image_url 
+          ? `<img src="${l.image_url}" alt="" style="width:100%;height:100%;object-fit:cover;">`
+          : `<i class="fas fa-tag" style="color: var(--market-cyan);"></i>`}
+      </div>
+      <div class="listing-body">
+        <div class="listing-meta">
+          <span class="listing-cat">${getCategoryLabel(l.category)}</span>
+          <span class="listing-price">R${l.price}${l.price_type === 'hour' ? '/hr' : ''}</span>
+        </div>
+        <h3>${escapeHtml(l.title)}</h3>
+        <p>${escapeHtml(l.description || '')}</p>
+        <div class="listing-footer">
+          <div class="seller-info">
+            <div class="seller-avatar">${getInitials(l.seller_id)}</div>
+            <div><span>Student</span><small>${escapeHtml(l.university || 'SA')}</small></div>
+          </div>
+        </div>
+        <div class="listing-actions">
+          ${l.whatsapp 
+            ? `<button class="btn btn-whatsapp" onclick="contactWhatsApp('${l.whatsapp}', '${escapeHtml(l.title)}')">
+                 <i class="fab fa-whatsapp"></i> WhatsApp
+               </button>` 
+            : ''}
+          <button class="btn btn-primary" onclick="addToCart('${l.id}')">
+            <i class="fas fa-cart-plus"></i> Book
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('')
+}
+
+// ==========================================
+// REALTIME - Live updates from all users!
+// ==========================================
+function subscribeToRealtime() {
+  supabase
+    .channel('studentmart-live')
+    .on('postgres_changes', 
+      { event: 'INSERT', schema: 'public', table: 'listings' },
+      (payload) => {
+        showToast(`✨ New listing: ${payload.new.title}`)
+        // Prepend to current view if filter matches
+        if (activeFilter === 'all' || activeFilter === payload.new.category) {
+          allListings.unshift(payload.new)
+          renderListings(allListings)
+        }
+      }
+    )
+    .on('postgres_changes',
+      { event: 'INSERT', schema: 'public', table: 'reviews' },
+      (payload) => {
+        prependReview(payload.new)
+      }
+    )
+    .subscribe()
+}
+
+// ==========================================
+// CART - Persisted to Supabase
+// ==========================================
+async function loadCart() {
+  if (!currentUser) return
+  const { data } = await supabase
+    .from('user_cart')
+    .select('listing_id, listings(*)')
+    .eq('user_id', currentUser.id)
+  cart = (data || []).map(row => row.listings).filter(Boolean)
+  updateCartCount()
+}
+
+async function addToCart(listingId) {
+  if (!currentUser) {
+    showToast('Please sign in first', 'error')
+    showAuthModal()
+    return
+  }
+  const { error } = await supabase.from('user_cart').insert({
+    user_id: currentUser.id,
+    listing_id: listingId
+  })
+  if (error && error.code !== '23505') { // 23505 = duplicate
+    showToast('Error adding to cart', 'error')
+    return
+  }
+  await loadCart()
+  showToast('🛒 Added to cart!')
+}
+
+async function removeFromCart(listingId) {
+  if (!currentUser) return
+  await supabase
+    .from('user_cart')
+    .delete()
+    .eq('user_id', currentUser.id)
+    .eq('listing_id', listingId)
+  await loadCart()
+}
+
+function updateCartCount() {
+  const el = document.getElementById('cartCount')
+  if (el) el.textContent = cart.length
+}
+
+// ==========================================
+// POST AD - With POPIA consent
+// ==========================================
+async function submitListing(e) {
+  e.preventDefault()
+  if (!currentUser) {
+    showToast('Please sign in to post an ad', 'error')
+    showAuthModal()
+    return
+  }
+  
+  // POPIA consent check
+  const { data: consent } = await supabase
+    .from('popia_consents')
+    .select('id')
+    .eq('user_id', currentUser.id)
+    .eq('purpose', 'create_listing')
+    .eq('is_active', true)
+    .single()
+  
+  if (!consent) {
+    const agreed = confirm(
+      'POPIA Notice:\n\n' +
+      'By posting this listing, you consent to:\n' +
+      '• Your listing being visible to all StudentMart users\n' +
+      '• Your WhatsApp number being shared with potential buyers\n' +
+      '• 2.5% of any transaction going to the Thuto Student Fund Pool\n\n' +
+      'You can withdraw consent and delete your listing at any time.\n\n' +
+      'Do you agree?'
+    )
+    if (!agreed) return
+    
+    await supabase.from('popia_consents').insert({
+      user_id: currentUser.id,
+      purpose: 'create_listing',
+      consent_text_version: 'v1.0',
+      expires_at: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString()
+    })
+  }
+  
+  const title = document.getElementById('listingTitle').value
+  const category = document.getElementById('listingCategory').value
+  const price = document.getElementById('listingPrice').value
+  const university = document.getElementById('listingUni').value
+  const description = document.getElementById('listingDesc').value
+  const whatsapp = document.getElementById('listingWhatsapp')?.value
+  
+  const { error } = await supabase.from('listings').insert({
+    seller_id: currentUser.id,
+    title, category, price, university, description, whatsapp,
+    price_type: document.getElementById('listingPriceType')?.value || 'fixed'
+  })
+  
+  if (error) {
+    showToast('Error: ' + error.message, 'error')
+    return
+  }
+  
+  showToast('🎉 Listing published! (appears live for all users)')
+  closeModal('post')
+  e.target.reset()
+  // Realtime subscription will auto-update the grid
+}
+
+// ==========================================
+// REVIEWS - Live feed
+// ==========================================
+async function loadReviews() {
+  const { data } = await supabase
+    .from('reviews')
+    .select('*')
+    .order('created_at', { ascending: false })
+    .limit(20)
+  
+  const list = document.getElementById('reviewsList')
+  if (!list) return
+  list.innerHTML = (data || []).map(r => `
+    <div class="review-card">
+      <div class="review-stars">${'★'.repeat(r.rating)}</div>
+      <p>"${escapeHtml(r.comment || '')}"</p>
+      <div class="review-author">— ${escapeHtml(r.reviewer_name)} • ${escapeHtml(r.service_type || 'Service')}</div>
+    </div>
+  `).join('')
+}
+
+function prependReview(review) {
+  const list = document.getElementById('reviewsList')
+  if (!list) return
+  const card = document.createElement('div')
+  card.className = 'review-card'
+  card.style.animation = 'slideIn 0.3s ease'
+  card.innerHTML = `
+    <div class="review-stars">${'★'.repeat(review.rating)}</div>
+    <p>"${escapeHtml(review.comment || '')}"</p>
+    <div class="review-author">— ${escapeHtml(review.reviewer_name)} • just now</div>
+  `
+  list.prepend(card)
+}
+
+// ==========================================
+// HELPERS
+// ==========================================
+function getCategoryLabel(cat) {
+  const labels = { products: '📦 Products', services: '🛠️ Services', errands: '🏃 Errands', tutoring: '📚 Tutoring', babysitting: '👶 Babysitting', employment: '💼 Employment' }
+  return labels[cat] || cat
+}
+
+function getInitials(id) {
+  return id ? id.substring(0, 2).toUpperCase() : '??'
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div')
+  div.textContent = str
+  return div.innerHTML
+}
+
+function contactWhatsApp(phone, service) {
+  const msg = encodeURIComponent(`Hi! I'm interested in "${service}" on StudentMart. Is it available?`)
+  window.open(`https://wa.me/${phone}?text=${msg}`, '_blank')
+}
+
+function showToast(msg, type = 'success') {
+  const existing = document.querySelector('.toast-notification')
+  if (existing) existing.remove()
+  const toast = document.createElement('div')
+  toast.className = 'toast-notification'
+  const bg = type === 'error' ? '#EF4444' : 'var(--corporate-navy)'
+  toast.style.cssText = `position:fixed;bottom:2rem;right:2rem;z-index:3000;background:${bg};color:#fff;padding:14px 20px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.2);font-size:.88rem;animation:slideIn .3s ease;`
+  toast.textContent = msg
+  document.body.appendChild(toast)
+  setTimeout(() => toast.remove(), 3500)
+}
+
+// Hook into existing filter tabs
+document.querySelectorAll('.filter-tab').forEach(tab => {
+  const originalOnClick = tab.onclick
+  tab.onclick = function(e) {
+    if (originalOnClick) originalOnClick.call(this, e)
+    const cat = this.textContent.toLowerCase().includes('all') ? 'all' 
+              : this.textContent.toLowerCase().includes('product') ? 'products'
+              : this.textContent.toLowerCase().includes('service') ? 'services'
+              : this.textContent.toLowerCase().includes('tutor') ? 'tutoring'
+              : this.textContent.toLowerCase().includes('errand') ? 'errands'
+              : this.textContent.toLowerCase().includes('baby') ? 'babysitting'
+              : this.textContent.toLowerCase().includes('employ') ? 'employment'
+              : 'all'
+    loadListings(cat)
+  }
+})
+
+// Override the existing submitListing if present
+if (typeof window.submitListing === 'function') {
+  const originalSubmit = window.submitListing
+  window.submitListing = submitListing
+}
+
+// ==========================================
+// BOOT
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+  loadListings('all')
+  loadReviews()
+  subscribeToRealtime()
+  renderAuthUI()
+})
+</script>
+
+<style>
+@keyframes slideIn { from { transform: translateX(30px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+</style>
 </body>
 </html>
 
