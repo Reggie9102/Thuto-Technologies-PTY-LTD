@@ -1,0 +1,26 @@
+{
+  "name": "MatricMate AI — NSC & IEB Exam Prep",
+  "short_name": "MatricMate",
+  "description": "Personalised AI tutor for Matric learners. NSC & IEB past papers, adaptive quizzes, essay marking, and live tutor matching.",
+  "start_url": "/Thuto-Technologies-PTY-LTD-830e1b6a/apps/matricmate-ai/",
+  "scope": "/Thuto-Technologies-PTY-LTD-830e1b6a/apps/matricmate-ai/",
+  "display": "standalone",
+  "background_color": "#0A2E5A",
+  "theme_color": "#FF6B35",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "productivity"]
+}
