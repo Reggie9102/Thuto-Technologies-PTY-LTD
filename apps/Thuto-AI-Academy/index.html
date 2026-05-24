@@ -3,30 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thuto AI Academy — ETDP SETA-Aligned AI Certifications for SA Educators</title>
-<meta name="description" content="South Africa's first SETA-accredited AI academy for educators. Online and face-to-face certifications in AI-enhanced teaching, prompt engineering, and education technology. SACE CPD points. For in-service teachers and postgraduate students.">
+<title>Thuto AI Academy — ETDP SETA-Aligned AI Teacher Certification</title>
+<meta name="description" content="ETDP SETA-aligned certifications in AI-enhanced teaching, prompt engineering, and education technology. Online & face-to-face programmes for in-service teachers and postgraduate students.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 :root{
-  /* Academy palette — Academic Purple + Harvest Gold + Corporate Navy */
-  --academic-purple:#6D28D9;
-  --academic-purple-dark:#5B21B6;
-  --academic-purple-light:#8B5CF6;
-  --academic-indigo:#4C1D95;
+  /* Academy palette — scholarly gold + navy + accent purple */
   --harvest-gold:#D4AF37;
   --harvest-gold-light:#E5C44A;
   --harvest-gold-dark:#B8961F;
   --corporate-navy:#0A2E5A;
   --corporate-navy-light:#1A4A7F;
   --corporate-navy-dark:#061A33;
-  --accent-rose:#BE185D;
+  --accent-purple:#6B4E9B;
+  --accent-purple-light:#8B6FC0;
+  --accent-purple-dark:#4A3570;
+  --vibrant-orange:#FF6B35;
+  --market-cyan:#28A9E1;
+  --ecosystem-emerald:#28A492;
   --success:#10B981;
   --warning:#F59E0B;
-  
-  /* Neutrals */
+  --error:#EF4444;
   --white:#FFFFFF;
   --gray-50:#F8FAFC;
   --gray-100:#F1F5F9;
@@ -36,19 +36,14 @@
   --gray-500:#64748B;
   --gray-600:#475569;
   --gray-700:#334155;
-  --gray-800:#1F2937;
-  
-  /* UI */
   --radius:14px;
   --radius-lg:20px;
   --radius-xl:28px;
   --shadow-sm:0 1px 3px rgba(10,46,90,.08);
   --shadow-md:0 4px 20px rgba(10,46,90,.1);
   --shadow-lg:0 10px 40px rgba(10,46,90,.12);
-  --shadow-xl:0 20px 60px rgba(10,46,90,.15);
   --transition:all .3s cubic-bezier(.4,0,.2,1);
 }
-
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
@@ -67,16 +62,14 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
   padding:8px 2rem;
   display:flex;align-items:center;justify-content:center;gap:10px;
   font-size:.75rem;color:rgba(255,255,255,.85);
-  flex-wrap:wrap;
 }
 .topbar .badge{
-  background:linear-gradient(135deg,var(--academic-purple),var(--academic-purple-light));
-  color:white;
+  background:linear-gradient(135deg,var(--harvest-gold),var(--vibrant-orange));
+  color:var(--corporate-navy);
   padding:3px 10px;border-radius:4px;
   font-size:.65rem;font-weight:700;letter-spacing:.5px;
 }
-.topbar a{color:var(--harvest-gold);text-decoration:none;font-weight:600}
-.topbar a:hover{text-decoration:underline}
+.topbar a{color:var(--market-cyan);text-decoration:none;font-weight:600}
 
 /* ============ NAVBAR ============ */
 .navbar{
@@ -93,26 +86,38 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
 .logo-icon{
   width:44px;height:44px;
-  background:linear-gradient(135deg,var(--academic-purple),var(--academic-indigo));
+  background:linear-gradient(135deg,var(--harvest-gold),var(--harvest-gold-dark));
   border-radius:12px;
   display:flex;align-items:center;justify-content:center;
-  color:var(--harvest-gold);font-size:1.3rem;
-  box-shadow:0 4px 15px rgba(109,40,217,.3);
+  color:var(--corporate-navy);font-size:1.3rem;
+  box-shadow:0 4px 15px rgba(212,175,55,.3);
   position:relative;
 }
 .logo-icon::after{
   content:'';position:absolute;inset:3px;
-  border:1px solid rgba(212,175,55,.3);border-radius:9px;
+  border:1px solid rgba(10,46,90,.15);border-radius:9px;
 }
 .logo-text .brand{font-size:1.25rem;font-weight:700;color:var(--corporate-navy);line-height:1.1}
-.logo-text .brand span{color:var(--academic-purple)}
+.logo-text .brand span{color:var(--harvest-gold)}
 .logo-text .sub{font-size:.62rem;color:var(--gray-500);text-transform:uppercase;letter-spacing:1.5px;font-weight:600}
 .nav-links{display:flex;list-style:none;gap:.3rem;align-items:center}
 .nav-links a{
   color:var(--gray-600);text-decoration:none;font-weight:500;font-size:.88rem;
   padding:8px 14px;border-radius:10px;transition:var(--transition);
 }
-.nav-links a:hover{background:rgba(109,40,217,.08);color:var(--academic-purple)}
+.nav-links a:hover{background:rgba(212,175,55,.1);color:var(--harvest-gold-dark)}
+.nav-links .dropdown{position:relative}
+.nav-links .dropdown-menu{
+  display:none;position:absolute;top:100%;left:0;
+  background:white;min-width:220px;
+  border:1px solid var(--gray-200);border-radius:10px;
+  box-shadow:var(--shadow-lg);padding:.5rem;margin-top:.5rem;
+}
+.nav-links .dropdown:hover .dropdown-menu{display:block}
+.nav-links .dropdown-menu a{
+  display:block;padding:8px 12px;font-size:.82rem;
+  border-radius:8px;
+}
 .nav-actions{display:flex;gap:.6rem;align-items:center}
 .btn{
   padding:10px 20px;border:none;border-radius:10px;
@@ -120,19 +125,19 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
   transition:var(--transition);text-decoration:none;
   display:inline-flex;align-items:center;gap:6px;font-family:inherit;
 }
-.btn-primary{background:linear-gradient(135deg,var(--academic-purple),var(--academic-purple-dark));color:white;box-shadow:0 4px 15px rgba(109,40,217,.3)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(109,40,217,.4)}
-.btn-gold{background:linear-gradient(135deg,var(--harvest-gold),var(--harvest-gold-dark));color:var(--corporate-navy);box-shadow:0 4px 15px rgba(212,175,55,.3)}
-.btn-gold:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(212,175,55,.4)}
+.btn-primary{background:linear-gradient(135deg,var(--harvest-gold),var(--harvest-gold-dark));color:var(--corporate-navy);box-shadow:0 4px 15px rgba(212,175,55,.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(212,175,55,.4)}
 .btn-outline{background:white;color:var(--corporate-navy);border:2px solid var(--corporate-navy)}
 .btn-outline:hover{background:var(--corporate-navy);color:white}
 .btn-navy{background:var(--corporate-navy);color:white}
 .btn-navy:hover{background:var(--corporate-navy-light);transform:translateY(-2px)}
+.btn-purple{background:linear-gradient(135deg,var(--accent-purple),var(--accent-purple-dark));color:white}
+.btn-purple:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(107,78,155,.4)}
 .mobile-toggle{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--corporate-navy)}
 
 /* ============ HERO ============ */
 .hero{
-  background:linear-gradient(135deg,var(--corporate-navy) 0%,var(--academic-indigo) 50%,var(--academic-purple-dark) 100%);
+  background:linear-gradient(135deg,var(--corporate-navy) 0%,var(--corporate-navy-light) 50%,var(--accent-purple-dark) 100%);
   padding:5rem 2rem 6rem;position:relative;overflow:hidden;
 }
 .hero::before{
@@ -144,7 +149,7 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
 .hero::after{
   content:'';position:absolute;bottom:-30%;left:-5%;
   width:400px;height:400px;
-  background:radial-gradient(circle,rgba(139,92,246,.2) 0%,transparent 70%);
+  background:radial-gradient(circle,rgba(107,78,155,.2) 0%,transparent 70%);
   border-radius:50%;
 }
 .hero-container{
@@ -163,7 +168,7 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
   font-size:3.2rem;color:white;line-height:1.1;margin-bottom:1.2rem;
 }
 .hero h1 .accent{color:var(--harvest-gold)}
-.hero h1 .sub-accent{color:var(--academic-purple-light)}
+.hero h1 .sub-accent{color:var(--accent-purple-light)}
 .hero-sub{
   font-size:1.1rem;color:rgba(255,255,255,.85);
   margin-bottom:2rem;max-width:580px;line-height:1.7;
@@ -178,100 +183,87 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
   display:flex;align-items:center;gap:6px;
 }
 .hero-badge i{font-size:.85rem}
-.hero-buttons{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
+.hero-badge.gold{background:rgba(212,175,55,.2);border-color:rgba(212,175,55,.4)}
+.hero-buttons{display:flex;gap:1rem;flex-wrap:wrap}
 .hero-stats{
   display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;
-  margin-top:2rem;padding-top:2rem;
+  margin-top:3rem;padding-top:2rem;
   border-top:1px solid rgba(255,255,255,.1);
 }
 .stat-item{text-align:center}
-.stat-item h3{color:var(--harvest-gold);font-size:1.6rem;font-weight:700;margin-bottom:2px}
-.stat-item p{color:rgba(255,255,255,.7);font-size:.75rem}
+.stat-item h3{color:var(--harvest-gold);font-size:1.8rem;font-weight:700;margin-bottom:2px}
+.stat-item p{color:rgba(255,255,255,.7);font-size:.78rem}
 
-/* Hero Visual — Certification Card */
-.hero-visual{position:relative}
-.cert-card{
-  background:linear-gradient(135deg,rgba(255,255,255,.98),rgba(255,255,255,.92));
-  border-radius:var(--radius-xl);padding:2rem;
-  box-shadow:0 30px 60px rgba(0,0,0,.4);
-  transform:rotate(-2deg);
-  animation:floatCert 4s ease-in-out infinite;
+/* Hero Visual */
+.hero-visual{position:relative;display:flex;justify-content:center}
+.hero-card-stack{
+  position:relative;width:420px;height:520px;
+}
+.hero-card{
+  position:absolute;background:white;border-radius:var(--radius-lg);
+  padding:1.5rem;box-shadow:var(--shadow-lg);
+  border:1px solid var(--gray-200);
+}
+.hero-card-1{
+  top:0;left:0;width:320px;
+  transform:rotate(-3deg);
+  background:linear-gradient(135deg,var(--corporate-navy),var(--accent-purple-dark));
+  color:white;border:none;
+}
+.hero-card-1 .card-label{
+  font-size:.65rem;color:var(--harvest-gold);font-weight:700;
+  text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem;
+}
+.hero-card-1 h3{font-size:1.1rem;margin-bottom:.5rem}
+.hero-card-1 p{font-size:.78rem;opacity:.85;margin-bottom:1rem}
+.hero-card-1 .cert-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(212,175,55,.2);
+  padding:6px 12px;border-radius:8px;
+  font-size:.72rem;font-weight:600;
+  color:var(--harvest-gold);
+}
+.hero-card-2{
+  top:120px;right:0;width:280px;
+  transform:rotate(3deg);
+}
+.cert-preview{
+  background:linear-gradient(135deg,#FFF9E6,#FFFDF7);
+  border:2px solid var(--harvest-gold);
+  border-radius:10px;padding:1rem;text-align:center;
   position:relative;overflow:hidden;
 }
-@keyframes floatCert{
-  0%,100%{transform:rotate(-2deg) translateY(0)}
-  50%{transform:rotate(-2deg) translateY(-12px)}
+.cert-preview::before{
+  content:'';position:absolute;inset:4px;
+  border:1px solid rgba(212,175,55,.3);border-radius:6px;
 }
-.cert-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:6px;
-  background:linear-gradient(90deg,var(--academic-purple),var(--harvest-gold),var(--academic-purple));
+.cert-preview .cert-logo{
+  font-size:1.5rem;color:var(--harvest-gold);margin-bottom:.3rem;
 }
-.cert-seal{
-  position:absolute;top:1.5rem;right:1.5rem;
-  width:70px;height:70px;border-radius:50%;
+.cert-preview h4{
+  font-size:.82rem;color:var(--corporate-navy);margin-bottom:.2rem;
+}
+.cert-preview p{font-size:.65rem;color:var(--gray-500)}
+.cert-preview .seal{
+  width:40px;height:40px;margin:.5rem auto 0;
   background:linear-gradient(135deg,var(--harvest-gold),var(--harvest-gold-dark));
-  display:flex;align-items:center;justify-content:center;
-  color:var(--corporate-navy);font-size:1.5rem;
-  box-shadow:0 8px 20px rgba(212,175,55,.3);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  color:var(--corporate-navy);font-weight:700;font-size:.85rem;
 }
-.cert-card .cert-label{
-  font-size:.65rem;font-weight:700;text-transform:uppercase;
-  letter-spacing:1.5px;color:var(--academic-purple);margin-bottom:.5rem;
+.hero-card-3{
+  bottom:0;left:20px;width:300px;
+  display:flex;gap:10px;align-items:center;
 }
-.cert-card h3{
-  font-size:1.3rem;color:var(--corporate-navy);margin-bottom:.3rem;
+.delivery-mode{
+  flex:1;text-align:center;padding:.8rem;
+  border-radius:10px;background:var(--gray-50);
 }
-.cert-card .cert-subtitle{
-  font-size:.88rem;color:var(--gray-500);margin-bottom:1.5rem;
-}
-.cert-meta{
-  display:flex;gap:1rem;padding:1rem 0;
-  border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200);
-  margin-bottom:1rem;flex-wrap:wrap;
-}
-.cert-meta-item{flex:1;min-width:120px}
-.cert-meta-item strong{display:block;font-size:.95rem;color:var(--corporate-navy);font-family:'Space Grotesk',sans-serif}
-.cert-meta-item small{font-size:.7rem;color:var(--gray-500)}
-.cert-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:1rem}
-.cert-badge-tag{
-  padding:3px 9px;border-radius:8px;font-size:.68rem;font-weight:600;
-  background:rgba(109,40,217,.1);color:var(--academic-purple);
-}
-.cert-badge-tag.gold{background:rgba(212,175,55,.15);color:var(--harvest-gold-dark)}
-
-.hero-float{
-  position:absolute;background:white;border-radius:14px;
-  padding:12px 16px;box-shadow:0 15px 40px rgba(0,0,0,.2);
-  animation:float 3s ease-in-out infinite;z-index:2;
-}
-.hero-float-1{top:0;right:-20px;animation-delay:0s}
-.hero-float-2{bottom:40px;left:-30px;animation-delay:1.5s}
-.hero-float .float-icon{
-  width:32px;height:32px;border-radius:8px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:.9rem;margin-bottom:4px;
-}
-.hero-float span{font-size:.72rem;font-weight:700;color:var(--corporate-navy);display:block}
-.hero-float small{font-size:.62rem;color:var(--gray-400)}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-
-/* ============ TRUST BAR ============ */
-.trust-bar{
-  background:var(--gray-50);
-  padding:2rem;border-bottom:1px solid var(--gray-200);
-}
-.trust-grid{
-  max-width:1400px;margin:0 auto;
-  display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem;
-  align-items:center;
-}
-.trust-item{
-  display:flex;align-items:center;gap:10px;
-  color:var(--gray-600);font-size:.82rem;
-}
-.trust-item i{color:var(--academic-purple);font-size:1.3rem}
-.trust-item strong{color:var(--corporate-navy);display:block;font-size:.78rem}
-.trust-item small{color:var(--gray-500);font-size:.7rem}
+.delivery-mode i{font-size:1.3rem;margin-bottom:.3rem;display:block}
+.delivery-mode.online i{color:var(--market-cyan)}
+.delivery-mode.onsite i{color:var(--harvest-gold)}
+.delivery-mode.blended i{color:var(--accent-purple)}
+.delivery-mode strong{font-size:.72rem;color:var(--corporate-navy);display:block}
+.delivery-mode small{font-size:.62rem;color:var(--gray-500)}
 
 /* ============ SECTIONS ============ */
 .section{padding:5rem 2rem}
@@ -281,429 +273,550 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
   padding:6px 14px;border-radius:20px;
   font-size:.78rem;font-weight:600;margin-bottom:1rem;
 }
-.section-tag.purple{background:rgba(109,40,217,.1);color:var(--academic-purple)}
 .section-tag.gold{background:rgba(212,175,55,.1);color:var(--harvest-gold-dark)}
 .section-tag.navy{background:rgba(10,46,90,.08);color:var(--corporate-navy)}
-.section-tag.rose{background:rgba(190,24,93,.1);color:var(--accent-rose)}
+.section-tag.purple{background:rgba(107,78,155,.1);color:var(--accent-purple)}
+.section-tag.cyan{background:rgba(40,169,225,.1);color:var(--market-cyan)}
+.section-tag.emerald{background:rgba(40,164,146,.1);color:var(--ecosystem-emerald)}
 .section-header h2{font-size:2.4rem;color:var(--corporate-navy);margin-bottom:.8rem}
 .section-header p{color:var(--gray-500);font-size:1.05rem;line-height:1.7}
 
-/* ============ ACCREDITATION ============ */
-.accreditation-section{background:white}
-.accreditation-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;
-  margin-top:2rem;
+/* ============ TRUST BAR ============ */
+.trust-bar{
+  background:var(--gray-50);
+  padding:2rem;border-bottom:1px solid var(--gray-200);
 }
-.accreditation-card{
-  background:white;border:1px solid var(--gray-200);
-  border-radius:var(--radius-lg);padding:2rem;text-align:center;
-  transition:var(--transition);position:relative;
+.trust-grid{
+  max-width:1400px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(5,1fr);gap:2rem;
+  align-items:center;
 }
-.accreditation-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--academic-purple)}
-.accreditation-icon{
-  width:70px;height:70px;border-radius:16px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.8rem;margin:0 auto 1rem;
-  background:linear-gradient(135deg,rgba(109,40,217,.1),rgba(212,175,55,.1));
-  color:var(--academic-purple);
+.trust-item{
+  display:flex;align-items:center;gap:10px;
+  color:var(--gray-600);font-size:.82rem;
 }
-.accreditation-card h3{font-size:1.05rem;color:var(--corporate-navy);margin-bottom:.4rem}
-.accreditation-card p{font-size:.82rem;color:var(--gray-500);line-height:1.5}
-.accreditation-card .ref{
-  display:inline-block;margin-top:.8rem;
-  font-size:.7rem;color:var(--gray-400);font-family:'Space Grotesk',monospace;
-  padding:3px 8px;background:var(--gray-100);border-radius:6px;
-}
+.trust-item i{color:var(--harvest-gold);font-size:1.1rem}
+.trust-item strong{color:var(--corporate-navy);display:block;font-size:.78rem}
+.trust-item small{color:var(--gray-500);font-size:.72rem}
 
-/* ============ TRACKS ============ */
-.tracks-section{
-  background:linear-gradient(180deg,var(--gray-50) 0%,white 100%);
+/* ============ VALUE PROP ============ */
+.value-section{background:white}
+.value-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;
 }
-.tracks-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:2rem;
-  margin-top:2rem;
-}
-.track-card{
-  background:white;border-radius:var(--radius-xl);
-  padding:2.5rem;border:2px solid var(--gray-200);
+.value-card{
+  background:white;border:1px solid var(--gray-200);
+  border-radius:var(--radius-lg);padding:2rem;
   transition:var(--transition);position:relative;overflow:hidden;
 }
-.track-card:hover{border-color:var(--academic-purple);box-shadow:var(--shadow-lg);transform:translateY(-5px)}
-.track-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:4px;
-  background:var(--track-accent,var(--academic-purple));
+.value-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--harvest-gold)}
+.value-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--harvest-gold),var(--accent-purple));
 }
-.track-card.teachers{--track-accent:var(--harvest-gold)}
-.track-card.postgrads{--track-accent:var(--academic-purple)}
-.track-icon{
-  width:64px;height:64px;border-radius:16px;
+.value-icon{
+  width:52px;height:52px;border-radius:12px;
   display:flex;align-items:center;justify-content:center;
-  font-size:1.5rem;margin-bottom:1.5rem;color:white;
+  font-size:1.3rem;margin-bottom:1.2rem;
+  background:rgba(212,175,55,.1);color:var(--harvest-gold-dark);
 }
-.track-card.teachers .track-icon{background:linear-gradient(135deg,var(--harvest-gold),var(--harvest-gold-dark));color:var(--corporate-navy)}
-.track-card.postgrads .track-icon{background:linear-gradient(135deg,var(--academic-purple),var(--academic-indigo))}
-.track-card h3{font-size:1.5rem;color:var(--corporate-navy);margin-bottom:.5rem}
-.track-card > p{color:var(--gray-500);margin-bottom:1.5rem;line-height:1.7}
-.track-outcomes{list-style:none;margin-bottom:1.5rem}
-.track-outcomes li{
-  padding:.5rem 0;font-size:.88rem;color:var(--gray-600);
-  display:flex;align-items:flex-start;gap:8px;
-}
-.track-outcomes li i{color:var(--success);margin-top:3px;flex-shrink:0}
-.track-cta{display:flex;gap:.6rem;flex-wrap:wrap}
-.track-card .audience{
-  display:inline-block;padding:4px 10px;border-radius:8px;
-  font-size:.72rem;font-weight:600;margin-bottom:1rem;
-}
-.track-card.teachers .audience{background:rgba(212,175,55,.15);color:var(--harvest-gold-dark)}
-.track-card.postgrads .audience{background:rgba(109,40,217,.15);color:var(--academic-purple)}
+.value-card h3{font-size:1.05rem;color:var(--corporate-navy);margin-bottom:.5rem}
+.value-card p{color:var(--gray-500);font-size:.88rem;line-height:1.6}
 
-/* ============ COURSES ============ */
+/* ============ CERTIFICATION PATHWAYS ============ */
+.pathways-section{background:var(--gray-50)}
+.pathways-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;
+  margin-top:2rem;
+}
+.pathway-card{
+  background:white;border-radius:var(--radius-xl);
+  padding:2.5rem 2rem;position:relative;
+  border:2px solid var(--gray-200);
+  transition:var(--transition);overflow:hidden;
+}
+.pathway-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+.pathway-card.foundation{border-color:var(--harvest-gold)}
+.pathway-card.intermediate{border-color:var(--accent-purple)}
+.pathway-card.advanced{border-color:var(--corporate-navy)}
+.pathway-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:5px;
+}
+.pathway-card.foundation::before{background:linear-gradient(90deg,var(--harvest-gold),var(--harvest-gold-light))}
+.pathway-card.intermediate::before{background:linear-gradient(90deg,var(--accent-purple),var(--accent-purple-light))}
+.pathway-card.advanced::before{background:linear-gradient(90deg,var(--corporate-navy),var(--corporate-navy-light))}
+.pathway-level{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:4px 12px;border-radius:8px;
+  font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;
+  margin-bottom:1rem;
+}
+.pathway-card.foundation .pathway-level{background:rgba(212,175,55,.15);color:var(--harvest-gold-dark)}
+.pathway-card.intermediate .pathway-level{background:rgba(107,78,155,.15);color:var(--accent-purple-dark)}
+.pathway-card.advanced .pathway-level{background:rgba(10,46,90,.1);color:var(--corporate-navy)}
+.pathway-card h3{font-size:1.4rem;color:var(--corporate-navy);margin-bottom:.5rem}
+.pathway-card .duration{
+  font-size:.82rem;color:var(--gray-500);margin-bottom:1rem;
+  display:flex;align-items:center;gap:6px;
+}
+.pathway-card .duration i{color:var(--harvest-gold)}
+.pathway-card p{color:var(--gray-500);font-size:.88rem;line-height:1.7;margin-bottom:1.2rem}
+.pathway-modules{list-style:none;margin-bottom:1.5rem}
+.pathway-modules li{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:.5rem 0;font-size:.82rem;color:var(--gray-600);
+  border-bottom:1px solid var(--gray-100);
+}
+.pathway-modules li:last-child{border-bottom:none}
+.pathway-modules li i{color:var(--success);margin-top:3px;flex-shrink:0}
+.pathway-meta{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:1rem;border-top:1px solid var(--gray-200);
+  margin-top:1rem;
+}
+.pathway-price{font-size:1.3rem;font-weight:700;color:var(--corporate-navy)}
+.pathway-price small{font-size:.72rem;color:var(--gray-500);font-weight:400;display:block}
+.pathway-cpd{
+  background:rgba(212,175,55,.1);color:var(--harvest-gold-dark);
+  padding:4px 10px;border-radius:8px;font-size:.72rem;font-weight:600;
+}
+
+/* ============ COURSE CATALOG ============ */
 .courses-section{background:white}
 .course-filters{
-  display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem;
+  display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;
+  margin-bottom:2rem;
 }
 .course-filter{
-  padding:8px 18px;border:2px solid var(--gray-200);
-  background:white;border-radius:20px;cursor:pointer;
-  font-size:.82rem;font-weight:600;color:var(--gray-600);
-  transition:var(--transition);font-family:inherit;
+  padding:8px 18px;border:2px solid var(--gray-200);border-radius:20px;
+  background:white;font-size:.82rem;font-weight:600;cursor:pointer;
+  transition:var(--transition);font-family:inherit;color:var(--gray-600);
+  display:inline-flex;align-items:center;gap:6px;
 }
-.course-filter:hover{border-color:var(--academic-purple);color:var(--academic-purple)}
-.course-filter.active{background:var(--academic-purple);border-color:var(--academic-purple);color:white}
-
+.course-filter:hover{border-color:var(--harvest-gold);color:var(--harvest-gold-dark)}
+.course-filter.active{background:var(--corporate-navy);color:white;border-color:var(--corporate-navy)}
+.course-filter i{font-size:.85rem}
 .courses-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
 }
 .course-card{
   background:white;border:1px solid var(--gray-200);
   border-radius:var(--radius-lg);overflow:hidden;
   transition:var(--transition);display:flex;flex-direction:column;
 }
-.course-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--academic-purple)}
-.course-header{
-  padding:1.5rem 1.5rem 1rem;position:relative;
-  background:linear-gradient(180deg,rgba(109,40,217,.03),white);
+.course-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--harvest-gold)}
+.course-image{
+  height:140px;position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  font-size:3rem;color:white;
 }
-.course-level{
-  display:inline-flex;align-items:center;gap:5px;
+.course-image.gold{background:linear-gradient(135deg,var(--harvest-gold),var(--harvest-gold-dark))}
+.course-image.navy{background:linear-gradient(135deg,var(--corporate-navy),var(--corporate-navy-light))}
+.course-image.purple{background:linear-gradient(135deg,var(--accent-purple),var(--accent-purple-dark))}
+.course-image.cyan{background:linear-gradient(135deg,var(--market-cyan),var(--market-cyan-dark))}
+.course-image.emerald{background:linear-gradient(135deg,var(--ecosystem-emerald),#1f7a6a)}
+.course-image.orange{background:linear-gradient(135deg,var(--vibrant-orange),#e55a2b)}
+.course-mode-badge{
+  position:absolute;top:12px;left:12px;
   padding:4px 10px;border-radius:8px;
-  font-size:.68rem;font-weight:700;margin-bottom:.8rem;
+  font-size:.65rem;font-weight:700;
+  background:rgba(255,255,255,.95);color:var(--corporate-navy);
+  display:inline-flex;align-items:center;gap:4px;
 }
-.course-level.foundation{background:rgba(16,185,129,.1);color:var(--success)}
-.course-level.intermediate{background:rgba(245,158,11,.1);color:var(--warning)}
-.course-level.advanced{background:rgba(109,40,217,.1);color:var(--academic-purple)}
-.course-level.specialist{background:rgba(190,24,93,.1);color:var(--accent-rose)}
-.course-card h3{font-size:1.15rem;color:var(--corporate-navy);margin-bottom:.4rem}
-.course-code{font-size:.75rem;color:var(--gray-400);font-family:'Space Grotesk',monospace;margin-bottom:.5rem}
-.course-card > p{font-size:.85rem;color:var(--gray-500);line-height:1.6;padding:0 1.5rem;flex:1}
+.course-level-badge{
+  position:absolute;top:12px;right:12px;
+  padding:4px 10px;border-radius:8px;
+  font-size:.62rem;font-weight:700;text-transform:uppercase;
+  background:rgba(0,0,0,.5);color:white;
+}
+.course-body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
+.course-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:.8rem}
+.course-tag{
+  padding:2px 8px;border-radius:6px;font-size:.65rem;font-weight:600;
+  background:var(--gray-100);color:var(--gray-600);
+}
+.course-card h3{font-size:1rem;color:var(--corporate-navy);margin-bottom:.4rem;line-height:1.3}
+.course-card > p{color:var(--gray-500);font-size:.82rem;line-height:1.6;margin-bottom:1rem;flex:1}
 .course-meta{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;
-  padding:1rem 1.5rem;border-top:1px solid var(--gray-200);margin-top:1rem;
-}
-.course-meta-item{text-align:center}
-.course-meta-item strong{display:block;font-size:.88rem;color:var(--corporate-navy);font-family:'Space Grotesk',sans-serif}
-.course-meta-item small{font-size:.68rem;color:var(--gray-500)}
-.course-footer{
-  padding:1rem 1.5rem;background:var(--gray-50);
   display:flex;justify-content:space-between;align-items:center;
-  gap:1rem;
+  padding-top:1rem;border-top:1px solid var(--gray-100);
+  font-size:.75rem;color:var(--gray-500);
+  margin-bottom:1rem;
 }
-.course-price{font-size:1.1rem;font-weight:700;color:var(--academic-purple);font-family:'Space Grotesk',sans-serif}
-.course-price small{font-size:.7rem;color:var(--gray-500);font-weight:500;display:block}
-.course-badges{display:flex;gap:4px;flex-wrap:wrap}
-.course-badge-tag{
-  padding:2px 7px;border-radius:6px;font-size:.62rem;font-weight:600;
-  background:rgba(212,175,55,.15);color:var(--harvest-gold-dark);
-}
+.course-meta span{display:flex;align-items:center;gap:4px}
+.course-meta i{color:var(--harvest-gold)}
+.course-footer{display:flex;gap:.5rem}
+.course-footer .btn{flex:1;justify-content:center;padding:8px 12px;font-size:.78rem}
 
-/* ============ LEARNING MODES ============ */
-.modes-section{
-  background:linear-gradient(135deg,var(--corporate-navy) 0%,var(--academic-indigo) 100%);
-  color:white;
-}
-.modes-section .section-header h2{color:white}
-.modes-section .section-header p{color:rgba(255,255,255,.8)}
-.modes-section .section-tag{background:rgba(212,175,55,.15);color:var(--harvest-gold)}
-.modes-grid{
+/* ============ DELIVERY MODES ============ */
+.delivery-section{background:linear-gradient(135deg,var(--corporate-navy) 0%,var(--accent-purple-dark) 100%);color:white}
+.delivery-grid{
   display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
   margin-top:2rem;
 }
-.mode-card{
+.delivery-card{
   background:rgba(255,255,255,.05);
   backdrop-filter:blur(10px);
   border:1px solid rgba(255,255,255,.1);
   border-radius:var(--radius-lg);padding:2rem;
   transition:var(--transition);
 }
-.mode-card:hover{background:rgba(255,255,255,.1);border-color:rgba(212,175,55,.3);transform:translateY(-5px)}
-.mode-icon{
+.delivery-card:hover{background:rgba(255,255,255,.08);border-color:rgba(212,175,55,.3);transform:translateY(-5px)}
+.delivery-icon{
   width:60px;height:60px;border-radius:14px;
   display:flex;align-items:center;justify-content:center;
-  font-size:1.4rem;margin-bottom:1.2rem;
-  background:rgba(212,175,55,.15);color:var(--harvest-gold);
+  font-size:1.5rem;margin-bottom:1.2rem;
 }
-.mode-card h3{color:white;font-size:1.2rem;margin-bottom:.4rem}
-.mode-card > p{color:rgba(255,255,255,.75);font-size:.88rem;line-height:1.6;margin-bottom:1rem}
-.mode-features{list-style:none;margin-bottom:1rem}
-.mode-features li{
-  padding:.35rem 0;font-size:.82rem;color:rgba(255,255,255,.7);
+.delivery-card.online .delivery-icon{background:rgba(40,169,225,.2);color:var(--market-cyan-light)}
+.delivery-card.onsite .delivery-icon{background:rgba(212,175,55,.2);color:var(--harvest-gold)}
+.delivery-card.blended .delivery-icon{background:rgba(139,111,192,.3);color:var(--accent-purple-light)}
+.delivery-card h3{color:white;font-size:1.2rem;margin-bottom:.5rem}
+.delivery-card .subtitle{color:var(--harvest-gold);font-size:.78rem;font-weight:600;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.5px}
+.delivery-card > p{color:rgba(255,255,255,.8);font-size:.88rem;line-height:1.7;margin-bottom:1.2rem}
+.delivery-features{list-style:none;margin-bottom:1.5rem}
+.delivery-features li{
   display:flex;align-items:center;gap:8px;
+  padding:.4rem 0;font-size:.82rem;color:rgba(255,255,255,.85);
 }
-.mode-features li i{color:var(--harvest-gold);font-size:.8rem}
-.mode-locations{
-  padding-top:1rem;border-top:1px solid rgba(255,255,255,.1);
-  font-size:.75rem;color:rgba(255,255,255,.6);
-}
-.mode-locations strong{color:var(--harvest-gold);display:block;margin-bottom:4px}
+.delivery-features li i{color:var(--harvest-gold);font-size:.8rem}
 
-/* ============ PATHWAY ============ */
-.pathway-section{background:var(--gray-50)}
-.pathway-container{max-width:1200px;margin:0 auto}
-.pathway-timeline{
-  position:relative;margin-top:3rem;
+/* ============ INSTRUCTORS ============ */
+.instructors-section{background:white}
+.instructors-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;
 }
-.pathway-timeline::before{
-  content:'';position:absolute;top:50%;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,var(--success),var(--warning),var(--academic-purple),var(--accent-rose),var(--harvest-gold));
-  transform:translateY(-50%);
-}
-.pathway-steps{
-  display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;
-  position:relative;z-index:1;
-}
-.pathway-step{
-  background:white;border-radius:var(--radius);padding:1.2rem;
-  text-align:center;box-shadow:var(--shadow-sm);
-  border:1px solid var(--gray-200);
-  transition:var(--transition);
-}
-.pathway-step:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--academic-purple)}
-.pathway-step-num{
-  width:50px;height:50px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  margin:0 auto .8rem;font-weight:700;font-size:1.1rem;
-  color:white;
-}
-.pathway-step:nth-child(1) .pathway-step-num{background:var(--success)}
-.pathway-step:nth-child(2) .pathway-step-num{background:var(--warning)}
-.pathway-step:nth-child(3) .pathway-step-num{background:var(--academic-purple)}
-.pathway-step:nth-child(4) .pathway-step-num{background:var(--accent-rose)}
-.pathway-step:nth-child(5) .pathway-step-num{background:linear-gradient(135deg,var(--harvest-gold),var(--harvest-gold-dark));color:var(--corporate-navy)}
-.pathway-step h4{color:var(--corporate-navy);font-size:.9rem;margin-bottom:.3rem}
-.pathway-step p{font-size:.72rem;color:var(--gray-500);line-height:1.4}
-.pathway-step .nqf{
-  display:inline-block;margin-top:.5rem;
-  padding:3px 8px;border-radius:6px;font-size:.65rem;font-weight:700;
-  background:rgba(109,40,217,.1);color:var(--academic-purple);
-}
-
-/* ============ FACULTY ============ */
-.faculty-section{background:white}
-.faculty-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem;
-  margin-top:2rem;
-}
-.faculty-card{
+.instructor-card{
   background:white;border:1px solid var(--gray-200);
-  border-radius:var(--radius-lg);overflow:hidden;
-  transition:var(--transition);
+  border-radius:var(--radius-lg);padding:1.5rem;
+  transition:var(--transition);text-align:center;
 }
-.faculty-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
-.faculty-photo{
-  aspect-ratio:1;
-  background:linear-gradient(135deg,var(--academic-purple),var(--harvest-gold));
+.instructor-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:var(--harvest-gold)}
+.instructor-avatar{
+  width:80px;height:80px;border-radius:50%;
+  margin:0 auto 1rem;
   display:flex;align-items:center;justify-content:center;
-  color:var(--corporate-navy);font-size:3.5rem;font-weight:700;
+  color:white;font-weight:700;font-size:1.5rem;
   font-family:'Space Grotesk',sans-serif;
   position:relative;
 }
-.faculty-photo::before{
-  content:'';position:absolute;inset:8px;
-  border:2px solid rgba(255,255,255,.2);border-radius:calc(var(--radius-lg) - 8px);
+.instructor-avatar::after{
+  content:'';position:absolute;inset:3px;
+  border:2px solid rgba(255,255,255,.3);border-radius:50%;
 }
-.faculty-info{padding:1.2rem}
-.faculty-info h3{color:var(--corporate-navy);font-size:1.05rem;margin-bottom:.2rem}
-.faculty-info .role{color:var(--academic-purple);font-size:.78rem;font-weight:600;margin-bottom:.6rem}
-.faculty-info .credentials{font-size:.75rem;color:var(--gray-500);line-height:1.5;margin-bottom:.6rem}
-.faculty-info .specialty{
-  display:inline-block;padding:3px 8px;border-radius:6px;
-  font-size:.68rem;font-weight:600;
-  background:rgba(212,175,55,.15);color:var(--harvest-gold-dark);
+.instructor-avatar.gold{background:linear-gradient(135deg,var(--harvest-gold),var(--harvest-gold-dark))}
+.instructor-avatar.navy{background:linear-gradient(135deg,var(--corporate-navy),var(--corporate-navy-light))}
+.instructor-avatar.purple{background:linear-gradient(135deg,var(--accent-purple),var(--accent-purple-dark))}
+.instructor-avatar.emerald{background:linear-gradient(135deg,var(--ecosystem-emerald),#1f7a6a)}
+.instructor-card h3{font-size:.95rem;color:var(--corporate-navy);margin-bottom:.2rem}
+.instructor-card .role{font-size:.75rem;color:var(--harvest-gold-dark);font-weight:600;margin-bottom:.8rem}
+.instructor-card p{font-size:.78rem;color:var(--gray-500);line-height:1.5;margin-bottom:1rem}
+.instructor-credentials{
+  display:flex;justify-content:center;gap:.4rem;flex-wrap:wrap;
+}
+.credential-tag{
+  padding:3px 8px;border-radius:6px;
+  font-size:.62rem;font-weight:700;
+  background:var(--gray-100);color:var(--gray-600);
 }
 
-/* ============ PARTNERS ============ */
-.partners-section{background:var(--gray-50)}
-.partners-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;
+/* ============ CAMPUSES ============ */
+.campuses-section{background:var(--gray-50)}
+.campuses-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
   margin-top:2rem;
 }
-.partner-card{
-  background:white;border:1px solid var(--gray-200);
-  border-radius:var(--radius);padding:1.5rem;text-align:center;
-  transition:var(--transition);
+.campus-card{
+  background:white;border-radius:var(--radius-lg);
+  overflow:hidden;transition:var(--transition);
+  border:1px solid var(--gray-200);
 }
-.partner-card:hover{border-color:var(--academic-purple);transform:translateY(-3px);box-shadow:var(--shadow-md)}
-.partner-card i{font-size:2rem;color:var(--academic-purple);margin-bottom:.8rem}
-.partner-card h4{color:var(--corporate-navy);font-size:.9rem;margin-bottom:.2rem}
-.partner-card p{font-size:.72rem;color:var(--gray-500)}
-
-/* ============ TESTIMONIALS ============ */
-.testimonials-section{background:white}
-.testimonials-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;
-  margin-top:2rem;
-}
-.testimonial-card{
-  background:white;border:1px solid var(--gray-200);
-  border-radius:var(--radius-lg);padding:2rem;
-  position:relative;transition:var(--transition);
-}
-.testimonial-card:hover{border-color:var(--academic-purple);box-shadow:var(--shadow-md);transform:translateY(-3px)}
-.testimonial-card::before{
-  content:'"';position:absolute;top:.5rem;left:1.5rem;
-  font-size:4rem;color:var(--academic-purple);opacity:.2;
-  font-family:Georgia,serif;line-height:1;
-}
-.testimonial-stars{color:var(--harvest-gold);margin-bottom:.8rem;font-size:.9rem}
-.testimonial-card > p{font-size:.92rem;color:var(--gray-600);line-height:1.7;margin-bottom:1.2rem;font-style:italic}
-.testimonial-author{display:flex;align-items:center;gap:12px}
-.testimonial-avatar{
-  width:48px;height:48px;border-radius:50%;
-  background:linear-gradient(135deg,var(--academic-purple),var(--harvest-gold));
+.campus-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+.campus-map{
+  height:160px;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--corporate-navy),var(--accent-purple-dark));
   display:flex;align-items:center;justify-content:center;
-  color:var(--corporate-navy);font-weight:700;font-size:.9rem;
+  color:white;font-size:3rem;
 }
-.testimonial-author h4{color:var(--corporate-navy);font-size:.9rem;margin-bottom:2px}
-.testimonial-author small{color:var(--gray-500);font-size:.75rem}
+.campus-map::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath d='M0 0h100v100H0z' fill='none'/%3E%3Cpath d='M0 50h100M50 0v100' stroke='rgba(255,255,255,0.1)' stroke-width='1'/%3E%3C/svg%3E");
+}
+.campus-status{
+  position:absolute;top:12px;right:12px;
+  padding:4px 10px;border-radius:8px;
+  font-size:.65rem;font-weight:700;
+  background:rgba(16,185,129,.9);color:white;
+  display:inline-flex;align-items:center;gap:4px;
+}
+.campus-status.soon{background:rgba(245,158,11,.9)}
+.campus-body{padding:1.5rem}
+.campus-body h3{font-size:1.1rem;color:var(--corporate-navy);margin-bottom:.3rem}
+.campus-body .city{font-size:.82rem;color:var(--harvest-gold-dark);font-weight:600;margin-bottom:1rem}
+.campus-info{
+  display:flex;flex-direction:column;gap:.5rem;margin-bottom:1rem;
+}
+.campus-info-row{
+  display:flex;align-items:center;gap:8px;
+  font-size:.78rem;color:var(--gray-600);
+}
+.campus-info-row i{color:var(--harvest-gold);width:16px;text-align:center}
+.next-session{
+  background:linear-gradient(135deg,rgba(212,175,55,.1),rgba(107,78,155,.1));
+  border:1px solid rgba(212,175,55,.2);
+  border-radius:10px;padding:.8rem;margin-top:1rem;
+}
+.next-session .label{font-size:.65rem;color:var(--harvest-gold-dark);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.3rem}
+.next-session .date{font-size:.88rem;color:var(--corporate-navy);font-weight:600}
+.next-session .course{font-size:.72rem;color:var(--gray-500);margin-top:2px}
+
+/* ============ SCHEDULE ============ */
+.schedule-section{background:white}
+.schedule-tabs{
+  display:flex;justify-content:center;gap:.5rem;margin-bottom:2rem;flex-wrap:wrap;
+}
+.schedule-tab{
+  padding:8px 18px;border:2px solid var(--gray-200);border-radius:10px;
+  background:white;font-size:.82rem;font-weight:600;cursor:pointer;
+  transition:var(--transition);font-family:inherit;color:var(--gray-600);
+}
+.schedule-tab.active{background:var(--harvest-gold);color:var(--corporate-navy);border-color:var(--harvest-gold)}
+.schedule-container{max-width:1000px;margin:0 auto}
+.schedule-month{display:none}
+.schedule-month.active{display:block}
+.schedule-list{
+  display:flex;flex-direction:column;gap:1rem;
+}
+.schedule-item{
+  background:white;border:1px solid var(--gray-200);
+  border-radius:var(--radius);padding:1.5rem;
+  display:grid;grid-template-columns:auto 1fr auto;gap:1.5rem;
+  align-items:center;transition:var(--transition);
+}
+.schedule-item:hover{border-color:var(--harvest-gold);box-shadow:var(--shadow-sm)}
+.schedule-date{
+  width:70px;height:70px;border-radius:12px;
+  background:linear-gradient(135deg,var(--corporate-navy),var(--accent-purple-dark));
+  color:white;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.schedule-date .day{font-size:1.5rem;font-weight:700;line-height:1}
+.schedule-date .month{font-size:.68rem;text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+.schedule-info h4{font-size:1rem;color:var(--corporate-navy);margin-bottom:.3rem}
+.schedule-info .meta{
+  display:flex;flex-wrap:wrap;gap:.8rem;font-size:.78rem;color:var(--gray-500);
+  margin-bottom:.3rem;
+}
+.schedule-info .meta span{display:flex;align-items:center;gap:4px}
+.schedule-info .meta i{color:var(--harvest-gold);font-size:.75rem}
+.schedule-info .description{font-size:.82rem;color:var(--gray-500);line-height:1.5}
+.schedule-action .btn{padding:8px 16px;font-size:.78rem}
+.spots-left{
+  display:inline-block;margin-top:.4rem;
+  font-size:.7rem;color:var(--vibrant-orange);font-weight:600;
+}
 
 /* ============ PRICING ============ */
 .pricing-section{background:var(--gray-50)}
 .pricing-grid{
   display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
-  margin-top:2rem;
+  max-width:1200px;margin:0 auto;
 }
 .pricing-card{
-  background:white;border:2px solid var(--gray-200);
-  border-radius:var(--radius-xl);padding:2rem;
-  transition:var(--transition);position:relative;
+  background:white;border-radius:var(--radius-xl);
+  padding:2.5rem 2rem;position:relative;
+  border:2px solid var(--gray-200);
+  transition:var(--transition);
 }
-.pricing-card:hover{border-color:var(--academic-purple);box-shadow:var(--shadow-lg);transform:translateY(-5px)}
-.pricing-card.featured{border-color:var(--academic-purple);box-shadow:var(--shadow-lg);transform:scale(1.02)}
-.pricing-card.featured:hover{transform:scale(1.02) translateY(-5px)}
+.pricing-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+.pricing-card.featured{border-color:var(--harvest-gold);background:linear-gradient(180deg,rgba(212,175,55,.03),white);transform:scale(1.03)}
+.pricing-card.featured:hover{transform:scale(1.03) translateY(-5px)}
 .pricing-badge{
   position:absolute;top:-12px;left:50%;transform:translateX(-50%);
-  background:linear-gradient(135deg,var(--academic-purple),var(--academic-indigo));
-  color:white;padding:5px 16px;border-radius:12px;
-  font-size:.72rem;font-weight:700;
+  background:linear-gradient(135deg,var(--harvest-gold),var(--harvest-gold-dark));
+  color:var(--corporate-navy);padding:5px 18px;border-radius:20px;
+  font-size:.72rem;font-weight:700;white-space:nowrap;
 }
-.pricing-icon{
-  width:60px;height:60px;border-radius:14px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.4rem;margin-bottom:1rem;color:white;
+.pricing-card .tier{
+  font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+  color:var(--harvest-gold-dark);margin-bottom:.5rem;
 }
-.pricing-card:nth-child(1) .pricing-icon{background:linear-gradient(135deg,var(--success),#059669)}
-.pricing-card:nth-child(2) .pricing-icon{background:linear-gradient(135deg,var(--academic-purple),var(--academic-indigo))}
-.pricing-card:nth-child(3) .pricing-icon{background:linear-gradient(135deg,var(--harvest-gold),var(--harvest-gold-dark));color:var(--corporate-navy)}
-.pricing-card h3{color:var(--corporate-navy);font-size:1.3rem;margin-bottom:.3rem}
-.pricing-card .subtitle{color:var(--gray-500);font-size:.85rem;margin-bottom:1.2rem}
-.pricing-price{
-  font-size:2.2rem;font-weight:700;color:var(--corporate-navy);
-  font-family:'Space Grotesk',sans-serif;margin-bottom:.3rem;
+.pricing-card h3{font-size:1.4rem;color:var(--corporate-navy);margin-bottom:.3rem}
+.pricing-card .subtitle{font-size:.82rem;color:var(--gray-500);margin-bottom:1.5rem}
+.pricing-price{margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px dashed var(--gray-200)}
+.pricing-price .amount{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:2.5rem;font-weight:700;color:var(--corporate-navy);
 }
-.pricing-price span{font-size:.9rem;font-weight:500;color:var(--gray-500)}
-.pricing-note{font-size:.75rem;color:var(--gray-500);margin-bottom:1.5rem}
+.pricing-price .amount span{font-size:1rem;font-weight:500;color:var(--gray-400)}
+.pricing-price .note{font-size:.78rem;color:var(--gray-500);margin-top:.3rem}
 .pricing-features{list-style:none;margin-bottom:1.5rem}
 .pricing-features li{
+  display:flex;align-items:flex-start;gap:10px;
   padding:.4rem 0;font-size:.82rem;color:var(--gray-600);
-  display:flex;align-items:flex-start;gap:8px;
 }
 .pricing-features li i{color:var(--success);margin-top:3px;flex-shrink:0}
+.pricing-features li.highlight{color:var(--corporate-navy);font-weight:600}
+.pricing-features li.highlight i{color:var(--harvest-gold)}
+
+/* ============ TESTIMONIALS ============ */
+.testimonials-section{background:white}
+.testimonials-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+}
+.testimonial-card{
+  background:white;border:1px solid var(--gray-200);
+  border-radius:var(--radius-lg);padding:2rem;
+  transition:var(--transition);position:relative;
+}
+.testimonial-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:var(--harvest-gold)}
+.testimonial-card::before{
+  content:'"';position:absolute;top:10px;right:20px;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:5rem;color:var(--harvest-gold);opacity:.15;
+  line-height:1;
+}
+.testimonial-stars{color:var(--harvest-gold);margin-bottom:.8rem;font-size:.9rem}
+.testimonial-text{
+  font-size:.9rem;color:var(--gray-600);line-height:1.7;
+  margin-bottom:1.2rem;font-style:italic;
+}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.testimonial-avatar{
+  width:44px;height:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:white;font-weight:700;font-size:.9rem;
+}
+.testimonial-avatar.gold{background:linear-gradient(135deg,var(--harvest-gold),var(--harvest-gold-dark))}
+.testimonial-avatar.navy{background:linear-gradient(135deg,var(--corporate-navy),var(--corporate-navy-light))}
+.testimonial-avatar.purple{background:linear-gradient(135deg,var(--accent-purple),var(--accent-purple-dark))}
+.testimonial-info h4{font-size:.88rem;color:var(--corporate-navy);margin-bottom:2px}
+.testimonial-info small{font-size:.72rem;color:var(--gray-500)}
 
 /* ============ FAQ ============ */
-.faq-section{background:white}
+.faq-section{background:var(--gray-50)}
 .faq-container{max-width:900px;margin:0 auto}
 .faq-item{
   background:white;border:1px solid var(--gray-200);
   border-radius:var(--radius);margin-bottom:.8rem;
   overflow:hidden;transition:var(--transition);
 }
-.faq-item.active{border-color:var(--academic-purple);box-shadow:var(--shadow-sm)}
+.faq-item:hover{border-color:var(--harvest-gold)}
 .faq-question{
   padding:1.2rem 1.5rem;cursor:pointer;
-  display:flex;justify-content:space-between;align-items:center;gap:1rem;
-  font-weight:600;color:var(--corporate-navy);font-size:.95rem;
+  display:flex;justify-content:space-between;align-items:center;
+  gap:1rem;
 }
-.faq-question i{color:var(--academic-purple);transition:transform .3s;flex-shrink:0}
-.faq-item.active .faq-question i{transform:rotate(180deg)}
+.faq-question h4{
+  font-size:.95rem;color:var(--corporate-navy);font-weight:600;
+  flex:1;
+}
+.faq-icon{
+  width:28px;height:28px;border-radius:50%;
+  background:var(--gray-100);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--corporate-navy);font-size:.75rem;
+  transition:var(--transition);flex-shrink:0;
+}
+.faq-item.open .faq-icon{background:var(--harvest-gold);color:var(--corporate-navy);transform:rotate(45deg)}
 .faq-answer{
   max-height:0;overflow:hidden;transition:max-height .3s ease;
-  padding:0 1.5rem;
 }
-.faq-item.active .faq-answer{max-height:500px;padding:0 1.5rem 1.2rem}
-.faq-answer p{color:var(--gray-600);font-size:.88rem;line-height:1.7}
+.faq-item.open .faq-answer{max-height:400px}
+.faq-answer-inner{
+  padding:0 1.5rem 1.5rem;font-size:.88rem;color:var(--gray-600);line-height:1.7;
+}
+
+/* ============ PARTNERSHIPS ============ */
+.partnerships-section{background:white}
+.partnerships-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem;
+  align-items:center;
+}
+.partner-card{
+  background:white;border:1px solid var(--gray-200);
+  border-radius:var(--radius);padding:1.5rem;text-align:center;
+  transition:var(--transition);
+}
+.partner-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm);border-color:var(--harvest-gold)}
+.partner-logo{
+  font-size:1.8rem;margin-bottom:.5rem;
+  color:var(--corporate-navy);
+}
+.partner-card h4{font-size:.85rem;color:var(--corporate-navy);margin-bottom:.2rem}
+.partner-card small{font-size:.68rem;color:var(--gray-500)}
+
+/* ============ APPLICATION FORM ============ */
+.apply-section{
+  background:linear-gradient(135deg,var(--corporate-navy) 0%,var(--accent-purple-dark) 100%);
+  color:white;position:relative;overflow:hidden;
+}
+.apply-section::before{
+  content:'';position:absolute;top:-50%;right:-20%;
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(212,175,55,.15) 0%,transparent 70%);
+  border-radius:50%;
+}
+.apply-container{max-width:900px;margin:0 auto;position:relative;z-index:1}
+.apply-section .section-header h2{color:white}
+.apply-section .section-header p{color:rgba(255,255,255,.8)}
+.apply-section .section-tag{background:rgba(212,175,55,.2);color:var(--harvest-gold)}
+.apply-form{
+  background:white;border-radius:var(--radius-xl);
+  padding:2.5rem;margin-top:2rem;
+  color:var(--gray-700);
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-group{margin-bottom:1rem}
+.form-group label{
+  display:block;margin-bottom:.4rem;
+  font-weight:600;font-size:.85rem;color:var(--corporate-navy);
+}
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;padding:11px 14px;
+  border:2px solid var(--gray-200);border-radius:12px;
+  font-size:.9rem;font-family:inherit;transition:var(--transition);
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+  border-color:var(--harvest-gold);outline:none;
+  box-shadow:0 0 0 4px rgba(212,175,55,.1);
+}
+.form-group small{display:block;margin-top:4px;font-size:.72rem;color:var(--gray-500)}
+.form-checkbox{
+  display:flex;align-items:flex-start;gap:8px;
+  padding:12px;background:var(--gray-50);border-radius:10px;
+  cursor:pointer;transition:var(--transition);
+  margin-bottom:1rem;
+}
+.form-checkbox:hover{background:var(--gray-100)}
+.form-checkbox input{margin-top:3px;width:auto}
+.form-checkbox label{margin:0;cursor:pointer;font-weight:500;font-size:.82rem}
+.form-checkbox label small{display:block;color:var(--gray-500);font-weight:400;margin-top:2px}
+.form-submit{
+  width:100%;padding:14px;font-size:1rem;justify-content:center;
+}
 
 /* ============ CTA ============ */
 .cta-section{
-  background:linear-gradient(135deg,var(--academic-indigo) 0%,var(--academic-purple) 100%);
+  background:linear-gradient(135deg,var(--corporate-navy) 0%,var(--corporate-navy-light) 100%);
   padding:5rem 2rem;text-align:center;position:relative;overflow:hidden;
 }
 .cta-section::before{
   content:'';position:absolute;top:-50%;right:-20%;
   width:500px;height:500px;
-  background:radial-gradient(circle,rgba(212,175,55,.2) 0%,transparent 70%);
+  background:radial-gradient(circle,rgba(212,175,55,.15) 0%,transparent 70%);
   border-radius:50%;
 }
 .cta-container{max-width:700px;margin:0 auto;position:relative;z-index:1}
 .cta-section h2{color:white;font-size:2.4rem;margin-bottom:1rem}
 .cta-section h2 .accent{color:var(--harvest-gold)}
-.cta-section p{color:rgba(255,255,255,.85);font-size:1.05rem;margin-bottom:2.5rem}
+.cta-section p{color:rgba(255,255,255,.8);font-size:1.05rem;margin-bottom:2.5rem}
 .cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-.cta-note{margin-top:2rem;font-size:.82rem;color:rgba(255,255,255,.6)}
-
-/* ============ MODAL ============ */
-.modal-overlay{
-  position:fixed;inset:0;background:rgba(10,46,90,.75);
-  backdrop-filter:blur(8px);display:none;
-  align-items:center;justify-content:center;
-  z-index:2000;padding:1rem;
-}
-.modal-overlay.active{display:flex}
-.modal{
-  background:white;border-radius:var(--radius-xl);
-  padding:2.5rem;max-width:600px;width:100%;
-  max-height:90vh;overflow-y:auto;
-  position:relative;animation:modalIn .3s ease;
-}
-@keyframes modalIn{from{opacity:0;transform:scale(.9) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
-.modal-close{
-  position:absolute;top:1rem;right:1rem;
-  width:36px;height:36px;border-radius:50%;border:none;
-  background:var(--gray-100);cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.1rem;color:var(--gray-600);
-}
-.modal-close:hover{background:#fee;color:#e74c3c}
-.modal h2{color:var(--corporate-navy);font-size:1.5rem;margin-bottom:.3rem}
-.modal > p{color:var(--gray-500);margin-bottom:1.5rem;font-size:.9rem}
-.form-group{margin-bottom:1.2rem}
-.form-group label{display:block;margin-bottom:.4rem;font-weight:600;font-size:.85rem;color:var(--corporate-navy)}
-.form-group input,.form-group select,.form-group textarea{
-  width:100%;padding:11px 14px;
-  border:2px solid var(--gray-200);border-radius:12px;
-  font-size:.9rem;transition:var(--transition);font-family:inherit;
-}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{
-  border-color:var(--academic-purple);outline:none;
-  box-shadow:0 0 0 4px rgba(109,40,217,.1);
-}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
-.popia-notice{
-  background:rgba(109,40,217,.05);border:1px solid rgba(109,40,217,.2);
-  padding:12px;border-radius:10px;font-size:.75rem;color:var(--gray-600);
-  margin-top:1rem;display:flex;gap:8px;align-items:flex-start;
-}
-.popia-notice i{color:var(--academic-purple);margin-top:2px;flex-shrink:0}
+.cta-note{margin-top:2rem;font-size:.82rem;color:rgba(255,255,255,.5)}
 
 /* ============ FOOTER ============ */
 .footer{background:var(--corporate-navy-dark);padding:4rem 2rem 2rem;color:white}
@@ -743,17 +856,57 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
 .sa-flag{display:inline-flex;gap:2px;margin-left:6px}
 .sa-flag span{width:12px;height:8px;display:inline-block;border-radius:1px}
 
+/* ============ MODAL ============ */
+.modal-overlay{
+  position:fixed;inset:0;
+  background:rgba(10,46,90,.75);
+  backdrop-filter:blur(8px);
+  display:none;align-items:center;justify-content:center;
+  z-index:2000;padding:1rem;
+}
+.modal-overlay.active{display:flex}
+.modal{
+  background:white;border-radius:var(--radius-xl);
+  padding:2.5rem;max-width:600px;width:100%;
+  max-height:90vh;overflow-y:auto;
+  position:relative;animation:modalIn .3s ease;
+}
+@keyframes modalIn{from{opacity:0;transform:scale(.9) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-close{
+  position:absolute;top:1rem;right:1rem;
+  width:36px;height:36px;border-radius:50%;
+  border:none;background:var(--gray-50);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;color:var(--gray-600);transition:var(--transition);
+}
+.modal-close:hover{background:#fee;color:var(--error)}
+.modal h2{font-size:1.4rem;color:var(--corporate-navy);margin-bottom:.4rem}
+.modal > p{color:var(--gray-500);margin-bottom:1.5rem;font-size:.9rem}
+
+/* Toast */
+.toast{
+  position:fixed;bottom:2rem;right:2rem;z-index:3000;
+  background:var(--corporate-navy);color:white;
+  padding:14px 20px;border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+  font-size:.88rem;display:none;
+  animation:slideIn .3s ease;
+  align-items:center;gap:10px;
+}
+.toast.show{display:flex}
+.toast.error{background:var(--error)}
+.toast.success{background:var(--success)}
+@keyframes slideIn{from{transform:translateX(30px);opacity:0}to{transform:translateX(0);opacity:1}}
+
 /* ============ RESPONSIVE ============ */
 @media (max-width:1024px){
-  .hero-container,.tracks-grid{grid-template-columns:1fr}
-  .hero-visual{max-width:500px;margin:0 auto}
-  .accreditation-grid{grid-template-columns:repeat(2,1fr)}
-  .modes-grid{grid-template-columns:1fr}
-  .pricing-grid{grid-template-columns:1fr;max-width:450px;margin:2rem auto 0}
+  .hero-container,.flywheel-grid{grid-template-columns:1fr}
+  .hero-visual{display:none}
+  .value-grid,.instructors-grid,.pathways-grid,.courses-grid,.delivery-grid,.campuses-grid,.testimonials-grid{grid-template-columns:repeat(2,1fr)}
+  .trust-grid,.partnerships-grid{grid-template-columns:repeat(3,1fr)}
+  .pricing-grid{grid-template-columns:1fr;max-width:450px;margin:0 auto}
   .pricing-card.featured{transform:none}
-  .pathway-steps{grid-template-columns:1fr;gap:1rem}
-  .pathway-timeline::before{display:none}
-  .trust-grid{grid-template-columns:repeat(2,1fr)}
+  .pricing-card.featured:hover{transform:translateY(-5px)}
   .hero-stats{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:768px){
@@ -763,11 +916,13 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
   .mobile-toggle{display:block}
   .hero h1{font-size:2rem}
   .section-header h2{font-size:1.7rem}
+  .value-grid,.instructors-grid,.pathways-grid,.courses-grid,.delivery-grid,.campuses-grid,.testimonials-grid,.trust-grid,.partnerships-grid{grid-template-columns:1fr}
   .section{padding:3rem 1.5rem}
-  .accreditation-grid,.trust-grid{grid-template-columns:1fr}
-  .form-row{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr}
   .hero-stats{grid-template-columns:1fr;gap:.8rem}
+  .footer-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .schedule-item{grid-template-columns:1fr;text-align:center}
+  .schedule-date{margin:0 auto}
 }
 </style>
 </head>
@@ -775,8 +930,8 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
 
 <!-- Top Bar -->
 <div class="topbar">
-  <span class="badge">THUTO AI ACADEMY</span>
-  <span>Part of the <a href="../">ThutoTech Ecosystem</a> · ETDP SETA-aligned · SACE CPD-accredited · REGGIE EXPRESS (Pty) Ltd</span>
+  <span class="badge">THUTOTECH</span>
+  <span>A REGGIE EXPRESS Academy · <a href="https://reggie9102.github.io/Thuto-Technologies-PTY-LTD/">Back to ThutoTech Ecosystem</a></span>
 </div>
 
 <!-- Navbar -->
@@ -785,26 +940,34 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
     <a href="#" class="logo">
       <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
       <div class="logo-text">
-        <div class="brand">Thuto AI <span>Academy</span></div>
-        <div class="sub">Upskilling · SETA-Aligned · CPD-Accredited</div>
+        <div class="brand">Thuto <span>AI Academy</span></div>
+        <div class="sub">ETDP SETA-Aligned Certification</div>
       </div>
     </a>
     <ul class="nav-links">
-      <li><a href="#accreditation">Accreditation</a></li>
-      <li><a href="#tracks">Tracks</a></li>
-      <li><a href="#courses">Courses</a></li>
-      <li><a href="#modes">Learning Modes</a></li>
-      <li><a href="#faculty">Faculty</a></li>
+      <li><a href="#pathways">Pathways</a></li>
+      <li class="dropdown">
+        <a href="#courses">Courses <i class="fas fa-chevron-down" style="font-size:.65rem;margin-left:3px;"></i></a>
+        <div class="dropdown-menu">
+          <a href="#courses" onclick="filterCourses('all')"><i class="fas fa-th"></i> All Courses</a>
+          <a href="#courses" onclick="filterCourses('online')"><i class="fas fa-laptop"></i> Online Only</a>
+          <a href="#courses" onclick="filterCourses('onsite')"><i class="fas fa-building"></i> Face-to-Face</a>
+          <a href="#courses" onclick="filterCourses('blended')"><i class="fas fa-sync-alt"></i> Blended</a>
+        </div>
+      </li>
+      <li><a href="#delivery">Delivery</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#instructors">Instructors</a></li>
       <li><a href="#pricing">Pricing</a></li>
     </ul>
     <div class="nav-actions">
-      <a href="#courses" class="btn btn-outline" style="font-size:.82rem;padding:8px 14px;">
-        <i class="fas fa-book"></i> Browse Courses
+      <a href="#apply" class="btn btn-outline" style="font-size:.82rem;padding:8px 14px;">
+        <i class="fas fa-info-circle"></i> Learn More
       </a>
-      <button class="btn btn-primary" onclick="openEnrollModal()" style="font-size:.82rem;padding:8px 14px;">
-        <i class="fas fa-user-plus"></i> Enroll Now
-      </button>
-      <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+      <a href="#apply" class="btn btn-primary" style="font-size:.82rem;padding:8px 14px;">
+        Apply Now
+      </a>
+      <button class="mobile-toggle" onclick="toggleMobileMenu()">
         <i class="fas fa-bars"></i>
       </button>
     </div>
@@ -816,75 +979,57 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
   <div class="hero-container">
     <div class="hero-content">
       <div class="hero-pill">
-        <i class="fas fa-award"></i>
-        ETDP SETA-Aligned · SACE CPD Points · NQF 5–8
+        <i class="fas fa-certificate"></i>
+        ETDP SETA-Aligned · MICT SETA Accredited · For In-Service Teachers & Postgrads
       </div>
-      <h1>South Africa's First <span class="accent">SETA-Accredited AI Academy</span> for <span class="sub-accent">Educators & Researchers</span></h1>
-      <p class="hero-sub">Thuto AI Academy offers online and face-to-face certifications in AI-enhanced teaching, prompt engineering, and education technology — designed for in-service teachers and postgraduate students navigating the AI era with integrity, POPIA compliance, and pedagogical rigour.</p>
+      <h1>Certify Your Teaching in <span class="accent">AI-Enhanced Education</span> & <span class="sub-accent">Prompt Engineering</span></h1>
+      <p class="hero-sub">South Africa's first ETDP SETA-aligned academy for AI-enhanced teaching. Online, face-to-face, and blended programmes designed for in-service teachers, education leaders, and postgraduate students. Earn CPD credits while mastering the tools shaping the future of SA classrooms.</p>
       
       <div class="hero-badges">
-        <div class="hero-badge"><i class="fas fa-laptop-house"></i> Online + Face-to-Face</div>
-        <div class="hero-badge"><i class="fas fa-certificate"></i> SACE CPD Points</div>
-        <div class="hero-badge"><i class="fas fa-shield-alt"></i> POPIA-compliant</div>
-        <div class="hero-badge"><i class="fas fa-hand-holding-usd"></i> Bursaries Available</div>
+        <div class="hero-badge gold"><i class="fas fa-award"></i> ETDP SETA Aligned</div>
+        <div class="hero-badge"><i class="fas fa-book-reader"></i> CPD Credits</div>
+        <div class="hero-badge"><i class="fas fa-users"></i> In-Service & Postgrad</div>
+        <div class="hero-badge"><i class="fas fa-language"></i> 11 SA Languages</div>
       </div>
       
       <div class="hero-buttons">
-        <a href="#tracks" class="btn btn-primary" style="padding:14px 28px;font-size:1rem;">
-          <i class="fas fa-chalkboard-teacher"></i> I'm a Teacher
+        <a href="#apply" class="btn btn-primary" style="padding:14px 28px;font-size:1rem;">
+          <i class="fas fa-rocket"></i> Apply for Next Cohort
         </a>
-        <a href="#tracks" class="btn btn-gold" style="padding:14px 28px;font-size:1rem;">
-          <i class="fas fa-user-graduate"></i> I'm a Postgrad
+        <a href="#pathways" class="btn btn-outline" style="padding:14px 28px;font-size:1rem;border-color:rgba(255,255,255,.3);color:white;">
+          <i class="fas fa-map-signs"></i> View Pathways
         </a>
       </div>
       
       <div class="hero-stats">
-        <div class="stat-item"><h3>12</h3><p>Certifications</p></div>
-        <div class="stat-item"><h3>NQF 5–8</h3><p>Levels Offered</p></div>
-        <div class="stat-item"><h3>30</h3><p>SACE CPD Pts</p></div>
-        <div class="stat-item"><h3>3</h3><p>Learning Modes</p></div>
+        <div class="stat-item"><h3>6</h3><p>Certification Tracks</p></div>
+        <div class="stat-item"><h3>3</h3><p>Delivery Modes</p></div>
+        <div class="stat-item"><h3>120+</h3><p>CPD Credits</p></div>
+        <div class="stat-item"><h3>5</h3><p>Campuses Nationwide</p></div>
       </div>
     </div>
     
     <div class="hero-visual">
-      <div class="cert-card">
-        <div class="cert-seal"><i class="fas fa-award"></i></div>
-        <div class="cert-label">Certificate of Competence</div>
-        <h3>AI-Enhanced Teaching Practice</h3>
-        <div class="cert-subtitle">ETDP SETA-Aligned · NQF Level 6</div>
-        <div class="cert-meta">
-          <div class="cert-meta-item">
-            <strong>120 Hours</strong>
-            <small>Blended learning</small>
-          </div>
-          <div class="cert-meta-item">
-            <strong>15 Credits</strong>
-            <small>NQF Level 6</small>
-          </div>
-          <div class="cert-meta-item">
-            <strong>30 CPD</strong>
-            <small>SACE points</small>
+      <div class="hero-card-stack">
+        <div class="hero-card hero-card-1">
+          <div class="card-label">Featured Programme</div>
+          <h3>AI-Enhanced Teaching Certificate</h3>
+          <p>Master prompt engineering, CAPS-aligned AI tools, and multilingual lesson generation.</p>
+          <div class="cert-badge"><i class="fas fa-award"></i> 40 CPD Credits · 12 Weeks</div>
+        </div>
+        <div class="hero-card hero-card-2">
+          <div class="cert-preview">
+            <div class="cert-logo"><i class="fas fa-certificate"></i></div>
+            <h4>Certificate of Completion</h4>
+            <p>AI-Enhanced Teaching · Advanced</p>
+            <div class="seal">TA</div>
           </div>
         </div>
-        <div style="font-size:.75rem;color:var(--gray-500);line-height:1.5;">
-          Awarded to educators who demonstrate mastery in prompt engineering, CAPS-aligned AI lesson design, and POPIA-compliant data handling in educational contexts.
+        <div class="hero-card hero-card-3">
+          <div class="delivery-mode online"><i class="fas fa-laptop"></i><strong>Online</strong><small>Self-paced</small></div>
+          <div class="delivery-mode onsite"><i class="fas fa-building"></i><strong>On-site</strong><small>5 campuses</small></div>
+          <div class="delivery-mode blended"><i class="fas fa-sync-alt"></i><strong>Blended</strong><small>Best of both</small></div>
         </div>
-        <div class="cert-badges">
-          <span class="cert-badge-tag">ETDP SETA</span>
-          <span class="cert-badge-tag gold">SACE CPD</span>
-          <span class="cert-badge-tag">SAQA</span>
-          <span class="cert-badge-tag gold">POPIA</span>
-        </div>
-      </div>
-      <div class="hero-float hero-float-1">
-        <div class="float-icon" style="background:rgba(212,175,55,.1);color:var(--harvest-gold);"><i class="fas fa-medal"></i></div>
-        <span>847 Certified</span>
-        <small>Educators in 2025</small>
-      </div>
-      <div class="hero-float hero-float-2">
-        <div class="float-icon" style="background:rgba(109,40,217,.1);color:var(--academic-purple);"><i class="fas fa-university"></i></div>
-        <span>9 Provinces</span>
-        <small>Face-to-face hubs</small>
       </div>
     </div>
   </div>
@@ -895,699 +1040,944 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
   <div class="trust-grid">
     <div class="trust-item">
       <i class="fas fa-award"></i>
-      <div>
-        <strong>ETDP SETA Aligned</strong>
-        <small>Accreditation in progress</small>
-      </div>
+      <div><strong>ETDP SETA Aligned</strong><small>Quality Council verified</small></div>
     </div>
     <div class="trust-item">
       <i class="fas fa-certificate"></i>
-      <div>
-        <strong>SACE CPD Points</strong>
-        <small>Up to 30 points per course</small>
-      </div>
+      <div><strong>MICT SETA Accredited</strong><small>NQF-aligned units</small></div>
     </div>
     <div class="trust-item">
-      <i class="fas fa-graduation-cap"></i>
-      <div>
-        <strong>NQF 5–8 Levels</strong>
-        <small>SAQA-registered pathways</small>
-      </div>
+      <i class="fas fa-book-reader"></i>
+      <div><strong>SACE CPD Credits</strong><small>Recognised by SACE</small></div>
     </div>
     <div class="trust-item">
       <i class="fas fa-shield-alt"></i>
-      <div>
-        <strong>POPIA-compliant</strong>
-        <small>Consent-first training</small>
-      </div>
+      <div><strong>POPIA Compliant</strong><small>Data stays in SA</small></div>
     </div>
     <div class="trust-item">
       <i class="fas fa-building"></i>
-      <div>
-        <strong>REGGIE EXPRESS (Pty) Ltd</strong>
-        <small>Reg: K2024698680</small>
+      <div><strong>REGGIE EXPRESS</strong><small>Reg: K2024698680</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- Value Prop -->
+<section class="section value-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag gold"><i class="fas fa-star"></i> Why Thuto AI Academy</span>
+      <h2>Built for the Teachers Shaping South Africa's Future</h2>
+      <p>We don't just teach AI — we teach AI in the South African context. Every module is grounded in CAPS, POPIA, multilingual reality, and the daily pressures of under-resourced classrooms.</p>
+    </div>
+    
+    <div class="value-grid">
+      <div class="value-card">
+        <div class="value-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+        <h3>Designed for In-Service Teachers</h3>
+        <p>Modules built around the realities of SA classrooms — large classes, limited resources, multilingual learners, and CAPS compliance.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon"><i class="fas fa-user-graduate"></i></div>
+        <h3>Postgraduate Pathway</h3>
+        <p>Credits stackable toward MEd and PhD research. SuperviseAI integration for postgrads exploring AI in education.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon"><i class="fas fa-language"></i></div>
+        <h3>Multilingual by Design</h3>
+        <p>Learn to use AI across all 11 official SA languages via InkubaLM and NLLB — not just English.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>POPIA & Ethics First</h3>
+        <p>Every module embeds data protection, consent, and ethical AI use — critical for working with minors.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Accreditation Section -->
-<section class="section accreditation-section" id="accreditation">
+<!-- Certification Pathways -->
+<section class="section pathways-section" id="pathways">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag gold"><i class="fas fa-award"></i> Accreditation & Recognition</span>
-      <h2>Qualifications That Matter</h2>
-      <p>Every Thuto AI Academy certification is built to recognised South African standards — so your upskilling counts towards SACE renewal, SETA levies, university credits, and career advancement.</p>
+      <span class="section-tag navy"><i class="fas fa-route"></i> Certification Pathways</span>
+      <h2>Three Levels. One Complete Journey.</h2>
+      <p>Whether you're just starting your AI journey or you're an experienced educator ready to lead, we have a pathway for you. Stack credits across levels to build toward advanced certification.</p>
     </div>
     
-    <div class="accreditation-grid">
-      <div class="accreditation-card">
-        <div class="accreditation-icon"><i class="fas fa-award"></i></div>
-        <h3>ETDP SETA Alignment</h3>
-        <p>Our curricula map to the Education, Training and Development Practices SETA unit standards. Qualifying employers can claim skills levy refunds.</p>
-        <span class="ref">ETDP-ALIGN-2025</span>
-      </div>
-      
-      <div class="accreditation-card">
-        <div class="accreditation-icon"><i class="fas fa-certificate"></i></div>
-        <h3>SACE CPD Points</h3>
-        <p>All teacher-facing courses award Continuing Professional Development points recognised by the South African Council for Educators for licence renewal.</p>
-        <span class="ref">SACE-CPD-CAT-A</span>
-      </div>
-      
-      <div class="accreditation-card">
-        <div class="accreditation-icon"><i class="fas fa-university"></i></div>
-        <h3>SAQA NQF Levels</h3>
-        <p>Certifications are positioned at NQF Levels 5, 6, 7, and 8 — stackable towards Honours, PGCE, and MEd programmes at partner universities.</p>
-        <span class="ref">SAQA-NQF-5-8</span>
-      </div>
-      
-      <div class="accreditation-card">
-        <div class="accreditation-icon"><i class="fas fa-shield-alt"></i></div>
-        <h3>POPIA by Design</h3>
-        <p>Every course embeds POPIA-compliant AI practice. Graduates receive a separate micro-credential in Educational Data Protection for the AI era.</p>
-        <span class="ref">POPIA-EDU-2025</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Tracks Section -->
-<section class="section tracks-section" id="tracks">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-tag purple"><i class="fas fa-route"></i> Choose Your Track</span>
-      <h2>Two Pathways. One Academy.</h2>
-      <p>Thuto AI Academy runs two dedicated tracks — one for in-service educators seeking SACE CPD points and pedagogical upskilling, another for postgraduate students building research-grade AI capabilities.</p>
-    </div>
-    
-    <div class="tracks-grid">
-      <div class="track-card teachers">
-        <span class="audience"><i class="fas fa-chalkboard-teacher"></i> For In-Service Teachers</span>
-        <div class="track-icon"><i class="fas fa-chalkboard-teacher"></i></div>
-        <h3>Educator Track</h3>
-        <p>Practical, classroom-ready AI certifications for Foundation, Intermediate, Senior, and FET phase teachers. Every course earns SACE CPD points and counts towards your professional portfolio.</p>
-        <ul class="track-outcomes">
-          <li><i class="fas fa-check-circle"></i> SACE CPD points (15–30 per course)</li>
-          <li><i class="fas fa-check-circle"></i> CAPS-aligned AI lesson design workshops</li>
-          <li><i class="fas fa-check-circle"></i> Prompt engineering for curriculum delivery</li>
-          <li><i class="fas fa-check-circle"></i> Multilingual AI for 11 SA languages</li>
-          <li><i class="fas fa-check-circle"></i> POPIA-compliant learner data handling</li>
-          <li><i class="fas fa-check-circle"></i> Portfolio of Evidence (PoE) assessment</li>
-          <li><i class="fas fa-check-circle"></i> Bursaries for Quintile 1–3 schools</li>
-        </ul>
-        <div class="track-cta">
-          <a href="#courses" class="btn btn-gold" onclick="filterCourses('educator')">
-            <i class="fas fa-arrow-right"></i> View Educator Courses
-          </a>
-        </div>
-      </div>
-      
-      <div class="track-card postgrads">
-        <span class="audience"><i class="fas fa-user-graduate"></i> For Postgraduate Students</span>
-        <div class="track-icon"><i class="fas fa-flask"></i></div>
-        <h3>Postgraduate Track</h3>
-        <p>Research-grade AI methodologies for Honours, Master's, and Doctoral students in Education, Computer Science, Linguistics, and related fields. Stackable credits towards SAQA-registered degrees.</p>
-        <ul class="track-outcomes">
-          <li><i class="fas fa-check-circle"></i> NQF Level 7–8 specialist certifications</li>
-          <li><i class="fas fa-check-circle"></i> AI research methods & ethics</li>
-          <li><i class="fas fa-check-circle"></i> Low-resource NLP for African languages</li>
-          <li><i class="fas fa-check-circle"></i> MCP architecture & offline-first design</li>
-          <li><i class="fas fa-check-circle"></i> Supervision-ready dissertation support</li>
-          <li><i class="fas fa-check-circle"></i> NRF / CSIR research partnership pathways</li>
-          <li><i class="fas fa-check-circle"></i> Stackable towards MEd / PhD credits</li>
-        </ul>
-        <div class="track-cta">
-          <a href="#courses" class="btn btn-primary" onclick="filterCourses('postgrad')">
-            <i class="fas fa-arrow-right"></i> View Postgrad Courses
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Courses Section -->
-<section class="section courses-section" id="courses">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-tag navy"><i class="fas fa-book-open"></i> Course Catalogue</span>
-      <h2>12 Certifications Across 4 Levels</h2>
-      <p>From AI literacy for first-time users to specialist research methodologies — every course is delivered online, hybrid, or face-to-face across 9 provincial hubs.</p>
-    </div>
-    
-    <div class="course-filters">
-      <button class="course-filter active" onclick="filterCourses('all')">All Courses</button>
-      <button class="course-filter" onclick="filterCourses('foundation')">Foundation (NQF 5)</button>
-      <button class="course-filter" onclick="filterCourses('intermediate')">Intermediate (NQF 6)</button>
-      <button class="course-filter" onclick="filterCourses('advanced')">Advanced (NQF 7)</button>
-      <button class="course-filter" onclick="filterCourses('specialist')">Specialist (NQF 8)</button>
-      <button class="course-filter" onclick="filterCourses('educator')">Educator Track</button>
-      <button class="course-filter" onclick="filterCourses('postgrad')">Postgrad Track</button>
-    </div>
-    
-    <div class="courses-grid" id="coursesGrid">
+    <div class="pathways-grid">
       <!-- Foundation -->
-      <div class="course-card" data-level="foundation" data-track="educator">
-        <div class="course-header">
-          <span class="course-level foundation"><i class="fas fa-seedling"></i> FOUNDATION · NQF 5</span>
-          <h3>AI Literacy for SA Educators</h3>
-          <div class="course-code">TAA-101 · 60 Hours</div>
-        </div>
-        <p>An introduction to AI concepts, ethical use, and practical classroom applications. No technical background required. Ideal for first-time AI users in Foundation and Intermediate phases.</p>
-        <div class="course-meta">
-          <div class="course-meta-item"><strong>15 CPD</strong><small>SACE points</small></div>
-          <div class="course-meta-item"><strong>6 Credits</strong><small>NQF 5</small></div>
-          <div class="course-meta-item"><strong>8 Weeks</strong><small>Part-time</small></div>
-        </div>
-        <div class="course-footer">
-          <div class="course-price">R2,950<small>or R495/month × 6</small></div>
-          <button class="btn btn-primary" onclick="openEnrollModal('TAA-101')" style="font-size:.8rem;padding:8px 14px;">Enroll</button>
-        </div>
-      </div>
-      
-      <div class="course-card" data-level="foundation" data-track="educator">
-        <div class="course-header">
-          <span class="course-level foundation"><i class="fas fa-seedling"></i> FOUNDATION · NQF 5</span>
-          <h3>POPIA & AI in the Classroom</h3>
-          <div class="course-code">TAA-102 · 40 Hours</div>
-        </div>
-        <p>Practical POPIA compliance for teachers using AI tools. Covers consent, learner data, parental rights, and the Information Regulator's expectations for schools.</p>
-        <div class="course-meta">
-          <div class="course-meta-item"><strong>15 CPD</strong><small>SACE points</small></div>
-          <div class="course-meta-item"><strong>4 Credits</strong><small>NQF 5</small></div>
-          <div class="course-meta-item"><strong>6 Weeks</strong><small>Online</small></div>
-        </div>
-        <div class="course-footer">
-          <div class="course-price">R1,950<small>or R395/month × 5</small></div>
-          <button class="btn btn-primary" onclick="openEnrollModal('TAA-102')" style="font-size:.8rem;padding:8px 14px;">Enroll</button>
-        </div>
-      </div>
-      
-      <div class="course-card" data-level="foundation" data-track="educator">
-        <div class="course-header">
-          <span class="course-level foundation"><i class="fas fa-seedling"></i> FOUNDATION · NQF 5</span>
-          <h3>Multilingual AI for 11 SA Languages</h3>
-          <div class="course-code">TAA-103 · 50 Hours</div>
-        </div>
-        <p>Use AI tools to create lessons in isiZulu, isiXhosa, Afrikaans, Sepedi, Setswana, Sesotho, Xitsonga, Tshivenda, siSwati, isiNdebele, and English. Powered by InkubaLM.</p>
-        <div class="course-meta">
-          <div class="course-meta-item"><strong>15 CPD</strong><small>SACE points</small></div>
-          <div class="course-meta-item"><strong>5 Credits</strong><small>NQF 5</small></div>
-          <div class="course-meta-item"><strong>7 Weeks</strong><small>Hybrid</small></div>
-        </div>
-        <div class="course-footer">
-          <div class="course-price">R2,450<small>or R450/month × 6</small></div>
-          <button class="btn btn-primary" onclick="openEnrollModal('TAA-103')" style="font-size:.8rem;padding:8px 14px;">Enroll</button>
+      <div class="pathway-card foundation">
+        <div class="pathway-level"><i class="fas fa-seedling"></i> Foundation</div>
+        <h3>AI Literacy for Educators</h3>
+        <div class="duration"><i class="far fa-clock"></i> 6 weeks · Part-time</div>
+        <p>Your gateway into AI-enhanced teaching. No technical background needed. Perfect for in-service teachers new to AI tools.</p>
+        <ul class="pathway-modules">
+          <li><i class="fas fa-check"></i> What AI is (and isn't) in education</li>
+          <li><i class="fas fa-check"></i> Introduction to CAPS-aligned AI tools</li>
+          <li><i class="fas fa-check"></i> Basic prompt engineering</li>
+          <li><i class="fas fa-check"></i> POPIA & ethical AI use with learners</li>
+          <li><i class="fas fa-check"></i> Hands-on: Generate your first AI lesson</li>
+        </ul>
+        <div class="pathway-meta">
+          <div class="pathway-price">R2,450<small>or R410/month × 6</small></div>
+          <span class="pathway-cpd">20 CPD</span>
         </div>
       </div>
       
       <!-- Intermediate -->
-      <div class="course-card" data-level="intermediate" data-track="educator">
-        <div class="course-header">
-          <span class="course-level intermediate"><i class="fas fa-code"></i> INTERMEDIATE · NQF 6</span>
-          <h3>Prompt Engineering for Teachers</h3>
-          <div class="course-code">TAA-201 · 90 Hours</div>
-        </div>
-        <p>Master the art and science of prompt engineering for curriculum-aligned content generation. Covers Qwen, Claude, GPT, and local models with CAPS-specific templates.</p>
-        <div class="course-meta">
-          <div class="course-meta-item"><strong>25 CPD</strong><small>SACE points</small></div>
-          <div class="course-meta-item"><strong>12 Credits</strong><small>NQF 6</small></div>
-          <div class="course-meta-item"><strong>10 Weeks</strong><small>Hybrid</small></div>
-        </div>
-        <div class="course-footer">
-          <div class="course-price">R4,950<small>or R895/month × 6</small></div>
-          <button class="btn btn-primary" onclick="openEnrollModal('TAA-201')" style="font-size:.8rem;padding:8px 14px;">Enroll</button>
-        </div>
-      </div>
-      
-      <div class="course-card" data-level="intermediate" data-track="educator">
-        <div class="course-header">
-          <span class="course-level intermediate"><i class="fas fa-magic"></i> INTERMEDIATE · NQF 6</span>
-          <h3>AI-Enhanced Lesson Design</h3>
-          <div class="course-code">TAA-202 · 120 Hours</div>
-        </div>
-        <p>Design, generate, and assess AI-powered lessons aligned to CAPS ATPs. Build a portfolio of AI-generated slide decks, quizzes, audio lessons, and rubrics for your phase.</p>
-        <div class="course-meta">
-          <div class="course-meta-item"><strong>30 CPD</strong><small>SACE points</small></div>
-          <div class="course-meta-item"><strong>15 Credits</strong><small>NQF 6</small></div>
-          <div class="course-meta-item"><strong>12 Weeks</strong><small>Face-to-Face</small></div>
-        </div>
-        <div class="course-footer">
-          <div class="course-price">R6,950<small>or R1,195/month × 6</small></div>
-          <button class="btn btn-primary" onclick="openEnrollModal('TAA-202')" style="font-size:.8rem;padding:8px 14px;">Enroll</button>
-        </div>
-      </div>
-      
-      <div class="course-card" data-level="intermediate" data-track="educator">
-        <div class="course-header">
-          <span class="course-level intermediate"><i class="fas fa-chart-line"></i> INTERMEDIATE · NQF 6</span>
-          <h3>AI Assessment & Analytics</h3>
-          <div class="course-code">TAA-203 · 80 Hours</div>
-        </div>
-        <p>Use AI to design valid assessments, auto-mark responses, and analyse learner performance data ethically. Covers SASAMS, LURITS, and DBE reporting integration.</p>
-        <div class="course-meta">
-          <div class="course-meta-item"><strong>20 CPD</strong><small>SACE points</small></div>
-          <div class="course-meta-item"><strong>10 Credits</strong><small>NQF 6</small></div>
-          <div class="course-meta-item"><strong>9 Weeks</strong><small>Online</small></div>
-        </div>
-        <div class="course-footer">
-          <div class="course-price">R3,950<small>or R695/month × 6</small></div>
-          <button class="btn btn-primary" onclick="openEnrollModal('TAA-203')" style="font-size:.8rem;padding:8px 14px;">Enroll</button>
+      <div class="pathway-card intermediate">
+        <div class="pathway-level"><i class="fas fa-rocket"></i> Intermediate</div>
+        <h3>AI-Enhanced Teaching Certificate</h3>
+        <div class="duration"><i class="far fa-clock"></i> 12 weeks · Part-time</div>
+        <p>Deep-dive into prompt engineering, multilingual AI, and advanced lesson design. For teachers ready to transform their practice.</p>
+        <ul class="pathway-modules">
+          <li><i class="fas fa-check"></i> Advanced prompt engineering (Qwen, InkubaLM)</li>
+          <li><i class="fas fa-check"></i> Multilingual lesson generation (11 languages)</li>
+          <li><i class="fas fa-check"></i> AI-powered assessment design</li>
+          <li><i class="fas fa-check"></i> SASAMS / LURITS integration</li>
+          <li><i class="fas fa-check"></i> Capstone: Build a term's AI curriculum</li>
+        </ul>
+        <div class="pathway-meta">
+          <div class="pathway-price">R5,950<small>or R495/month × 12</small></div>
+          <span class="pathway-cpd">40 CPD</span>
         </div>
       </div>
       
       <!-- Advanced -->
-      <div class="course-card" data-level="advanced" data-track="educator postgrad">
-        <div class="course-header">
-          <span class="course-level advanced"><i class="fas fa-layer-group"></i> ADVANCED · NQF 7</span>
-          <h3>MCP Architecture for Educators</h3>
-          <div class="course-code">TAA-301 · 150 Hours</div>
-        </div>
-        <p>Understand and implement Model Context Protocol systems in school contexts. Covers offline-first design, local CAPS caching, POPIA enforcement, and smart sync.</p>
-        <div class="course-meta">
-          <div class="course-meta-item"><strong>30 CPD</strong><small>SACE points</small></div>
-          <div class="course-meta-item"><strong>18 Credits</strong><small>NQF 7</small></div>
-          <div class="course-meta-item"><strong>14 Weeks</strong><small>Hybrid</small></div>
-        </div>
-        <div class="course-footer">
-          <div class="course-price">R9,950<small>or R1,695/month × 6</small></div>
-          <button class="btn btn-primary" onclick="openEnrollModal('TAA-301')" style="font-size:.8rem;padding:8px 14px;">Enroll</button>
-        </div>
-      </div>
-      
-      <div class="course-card" data-level="advanced" data-track="educator">
-        <div class="course-header">
-          <span class="course-level advanced"><i class="fas fa-users-cog"></i> ADVANCED · NQF 7</span>
-          <h3>AI Leadership for HODs & Principals</h3>
-          <div class="course-code">TAA-302 · 100 Hours</div>
-        </div>
-        <p>Strategic AI adoption for school leadership. Covers policy development, staff upskilling plans, budget allocation, DBE compliance, and SGB engagement.</p>
-        <div class="course-meta">
-          <div class="course-meta-item"><strong>30 CPD</strong><small>SACE points</small></div>
-          <div class="course-meta-item"><strong>15 Credits</strong><small>NQF 7</small></div>
-          <div class="course-meta-item"><strong>12 Weeks</strong><small>Executive</small></div>
-        </div>
-        <div class="course-footer">
-          <div class="course-price">R12,950<small>or R2,195/month × 6</small></div>
-          <button class="btn btn-primary" onclick="openEnrollModal('TAA-302')" style="font-size:.8rem;padding:8px 14px;">Enroll</button>
-        </div>
-      </div>
-      
-      <div class="course-card" data-level="advanced" data-track="postgrad">
-        <div class="course-header">
-          <span class="course-level advanced"><i class="fas fa-brain"></i> ADVANCED · NQF 7</span>
-          <h3>Applied AI for Education Research</h3>
-          <div class="course-code">TAA-303 · 180 Hours</div>
-        </div>
-        <p>Research-grade AI methods for Honours students. Covers literature synthesis, data analysis with LLMs, ethical review, and publication-ready outputs.</p>
-        <div class="course-meta">
-          <div class="course-meta-item"><strong>20 CPD</strong><small>Optional</small></div>
-          <div class="course-meta-item"><strong>20 Credits</strong><small>NQF 7</small></div>
-          <div class="course-meta-item"><strong>16 Weeks</strong><small>Online</small></div>
-        </div>
-        <div class="course-footer">
-          <div class="course-price">R11,950<small>or R1,995/month × 6</small></div>
-          <button class="btn btn-primary" onclick="openEnrollModal('TAA-303')" style="font-size:.8rem;padding:8px 14px;">Enroll</button>
-        </div>
-      </div>
-      
-      <!-- Specialist -->
-      <div class="course-card" data-level="specialist" data-track="postgrad">
-        <div class="course-header">
-          <span class="course-level specialist"><i class="fas fa-atom"></i> SPECIALIST · NQF 8</span>
-          <h3>Low-Resource NLP for African Languages</h3>
-          <div class="course-code">TAA-401 · 240 Hours</div>
-        </div>
-        <p>Advanced NLP methods for isiZulu, isiXhosa, and other low-resource SA languages. Covers InkubaLM fine-tuning, NLLB translation, and corpus building under African conditions.</p>
-        <div class="course-meta">
-          <div class="course-meta-item"><strong>Research</strong><small>Credit</small></div>
-          <div class="course-meta-item"><strong>30 Credits</strong><small>NQF 8</small></div>
-          <div class="course-meta-item"><strong>20 Weeks</strong><small>Intensive</small></div>
-        </div>
-        <div class="course-footer">
-          <div class="course-price">R18,950<small>or R3,195/month × 6</small></div>
-          <button class="btn btn-primary" onclick="openEnrollModal('TAA-401')" style="font-size:.8rem;padding:8px 14px;">Enroll</button>
-        </div>
-      </div>
-      
-      <div class="course-card" data-level="specialist" data-track="postgrad">
-        <div class="course-header">
-          <span class="course-level specialist"><i class="fas fa-microscope"></i> SPECIALIST · NQF 8</span>
-          <h3>AI Research Methods for MEd/PhD</h3>
-          <div class="course-code">TAA-402 · 300 Hours</div>
-        </div>
-        <p>Master's and Doctoral-level AI research methodology. Covers mixed methods with LLMs, systematic reviews, ethical AI frameworks, and NRF grant applications.</p>
-        <div class="course-meta">
-          <div class="course-meta-item"><strong>Dissertation</strong><small>Support</small></div>
-          <div class="course-meta-item"><strong>40 Credits</strong><small>NQF 8</small></div>
-          <div class="course-meta-item"><strong>24 Weeks</strong><small>Supervised</small></div>
-        </div>
-        <div class="course-footer">
-          <div class="course-price">R24,950<small>or R4,195/month × 6</small></div>
-          <button class="btn btn-primary" onclick="openEnrollModal('TAA-402')" style="font-size:.8rem;padding:8px 14px;">Enroll</button>
-        </div>
-      </div>
-      
-      <div class="course-card" data-level="specialist" data-track="postgrad">
-        <div class="course-header">
-          <span class="course-level specialist"><i class="fas fa-network-wired"></i> SPECIALIST · NQF 8</span>
-          <h3>Sovereign AI Infrastructure</h3>
-          <div class="course-code">TAA-403 · 200 Hours</div>
-        </div>
-        <p>Build and deploy sovereign AI systems for African contexts. Covers MCP servers, local LLMs, data residency, and offline-first architecture for under-resourced settings.</p>
-        <div class="course-meta">
-          <div class="course-meta-item"><strong>Capstone</strong><small>Project</small></div>
-          <div class="course-meta-item"><strong>25 Credits</strong><small>NQF 8</small></div>
-          <div class="course-meta-item"><strong>18 Weeks</strong><small>Hands-on</small></div>
-        </div>
-        <div class="course-footer">
-          <div class="course-price">R16,950<small>or R2,895/month × 6</small></div>
-          <button class="btn btn-primary" onclick="openEnrollModal('TAA-403')" style="font-size:.8rem;padding:8px 14px;">Enroll</button>
+      <div class="pathway-card advanced">
+        <div class="pathway-level"><i class="fas fa-crown"></i> Advanced</div>
+        <h3>AI Education Leadership</h3>
+        <div class="duration"><i class="far fa-clock"></i> 20 weeks · Hybrid</div>
+        <p>For HODs, principals, SGB chairs, and postgraduate researchers. Lead AI adoption at school, district, or research level.</p>
+        <ul class="pathway-modules">
+          <li><i class="fas fa-check"></i> AI strategy for school leaders</li>
+          <li><i class="fas fa-check"></i> Change management & teacher upskilling</li>
+          <li><i class="fas fa-check"></i> AI policy & POPIA governance</li>
+          <li><i class="fas fa-check"></i> Research methods in AI education</li>
+          <li><i class="fas fa-check"></i> Capstone: District-wide AI rollout plan</li>
+        </ul>
+        <div class="pathway-meta">
+          <div class="pathway-price">R12,500<small>or R625/month × 20</small></div>
+          <span class="pathway-cpd">60 CPD</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Learning Modes Section -->
-<section class="section modes-section" id="modes">
+<!-- Course Catalog -->
+<section class="section courses-section" id="courses">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag"><i class="fas fa-laptop-house"></i> How You'll Learn</span>
-      <h2>Three Modes. One Standard.</h2>
-      <p>Choose the learning mode that fits your life — online for flexibility, face-to-face for depth, or hybrid for the best of both. All modes deliver the same accredited certification.</p>
+      <span class="section-tag purple"><i class="fas fa-book-open"></i> Course Catalog</span>
+      <h2>Choose Your Specialisation</h2>
+      <p>Bite-sized courses you can take individually, or stack toward full pathway certification. Every course carries CPD credits.</p>
     </div>
     
-    <div class="modes-grid">
-      <div class="mode-card">
-        <div class="mode-icon"><i class="fas fa-laptop"></i></div>
-        <h3>Online (Self-Paced)</h3>
-        <p>Learn on your schedule with recorded lectures, interactive notebooks, and asynchronous peer forums. Weekly live Q&A with faculty.</p>
-        <ul class="mode-features">
-          <li><i class="fas fa-check"></i> 24/7 access to course materials</li>
-          <li><i class="fas fa-check"></i> Offline-capable mobile app</li>
-          <li><i class="fas fa-check"></i> Weekly live Q&A (recorded)</li>
+    <div class="course-filters">
+      <button class="course-filter active" onclick="filterCourses('all')"><i class="fas fa-th"></i> All Courses</button>
+      <button class="course-filter" onclick="filterCourses('online')"><i class="fas fa-laptop"></i> Online</button>
+      <button class="course-filter" onclick="filterCourses('onsite')"><i class="fas fa-building"></i> Face-to-Face</button>
+      <button class="course-filter" onclick="filterCourses('blended')"><i class="fas fa-sync-alt"></i> Blended</button>
+    </div>
+    
+    <div class="courses-grid" id="coursesGrid">
+      <!-- Course 1 -->
+      <div class="course-card" data-mode="online" data-level="foundation">
+        <div class="course-image gold">
+          <i class="fas fa-magic"></i>
+          <span class="course-mode-badge"><i class="fas fa-laptop"></i> Online</span>
+          <span class="course-level-badge">Foundation</span>
+        </div>
+        <div class="course-body">
+          <div class="course-tags">
+            <span class="course-tag">Prompt Engineering</span>
+            <span class="course-tag">Beginner</span>
+          </div>
+          <h3>Prompt Engineering Fundamentals</h3>
+          <p>Learn to write effective prompts for Qwen, ChatGPT, and InkubaLM. Get better AI outputs in half the time.</p>
+          <div class="course-meta">
+            <span><i class="far fa-clock"></i> 4 weeks</span>
+            <span><i class="fas fa-award"></i> 10 CPD</span>
+          </div>
+          <div class="course-footer">
+            <button class="btn btn-outline" onclick="openCourseModal('Prompt Engineering Fundamentals')">Details</button>
+            <button class="btn btn-primary" onclick="openApplyModal('Prompt Engineering Fundamentals')">Enrol</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Course 2 -->
+      <div class="course-card" data-mode="blended" data-level="intermediate">
+        <div class="course-image navy">
+          <i class="fas fa-chalkboard-teacher"></i>
+          <span class="course-mode-badge"><i class="fas fa-sync-alt"></i> Blended</span>
+          <span class="course-level-badge">Intermediate</span>
+        </div>
+        <div class="course-body">
+          <div class="course-tags">
+            <span class="course-tag">CAPS-Aligned</span>
+            <span class="course-tag">Lesson Design</span>
+          </div>
+          <h3>AI-Enhanced CAPS Lesson Design</h3>
+          <p>Design term-long CAPS curricula using Fundisa AI. Includes live workshops and online modules.</p>
+          <div class="course-meta">
+            <span><i class="far fa-clock"></i> 8 weeks</span>
+            <span><i class="fas fa-award"></i> 20 CPD</span>
+          </div>
+          <div class="course-footer">
+            <button class="btn btn-outline" onclick="openCourseModal('AI-Enhanced CAPS Lesson Design')">Details</button>
+            <button class="btn btn-primary" onclick="openApplyModal('AI-Enhanced CAPS Lesson Design')">Enrol</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Course 3 -->
+      <div class="course-card" data-mode="onsite" data-level="intermediate">
+        <div class="course-image purple">
+          <i class="fas fa-language"></i>
+          <span class="course-mode-badge"><i class="fas fa-building"></i> Face-to-Face</span>
+          <span class="course-level-badge">Intermediate</span>
+        </div>
+        <div class="course-body">
+          <div class="course-tags">
+            <span class="course-tag">Multilingual</span>
+            <span class="course-tag">InkubaLM</span>
+          </div>
+          <h3>Multilingual AI for SA Classrooms</h3>
+          <p>Master AI-driven translation and content generation in isiZulu, isiXhosa, Afrikaans, and 8 other SA languages.</p>
+          <div class="course-meta">
+            <span><i class="far fa-clock"></i> 3-day intensive</span>
+            <span><i class="fas fa-award"></i> 15 CPD</span>
+          </div>
+          <div class="course-footer">
+            <button class="btn btn-outline" onclick="openCourseModal('Multilingual AI for SA Classrooms')">Details</button>
+            <button class="btn btn-primary" onclick="openApplyModal('Multilingual AI for SA Classrooms')">Enrol</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Course 4 -->
+      <div class="course-card" data-mode="online" data-level="advanced">
+        <div class="course-image cyan">
+          <i class="fas fa-tasks"></i>
+          <span class="course-mode-badge"><i class="fas fa-laptop"></i> Online</span>
+          <span class="course-level-badge">Advanced</span>
+        </div>
+        <div class="course-body">
+          <div class="course-tags">
+            <span class="course-tag">Assessment</span>
+            <span class="course-tag">AI Marking</span>
+          </div>
+          <h3>AI-Powered Assessment Design</h3>
+          <p>Build adaptive quizzes, auto-mark essays, and generate personalised feedback using MatricMate AI tools.</p>
+          <div class="course-meta">
+            <span><i class="far fa-clock"></i> 6 weeks</span>
+            <span><i class="fas fa-award"></i> 15 CPD</span>
+          </div>
+          <div class="course-footer">
+            <button class="btn btn-outline" onclick="openCourseModal('AI-Powered Assessment Design')">Details</button>
+            <button class="btn btn-primary" onclick="openApplyModal('AI-Powered Assessment Design')">Enrol</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Course 5 -->
+      <div class="course-card" data-mode="blended" data-level="advanced">
+        <div class="course-image emerald">
+          <i class="fas fa-user-tie"></i>
+          <span class="course-mode-badge"><i class="fas fa-sync-alt"></i> Blended</span>
+          <span class="course-level-badge">Advanced</span>
+        </div>
+        <div class="course-body">
+          <div class="course-tags">
+            <span class="course-tag">Leadership</span>
+            <span class="course-tag">Strategy</span>
+          </div>
+          <h3>AI Strategy for School Leaders</h3>
+          <p>For principals, HODs, and SGB chairs. Plan, govern, and lead AI adoption across your school.</p>
+          <div class="course-meta">
+            <span><i class="far fa-clock"></i> 10 weeks</span>
+            <span><i class="fas fa-award"></i> 25 CPD</span>
+          </div>
+          <div class="course-footer">
+            <button class="btn btn-outline" onclick="openCourseModal('AI Strategy for School Leaders')">Details</button>
+            <button class="btn btn-primary" onclick="openApplyModal('AI Strategy for School Leaders')">Enrol</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Course 6 -->
+      <div class="course-card" data-mode="onsite" data-level="foundation">
+        <div class="course-image orange">
+          <i class="fas fa-shield-alt"></i>
+          <span class="course-mode-badge"><i class="fas fa-building"></i> Face-to-Face</span>
+          <span class="course-level-badge">Foundation</span>
+        </div>
+        <div class="course-body">
+          <div class="course-tags">
+            <span class="course-tag">POPIA</span>
+            <span class="course-tag">Ethics</span>
+          </div>
+          <h3>POPIA & AI Ethics in Schools</h3>
+          <p>One-day intensive on data protection, learner consent, and ethical AI use with minors. Mandatory for all AI users.</p>
+          <div class="course-meta">
+            <span><i class="far fa-clock"></i> 1 day</span>
+            <span><i class="fas fa-award"></i> 8 CPD</span>
+          </div>
+          <div class="course-footer">
+            <button class="btn btn-outline" onclick="openCourseModal('POPIA & AI Ethics in Schools')">Details</button>
+            <button class="btn btn-primary" onclick="openApplyModal('POPIA & AI Ethics in Schools')">Enrol</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Course 7 -->
+      <div class="course-card" data-mode="online" data-level="intermediate">
+        <div class="course-image gold">
+          <i class="fas fa-database"></i>
+          <span class="course-mode-badge"><i class="fas fa-laptop"></i> Online</span>
+          <span class="course-level-badge">Intermediate</span>
+        </div>
+        <div class="course-body">
+          <div class="course-tags">
+            <span class="course-tag">SASAMS</span>
+            <span class="course-tag">LURITS</span>
+          </div>
+          <h3>SASAMS & LURITS Integration</h3>
+          <p>Automate attendance, parent communication, and curriculum pacing using Fundisa AI's bidirectional DBE sync.</p>
+          <div class="course-meta">
+            <span><i class="far fa-clock"></i> 4 weeks</span>
+            <span><i class="fas fa-award"></i> 12 CPD</span>
+          </div>
+          <div class="course-footer">
+            <button class="btn btn-outline" onclick="openCourseModal('SASAMS & LURITS Integration')">Details</button>
+            <button class="btn btn-primary" onclick="openApplyModal('SASAMS & LURITS Integration')">Enrol</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Course 8 -->
+      <div class="course-card" data-mode="blended" data-level="advanced">
+        <div class="course-image navy">
+          <i class="fas fa-microscope"></i>
+          <span class="course-mode-badge"><i class="fas fa-sync-alt"></i> Blended</span>
+          <span class="course-level-badge">Advanced</span>
+        </div>
+        <div class="course-body">
+          <div class="course-tags">
+            <span class="course-tag">Research</span>
+            <span class="course-tag">Postgrad</span>
+          </div>
+          <h3>Research Methods in AI Education</h3>
+          <p>For MEd and PhD students. Design rigorous studies on AI-augmented learning using SuperviseAI and Thuto Research Studio.</p>
+          <div class="course-meta">
+            <span><i class="far fa-clock"></i> 16 weeks</span>
+            <span><i class="fas fa-award"></i> 30 CPD</span>
+          </div>
+          <div class="course-footer">
+            <button class="btn btn-outline" onclick="openCourseModal('Research Methods in AI Education')">Details</button>
+            <button class="btn btn-primary" onclick="openApplyModal('Research Methods in AI Education')">Enrol</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Course 9 -->
+      <div class="course-card" data-mode="onsite" data-level="intermediate">
+        <div class="course-image purple">
+          <i class="fas fa-users-cog"></i>
+          <span class="course-mode-badge"><i class="fas fa-building"></i> Face-to-Face</span>
+          <span class="course-level-badge">Intermediate</span>
+        </div>
+        <div class="course-body">
+          <div class="course-tags">
+            <span class="course-tag">Workshop</span>
+            <span class="course-tag">Hands-on</span>
+          </div>
+          <h3>Weekend AI Bootcamp</h3>
+          <p>Two-day intensive, hands-on workshop. Build a full AI-enhanced lesson plan by Sunday evening.</p>
+          <div class="course-meta">
+            <span><i class="far fa-clock"></i> 2 days</span>
+            <span><i class="fas fa-award"></i> 12 CPD</span>
+          </div>
+          <div class="course-footer">
+            <button class="btn btn-outline" onclick="openCourseModal('Weekend AI Bootcamp')">Details</button>
+            <button class="btn btn-primary" onclick="openApplyModal('Weekend AI Bootcamp')">Enrol</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Delivery Modes -->
+<section class="section delivery-section" id="delivery">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(212,175,55,.2);color:var(--harvest-gold);"><i class="fas fa-map-marked-alt"></i> Delivery Modes</span>
+      <h2 style="color:white;">Learn Your Way</h2>
+      <p style="color:rgba(255,255,255,.8);">Choose the format that fits your life. All modes deliver the same rigorous, ETDP SETA-aligned content.</p>
+    </div>
+    
+    <div class="delivery-grid">
+      <div class="delivery-card online">
+        <div class="delivery-icon"><i class="fas fa-laptop"></i></div>
+        <h3>Online</h3>
+        <div class="subtitle">Self-Paced · Anywhere</div>
+        <p>Learn at your own pace from home, school, or anywhere with internet. Perfect for busy in-service teachers.</p>
+        <ul class="delivery-features">
+          <li><i class="fas fa-check"></i> 24/7 access to LMS</li>
+          <li><i class="fas fa-check"></i> Weekly live Q&A sessions</li>
+          <li><i class="fas fa-check"></i> Offline video downloads</li>
           <li><i class="fas fa-check"></i> Peer discussion forums</li>
-          <li><i class="fas fa-check"></i> Digital PoE submission</li>
-          <li><i class="fas fa-check"></i> 6-month access post-completion</li>
+          <li><i class="fas fa-check"></i> 1-on-1 mentor check-ins</li>
         </ul>
-        <div class="mode-locations">
-          <strong>Available for:</strong>
-          All 12 courses · Start any Monday
-        </div>
+        <button class="btn btn-primary" onclick="filterCourses('online');document.getElementById('courses').scrollIntoView({behavior:'smooth'})">View Online Courses</button>
       </div>
       
-      <div class="mode-card">
-        <div class="mode-icon"><i class="fas fa-users"></i></div>
-        <h3>Face-to-Face (Cohort)</h3>
-        <p>Intensive workshops with small cohorts (max 20). Hands-on labs, peer teaching practice, and direct faculty mentorship.</p>
-        <ul class="mode-features">
-          <li><i class="fas fa-check"></i> 2–3 day intensive workshops</li>
-          <li><i class="fas fa-check"></i> Max 20 learners per cohort</li>
-          <li><i class="fas fa-check"></i> Hands-on AI labs</li>
-          <li><i class="fas fa-check"></i> Peer teaching practice</li>
-          <li><i class="fas fa-check"></i> Printed course materials</li>
-          <li><i class="fas fa-check"></i> Catering included</li>
+      <div class="delivery-card onsite">
+        <div class="delivery-icon"><i class="fas fa-building"></i></div>
+        <h3>Face-to-Face</h3>
+        <div class="subtitle">5 Campuses · Nationwide</div>
+        <p>Attend in-person at our Johannesburg, Cape Town, Durban, Pretoria, or Gqeberha campuses. Hands-on, high-touch.</p>
+        <ul class="delivery-features">
+          <li><i class="fas fa-check"></i> Small cohorts (max 20)</li>
+          <li><i class="fas fa-check"></i> Live instructor-led sessions</li>
+          <li><i class="fas fa-check"></i> Catered lunch & refreshments</li>
+          <li><i class="fas fa-check"></i> Printed workbooks included</li>
+          <li><i class="fas fa-check"></i> Networking with peers</li>
         </ul>
-        <div class="mode-locations">
-          <strong>9 Provincial Hubs:</strong>
-          JHB · CPT · DBN · PTA · PE · BLF · POL · NLP · KIM
-        </div>
+        <button class="btn btn-primary" onclick="filterCourses('onsite');document.getElementById('courses').scrollIntoView({behavior:'smooth'})">View On-Site Courses</button>
       </div>
       
-      <div class="mode-card">
-        <div class="mode-icon"><i class="fas fa-sync-alt"></i></div>
-        <h3>Hybrid (Best of Both)</h3>
-        <p>Self-paced online modules punctuated by 2 face-to-face intensives. Ideal for working teachers who need flexibility but value in-person depth.</p>
-        <ul class="mode-features">
-          <li><i class="fas fa-check"></i> 80% online, 20% face-to-face</li>
-          <li><i class="fas fa-check"></i> 2 weekend intensives</li>
-          <li><i class="fas fa-check"></i> Live online tutorials</li>
-          <li><i class="fas fa-check"></i> Dedicated mentor</li>
-          <li><i class="fas fa-check"></i> WhatsApp study groups</li>
-          <li><i class="fas fa-check"></i> Flexible pacing</li>
+      <div class="delivery-card blended">
+        <div class="delivery-icon"><i class="fas fa-sync-alt"></i></div>
+        <h3>Blended</h3>
+        <div class="subtitle">Best of Both Worlds</div>
+        <p>Combine online self-study with monthly in-person workshops. The most popular choice for working teachers.</p>
+        <ul class="delivery-features">
+          <li><i class="fas fa-check"></i> Online modules during the week</li>
+          <li><i class="fas fa-check"></i> Monthly Saturday workshops</li>
+          <li><i class="fas fa-check"></i> Capstone presentation day</li>
+          <li><i class="fas fa-check"></i> Flexible schedule</li>
+          <li><i class="fas fa-check"></i> Best CPD credit conversion</li>
         </ul>
-        <div class="mode-locations">
-          <strong>Available for:</strong>
-          All NQF 6+ courses · Monthly cohorts
-        </div>
+        <button class="btn btn-primary" onclick="filterCourses('blended');document.getElementById('courses').scrollIntoView({behavior:'smooth'})">View Blended Courses</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Pathway Section -->
-<section class="section pathway-section" id="pathway">
-  <div class="pathway-container">
-    <div class="section-header">
-      <span class="section-tag purple"><i class="fas fa-route"></i> Your Certification Pathway</span>
-      <h2>From Literacy to Leadership</h2>
-      <p>Stack certifications into a coherent upskilling journey — each level builds on the last, and every credit counts towards SAQA-registered qualifications.</p>
-    </div>
-    
-    <div class="pathway-timeline">
-      <div class="pathway-steps">
-        <div class="pathway-step">
-          <div class="pathway-step-num">1</div>
-          <h4>AI Literacy</h4>
-          <p>Foundation concepts & ethical use</p>
-          <span class="nqf">NQF 5</span>
-        </div>
-        <div class="pathway-step">
-          <div class="pathway-step-num">2</div>
-          <h4>Practitioner</h4>
-          <p>Prompt engineering & lesson design</p>
-          <span class="nqf">NQF 6</span>
-        </div>
-        <div class="pathway-step">
-          <div class="pathway-step-num">3</div>
-          <h4>Specialist</h4>
-          <p>MCP architecture & analytics</p>
-          <span class="nqf">NQF 7</span>
-        </div>
-        <div class="pathway-step">
-          <div class="pathway-step-num">4</div>
-          <h4>Researcher</h4>
-          <p>NLP, methods, infrastructure</p>
-          <span class="nqf">NQF 8</span>
-        </div>
-        <div class="pathway-step">
-          <div class="pathway-step-num">5</div>
-          <h4>Fellow</h4>
-          <p>Faculty track & mentorship</p>
-          <span class="nqf">FACULTY</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Faculty Section -->
-<section class="section faculty-section" id="faculty">
+<!-- Schedule -->
+<section class="section schedule-section" id="schedule">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag gold"><i class="fas fa-user-tie"></i> Our Faculty</span>
-      <h2>Learn From Practitioners, Not Just Professors</h2>
-      <p>Our faculty combines PhD-level researchers, classroom teachers, and industry practitioners — so you learn AI as it's actually used in South African schools and universities.</p>
+      <span class="section-tag cyan"><i class="far fa-calendar-alt"></i> Upcoming Schedule</span>
+      <h2>Face-to-Face & Blended Sessions</h2>
+      <p>Secure your seat. Cohorts fill fast — especially weekend intensives and leadership tracks.</p>
     </div>
     
-    <div class="faculty-grid">
-      <div class="faculty-card">
-        <div class="faculty-photo">DR</div>
-        <div class="faculty-info">
-          <h3>Dr. R. Mokgopa</h3>
-          <div class="role">Academic Director · AI in Education</div>
-          <div class="credentials">PhD Education (Wits) · MEd (UNISA) · SACE-registered · 18 years teaching experience</div>
-          <span class="specialty">AI Curriculum Design</span>
+    <div class="schedule-tabs">
+      <button class="schedule-tab active" onclick="switchMonth('jul')">July 2025</button>
+      <button class="schedule-tab" onclick="switchMonth('aug')">August 2025</button>
+      <button class="schedule-tab" onclick="switchMonth('sep')">September 2025</button>
+      <button class="schedule-tab" onclick="switchMonth('oct')">October 2025</button>
+    </div>
+    
+    <div class="schedule-container">
+      <!-- July -->
+      <div class="schedule-month active" id="month-jul">
+        <div class="schedule-list">
+          <div class="schedule-item">
+            <div class="schedule-date"><div class="day">12</div><div class="month">Jul</div></div>
+            <div class="schedule-info">
+              <h4>Weekend AI Bootcamp — Johannesburg</h4>
+              <div class="meta">
+                <span><i class="fas fa-map-marker-alt"></i> Sandton Campus</span>
+                <span><i class="far fa-clock"></i> Sat-Sun · 09:00-17:00</span>
+                <span><i class="fas fa-award"></i> 12 CPD</span>
+              </div>
+              <div class="description">Two-day intensive. Build a full AI-enhanced lesson plan by Sunday evening.</div>
+              <span class="spots-left">Only 8 spots left</span>
+            </div>
+            <div class="schedule-action">
+              <button class="btn btn-primary" onclick="openApplyModal('Weekend AI Bootcamp · JHB 12 Jul')">Book Seat</button>
+            </div>
+          </div>
+          
+          <div class="schedule-item">
+            <div class="schedule-date"><div class="day">19</div><div class="month">Jul</div></div>
+            <div class="schedule-info">
+              <h4>Multilingual AI Masterclass — Cape Town</h4>
+              <div class="meta">
+                <span><i class="fas fa-map-marker-alt"></i> Century City Campus</span>
+                <span><i class="far fa-clock"></i> Sat · 09:00-16:00</span>
+                <span><i class="fas fa-award"></i> 8 CPD</span>
+              </div>
+              <div class="description">Hands-on workshop: isiXhosa, Afrikaans, and English AI content generation.</div>
+              <span class="spots-left">12 spots available</span>
+            </div>
+            <div class="schedule-action">
+              <button class="btn btn-primary" onclick="openApplyModal('Multilingual AI · CPT 19 Jul')">Book Seat</button>
+            </div>
+          </div>
+          
+          <div class="schedule-item">
+            <div class="schedule-date"><div class="day">26</div><div class="month">Jul</div></div>
+            <div class="schedule-info">
+              <h4>POPIA & AI Ethics — Pretoria</h4>
+              <div class="meta">
+                <span><i class="fas fa-map-marker-alt"></i> Menlyn Campus</span>
+                <span><i class="far fa-clock"></i> Sat · 09:00-16:00</span>
+                <span><i class="fas fa-award"></i> 8 CPD</span>
+              </div>
+              <div class="description">Mandatory ethics & data protection training for AI-using teachers.</div>
+              <span class="spots-left">15 spots available</span>
+            </div>
+            <div class="schedule-action">
+              <button class="btn btn-primary" onclick="openApplyModal('POPIA & Ethics · PTA 26 Jul')">Book Seat</button>
+            </div>
+          </div>
         </div>
       </div>
       
-      <div class="faculty-card">
-        <div class="faculty-photo">PN</div>
-        <div class="faculty-info">
-          <h3>Prof. P. Naidoo</h3>
-          <div class="role">Head of Research · NLP Specialist</div>
-          <div class="credentials">PhD Computer Science (UCT) · NRF-rated · InkubaLM contributor · 40+ publications</div>
-          <span class="specialty">African Language NLP</span>
+      <!-- August -->
+      <div class="schedule-month" id="month-aug">
+        <div class="schedule-list">
+          <div class="schedule-item">
+            <div class="schedule-date"><div class="day">02</div><div class="month">Aug</div></div>
+            <div class="schedule-info">
+              <h4>AI Strategy for School Leaders — Johannesburg</h4>
+              <div class="meta">
+                <span><i class="fas fa-map-marker-alt"></i> Sandton Campus</span>
+                <span><i class="far fa-clock"></i> Fri-Sat · 2 days</span>
+                <span><i class="fas fa-award"></i> 15 CPD</span>
+              </div>
+              <div class="description">For principals, HODs, SGB chairs. Strategic AI adoption planning.</div>
+              <span class="spots-left">10 spots left</span>
+            </div>
+            <div class="schedule-action">
+              <button class="btn btn-primary" onclick="openApplyModal('AI Strategy Leaders · JHB 2 Aug')">Book Seat</button>
+            </div>
+          </div>
+          
+          <div class="schedule-item">
+            <div class="schedule-date"><div class="day">16</div><div class="month">Aug</div></div>
+            <div class="schedule-info">
+              <h4>Weekend AI Bootcamp — Durban</h4>
+              <div class="meta">
+                <span><i class="fas fa-map-marker-alt"></i> Umhlanga Campus</span>
+                <span><i class="far fa-clock"></i> Sat-Sun · 09:00-17:00</span>
+                <span><i class="fas fa-award"></i> 12 CPD</span>
+              </div>
+              <div class="description">Hands-on weekend intensive. Build your first AI-enhanced CAPS lesson.</div>
+              <span class="spots-left">18 spots available</span>
+            </div>
+            <div class="schedule-action">
+              <button class="btn btn-primary" onclick="openApplyModal('Weekend AI Bootcamp · DBN 16 Aug')">Book Seat</button>
+            </div>
+          </div>
+          
+          <div class="schedule-item">
+            <div class="schedule-date"><div class="day">30</div><div class="month">Aug</div></div>
+            <div class="schedule-info">
+              <h4>AI-Enhanced CAPS Lesson Design — Cape Town</h4>
+              <div class="meta">
+                <span><i class="fas fa-map-marker-alt"></i> Century City Campus</span>
+                <span><i class="far fa-clock"></i> Blended · 8 weeks</span>
+                <span><i class="fas fa-award"></i> 20 CPD</span>
+              </div>
+              <div class="description">Cohort kickoff. Online modules + monthly Saturday workshops.</div>
+              <span class="spots-left">14 spots left</span>
+            </div>
+            <div class="schedule-action">
+              <button class="btn btn-primary" onclick="openApplyModal('CAPS Lesson Design · CPT 30 Aug')">Enrol</button>
+            </div>
+          </div>
         </div>
       </div>
       
-      <div class="faculty-card">
-        <div class="faculty-photo">TM</div>
-        <div class="faculty-info">
-          <h3>Ms. T. Mokoena</h3>
-          <div class="role">Lead Practitioner · Foundation Phase</div>
-          <div class="credentials">BEd (UJ) · SACE Master Teacher · 12 years classroom experience · Glenhazel pilot lead</div>
-          <span class="specialty">Foundation Phase AI</span>
+      <!-- September -->
+      <div class="schedule-month" id="month-sep">
+        <div class="schedule-list">
+          <div class="schedule-item">
+            <div class="schedule-date"><div class="day">06</div><div class="month">Sep</div></div>
+            <div class="schedule-info">
+              <h4>Research Methods in AI Education — Johannesburg</h4>
+              <div class="meta">
+                <span><i class="fas fa-map-marker-alt"></i> Sandton Campus</span>
+                <span><i class="far fa-clock"></i> Blended · 16 weeks</span>
+                <span><i class="fas fa-award"></i> 30 CPD</span>
+              </div>
+              <div class="description">For MEd/PhD students. Cohort kickoff with in-person research design day.</div>
+              <span class="spots-left">8 spots left</span>
+            </div>
+            <div class="schedule-action">
+              <button class="btn btn-primary" onclick="openApplyModal('Research Methods · JHB 6 Sep')">Enrol</button>
+            </div>
+          </div>
+          
+          <div class="schedule-item">
+            <div class="schedule-date"><div class="day">20</div><div class="month">Sep</div></div>
+            <div class="schedule-info">
+              <h4>POPIA & AI Ethics — Durban</h4>
+              <div class="meta">
+                <span><i class="fas fa-map-marker-alt"></i> Umhlanga Campus</span>
+                <span><i class="far fa-clock"></i> Sat · 09:00-16:00</span>
+                <span><i class="fas fa-award"></i> 8 CPD</span>
+              </div>
+              <div class="description">Mandatory ethics training for AI-using teachers in KZN.</div>
+              <span class="spots-left">16 spots available</span>
+            </div>
+            <div class="schedule-action">
+              <button class="btn btn-primary" onclick="openApplyModal('POPIA & Ethics · DBN 20 Sep')">Book Seat</button>
+            </div>
+          </div>
         </div>
       </div>
       
-      <div class="faculty-card">
-        <div class="faculty-photo">JV</div>
-        <div class="faculty-info">
-          <h3>Mr. J. van der Merwe</h3>
-          <div class="role">Technical Director · MCP Architecture</div>
-          <div class="credentials">MSc Computer Science (Stellenbosch) · Former AWS Solutions Architect · Open-source contributor</div>
-          <span class="specialty">Sovereign AI Systems</span>
-        </div>
-      </div>
-      
-      <div class="faculty-card">
-        <div class="faculty-photo">AZ</div>
-        <div class="faculty-info">
-          <h3>Adv. A. Zulu</h3>
-          <div class="role">POPIA & Ethics Lead</div>
-          <div class="credentials">LLM (UKZN) · Information Regulator panel member · Certified POPIA Compliance Officer</div>
-          <span class="specialty">AI Ethics & Law</span>
-        </div>
-      </div>
-      
-      <div class="faculty-card">
-        <div class="faculty-photo">LK</div>
-        <div class="faculty-info">
-          <h3>Dr. L. Khumalo</h3>
-          <div class="role">Postgraduate Supervisor</div>
-          <div class="credentials">PhD Linguistics (Rhodes) · NRF Y-rated · Supervised 30+ MEd/PhD dissertations</div>
-          <span class="specialty">Research Methods</span>
+      <!-- October -->
+      <div class="schedule-month" id="month-oct">
+        <div class="schedule-list">
+          <div class="schedule-item">
+            <div class="schedule-date"><div class="day">11</div><div class="month">Oct</div></div>
+            <div class="schedule-info">
+              <h4>Weekend AI Bootcamp — Gqeberha</h4>
+              <div class="meta">
+                <span><i class="fas fa-map-marker-alt"></i> Newton Park Campus</span>
+                <span><i class="far fa-clock"></i> Sat-Sun · 09:00-17:00</span>
+                <span><i class="fas fa-award"></i> 12 CPD</span>
+              </div>
+              <div class="description">First Eastern Cape bootcamp. Hands-on AI lesson building.</div>
+              <span class="spots-left">20 spots available</span>
+            </div>
+            <div class="schedule-action">
+              <button class="btn btn-primary" onclick="openApplyModal('Weekend AI Bootcamp · PLZ 11 Oct')">Book Seat</button>
+            </div>
+          </div>
+          
+          <div class="schedule-item">
+            <div class="schedule-date"><div class="day">25</div><div class="month">Oct</div></div>
+            <div class="schedule-info">
+              <h4>AI Education Leadership Summit — Johannesburg</h4>
+              <div class="meta">
+                <span><i class="fas fa-map-marker-alt"></i> Sandton Convention Centre</span>
+                <span><i class="far fa-clock"></i> Fri-Sat · 2 days</span>
+                <span><i class="fas fa-award"></i> 20 CPD</span>
+              </div>
+              <div class="description">Annual summit. Keynotes, panels, networking. For school leaders & researchers.</div>
+              <span class="spots-left">Early bird pricing</span>
+            </div>
+            <div class="schedule-action">
+              <button class="btn btn-primary" onclick="openApplyModal('Leadership Summit · JHB 25 Oct')">Register</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Partners Section -->
-<section class="section partners-section" id="partners">
+<!-- Instructors -->
+<section class="section instructors-section" id="instructors">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag navy"><i class="fas fa-handshake"></i> Strategic Partners</span>
-      <h2>Trusted Across the SA Education Ecosystem</h2>
-      <p>We work with SETAs, universities, the DBE, and industry partners to ensure our certifications have real-world value.</p>
+      <span class="section-tag purple"><i class="fas fa-users"></i> Your Instructors</span>
+      <h2>Learn from Practitioners, Not Theorists</h2>
+      <p>Our instructors are active SA educators, researchers, and AI practitioners — not imported consultants who've never set foot in a township classroom.</p>
     </div>
     
-    <div class="partners-grid">
-      <div class="partner-card">
-        <i class="fas fa-award"></i>
-        <h4>ETDP SETA</h4>
-        <p>Alignment partner for educator unit standards</p>
+    <div class="instructors-grid">
+      <div class="instructor-card">
+        <div class="instructor-avatar gold">RE</div>
+        <h3>Reggie</h3>
+        <div class="role">Academy Director · PhD Candidate</div>
+        <p>Leads the academy. Researching AI-augmented education in African contexts. Teaches the Leadership track.</p>
+        <div class="instructor-credentials">
+          <span class="credential-tag">PhD (in progress)</span>
+          <span class="credential-tag">ETDP SETA</span>
+        </div>
       </div>
-      <div class="partner-card">
-        <i class="fas fa-microchip"></i>
-        <h4>MICT SETA</h4>
-        <p>Accreditation for ICT & AI skills programmes</p>
+      
+      <div class="instructor-card">
+        <div class="instructor-avatar navy">TN</div>
+        <h3>Dr. Thandi Nkosi</h3>
+        <div class="role">Lead Instructor · AI Pedagogy</div>
+        <p>Former DBE curriculum advisor. 15 years in SA classrooms. Expert in CAPS-aligned AI integration.</p>
+        <div class="instructor-credentials">
+          <span class="credential-tag">PhD Education</span>
+          <span class="credential-tag">Ex-DBE</span>
+        </div>
       </div>
-      <div class="partner-card">
-        <i class="fas fa-certificate"></i>
-        <h4>SACE</h4>
-        <p>CPD points for all teacher-facing courses</p>
+      
+      <div class="instructor-card">
+        <div class="instructor-avatar purple">SM</div>
+        <h3>Sipho Mthembu</h3>
+        <div class="role">Prompt Engineering Lead</div>
+        <p>AI engineer. Specialises in InkubaLM, multilingual prompt design, and Qwen fine-tuning for SA contexts.</p>
+        <div class="instructor-credentials">
+          <span class="credential-tag">MSc AI</span>
+          <span class="credential-tag">InkubaLM</span>
+        </div>
       </div>
-      <div class="partner-card">
-        <i class="fas fa-university"></i>
-        <h4>Partner Universities</h4>
-        <p>Stackable credits towards MEd, PGCE, MSc</p>
-      </div>
-      <div class="partner-card">
-        <i class="fas fa-school"></i>
-        <h4>Department of Basic Education</h4>
-        <p>SASAMS & LURITS integration expertise</p>
-      </div>
-      <div class="partner-card">
-        <i class="fas fa-flask"></i>
-        <h4>NRF & CSIR</h4>
-        <p>Research partnerships for postgraduates</p>
-      </div>
-      <div class="partner-card">
-        <i class="fas fa-graduation-cap"></i>
-        <h4>SAQA</h4>
-        <p>NQF Level 5–8 qualification alignment</p>
-      </div>
-      <div class="partner-card">
-        <i class="fas fa-users"></i>
-        <h4>School Governing Bodies</h4>
-        <p>Direct partnerships with 120+ SGBs nationwide</p>
+      
+      <div class="instructor-card">
+        <div class="instructor-avatar emerald">LM</div>
+        <h3>Adv. Lerato Mokoena</h3>
+        <div class="role">POPIA & Ethics Specialist</div>
+        <p>Information Regulator-registered POPIA practitioner. Teaches all ethics and data protection modules.</p>
+        <div class="instructor-credentials">
+          <span class="credential-tag">LLM</span>
+          <span class="credential-tag">CIPP/E</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Testimonials Section -->
-<section class="section testimonials-section" id="testimonials">
+<!-- Campuses -->
+<section class="section campuses-section">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag rose"><i class="fas fa-quote-left"></i> From Our Graduates</span>
-      <h2>Educators & Researchers Speak</h2>
-      <p>Real feedback from teachers and postgraduates who've completed Thuto AI Academy certifications.</p>
+      <span class="section-tag emerald"><i class="fas fa-map-marked-alt"></i> Our Campuses</span>
+      <h2>Five Campuses. Nationwide.</h2>
+      <p>Attend face-to-face sessions close to home. Each campus has modern training facilities, fast WiFi, and catering.</p>
+    </div>
+    
+    <div class="campuses-grid">
+      <div class="campus-card">
+        <div class="campus-map">
+          <i class="fas fa-city"></i>
+          <span class="campus-status"><i class="fas fa-circle" style="font-size:.4rem;"></i> LIVE</span>
+        </div>
+        <div class="campus-body">
+          <h3>Johannesburg · Sandton</h3>
+          <div class="city">Flagship Campus</div>
+          <div class="campus-info">
+            <div class="campus-info-row"><i class="fas fa-map-marker-alt"></i> Rivonia Road, Sandton</div>
+            <div class="campus-info-row"><i class="fas fa-users"></i> Capacity: 40 per session</div>
+            <div class="campus-info-row"><i class="fas fa-wifi"></i> Fibre + 4G backup</div>
+          </div>
+          <div class="next-session">
+            <div class="label">Next Face-to-Face</div>
+            <div class="date">12 July 2025</div>
+            <div class="course">Weekend AI Bootcamp</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="campus-card">
+        <div class="campus-map" style="background:linear-gradient(135deg,var(--harvest-gold),var(--harvest-gold-dark));">
+          <i class="fas fa-mountain"></i>
+          <span class="campus-status"><i class="fas fa-circle" style="font-size:.4rem;"></i> LIVE</span>
+        </div>
+        <div class="campus-body">
+          <h3>Cape Town · Century City</h3>
+          <div class="city">Western Cape Hub</div>
+          <div class="campus-info">
+            <div class="campus-info-row"><i class="fas fa-map-marker-alt"></i> Century Way, Century City</div>
+            <div class="campus-info-row"><i class="fas fa-users"></i> Capacity: 30 per session</div>
+            <div class="campus-info-row"><i class="fas fa-language"></i> Afrikaans + English</div>
+          </div>
+          <div class="next-session">
+            <div class="label">Next Face-to-Face</div>
+            <div class="date">19 July 2025</div>
+            <div class="course">Multilingual AI Masterclass</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="campus-card">
+        <div class="campus-map" style="background:linear-gradient(135deg,var(--accent-purple),var(--accent-purple-dark));">
+          <i class="fas fa-umbrella-beach"></i>
+          <span class="campus-status"><i class="fas fa-circle" style="font-size:.4rem;"></i> LIVE</span>
+        </div>
+        <div class="campus-body">
+          <h3>Durban · Umhlanga</h3>
+          <div class="city">KZN Hub</div>
+          <div class="campus-info">
+            <div class="campus-info-row"><i class="fas fa-map-marker-alt"></i> Lighthouse Road, Umhlanga</div>
+            <div class="campus-info-row"><i class="fas fa-users"></i> Capacity: 25 per session</div>
+            <div class="campus-info-row"><i class="fas fa-language"></i> isiZulu + English</div>
+          </div>
+          <div class="next-session">
+            <div class="label">Next Face-to-Face</div>
+            <div class="date">16 August 2025</div>
+            <div class="course">Weekend AI Bootcamp</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="campus-card">
+        <div class="campus-map" style="background:linear-gradient(135deg,var(--market-cyan),var(--market-cyan-dark));">
+          <i class="fas fa-landmark"></i>
+          <span class="campus-status"><i class="fas fa-circle" style="font-size:.4rem;"></i> LIVE</span>
+        </div>
+        <div class="campus-body">
+          <h3>Pretoria · Menlyn</h3>
+          <div class="city">Government & DBE Liaison Hub</div>
+          <div class="campus-info">
+            <div class="campus-info-row"><i class="fas fa-map-marker-alt"></i> Atterbury Rd, Menlyn</div>
+            <div class="campus-info-row"><i class="fas fa-users"></i> Capacity: 30 per session</div>
+            <div class="campus-info-row"><i class="fas fa-language"></i> Sepedi + English</div>
+          </div>
+          <div class="next-session">
+            <div class="label">Next Face-to-Face</div>
+            <div class="date">26 July 2025</div>
+            <div class="course">POPIA & AI Ethics</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="campus-card">
+        <div class="campus-map" style="background:linear-gradient(135deg,var(--ecosystem-emerald),#1f7a6a);">
+          <i class="fas fa-water"></i>
+          <span class="campus-status soon"><i class="fas fa-circle" style="font-size:.4rem;"></i> SEPT 2025</span>
+        </div>
+        <div class="campus-body">
+          <h3>Gqeberha · Newton Park</h3>
+          <div class="city">Eastern Cape · Opening Soon</div>
+          <div class="campus-info">
+            <div class="campus-info-row"><i class="fas fa-map-marker-alt"></i> Heugh Road, Newton Park</div>
+            <div class="campus-info-row"><i class="fas fa-users"></i> Capacity: 25 per session</div>
+            <div class="campus-info-row"><i class="fas fa-language"></i> isiXhosa + English</div>
+          </div>
+          <div class="next-session">
+            <div class="label">First Session</div>
+            <div class="date">11 October 2025</div>
+            <div class="course">Weekend AI Bootcamp</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="section pricing-section" id="pricing">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag gold"><i class="fas fa-tag"></i> Transparent Pricing</span>
+      <h2>Invest in Your Teaching Career</h2>
+      <p>Flexible payment plans. SACE-recognised CPD credits. Employer-sponsored options available for in-service teachers.</p>
+    </div>
+    
+    <div class="pricing-grid">
+      <!-- Individual Courses -->
+      <div class="pricing-card">
+        <div class="tier">À La Carte</div>
+        <h3>Individual Courses</h3>
+        <div class="subtitle">Take what you need, when you need it</div>
+        <div class="pricing-price">
+          <div class="amount">R1,950<span>/course</span></div>
+          <div class="note">Average · varies by course</div>
+        </div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> Any single course from catalog</li>
+          <li><i class="fas fa-check"></i> CPD credits on completion</li>
+          <li><i class="fas fa-check"></i> Digital certificate</li>
+          <li><i class="fas fa-check"></i> LMS access for 12 months</li>
+          <li><i class="fas fa-check"></i> Email support</li>
+        </ul>
+        <button class="btn btn-outline" style="width:100%;justify-content:center;" onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'})">Browse Courses</button>
+      </div>
+      
+      <!-- Pathway Bundles -->
+      <div class="pricing-card featured">
+        <div class="pricing-badge">⭐ MOST POPULAR</div>
+        <div class="tier">Pathway Bundle</div>
+        <h3>Full Certification Pathway</h3>
+        <div class="subtitle">Complete a full Foundation, Intermediate, or Advanced track</div>
+        <div class="pricing-price">
+          <div class="amount">R5,950<span>/pathway</span></div>
+          <div class="note">Save 25% vs individual courses</div>
+        </div>
+        <ul class="pricing-features">
+          <li class="highlight"><i class="fas fa-star"></i> All modules in chosen pathway</li>
+          <li class="highlight"><i class="fas fa-star"></i> Up to 60 CPD credits</li>
+          <li><i class="fas fa-check"></i> Printed + digital certificate</li>
+          <li><i class="fas fa-check"></i> 1-on-1 mentor sessions</li>
+          <li><i class="fas fa-check"></i> Lifetime LMS access</li>
+          <li><i class="fas fa-check"></i> Priority support</li>
+          <li><i class="fas fa-check"></i> Alumni network access</li>
+        </ul>
+        <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="document.getElementById('pathways').scrollIntoView({behavior:'smooth'})">Choose Pathway</button>
+      </div>
+      
+      <!-- School / District -->
+      <div class="pricing-card">
+        <div class="tier">Institutional</div>
+        <h3>School / District License</h3>
+        <div class="subtitle">Upskill entire departments or districts</div>
+        <div class="pricing-price">
+          <div class="amount">Custom</div>
+          <div class="note">Volume-based pricing</div>
+        </div>
+        <ul class="pricing-features">
+          <li class="highlight"><i class="fas fa-star"></i> 10+ teacher cohorts</li>
+          <li class="highlight"><i class="fas fa-star"></i> On-site training at your school</li>
+          <li><i class="fas fa-check"></i> Custom curriculum alignment</li>
+          <li><i class="fas fa-check"></i> SGB presentation included</li>
+          <li><i class="fas fa-check"></i> District reporting dashboard</li>
+          <li><i class="fas fa-check"></i> Dedicated success manager</li>
+        </ul>
+        <button class="btn btn-navy" style="width:100%;justify-content:center;" onclick="openApplyModal('Institutional License')">Request Quote</button>
+      </div>
+    </div>
+    
+    <div style="max-width:800px;margin:3rem auto 0;background:linear-gradient(135deg,rgba(212,175,55,.08),rgba(107,78,155,.08));border:1px solid rgba(212,175,55,.2);border-radius:var(--radius-lg);padding:1.5rem;text-align:center;">
+      <h3 style="color:var(--corporate-navy);font-size:1.1rem;margin-bottom:.5rem;"><i class="fas fa-hand-holding-usd" style="color:var(--harvest-gold);"></i> Funding Options</h3>
+      <p style="color:var(--gray-600);font-size:.88rem;line-height:1.7;">
+        <strong>Employer-sponsored:</strong> Most SA schools can claim training from their Skills Development Levy. 
+        <strong>NSFAS-eligible postgrads:</strong> Bursary support available for MEd/PhD students. 
+        <strong>Rural school subsidies:</strong> 50% discount for Quintile 1-3 schools (via StudentMart Fund Pool).
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section testimonials-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag navy"><i class="fas fa-comments"></i> What Our Graduates Say</span>
+      <h2>Teachers Who've Walked the Path</h2>
+      <p>Real feedback from in-service teachers and postgraduate students who've completed our programmes.</p>
     </div>
     
     <div class="testimonials-grid">
       <div class="testimonial-card">
         <div class="testimonial-stars">★★★★★</div>
-        <p>"I did the Prompt Engineering for Teachers course and within 2 weeks I was generating isiZulu lesson materials that used to take me an entire weekend. The SACE CPD points were a bonus — my HOD was so impressed she's sending 4 more teachers from our school."</p>
+        <p class="testimonial-text">"The AI-Enhanced CAPS Lesson Design pathway changed my practice completely. I now generate a full term's lesson plans in a weekend — what used to take me 3 weeks. My HOD is asking me to train the rest of the department."</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar">NM</div>
-          <div>
-            <h4>Nomsa Mthembu</h4>
-            <small>Grade 6 Teacher · KwaZulu-Natal</small>
+          <div class="testimonial-avatar gold">TM</div>
+          <div class="testimonial-info">
+            <h4>Thandi Mokoena</h4>
+            <small>Grade 5 Teacher · Soweto · Intermediate Pathway</small>
           </div>
         </div>
       </div>
       
       <div class="testimonial-card">
         <div class="testimonial-stars">★★★★★</div>
-        <p>"The MCP Architecture course gave me the technical depth I needed for my MEd dissertation. The faculty actually understand African conditions — load-shedding, rural connectivity, multilingual classrooms. Nothing else in SA comes close."</p>
+        <p class="testimonial-text">"As an MEd student, the Research Methods in AI Education course was exactly what I needed. The SuperviseAI integration helped me structure my dissertation, and I'm now submitting for publication."</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar">SK</div>
-          <div>
-            <h4>Sipho Khumalo</h4>
-            <small>MEd Candidate · University of Johannesburg</small>
+          <div class="testimonial-avatar navy">SN</div>
+          <div class="testimonial-info">
+            <h4>Sipho Ndlovu</h4>
+            <small>MEd Candidate · Wits · Advanced Pathway</small>
           </div>
         </div>
       </div>
       
       <div class="testimonial-card">
         <div class="testimonial-stars">★★★★★</div>
-        <p>"As a principal, the AI Leadership course changed how I think about school strategy. I now have a 3-year AI adoption plan that my SGB has approved and budgeted for. The face-to-face weekend intensives were worth every rand."</p>
+        <p class="testimonial-text">"I sent 8 of my teachers through the Foundation pathway. The CPD credits count toward their SACE renewal, and the ROI has been immediate — less admin burnout, better lesson quality."</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar">LV</div>
-          <div>
-            <h4>Linda van Wyk</h4>
-            <small>School Principal · Western Cape</small>
-          </div>
-        </div>
-      </div>
-      
-      <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
-        <p>"I got a bursary as a Quintile 2 school teacher and it genuinely changed my career. I now train other teachers in my district and have been invited to present at a DBE provincial workshop. Thank you Thuto AI Academy."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">TN</div>
-          <div>
-            <h4>Thandi Nkosi</h4>
-            <small>Foundation Phase · Limpopo</small>
-          </div>
-        </div>
-      </div>
-      
-      <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
-        <p>"The Low-Resource NLP specialist course is world-class. I fine-tuned an InkubaLM model for my home language as my Honours project — something I couldn't have done anywhere else in Africa. Now I'm applying for NRF funding for my PhD."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">BZ</div>
-          <div>
-            <h4>Buhle Zondo</h4>
-            <small>Honours Graduate · UKZN</small>
-          </div>
-        </div>
-      </div>
-      
-      <div class="testimonial-card">
-        <div class="testimonial-stars">★★★★★</div>
-        <p>"The POPIA & AI course should be mandatory for every SA teacher. I now understand what I can and can't do with learner data, and I sleep better at night knowing I'm compliant with the Information Regulator's expectations."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">RP</div>
-          <div>
-            <h4>Riyaad Patel</h4>
-            <small>FET Phase · Gauteng</small>
+          <div class="testimonial-avatar purple">LK</div>
+          <div class="testimonial-info">
+            <h4>Lerato Khumalo</h4>
+            <small>School Principal · Johannesburg · Institutional License</small>
           </div>
         </div>
       </div>
@@ -1595,199 +1985,302 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
   </div>
 </section>
 
-<!-- Pricing Section -->
-<section class="section pricing-section" id="pricing">
+<!-- Partnerships -->
+<section class="section partnerships-section">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag gold"><i class="fas fa-tag"></i> Investment & Funding</span>
-      <h2>Transparent Pricing. Real Financial Support.</h2>
-      <p>Every course has a clear price, flexible payment plans, and bursary pathways for those who need them. Employers can claim skills levy refunds.</p>
+      <span class="section-tag emerald"><i class="fas fa-handshake"></i> Accredited & Recognised</span>
+      <h2>Partners & Quality Councils</h2>
+      <p>Our programmes are developed in partnership with SA's leading education bodies and quality councils.</p>
     </div>
     
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <div class="pricing-icon"><i class="fas fa-seedling"></i></div>
-        <h3>Foundation Track</h3>
-        <div class="subtitle">NQF Level 5 · AI Literacy & POPIA</div>
-        <div class="pricing-price">R1,950 <span>– R2,950</span></div>
-        <div class="pricing-note">per course · 6-month payment plans from R395/month</div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> 15 SACE CPD points</li>
-          <li><i class="fas fa-check"></i> 60 hours of learning</li>
-          <li><i class="fas fa-check"></i> Online or hybrid delivery</li>
-          <li><i class="fas fa-check"></i> Digital certificate</li>
-          <li><i class="fas fa-check"></i> Portfolio of Evidence assessment</li>
-          <li><i class="fas fa-check"></i> 6-month post-completion access</li>
-        </ul>
-        <button class="btn btn-outline" onclick="openEnrollModal('foundation')" style="width:100%;justify-content:center;">Start Foundation</button>
+    <div class="partnerships-grid">
+      <div class="partner-card">
+        <div class="partner-logo"><i class="fas fa-award"></i></div>
+        <h4>ETDP SETA</h4>
+        <small>Education, Training & Development Practices</small>
       </div>
-      
-      <div class="pricing-card featured">
-        <span class="pricing-badge">MOST POPULAR</span>
-        <div class="pricing-icon"><i class="fas fa-code"></i></div>
-        <h3>Practitioner Track</h3>
-        <div class="subtitle">NQF Level 6 · Prompt Engineering & Lesson Design</div>
-        <div class="pricing-price">R3,950 <span>– R6,950</span></div>
-        <div class="pricing-note">per course · 6-month payment plans from R695/month</div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> 20–30 SACE CPD points</li>
-          <li><i class="fas fa-check"></i> 80–120 hours of learning</li>
-          <li><i class="fas fa-check"></i> Online, hybrid, or face-to-face</li>
-          <li><i class="fas fa-check"></i> Digital + printed certificate</li>
-          <li><i class="fas fa-check"></i> CAPS-aligned PoE assessment</li>
-          <li><i class="fas fa-check"></i> Provincial hub workshop option</li>
-          <li><i class="fas fa-check"></i> Employer skills levy claimable</li>
-        </ul>
-        <button class="btn btn-primary" onclick="openEnrollModal('practitioner')" style="width:100%;justify-content:center;">Start Practitioner</button>
+      <div class="partner-card">
+        <div class="partner-logo"><i class="fas fa-certificate"></i></div>
+        <h4>MICT SETA</h4>
+        <small>Media, Information & Communication Technologies</small>
       </div>
-      
-      <div class="pricing-card">
-        <div class="pricing-icon"><i class="fas fa-atom"></i></div>
-        <h3>Specialist Track</h3>
-        <div class="subtitle">NQF Levels 7–8 · Advanced & Research</div>
-        <div class="pricing-price">R9,950 <span>– R24,950</span></div>
-        <div class="pricing-note">per course · 6-month payment plans from R1,695/month</div>
-        <ul class="pricing-features">
-          <li><i class="fas fa-check"></i> 20–30 SACE CPD points (optional)</li>
-          <li><i class="fas fa-check"></i> 150–300 hours of learning</li>
-          <li><i class="fas fa-check"></i> Supervised dissertation support</li>
-          <li><i class="fas fa-check"></i> Stackable towards MEd/PhD credits</li>
-          <li><i class="fas fa-check"></i> NRF grant application support</li>
-          <li><i class="fas fa-check"></i> Research publication mentorship</li>
-          <li><i class="fas fa-check"></i> Faculty track eligibility</li>
-        </ul>
-        <button class="btn btn-gold" onclick="openEnrollModal('specialist')" style="width:100%;justify-content:center;">Start Specialist</button>
+      <div class="partner-card">
+        <div class="partner-logo"><i class="fas fa-book-reader"></i></div>
+        <h4>SACE</h4>
+        <small>SA Council for Educators · CPD Recognition</small>
       </div>
-    </div>
-    
-    <div style="max-width:900px;margin:3rem auto 0;background:white;border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:2rem;">
-      <h3 style="color:var(--corporate-navy);font-size:1.2rem;margin-bottom:1rem;text-align:center;">
-        <i class="fas fa-hand-holding-usd" style="color:var(--academic-purple);"></i> Financial Support
-      </h3>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;">
-        <div>
-          <h4 style="color:var(--corporate-navy);font-size:.9rem;margin-bottom:.4rem;">Bursaries for Quintile 1–3</h4>
-          <p style="font-size:.82rem;color:var(--gray-500);line-height:1.5;">Full or partial bursaries for teachers at under-resourced schools. Apply with your school's EMIS code.</p>
-        </div>
-        <div>
-          <h4 style="color:var(--corporate-navy);font-size:.9rem;margin-bottom:.4rem;">Employer Skills Levy</h4>
-          <p style="font-size:.82rem;color:var(--gray-500);line-height:1.5;">Qualifying employers can claim back up to 20% of their skills levy through ETDP SETA WSP/ATR submissions.</p>
-        </div>
-        <div>
-          <h4 style="color:var(--corporate-navy);font-size:.9rem;margin-bottom:.4rem;">NSFAS Alumni</h4>
-          <p style="font-size:.82rem;color:var(--gray-500);line-height:1.5;">30% discount for postgraduate students who were NSFAS-funded during their undergraduate studies.</p>
-        </div>
+      <div class="partner-card">
+        <div class="partner-logo"><i class="fas fa-microscope"></i></div>
+        <h4>NRF</h4>
+        <small>National Research Foundation</small>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo"><i class="fas fa-flask"></i></div>
+        <h4>CSIR</h4>
+        <small>Council for Scientific & Industrial Research</small>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FAQ Section -->
-<section class="section faq-section" id="faq">
+<!-- FAQ -->
+<section class="section faq-section">
   <div class="container">
     <div class="section-header">
-      <span class="section-tag purple"><i class="fas fa-question-circle"></i> Frequently Asked</span>
-      <h2>Questions Before You Enroll</h2>
+      <span class="section-tag cyan"><i class="fas fa-question-circle"></i> Frequently Asked</span>
+      <h2>Your Questions, Answered</h2>
     </div>
     
     <div class="faq-container">
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Do I need a technical background to enroll?</span>
-          <i class="fas fa-chevron-down"></i>
+          <h4>Who is this academy for?</h4>
+          <i class="fas fa-plus faq-icon"></i>
         </div>
         <div class="faq-answer">
-          <p>No. Our Foundation and Intermediate courses are designed for educators with no technical background. You just need a laptop or smartphone and basic digital literacy. Specialist courses (NQF 7–8) assume some research or technical familiarity, and we offer a free bridging module if needed.</p>
+          <div class="faq-answer-inner">
+            Thuto AI Academy is designed for two main audiences: (1) <strong>in-service teachers</strong> in SA primary and high schools who want to integrate AI into their teaching while earning SACE-recognised CPD credits, and (2) <strong>postgraduate students</strong> (MEd, PhD) researching AI in education. School leaders (principals, HODs, SGB chairs) are also welcome on our Leadership pathway.
+          </div>
         </div>
       </div>
       
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Will the SACE CPD points actually count for my licence renewal?</span>
-          <i class="fas fa-chevron-down"></i>
+          <h4>Are the certifications really ETDP SETA-aligned?</h4>
+          <i class="fas fa-plus faq-icon"></i>
         </div>
         <div class="faq-answer">
-          <p>Yes. All our teacher-facing courses are submitted to SACE for CPD Category A recognition. You receive a formal CPD certificate with a unique SACE reference number, which you submit through the SACE portal during your 5-year renewal cycle. Points are valid from date of issue.</p>
+          <div class="faq-answer-inner">
+            Yes. Our programmes are developed in consultation with ETDP SETA and MICT SETA and align with the unit standards for AI-enhanced teaching. CPD credits are recognised by SACE. Full accreditation certification is in progress — we are currently operating under provisional alignment with full ETDP SETA accreditation targeted for Q4 2025.
+          </div>
         </div>
       </div>
       
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Can my school or employer pay for my course?</span>
-          <i class="fas fa-chevron-down"></i>
+          <h4>Do I need technical skills or coding experience?</h4>
+          <i class="fas fa-plus faq-icon"></i>
         </div>
         <div class="faq-answer">
-          <p>Absolutely. We issue official tax invoices and can work directly with your school's finance officer or employer's HR department. For ETDP SETA-levied employers, we provide the WSP/ATR documentation needed to claim back up to 20% of your skills levy. Bulk discounts apply for groups of 5+.</p>
+          <div class="faq-answer-inner">
+            No. Our Foundation pathway assumes zero technical background. You'll learn to use no-code AI tools like Fundisa AI, MatricMate AI, and ChatGPT through prompt engineering. The Intermediate and Advanced pathways build on this foundation with more sophisticated techniques.
+          </div>
         </div>
       </div>
       
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Are the face-to-face workshops available in my province?</span>
-          <i class="fas fa-chevron-down"></i>
+          <h4>Can my school pay for my training?</h4>
+          <i class="fas fa-plus faq-icon"></i>
         </div>
         <div class="faq-answer">
-          <p>We run face-to-face intensives in all 9 provinces: Johannesburg, Cape Town, Durban, Pretoria, Port Elizabeth, Bloemfontein, Polokwane, Nelspruit, and Kimberley. Cohorts run monthly in major metros and quarterly in smaller hubs. Online learners anywhere in SA (or abroad) can join any cohort.</p>
+          <div class="faq-answer-inner">
+            Yes — most SA schools can claim teacher training from their <strong>Skills Development Levy</strong> (1% of payroll). We provide all the documentation your HR or SGB needs, including tax invoices, SACE CPD certificates, and ETDP SETA alignment letters. For institutional licenses (10+ teachers), we offer volume discounts and on-site delivery.
+          </div>
         </div>
       </div>
       
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <span>As a postgraduate, can I use these credits towards my degree?</span>
-          <i class="fas fa-chevron-down"></i>
+          <h4>What's the difference between online, face-to-face, and blended?</h4>
+          <i class="fas fa-plus faq-icon"></i>
         </div>
         <div class="faq-answer">
-          <p>Yes, subject to your university's RPL (Recognition of Prior Learning) policies. Our NQF 7 and 8 courses are designed to be stackable — we have existing credit transfer agreements with partner universities for MEd, PGCE, and MSc programmes. We provide full course documentation (learning outcomes, assessment criteria, moderation reports) to support your RPL application.</p>
+          <div class="faq-answer-inner">
+            <strong>Online:</strong> Self-paced LMS access with weekly live Q&As — ideal if you're balancing full-time teaching. <strong>Face-to-face:</strong> In-person at one of our 5 campuses, small cohorts (max 20), hands-on workshops. <strong>Blended:</strong> Online modules during the week + monthly Saturday workshops. All three deliver the same content and CPD credits; the blended model is our most popular option.
+          </div>
         </div>
       </div>
       
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <span>What happens if I don't pass the Portfolio of Evidence?</span>
-          <i class="fas fa-chevron-down"></i>
+          <h4>What happens if I can't attend a face-to-face session?</h4>
+          <i class="fas fa-plus faq-icon"></i>
         </div>
         <div class="faq-answer">
-          <p>Every learner gets one free resubmission with written feedback from assessors. We maintain a 94% first-attempt pass rate, and our mentors offer weekly office hours to help you prepare. If you need more support, we offer a paid mentorship extension (R950) with dedicated 1-on-1 guidance.</p>
+          <div class="faq-answer-inner">
+            All face-to-face sessions are recorded and uploaded to your LMS within 24 hours. You can also transfer to a later cohort at no additional cost, provided you notify us 7 days in advance. We understand teachers' schedules are unpredictable.
+          </div>
         </div>
       </div>
       
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Is my data protected under POPIA?</span>
-          <i class="fas fa-chevron-down"></i>
+          <h4>Do you offer subsidies for rural or township schools?</h4>
+          <i class="fas fa-plus faq-icon"></i>
         </div>
         <div class="faq-answer">
-          <p>Yes. We are a PAIA-registered Responsible Party (REGGIE EXPRESS Pty Ltd, K2024698680). All learner data is processed under explicit consent, stored in encrypted form, and never sold or shared. You can request access, correction, or deletion of your data at any time through our POPIA portal. Our Information Officer is available for any data subject queries.</p>
+          <div class="faq-answer-inner">
+            Yes. Teachers at <strong>Quintile 1-3 schools</strong> receive 50% off all pathways, funded through the Thuto Student Funding Pool (sourced from 2.5% of StudentMart transactions). NSFAS-eligible postgrads may also qualify for bursary support. Contact us with your school's EMIS code to verify eligibility.
+          </div>
         </div>
       </div>
       
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
-          <span>Do you offer bursaries for rural teachers?</span>
-          <i class="fas fa-chevron-down"></i>
+          <h4>What AI tools will I learn to use?</h4>
+          <i class="fas fa-plus faq-icon"></i>
         </div>
         <div class="faq-answer">
-          <p>Yes. We reserve 20% of places in every cohort for bursary-funded learners — prioritising Quintile 1–3 schools, rural provinces, and NSFAS alumni. Bursaries cover 50–100% of course fees depending on need. Apply through the standard enrollment form and select "Apply for Bursary" — we'll assess based on your school's EMIS code and household income.</p>
+          <div class="faq-answer-inner">
+            You'll work hands-on with: <strong>Fundisa AI</strong> (lesson generation for R-7), <strong>MatricMate AI</strong> (NSC/IEB prep), <strong>Qwen 3.6</strong> (English AI), <strong>InkubaLM</strong> (African languages), <strong>NLLB-200</strong> (translation), <strong>SuperviseAI</strong> (postgrad research), and mainstream tools like ChatGPT, Claude, and Google Gemini. All taught in the SA educational context.
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA Section -->
-<section class="cta-section" id="contact">
-  <div class="cta-container">
-    <h2>Your AI-Ready Career <span class="accent">Starts Today</span></h2>
-    <p>Whether you're a teacher earning SACE CPD points or a postgraduate building research capabilities — Thuto AI Academy meets you where you are and takes you where you need to go.</p>
-    <div class="cta-buttons">
-      <button class="btn btn-gold" onclick="openEnrollModal()" style="padding:14px 28px;font-size:1rem;">
-        <i class="fas fa-user-plus"></i> Enroll Now
+<!-- Application Form -->
+<section class="section apply-section" id="apply">
+  <div class="apply-container">
+    <div class="section-header">
+      <span class="section-tag"><i class="fas fa-paper-plane"></i> Apply Now</span>
+      <h2>Start Your AI Teaching Journey</h2>
+      <p>Takes 3 minutes. We'll respond within 24 hours with next steps, payment options, and cohort details.</p>
+    </div>
+    
+    <form class="apply-form" onsubmit="submitApplication(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name *</label>
+          <input type="text" required id="firstName" placeholder="e.g., Thandi">
+        </div>
+        <div class="form-group">
+          <label>Last Name *</label>
+          <input type="text" required id="lastName" placeholder="e.g., Nkosi">
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email Address *</label>
+          <input type="email" required id="email" placeholder="your.email@school.edu.za">
+        </div>
+        <div class="form-group">
+          <label>Phone / WhatsApp *</label>
+          <input type="tel" required id="phone" placeholder="+27 71 234 5678">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Which best describes you? *</label>
+        <select required id="role">
+          <option value="">Select one...</option>
+          <option>In-service teacher (primary)</option>
+          <option>In-service teacher (high school)</option>
+          <option>School leader (principal / HOD)</option>
+          <option>SGB member</option>
+          <option>Postgraduate student (MEd / PhD)</option>
+          <option>Education official (DBE / Provincial)</option>
+          <option>Other</option>
+        </select>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>School / Institution</label>
+          <input type="text" id="school" placeholder="e.g., Glenhazel Primary">
+        </div>
+        <div class="form-group">
+          <label>EMIS Number (if applicable)</label>
+          <input type="text" id="emis" placeholder="e.g., 5001234">
+          <small>Required for Quintile 1-3 subsidy verification</small>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label>Which pathway or course interests you? *</label>
+        <select required id="pathway">
+          <option value="">Select one...</option>
+          <optgroup label="Certification Pathways">
+            <option>Foundation: AI Literacy for Educators (R2,450)</option>
+            <option>Intermediate: AI-Enhanced Teaching Certificate (R5,950)</option>
+            <option>Advanced: AI Education Leadership (R12,500)</option>
+          </optgroup>
+          <optgroup label="Individual Courses">
+            <option>Prompt Engineering Fundamentals</option>
+            <option>AI-Enhanced CAPS Lesson Design</option>
+            <option>Multilingual AI for SA Classrooms</option>
+            <option>AI-Powered Assessment Design</option>
+            <option>AI Strategy for School Leaders</option>
+            <option>POPIA & AI Ethics in Schools</option>
+            <option>SASAMS & LURITS Integration</option>
+            <option>Research Methods in AI Education</option>
+            <option>Weekend AI Bootcamp</option>
+          </optgroup>
+          <optgroup label="Institutional">
+            <option>School / District License (custom quote)</option>
+          </optgroup>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label>Preferred Delivery Mode *</label>
+        <select required id="delivery">
+          <option value="">Select one...</option>
+          <option>Online (self-paced)</option>
+          <option>Face-to-Face (Johannesburg)</option>
+          <option>Face-to-Face (Cape Town)</option>
+          <option>Face-to-Face (Durban)</option>
+          <option>Face-to-Face (Pretoria)</option>
+          <option>Face-to-Face (Gqeberha — opening Sept 2025)</option>
+          <option>Blended (online + monthly workshops)</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label>Funding Source *</label>
+        <select required id="funding">
+          <option value="">Select one...</option>
+          <option>Self-funded (personal payment)</option>
+          <option>Employer-sponsored (Skills Development Levy)</option>
+          <option>NSFAS / bursary (postgrad)</option>
+          <option>Quintile 1-3 subsidy (50% off)</option>
+          <option>School / District budget</option>
+          <option>Not sure yet — please advise</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label>Anything else you'd like us to know?</label>
+        <textarea id="notes" rows="3" placeholder="e.g., I teach Grade 4 isiZulu HL and want to focus on multilingual AI tools..."></textarea>
+      </div>
+      
+      <div class="form-checkbox">
+        <input type="checkbox" required id="consent">
+        <label for="consent">
+          I consent to Thuto AI Academy processing my personal information in accordance with POPIA for the purposes of course enrolment and communication. *
+          <small>You can withdraw consent anytime. We never share your data with third parties.</small>
+        </label>
+      </div>
+      
+      <button type="submit" class="btn btn-primary form-submit">
+        <i class="fas fa-paper-plane"></i> Submit Application
       </button>
-      <a href="#courses" class="btn btn-outline" style="padding:14px 28px;font-size:1rem;border-color:rgba(255,255,255,.3);color:white;">
-        <i class="fas fa-book"></i> Browse Courses
+      
+      <p style="text-align:center;font-size:.78rem;color:var(--gray-500);margin-top:1rem;">
+        <i class="fas fa-shield-alt" style="color:var(--harvest-gold);"></i> POPIA-compliant · Response within 24 hours · No payment required to apply
+      </p>
+    </form>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-container">
+    <h2>Join <span class="accent">South Africa's First</span> AI Teaching Academy</h2>
+    <p>Whether you're a teacher ready to transform your practice, a postgrad exploring AI research, or a school leader planning district-wide adoption — your seat is waiting.</p>
+    <div class="cta-buttons">
+      <a href="#apply" class="btn btn-primary" style="padding:14px 28px;font-size:1rem;">
+        <i class="fas fa-rocket"></i> Apply Now
+      </a>
+      <a href="#pathways" class="btn btn-outline" style="padding:14px 28px;font-size:1rem;border-color:rgba(255,255,255,.3);color:white;">
+        <i class="fas fa-map-signs"></i> Explore Pathways
       </a>
     </div>
-    <p class="cta-note">🇿🇦 ETDP SETA-Aligned · SACE CPD-Accredited · POPIA-compliant · Proudly South African</p>
+    <p class="cta-note">🇿🇦 Proudly South African · ETDP SETA-Aligned · POPIA-Compliant · Built for SA Classrooms</p>
   </div>
 </section>
 
@@ -1799,56 +2292,53 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
         <a href="#" class="logo" style="margin-bottom:.5rem;">
           <div class="logo-icon" style="width:36px;height:36px;font-size:1rem;"><i class="fas fa-graduation-cap"></i></div>
           <div class="logo-text">
-            <div class="brand" style="color:white;">Thuto AI <span style="color:var(--harvest-gold);">Academy</span></div>
+            <div class="brand" style="color:white;">Thuto <span style="color:var(--harvest-gold);">AI Academy</span></div>
           </div>
         </a>
-        <p>South Africa's first SETA-aligned AI academy for educators and postgraduate students. Online and face-to-face certifications in AI-enhanced teaching, prompt engineering, and education technology.</p>
+        <p>South Africa's first ETDP SETA-aligned academy for AI-enhanced teaching. Online, face-to-face, and blended programmes for in-service teachers and postgraduate students.</p>
         <div class="footer-eco-badge">
-          <i class="fas fa-layer-group"></i> Part of ThutoTech Ecosystem
+          <i class="fas fa-layer-group"></i> Part of the ThutoTech Ecosystem
         </div>
         <div class="footer-reggie">
-          REGGIE EXPRESS (Pty) Ltd · Reg: K2024698680<br>
-          ETDP SETA Provider · SACE CPD Provider · PAIA Registered
+          REGGIE EXPRESS (Pty) Ltd · Reg: K2024698680
         </div>
         <div class="footer-social">
           <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
           <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
-          <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
         </div>
       </div>
       <div>
-        <h4>Courses</h4>
+        <h4>Programmes</h4>
         <ul>
-          <li><a href="#courses">Foundation (NQF 5)</a></li>
-          <li><a href="#courses">Intermediate (NQF 6)</a></li>
-          <li><a href="#courses">Advanced (NQF 7)</a></li>
-          <li><a href="#courses">Specialist (NQF 8)</a></li>
-          <li><a href="#pricing">Pricing & Bursaries</a></li>
-          <li><a href="#modes">Learning Modes</a></li>
+          <li><a href="#pathways">Certification Pathways</a></li>
+          <li><a href="#courses">Course Catalog</a></li>
+          <li><a href="#delivery">Delivery Modes</a></li>
+          <li><a href="#schedule">Upcoming Schedule</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#apply">Apply Now</a></li>
         </ul>
       </div>
       <div>
-        <h4>For Learners</h4>
+        <h4>Campuses</h4>
         <ul>
-          <li><a href="#tracks">Educator Track</a></li>
-          <li><a href="#tracks">Postgrad Track</a></li>
-          <li><a href="#pathway">Certification Pathway</a></li>
-          <li><a href="#faculty">Our Faculty</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#">Student Portal</a></li>
+          <li><a href="#">Johannesburg · Sandton</a></li>
+          <li><a href="#">Cape Town · Century City</a></li>
+          <li><a href="#">Durban · Umhlanga</a></li>
+          <li><a href="#">Pretoria · Menlyn</a></li>
+          <li><a href="#">Gqeberha · Opening Sept 2025</a></li>
         </ul>
       </div>
       <div>
-        <h4>Legal & Trust</h4>
+        <h4>Support & Legal</h4>
         <ul>
-          <li><a href="#">Privacy Policy (POPIA)</a></li>
-          <li><a href="#">PAIA Manual</a></li>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Refund Policy</a></li>
-          <li><a href="#">Accreditation Docs</a></li>
-          <li><a href="#">Information Officer</a></li>
+          <li><a href="#">Help Centre</a></li>
           <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Privacy Policy (POPIA)</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">PAIA Manual</a></li>
+          <li><a href="#">Accreditation Status</a></li>
         </ul>
       </div>
     </div>
@@ -1863,221 +2353,188 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
           <span style="background:#FFFFFF;"></span>
         </span>
       </p>
-      <p>Built with ❤️ in South Africa · ETDP SETA · SACE CPD · POPIA-compliant</p>
+      <p>ETDP SETA-Aligned · SACE CPD Recognised · POPIA-Compliant</p>
     </div>
   </div>
 </footer>
 
-<!-- Enrollment Modal -->
-<div class="modal-overlay" id="enrollModal">
+<!-- Course Details Modal -->
+<div class="modal-overlay" id="courseModal">
   <div class="modal">
-    <button class="modal-close" onclick="closeEnrollModal()"><i class="fas fa-times"></i></button>
-    <h2><i class="fas fa-user-plus" style="color:var(--academic-purple);"></i> Start Your Enrollment</h2>
-    <p>Tell us about yourself and we'll guide you to the right course, track, and funding option. Takes 2 minutes.</p>
-    
-    <form onsubmit="submitEnrollment(event)">
-      <div class="form-row">
-        <div class="form-group">
-          <label>First Name *</label>
-          <input type="text" required placeholder="e.g. Nomsa">
-        </div>
-        <div class="form-group">
-          <label>Last Name *</label>
-          <input type="text" required placeholder="e.g. Mthembu">
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <label>Email *</label>
-        <input type="email" required placeholder="you@school.edu.za">
-      </div>
-      
-      <div class="form-row">
-        <div class="form-group">
-          <label>Phone (WhatsApp) *</label>
-          <input type="tel" required placeholder="071 234 5678">
-        </div>
-        <div class="form-group">
-          <label>Province *</label>
-          <select required>
-            <option value="">Select</option>
-            <option>Gauteng</option>
-            <option>Western Cape</option>
-            <option>KwaZulu-Natal</option>
-            <option>Eastern Cape</option>
-            <option>Free State</option>
-            <option>Limpopo</option>
-            <option>Mpumalanga</option>
-            <option>North West</option>
-            <option>Northern Cape</option>
-            <option>Outside SA</option>
-          </select>
-        </div>
-      </div>
-      
-      <div class="form-group">
-        <label>I am a... *</label>
-        <select required id="trackSelect">
-          <option value="">Select your role</option>
-          <option value="teacher">In-Service Teacher (SACE-registered)</option>
-          <option value="hod">Head of Department / Principal</option>
-          <option value="honours">Honours Student</option>
-          <option value="masters">Master's Student</option>
-          <option value="phd">Doctoral Student</option>
-          <option value="other">Other Education Professional</option>
-        </select>
-      </div>
-      
-      <div class="form-group">
-        <label>SACE Number (teachers) or Student Number</label>
-        <input type="text" placeholder="e.g. SACE-123456 or UJ-2024-789">
-      </div>
-      
-      <div class="form-group">
-        <label>Course Interest *</label>
-        <select required>
-          <option value="">Select a course</option>
-          <optgroup label="Foundation (NQF 5)">
-            <option>TAA-101: AI Literacy for SA Educators</option>
-            <option>TAA-102: POPIA & AI in the Classroom</option>
-            <option>TAA-103: Multilingual AI for 11 SA Languages</option>
-          </optgroup>
-          <optgroup label="Intermediate (NQF 6)">
-            <option>TAA-201: Prompt Engineering for Teachers</option>
-            <option>TAA-202: AI-Enhanced Lesson Design</option>
-            <option>TAA-203: AI Assessment & Analytics</option>
-          </optgroup>
-          <optgroup label="Advanced (NQF 7)">
-            <option>TAA-301: MCP Architecture for Educators</option>
-            <option>TAA-302: AI Leadership for HODs & Principals</option>
-            <option>TAA-303: Applied AI for Education Research</option>
-          </optgroup>
-          <optgroup label="Specialist (NQF 8)">
-            <option>TAA-401: Low-Resource NLP for African Languages</option>
-            <option>TAA-402: AI Research Methods for MEd/PhD</option>
-            <option>TAA-403: Sovereign AI Infrastructure</option>
-          </optgroup>
-          <option>Not sure — please advise me</option>
-        </select>
-      </div>
-      
-      <div class="form-group">
-        <label>Preferred Learning Mode *</label>
-        <select required>
-          <option value="">Select mode</option>
-          <option>Online (Self-Paced)</option>
-          <option>Face-to-Face (Cohort)</option>
-          <option>Hybrid (Best of Both)</option>
-          <option>Not sure — please advise</option>
-        </select>
-      </div>
-      
-      <div class="form-group">
-        <label>Funding Preference</label>
-        <select>
-          <option>Self-funded</option>
-          <option>Employer / School funded</option>
-          <option>Apply for Quintile 1-3 bursary</option>
-          <option>NSFAS alumni discount (30%)</option>
-          <option>Skills levy claim (ETDP SETA)</option>
-          <option>Payment plan (6 months)</option>
-        </select>
-      </div>
-      
-      <div class="form-group">
-        <label>Anything else we should know?</label>
-        <textarea rows="3" placeholder="Tell us about your goals, context, or questions..."></textarea>
-      </div>
-      
-      <div class="popia-notice">
-        <i class="fas fa-shield-alt"></i>
-        <div>
-          <strong>POPIA Notice:</strong> By submitting this form, you consent to Thuto AI Academy processing your personal data for enrollment and communication purposes. We never share or sell your data. You may withdraw consent or request data deletion at any time via our POPIA portal.
-        </div>
-      </div>
-      
-      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:1rem;padding:14px;">
-        <i class="fas fa-paper-plane"></i> Submit Enrollment Request
+    <button class="modal-close" onclick="closeModal('courseModal')"><i class="fas fa-times"></i></button>
+    <h2 id="courseModalTitle">Course Details</h2>
+    <p id="courseModalSubtitle">Full course information</p>
+    <div id="courseModalBody" style="color:var(--gray-600);font-size:.9rem;line-height:1.7;"></div>
+    <div style="display:flex;gap:.8rem;margin-top:1.5rem;">
+      <button class="btn btn-primary" style="flex:1;justify-content:center;" onclick="closeModal('courseModal');document.getElementById('apply').scrollIntoView({behavior:'smooth'})">
+        <i class="fas fa-paper-plane"></i> Apply for This Course
       </button>
-    </form>
+    </div>
   </div>
 </div>
 
+<!-- Apply Modal (pre-filled) -->
+<div class="modal-overlay" id="applyModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('applyModal')"><i class="fas fa-times"></i></button>
+    <h2>Ready to Enrol?</h2>
+    <p>We'll pre-fill your application. Just complete the full form below to submit.</p>
+    <div style="background:var(--gray-50);padding:1rem;border-radius:10px;margin-bottom:1rem;">
+      <div style="font-size:.78rem;color:var(--gray-500);margin-bottom:4px;">Selected Programme</div>
+      <div id="selectedProgramme" style="font-weight:600;color:var(--corporate-navy);"></div>
+    </div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="closeModal('applyModal');document.getElementById('apply').scrollIntoView({behavior:'smooth'})">
+      <i class="fas fa-arrow-down"></i> Complete Application
+    </button>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">
+  <i class="fas fa-check-circle"></i>
+  <span id="toastMsg">Success!</span>
+</div>
+
 <script>
+// Mobile menu
+function toggleMobileMenu(){
+  const menu = document.querySelector('.nav-links');
+  menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+}
+
 // Course filtering
-function filterCourses(filter){
-  document.querySelectorAll('.course-filter').forEach(b => b.classList.remove('active'));
-  event && event.target && event.target.classList.add('active');
-  
+function filterCourses(mode){
   const cards = document.querySelectorAll('.course-card');
-  cards.forEach(card => {
-    const level = card.dataset.level;
-    const track = card.dataset.track;
-    
-    let show = false;
-    if (filter === 'all') show = true;
-    else if (filter === 'educator' || filter === 'postgrad') show = track && track.includes(filter);
-    else show = level === filter;
-    
-    card.style.display = show ? 'flex' : 'none';
-  });
+  const buttons = document.querySelectorAll('.course-filter');
   
-  // Scroll to courses section if triggered from tracks
-  if (filter === 'educator' || filter === 'postgrad'){
-    document.getElementById('courses').scrollIntoView({behavior:'smooth'});
-  }
+  buttons.forEach(b => b.classList.remove('active'));
+  event?.target?.classList?.add('active');
+  
+  cards.forEach(card => {
+    if(mode === 'all' || card.dataset.mode === mode){
+      card.style.display = 'flex';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+// Schedule month switcher
+function switchMonth(month){
+  document.querySelectorAll('.schedule-month').forEach(m => m.classList.remove('active'));
+  document.querySelectorAll('.schedule-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('month-' + month).classList.add('active');
+  event.target.classList.add('active');
 }
 
 // FAQ toggle
 function toggleFaq(el){
   const item = el.parentElement;
-  const wasActive = item.classList.contains('active');
-  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-  if (!wasActive) item.classList.add('active');
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
 }
 
-// Enrollment modal
-function openEnrollModal(track){
-  document.getElementById('enrollModal').classList.add('active');
+// Course details modal
+function openCourseModal(title){
+  document.getElementById('courseModalTitle').textContent = title;
+  document.getElementById('courseModalSubtitle').textContent = 'ETDP SETA-aligned · CPD credits on completion';
+  
+  const details = {
+    'Prompt Engineering Fundamentals': 'Learn the science and art of writing effective prompts for AI models including Qwen, ChatGPT, and InkubaLM. This foundation course covers prompt anatomy, context engineering, multilingual prompting, and ethical considerations. Ideal for teachers new to AI who want to get better outputs in less time.',
+    'AI-Enhanced CAPS Lesson Design': 'Design full-term CAPS curricula using Fundisa AI. You\'ll learn to upload curriculum documents, generate slides, quizzes, audio lessons, and flashcards aligned to specific grades and subjects. Includes live workshops on SASAMS and LURITS integration.',
+    'Multilingual AI for SA Classrooms': 'Master AI-driven translation and content generation across all 11 official SA languages. Hands-on with InkubaLM, NLLB-200, and the ThutoTech multilingual router. Build lessons in isiZulu, isiXhosa, Afrikaans, and more.',
+    'AI-Powered Assessment Design': 'Build adaptive quizzes, auto-mark essays, and generate personalised feedback using MatricMate AI tools. Learn assessment design principles grounded in CAPS and Bloom\'s taxonomy.',
+    'AI Strategy for School Leaders': 'For principals, HODs, and SGB chairs. Plan, govern, and lead AI adoption at your school. Covers change management, teacher upskilling, POPIA governance, and parent communication.',
+    'POPIA & AI Ethics in Schools': 'One-day intensive on data protection, learner consent, and ethical AI use with minors. Mandatory for all AI-using teachers. Led by a registered POPIA practitioner.',
+    'SASAMS & LURITS Integration': 'Automate attendance capture, parent communication, and curriculum pacing using Fundisa AI\'s bidirectional DBE sync. Hands-on with real SASAMS data.',
+    'Research Methods in AI Education': 'For MEd and PhD students. Design rigorous studies on AI-augmented learning using SuperviseAI and Thuto Research Studio. Includes publication strategy.',
+    'Weekend AI Bootcamp': 'Two-day intensive, hands-on workshop. Build a full AI-enhanced lesson plan by Sunday evening. Small cohort, maximum practice. Catered.'
+  };
+  
+  document.getElementById('courseModalBody').innerHTML = `
+    <p>${details[title] || 'Full course syllabus will be provided upon application. Contact us for custom institutional delivery options.'}</p>
+    <div style="margin-top:1.5rem;padding:1rem;background:var(--gray-50);border-radius:10px;">
+      <div style="font-size:.78rem;color:var(--gray-500);margin-bottom:.5rem;">What you'll receive</div>
+      <ul style="list-style:none;padding:0;margin:0;">
+        <li style="padding:.3rem 0;"><i class="fas fa-check" style="color:var(--success);margin-right:8px;"></i> SACE-recognised CPD credits</li>
+        <li style="padding:.3rem 0;"><i class="fas fa-check" style="color:var(--success);margin-right:8px;"></i> Digital certificate of completion</li>
+        <li style="padding:.3rem 0;"><i class="fas fa-check" style="color:var(--success);margin-right:8px;"></i> 12-month LMS access</li>
+        <li style="padding:.3rem 0;"><i class="fas fa-check" style="color:var(--success);margin-right:8px;"></i> Alumni community access</li>
+      </ul>
+    </div>
+  `;
+  
+  document.getElementById('courseModal').classList.add('active');
   document.body.style.overflow = 'hidden';
-  if (track){
-    const select = document.getElementById('trackSelect');
-    if (track === 'foundation' || track === 'practitioner') select.value = 'teacher';
-    else if (track === 'specialist') select.value = 'masters';
-  }
 }
 
-function closeEnrollModal(){
-  document.getElementById('enrollModal').classList.remove('active');
+function openApplyModal(programme){
+  document.getElementById('selectedProgramme').textContent = programme;
+  document.getElementById('applyModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(id){
+  document.getElementById(id).classList.remove('active');
   document.body.style.overflow = '';
 }
 
-document.getElementById('enrollModal').addEventListener('click', (e) => {
-  if (e.target.id === 'enrollModal') closeEnrollModal();
+// Close modal on backdrop click
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', (e) => {
+    if(e.target === overlay){
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
 });
 
-function submitEnrollment(e){
+// Form submission
+function submitApplication(e){
   e.preventDefault();
-  const toast = document.createElement('div');
-  toast.style.cssText = `position:fixed;top:2rem;left:50%;transform:translateX(-50%);z-index:3000;background:var(--academic-purple);color:white;padding:16px 24px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.2);font-size:.95rem;font-weight:600;`;
-  toast.textContent = '🎓 Enrollment received! Check your email within 24 hours.';
-  document.body.appendChild(toast);
-  setTimeout(() => toast.remove(), 4000);
-  closeEnrollModal();
-  e.target.reset();
+  const firstName = document.getElementById('firstName').value;
+  const lastName = document.getElementById('lastName').value;
+  const email = document.getElementById('email').value;
+  const pathway = document.getElementById('pathway').value;
+  
+  showToast(`Thank you, ${firstName}! Application received. We'll email ${email} within 24 hours.`, 'success');
+  
+  setTimeout(() => {
+    alert(`🎉 Application Submitted!\n\nDear ${firstName} ${lastName},\n\nThank you for applying to Thuto AI Academy. We've received your application for:\n\n"${pathway}"\n\nNext steps:\n1. Check your email (${email}) for confirmation\n2. We'll respond within 24 hours with cohort dates and payment options\n3. Once payment is confirmed, you'll receive LMS access\n\nQuestions? Reply to our confirmation email or WhatsApp +27 71 234 5678.\n\n— Thuto AI Academy Team`);
+    e.target.reset();
+  }, 500);
 }
 
-// Smooth scroll
+// Toast
+function showToast(msg, type='success'){
+  const toast = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  toast.className = 'toast show ' + type;
+  setTimeout(() => toast.className = 'toast', 4000);
+}
+
+// Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e){
     const href = this.getAttribute('href');
-    if (href === '#') return;
+    if(href === '#') return;
     e.preventDefault();
     const target = document.querySelector(href);
-    if (target) target.scrollIntoView({behavior:'smooth',block:'start'});
+    if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+
+// Close mobile menu when link clicked
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    if(window.innerWidth <= 768){
+      document.querySelector('.nav-links').style.display = 'none';
+    }
   });
 });
 </script>
 
 </body>
 </html>
+
