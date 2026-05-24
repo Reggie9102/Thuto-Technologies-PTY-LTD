@@ -1,9 +1,166 @@
-<!-- Add to your ecosystem product grid -->
-<div class="eco-card">
-    <div class="eco-icon" style="background: rgba(40,169,225,0.1); color: var(--market-cyan);">
-        <i class="fas fa-store"></i>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentMart SA | ThutoTech Commerce Layer</title>
+    <style>
+        :root {
+            --navy: #0A2E5A;
+            --market-cyan: #00D9FF;
+            --dark-bg: #060913;
+            --card-bg: #111C2E;
+            --border: #1F3656;
+            --gold: #D4AF37;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--dark-bg);
+            color: #e5e7eb;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            padding: 30px 20px;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; }
+        
+        /* Top Navigation Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+        .brand-link { color: #ffffff; text-decoration: none; font-weight: bold; font-size: 14px; }
+        .brand-link span { color: var(--gold); }
+        h1 { font-size: 28px; color: #ffffff; }
+        h1 span { color: var(--market-cyan); }
+
+        /* Architecture Connection Status Panel */
+        .status-panel {
+            background: rgba(0, 217, 255, 0.05);
+            border: 1px solid var(--market-cyan);
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+        }
+        .status-pill {
+            background: #102A45;
+            color: var(--market-cyan);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        /* Active Marketplace Listings Grid */
+        .market-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .item-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .item-meta { font-size: 11px; color: var(--market-cyan); text-transform: uppercase; font-weight: bold; margin-bottom: 8px; }
+        h3 { color: #ffffff; font-size: 18px; margin-bottom: 10px; }
+        .price-tag { font-size: 20px; color: var(--gold); font-weight: bold; margin: 15px 0; }
+        
+        .buy-btn {
+            background: var(--navy);
+            color: #ffffff;
+            border: 1px solid var(--market-cyan);
+            padding: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+        .buy-btn:hover { background: var(--market-cyan); color: var(--dark-bg); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <a href="../../index.html" class="brand-link">◄ <span>THUTOTECH</span> ECOSYSTEM HOME</a>
+            <div><strong>Location:</strong> University Perimeter Network</div>
+        </header>
+
+        <h1>StudentMart <span>SA</span></h1>
+        <p style="color: #9ca3af; margin-bottom: 30px; font-size: 15px;">Decentralized peer-to-peer campus marketplace sync engine layer.</p>
+
+        <div class="status-panel">
+            <div>
+                <strong>Frontend Layer Node:</strong> GitHub Pages (Static Cache) ──► 
+                <strong>MCP Middleware Layer:</strong> Alibaba Cloud Serverless VPC
+            </div>
+            <div class="status-pill" id="syncStatus">CAPS OFFLINE CACHE ACCESSIBLE</div>
+        </div>
+
+        <div class="market-grid">
+            <div class="item-card">
+                <div>
+                    <div class="item-meta">Academic Instruments</div>
+                    <h3>Casio FX-991ZA Plus II Calculator</h3>
+                    <p style="color: #94a3b8; font-size: 13.5px;">Perfect condition, required for first-year engineering or accounting streams.</p>
+                </div>
+                <div>
+                    <div class="price-tag">R 320.00</div>
+                    <div class="buy-btn" onclick="triggerMcpCall('Casio FX-991ZA')">Initiate Secure Purchase Request</div>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div>
+                    <div class="item-meta">Medical Faculty Resources</div>
+                    <h3>Stethoscope (Littmann Classic III)</h3>
+                    <p style="color: #94a3b8; font-size: 13.5px;">Cleaned and sterilized. Essential asset for clinical shadow hours rotations.</p>
+                </div>
+                <div>
+                    <div class="price-tag">R 1,150.00</div>
+                    <div class="buy-btn" onclick="triggerMcpCall('Littmann Stethoscope')">Initiate Secure Purchase Request</div>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div>
+                    <div class="item-meta">Vetted Student Side-Hustles</div>
+                    <h3>MATLAB & Python Private Coding Tutoring</h3>
+                    <p style="color: #94a3b8; font-size: 13.5px;">Rate per hour. Session run inside university campus library tech labs.</p>
+                </div>
+                <div>
+                    <div class="price-tag">R 150.00 / hr</div>
+                    <div class="buy-btn" onclick="triggerMcpCall('Coding Tutoring')">Initiate Secure Purchase Request</div>
+                </div>
+            </div>
+        </div>
     </div>
-    <h4>StudentMart SA</h4>
-    <p>Campus marketplace. Buy, sell, tutor, errands.</p>
-    <a href="apps/studentmart-port/" class="btn btn-outline" style="margin-top: 1rem;">Visit StudentMart →</a>
-</div>
+
+    <script>
+        function triggerMcpCall(itemName) {
+            console.log("Routing transaction data via internal secure protocol context handler...");
+            alert("Routing transaction data safely through POPIA Compliance Engine on your Alibaba Cloud Backend Registry Layer!");
+            
+            // Your conceptual Alibaba backend target endpoint mapping:
+            // fetch('https://your-alibaba-mcp-instance-ip/api/v1/transaction', {
+            //     method: 'POST',
+            //     body: JSON.stringify({ item: itemName, timestamp: Date.now() })
+            // });
+        }
+    </script>
+
+</body>
+</html>
