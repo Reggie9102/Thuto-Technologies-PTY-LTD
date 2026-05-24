@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Thuto Research Studio · AI-Powered Postgraduate Audio Research</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.0/index.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/playfair-display@5.0.0/index.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'thuto-navy': '#0A2E5A',
+          'thuto-navy-dark': '#061E3C',
+          'thuto-gold': '#D4AF37',
+          'thuto-orange': '#FF6B35',
+          'thuto-cyan': '#00D9FF',
+          'thuto-research': '#1E3A8A',
+          'thuto-ivory': '#FAF7F0',
+        },
+        fontFamily: {
+          'serif': ['Playfair Display', 'serif'],
+          'sans': ['Inter', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  *{font-family:'Inter',sans-serif}
+  body{background:#FAF7F0;color:#0A2E5A}
+  .font-serif{font-family:'Playfair Display',serif}
+  
+  /* Brand gradients */
+  .bg-thuto-gradient{background:linear-gradient(135deg,#0A2E5A 0%,#1E3A8A 50%,#0A2E5A 100%)}
+  .bg-gold-gradient{background:linear-gradient(135deg,#D4AF37 0%,#F4D03F 100%)}
+  .text-gold-gradient{background:linear-gradient(135deg,#D4AF37,#F4D03F);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .text-warm-gradient{background:linear-gradient(135deg,#D4AF37 0%,#FF6B35 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  
+  /* Academic paper texture */
+  .paper-bg{background-color:#FAF7F0;background-image:radial-gradient(circle at 1px 1px,rgba(10,46,90,0.03) 1px,transparent 0);background-size:24px 24px}
+  
+  /* Gold accent underline */
+  .gold-underline{position:relative;display:inline-block}
+  .gold-underline::after{content:"";position:absolute;bottom:-6px;left:0;width:60px;height:3px;background:#D4AF37;border-radius:2px}
+  
+  /* Cards */
+  .studio-card{background:white;border:1px solid rgba(10,46,90,0.08);border-radius:16px;transition:all 0.3s cubic-bezier(0.4,0,0.2,1)}
+  .studio-card:hover{border-color:#D4AF37;box-shadow:0 20px 40px -15px rgba(10,46,90,0.15)}
+  
+  .format-card{cursor:pointer;position:relative;overflow:hidden}
+  .format-card.selected{border-color:#D4AF37;background:linear-gradient(135deg,#FAF7F0,#FFF9E6)}
+  .format-card.selected::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#D4AF37,#FF6B35)}
+  .format-card .check-badge{opacity:0;transform:scale(0);transition:all 0.3s}
+  .format-card.selected .check-badge{opacity:1;transform:scale(1)}
+  
+  /* Language chips */
+  .lang-chip{cursor:pointer;transition:all 0.2s;border:2px solid transparent}
+  .lang-chip:hover{border-color:#D4AF37;transform:translateY(-2px)}
+  .lang-chip.active{background:#0A2E5A;color:white;border-color:#D4AF37}
+  
+  /* Toggle */
+  .voice-toggle{cursor:pointer;padding:12px 16px;border:2px solid rgba(10,46,90,0.1);border-radius:12px;transition:all 0.2s}
+  .voice-toggle.active{border-color:#D4AF37;background:#FFF9E6}
+  
+  /* Prompt chip */
+  .prompt-chip{cursor:pointer;transition:all 0.2s}
+  .prompt-chip:hover{background:#0A2E5A;color:white}
+  .prompt-chip.added{background:#D4AF37;color:white}
+  
+  /* Length option */
+  .length-opt{cursor:pointer;padding:14px;border:2px solid rgba(10,46,90,0.1);border-radius:12px;transition:all 0.2s;text-align:center}
+  .length-opt.active{border-color:#0A2E5A;background:#0A2E5A;color:white}
+  
+  /* Audio player */
+  .waveform{display:flex;align-items:center;gap:3px;height:40px}
+  .waveform-bar{width:3px;background:#D4AF37;border-radius:2px;animation:wave 1.2s ease-in-out infinite}
+  @keyframes wave{0%,100%{height:20%}50%{height:100%}}
+  .waveform-bar:nth-child(2n){animation-delay:0.1s}
+  .waveform-bar:nth-child(3n){animation-delay:0.2s}
+  .waveform-bar:nth-child(4n){animation-delay:0.3s}
+  .waveform-bar:nth-child(5n){animation-delay:0.4s}
+  
+  .paused .waveform-bar{animation-play-state:paused}
+  
+  /* Loop flow */
+  .loop-step{position:relative}
+  .loop-step::after{content:"";position:absolute;right:-20px;top:50%;width:40px;height:2px;background:linear-gradient(90deg,#D4AF37,transparent);z-index:0}
+  .loop-step:last-child::after{display:none}
+  
+  /* Scrollbar */
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-track{background:#FAF7F0}
+  ::-webkit-scrollbar-thumb{background:#D4AF37;border-radius:5px}
+  
+  /* Reveal */
+  .reveal{opacity:0;transform:translateY(30px);transition:all 0.8s cubic-bezier(0.4,0,0.2,1)}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+  
+  /* Marquee */
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .marquee{animation:marquee 40s linear infinite;display:flex;gap:3rem}
+  
+  /* Nav active */
+  .nav-link{position:relative}
+  .nav-link::after{content:"";position:absolute;bottom:-4px;left:0;width:0;height:2px;background:#D4AF37;transition:width 0.3s}
+  .nav-link:hover::after{width:100%}
+  
+  /* Institution grid */
+  .inst-chip{cursor:pointer;padding:10px 14px;border:2px solid rgba(10,46,90,0.1);border-radius:10px;transition:all 0.2s;font-size:13px;font-weight:500}
+  .inst-chip.active{border-color:#0A2E5A;background:#0A2E5A;color:white}
+  .inst-chip:hover{border-color:#D4AF37}
+  
+  /* Guideline radio */
+  .guide-radio{cursor:pointer;padding:16px;border:2px solid rgba(10,46,90,0.1);border-radius:12px;transition:all 0.2s;display:flex;align-items:start;gap:12px}
+  .guide-radio.active{border-color:#D4AF37;background:#FFF9E6}
+  .guide-radio .radio-dot{width:20px;height:20px;border:2px solid rgba(10,46,90,0.3);border-radius:50%;flex-shrink:0;margin-top:2px;position:relative;transition:all 0.2s}
+  .guide-radio.active .radio-dot{border-color:#D4AF37}
+  .guide-radio.active .radio-dot::after{content:"";position:absolute;inset:3px;background:#D4AF37;border-radius:50%}
+  
+  /* Section number badge */
+  .section-badge{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:#D4AF37;color:white;border-radius:8px;font-weight:700;font-size:14px}
+  
+  /* Pricing card featured */
+  .pricing-featured{background:linear-gradient(135deg,#0A2E5A 0%,#1E3A8A 100%);color:white;position:relative;overflow:hidden}
+  .pricing-featured::before{content:"";position:absolute;top:-50%;right:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(212,175,55,0.1) 0%,transparent 60%)}
+  
+  /* Animated gradient border */
+  @keyframes gradientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+  .gradient-border{background:linear-gradient(90deg,#D4AF37,#FF6B35,#00D9FF,#D4AF37);background-size:300% 100%;animation:gradientShift 4s ease infinite}
+  
+  /* Tech stack */
+  .tech-block{border-left:3px solid #D4AF37;padding-left:16px}
+  
+  /* Glow effect for gold */
+  .gold-glow{box-shadow:0 0 40px rgba(212,175,55,0.3)}
+  
+  /* Details/FAQ */
+  details summary{cursor:pointer;list-style:none}
+  details summary::-webkit-details-marker{display:none}
+  details[open] .faq-icon{transform:rotate(45deg)}
+  .faq-icon{transition:transform 0.3s}
+  
+  /* Progress simulation */
+  @keyframes progressFill{from{width:0}to{width:100%}}
+  .progress-fill{animation:progressFill 3s ease-out forwards}
+  
+  /* Floating dots decoration */
+  .float-dot{position:absolute;border-radius:50%;pointer-events:none}
+</style>
+</head>
+<body class="paper-bg">
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-thuto-ivory/90 backdrop-blur-xl border-b border-thuto-navy/10">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3">
+      <div class="relative">
+        <div class="w-11 h-11 bg-thuto-navy rounded-xl flex items-center justify-center relative overflow-hidden">
+          <div class="absolute inset-0 bg-gold-gradient opacity-20"></div>
+          <i class="fas fa-book-open text-thuto-gold text-lg relative z-10"></i>
+        </div>
+        <div class="absolute -top-1 -right-1 w-4 h-4 bg-thuto-orange rounded-full border-2 border-thuto-ivory"></div>
+      </div>
+      <div>
+        <p class="font-black text-thuto-navy leading-tight">THUTO RESEARCH</p>
+        <p class="text-[10px] text-thuto-navy/60 tracking-widest font-semibold">STUDIO · SUPERVISION LAYER</p>
+      </div>
+    </a>
+    
+    <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-thuto-navy">
+      <a href="#studio" class="nav-link">Studio</a>
+      <a href="#formats" class="nav-link">Formats</a>
+      <a href="#languages" class="nav-link">Languages</a>
+      <a href="#loop" class="nav-link">Workflow</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="#architecture" class="nav-link">Tech</a>
+    </div>
+    
+    <div class="hidden lg:flex items-center gap-3">
+      <button class="text-thuto-navy font-semibold text-sm px-4 py-2 hover:text-thuto-orange transition">Sign In</button>
+      <button class="bg-thuto-navy text-white font-semibold px-5 py-2.5 rounded-xl text-sm hover:bg-thuto-research transition flex items-center gap-2">
+        Launch Studio <i class="fas fa-arrow-right text-xs"></i>
+      </button>
+    </div>
+    
+    <button id="mobile-toggle" class="lg:hidden w-10 h-10 rounded-lg bg-thuto-navy flex items-center justify-center text-thuto-gold">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="pt-32 pb-20 relative overflow-hidden">
+  <div class="float-dot bg-thuto-gold/20" style="width:300px;height:300px;top:10%;left:-100px;filter:blur(80px)"></div>
+  <div class="float-dot bg-thuto-orange/20" style="width:400px;height:400px;bottom:0;right:-150px;filter:blur(100px)"></div>
+  
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="reveal">
+        <div class="inline-flex items-center gap-2 bg-thuto-navy text-thuto-gold px-4 py-2 rounded-full text-xs font-bold tracking-wider mb-6">
+          <span class="w-2 h-2 bg-thuto-gold rounded-full animate-pulse"></span>
+          SUPERVISION LAYER · THUTO TECH ECOSYSTEM
+        </div>
+        
+        <h1 class="font-serif text-5xl lg:text-7xl font-black text-thuto-navy leading-[1.05] mb-6">
+          Hear your thesis<br/>
+          <span class="text-warm-gradient">think itself aloud.</span>
+        </h1>
+        
+        <p class="text-lg text-thuto-navy/70 mb-8 max-w-xl leading-relaxed">
+          Thuto Research Studio transforms your postgraduate chapters into <strong class="text-thuto-navy">AI-hosted audio dialogues</strong> — in 11 South African languages, aligned to your institution's guidelines, sharpened for viva voce.
+        </p>
+        
+        <div class="flex flex-wrap gap-3 mb-10">
+          <button class="bg-thuto-navy text-white font-semibold px-7 py-4 rounded-xl hover:bg-thuto-research transition flex items-center gap-2">
+            <i class="fas fa-microphone-lines text-thuto-gold"></i> Open Studio
+          </button>
+          <button class="bg-white border-2 border-thuto-navy text-thuto-navy font-semibold px-7 py-4 rounded-xl hover:bg-thuto-navy hover:text-white transition">
+            <i class="fas fa-play"></i> Hear a Sample
+          </button>
+        </div>
+        
+        <div class="grid grid-cols-3 gap-6 max-w-md">
+          <div>
+            <p class="font-serif text-4xl font-black text-thuto-navy">11</p>
+            <p class="text-xs text-thuto-navy/60 uppercase tracking-wider mt-1">SA Languages</p>
+          </div>
+          <div>
+            <p class="font-serif text-4xl font-black text-thuto-orange">5</p>
+            <p class="text-xs text-thuto-navy/60 uppercase tracking-wider mt-1">Audio Formats</p>
+          </div>
+          <div>
+            <p class="font-serif text-4xl font-black text-thuto-research">6</p>
+            <p class="text-xs text-thuto-navy/60 uppercase tracking-wider mt-1">SA Institutions</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Hero Visual -->
+      <div class="reveal relative">
+        <div class="relative rounded-3xl overflow-hidden border border-thuto-navy/10 shadow-2xl">
+          <img src="https://image.qwenlm.ai/public_source/57a36a79-dfe1-42a8-90c0-e795d185844a/129871b78-1b74-477a-bde6-9b8e60df006f.png" class="w-full h-auto" alt="Research Studio concept"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-thuto-navy/80 via-transparent to-transparent"></div>
+          
+          <!-- Overlay info card -->
+          <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-xl rounded-2xl p-4 border border-thuto-gold/30">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 bg-thuto-navy rounded-xl flex items-center justify-center">
+                <i class="fas fa-waveform-lines text-thuto-gold"></i>
+              </div>
+              <div class="flex-1">
+                <p class="font-bold text-sm text-thuto-navy">Chapter 3 · Methodology</p>
+                <p class="text-xs text-thuto-navy/60">Critical Review · isiZulu · 12:34</p>
+              </div>
+              <div class="w-8 h-8 bg-thuto-orange rounded-full flex items-center justify-center">
+                <i class="fas fa-play text-white text-xs"></i>
+              </div>
+            </div>
+            <div class="waveform" id="hero-waveform">
+              <div class="waveform-bar"></div><div class="waveform-bar"></div><div class="waveform-bar"></div>
+              <div class="waveform-bar"></div><div class="waveform-bar"></div><div class="waveform-bar"></div>
+              <div class="waveform-bar"></div><div class="waveform-bar"></div><div class="waveform-bar"></div>
+              <div class="waveform-bar"></div><div class="waveform-bar"></div><div class="waveform-bar"></div>
+              <div class="waveform-bar"></div><div class="waveform-bar"></div><div class="waveform-bar"></div>
+              <div class="waveform-bar"></div><div class="waveform-bar"></div><div class="waveform-bar"></div>
+              <div class="waveform-bar"></div><div class="waveform-bar"></div><div class="waveform-bar"></div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Floating badges -->
+        <div class="absolute -top-4 -left-4 bg-white rounded-2xl p-3 shadow-xl border border-thuto-gold/30 flex items-center gap-2">
+          <div class="w-8 h-8 bg-thuto-gold/20 rounded-lg flex items-center justify-center">
+            <i class="fas fa-graduation-cap text-thuto-navy"></i>
+          </div>
+          <div>
+            <p class="text-xs font-bold text-thuto-navy">UP Masters</p>
+            <p class="text-[10px] text-thuto-navy/60">Template matched</p>
+          </div>
+        </div>
+        
+        <div class="absolute -bottom-4 -right-4 bg-thuto-navy text-white rounded-2xl p-3 shadow-xl flex items-center gap-2">
+          <div class="w-8 h-8 bg-thuto-gold rounded-lg flex items-center justify-center">
+            <i class="fas fa-language text-thuto-navy"></i>
+          </div>
+          <div>
+            <p class="text-xs font-bold">isiZulu Ready</p>
+            <p class="text-[10px] text-thuto-gold">Academic terms loaded</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST BAR ============ -->
+<section class="py-10 bg-thuto-navy border-y-2 border-thuto-gold/30">
+  <div class="max-w-7xl mx-auto px-6">
+    <p class="text-center text-xs text-thuto-gold/70 mb-6 uppercase tracking-[0.3em] font-semibold">Aligned with South African Postgraduate Standards</p>
+    <div class="overflow-hidden">
+      <div class="marquee whitespace-nowrap">
+        <div class="flex items-center gap-12 text-xl font-serif font-bold text-white/70">
+          <span>🎓 University of Pretoria</span><span>🎓 Wits University</span><span>🎓 UCT</span><span>🎓 Stellenbosch</span><span>🎓 UNISA</span><span>🎓 NRF</span><span>🎓 DHET Aligned</span><span>🎓 HEQC Compliant</span><span>🎓 SANLi Languages</span><span>🎓 Sabinet Indexed</span>
+        </div>
+        <div class="flex items-center gap-12 text-xl font-serif font-bold text-white/70">
+          <span>🎓 University of Pretoria</span><span>🎓 Wits University</span><span>🎓 UCT</span><span>🎓 Stellenbosch</span><span>🎓 UNISA</span><span>🎓 NRF</span><span>🎓 DHET Aligned</span><span>🎓 HEQC Compliant</span><span>🎓 SANLi Languages</span><span>🎓 Sabinet Indexed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE STUDIO (Main interactive section) ============ -->
+<section id="studio" class="py-24 relative">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <div class="inline-flex items-center gap-2 bg-thuto-gold/10 text-thuto-navy px-4 py-2 rounded-full text-xs font-bold tracking-wider mb-4">
+        <i class="fas fa-sliders text-thuto-gold"></i> THE INTERFACE · CUSTOMIZATION PANEL
+      </div>
+      <h2 class="font-serif text-5xl lg:text-6xl font-black text-thuto-navy mb-4">Four sections.<br/>One <span class="text-warm-gradient">perfect audio.</span></h2>
+      <p class="text-thuto-navy/70 max-w-2xl mx-auto text-lg">Not another generic AI tool. Research-specific controls aligned to your PG guidelines and rooted in South African languages.</p>
+    </div>
+    
+    <!-- Studio Dashboard -->
+    <div class="bg-white rounded-3xl shadow-xl border border-thuto-navy/5 overflow-hidden reveal">
+      <!-- Header bar -->
+      <div class="bg-thuto-navy text-white px-8 py-5 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <div class="flex gap-1.5">
+            <div class="w-3 h-3 rounded-full bg-red-400"></div>
+            <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+            <div class="w-3 h-3 rounded-full bg-green-400"></div>
+          </div>
+          <p class="font-semibold text-sm">Thuto Research Studio · v2.1</p>
+        </div>
+        <div class="flex items-center gap-4 text-xs">
+          <span class="flex items-center gap-1.5"><span class="w-2 h-2 bg-thuto-gold rounded-full animate-pulse"></span> InkubaLM Online</span>
+          <span class="flex items-center gap-1.5"><span class="w-2 h-2 bg-thuto-cyan rounded-full animate-pulse"></span> NLLB Ready</span>
+        </div>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 gap-0">
+        <!-- Left: Controls (2/3) -->
+        <div class="lg:col-span-2 p-8 lg:p-10 border-r border-thuto-navy/5 space-y-10">
+          
+          <!-- SECTION 1: Format -->
+          <div id="formats">
+            <div class="flex items-center gap-3 mb-5">
+              <span class="section-badge">1</span>
+              <div>
+                <h3 class="font-serif text-2xl font-black text-thuto-navy">Academic Format Selection</h3>
+                <p class="text-sm text-thuto-navy/60">Tailored to postgraduate research outputs</p>
+              </div>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 gap-3" id="format-grid">
+              <div class="format-card selected studio-card p-5" data-format="deep-dive" onclick="selectFormat(this)">
+                <div class="check-badge absolute top-3 right-3 w-6 h-6 bg-thuto-gold rounded-full flex items-center justify-center">
+                  <i class="fas fa-check text-white text-xs"></i>
+                </div>
+                <div class="w-11 h-11 bg-thuto-navy rounded-xl flex items-center justify-center mb-3">
+                  <i class="fas fa-microphone-lines text-thuto-gold"></i>
+                </div>
+                <h4 class="font-bold text-thuto-navy mb-1">Research Deep Dive</h4>
+                <p class="text-xs text-thuto-navy/60 leading-relaxed mb-2">Two AI "experts" unpack your thesis, connecting theory to methodology and SA context.</p>
+                <div class="flex items-center gap-2 text-[10px] text-thuto-navy/50">
+                  <span class="bg-thuto-gold/10 text-thuto-navy px-2 py-0.5 rounded">Ch.2 Lit Review</span>
+                  <span class="bg-thuto-gold/10 text-thuto-navy px-2 py-0.5 rounded">Ch.3 Method</span>
+                </div>
+              </div>
+              
+              <div class="format-card studio-card p-5" data-format="brief" onclick="selectFormat(this)">
+                <div class="check-badge absolute top-3 right-3 w-6 h-6 bg-thuto-gold rounded-full flex items-center justify-center">
+                  <i class="fas fa-check text-white text-xs"></i>
+                </div>
+                <div class="w-11 h-11 bg-thuto-orange rounded-xl flex items-center justify-center mb-3">
+                  <i class="fas fa-bolt text-white"></i>
+                </div>
+                <h4 class="font-bold text-thuto-navy mb-1">Executive Brief</h4>
+                <p class="text-xs text-thuto-navy/60 leading-relaxed mb-2">Bite-sized 5-min summary of key findings for supervisors who need a quick overview.</p>
+                <div class="flex items-center gap-2 text-[10px] text-thuto-navy/50">
+                  <span class="bg-thuto-gold/10 text-thuto-navy px-2 py-0.5 rounded">Ch.4 Findings</span>
+                  <span class="bg-thuto-gold/10 text-thuto-navy px-2 py-0.5 rounded">Reports</span>
+                </div>
+              </div>
+              
+              <div class="format-card studio-card p-5" data-format="critical" onclick="selectFormat(this)">
+                <div class="check-badge absolute top-3 right-3 w-6 h-6 bg-thuto-gold rounded-full flex items-center justify-center">
+                  <i class="fas fa-check text-white text-xs"></i>
+                </div>
+                <div class="w-11 h-11 bg-thuto-research rounded-xl flex items-center justify-center mb-3">
+                  <i class="fas fa-magnifying-glass-chart text-white"></i>
+                </div>
+                <h4 class="font-bold text-thuto-navy mb-1">Critical Review</h4>
+                <p class="text-xs text-thuto-navy/60 leading-relaxed mb-2">Expert reviewer simulates NRF/HEQC panel: rigorous, constructive feedback on your work.</p>
+                <div class="flex items-center gap-2 text-[10px] text-thuto-navy/50">
+                  <span class="bg-thuto-gold/10 text-thuto-navy px-2 py-0.5 rounded">Pre-submission</span>
+                  <span class="bg-thuto-gold/10 text-thuto-navy px-2 py-0.5 rounded">NRF</span>
+                </div>
+              </div>
+              
+              <div class="format-card studio-card p-5" data-format="debate" onclick="selectFormat(this)">
+                <div class="check-badge absolute top-3 right-3 w-6 h-6 bg-thuto-gold rounded-full flex items-center justify-center">
+                  <i class="fas fa-check text-white text-xs"></i>
+                </div>
+                <div class="w-11 h-11 bg-thuto-cyan rounded-xl flex items-center justify-center mb-3">
+                  <i class="fas fa-scale-balanced text-thuto-navy"></i>
+                </div>
+                <h4 class="font-bold text-thuto-navy mb-1">Peer Debate</h4>
+                <p class="text-xs text-thuto-navy/60 leading-relaxed mb-2">Two AI hosts debate methodological choices or theoretical frameworks to strengthen argument.</p>
+                <div class="flex items-center gap-2 text-[10px] text-thuto-navy/50">
+                  <span class="bg-thuto-gold/10 text-thuto-navy px-2 py-0.5 rounded">Ch.1 Problem</span>
+                  <span class="bg-thuto-gold/10 text-thuto-navy px-2 py-0.5 rounded">Ch.5 Discussion</span>
+                </div>
+              </div>
+              
+              <div class="format-card studio-card p-5 sm:col-span-2" data-format="viva" onclick="selectFormat(this)">
+                <div class="check-badge absolute top-3 right-3 w-6 h-6 bg-thuto-gold rounded-full flex items-center justify-center">
+                  <i class="fas fa-check text-white text-xs"></i>
+                </div>
+                <div class="w-11 h-11 bg-gradient-to-br from-thuto-gold to-thuto-orange rounded-xl flex items-center justify-center mb-3">
+                  <i class="fas fa-user-graduate text-white"></i>
+                </div>
+                <h4 class="font-bold text-thuto-navy mb-1">Viva Voce Prep</h4>
+                <p class="text-xs text-thuto-navy/60 leading-relaxed mb-2">Mock oral defense: AI asks likely examiner questions based on your discipline and identified gaps. The ultimate pre-submission dry run.</p>
+                <div class="flex items-center gap-2 text-[10px] text-thuto-navy/50">
+                  <span class="bg-thuto-gold/10 text-thuto-navy px-2 py-0.5 rounded">Final Thesis</span>
+                  <span class="bg-thuto-gold/10 text-thuto-navy px-2 py-0.5 rounded">Dissertation</span>
+                  <span class="bg-thuto-gold/10 text-thuto-navy px-2 py-0.5 rounded">Oral Defense</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- SECTION 2: PG Guidelines -->
+          <div>
+            <div class="flex items-center gap-3 mb-5">
+              <span class="section-badge">2</span>
+              <div>
+                <h3 class="font-serif text-2xl font-black text-thuto-navy">Postgraduate Guidelines</h3>
+                <p class="text-sm text-thuto-navy/60">Your unique differentiator — audio tailored to SA requirements</p>
+              </div>
+            </div>
+            
+            <div class="space-y-2 mb-6" id="guideline-list">
+              <div class="guide-radio active" onclick="selectGuideline(this)">
+                <div class="radio-dot"></div>
+                <div class="flex-1">
+                  <div class="flex items-center gap-2 mb-1">
+                    <p class="font-bold text-thuto-navy">Honours Mini-Dissertation</p>
+                    <span class="text-[10px] bg-thuto-gold/20 text-thuto-navy px-2 py-0.5 rounded">10-15K words</span>
+                  </div>
+                  <p class="text-xs text-thuto-navy/60">5 chapters · Introductory research project</p>
+                </div>
+              </div>
+              <div class="guide-radio" onclick="selectGuideline(this)">
+                <div class="radio-dot"></div>
+                <div class="flex-1">
+                  <div class="flex items-center gap-2 mb-1">
+                    <p class="font-bold text-thuto-navy">Masters Thesis</p>
+                    <span class="text-[10px] bg-thuto-gold/20 text-thuto-navy px-2 py-0.5 rounded">20-30K words</span>
+                    <span class="text-[10px] bg-thuto-orange/20 text-thuto-navy px-2 py-0.5 rounded">UP/Wits/UCT</span>
+                  </div>
+                  <p class="text-xs text-thuto-navy/60">Institution-specific templates and formatting</p>
+                </div>
+              </div>
+              <div class="guide-radio" onclick="selectGuideline(this)">
+                <div class="radio-dot"></div>
+                <div class="flex-1">
+                  <div class="flex items-center gap-2 mb-1">
+                    <p class="font-bold text-thuto-navy">PhD Dissertation</p>
+                    <span class="text-[10px] bg-thuto-gold/20 text-thuto-navy px-2 py-0.5 rounded">80-100K words</span>
+                    <span class="text-[10px] bg-thuto-research/20 text-thuto-navy px-2 py-0.5 rounded">Comprehensive</span>
+                  </div>
+                  <p class="text-xs text-thuto-navy/60">Full doctoral research with original contribution</p>
+                </div>
+              </div>
+              <div class="guide-radio" onclick="selectGuideline(this)">
+                <div class="radio-dot"></div>
+                <div class="flex-1">
+                  <div class="flex items-center gap-2 mb-1">
+                    <p class="font-bold text-thuto-navy">NRF Research Proposal</p>
+                    <span class="text-[10px] bg-thuto-gold/20 text-thuto-navy px-2 py-0.5 rounded">20 pages max</span>
+                  </div>
+                  <p class="text-xs text-thuto-navy/60">Standard NRF format with priority alignment</p>
+                </div>
+              </div>
+              <div class="guide-radio" onclick="selectGuideline(this)">
+                <div class="radio-dot"></div>
+                <div class="flex-1">
+                  <div class="flex items-center gap-2 mb-1">
+                    <p class="font-bold text-thuto-navy">Journal Article</p>
+                    <span class="text-[10px] bg-thuto-gold/20 text-thuto-navy px-2 py-0.5 rounded">SUNSAN/Sabinet</span>
+                  </div>
+                  <p class="text-xs text-thuto-navy/60">South African accredited journal formats</p>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <p class="font-bold text-sm text-thuto-navy mb-3 flex items-center gap-2">
+                <i class="fas fa-school text-thuto-gold"></i> Institutional Template (Optional)
+              </p>
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-2" id="inst-grid">
+                <div class="inst-chip active" onclick="selectInst(this)">🏛️ University of Pretoria</div>
+                <div class="inst-chip" onclick="selectInst(this)">🏛️ Wits University</div>
+                <div class="inst-chip" onclick="selectInst(this)">🏛️ UCT</div>
+                <div class="inst-chip" onclick="selectInst(this)">🏛️ Stellenbosch</div>
+                <div class="inst-chip" onclick="selectInst(this)">🏛️ UNISA</div>
+                <div class="inst-chip border-dashed" onclick="selectInst(this)"><i class="fas fa-upload text-thuto-navy/40"></i> Upload yours</div>
+              </div>
+            </div>
+            
+            <!-- Insight banner -->
+            <div class="mt-5 bg-thuto-gold/10 border border-thuto-gold/30 rounded-xl p-4 flex items-start gap-3">
+              <i class="fas fa-lightbulb text-thuto-gold mt-0.5"></i>
+              <div class="flex-1">
+                <p class="text-xs font-bold text-thuto-navy mb-1">What this does:</p>
+                <ul class="text-xs text-thuto-navy/70 space-y-1">
+                  <li>• Audio commentary references <strong>specific section requirements</strong> per institution</li>
+                  <li>• Flags <strong>missing required elements</strong> (e.g., "Ethics clearance statement not detected")</li>
+                  <li>• Suggests <strong>institutional phrasing</strong> (e.g., Wits uses "Research Design" not "Methodology")</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <!-- SECTION 3: Languages -->
+          <div id="languages">
+            <div class="flex items-center gap-3 mb-5">
+              <span class="section-badge">3</span>
+              <div>
+                <h3 class="font-serif text-2xl font-black text-thuto-navy">Multilingual Audio Output</h3>
+                <p class="text-sm text-thuto-navy/60">InkubaLM + NLLB for all 11 official SA languages</p>
+              </div>
+            </div>
+            
+            <div class="flex flex-wrap gap-2 mb-6" id="lang-grid">
+              <div class="lang-chip active px-4 py-2.5 rounded-xl bg-thuto-navy/5 text-thuto-navy font-semibold text-sm" onclick="selectLang(this)">
+                <span class="mr-1">🇬🇧</span> English <span class="text-[10px] opacity-60">(Primary)</span>
+              </div>
+              <div class="lang-chip px-4 py-2.5 rounded-xl bg-white text-thuto-navy font-semibold text-sm" onclick="selectLang(this)">🇿🇦 isiZulu</div>
+              <div class="lang-chip px-4 py-2.5 rounded-xl bg-white text-thuto-navy font-semibold text-sm" onclick="selectLang(this)">🇿🇦 isiXhosa</div>
+              <div class="lang-chip px-4 py-2.5 rounded-xl bg-white text-thuto-navy font-semibold text-sm" onclick="selectLang(this)">🇿🇦 Afrikaans</div>
+              <div class="lang-chip px-4 py-2.5 rounded-xl bg-white text-thuto-navy font-semibold text-sm" onclick="selectLang(this)">🇿🇦 Sesotho</div>
+              <div class="lang-chip px-4 py-2.5 rounded-xl bg-white text-thuto-navy font-semibold text-sm" onclick="selectLang(this)">🇿🇦 Setswana</div>
+              <div class="lang-chip px-4 py-2.5 rounded-xl bg-white text-thuto-navy font-semibold text-sm" onclick="selectLang(this)">🇿🇦 Xitsonga</div>
+              <div class="lang-chip px-4 py-2.5 rounded-xl bg-white text-thuto-navy font-semibold text-sm" onclick="selectLang(this)">🇿🇦 Tshivenda</div>
+              <div class="lang-chip px-4 py-2.5 rounded-xl bg-white text-thuto-navy font-semibold text-sm" onclick="selectLang(this)">🇿🇦 siSwati</div>
+              <div class="lang-chip px-4 py-2.5 rounded-xl bg-white text-thuto-navy font-semibold text-sm" onclick="selectLang(this)">🇿🇦 Sepedi</div>
+              <div class="lang-chip px-4 py-2.5 rounded-xl bg-white text-thuto-navy font-semibold text-sm" onclick="selectLang(this)">🇿🇦 isiNdebele</div>
+              <div class="lang-chip px-4 py-2.5 rounded-xl bg-thuto-orange/10 text-thuto-orange border-2 border-thuto-orange/30 font-semibold text-sm" onclick="selectLang(this)">
+                <i class="fas fa-shuffle mr-1"></i> Mixed/Bilingual
+              </div>
+            </div>
+            
+            <div class="bg-thuto-navy/5 rounded-xl p-5 mb-5">
+              <p class="font-bold text-sm text-thuto-navy mb-3 flex items-center gap-2">
+                <i class="fas fa-microphone text-thuto-gold"></i> Voice Preference
+              </p>
+              <div class="grid sm:grid-cols-3 gap-3" id="voice-grid">
+                <div class="voice-toggle active" onclick="selectVoice(this)">
+                  <i class="fas fa-user-tie text-thuto-gold mb-1 text-lg"></i>
+                  <p class="font-bold text-sm text-thuto-navy">Academic</p>
+                  <p class="text-[11px] text-thuto-navy/60">Formal tone</p>
+                </div>
+                <div class="voice-toggle" onclick="selectVoice(this)">
+                  <i class="fas fa-comments text-thuto-orange mb-1 text-lg"></i>
+                  <p class="font-bold text-sm text-thuto-navy">Conversational</p>
+                  <p class="text-[11px] text-thuto-navy/60">Supportive tone</p>
+                </div>
+                <div class="voice-toggle" onclick="selectVoice(this)">
+                  <i class="fas fa-chalkboard-user text-thuto-research mb-1 text-lg"></i>
+                  <p class="font-bold text-sm text-thuto-navy">Socratic</p>
+                  <p class="text-[11px] text-thuto-navy/60">Tutoring tone</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-thuto-gold/5 border border-thuto-gold/20 rounded-xl p-4 text-xs text-thuto-navy/70">
+              <p class="font-bold mb-2 text-thuto-navy"><i class="fas fa-book text-thuto-gold"></i> Glossary Override</p>
+              <p>Add discipline-specific terms for correct pronunciation: <em>Ubuntu, Indaba, Ubuntu pedagogy, Lekgotla, Botho</em>.</p>
+            </div>
+          </div>
+          
+          <!-- SECTION 4: Focus -->
+          <div>
+            <div class="flex items-center gap-3 mb-5">
+              <span class="section-badge">4</span>
+              <div>
+                <h3 class="font-serif text-2xl font-black text-thuto-navy">Focus & Scope Customization</h3>
+                <p class="text-sm text-thuto-navy/60">Research-specific prompts that evolve with your chapter</p>
+              </div>
+            </div>
+            
+            <div class="bg-thuto-navy/5 rounded-xl p-5 mb-4">
+              <p class="text-xs font-bold text-thuto-navy mb-2">🎯 What should the AI hosts focus on?</p>
+              <textarea id="focus-prompt" class="w-full bg-white rounded-lg p-4 text-sm text-thuto-navy border border-thuto-navy/10 focus:border-thuto-gold focus:outline-none resize-none" rows="4">Evaluate how my literature review addresses the SA context. Are there gaps in African scholarship? Does it align with UP's emphasis on local knowledge systems?</textarea>
+              <p class="text-[11px] text-thuto-navy/50 mt-2" id="prompt-status">Pre-loaded with Chapter 2 · Literature Review prompts</p>
+            </div>
+            
+            <p class="font-bold text-xs text-thuto-navy mb-2">Suggested Prompts (click to add):</p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="prompt-chip bg-white border border-thuto-navy/10 px-3 py-1.5 rounded-lg text-xs font-medium text-thuto-navy" onclick="addPrompt(this)">✓ Check alignment with NRF priorities</span>
+              <span class="prompt-chip bg-white border border-thuto-navy/10 px-3 py-1.5 rounded-lg text-xs font-medium text-thuto-navy" onclick="addPrompt(this)">📚 Identify missing key theorists</span>
+              <span class="prompt-chip bg-white border border-thuto-navy/10 px-3 py-1.5 rounded-lg text-xs font-medium text-thuto-navy" onclick="addPrompt(this)">⚙️ Assess methodology justification</span>
+              <span class="prompt-chip bg-white border border-thuto-navy/10 px-3 py-1.5 rounded-lg text-xs font-medium text-thuto-navy" onclick="addPrompt(this)">🛡️ Review ethical considerations</span>
+              <span class="prompt-chip bg-white border border-thuto-navy/10 px-3 py-1.5 rounded-lg text-xs font-medium text-thuto-navy" onclick="addPrompt(this)">🌍 Evaluate contribution to SA field</span>
+              <span class="prompt-chip bg-white border border-thuto-navy/10 px-3 py-1.5 rounded-lg text-xs font-medium text-thuto-navy" onclick="addPrompt(this)">🔍 Check plagiarism & citation style</span>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <p class="font-bold text-xs text-thuto-navy mb-2">📏 Length</p>
+                <div class="grid grid-cols-3 gap-2">
+                  <div class="length-opt" onclick="selectLength(this)">
+                    <p class="font-bold text-sm">Short</p>
+                    <p class="text-[10px] opacity-70">3-5 min</p>
+                  </div>
+                  <div class="length-opt active" onclick="selectLength(this)">
+                    <p class="font-bold text-sm">Default</p>
+                    <p class="text-[10px] opacity-70">8-12 min</p>
+                  </div>
+                  <div class="length-opt" onclick="selectLength(this)">
+                    <p class="font-bold text-sm">Long</p>
+                    <p class="text-[10px] opacity-70">15-20 min</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div>
+                <p class="font-bold text-xs text-thuto-navy mb-2">🔊 Output Format</p>
+                <div class="grid grid-cols-3 gap-2">
+                  <div class="length-opt active" onclick="selectLength(this)">
+                    <i class="fas fa-download text-thuto-gold"></i>
+                    <p class="text-[10px] mt-1 font-bold">MP3</p>
+                  </div>
+                  <div class="length-opt" onclick="selectLength(this)">
+                    <i class="fas fa-play-circle text-thuto-gold"></i>
+                    <p class="text-[10px] mt-1 font-bold">In-App</p>
+                  </div>
+                  <div class="length-opt" onclick="selectLength(this)">
+                    <i class="fas fa-list text-thuto-gold"></i>
+                    <p class="text-[10px] mt-1 font-bold">Playlist</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right: Preview (1/3) -->
+        <div class="bg-gradient-to-b from-thuto-navy to-thuto-research text-white p-8">
+          <p class="text-thuto-gold text-xs font-bold tracking-widest uppercase mb-3">LIVE PREVIEW</p>
+          <h3 class="font-serif text-2xl font-black mb-1">Your Audio Summary</h3>
+          <p class="text-sm text-white/60 mb-6" id="preview-subtitle">Research Deep Dive · UP Masters · isiZulu</p>
+          
+          <!-- Simulated audio card -->
+          <div class="bg-white/10 backdrop-blur-xl rounded-2xl p-5 border border-white/10 mb-5">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-14 h-14 bg-gradient-to-br from-thuto-gold to-thuto-orange rounded-xl flex items-center justify-center gold-glow">
+                <i class="fas fa-microphone-lines text-white text-xl"></i>
+              </div>
+              <div class="flex-1">
+                <p class="font-bold text-sm">Chapter 3 · Methodology</p>
+                <p class="text-[11px] text-white/60">Mixed methods · 28 pages</p>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-2 mb-3">
+              <button id="play-btn" class="w-10 h-10 bg-thuto-gold rounded-full flex items-center justify-center text-thuto-navy hover:scale-105 transition" onclick="togglePlay()">
+                <i class="fas fa-play text-sm" id="play-icon"></i>
+              </button>
+              <div class="flex-1">
+                <div class="waveform" id="preview-waveform">
+                  <div class="waveform-bar"></div><div class="waveform-bar"></div><div class="waveform-bar"></div>
+                  <div class="waveform-bar"></div><div class="waveform-bar"></div><div class="waveform-bar"></div>
+                  <div class="waveform-bar"></div><div class="waveform-bar"></div><div class="waveform-bar"></div>
+                  <div class="waveform-bar"></div><div class="waveform-bar"></div><div class="waveform-bar"></div>
+                  <div class="waveform-bar"></div><div class="waveform-bar"></div><div class="waveform-bar"></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex justify-between text-[11px] text-white/60">
+              <span id="current-time">02:14</span>
+              <span id="total-time">12:34</span>
+            </div>
+          </div>
+          
+          <!-- Config summary -->
+          <div class="space-y-2 text-xs mb-6">
+            <div class="flex justify-between items-center py-2 border-b border-white/10">
+              <span class="text-white/60">Format</span>
+              <span class="font-bold" id="sum-format">Deep Dive</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-white/10">
+              <span class="text-white/60">Guideline</span>
+              <span class="font-bold" id="sum-guide">UP Masters</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-white/10">
+              <span class="text-white/60">Language</span>
+              <span class="font-bold" id="sum-lang">isiZulu</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-white/10">
+              <span class="text-white/60">Voice</span>
+              <span class="font-bold" id="sum-voice">Academic</span>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b border-white/10">
+              <span class="text-white/60">Length</span>
+              <span class="font-bold" id="sum-length">12 min</span>
+            </div>
+            <div class="flex justify-between items-center py-2">
+              <span class="text-white/60">Quality</span>
+              <span class="font-bold text-thuto-gold">44.1kHz · Stereo</span>
+            </div>
+          </div>
+          
+          <button class="w-full bg-thuto-gold text-thuto-navy font-bold py-4 rounded-xl hover:bg-white transition flex items-center justify-center gap-2 mb-3">
+            <i class="fas fa-wand-magic-sparkles"></i> Generate Audio
+          </button>
+          <button class="w-full bg-white/10 text-white font-semibold py-3 rounded-xl hover:bg-white/20 transition text-sm">
+            <i class="fas fa-share-nodes"></i> Share with Supervisor
+          </button>
+          
+          <!-- AI insights -->
+          <div class="mt-6 bg-thuto-gold/10 border border-thuto-gold/30 rounded-xl p-4">
+            <p class="font-bold text-xs text-thuto-gold mb-2"><i class="fas fa-sparkles"></i> AI Pre-Analysis</p>
+            <ul class="text-[11px] text-white/80 space-y-1.5">
+              <li>✓ 4 missing citations detected</li>
+              <li>✓ Population table needed (UP Ch.3)</li>
+              <li>⚠ Ethics statement flagged</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOOP OF EXCELLENCE ============ -->
+<section id="loop" class="py-24 bg-thuto-navy relative overflow-hidden">
+  <div class="float-dot bg-thuto-gold/10" style="width:500px;height:500px;top:-200px;right:-200px;filter:blur(100px)"></div>
+  
+  <div class="max-w-7xl mx-auto px-6 relative">
+    <div class="text-center mb-16 reveal">
+      <div class="inline-flex items-center gap-2 bg-thuto-gold/20 text-thuto-gold px-4 py-2 rounded-full text-xs font-bold tracking-wider mb-4">
+        <i class="fas fa-rotate"></i> INTEGRATION · LOOP OF EXCELLENCE
+      </div>
+      <h2 class="font-serif text-5xl lg:text-6xl font-black text-white mb-4">From audio to <span class="text-gold-gradient">approval.</span></h2>
+      <p class="text-white/60 max-w-2xl mx-auto text-lg">How Thuto Research Studio connects seamlessly into the supervision workflow.</p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-12 items-start">
+      <!-- The Loop Visualization -->
+      <div class="reveal">
+        <div class="bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10">
+          <div class="space-y-3">
+            <!-- Step 1 -->
+            <div class="flex gap-4 items-start group">
+              <div class="w-10 h-10 rounded-full bg-thuto-gold text-thuto-navy flex items-center justify-center font-black flex-shrink-0">1</div>
+              <div class="flex-1 pb-3 border-b border-white/10">
+                <p class="font-bold text-white text-sm">Student generates Audio Overview</p>
+                <p class="text-xs text-white/60">Chapter 3 (Methodology) · Critical Review format</p>
+              </div>
+            </div>
+            <!-- Step 2 -->
+            <div class="flex gap-4 items-start">
+              <div class="w-10 h-10 rounded-full bg-thuto-orange text-white flex items-center justify-center font-black flex-shrink-0">2</div>
+              <div class="flex-1 pb-3 border-b border-white/10">
+                <p class="font-bold text-white text-sm">Selects configuration</p>
+                <p class="text-xs text-white/60">Masters Thesis (UP) · isiZulu · Academic voice</p>
+              </div>
+            </div>
+            <!-- Step 3 -->
+            <div class="flex gap-4 items-start">
+              <div class="w-10 h-10 rounded-full bg-thuto-cyan text-thuto-navy flex items-center justify-center font-black flex-shrink-0">3</div>
+              <div class="flex-1 pb-3 border-b border-white/10">
+                <p class="font-bold text-white text-sm">AI produces 12-min isiZulu critique</p>
+                <p class="text-xs text-white/60">Audio + transcript + action items</p>
+              </div>
+            </div>
+            <!-- Step 4 -->
+            <div class="flex gap-4 items-start">
+              <div class="w-10 h-10 rounded-full bg-thuto-research text-white flex items-center justify-center font-black flex-shrink-0">4</div>
+              <div class="flex-1 pb-3 border-b border-white/10">
+                <p class="font-bold text-white text-sm">Student listens, identifies weaknesses</p>
+                <p class="text-xs text-white/60">Better retention than reading 40 pages</p>
+              </div>
+            </div>
+            <!-- Step 5 -->
+            <div class="flex gap-4 items-start">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-thuto-gold to-thuto-orange text-white flex items-center justify-center font-black flex-shrink-0">5</div>
+              <div class="flex-1 pb-3 border-b border-white/10">
+                <p class="font-bold text-white text-sm">Submit via SuperviseAI</p>
+                <p class="text-xs text-white/60">Draft + audio summary attached automatically</p>
+              </div>
+            </div>
+            <!-- Step 6 -->
+            <div class="flex gap-4 items-start">
+              <div class="w-10 h-10 rounded-full bg-white text-thuto-navy flex items-center justify-center font-black flex-shrink-0">6</div>
+              <div class="flex-1 pb-3 border-b border-white/10">
+                <p class="font-bold text-white text-sm">Supervisor plays audio summary</p>
+                <p class="text-xs text-white/60">12 minutes vs 40 pages · 50% time saved</p>
+              </div>
+            </div>
+            <!-- Step 7 -->
+            <div class="flex gap-4 items-start">
+              <div class="w-10 h-10 rounded-full bg-thuto-gold text-thuto-navy flex items-center justify-center font-black flex-shrink-0">7</div>
+              <div class="flex-1 pb-3 border-b border-white/10">
+                <p class="font-bold text-white text-sm">Professor records voice note feedback</p>
+                <p class="text-xs text-white/60">Added to "Augmented Feedback" dossier</p>
+              </div>
+            </div>
+            <!-- Step 8 -->
+            <div class="flex gap-4 items-start">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-thuto-cyan to-thuto-gold text-thuto-navy flex items-center justify-center font-black flex-shrink-0">8</div>
+              <div class="flex-1">
+                <p class="font-bold text-white text-sm">Student receives complete dossier</p>
+                <p class="text-xs text-white/60">Audio feedback + annotated doc + action items</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Value Proposition -->
+      <div class="reveal space-y-5">
+        <div class="bg-white rounded-2xl p-6 border border-thuto-gold/30">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-thuto-navy rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-user-graduate text-thuto-gold text-xl"></i>
+            </div>
+            <div>
+              <p class="font-black text-thuto-navy text-lg mb-1">For Students</p>
+              <p class="text-sm text-thuto-navy/70 leading-relaxed">Listen to your work being critiqued — audio retention is <strong>4× higher</strong> than reading, especially for students with reading difficulties or low bandwidth.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-2xl p-6 border border-thuto-gold/30">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-thuto-orange rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-chalkboard-user text-white text-xl"></i>
+            </div>
+            <div>
+              <p class="font-black text-thuto-navy text-lg mb-1">For Supervisors</p>
+              <p class="text-sm text-thuto-navy/70 leading-relaxed">Quick audio overview before deep reading. <strong>50% time saved</strong> per chapter review. Voice note feedback is faster than typing.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-2xl p-6 border border-thuto-gold/30">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 bg-thuto-gold rounded-xl flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-universal-access text-thuto-navy text-xl"></i>
+            </div>
+            <div>
+              <p class="font-black text-thuto-navy text-lg mb-1">For Accessibility</p>
+              <p class="text-sm text-thuto-navy/70 leading-relaxed">Audio-first for students with dyslexia, visual impairments, or low-bandwidth environments. <strong>11 SA languages</strong> break the English barrier.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gradient-to-br from-thuto-gold/20 to-thuto-orange/20 rounded-2xl p-6 border border-thuto-gold/30">
+          <p class="font-black text-white text-lg mb-3"><i class="fas fa-quote-left text-thuto-gold mr-2"></i>The loop that makes supervision human again.</p>
+          <p class="text-sm text-white/80 leading-relaxed">Every audio generated becomes part of a growing dossier — a living record of your research journey, your supervisor's voice, and your intellectual evolution.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURED IMAGE SECTION ============ -->
+<section class="py-24">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-5 gap-10 items-center reveal">
+      <div class="lg:col-span-3">
+        <div class="rounded-3xl overflow-hidden border border-thuto-navy/10 shadow-xl">
+          <img src="https://image.qwenlm.ai/public_source/57a36a79-dfe1-42a8-90c0-e795d185844a/161efde48-9beb-44eb-aebf-a447d8336146.png" class="w-full h-auto" alt="Postgraduate students using Thuto Research Studio"/>
+        </div>
+      </div>
+      <div class="lg:col-span-2">
+        <div class="inline-flex items-center gap-2 bg-thuto-gold/10 text-thuto-navy px-4 py-2 rounded-full text-xs font-bold tracking-wider mb-4">
+          <i class="fas fa-heart text-thuto-orange"></i> BUILT FOR SA CONTEXT
+        </div>
+        <h3 class="font-serif text-4xl lg:text-5xl font-black text-thuto-navy mb-5 leading-tight">Your grandmother could understand your PhD.</h3>
+        <p class="text-thuto-navy/70 mb-6 leading-relaxed">With bilingual output, you can share a summary of your research in your home language. Perfect for community engagement reports, NRF impact statements, and explaining your work to the people who matter most.</p>
+        <div class="space-y-3">
+          <div class="flex items-start gap-3">
+            <i class="fas fa-check-circle text-thuto-gold mt-1"></i>
+            <p class="text-sm text-thuto-navy/70"><strong class="text-thuto-navy">Mixed-language hosts</strong> — one speaks English, another isiZulu. Perfect for community presentations.</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="fas fa-check-circle text-thuto-gold mt-1"></i>
+            <p class="text-sm text-thuto-navy/70"><strong class="text-thuto-navy">Discipline glossaries</strong> — custom pronunciation for Ubuntu, Indaba, Lekgotla, Botho, and field-specific terms.</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="fas fa-check-circle text-thuto-gold mt-1"></i>
+            <p class="text-sm text-thuto-navy/70"><strong class="text-thuto-navy">Low-bandwidth MP3</strong> — works on 3G, downloadable for offline listening in rural areas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section id="pricing" class="py-24 bg-thuto-ivory">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <div class="inline-flex items-center gap-2 bg-thuto-navy text-thuto-gold px-4 py-2 rounded-full text-xs font-bold tracking-wider mb-4">
+        <i class="fas fa-tag"></i> COMMERCIALIZATION · AUDIO STUDIO REVENUE STREAMS
+      </div>
+      <h2 class="font-serif text-5xl lg:text-6xl font-black text-thuto-navy mb-4">Priced for <span class="text-warm-gradient">students.</span><br/>Scaled for <span class="text-warm-gradient">institutions.</span></h2>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 reveal">
+      <!-- Add-On -->
+      <div class="studio-card p-7">
+        <div class="w-12 h-12 bg-thuto-gold/20 rounded-xl flex items-center justify-center mb-4">
+          <i class="fas fa-headphones text-thuto-navy text-xl"></i>
+        </div>
+        <h4 class="font-black text-thuto-navy text-xl mb-1">Audio Add-On</h4>
+        <p class="text-xs text-thuto-navy/60 mb-4">For individual students</p>
+        <p class="font-serif text-4xl font-black text-thuto-navy mb-1">R29<span class="text-base text-thuto-navy/60">/50min</span></p>
+        <p class="text-xs text-thuto-navy/50 mb-6">≈ R1,450/year (50 audios)</p>
+        <ul class="space-y-2 text-sm mb-6 text-thuto-navy/80">
+          <li class="flex items-center gap-2"><i class="fas fa-check text-thuto-gold"></i> All 5 formats</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-thuto-gold"></i> All SA languages</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-thuto-gold"></i> MP3 download</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-thuto-gold"></i> Transcript included</li>
+        </ul>
+        <button class="w-full bg-thuto-navy/5 text-thuto-navy font-semibold py-3 rounded-xl hover:bg-thuto-navy hover:text-white transition">Get Started</button>
+      </div>
+      
+      <!-- Department -->
+      <div class="pricing-featured rounded-3xl p-7">
+        <div class="absolute top-4 right-4 bg-thuto-gold text-thuto-navy text-[10px] font-black px-2 py-1 rounded">MOST POPULAR</div>
+        <div class="w-12 h-12 bg-thuto-gold rounded-xl flex items-center justify-center mb-4 relative">
+          <i class="fas fa-building-columns text-thuto-navy text-xl"></i>
+        </div>
+        <h4 class="font-black text-xl mb-1">Department License</h4>
+        <p class="text-xs text-white/60 mb-4">Postgraduate offices</p>
+        <p class="font-serif text-4xl font-black text-thuto-gold mb-1">R15-45K<span class="text-base text-white/60">/yr</span></p>
+        <p class="text-xs text-white/60 mb-6">Unlimited · R2.25M potential</p>
+        <ul class="space-y-2 text-sm mb-6 text-white">
+          <li class="flex items-center gap-2"><i class="fas fa-check text-thuto-gold"></i> Unlimited audio</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-thuto-gold"></i> Custom guidelines</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-thuto-gold"></i> Analytics dashboard</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-thuto-gold"></i> SSO integration</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-thuto-gold"></i> Dedicated support</li>
+        </ul>
+        <button class="w-full bg-thuto-gold text-thuto-navy font-bold py-3 rounded-xl hover:bg-white transition">Contact Sales</button>
+      </div>
+      
+      <!-- Viva -->
+      <div class="studio-card p-7">
+        <div class="w-12 h-12 bg-thuto-orange/20 rounded-xl flex items-center justify-center mb-4">
+          <i class="fas fa-user-graduate text-thuto-orange text-xl"></i>
+        </div>
+        <h4 class="font-black text-thuto-navy text-xl mb-1">Viva Voce Pack</h4>
+        <p class="text-xs text-thuto-navy/60 mb-4">Final-year PhDs</p>
+        <p class="font-serif text-4xl font-black text-thuto-navy mb-1">R99<span class="text-base text-thuto-navy/60"> once</span></p>
+        <p class="text-xs text-thuto-navy/50 mb-6">R495K potential (5,000 PhDs)</p>
+        <ul class="space-y-2 text-sm mb-6 text-thuto-navy/80">
+          <li class="flex items-center gap-2"><i class="fas fa-check text-thuto-orange"></i> Mock oral defense</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-thuto-orange"></i> Discipline-specific Qs</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-thuto-orange"></i> 3 practice sessions</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-thuto-orange"></i> Examiner persona AI</li>
+        </ul>
+        <button class="w-full bg-thuto-navy/5 text-thuto-navy font-semibold py-3 rounded-xl hover:bg-thuto-navy hover:text-white transition">Buy Pack</button>
+      </div>
+      
+      <!-- Multilingual -->
+      <div class="studio-card p-7">
+        <div class="w-12 h-12 bg-thuto-cyan/20 rounded-xl flex items-center justify-center mb-4">
+          <i class="fas fa-language text-thuto-research text-xl"></i>
+        </div>
+        <h4 class="font-black text-thuto-navy text-xl mb-1">Multilingual Export</h4>
+        <p class="text-xs text-thuto-navy/60 mb-4">Community engagement</p>
+        <p class="font-serif text-4xl font-black text-thuto-navy mb-1">R49<span class="text-base text-thuto-navy/60">/trans</span></p>
+        <p class="text-xs text-thuto-navy/50 mb-6">R245K potential (5,000 exports)</p>
+        <ul class="space-y-2 text-sm mb-6 text-thuto-navy/80">
+          <li class="flex items-center gap-2"><i class="fas fa-check text-thuto-cyan"></i> Translate to any SA lang</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-thuto-cyan"></i> Bilingual hosts</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-thuto-cyan"></i> Community summaries</li>
+          <li class="flex items-center gap-2"><i class="fas fa-check text-thuto-cyan"></i> NRF impact reports</li>
+        </ul>
+        <button class="w-full bg-thuto-navy/5 text-thuto-navy font-semibold py-3 rounded-xl hover:bg-thuto-navy hover:text-white transition">Export Now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ARCHITECTURE ============ -->
+<section id="architecture" class="py-24">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <div class="inline-flex items-center gap-2 bg-thuto-navy text-thuto-gold px-4 py-2 rounded-full text-xs font-bold tracking-wider mb-4">
+        <i class="fas fa-microchip"></i> TECHNICAL IMPLEMENTATION · FOR MPHO
+      </div>
+      <h2 class="font-serif text-5xl lg:text-6xl font-black text-thuto-navy mb-4">Under the <span class="text-warm-gradient">hood.</span></h2>
+      <p class="text-thuto-navy/70 max-w-2xl mx-auto text-lg">Built on South African soil, for South African scholars.</p>
+    </div>
+    
+    <div class="grid lg:grid-cols-3 gap-8">
+      <!-- Architecture diagram -->
+      <div class="lg:col-span-2 reveal">
+        <div class="bg-thuto-navy text-white rounded-3xl p-8 lg:p-10 relative overflow-hidden">
+          <div class="float-dot bg-thuto-gold/10" style="width:300px;height:300px;top:-100px;right:-100px;filter:blur(80px)"></div>
+          <p class="text-thuto-gold text-xs font-bold tracking-widest uppercase mb-4 relative">ARCHITECTURE OVERVIEW</p>
+          
+          <div class="space-y-3 relative">
+            <div class="tech-block bg-white/5 rounded-xl p-4 border-l-4 border-thuto-gold">
+              <p class="font-bold text-sm text-thuto-gold">Frontend (React/Bubble)</p>
+              <p class="text-xs text-white/60">Audio Studio UI · 4 sections</p>
+            </div>
+            <div class="text-center text-thuto-gold"><i class="fas fa-arrow-down"></i></div>
+            <div class="tech-block bg-white/5 rounded-xl p-4 border-l-4 border-thuto-orange">
+              <p class="font-bold text-sm text-thuto-orange">Backend API (FastAPI)</p>
+              <p class="text-xs text-white/60">REST + WebSocket for streaming</p>
+            </div>
+            <div class="text-center text-thuto-gold"><i class="fas fa-arrow-down"></i></div>
+            <div class="bg-white/10 rounded-xl p-5 border border-thuto-gold/30">
+              <p class="font-black text-thuto-gold mb-3">🤖 AI PIPELINE</p>
+              <div class="grid sm:grid-cols-2 gap-2 text-xs">
+                <div class="bg-white/5 rounded-lg p-2"><span class="text-thuto-gold">1.</span> Document Parser → Extract text</div>
+                <div class="bg-white/5 rounded-lg p-2"><span class="text-thuto-gold">2.</span> Guideline Matcher → UP/Wits/UCT</div>
+                <div class="bg-white/5 rounded-lg p-2"><span class="text-thuto-gold">3.</span> Language Router → InkubaLM/NLLB</div>
+                <div class="bg-white/5 rounded-lg p-2"><span class="text-thuto-gold">4.</span> Format Selector → Deep Dive/Critique</div>
+                <div class="bg-white/5 rounded-lg p-2"><span class="text-thuto-gold">5.</span> Audio Generator → TTS (SA voices)</div>
+                <div class="bg-white/5 rounded-lg p-2"><span class="text-thuto-gold">6.</span> Output → MP3/WAV + Transcript</div>
+              </div>
+            </div>
+            <div class="text-center text-thuto-gold"><i class="fas fa-arrow-down"></i></div>
+            <div class="tech-block bg-white/5 rounded-xl p-4 border-l-4 border-thuto-cyan">
+              <p class="font-bold text-sm text-thuto-cyan">Storage · AWS S3 Cape Town</p>
+              <p class="text-xs text-white/60">POPIA compliant · SA data residency</p>
+            </div>
+            <div class="text-center text-thuto-gold"><i class="fas fa-arrow-down"></i></div>
+            <div class="tech-block bg-white/5 rounded-xl p-4 border-l-4 border-thuto-gold">
+              <p class="font-bold text-sm text-thuto-gold">Delivery · CDN for streaming</p>
+              <p class="text-xs text-white/60">Low-latency across SA</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- API + TTS -->
+      <div class="space-y-6 reveal">
+        <div class="studio-card p-6">
+          <p class="font-black text-thuto-navy mb-3 flex items-center gap-2">
+            <i class="fas fa-code text-thuto-gold"></i> Key Endpoints
+          </p>
+          <div class="bg-thuto-navy text-white rounded-lg p-3 text-[11px] font-mono space-y-2">
+            <div><span class="text-thuto-gold">POST</span> /api/v1/audio/generate</div>
+            <div><span class="text-thuto-cyan">GET</span> /api/v1/audio/languages</div>
+            <div><span class="text-thuto-cyan">GET</span> /api/v1/audio/guidelines</div>
+            <div><span class="text-thuto-cyan">GET</span> /api/v1/audio/voices</div>
+            <div><span class="text-thuto-orange">WS</span> /api/v1/audio/stream</div>
+          </div>
+        </div>
+        
+        <div class="studio-card p-6">
+          <p class="font-black text-thuto-navy mb-4 flex items-center gap-2">
+            <i class="fas fa-waveform text-thuto-gold"></i> TTS Integration
+          </p>
+          <div class="space-y-3">
+            <div class="flex items-start gap-3 pb-3 border-b border-thuto-navy/5">
+              <div class="w-8 h-8 bg-thuto-gold/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-star text-thuto-gold text-xs"></i>
+              </div>
+              <div class="flex-1">
+                <p class="font-bold text-sm text-thuto-navy">ElevenLabs</p>
+                <p class="text-[11px] text-thuto-navy/60">English (SA accent) · Excellent</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 pb-3 border-b border-thuto-navy/5">
+              <div class="w-8 h-8 bg-thuto-cyan/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <i class="fab fa-microsoft text-thuto-research text-xs"></i>
+              </div>
+              <div class="flex-1">
+                <p class="font-bold text-sm text-thuto-navy">Microsoft Azure</p>
+                <p class="text-[11px] text-thuto-navy/60">11 SA languages · Good</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 pb-3 border-b border-thuto-navy/5">
+              <div class="w-8 h-8 bg-thuto-orange/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-house-laptop text-thuto-orange text-xs"></i>
+              </div>
+              <div class="flex-1">
+                <p class="font-bold text-sm text-thuto-navy">InkubaLM + Custom TTS</p>
+                <p class="text-[11px] text-thuto-navy/60">All 11 official · Self-hosted</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 bg-thuto-gold/10 rounded-lg p-3">
+              <div class="w-8 h-8 bg-thuto-gold rounded-lg flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-crown text-thuto-navy text-xs"></i>
+              </div>
+              <div class="flex-1">
+                <p class="font-bold text-sm text-thuto-navy">Recommended: Hybrid</p>
+                <p class="text-[11px] text-thuto-navy/70">Azure for SA langs, ElevenLabs for English</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="py-24 bg-thuto-ivory">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <div class="inline-flex items-center gap-2 bg-thuto-gold/10 text-thuto-navy px-4 py-2 rounded-full text-xs font-bold tracking-wider mb-4">
+        <i class="fas fa-circle-question text-thuto-gold"></i> COMMON QUESTIONS
+      </div>
+      <h2 class="font-serif text-5xl font-black text-thuto-navy">Frequently <span class="text-warm-gradient">asked.</span></h2>
+    </div>
+    
+    <div class="space-y-3 reveal">
+      <details class="studio-card p-6 group">
+        <summary class="flex items-center justify-between">
+          <span class="font-bold text-thuto-navy">How accurate is the SA language output?</span>
+          <i class="fas fa-plus faq-icon text-thuto-gold"></i>
+        </summary>
+        <p class="text-thuto-navy/70 mt-4 text-sm leading-relaxed">InkubaLM handles academic terminology with high accuracy for isiZulu, isiXhosa, and Afrikaans. For lesser-resourced languages (Tshivenda, Xitsonga), we use a hybrid approach: NLLB for structure + community-reviewed glossaries for terminology. All outputs include a confidence score and allow manual correction before final audio generation.</p>
+      </details>
+      <details class="studio-card p-6 group">
+        <summary class="flex items-center justify-between">
+          <span class="font-bold text-thuto-navy">Does this replace my supervisor?</span>
+          <i class="fas fa-plus faq-icon text-thuto-gold"></i>
+        </summary>
+        <p class="text-thuto-navy/70 mt-4 text-sm leading-relaxed">Absolutely not. Thuto Research Studio <em>augments</em> supervision. It prepares you for supervision sessions, flags issues before your supervisor sees them, and lets supervisors focus on high-value feedback rather than basic structural review. The Loop of Excellence ensures every audio becomes part of the supervisor-student dialogue.</p>
+      </details>
+      <details class="studio-card p-6 group">
+        <summary class="flex items-center justify-between">
+          <span class="font-bold text-thuto-navy">How do you handle research confidentiality?</span>
+          <i class="fas fa-plus faq-icon text-thuto-gold"></i>
+        </summary>
+        <p class="text-thuto-navy/70 mt-4 text-sm leading-relaxed">All documents are encrypted at rest (AES-256) and in transit (TLS 1.3). Data resides in AWS S3 Cape Town region for POPIA compliance. Documents are automatically deleted from our pipeline after audio generation unless you opt into persistent storage. We never train our models on your unpublished research.</p>
+      </details>
+      <details class="studio-card p-6 group">
+        <summary class="flex items-center justify-between">
+          <span class="font-bold text-thuto-navy">Can I use it for my NRF proposal?</span>
+          <i class="fas fa-plus faq-icon text-thuto-gold"></i>
+        </summary>
+        <p class="text-thuto-navy/70 mt-4 text-sm leading-relaxed">Yes — we have a dedicated NRF Research Proposal format that aligns with current NRF priority areas, checks page limits (20 pages max), validates budget tables, and cross-references your work against national development priorities. The Critical Review format is especially powerful for pre-submission polishing.</p>
+      </details>
+      <details class="studio-card p-6 group">
+        <summary class="flex items-center justify-between">
+          <span class="font-bold text-thuto-navy">What if my university isn't listed?</span>
+          <i class="fas fa-plus faq-icon text-thuto-gold"></i>
+        </summary>
+        <p class="text-thuto-navy/70 mt-4 text-sm leading-relaxed">Upload your institution's PG guidelines (PDF) and our system will parse and index them within 24 hours. Department license holders get priority indexing. We currently support UP, Wits, UCT, Stellenbosch, UNISA, and are actively onboarding UJ, NWU, UKZN, and Rhodes.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="py-24">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="bg-thuto-navy rounded-3xl p-12 lg:p-20 text-center relative overflow-hidden">
+      <div class="float-dot bg-thuto-gold/20" style="width:400px;height:400px;top:-200px;left:-100px;filter:blur(80px)"></div>
+      <div class="float-dot bg-thuto-orange/20" style="width:400px;height:400px;bottom:-200px;right:-100px;filter:blur(80px)"></div>
+      
+      <div class="relative">
+        <div class="inline-flex items-center gap-2 bg-thuto-gold/20 text-thuto-gold px-4 py-2 rounded-full text-xs font-bold tracking-wider mb-6">
+          <i class="fas fa-rocket"></i> LAUNCH YOUR FIRST AUDIO TODAY
+        </div>
+        <h2 class="font-serif text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">Your thesis deserves<br/>to be <span class="text-gold-gradient">heard.</span></h2>
+        <p class="text-white/70 text-lg mb-10 max-w-2xl mx-auto">Join the postgraduates across South Africa transforming silent research into spoken scholarship.</p>
+        <div class="flex flex-wrap gap-3 justify-center">
+          <button class="bg-thuto-gold text-thuto-navy font-bold px-8 py-4 rounded-xl hover:bg-white transition flex items-center gap-2">
+            <i class="fas fa-microphone-lines"></i> Open Studio Free
+          </button>
+          <button class="bg-white/10 text-white font-semibold px-8 py-4 rounded-xl hover:bg-white/20 transition border border-white/20">
+            <i class="fas fa-calendar"></i> Book Department Demo
+          </button>
+        </div>
+        <p class="text-white/50 text-sm mt-6"><i class="fas fa-gift text-thuto-gold"></i> 3 free audio generations · No credit card required</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-thuto-navy-dark text-white pt-20 pb-10 border-t-4 border-thuto-gold">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-11 h-11 bg-thuto-gold rounded-xl flex items-center justify-center">
+            <i class="fas fa-book-open text-thuto-navy text-lg"></i>
+          </div>
+          <div>
+            <p class="font-black text-lg">THUTO RESEARCH STUDIO</p>
+            <p class="text-[10px] text-thuto-gold tracking-widest">SUPERVISION LAYER</p>
+          </div>
+        </div>
+        <p class="text-sm text-white/60 mb-4 leading-relaxed max-w-md">Part of the Thuto Tech ecosystem. Bridging education and innovation through AI-powered postgraduate research tools, rooted in South African languages and scholarship.</p>
+        <p class="text-xs text-thuto-gold italic font-serif">"Powering Education Through ThutoTech"</p>
+      </div>
+      
+      <div>
+        <p class="font-black text-thuto-gold text-xs tracking-widest mb-4">THUTO ECOSYSTEM</p>
+        <ul class="space-y-2 text-sm text-white/60">
+          <li><a href="#" class="hover:text-thuto-gold">🎓 Fundisa AI (Teaching)</a></li>
+          <li><a href="#" class="hover:text-thuto-gold">📚 Xuea (Learning)</a></li>
+          <li><a href="#" class="hover:text-thuto-gold">🎯 MatricMate AI</a></li>
+          <li><a href="#" class="hover:text-thuto-gold">🛒 StudentMart SA</a></li>
+          <li><a href="#" class="hover:text-thuto-gold text-thuto-gold font-semibold">🔬 Research Studio</a></li>
+          <li><a href="#" class="hover:text-thuto-gold">💚 Mental Health Central</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <p class="font-black text-thuto-gold text-xs tracking-widest mb-4">STUDIO</p>
+        <ul class="space-y-2 text-sm text-white/60">
+          <li><a href="#formats" class="hover:text-thuto-gold">Audio Formats</a></li>
+          <li><a href="#languages" class="hover:text-thuto-gold">SA Languages</a></li>
+          <li><a href="#loop" class="hover:text-thuto-gold">Workflow</a></li>
+          <li><a href="#pricing" class="hover:text-thuto-gold">Pricing</a></li>
+          <li><a href="#architecture" class="hover:text-thuto-gold">For Developers</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <p class="font-black text-thuto-gold text-xs tracking-widest mb-4">COMPLIANCE</p>
+        <ul class="space-y-2 text-sm text-white/60">
+          <li><a href="#" class="hover:text-thuto-gold">POPIA Compliant</a></li>
+          <li><a href="#" class="hover:text-thuto-gold">DHET Aligned</a></li>
+          <li><a href="#" class="hover:text-thuto-gold">HEQC Standards</a></li>
+          <li><a href="#" class="hover:text-thuto-gold">NRF Formats</a></li>
+          <li><a href="#" class="hover:text-thuto-gold">Research Ethics</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-xs text-white/40">© 2026 Thuto Technologies · Reggie Express Conglomerate · South Africa</p>
+      <div class="flex items-center gap-4 text-xs text-white/40">
+        <span><i class="fas fa-shield-halved text-thuto-gold"></i> POPIA</span>
+        <span><i class="fas fa-lock text-thuto-gold"></i> E2E Encrypted</span>
+        <span><i class="fas fa-flag text-thuto-gold"></i> Made in SA</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Format selection
+  function selectFormat(el){
+    document.querySelectorAll('.format-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    const fmt = el.dataset.format;
+    const names = {'deep-dive':'Deep Dive','brief':'Executive Brief','critical':'Critical Review','debate':'Peer Debate','viva':'Viva Voce Prep'};
+    document.getElementById('sum-format').textContent = names[fmt];
+    updatePreview();
+  }
+  
+  // Guideline selection
+  function selectGuideline(el){
+    document.querySelectorAll('.guide-radio').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+    const name = el.querySelector('p.font-bold').textContent;
+    document.getElementById('sum-guide').textContent = name.split(' ').slice(0,2).join(' ');
+  }
+  
+  // Institution selection
+  function selectInst(el){
+    document.querySelectorAll('.inst-chip').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+  }
+  
+  // Language selection
+  function selectLang(el){
+    document.querySelectorAll('.lang-chip').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+    const text = el.textContent.trim().split(' ').pop();
+    document.getElementById('sum-lang').textContent = text.includes('Primary') ? 'English' : text.includes('Bilingual') ? 'Mixed' : text;
+  }
+  
+  // Voice selection
+  function selectVoice(el){
+    document.querySelectorAll('.voice-toggle').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('sum-voice').textContent = el.querySelector('.font-bold').textContent;
+  }
+  
+  // Length selection
+  function selectLength(el){
+    const parent = el.parentElement;
+    parent.querySelectorAll('.length-opt').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+    const txt = el.querySelector('.font-bold, p:last-child').textContent;
+    if(el.closest('div').querySelector('.font-bold.text-xs')?.textContent.includes('Length')){
+      document.getElementById('sum-length').textContent = txt.includes('Short') ? '4 min' : txt.includes('Default') ? '12 min' : '18 min';
+    }
+  }
+  
+  // Add prompt
+  function addPrompt(el){
+    el.classList.toggle('added');
+    const textarea = document.getElementById('focus-prompt');
+    const text = el.textContent.replace(/^[^\s]+ /, '');
+    if(el.classList.contains('added')){
+      textarea.value += '\n• ' + text;
+    }
+  }
+  
+  // Play/Pause toggle
+  let isPlaying = true;
+  function togglePlay(){
+    isPlaying = !isPlaying;
+    const icon = document.getElementById('play-icon');
+    const waveform = document.getElementById('preview-waveform');
+    if(isPlaying){
+      icon.classList.remove('fa-pause');
+      icon.classList.add('fa-play');
+      waveform.classList.add('paused');
+    } else {
+      icon.classList.remove('fa-play');
+      icon.classList.add('fa-pause');
+      waveform.classList.remove('paused');
+    }
+  }
+  
+  function updatePreview(){
+    const fmt = document.getElementById('sum-format').textContent;
+    const guide = document.getElementById('sum-guide').textContent;
+    const lang = document.getElementById('sum-lang').textContent;
+    document.getElementById('preview-subtitle').textContent = `${fmt} · ${guide} · ${lang}`;
+  }
+  
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, {threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  
+  // Start waveform paused
+  document.getElementById('preview-waveform').classList.add('paused');
+  
+  // Mobile nav toggle
+  const mobileToggle = document.getElementById('mobile-toggle');
+  if(mobileToggle){
+    mobileToggle.addEventListener('click', () => {
+      // Simple scroll to studio
+      document.getElementById('studio').scrollIntoView({behavior:'smooth'});
+    });
+  }
+</script>
+
+</body>
+</html>
+
