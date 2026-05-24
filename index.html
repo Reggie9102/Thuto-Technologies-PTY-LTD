@@ -1,114 +1,1389 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ThutoTech - AI Augmented Education for South Africa</title>
-    <style>
-        :root {
-            --corporate-navy: #0A2E5A;
-            --harvest-gold: #D4AF37;
-        }
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f5f7fa;
-            color: #333;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        header {
-            background: var(--corporate-navy);
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
-        }
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        .product-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
-        .product-header {
-            background: var(--corporate-navy);
-            color: white;
-            padding: 1.5rem;
-            text-align: center;
-        }
-        .product-content {
-            padding: 1.5rem;
-        }
-        .btn {
-            display: inline-block;
-            background: var(--harvest-gold);
-            color: var(--corporate-navy);
-            padding: 0.8rem 1.5rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: background 0.3s;
-        }
-        .btn:hover {
-            background: #b8961f;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ThutoTech — AI Education Platform for South Africa</title>
+<meta name="description" content="ThutoTech builds AI tools for South African learners and teachers. From Foundation Phase through Matric and beyond. Founded by a PhD researcher. Offline-first. POPIA-compliant. 11 SA languages.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  /* Brand palette from Brand Guide */
+  --corporate-navy:#0A2E5A;
+  --corporate-navy-light:#1A4A7F;
+  --corporate-navy-dark:#061A33;
+  --harvest-gold:#D4AF37;
+  --harvest-gold-light:#E5C44A;
+  --harvest-gold-dark:#B8961F;
+  --vibrant-orange:#FF6B35;
+  --vibrant-orange-light:#FF8F00;
+  --vibrant-orange-dark:#E55A2B;
+  --market-cyan:#28A9E1;
+  --market-cyan-light:#5BC3EA;
+  --market-cyan-dark:#1B8BC0;
+  --research-blue:#1E3A8A;
+  --research-blue-light:#2D4BA0;
+  --ecosystem-emerald:#28A492;
+  --ecosystem-emerald-light:#3BB8A5;
+  --electric-cyan:#00D9FF;
+  
+  /* Neutral */
+  --white:#FFFFFF;
+  --gray-50:#F8FAFC;
+  --gray-100:#F1F5F9;
+  --gray-200:#E2E8F0;
+  --gray-300:#CBD5E1;
+  --gray-400:#94A3B8;
+  --gray-500:#64748B;
+  --gray-600:#475569;
+  --gray-700:#334155;
+  --success:#10B981;
+  --warning:#F59E0B;
+  
+  /* UI */
+  --radius:14px;
+  --radius-lg:20px;
+  --radius-xl:28px;
+  --shadow-sm:0 1px 3px rgba(10,46,90,.08);
+  --shadow-md:0 4px 20px rgba(10,46,90,.1);
+  --shadow-lg:0 10px 40px rgba(10,46,90,.12);
+  --transition:all .3s cubic-bezier(.4,0,.2,1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  color:var(--gray-700);
+  line-height:1.6;
+  background:var(--white);
+  overflow-x:hidden;
+}
+h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-.02em}
+.container{max-width:1400px;margin:0 auto;padding:0 2rem}
+
+/* ============ TOP BAR ============ */
+.topbar{
+  background:var(--corporate-navy);
+  padding:8px 2rem;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  font-size:.75rem;color:rgba(255,255,255,.85);
+}
+.topbar .badge{
+  background:linear-gradient(135deg,var(--harvest-gold),var(--vibrant-orange));
+  color:var(--corporate-navy);
+  padding:3px 10px;border-radius:4px;
+  font-size:.65rem;font-weight:700;letter-spacing:.5px;
+}
+
+/* ============ NAVBAR ============ */
+.navbar{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--gray-200);
+}
+.nav-container{
+  max-width:1400px;margin:0 auto;
+  padding:.9rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-icon{
+  width:44px;height:44px;
+  background:linear-gradient(135deg,var(--corporate-navy),var(--corporate-navy-light));
+  border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--harvest-gold);font-size:1.3rem;
+  box-shadow:0 4px 15px rgba(10,46,90,.2);
+  position:relative;
+}
+.logo-icon::after{
+  content:'';position:absolute;inset:3px;
+  border:1px solid rgba(212,175,55,.3);border-radius:9px;
+}
+.logo-text .brand{font-size:1.25rem;font-weight:700;color:var(--corporate-navy);line-height:1.1}
+.logo-text .brand span{color:var(--harvest-gold)}
+.logo-text .sub{font-size:.62rem;color:var(--gray-500);text-transform:uppercase;letter-spacing:1.5px;font-weight:600}
+.nav-links{display:flex;list-style:none;gap:.3rem;align-items:center}
+.nav-links a{
+  color:var(--gray-600);text-decoration:none;font-weight:500;font-size:.88rem;
+  padding:8px 14px;border-radius:10px;transition:var(--transition);
+}
+.nav-links a:hover{background:rgba(40,169,225,.08);color:var(--market-cyan)}
+.nav-actions{display:flex;gap:.6rem;align-items:center}
+.btn{
+  padding:10px 20px;border:none;border-radius:10px;
+  font-size:.88rem;font-weight:600;cursor:pointer;
+  transition:var(--transition);text-decoration:none;
+  display:inline-flex;align-items:center;gap:6px;font-family:inherit;
+}
+.btn-primary{background:linear-gradient(135deg,var(--harvest-gold),var(--harvest-gold-dark));color:var(--corporate-navy);box-shadow:0 4px 15px rgba(212,175,55,.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(212,175,55,.4)}
+.btn-outline{background:white;color:var(--corporate-navy);border:2px solid var(--corporate-navy)}
+.btn-outline:hover{background:var(--corporate-navy);color:white}
+.btn-navy{background:var(--corporate-navy);color:white}
+.btn-navy:hover{background:var(--corporate-navy-light);transform:translateY(-2px)}
+.mobile-toggle{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--corporate-navy)}
+
+/* ============ HERO ============ */
+.hero{
+  background:linear-gradient(135deg,var(--corporate-navy) 0%,var(--corporate-navy-light) 60%,var(--research-blue) 100%);
+  padding:5rem 2rem 6rem;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-50%;right:-10%;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(212,175,55,.15) 0%,transparent 70%);
+  border-radius:50%;
+}
+.hero::after{
+  content:'';position:absolute;bottom:-30%;left:-5%;
+  width:400px;height:400px;
+  background:radial-gradient(circle,rgba(40,169,225,.1) 0%,transparent 70%);
+  border-radius:50%;
+}
+.hero-container{
+  max-width:1400px;margin:0 auto;
+  display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;
+  align-items:center;position:relative;z-index:1;
+}
+.hero-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.3);
+  padding:6px 16px;border-radius:20px;
+  color:var(--harvest-gold-light);font-size:.78rem;font-weight:600;
+  margin-bottom:1.5rem;
+}
+.hero h1{
+  font-size:3.2rem;color:white;line-height:1.1;margin-bottom:1.2rem;
+}
+.hero h1 .accent{color:var(--harvest-gold)}
+.hero h1 .sub-accent{color:var(--market-cyan-light)}
+.hero-sub{
+  font-size:1.1rem;color:rgba(255,255,255,.85);
+  margin-bottom:2rem;max-width:560px;line-height:1.7;
+}
+.hero-founder{
+  display:flex;align-items:center;gap:14px;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.15);
+  padding:14px 18px;border-radius:14px;
+  margin-bottom:2rem;max-width:540px;
+}
+.founder-avatar{
+  width:52px;height:52px;border-radius:50%;
+  background:linear-gradient(135deg,var(--harvest-gold),var(--vibrant-orange));
+  display:flex;align-items:center;justify-content:center;
+  color:var(--corporate-navy);font-weight:700;font-size:1.1rem;
+  flex-shrink:0;
+}
+.founder-info{color:white}
+.founder-info strong{display:block;font-size:.88rem;margin-bottom:2px}
+.founder-info small{color:rgba(255,255,255,.7);font-size:.75rem}
+.hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:2rem}
+.hero-badge{
+  background:rgba(255,255,255,.1);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.2);
+  padding:6px 14px;border-radius:10px;
+  color:white;font-size:.78rem;font-weight:600;
+  display:flex;align-items:center;gap:6px;
+}
+.hero-badge i{font-size:.85rem}
+.hero-buttons{display:flex;gap:1rem;flex-wrap:wrap}
+.hero-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;
+  margin-top:3rem;padding-top:2rem;
+  border-top:1px solid rgba(255,255,255,.1);
+}
+.stat-item{text-align:center}
+.stat-item h3{color:var(--harvest-gold);font-size:1.8rem;font-weight:700;margin-bottom:2px}
+.stat-item p{color:rgba(255,255,255,.7);font-size:.78rem}
+
+/* Hero Visual — Ecosystem Orbits */
+.hero-visual{position:relative;height:500px}
+.orbit{
+  position:absolute;top:50%;left:50%;
+  border:1px dashed rgba(255,255,255,.15);
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+}
+.orbit.o1{width:200px;height:200px}
+.orbit.o2{width:320px;height:320px}
+.orbit.o3{width:440px;height:440px}
+.orbit-center{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:90px;height:90px;border-radius:50%;
+  background:linear-gradient(135deg,var(--harvest-gold),var(--vibrant-orange));
+  display:flex;align-items:center;justify-content:center;
+  color:var(--corporate-navy);font-size:2rem;
+  box-shadow:0 10px 40px rgba(212,175,55,.4);
+  z-index:5;
+}
+.orbit-node{
+  position:absolute;
+  width:70px;height:70px;border-radius:16px;
+  background:white;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-size:.6rem;font-weight:600;color:var(--corporate-navy);
+  box-shadow:0 8px 24px rgba(0,0,0,.2);
+  padding:6px;text-align:center;
+  transition:var(--transition);cursor:pointer;
+}
+.orbit-node:hover{transform:scale(1.1)}
+.orbit-node i{font-size:1.2rem;margin-bottom:3px}
+.orbit-node.fundisa{top:50%;left:50%;transform:translate(-50%,-240%);color:var(--harvest-gold)}
+.orbit-node.matric{top:50%;left:50%;transform:translate(180%,-50%);color:var(--vibrant-orange)}
+.orbit-node.mart{top:50%;left:50%;transform:translate(-50%,140%);color:var(--market-cyan)}
+.orbit-node.lift{top:50%;left:50%;transform:translate(-280%,-50%);color:var(--ecosystem-emerald)}
+.orbit-node.academy{top:50%;left:50%;transform:translate(-200%,-200%);color:var(--harvest-gold)}
+.orbit-node.research{top:50%;left:50%;transform:translate(110%,-220%);color:var(--research-blue)}
+.orbit-node.learner{top:50%;left:50%;transform:translate(180%,150%);color:var(--ai-purple)}
+.orbit-node.mental{top:50%;left:50%;transform:translate(-240%,120%);color:var(--ecosystem-emerald)}
+.orbit-node i{color:inherit}
+
+/* ============ TRUST BAR ============ */
+.trust-bar{
+  background:var(--gray-50);
+  padding:2rem;border-bottom:1px solid var(--gray-200);
+}
+.trust-grid{
+  max-width:1400px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(5,1fr);gap:2rem;
+  align-items:center;
+}
+.trust-item{
+  display:flex;align-items:center;gap:10px;
+  color:var(--gray-600);font-size:.82rem;
+}
+.trust-item i{color:var(--harvest-gold);font-size:1.1rem}
+.trust-item strong{color:var(--corporate-navy);display:block;font-size:.78rem}
+.trust-item small{color:var(--gray-500);font-size:.72rem}
+
+/* ============ SECTIONS ============ */
+.section{padding:5rem 2rem}
+.section-header{text-align:center;margin-bottom:3rem;max-width:800px;margin-left:auto;margin-right:auto}
+.section-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 14px;border-radius:20px;
+  font-size:.78rem;font-weight:600;margin-bottom:1rem;
+}
+.section-tag.gold{background:rgba(212,175,55,.1);color:var(--harvest-gold)}
+.section-tag.orange{background:rgba(255,107,53,.1);color:var(--vibrant-orange)}
+.section-tag.cyan{background:rgba(40,169,225,.1);color:var(--market-cyan)}
+.section-tag.navy{background:rgba(10,46,90,.08);color:var(--corporate-navy)}
+.section-tag.research{background:rgba(30,58,138,.08);color:var(--research-blue)}
+.section-tag.emerald{background:rgba(40,164,146,.1);color:var(--ecosystem-emerald)}
+.section-header h2{font-size:2.4rem;color:var(--corporate-navy);margin-bottom:.8rem}
+.section-header p{color:var(--gray-500);font-size:1.05rem;line-height:1.7}
+
+/* ============ LIVE PRODUCTS ============ */
+.live-section{background:white}
+.status-legend{
+  display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:2.5rem;
+}
+.status-pill{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 12px;border-radius:20px;
+  font-size:.75rem;font-weight:600;
+  background:var(--gray-100);color:var(--gray-600);
+}
+.status-pill .dot{width:8px;height:8px;border-radius:50%}
+.status-pill.live .dot{background:var(--success)}
+.status-pill.beta .dot{background:var(--warning)}
+.status-pill.pilot .dot{background:var(--market-cyan)}
+.status-pill.roadmap .dot{background:var(--gray-400)}
+
+.products-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+}
+.product-card{
+  background:white;border:1px solid var(--gray-200);
+  border-radius:var(--radius-lg);padding:2rem;
+  transition:var(--transition);position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.product-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--market-cyan)}
+.product-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--card-accent,var(--market-cyan));
+}
+.product-card[data-accent="gold"]{--card-accent:var(--harvest-gold)}
+.product-card[data-accent="orange"]{--card-accent:var(--vibrant-orange)}
+.product-card[data-accent="cyan"]{--card-accent:var(--market-cyan)}
+.product-card[data-accent="emerald"]{--card-accent:var(--ecosystem-emerald)}
+.product-card[data-accent="research"]{--card-accent:var(--research-blue)}
+.product-card[data-accent="navy"]{--card-accent:var(--corporate-navy)}
+
+.product-status{
+  position:absolute;top:1.2rem;right:1.2rem;
+  display:inline-flex;align-items:center;gap:5px;
+  padding:3px 10px;border-radius:12px;
+  font-size:.65rem;font-weight:700;
+  background:var(--gray-100);color:var(--gray-600);
+}
+.product-status.live{background:rgba(16,185,129,.1);color:var(--success)}
+.product-status.beta{background:rgba(245,158,11,.1);color:var(--warning)}
+.product-status.pilot{background:rgba(40,169,225,.1);color:var(--market-cyan)}
+
+.product-icon{
+  width:56px;height:56px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;margin-bottom:1.2rem;
+  background:rgba(40,169,225,.08);color:var(--market-cyan);
+}
+.product-card[data-accent="gold"] .product-icon{background:rgba(212,175,55,.1);color:var(--harvest-gold)}
+.product-card[data-accent="orange"] .product-icon{background:rgba(255,107,53,.1);color:var(--vibrant-orange)}
+.product-card[data-accent="emerald"] .product-icon{background:rgba(40,164,146,.1);color:var(--ecosystem-emerald)}
+.product-card[data-accent="research"] .product-icon{background:rgba(30,58,138,.08);color:var(--research-blue)}
+
+.product-layer{
+  font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;
+  color:var(--gray-400);margin-bottom:.5rem;
+}
+.product-card h3{font-size:1.2rem;color:var(--corporate-navy);margin-bottom:.5rem}
+.product-card > p{color:var(--gray-500);font-size:.88rem;line-height:1.6;margin-bottom:1.2rem;flex:1}
+.product-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1.2rem}
+.product-tag{
+  padding:3px 9px;border-radius:8px;font-size:.68rem;font-weight:600;
+  background:var(--gray-100);color:var(--gray-600);
+}
+.product-link{
+  display:inline-flex;align-items:center;gap:6px;
+  color:var(--card-accent,var(--market-cyan));
+  font-size:.85rem;font-weight:600;text-decoration:none;
+  transition:var(--transition);
+}
+.product-link:hover{gap:10px}
+
+/* ============ FLYWHEEL ============ */
+.flywheel-section{
+  background:linear-gradient(180deg,var(--gray-50) 0%,white 100%);
+}
+.flywheel-container{max-width:1400px;margin:0 auto}
+.flywheel-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;
+}
+.flywheel-info h2{font-size:2.2rem;color:var(--corporate-navy);margin-bottom:1rem}
+.flywheel-info h2 .accent{
+  background:linear-gradient(135deg,var(--market-cyan),var(--ecosystem-emerald));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.flywheel-info > p{color:var(--gray-500);margin-bottom:2rem;font-size:1.05rem;line-height:1.8}
+.flywheel-steps{display:flex;flex-direction:column;gap:1rem}
+.flywheel-step{
+  display:flex;gap:14px;align-items:flex-start;
+  background:white;padding:1.2rem;border-radius:var(--radius);
+  border:1px solid var(--gray-200);
+  transition:var(--transition);
+}
+.flywheel-step:hover{border-color:var(--market-cyan);transform:translateX(5px)}
+.flywheel-step-num{
+  width:40px;height:40px;min-width:40px;
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;color:white;font-size:.95rem;
+  background:linear-gradient(135deg,var(--market-cyan),var(--market-cyan-dark));
+}
+.flywheel-step:nth-child(2) .flywheel-step-num{background:linear-gradient(135deg,var(--harvest-gold),var(--harvest-gold-dark));color:var(--corporate-navy)}
+.flywheel-step:nth-child(3) .flywheel-step-num{background:linear-gradient(135deg,var(--vibrant-orange),var(--vibrant-orange-dark))}
+.flywheel-step:nth-child(4) .flywheel-step-num{background:linear-gradient(135deg,var(--ecosystem-emerald),#1f7a6a)}
+.flywheel-step h4{font-size:.95rem;color:var(--corporate-navy);margin-bottom:.2rem}
+.flywheel-step p{font-size:.82rem;color:var(--gray-500);line-height:1.5}
+
+.flywheel-visual{
+  background:white;border-radius:var(--radius-xl);
+  padding:2.5rem;box-shadow:var(--shadow-md);
+  border:1px solid var(--gray-200);
+  position:relative;
+}
+.flywheel-svg{width:100%;height:auto}
+
+/* ============ MCP ARCHITECTURE ============ */
+.architecture-section{background:white}
+.architecture-container{max-width:1200px;margin:0 auto}
+.architecture-visual{
+  background:var(--corporate-navy);
+  border-radius:var(--radius-xl);padding:3rem;
+  color:white;margin-top:2rem;
+  position:relative;overflow:hidden;
+}
+.architecture-visual::before{
+  content:'';position:absolute;top:-50%;right:-10%;
+  width:400px;height:400px;
+  background:radial-gradient(circle,rgba(212,175,55,.15) 0%,transparent 70%);
+  border-radius:50%;
+}
+.arch-layers{
+  display:flex;flex-direction:column;gap:1.5rem;
+  position:relative;z-index:1;
+}
+.arch-layer{
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--radius);padding:1.5rem;
+  display:flex;align-items:center;gap:1.5rem;
+  transition:var(--transition);
+}
+.arch-layer:hover{background:rgba(255,255,255,.08);border-color:rgba(212,175,55,.3)}
+.arch-layer-icon{
+  width:52px;height:52px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;flex-shrink:0;
+}
+.arch-layer.frontend .arch-layer-icon{background:rgba(40,169,225,.2);color:var(--market-cyan-light)}
+.arch-layer.mcp .arch-layer-icon{background:rgba(212,175,55,.2);color:var(--harvest-gold)}
+.arch-layer.ai .arch-layer-icon{background:rgba(255,107,53,.2);color:var(--vibrant-orange-light)}
+.arch-layer.data .arch-layer-icon{background:rgba(40,164,146,.2);color:var(--ecosystem-emerald-light)}
+.arch-layer-info{flex:1}
+.arch-layer-info h4{color:white;font-size:1rem;margin-bottom:.3rem}
+.arch-layer-info p{color:rgba(255,255,255,.7);font-size:.82rem;line-height:1.5}
+.arch-layer-tech{display:flex;flex-wrap:wrap;gap:5px;margin-top:.5rem}
+.arch-tag{
+  padding:3px 9px;border-radius:8px;font-size:.68rem;font-weight:600;
+  background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);
+}
+
+/* ============ RESEARCH CREDIBILITY ============ */
+.research-section{
+  background:linear-gradient(135deg,var(--research-blue) 0%,var(--corporate-navy) 100%);
+  color:white;
+}
+.research-grid{
+  display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;align-items:center;
+  max-width:1200px;margin:0 auto;
+}
+.research-info h2{font-size:2.2rem;color:white;margin-bottom:1rem}
+.research-info h2 .accent{color:var(--harvest-gold)}
+.research-info > p{color:rgba(255,255,255,.8);margin-bottom:2rem;font-size:1.05rem;line-height:1.8}
+.research-stats{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:2rem;
+}
+.research-stat{
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--radius);padding:1.2rem;text-align:center;
+}
+.research-stat h3{color:var(--harvest-gold);font-size:1.8rem;margin-bottom:.3rem}
+.research-stat p{color:rgba(255,255,255,.7);font-size:.82rem}
+.research-pillars{
+  display:flex;flex-direction:column;gap:1rem;
+}
+.research-pillar{
+  background:rgba(255,255,255,.05);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--radius);padding:1.5rem;
+  display:flex;gap:14px;align-items:flex-start;
+}
+.research-pillar-icon{
+  width:44px;height:44px;min-width:44px;border-radius:11px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.15rem;
+  background:rgba(212,175,55,.2);color:var(--harvest-gold);
+}
+.research-pillar h4{color:white;font-size:.95rem;margin-bottom:.2rem}
+.research-pillar p{color:rgba(255,255,255,.7);font-size:.82rem;line-height:1.5}
+
+/* ============ ROADMAP ============ */
+.roadmap-section{background:var(--gray-50)}
+.roadmap-timeline{
+  max-width:1000px;margin:0 auto;position:relative;
+}
+.roadmap-timeline::before{
+  content:'';position:absolute;top:0;bottom:0;left:50%;
+  width:2px;background:linear-gradient(180deg,var(--market-cyan),var(--harvest-gold),var(--vibrant-orange));
+  transform:translateX(-50%);
+}
+.roadmap-item{
+  display:grid;grid-template-columns:1fr 60px 1fr;gap:2rem;
+  margin-bottom:3rem;align-items:center;
+}
+.roadmap-item:nth-child(even) .roadmap-content{grid-column:3}
+.roadmap-item:nth-child(even) .roadmap-spacer{grid-column:1}
+.roadmap-node{
+  grid-column:2;justify-self:center;
+  width:50px;height:50px;border-radius:50%;
+  background:white;border:3px solid var(--market-cyan);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;color:var(--corporate-navy);
+  box-shadow:0 4px 15px rgba(10,46,90,.1);
+}
+.roadmap-node.done{background:var(--market-cyan);color:white;border-color:var(--market-cyan)}
+.roadmap-node.now{background:var(--harvest-gold);color:var(--corporate-navy);border-color:var(--harvest-gold);animation:pulse 2s infinite}
+.roadmap-node.next{background:var(--vibrant-orange);color:white;border-color:var(--vibrant-orange)}
+@keyframes pulse{
+  0%,100%{box-shadow:0 4px 15px rgba(212,175,55,.3),0 0 0 0 rgba(212,175,55,.4)}
+  50%{box-shadow:0 4px 15px rgba(212,175,55,.3),0 0 0 15px rgba(212,175,55,0)}
+}
+.roadmap-content{
+  background:white;border-radius:var(--radius);
+  padding:1.5rem;box-shadow:var(--shadow-sm);
+  border:1px solid var(--gray-200);
+}
+.roadmap-content .phase{
+  font-size:.72rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:1px;color:var(--market-cyan);margin-bottom:.3rem;
+}
+.roadmap-content h4{color:var(--corporate-navy);font-size:1.05rem;margin-bottom:.3rem}
+.roadmap-content p{color:var(--gray-500);font-size:.85rem;line-height:1.6}
+.roadmap-content .status-tag{
+  display:inline-block;margin-top:.6rem;
+  padding:3px 10px;border-radius:8px;font-size:.68rem;font-weight:700;
+}
+.roadmap-content .status-tag.live{background:rgba(16,185,129,.1);color:var(--success)}
+.roadmap-content .status-tag.building{background:rgba(212,175,55,.1);color:var(--harvest-gold)}
+.roadmap-content .status-tag.planned{background:rgba(255,107,53,.1);color:var(--vibrant-orange)}
+
+/* ============ FOUNDER ============ */
+.founder-section{background:white}
+.founder-container{
+  max-width:1000px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 2fr;gap:3rem;align-items:center;
+}
+.founder-photo{
+  background:linear-gradient(135deg,var(--harvest-gold),var(--vibrant-orange));
+  border-radius:var(--radius-xl);
+  aspect-ratio:1;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--corporate-navy);font-size:5rem;font-weight:700;
+  font-family:'Space Grotesk',sans-serif;
+  box-shadow:var(--shadow-lg);
+  position:relative;overflow:hidden;
+}
+.founder-photo::before{
+  content:'';position:absolute;inset:8px;
+  border:2px solid rgba(10,46,90,.1);border-radius:calc(var(--radius-xl) - 8px);
+}
+.founder-info-block h2{color:var(--corporate-navy);font-size:2rem;margin-bottom:.5rem}
+.founder-info-block .role{color:var(--harvest-gold);font-weight:600;margin-bottom:1rem;font-size:1rem}
+.founder-info-block > p{color:var(--gray-500);margin-bottom:1rem;line-height:1.8}
+.founder-quote{
+  background:var(--gray-50);border-left:4px solid var(--harvest-gold);
+  padding:1.2rem;border-radius:0 var(--radius) var(--radius) 0;
+  font-style:italic;color:var(--gray-600);margin:1.5rem 0;
+  font-size:.95rem;line-height:1.7;
+}
+.founder-credentials{
+  display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem;
+}
+.credential{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 12px;border-radius:10px;
+  font-size:.75rem;font-weight:600;
+  background:var(--gray-50);color:var(--corporate-navy);
+  border:1px solid var(--gray-200);
+}
+.credential i{color:var(--harvest-gold)}
+
+/* ============ CTA ============ */
+.cta-section{
+  background:linear-gradient(135deg,var(--corporate-navy) 0%,var(--corporate-navy-light) 100%);
+  padding:5rem 2rem;text-align:center;position:relative;overflow:hidden;
+}
+.cta-section::before{
+  content:'';position:absolute;top:-50%;right:-20%;
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(212,175,55,.15) 0%,transparent 70%);
+  border-radius:50%;
+}
+.cta-container{max-width:700px;margin:0 auto;position:relative;z-index:1}
+.cta-section h2{color:white;font-size:2.4rem;margin-bottom:1rem}
+.cta-section h2 .accent{color:var(--harvest-gold)}
+.cta-section p{color:rgba(255,255,255,.8);font-size:1.05rem;margin-bottom:2.5rem}
+.cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.cta-note{margin-top:2rem;font-size:.82rem;color:rgba(255,255,255,.5)}
+
+/* ============ FOOTER ============ */
+.footer{background:var(--corporate-navy-dark);padding:4rem 2rem 2rem;color:white}
+.footer-container{max-width:1400px;margin:0 auto}
+.footer-grid{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:3rem;margin-bottom:3rem;
+}
+.footer-brand p{color:rgba(255,255,255,.6);font-size:.85rem;line-height:1.7;margin-top:1rem}
+.footer-eco-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.2);
+  padding:6px 12px;border-radius:8px;color:var(--harvest-gold);
+  font-size:.72rem;font-weight:600;margin-top:1rem;
+}
+.footer-reggie{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:.8rem}
+.footer-social{display:flex;gap:8px;margin-top:1.2rem}
+.footer-social a{
+  width:36px;height:36px;border-radius:10px;
+  background:rgba(255,255,255,.05);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.6);text-decoration:none;transition:var(--transition);
+}
+.footer-social a:hover{background:var(--harvest-gold);color:var(--corporate-navy);transform:translateY(-3px)}
+.footer h4{color:white;font-size:.95rem;margin-bottom:1.2rem}
+.footer ul{list-style:none}
+.footer ul li{margin-bottom:.6rem}
+.footer ul a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.85rem;transition:var(--transition)}
+.footer ul a:hover{color:var(--harvest-gold)}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.08);padding-top:2rem;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
+}
+.footer-bottom p{color:rgba(255,255,255,.4);font-size:.8rem}
+.footer-bottom a{color:rgba(255,255,255,.4);text-decoration:none}
+.footer-bottom a:hover{color:var(--harvest-gold)}
+.sa-flag{display:inline-flex;gap:2px;margin-left:6px}
+.sa-flag span{width:12px;height:8px;display:inline-block;border-radius:1px}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1024px){
+  .hero-container,.flywheel-grid,.research-grid,.founder-container{grid-template-columns:1fr}
+  .hero-visual{height:400px;margin:0 auto}
+  .products-grid{grid-template-columns:repeat(2,1fr)}
+  .trust-grid{grid-template-columns:repeat(3,1fr)}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .roadmap-timeline::before{left:30px}
+  .roadmap-item{grid-template-columns:60px 1fr}
+  .roadmap-item:nth-child(even) .roadmap-content{grid-column:2}
+  .roadmap-node{grid-column:1;justify-self:start}
+  .roadmap-spacer{display:none}
+}
+@media (max-width:768px){
+  .topbar{font-size:.65rem;padding:6px 1rem}
+  .nav-links{display:none}
+  .nav-actions .btn-outline{display:none}
+  .mobile-toggle{display:block}
+  .hero h1{font-size:2rem}
+  .section-header h2{font-size:1.7rem}
+  .products-grid,.trust-grid{grid-template-columns:1fr}
+  .section{padding:3rem 1.5rem}
+  .research-stats{grid-template-columns:1fr}
+  .hero-stats{grid-template-columns:1fr;gap:.8rem}
+  .footer-grid{grid-template-columns:1fr}
+  .founder-photo{max-width:250px;margin:0 auto}
+}
+</style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>ThutoTech - AI Augmented Education for South Africa</h1>
-            <p>Empowering Academics | Guiding Students</p>
-        </div>
-    </header>
-    
-    <div class="container">
-        <h2>Our Ecosystem</h2>
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="product-header">
-                    <h3>Fundisa AI</h3>
-                </div>
-                <div class="product-content">
-                    <p>CAPS-aligned lesson generation for Foundation Phase teachers. Reduce admin by 70%.</p>
-                    <a href="apps/fundisa-ai/" class="btn">Launch Fundisa AI</a>
-                </div>
-            </div>
-            
-            <div class="product-card">
-                <div class="product-header">
-                    <h3>StudentMart SA</h3>
-                </div>
-                <div class="product-content">
-                    <p>Your campus marketplace for everything. Buy, sell, tutor, and more.</p>
-                    <a href="apps/studentmart-port/" class="btn">Launch StudentMart</a>
-                </div>
-            </div>
-            
-            <div class="product-card">
-                <div class="product-header">
-                    <h3>MatricMate AI</h3>
-                </div>
-                <div class="product-content">
-                    <p>Matric exam prep companion for Grade 10-12 learners.</p>
-                    <a href="#" class="btn" style="opacity: 0.7; cursor: not-allowed;">Coming Soon</a>
-                </div>
-            </div>
-        </div>
+
+<!-- Top Bar -->
+<div class="topbar">
+  <span class="badge">THUTOTECH</span>
+  <span>A REGGIE EXPRESS Company · Building the sovereign AI education stack for South Africa 🇿🇦</span>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="#" class="logo">
+      <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+      <div class="logo-text">
+        <div class="brand">Thuto<span>Tech</span></div>
+        <div class="sub">Bridging Education & Innovation</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#live">Products</a></li>
+      <li><a href="#flywheel">How It Works</a></li>
+      <li><a href="#architecture">Architecture</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="#founder">Founder</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="#live" class="btn btn-outline" style="font-size:.82rem;padding:8px 14px;">
+        <i class="fas fa-rocket"></i> Try a Product
+      </a>
+      <a href="#contact" class="btn btn-primary" style="font-size:.82rem;padding:8px 14px;">
+        Join Pilot
+      </a>
+      <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-container">
+    <div class="hero-content">
+      <div class="hero-pill">
+        <i class="fas fa-microscope"></i>
+        PhD-backed · Built in South Africa · For South Africa
+      </div>
+      <h1>AI for <span class="accent">Every South African Learner</span>, from Grade R to Graduation</h1>
+      <p class="hero-sub">ThutoTech builds a vertically-integrated AI platform for South African education — from Foundation Phase teachers to Matric learners to university students. Offline-first. POPIA-compliant. 11 official languages. Grounded in real doctoral research.</p>
+      
+      <div class="hero-founder">
+        <div class="founder-avatar">RE</div>
+        <div class="founder-info">
+          <strong>Built by a PhD Researcher</strong>
+          <small>Doctoral work in AI-augmented education informs every product we ship.</small>
+        </div>
+      </div>
+      
+      <div class="hero-badges">
+        <div class="hero-badge"><i class="fas fa-wifi-slash"></i> Offline-first</div>
+        <div class="hero-badge"><i class="fas fa-shield-alt"></i> POPIA-compliant</div>
+        <div class="hero-badge"><i class="fas fa-language"></i> 11 SA Languages</div>
+        <div class="hero-badge"><i class="fas fa-book-open"></i> CAPS-aligned</div>
+      </div>
+      
+      <div class="hero-buttons">
+        <a href="#live" class="btn btn-primary" style="padding:14px 28px;font-size:1rem;">
+          <i class="fas fa-rocket"></i> See Live Products
+        </a>
+        <a href="#contact" class="btn btn-outline" style="padding:14px 28px;font-size:1rem;border-color:rgba(255,255,255,.3);color:white;">
+          <i class="fas fa-calendar-check"></i> Join Our Pilot
+        </a>
+      </div>
+      
+      <div class="hero-stats">
+        <div class="stat-item"><h3>6</h3><p>Live Products</p></div>
+        <div class="stat-item"><h3>3</h3><p>Ecosystem Layers</p></div>
+        <div class="stat-item"><h3>11</h3><p>SA Languages</p></div>
+        <div class="stat-item"><h3>100%</h3><p>POPIA-compliant</p></div>
+      </div>
+    </div>
+    
+    <div class="hero-visual">
+      <div class="orbit o1"></div>
+      <div class="orbit o2"></div>
+      <div class="orbit o3"></div>
+      <div class="orbit-center"><i class="fas fa-graduation-cap"></i></div>
+      
+      <div class="orbit-node fundisa"><i class="fas fa-chalkboard-teacher"></i><span>Fundisa AI</span></div>
+      <div class="orbit-node matric"><i class="fas fa-book-open"></i><span>MatricMate</span></div>
+      <div class="orbit-node mart"><i class="fas fa-store"></i><span>StudentMart</span></div>
+      <div class="orbit-node lift"><i class="fas fa-car-side"></i><span>CampusLift</span></div>
+      <div class="orbit-node academy"><i class="fas fa-certificate"></i><span>Academy</span></div>
+      <div class="orbit-node research"><i class="fas fa-flask"></i><span>Research</span></div>
+      <div class="orbit-node learner"><i class="fas fa-users"></i><span>Learners</span></div>
+      <div class="orbit-node mental"><i class="fas fa-brain"></i><span>Wellness</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust Bar -->
+<section class="trust-bar">
+  <div class="trust-grid">
+    <div class="trust-item">
+      <i class="fas fa-building"></i>
+      <div>
+        <strong>REGGIE EXPRESS (Pty) Ltd</strong>
+        <small>Reg: K2024698680</small>
+      </div>
+    </div>
+    <div class="trust-item">
+      <i class="fas fa-shield-alt"></i>
+      <div>
+        <strong>POPIA Compliant</strong>
+        <small>Consent-first, audit-logged</small>
+      </div>
+    </div>
+    <div class="trust-item">
+      <i class="fas fa-microscope"></i>
+      <div>
+        <strong>PhD-Backed Research</strong>
+        <small>Doctoral work in AI-augmented education</small>
+      </div>
+    </div>
+    <div class="trust-item">
+      <i class="fas fa-wifi-slash"></i>
+      <div>
+        <strong>Offline-First Design</strong>
+        <small>Built for load-shedding</small>
+      </div>
+    </div>
+    <div class="trust-item">
+      <i class="fas fa-flag"></i>
+      <div>
+        <strong>Proudly South African</strong>
+        <small>Built for SA classrooms</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Live Products Section -->
+<section class="section live-section" id="live">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag gold"><i class="fas fa-rocket"></i> What We're Building</span>
+      <h2>Today's Live Products</h2>
+      <p>Six products, each serving a different stage of the South African learner journey. Every product feeds the next — creating a closed-loop ecosystem that grows with every learner.</p>
+    </div>
+    
+    <div class="status-legend">
+      <span class="status-pill live"><span class="dot"></span> Live / Public Beta</span>
+      <span class="status-pill pilot"><span class="dot"></span> Active Pilot</span>
+      <span class="status-pill beta"><span class="dot"></span> Building</span>
+      <span class="status-pill roadmap"><span class="dot"></span> Roadmap</span>
+    </div>
+    
+    <div class="products-grid">
+      <!-- Fundisa AI -->
+      <div class="product-card" data-accent="gold">
+        <span class="product-status live"><span class="dot" style="background:var(--success);width:6px;height:6px;border-radius:50%;"></span> LIVE</span>
+        <div class="product-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+        <div class="product-layer">Foundational Layer</div>
+        <h3>Fundisa AI</h3>
+        <p>CAPS-aligned lesson generation for primary school teachers (R–7). Turns curriculum documents into slides, quizzes, audio lessons, and flashcards in seconds. Syncs with SASAMS and LURITS.</p>
+        <div class="product-tags">
+          <span class="product-tag">Primary R–7</span>
+          <span class="product-tag">CAPS-aligned</span>
+          <span class="product-tag">SASAMS</span>
+        </div>
+        <a href="apps/fundisa-ai/" class="product-link">
+          Try Fundisa AI <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+      
+      <!-- MatricMate AI -->
+      <div class="product-card" data-accent="orange">
+        <span class="product-status live"><span class="dot" style="background:var(--success);width:6px;height:6px;border-radius:50%;"></span> LIVE</span>
+        <div class="product-icon"><i class="fas fa-book-open"></i></div>
+        <div class="product-layer">Secondary Layer</div>
+        <h3>MatricMate AI</h3>
+        <p>Personalised AI tutor for Grade 10–12 learners preparing for NSC and IEB finals. Past papers, adaptive quizzes, essay marking, and live tutor matching via StudentMart.</p>
+        <div class="product-tags">
+          <span class="product-tag">Grade 10–12</span>
+          <span class="product-tag">NSC & IEB</span>
+          <span class="product-tag">SASSA discount</span>
+        </div>
+        <a href="apps/matricmate-ai/" class="product-link">
+          Try MatricMate <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+      
+      <!-- StudentMart -->
+      <div class="product-card" data-accent="cyan">
+        <span class="product-status pilot"><span class="dot" style="background:var(--market-cyan);width:6px;height:6px;border-radius:50%;"></span> PILOT</span>
+        <div class="product-icon"><i class="fas fa-store"></i></div>
+        <div class="product-layer">Transactional Layer</div>
+        <h3>StudentMart SA</h3>
+        <p>Campus marketplace where university students buy, sell, tutor, and find services. Powered by Yoco & Zapper. 2.5% of every transaction feeds the Thuto Student Funding Pool.</p>
+        <div class="product-tags">
+          <span class="product-tag">Tertiary</span>
+          <span class="product-tag">Marketplace</span>
+          <span class="product-tag">Fund Pool</span>
+        </div>
+        <a href="apps/studentmart-port/" class="product-link">
+          Browse Marketplace <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+      
+      <!-- Thuto AI Academy -->
+      <div class="product-card" data-accent="gold">
+        <span class="product-status beta"><span class="dot" style="background:var(--warning);width:6px;height:6px;border-radius:50%;"></span> BUILDING</span>
+        <div class="product-icon"><i class="fas fa-certificate"></i></div>
+        <div class="product-layer">Upskilling Layer</div>
+        <h3>Thuto AI Academy</h3>
+        <p>ETDP SETA-aligned certifications in AI-enhanced teaching, prompt engineering, and education technology. Upskilling SA teachers for the AI era.</p>
+        <div class="product-tags">
+          <span class="product-tag">Teachers</span>
+          <span class="product-tag">ETDP SETA</span>
+          <span class="product-tag">CPD credits</span>
+        </div>
+        <a href="#" class="product-link">
+          Learn more <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+      
+      <!-- Thuto Research Studio -->
+      <div class="product-card" data-accent="research">
+        <span class="product-status beta"><span class="dot" style="background:var(--warning);width:6px;height:6px;border-radius:50%;"></span> BUILDING</span>
+        <div class="product-icon"><i class="fas fa-flask"></i></div>
+        <div class="product-layer">Supervision Layer</div>
+        <h3>Thuto Research Studio</h3>
+        <p>Applied research at the intersection of AI, education, and public interest. Informs DBE policy, advances multilingual NLP, and produces peer-reviewed work under African conditions.</p>
+        <div class="product-tags">
+          <span class="product-tag">Postgrad</span>
+          <span class="product-tag">NRF / CSIR</span>
+          <span class="product-tag">Multilingual AI</span>
+        </div>
+        <a href="#" class="product-link">
+          View research <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+      
+      <!-- CampusLift -->
+      <div class="product-card" data-accent="emerald">
+        <span class="product-status pilot"><span class="dot" style="background:var(--market-cyan);width:6px;height:6px;border-radius:50%;"></span> PILOT</span>
+        <div class="product-icon"><i class="fas fa-car-side"></i></div>
+        <div class="product-layer">Mobility Layer</div>
+        <h3>CampusLift</h3>
+        <p>Verified student ride-sharing between campus, home, and tutorials. Every trip GPS-tracked with panic buttons and SAPS integration. Affordable, transparent, no surge pricing.</p>
+        <div class="product-tags">
+          <span class="product-tag">Students</span>
+          <span class="product-tag">GPS-tracked</span>
+          <span class="product-tag">Panic button</span>
+        </div>
+        <a href="#" class="product-link">
+          Learn more <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Flywheel Section -->
+<section class="section flywheel-section" id="flywheel">
+  <div class="flywheel-container">
+    <div class="section-header">
+      <span class="section-tag cyan"><i class="fas fa-sync-alt"></i> The Closed Loop</span>
+      <h2>Every Product Feeds the Next</h2>
+      <p>StudentMart drives daily traffic and revenue. That revenue funds the Student Funding Pool. The pool subsidises MatricMate and Fundisa for learners who can't pay. Those learners grow into StudentMart sellers. The cycle continues.</p>
+    </div>
+    
+    <div class="flywheel-grid">
+      <div class="flywheel-info">
+        <h2>The <span class="accent">Student Funding Flywheel</span></h2>
+        <p>StudentMart SA isn't just a marketplace — it's the traffic engine that powers the entire ecosystem. Every transaction, every tutor booking, every ride creates a small contribution that flows back into subsidised access for learners who need it most.</p>
+        
+        <div class="flywheel-steps">
+          <div class="flywheel-step">
+            <div class="flywheel-step-num">1</div>
+            <div>
+              <h4>Students transact on StudentMart</h4>
+              <p>Tutors, services, products, rides — daily activity drives traffic and revenue.</p>
+            </div>
+          </div>
+          <div class="flywheel-step">
+            <div class="flywheel-step-num">2</div>
+            <div>
+              <h4>2.5% flows to the Student Funding Pool</h4>
+              <p>Every transaction contributes a small slice to the collective fund.</p>
+            </div>
+          </div>
+          <div class="flywheel-step">
+            <div class="flywheel-step-num">3</div>
+            <div>
+              <h4>Pool subsidises MatricMate & Fundisa</h4>
+              <p>SASSA recipients, rural learners, and NSFAS students get discounted or free access.</p>
+            </div>
+          </div>
+          <div class="flywheel-step">
+            <div class="flywheel-step-num">4</div>
+            <div>
+              <h4>Those learners become StudentMart sellers</h4>
+              <p>Today's subsidised learner is tomorrow's campus entrepreneur. The cycle grows.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="flywheel-visual">
+        <svg class="flywheel-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+          <!-- Outer ring -->
+          <circle cx="200" cy="200" r="170" fill="none" stroke="#E2E8F0" stroke-width="2" stroke-dasharray="8 4"/>
+          
+          <!-- Curved arrows -->
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#28A9E1"/>
+            </marker>
+          </defs>
+          
+          <!-- Arrow 1: top-right -->
+          <path d="M 200 60 A 140 140 0 0 1 340 200" fill="none" stroke="#28A9E1" stroke-width="3" marker-end="url(#arrow)"/>
+          <!-- Arrow 2: bottom-right -->
+          <path d="M 340 200 A 140 140 0 0 1 200 340" fill="none" stroke="#D4AF37" stroke-width="3" marker-end="url(#arrow)"/>
+          <!-- Arrow 3: bottom-left -->
+          <path d="M 200 340 A 140 140 0 0 1 60 200" fill="none" stroke="#FF6B35" stroke-width="3" marker-end="url(#arrow)"/>
+          <!-- Arrow 4: top-left -->
+          <path d="M 60 200 A 140 140 0 0 1 200 60" fill="none" stroke="#28A492" stroke-width="3" marker-end="url(#arrow)"/>
+          
+          <!-- Center: Fund Pool -->
+          <circle cx="200" cy="200" r="55" fill="#0A2E5A"/>
+          <text x="200" y="195" text-anchor="middle" fill="#D4AF37" font-family="Space Grotesk" font-size="11" font-weight="700">STUDENT</text>
+          <text x="200" y="210" text-anchor="middle" fill="#D4AF37" font-family="Space Grotesk" font-size="11" font-weight="700">FUNDING</text>
+          <text x="200" y="225" text-anchor="middle" fill="#D4AF37" font-family="Space Grotesk" font-size="11" font-weight="700">POOL</text>
+          
+          <!-- Nodes -->
+          <!-- StudentMart (top) -->
+          <g transform="translate(200, 60)">
+            <circle r="35" fill="#28A9E1"/>
+            <text y="-5" text-anchor="middle" fill="white" font-family="Space Grotesk" font-size="9" font-weight="700">StudentMart</text>
+            <text y="8" text-anchor="middle" fill="white" font-family="Inter" font-size="7">Marketplace</text>
+          </g>
+          
+          <!-- 2.5% Fee (right) -->
+          <g transform="translate(340, 200)">
+            <circle r="35" fill="#D4AF37"/>
+            <text y="-5" text-anchor="middle" fill="#0A2E5A" font-family="Space Grotesk" font-size="14" font-weight="700">2.5%</text>
+            <text y="10" text-anchor="middle" fill="#0A2E5A" font-family="Inter" font-size="7">per transaction</text>
+          </g>
+          
+          <!-- MatricMate / Fundisa (bottom) -->
+          <g transform="translate(200, 340)">
+            <circle r="35" fill="#FF6B35"/>
+            <text y="-5" text-anchor="middle" fill="white" font-family="Space Grotesk" font-size="9" font-weight="700">MatricMate</text>
+            <text y="8" text-anchor="middle" fill="white" font-family="Inter" font-size="7">+ Fundisa</text>
+          </g>
+          
+          <!-- Subsidised learners (left) -->
+          <g transform="translate(60, 200)">
+            <circle r="35" fill="#28A492"/>
+            <text y="-5" text-anchor="middle" fill="white" font-family="Space Grotesk" font-size="9" font-weight="700">Subsidised</text>
+            <text y="8" text-anchor="middle" fill="white" font-family="Inter" font-size="7">Learners</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Architecture Section -->
+<section class="section architecture-section" id="architecture">
+  <div class="architecture-container">
+    <div class="section-header">
+      <span class="section-tag navy"><i class="fas fa-code"></i> How It's Built</span>
+      <h2>Model Context Protocol Architecture</h2>
+      <p>The intelligent orchestration layer that connects AI models, local databases, and external services — while maintaining POPIA compliance and offline functionality.</p>
+    </div>
+    
+    <div class="architecture-visual">
+      <div class="arch-layers">
+        <div class="arch-layer frontend">
+          <div class="arch-layer-icon"><i class="fas fa-desktop"></i></div>
+          <div class="arch-layer-info">
+            <h4>Frontend Layer</h4>
+            <p>Progressive Web Apps hosted on GitHub Pages. Service Workers enable offline access. No login required to browse.</p>
+            <div class="arch-layer-tech">
+              <span class="arch-tag">GitHub Pages</span>
+              <span class="arch-tag">PWA</span>
+              <span class="arch-tag">Service Workers</span>
+              <span class="arch-tag">Vanilla JS</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="arch-layer mcp">
+          <div class="arch-layer-icon"><i class="fas fa-project-diagram"></i></div>
+          <div class="arch-layer-info">
+            <h4>MCP Orchestration Layer</h4>
+            <p>The brain of the ecosystem. Routes requests, enforces POPIA consent, manages multilingual translation, and coordinates across all products.</p>
+            <div class="arch-layer-tech">
+              <span class="arch-tag">Node.js</span>
+              <span class="arch-tag">POPIA Guard</span>
+              <span class="arch-tag">Consent Ledger</span>
+              <span class="arch-tag">Audit Logs</span>
+              <span class="arch-tag">Smart Sync</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="arch-layer ai">
+          <div class="arch-layer-icon"><i class="fas fa-robot"></i></div>
+          <div class="arch-layer-info">
+            <h4>AI Models Layer</h4>
+            <p>Qwen 3.6 for English content generation, InkubaLM for African languages, NLLB for translation between all 11 official languages.</p>
+            <div class="arch-layer-tech">
+              <span class="arch-tag">Qwen 3.6</span>
+              <span class="arch-tag">InkubaLM</span>
+              <span class="arch-tag">NLLB-200</span>
+              <span class="arch-tag">Edge Functions</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="arch-layer data">
+          <div class="arch-layer-icon"><i class="fas fa-database"></i></div>
+          <div class="arch-layer-info">
+            <h4>Data & Infrastructure Layer</h4>
+            <p>Supabase (Postgres + Realtime + Auth) with Row Level Security. Local CAPS cache for offline. Audit logs for Information Regulator compliance.</p>
+            <div class="arch-layer-tech">
+              <span class="arch-tag">Supabase</span>
+              <span class="arch-tag">PostgreSQL</span>
+              <span class="arch-tag">Row Level Security</span>
+              <span class="arch-tag">Local CAPS Cache</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Research Credibility Section -->
+<section class="section research-section" id="research">
+  <div class="research-grid">
+    <div class="research-info">
+      <span class="section-tag" style="background:rgba(212,175,55,.2);color:var(--harvest-gold);"><i class="fas fa-microscope"></i> Doctoral Research</span>
+      <h2>Grounded in <span class="accent">Real Doctoral Research</span></h2>
+      <p>ThutoTech isn't a side project — it's the commercial expression of ongoing PhD research into AI-augmented education in African contexts. Every product is informed by peer-reviewed inquiry, field-tested with real teachers, and designed for the specific challenges of South African classrooms.</p>
+      
+      <div class="research-stats">
+        <div class="research-stat">
+          <h3>PhD</h3>
+          <p>In Progress · AI-Augmented Education</p>
+        </div>
+        <div class="research-stat">
+          <h3>11</h3>
+          <p>Official SA Languages Supported</p>
+        </div>
+        <div class="research-stat">
+          <h3>CAPS</h3>
+          <p>Curriculum-Aligned by Design</p>
+        </div>
+        <div class="research-stat">
+          <h3>POPIA</h3>
+          <p>Compliant from Day One</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="research-pillars">
+      <div class="research-pillar">
+        <div class="research-pillar-icon"><i class="fas fa-book-reader"></i></div>
+        <div>
+          <h4>Fundisa AI Research</h4>
+          <p>Investigating how primary school teachers adopt AI tools when they reduce admin by 70% without compromising CAPS compliance.</p>
+        </div>
+      </div>
+      
+      <div class="research-pillar">
+        <div class="research-pillar-icon"><i class="fas fa-language"></i></div>
+        <div>
+          <h4>Multilingual NLP</h4>
+          <p>Advancing low-resource language models for isiZulu, isiXhosa, Setswana and other SA languages through InkubaLM partnerships.</p>
+        </div>
+      </div>
+      
+      <div class="research-pillar">
+        <div class="research-pillar-icon"><i class="fas fa-shield-alt"></i></div>
+        <div>
+          <h4>POPIA-Compliant AI</h4>
+          <p>Developing reference architectures for consent-first AI systems in education — work that informs DBE policy conversations.</p>
+        </div>
+      </div>
+      
+      <div class="research-pillar">
+        <div class="research-pillar-icon"><i class="fas fa-users"></i></div>
+        <div>
+          <h4>Equity & Access</h4>
+          <p>Studying how closed-loop funding models (like StudentMart's Fund Pool) can sustainably subsidise access for marginalised learners.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Roadmap Section -->
+<section class="section roadmap-section" id="roadmap">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag orange"><i class="fas fa-map-signs"></i> Where We're Going</span>
+      <h2>An Honest Roadmap</h2>
+      <p>We believe in telling you what's live, what's in pilot, and what's coming — no fictional claims, no vaporware. Here's our transparent build plan.</p>
+    </div>
+    
+    <div class="roadmap-timeline">
+      <div class="roadmap-item">
+        <div class="roadmap-content">
+          <div class="phase">Phase 1 · Completed</div>
+          <h4>Foundational Layer</h4>
+          <p>Fundisa AI launched for primary teachers. CAPS-aligned lesson generation working end-to-end. SASAMS/LURITS sync live.</p>
+          <span class="status-tag live">LIVE</span>
+        </div>
+        <div class="roadmap-node done">✓</div>
+        <div class="roadmap-spacer"></div>
+      </div>
+      
+      <div class="roadmap-item">
+        <div class="roadmap-spacer"></div>
+        <div class="roadmap-node now">NOW</div>
+        <div class="roadmap-content">
+          <div class="phase">Phase 2 · Current</div>
+          <h4>Secondary + Transactional Layers</h4>
+          <p>MatricMate AI live for NSC/IEB prep. StudentMart in pilot with campus students. 2.5% fund pool active.</p>
+          <span class="status-tag building">BUILDING</span>
+        </div>
+      </div>
+      
+      <div class="roadmap-item">
+        <div class="roadmap-content">
+          <div class="phase">Phase 3 · Next</div>
+          <h4>ETDP SETA Accreditation</h4>
+          <p>Thuto AI Academy formalises teacher upskilling with SETA-accredited certifications. Research Studio publishes first peer-reviewed papers.</p>
+          <span class="status-tag planned">PLANNED · 2025 H2</span>
+        </div>
+        <div class="roadmap-node next">3</div>
+        <div class="roadmap-spacer"></div>
+      </div>
+      
+      <div class="roadmap-item">
+        <div class="roadmap-spacer"></div>
+        <div class="roadmap-node next">4</div>
+        <div class="roadmap-content">
+          <div class="phase">Phase 4 · Future</div>
+          <h4>Mobility & Wellness Layers</h4>
+          <p>CampusLift scales across universities. Mental Health Central launches free peer-support for students. Frictionless Learner enables zero-admin enrolment.</p>
+          <span class="status-tag planned">PLANNED · 2026</span>
+        </div>
+      </div>
+      
+      <div class="roadmap-item">
+        <div class="roadmap-content">
+          <div class="phase">Phase 5 · Vision</div>
+          <h4>Full Ecosystem Integration</h4>
+          <p>Every product feeds every other. A learner's journey from Grade R through Matric, university, and into professional practice — supported by one sovereign stack.</p>
+          <span class="status-tag planned">PLANNED · 2027+</span>
+        </div>
+        <div class="roadmap-node next">5</div>
+        <div class="roadmap-spacer"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Founder Section -->
+<section class="section founder-section" id="founder">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag gold"><i class="fas fa-user-graduate"></i> The Founder</span>
+      <h2>Building From a Place of Research & Conviction</h2>
+    </div>
+    
+    <div class="founder-container">
+      <div class="founder-photo">RE</div>
+      <div class="founder-info-block">
+        <h2>Reggie</h2>
+        <div class="role">Founder & CEO · REGGIE EXPRESS (Pty) Ltd</div>
+        <p>ThutoTech was born from a simple frustration: South African teachers spend more time on admin than teaching, and learners — especially in rural and township schools — don't have access to the tools that privileged schools take for granted.</p>
+        <p>As a PhD researcher in AI-augmented education, I'm building ThutoTech as both a commercial venture and a living research laboratory. Every product we ship is a testable hypothesis about how technology can serve — not replace — the human relationships at the heart of learning.</p>
+        
+        <div class="founder-quote">
+          "Technology should serve educators and learners, not the other way around. My PhD work asks: what does genuinely human-centered AI look like in South African classrooms? ThutoTech is the answer I'm building in public."
+        </div>
+        
+        <div class="founder-credentials">
+          <span class="credential"><i class="fas fa-microscope"></i> PhD Candidate · AI in Education</span>
+          <span class="credential"><i class="fas fa-building"></i> REGGIE EXPRESS K2024698680</span>
+          <span class="credential"><i class="fas fa-flag"></i> Proudly South African</span>
+          <span class="credential"><i class="fas fa-handshake"></i> Building in Public</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section" id="contact">
+  <div class="cta-container">
+    <h2>Join Us in Building <span class="accent">South Africa's Sovereign Education Stack</span></h2>
+    <p>Whether you're a teacher wanting to try Fundisa AI, a learner preparing for Matric, a university student looking for tutors, or a school principal exploring pilots — there's a place for you here.</p>
+    <div class="cta-buttons">
+      <a href="#live" class="btn btn-primary" style="padding:14px 28px;font-size:1rem;">
+        <i class="fas fa-rocket"></i> Try Our Products
+      </a>
+      <a href="mailto:hello@thutotech.co.za" class="btn btn-outline" style="padding:14px 28px;font-size:1rem;border-color:rgba(255,255,255,.3);color:white;">
+        <i class="fas fa-envelope"></i> Partner With Us
+      </a>
+    </div>
+    <p class="cta-note">🇿🇦 Proudly South African · POPIA Compliant · PhD-Backed Research</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo" style="margin-bottom:.5rem;">
+          <div class="logo-icon" style="width:36px;height:36px;font-size:1rem;"><i class="fas fa-graduation-cap"></i></div>
+          <div class="logo-text">
+            <div class="brand" style="color:white;">Thuto<span style="color:var(--harvest-gold);">Tech</span></div>
+          </div>
+        </a>
+        <p>AI-augmented education for South Africa. Empowering teachers. Guiding learners. Bridging education and innovation — built on real doctoral research.</p>
+        <div class="footer-eco-badge">
+          <i class="fas fa-layer-group"></i> A REGGIE EXPRESS Company
+        </div>
+        <div class="footer-reggie">
+          REGGIE EXPRESS (Pty) Ltd · Reg: K2024698680
+        </div>
+        <div class="footer-social">
+          <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Products</h4>
+        <ul>
+          <li><a href="apps/fundisa-ai/">Fundisa AI</a></li>
+          <li><a href="apps/matricmate-ai/">MatricMate AI</a></li>
+          <li><a href="apps/studentmart-port/">StudentMart SA</a></li>
+          <li><a href="#">CampusLift</a></li>
+          <li><a href="#">Thuto AI Academy</a></li>
+          <li><a href="#">Research Studio</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#founder">About the Founder</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#roadmap">Roadmap</a></li>
+          <li><a href="#contact">Partner With Us</a></li>
+          <li><a href="#">Press Kit</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal & Trust</h4>
+        <ul>
+          <li><a href="#">Privacy Policy (POPIA)</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">POPIA Notice</a></li>
+          <li><a href="#">PAIA Manual</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 ThutoTech — A REGGIE EXPRESS (Pty) Ltd company.
+        <span class="sa-flag">
+          <span style="background:#DE3831;"></span>
+          <span style="background:#002395;"></span>
+          <span style="background:#007A4D;"></span>
+          <span style="background:#FFB612;"></span>
+          <span style="background:#000000;"></span>
+          <span style="background:#FFFFFF;"></span>
+        </span>
+      </p>
+      <p>Built with ❤️ in South Africa · PhD-backed · POPIA-compliant · Offline-first</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href === '#') return;
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) target.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+// Mobile menu
+document.querySelectorAll('.mobile-toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelector('.nav-links').classList.toggle('show');
+  });
+});
+</script>
+
 </body>
 </html>
