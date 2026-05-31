@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<script>
+const html = `<div class="product-card" data-accent="orange"><span class="product-status pilot"><span class="dot" style="background:var(--market-cyan);width:6px;height:6px;border-radius:50%;"></span> PILOT</span><div class="product-icon"><i class="fas fa-users"></i></div><div class="product-layer">Community Sovereignty Layer</div><h3>TownshipCommunityMart</h3><p>Verified resident marketplace and transport safety for SA townships.</p><div class="product-tags"><span class="product-tag">Township Economy</span></div><a href="apps/Township-Community/" class="product-link">Access Platform <i class="fas fa-arrow-right"></i></a></div>`;
+const grid = document.querySelector('.product-card')?.parentElement;
+if(grid) grid.insertAdjacentHTML('beforeend', html);
+</script>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
