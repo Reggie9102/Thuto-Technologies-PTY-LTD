@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CityCommunityMart — Society 4.0 Metro Grid</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --metro-blue: #0B132B;
+            --metro-blue-light: #1C2541;
+            --metro-cyan: #00E5FF;
+            --metro-green: #00E676;
+            --metro-silver: #E0E1DD;
+            --metro-purple: #7B2CBF;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+            --white: #FFFFFF;
+            --gray-50: #F8FAFC;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-500: #64748B;
+            --gray-700: #334155;
+            --radius: 14px;
+            --radius-lg: 20px;
+            --shadow-md: 0 4px 20px rgba(0,0,0,.1);
+            --transition: all .3s cubic-bezier(.4,0,.2,1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: var(--gray-700); line-height: 1.6; background: var(--gray-50); }
+        h1, h2, h3, h4, h5 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: -.02em; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+
+        .topbar {
+            background: var(--metro-blue);
+            padding: 8px 2rem;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            font-size: .75rem; color: var(--metro-silver);
+        }
+        .topbar .badge {
+            background: linear-gradient(135deg, var(--metro-cyan), var(--metro-green));
+            color: var(--metro-blue); padding: 3px 10px; border-radius: 4px;
+            font-size: .65rem; font-weight: 700;
+        }
+
+        .navbar {
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(255,255,255,.95); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        .nav-container {
+            max-width: 1400px; margin: 0 auto; padding: .9rem 2rem;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-icon {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--metro-cyan), var(--metro-blue-light));
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1.3rem;
+        }
+        .logo-text .brand { font-size: 1.25rem; font-weight: 700; color: var(--metro-blue); }
+        .logo-text .brand span { color: var(--metro-cyan); }
+        .logo-text .sub { font-size: .62rem; color: var(--gray-500); text-transform: uppercase; letter-spacing: 1.5px; }
+        
+        .nav-actions { display: flex; gap: .6rem; align-items: center; }
+        .btn {
+            padding: 10px 20px; border: none; border-radius: 10px;
+            font-size: .88rem; font-weight: 600; cursor: pointer;
+            transition: var(--transition); text-decoration: none;
+            display: inline-flex; align-items: center; gap: 6px; font-family: inherit;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--metro-cyan), var(--metro-green));
+            color: var(--metro-blue); box-shadow: 0 4px 15px rgba(0,229,255,.3);
+        }
+        .btn-outline { background: white; color: var(--metro-blue); border: 2px solid var(--metro-blue); }
+
+        .hero {
+            background: linear-gradient(135deg, var(--metro-blue) 0%, var(--metro-blue-light) 100%);
+            padding: 5rem 2rem 6rem; position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: -50%; right: -10%;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(0,229,255,.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .hero-container {
+            max-width: 1400px; margin: 0 auto;
+            display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem;
+            align-items: center; position: relative; z-index: 1;
+        }
+        .hero h1 { font-size: 3rem; color: white; line-height: 1.1; margin-bottom: 1.2rem; }
+        .hero h1 .accent { color: var(--metro-cyan); }
+        .hero-sub { font-size: 1.1rem; color: var(--metro-silver); margin-bottom: 2rem; max-width: 580px; line-height: 1.7; }
+        
+        .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
+        .stat-item { text-align: center; }
+        .stat-item h3 { color: var(--metro-cyan); font-size: 2rem; font-weight: 700; }
+        .stat-item p { color: var(--metro-silver); font-size: .78rem; opacity: .8; }
+
+        .section { padding: 4rem 2rem; }
+        .section-header { text-align: center; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+        .section-tag {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 6px 14px; border-radius: 20px; font-size: .78rem;
+            font-weight: 600; margin-bottom: 1rem;
+            background: rgba(0,229,255,.1); color: #0099aa;
+        }
+        .section-header h2 { font-size: 2.4rem; color: var(--metro-blue); margin-bottom: .8rem; }
+        .section-header p { color: var(--gray-500); font-size: 1.05rem; line-height: 1.7; }
+
+        .dashboard {
+            display: grid; grid-template-columns: 280px 1fr; gap: 2rem;
+            max-width: 1400px; margin: 0 auto; padding: 0 2rem 4rem;
+        }
+        .sidebar {
+            background: white; border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg); padding: 1.5rem;
+            height: fit-content; position: sticky; top: 100px;
+        }
+        .sidebar-nav { list-style: none; }
+        .sidebar-nav li {
+            padding: 12px 16px; border-radius: 10px; cursor: pointer;
+            transition: var(--transition); display: flex; align-items: center;
+            gap: 10px; font-size: .88rem; color: var(--gray-700); margin-bottom: 4px;
+        }
+        .sidebar-nav li:hover { background: var(--gray-50); }
+        .sidebar-nav li.active { background: rgba(0,229,255,.1); color: #0099aa; font-weight: 600; }
+        .sidebar-nav li i { width: 20px; text-align: center; }
+        
+        .main-content {
+            background: white; border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg); padding: 2rem; min-height: 600px;
+        }
+
+        .layer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .layer-card {
+            background: var(--gray-50); border: 2px solid var(--gray-200);
+            border-radius: var(--radius); padding: 1.5rem; position: relative; overflow: hidden;
+        }
+        .layer-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+        }
+        .layer-card.ward::before { background: var(--metro-cyan); }
+        .layer-card.district::before { background: var(--metro-green); }
+        .layer-card.metro::before { background: var(--metro-purple); }
+        
+        .layer-card h4 { font-size: 1rem; color: var(--metro-blue); margin-bottom: .5rem; display: flex; align-items: center; gap: 8px; }
+        .layer-card p { font-size: .82rem; color: var(--gray-500); margin-bottom: 1rem; }
+        .layer-stat { font-size: 1.8rem; font-weight: 700; color: var(--metro-blue); }
+        .layer-stat small { font-size: .75rem; font-weight: 400; color: var(--gray-500); display: block; }
+
+        .b2b-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        .b2b-table th { background: var(--metro-blue); color: white; padding: 12px; text-align: left; font-size: .78rem; text-transform: uppercase; }
+        .b2b-table td { padding: 14px 12px; border-bottom: 1px solid var(--gray-200); font-size: .85rem; }
+        .b2b-table tr:hover { background: var(--gray-50); }
+        .status-badge { padding: 4px 10px; border-radius: 12px; font-size: .72rem; font-weight: 600; }
+        .status-badge.active { background: rgba(0,230,118,.1); color: var(--metro-green); }
+        .status-badge.pending { background: rgba(245,158,11,.1); color: var(--warning); }
+
+        .iot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+        .iot-card { background: var(--metro-blue); color: white; padding: 1.5rem; border-radius: var(--radius); text-align: center; }
+        .iot-card i { font-size: 2rem; color: var(--metro-cyan); margin-bottom: .8rem; }
+        .iot-card h3 { font-size: 1.8rem; margin-bottom: .3rem; }
+        .iot-card p { font-size: .78rem; color: var(--metro-silver); opacity: .8; }
+
+        .footer { background: var(--metro-blue); padding: 3rem 2rem 2rem; color: white; text-align: center; }
+        .footer p { color: var(--metro-silver); opacity: .6; font-size: .8rem; margin-top: 1rem; }
+
+        @media (max-width: 1024px) {
+            .dashboard { grid-template-columns: 1fr; }
+            .sidebar { position: static; }
+            .hero-container { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero-stats { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    <span class="badge">SOCIETY 4.0</span>
+    <span>Metro Sovereign Grid · Community-Controlled B2B · Layered Governance · POPIA Compliant</span>
+</div>
+
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="#" class="logo">
+            <div class="logo-icon"><i class="fas fa-city"></i></div>
+            <div class="logo-text">
+                <div class="brand">City<span>CommunityMart</span></div>
+                <div class="sub">Society 4.0 Metro Grid</div>
+            </div>
+        </a>
+        <div class="nav-actions">
+            <button class="btn btn-outline"><i class="fas fa-building"></i> Metro Portal</button>
+            <button class="btn btn-primary"><i class="fas fa-network-wired"></i> Access Grid</button>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1>The <span class="accent">Society 4.0</span> Smart City Grid</h1>
+            <p class="hero-sub">Layered, sovereign smart-city infrastructure for Johannesburg, Tshwane, eThekwini, and emerging metros. Community-controlled B2B procurement, IoT resource management, and circular economic routing designed to mirror and optimize government layers.</p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <button class="btn btn-primary" style="padding: 14px 28px; font-size: 1rem;">
+                    <i class="fas fa-rocket"></i> Deploy Metro Node
+                </button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item"><h3>8</h3><p>Active Metros</p></div>
+                <div class="stat-item"><h3>R4.2B</h3><p>Local B2B Routed</p></div>
+                <div class="stat-item"><h3>14K</h3><p>Verified Local SMEs</p></div>
+                <div class="stat-item"><h3>99.9%</h3><p>Grid Uptime</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag"><i class="fas fa-layer-group"></i> Layered Governance B2B</span>
+            <h2>Procurement That Pours Downward</h2>
+            <p>Smart contracts route municipal and metro budgets through layered governance structures, ensuring B2B tenders are fulfilled by verified local SMEs within the specific ward or district.</p>
+        </div>
+    </div>
+
+    <div class="dashboard">
+        <div class="sidebar">
+            <ul class="sidebar-nav">
+                <li class="active" onclick="switchTab('overview')"><i class="fas fa-th-large"></i> Grid Overview</li>
+                <li onclick="switchTab('b2b')"><i class="fas fa-handshake"></i> B2B Local Procurement</li>
+                <li onclick="switchTab('iot')"><i class="fas fa-microchip"></i> Smart City IoT</li>
+                <li onclick="switchTab('circular')"><i class="fas fa-recycle"></i> Circular Economy</li>
+                <li onclick="switchTab('wards')"><i class="fas fa-map-marked-alt"></i> Ward Routing</li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <div id="tab-overview">
+                <h3 style="color: var(--metro-blue); margin-bottom: 1.5rem;">Society 4.0 Metro Overview</h3>
+                <div class="layer-grid">
+                    <div class="layer-card ward">
+                        <h4><i class="fas fa-users" style="color:var(--metro-cyan)"></i> Ward Level</h4>
+                        <p>Hyper-local B2B routing. Tenders under R500K restricted to ward-verified SMEs.</p>
+                        <div class="layer-stat">2,450 <small>Active Ward Tenders</small></div>
+                    </div>
+                    <div class="layer-card district">
+                        <h4><i class="fas fa-building" style="color:var(--metro-green)"></i> District / Sub-Council</h4>
+                        <p>Cross-ward infrastructure. Smart grid maintenance and district logistics.</p>
+                        <div class="layer-stat">840 <small>District Contracts</small></div>
+                    </div>
+                    <div class="layer-card metro">
+                        <h4><i class="fas fa-city" style="color:var(--metro-purple)"></i> Metro / City Level</h4>
+                        <p>Major infrastructure, bulk water, and energy. Managed via sovereign smart contracts.</p>
+                        <div class="layer-stat">125 <small>Mega Projects</small></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-b2b" style="display:none;">
+                <h3 style="color: var(--metro-blue); margin-bottom: .5rem;">Community-Controlled B2B Procurement</h3>
+                <p style="color: var(--gray-500); margin-bottom: 1.5rem;">Transparent, blockchain-verified tender routing. Foreign or non-local entities are automatically filtered out of ward-level budgets.</p>
+                <table class="b2b-table">
+                    <thead>
+                        <tr>
+                            <th>Tender ID</th>
+                            <th>Layer</th>
+                            <th>Description</th>
+                            <th>Value</th>
+                            <th>Local SME</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>WRD-9921</strong></td>
+                            <td>Ward 42 (JHB)</td>
+                            <td>Solar Streetlight Maintenance</td>
+                            <td>R 240,000</td>
+                            <td>Local Grid Tech (Pty)</td>
+                            <td><span class="status-badge active">Smart Contract Active</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>DST-1044</strong></td>
+                            <td>District 3 (TSH)</td>
+                            <td>Water Leak Detection IoT</td>
+                            <td>R 1,850,000</td>
+                            <td>AquaSense Metro</td>
+                            <td><span class="status-badge active">Milestone 2 Paid</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>MTR-0082</strong></td>
+                            <td>Metro (ETH)</td>
+                            <td>Transit Hub AI Security</td>
+                            <td>R 12,400,000</td>
+                            <td>Consortium (Local 80%)</td>
+                            <td><span class="status-badge pending">Bidding Open</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="tab-iot" style="display:none;">
+                <h3 style="color: var(--metro-blue); margin-bottom: 1.5rem;">Smart City IoT & Resource Management</h3>
+                <div class="iot-grid">
+                    <div class="iot-card">
+                        <i class="fas fa-bolt"></i>
+                        <h3>42 MW</h3>
+                        <p>Smart Grid Load Balanced</p>
+                    </div>
+                    <div class="iot-card">
+                        <i class="fas fa-tint"></i>
+                        <h3>18%</h3>
+                        <p>Water Leak Reduction (AI)</p>
+                    </div>
+                    <div class="iot-card">
+                        <i class="fas fa-traffic-light"></i>
+                        <h3>3,400</h3>
+                        <p>AI Traffic Nodes Active</p>
+                    </div>
+                    <div class="iot-card">
+                        <i class="fas fa-wifi"></i>
+                        <h3>99.9%</h3>
+                        <p>LoRaWAN Mesh Uptime</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-circular" style="display:none;">
+                <h3 style="color: var(--metro-blue); margin-bottom: 1rem;">Circular Economy Routing</h3>
+                <p style="color: var(--gray-500);">Waste and byproducts from Metro-level manufacturing are automatically routed to Ward-level SMEs for upcycling via the B2B marketplace.</p>
+            </div>
+
+            <div id="tab-wards" style="display:none;">
+                <h3 style="color: var(--metro-blue); margin-bottom: 1rem;">Ward-Level Sovereign Routing</h3>
+                <p style="color: var(--gray-500);">Geofenced smart contracts ensure municipal budgets allocated to a specific ward can only be bid on by SMEs with verified physical operations and tax residency in that ward.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <h3 style="color: var(--metro-cyan);">CityCommunityMart</h3>
+    <p>A Society 4.0 Initiative · ThutoTech Ecosystem · REGGIE EXPRESS (Pty) Ltd</p>
+    <p>Sovereign Metro Infrastructure · Community B2B · POPIA Compliant · 🇿🇦 Proudly South African</p>
+</footer>
+
+<script>
+    function switchTab(tabName) {
+        document.querySelectorAll('[id^="tab-"]').forEach(tab => tab.style.display = 'none');
+        document.getElementById('tab-' + tabName).style.display = 'block';
+        document.querySelectorAll('.sidebar-nav li').forEach(li => li.classList.remove('active'));
+        event.target.closest('li').classList.add('active');
+    }
+</script>
+</body>
+</html>
