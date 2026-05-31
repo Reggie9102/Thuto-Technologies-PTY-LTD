@@ -1,0 +1,36 @@
+{
+  "name": "ThutoTech Ecosystem",
+  "version": "1.0.0",
+  "apps": [
+    {
+      "id": "fundisa-ai",
+      "name": "Fundisa AI",
+      "url": "https://reggie9102.github.io/Thuto-Technologies-PTY-LTD/apps/fundisa-ai/"
+    },
+    {
+      "id": "matricmate-ai",
+      "name": "MatricMate AI",
+      "url": "https://reggie9102.github.io/Thuto-Technologies-PTY-LTD/apps/matricmate-ai/"
+    },
+    {
+      "id": "studentmart",
+      "name": "StudentMart SA",
+      "url": "https://reggie9102.github.io/Thuto-Technologies-PTY-LTD/apps/studentmart-port/"
+    },
+    {
+      "id": "township-community",
+      "name": "TownshipCommunityMart",
+      "url": "https://reggie9102.github.io/Thuto-Technologies-PTY-LTD/apps/Township-Community/"
+    },
+    {
+      "id": "campuslift",
+      "name": "CampusLift",
+      "url": "https://reggie9102.github.io/Thuto-Technologies-PTY-LTD/apps/campuslift/"
+    },
+    {
+      "id": "thuto-academy",
+      "name": "Thuto AI Academy",
+      "url": "https://reggie9102.github.io/Thuto-Technologies-PTY-LTD/apps/thuto-academy/"
+    }
+  ]
+}
