@@ -1,0 +1,50 @@
+{
+  "name": "ThutoTech Ecosystem",
+  "version": "1.0.0",
+  "description": "Sovereign AI education platform for South Africa",
+  "author": "Reginald Mathule Kanyane",
+  "apps": [
+    {
+      "id": "fundisa-ai",
+      "name": "Fundisa AI",
+      "description": "CAPS-aligned lesson generation for primary teachers",
+      "url": "https://reggie9102.github.io/Thuto-Technologies-PTY-LTD/apps/fundisa-ai/",
+      "category": "education"
+    },
+    {
+      "id": "matricmate-ai",
+      "name": "MatricMate AI",
+      "description": "Personalised AI tutor for Grade 10-12 NSC/IEB prep",
+      "url": "https://reggie9102.github.io/Thuto-Technologies-PTY-LTD/apps/matricmate-ai/",
+      "category": "education"
+    },
+    {
+      "id": "studentmart",
+      "name": "StudentMart SA",
+      "description": "Campus marketplace with 2.5% Student Funding Pool",
+      "url": "https://reggie9102.github.io/Thuto-Technologies-PTY-LTD/apps/studentmart-port/",
+      "category": "commerce"
+    },
+    {
+      "id": "township-community",
+      "name": "TownshipCommunityMart",
+      "description": "Verified resident marketplace and transport safety for SA townships",
+      "url": "https://reggie9102.github.io/Thuto-Technologies-PTY-LTD/apps/Township-Community/",
+      "category": "community"
+    },
+    {
+      "id": "campuslift",
+      "name": "CampusLift",
+      "description": "Verified student ride-sharing with panic buttons",
+      "url": "https://reggie9102.github.io/Thuto-Technologies-PTY-LTD/apps/campuslift/",
+      "category": "mobility"
+    },
+    {
+      "id": "thuto-academy",
+      "name": "Thuto AI Academy",
+      "description": "ETDP SETA-aligned AI certifications for teachers",
+      "url": "https://reggie9102.github.io/Thuto-Technologies-PTY-LTD/apps/thuto-academy/",
+      "category": "upskilling"
+    }
+  ]
+}
