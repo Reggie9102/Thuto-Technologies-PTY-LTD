@@ -1,0 +1,8 @@
+{
+  "name": "thutotech-legal-platform",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Static HTML - No build step required'"
+  }
+}
