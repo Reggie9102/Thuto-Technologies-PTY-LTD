@@ -1,0 +1,2280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThutoTech — Legal Intelligence Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* ═══════════════════════════════════════════════
+               THUTOTECH OFFICIAL BRAND PALETTE
+               Inspired by: Law (Gold/Crimson), Heritage (Earth), Tech (Blue)
+               ═══════════════════════════════════════════════ */
+            --tt-navy: #0A1628;              /* Deep Authority Navy */
+            --tt-navy-2: #111E33;            /* Secondary Navy */
+            --tt-gold: #C9A961;              /* Brand Gold — Wisdom & Justice */
+            --tt-gold-light: #E5C98A;        /* Light Gold Highlight */
+            --tt-gold-dark: #9E8448;         /* Deep Gold */
+            --tt-crimson: #8B1A1A;           /* Heritage Crimson */
+            --tt-cream: #F5E6D3;             /* Parchment Cream */
+            --tt-blue: #2563EB;              /* Tech Electric Blue */
+            --tt-slate: #1E293B;             /* Surface Slate */
+            --tt-slate-2: #2A3A52;           /* Lighter Slate */
+            --tt-success: #10B981;           /* Emerald Success */
+            --tt-danger: #DC2626;            /* Danger Red */
+            --tt-text: #E8E2D5;              /* Warm White Text */
+            --tt-muted: #8B9BB5;             /* Muted Blue-Gray */
+            
+            --gold-glow: rgba(201, 169, 97, 0.25);
+            --navy-gradient: linear-gradient(135deg, #0A1628 0%, #111E33 50%, #0A1628 100%);
+            --gold-gradient: linear-gradient(135deg, #9E8448 0%, #C9A961 50%, #E5C98A 100%);
+        }
+
+        * { font-family: 'Inter', sans-serif; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            background: var(--tt-navy); 
+            color: var(--tt-text); 
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(201, 169, 97, 0.04) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(37, 99, 235, 0.03) 0%, transparent 40%);
+        }
+
+        /* Typography Hierarchy — Legal Tradition */
+        .font-serif { font-family: 'Cormorant Garamond', serif; }
+        .font-display { font-family: 'Space Grotesk', sans-serif; }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--tt-navy); }
+        ::-webkit-scrollbar-thumb { background: var(--tt-gold-dark); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--tt-gold); }
+
+        /* ═══ ANIMATIONS ═══ */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes pulse-gold { 0%, 100% { box-shadow: 0 0 20px var(--gold-glow); } 50% { box-shadow: 0 0 40px var(--gold-glow), 0 0 60px rgba(201, 169, 97, 0.1); } }
+        @keyframes typing { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-6px); } }
+        @keyframes spin-slow { to { transform: rotate(360deg); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        @keyframes wave { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(0.5); } }
+        @keyframes shimmer { 0% { background-position: -1000px 0; } 100% { background-position: 1000px 0; } }
+        @keyframes gold-pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+        @keyframes scaleIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
+        .animate-fadeIn { animation: fadeIn 0.6s ease-out forwards; }
+        .animate-slideUp { animation: slideUp 0.7s ease-out forwards; }
+        .animate-slideInRight { animation: slideInRight 0.6s ease-out forwards; }
+        .animate-scaleIn { animation: scaleIn 0.4s ease-out forwards; }
+
+        /* ═══ GLASS & CARD STYLES ═══ */
+        .glass { 
+            background: rgba(30, 41, 59, 0.35); 
+            backdrop-filter: blur(24px); 
+            border: 1px solid rgba(201, 169, 97, 0.08); 
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        .glass-premium {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.5) 0%, rgba(10, 22, 40, 0.6) 100%);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(201, 169, 97, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+        .glass-hover:hover { 
+            background: rgba(42, 58, 82, 0.5); 
+            border-color: rgba(201, 169, 97, 0.3); 
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(201, 169, 97, 0.1);
+        }
+
+        /* ═══ BRAND TEXT GRADIENTS ═══ */
+        .gradient-text-gold { 
+            background: linear-gradient(135deg, #E5C98A 0%, #C9A961 50%, #9E8448 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            background-clip: text; 
+        }
+        .gradient-text-brand { 
+            background: linear-gradient(135deg, #C9A961 0%, #2563EB 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            background-clip: text; 
+        }
+        .gradient-text-heritage { 
+            background: linear-gradient(135deg, #C9A961 0%, #8B1A1A 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            background-clip: text; 
+        }
+
+        /* ═══ BUTTONS ═══ */
+        .btn-gold { 
+            background: linear-gradient(135deg, #9E8448 0%, #C9A961 50%, #E5C98A 100%); 
+            color: #0A1628;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            box-shadow: 0 4px 20px rgba(201, 169, 97, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-gold::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s;
+        }
+        .btn-gold:hover::before { left: 100%; }
+        .btn-gold:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 30px rgba(201, 169, 97, 0.5); 
+        }
+        
+        .btn-outline-gold {
+            background: transparent;
+            border: 1px solid rgba(201, 169, 97, 0.4);
+            color: var(--tt-gold);
+            transition: all 0.3s;
+        }
+        .btn-outline-gold:hover {
+            background: rgba(201, 169, 97, 0.1);
+            border-color: var(--tt-gold);
+        }
+
+        /* ═══ TABS ═══ */
+        .tab-panel { display: none; animation: fadeIn 0.5s ease-out; }
+        .tab-panel.active { display: block; }
+
+        /* ═══ WAVEFORM ═══ */
+        .waveform { display: flex; align-items: center; gap: 2px; height: 40px; }
+        .waveform-bar { width: 3px; background: var(--tt-gold); border-radius: 2px; animation: wave 0.8s ease-in-out infinite; }
+
+        /* ═══ STATUS ═══ */
+        .status-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+        .status-dot.online { background: var(--tt-success); box-shadow: 0 0 10px var(--tt-success); }
+        .status-dot.busy { background: var(--tt-gold); box-shadow: 0 0 10px var(--tt-gold); }
+        .status-dot.critical { background: var(--tt-danger); box-shadow: 0 0 10px var(--tt-danger); }
+
+        /* ═══ CARDS ═══ */
+        .card-hover { transition: all 0.4s cubic-bezier(0.4,0,0.2,1); }
+        .card-hover:hover { 
+            transform: translateY(-6px); 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5); 
+            border-color: var(--tt-gold); 
+        }
+
+        /* ═══ LOGO PULSE ═══ */
+        .logo-pulse { animation: pulse-gold 3s infinite; }
+        .logo-float { animation: float 4s ease-in-out infinite; }
+
+        /* ═══ GOLD BORDER ACCENTS ═══ */
+        .gold-border-left { 
+            position: relative;
+            padding-left: 20px;
+        }
+        .gold-border-left::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--tt-gold), transparent);
+        }
+
+        /* ═══ IOT CARD ═══ */
+        .iot-card { position: relative; overflow: hidden; }
+        .iot-card::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; left: 0; right: 0; 
+            height: 2px; 
+            background: linear-gradient(90deg, transparent, var(--tt-gold), transparent); 
+        }
+
+        /* ═══ AMENDMENT ═══ */
+        .amendment-badge { position: relative; padding-left: 20px; }
+        .amendment-badge::after { 
+            content: ''; 
+            position: absolute; 
+            top: 0; left: 0; 
+            width: 4px; height: 100%; 
+            background: var(--tt-gold); 
+            border-radius: 2px; 
+        }
+
+        /* ═══ RANGE ═══ */
+        input[type="range"] { -webkit-appearance: none; background: rgba(201, 169, 97, 0.15); border-radius: 4px; height: 6px; }
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; background: var(--tt-gold); border-radius: 50%; cursor: pointer; box-shadow: 0 0 10px var(--gold-glow); }
+
+        /* ═══ NOTIFICATION ═══ */
+        .notif-badge { 
+            position: absolute; 
+            top: -4px; right: -4px; 
+            min-width: 18px; height: 18px; 
+            background: var(--tt-crimson); 
+            border: 2px solid var(--tt-navy);
+            border-radius: 9px; 
+            font-size: 10px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: white; 
+            font-weight: bold; 
+            padding: 0 4px;
+        }
+
+        /* ═══ MOBILE ═══ */
+        @media (max-width: 1023px) {
+            .desktop-nav { display: none !important; }
+            .main-content { margin-left: 0 !important; padding-bottom: 90px; }
+            .mobile-nav { display: flex !important; }
+        }
+        @media (min-width: 1024px) {
+            .mobile-nav { display: none !important; }
+        }
+
+        /* ═══ VOICE SELECTOR ═══ */
+        .voice-option { border: 2px solid transparent; transition: all 0.3s; }
+        .voice-option.selected { 
+            border-color: var(--tt-gold); 
+            background: rgba(201, 169, 97, 0.08);
+            box-shadow: 0 0 20px var(--gold-glow);
+        }
+
+        /* ═══ RIDE CARD ═══ */
+        .ride-option { border: 2px solid transparent; transition: all 0.3s; }
+        .ride-option.selected { 
+            border-color: var(--tt-gold); 
+            background: rgba(201, 169, 97, 0.08); 
+        }
+
+        /* ═══ DECORATIVE ORNAMENTS ═══ */
+        .legal-ornament {
+            display: inline-block;
+            color: var(--tt-gold);
+            font-size: 1.5rem;
+            letter-spacing: 0.5rem;
+            opacity: 0.6;
+        }
+
+        .section-divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .section-divider::before,
+        .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--tt-gold), transparent);
+            opacity: 0.3;
+        }
+
+        /* ═══ HERO PATTERNS ═══ */
+        .legal-pattern {
+            background-image: 
+                linear-gradient(rgba(10, 22, 40, 0.85), rgba(10, 22, 40, 0.95)),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><path d="M30 10 L35 25 L30 40 L25 25 Z M20 20 L25 25 L20 30 L15 25 Z M40 20 L45 25 L40 30 L35 25 Z" fill="%23C9A961" fill-opacity="0.03"/></svg>');
+        }
+
+        /* ═══ PREMIUM BORDER ═══ */
+        .premium-border {
+            position: relative;
+        }
+        .premium-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            padding: 1px;
+            background: linear-gradient(135deg, var(--tt-gold), transparent, var(--tt-gold));
+            border-radius: inherit;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
+        /* ═══ TAG STYLES ═══ */
+        .tag-gold {
+            background: rgba(201, 169, 97, 0.15);
+            color: var(--tt-gold);
+            border: 1px solid rgba(201, 169, 97, 0.3);
+        }
+        .tag-crimson {
+            background: rgba(139, 26, 26, 0.15);
+            color: #E57373;
+            border: 1px solid rgba(139, 26, 26, 0.3);
+        }
+        .tag-blue {
+            background: rgba(37, 99, 235, 0.15);
+            color: #60A5FA;
+            border: 1px solid rgba(37, 99, 235, 0.3);
+        }
+        .tag-success {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34D399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        /* ═══ LOADING SPINNER ═══ */
+        .spinner-gold {
+            width: 32px;
+            height: 32px;
+            border: 3px solid rgba(201, 169, 97, 0.2);
+            border-top-color: var(--tt-gold);
+            border-radius: 50%;
+            animation: spin-slow 0.8s linear infinite;
+        }
+
+        /* ═══ SCALES ICON DECORATION ═══ */
+        .scales-decoration {
+            position: absolute;
+            opacity: 0.04;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="legal-pattern">
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- DESKTOP SIDEBAR — THUTOTECH NAVIGATION             -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <aside class="desktop-nav fixed left-0 top-0 h-screen w-20 lg:w-64 z-50 flex flex-col transition-all duration-300" style="background: linear-gradient(180deg, rgba(10, 22, 40, 0.98) 0%, rgba(17, 30, 51, 0.98) 100%); border-right: 1px solid rgba(201, 169, 97, 0.15); backdrop-filter: blur(20px);">
+        
+        <!-- Brand Logo Block -->
+        <div class="p-4 lg:p-6 border-b" style="border-color: rgba(201, 169, 97, 0.15);">
+            <div class="flex items-center gap-3">
+                <!-- ThutoTech Specific Logo -->
+                <div class="relative flex-shrink-0">
+                    <div class="w-12 h-12 rounded-full overflow-hidden logo-pulse" style="border: 2px solid var(--tt-gold); box-shadow: 0 0 20px var(--gold-glow);">
+                        <img src="https://image.qwenlm.ai/public_source/41f0f1f7-37a5-4e7c-a189-29abc677d3de/1b36349b2-8ac1-43b8-924f-d257f8b5719c.png" alt="ThutoTech" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="hidden lg:block">
+                    <h1 class="font-serif text-2xl font-bold tracking-wide">
+                        <span class="gradient-text-gold">Thuto</span><span class="text-white">Tech</span>
+                    </h1>
+                    <p class="text-[10px] uppercase tracking-[0.3em] mt-0.5" style="color: var(--tt-gold-dark);">Legal Intelligence</p>
+                </div>
+            </div>
+            <div class="hidden lg:block mt-3 pt-3" style="border-top: 1px solid rgba(201, 169, 97, 0.1);">
+                <p class="text-[10px] italic" style="color: var(--tt-muted);">"Justice through intelligence"</p>
+            </div>
+        </div>
+
+        <!-- User Role Selector -->
+        <div class="p-3 lg:p-4 border-b" style="border-color: rgba(201, 169, 97, 0.1);">
+            <label class="hidden lg:block text-[10px] uppercase tracking-widest mb-2" style="color: var(--tt-gold-dark);">Practice Role</label>
+            <select id="userRole" onchange="switchUserRole()" class="w-full px-3 py-2.5 rounded-lg text-xs lg:text-sm outline-none transition-all focus:ring-2 focus:ring-gold/30 cursor-pointer" style="background: rgba(201, 169, 97, 0.05); border: 1px solid rgba(201, 169, 97, 0.2); color: var(--tt-text);">
+                <option value="student">📚 Law Student</option>
+                <option value="intern">⚖️ Legal Intern</option>
+                <option value="practitioner" selected>🏛️ Practitioner</option>
+            </select>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex-1 p-2 lg:p-4 space-y-1 overflow-y-auto">
+            <div class="hidden lg:block text-[10px] uppercase tracking-widest mb-2 px-3" style="color: var(--tt-gold-dark);">Core Platform</div>
+            
+            <button onclick="switchTab('dashboard')" class="nav-btn w-full flex items-center gap-3 px-3 lg:px-4 py-3 rounded-lg text-sm text-left transition-all" id="nav-dashboard" style="background: rgba(201, 169, 97, 0.1); color: var(--tt-gold); border-left: 3px solid var(--tt-gold);">
+                <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                <span class="hidden lg:block font-medium">Dashboard</span>
+            </button>
+            <button onclick="switchTab('ai-search')" class="nav-btn w-full flex items-center gap-3 px-3 lg:px-4 py-3 rounded-lg text-sm text-left transition-all hover:bg-white/5" id="nav-ai-search" style="color: var(--tt-muted); border-left: 3px solid transparent;">
+                <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                <span class="hidden lg:block font-medium">Case Search</span>
+                <span class="hidden lg:block ml-auto text-[10px] px-2 py-0.5 rounded tag-blue">AI</span>
+            </button>
+            <button onclick="switchTab('writing')" class="nav-btn w-full flex items-center gap-3 px-3 lg:px-4 py-3 rounded-lg text-sm text-left transition-all hover:bg-white/5" id="nav-writing" style="color: var(--tt-muted); border-left: 3px solid transparent;">
+                <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                <span class="hidden lg:block font-medium">Drafting Suite</span>
+            </button>
+            <button onclick="switchTab('files')" class="nav-btn w-full flex items-center gap-3 px-3 lg:px-4 py-3 rounded-lg text-sm text-left transition-all hover:bg-white/5" id="nav-files" style="color: var(--tt-muted); border-left: 3px solid transparent;">
+                <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/></svg>
+                <span class="hidden lg:block font-medium">Case Files</span>
+                <span class="hidden lg:block ml-auto text-[10px] px-2 py-0.5 rounded tag-gold">12</span>
+            </button>
+
+            <div class="hidden lg:block text-[10px] uppercase tracking-widest mb-2 px-3 mt-4" style="color: var(--tt-gold-dark);">South African Law</div>
+            
+            <button onclick="switchTab('customary')" class="nav-btn w-full flex items-center gap-3 px-3 lg:px-4 py-3 rounded-lg text-sm text-left transition-all hover:bg-white/5" id="nav-customary" style="color: var(--tt-muted); border-left: 3px solid transparent;">
+                <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span class="hidden lg:block font-medium">Customary Law</span>
+            </button>
+            <button onclick="switchTab('amendments')" class="nav-btn w-full flex items-center gap-3 px-3 lg:px-4 py-3 rounded-lg text-sm text-left transition-all hover:bg-white/5" id="nav-amendments" style="color: var(--tt-muted); border-left: 3px solid transparent;">
+                <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                <span class="hidden lg:block font-medium">Amendments</span>
+                <span class="hidden lg:block ml-auto w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+            </button>
+
+            <div class="hidden lg:block text-[10px] uppercase tracking-widest mb-2 px-3 mt-4" style="color: var(--tt-gold-dark);">Services & Security</div>
+
+            <button onclick="switchTab('lawcommunitycap')" class="nav-btn w-full flex items-center gap-3 px-3 lg:px-4 py-3 rounded-lg text-sm text-left transition-all hover:bg-white/5" id="nav-lawcommunitycap" style="color: var(--tt-muted); border-left: 3px solid transparent;">
+                <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                <span class="hidden lg:block font-medium">CommunityCap</span>
+            </button>
+            <button onclick="switchTab('iot-security')" class="nav-btn w-full flex items-center gap-3 px-3 lg:px-4 py-3 rounded-lg text-sm text-left transition-all hover:bg-white/5" id="nav-iot-security" style="color: var(--tt-muted); border-left: 3px solid transparent;">
+                <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                <span class="hidden lg:block font-medium">IoT Trust</span>
+            </button>
+            <button onclick="switchTab('audio')" class="nav-btn w-full flex items-center gap-3 px-3 lg:px-4 py-3 rounded-lg text-sm text-left transition-all hover:bg-white/5" id="nav-audio" style="color: var(--tt-muted); border-left: 3px solid transparent;">
+                <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m0 0a7 7 0 017-7m0 0a7 7 0 017 7m0 0h.01M12 7v5l3 3"/></svg>
+                <span class="hidden lg:block font-medium">Audio Voice</span>
+            </button>
+            <button onclick="switchTab('legal-mart')" class="nav-btn w-full flex items-center gap-3 px-3 lg:px-4 py-3 rounded-lg text-sm text-left transition-all hover:bg-white/5" id="nav-legal-mart" style="color: var(--tt-muted); border-left: 3px solid transparent;">
+                <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                <span class="hidden lg:block font-medium">Legal Mart</span>
+            </button>
+        </nav>
+
+        <!-- User Card -->
+        <div class="p-4 border-t" style="border-color: rgba(201, 169, 97, 0.15);">
+            <div class="flex items-center gap-3 p-3 rounded-lg" style="background: rgba(201, 169, 97, 0.05);">
+                <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm" style="background: linear-gradient(135deg, var(--tt-gold), var(--tt-gold-dark)); color: var(--tt-navy);">JD</div>
+                <div class="hidden lg:block flex-1 min-w-0">
+                    <p class="text-sm font-semibold text-white truncate">Adv. J. Dlamini</p>
+                    <p class="text-[10px] uppercase tracking-wider" style="color: var(--tt-gold-dark);">LPC Registered</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- MAIN CONTENT AREA                                   -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <main class="main-content ml-20 lg:ml-64 min-h-screen p-4 lg:p-8">
+        
+        <!-- TOP BAR -->
+        <header class="flex items-center justify-between mb-8">
+            <div>
+                <div class="flex items-center gap-2 mb-1">
+                    <span class="legal-ornament text-xs">§</span>
+                    <p class="text-[10px] uppercase tracking-[0.3em]" style="color: var(--tt-gold-dark);" id="pageSubtitle">Legal Intelligence Platform</p>
+                </div>
+                <h2 class="text-2xl lg:text-4xl font-serif font-bold text-white" id="pageTitle">Dashboard</h2>
+            </div>
+            <div class="flex items-center gap-2 lg:gap-3">
+                <button class="p-2 lg:p-2.5 rounded-lg glass btn-outline-gold" onclick="toggleAudioPreview()">
+                    <svg class="w-4 h-4 lg:w-5 lg:h-5" style="color: var(--tt-gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                </button>
+                <button class="relative p-2 lg:p-2.5 rounded-lg glass btn-outline-gold" onclick="toggleNotif()">
+                    <svg class="w-4 h-4 lg:w-5 lg:h-5" style="color: var(--tt-gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                    <span class="notif-badge">3</span>
+                    <!-- Notification Dropdown -->
+                    <div id="notifPanel" class="hidden absolute right-0 top-14 w-80 glass-premium rounded-2xl p-4 z-50">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="font-serif font-bold text-white">Notifications</h4>
+                            <span class="text-[10px] uppercase tracking-wider" style="color: var(--tt-gold-dark);">Recent</span>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-white/5 transition cursor-pointer">
+                                <span class="status-dot critical mt-1.5"></span>
+                                <div><p class="text-xs text-white">Critical: Constitution 18th Amendment update</p><p class="text-[10px] mt-1" style="color: var(--tt-gold-dark);">2 min ago · Property Law</p></div>
+                            </div>
+                            <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-white/5 transition cursor-pointer">
+                                <span class="status-dot busy mt-1.5"></span>
+                                <div><p class="text-xs text-white">IoT security scan: All systems verified</p><p class="text-[10px] mt-1" style="color: var(--tt-gold-dark);">1 hr ago · Blockchain</p></div>
+                            </div>
+                            <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-white/5 transition cursor-pointer">
+                                <span class="status-dot online mt-1.5"></span>
+                                <div><p class="text-xs text-white">Customary Law DB: 142 new precedents indexed</p><p class="text-[10px] mt-1" style="color: var(--tt-gold-dark);">3 hrs ago · Database</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </button>
+                <button class="hidden lg:flex px-4 py-2.5 rounded-lg btn-gold items-center gap-2 text-xs">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 4v16m8-8H4"/></svg>
+                    New Matter
+                </button>
+            </div>
+        </header>
+
+        <!-- ═══════════════════════════════════════════════ -->
+        <!-- DASHBOARD                                       -->
+        <!-- ═══════════════════════════════════════════════ -->
+        <div id="tab-dashboard" class="tab-panel active">
+            
+            <!-- Hero Banner with Generated Legal Image -->
+            <div class="relative rounded-3xl overflow-hidden mb-8 premium-border" style="height: 320px;">
+                <img src="https://image.qwenlm.ai/public_source/41f0f1f7-37a5-4e7c-a189-29abc677d3de/1e36438d8-cd97-9251-8550-466b6f696cc4.png" alt="Legal Heritage" class="w-full h-full object-cover">
+                <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(10, 22, 40, 0.85) 0%, rgba(10, 22, 40, 0.6) 50%, rgba(10, 22, 40, 0.9) 100%);"></div>
+                <div class="absolute inset-0 flex items-center p-6 lg:p-12">
+                    <div class="max-w-2xl animate-fadeIn">
+                        <p class="text-[10px] uppercase tracking-[0.4em] mb-3" style="color: var(--tt-gold);">Est. 2024 · South Africa</p>
+                        <h1 class="font-serif text-3xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+                            Where <span class="gradient-text-gold">Jurisprudence</span><br>
+                            Meets Intelligence
+                        </h1>
+                        <p class="text-sm lg:text-base mb-6" style="color: var(--tt-cream); max-width: 500px;">
+                            The definitive AI-powered platform for South African legal practitioners, interns and students. Rooted in tradition. Powered by innovation.
+                        </p>
+                        <div class="flex gap-3 flex-wrap">
+                            <button onclick="switchTab('ai-search')" class="px-6 py-3 rounded-lg btn-gold text-sm flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                Begin Research
+                            </button>
+                            <button onclick="switchTab('files')" class="px-6 py-3 rounded-lg btn-outline-gold text-sm">Open Matters</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Role Selection Cards -->
+            <div class="mb-8">
+                <div class="section-divider"><span class="legal-ornament text-sm">⚖</span></div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                    <div class="glass-premium rounded-2xl p-6 card-hover cursor-pointer relative overflow-hidden group" onclick="setUserRole('student')">
+                        <div class="absolute top-0 right-0 w-32 h-32 rounded-full opacity-5 group-hover:opacity-10 transition" style="background: var(--tt-gold); filter: blur(40px);"></div>
+                        <div class="flex items-start justify-between mb-4 relative">
+                            <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(201, 169, 97, 0.2), rgba(201, 169, 97, 0.05)); border: 1px solid rgba(201, 169, 97, 0.3);">
+                                <svg class="w-7 h-7" style="color: var(--tt-gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 14l9-5-9-5-9 5 9 5zm0 7l-9-5V9l9 5v7zm0 0l9-5V9l-9 5v7z"/></svg>
+                            </div>
+                            <span class="text-[10px] uppercase tracking-widest px-3 py-1 rounded-full tag-gold">Student</span>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-white mb-2">Law Student Suite</h3>
+                        <p class="text-xs mb-4" style="color: var(--tt-muted);">Case studies, moot court preparation, exam guides and LLB curriculum support</p>
+                        <div class="flex items-center gap-2 text-xs" style="color: var(--tt-gold);">
+                            <span>Enter Portal</span>
+                            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-width="2"/></svg>
+                        </div>
+                    </div>
+
+                    <div class="glass-premium rounded-2xl p-6 card-hover cursor-pointer relative overflow-hidden group" onclick="setUserRole('intern')">
+                        <div class="absolute top-0 right-0 w-32 h-32 rounded-full opacity-5 group-hover:opacity-10 transition" style="background: var(--tt-blue); filter: blur(40px);"></div>
+                        <div class="flex items-start justify-between mb-4 relative">
+                            <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(37, 99, 235, 0.05)); border: 1px solid rgba(37, 99, 235, 0.3);">
+                                <svg class="w-7 h-7" style="color: #60A5FA;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M3 6l3 1m0 0l-3 1a5.002 5.002 0 003 4.641M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <span class="text-[10px] uppercase tracking-widest px-3 py-1 rounded-full tag-blue">Intern</span>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-white mb-2">Legal Intern Suite</h3>
+                        <p class="text-xs mb-4" style="color: var(--tt-muted);">Supervised drafting, pupillage research, court attendance logs and mentorship</p>
+                        <div class="flex items-center gap-2 text-xs" style="color: #60A5FA;">
+                            <span>Enter Portal</span>
+                            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-width="2"/></svg>
+                        </div>
+                    </div>
+
+                    <div class="glass-premium rounded-2xl p-6 card-hover cursor-pointer relative overflow-hidden group" onclick="setUserRole('practitioner')">
+                        <div class="absolute top-0 right-0 w-32 h-32 rounded-full opacity-5 group-hover:opacity-10 transition" style="background: var(--tt-crimson); filter: blur(40px);"></div>
+                        <div class="flex items-start justify-between mb-4 relative">
+                            <div class="w-14 h-14 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(139, 26, 26, 0.2), rgba(139, 26, 26, 0.05)); border: 1px solid rgba(139, 26, 26, 0.3);">
+                                <svg class="w-7 h-7" style="color: #E57373;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"/></svg>
+                            </div>
+                            <span class="text-[10px] uppercase tracking-widest px-3 py-1 rounded-full tag-crimson">Practitioner</span>
+                        </div>
+                        <h3 class="font-serif text-xl font-bold text-white mb-2">Practitioner Suite</h3>
+                        <p class="text-xs mb-4" style="color: var(--tt-muted);">Full matter management, AI drafting, client intake, IoT security and chambers tools</p>
+                        <div class="flex items-center gap-2 text-xs" style="color: #E57373;">
+                            <span>Enter Chambers</span>
+                            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-width="2"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Row -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                <div class="glass-premium rounded-2xl p-5 card-hover">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background: rgba(201, 169, 97, 0.15);">
+                            <svg class="w-5 h-5" style="color: var(--tt-gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        </div>
+                        <span class="text-xs font-medium" style="color: var(--tt-success);">↑ 12%</span>
+                    </div>
+                    <p class="font-serif text-3xl font-bold text-white">24</p>
+                    <p class="text-[11px] uppercase tracking-wider mt-1" style="color: var(--tt-muted);">Active Matters</p>
+                </div>
+                <div class="glass-premium rounded-2xl p-5 card-hover">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background: rgba(139, 26, 26, 0.15);">
+                            <svg class="w-5 h-5" style="color: #E57373;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        </div>
+                        <span class="text-xs font-medium" style="color: var(--tt-gold);">Today</span>
+                    </div>
+                    <p class="font-serif text-3xl font-bold text-white">3</p>
+                    <p class="text-[11px] uppercase tracking-wider mt-1" style="color: var(--tt-muted);">Court Appearances</p>
+                </div>
+                <div class="glass-premium rounded-2xl p-5 card-hover">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background: rgba(37, 99, 235, 0.15);">
+                            <svg class="w-5 h-5" style="color: #60A5FA;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        </div>
+                        <span class="text-xs font-medium" style="color: var(--tt-success);">Secured</span>
+                    </div>
+                    <p class="font-serif text-3xl font-bold text-white">98%</p>
+                    <p class="text-[11px] uppercase tracking-wider mt-1" style="color: var(--tt-muted);">IoT Verified</p>
+                </div>
+                <div class="glass-premium rounded-2xl p-5 card-hover">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background: rgba(16, 185, 129, 0.15);">
+                            <svg class="w-5 h-5" style="color: #34D399;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        </div>
+                        <span class="text-xs font-medium" style="color: var(--tt-success);">Active</span>
+                    </div>
+                    <p class="font-serif text-3xl font-bold text-white">5</p>
+                    <p class="text-[11px] uppercase tracking-wider mt-1" style="color: var(--tt-muted);">EV Rides Booked</p>
+                </div>
+            </div>
+
+            <!-- Court Drop Gallery with Generated Images -->
+            <div class="glass-premium rounded-3xl p-6 lg:p-8 mb-8">
+                <div class="flex items-center justify-between mb-6 flex-wrap gap-4">
+                    <div>
+                        <p class="text-[10px] uppercase tracking-[0.3em] mb-1" style="color: var(--tt-gold);">LawCommunityCap · Court Arrivals</p>
+                        <h3 class="font-serif text-2xl font-bold text-white">The Advocate's Commute</h3>
+                        <p class="text-xs mt-1" style="color: var(--tt-muted);">Professional court arrivals via our electric fleet</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="px-4 py-2 rounded-lg btn-outline-gold text-xs">Gallery</button>
+                        <button class="px-4 py-2 rounded-lg btn-gold text-xs">Book Ride</button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                    <!-- Main Large Image -->
+                    <div class="lg:col-span-2 relative rounded-2xl overflow-hidden group cursor-pointer" style="height: 380px;">
+                        <img src="https://image.qwenlm.ai/public_source/41f0f1f7-37a5-4e7c-a189-29abc677d3de/1f3a44265-42a5-4fc0-87f9-6cf4fe6e9055.png" alt="Advocate Court Drop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(10, 22, 40, 0.95) 0%, rgba(10, 22, 40, 0.3) 40%, transparent 70%);"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-6">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="status-dot online"></span>
+                                <span class="text-[10px] uppercase tracking-widest" style="color: var(--tt-gold);">Live · Johannesburg High Court</span>
+                            </div>
+                            <h4 class="font-serif text-2xl font-bold text-white mb-2">Adv. Nkosi arrives for trial</h4>
+                            <p class="text-xs mb-4" style="color: var(--tt-cream);">Tesla Model S · Premium tier · Arrived 15 minutes early for case preparation</p>
+                            <div class="flex gap-3">
+                                <span class="text-[10px] px-3 py-1.5 rounded-full tag-gold">State v. Williams</span>
+                                <span class="text-[10px] px-3 py-1.5 rounded-full tag-success">Verified Driver</span>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 right-4 w-12 h-12 rounded-full backdrop-blur flex items-center justify-center" style="background: rgba(201, 169, 97, 0.2); border: 1px solid var(--tt-gold);">
+                            <svg class="w-5 h-5" style="color: var(--tt-gold);" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Column - Stacked Images -->
+                    <div class="grid grid-rows-2 gap-4">
+                        <div class="relative rounded-2xl overflow-hidden group cursor-pointer" style="height: 180px;">
+                            <img src="https://image.qwenlm.ai/public_source/41f0f1f7-37a5-4e7c-a189-29abc677d3de/1525ec7ca-c913-41e7-bbe0-8cfa1c4b4241.png" alt="Attorney in Transit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(10, 22, 40, 0.9) 0%, transparent 60%);"></div>
+                            <div class="absolute bottom-3 left-3 right-3">
+                                <p class="text-[10px] uppercase tracking-widest mb-1" style="color: var(--tt-gold);">Mercedes EQS · In Transit</p>
+                                <h4 class="font-serif text-sm font-bold text-white">Preparing Molefe brief en route</h4>
+                            </div>
+                        </div>
+                        <div class="relative rounded-2xl overflow-hidden group cursor-pointer" style="height: 180px;">
+                            <img src="https://image.qwenlm.ai/public_source/41f0f1f7-37a5-4e7c-a189-29abc677d3de/1f3a44265-42a5-4fc0-87f9-6cf4fe6e9055.png" alt="Team arrival" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" style="object-position: right;">
+                            <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(10, 22, 40, 0.9) 0%, transparent 60%);"></div>
+                            <div class="absolute bottom-3 left-3 right-3">
+                                <p class="text-[10px] uppercase tracking-widest mb-1" style="color: var(--tt-gold);">Shared EV · Constitutional Court</p>
+                                <h4 class="font-serif text-sm font-bold text-white">Chambers team coordinated arrival</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Matters & Quick Actions -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                <!-- Upcoming Court -->
+                <div class="lg:col-span-2 glass-premium rounded-2xl p-6">
+                    <div class="flex items-center justify-between mb-5">
+                        <div>
+                            <p class="text-[10px] uppercase tracking-[0.3em] mb-1" style="color: var(--tt-gold);">Roll of Matters</p>
+                            <h3 class="font-serif text-xl font-bold text-white">Upcoming Court Appearances</h3>
+                        </div>
+                        <button onclick="switchTab('files')" class="text-xs btn-outline-gold px-3 py-1.5 rounded-lg">View All</button>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-4 p-4 rounded-xl glass glass-hover cursor-pointer">
+                            <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(139, 26, 26, 0.15); border: 1px solid rgba(139, 26, 26, 0.3);">
+                                <div class="text-center"><p class="text-[10px] uppercase" style="color: #E57373;">JAN</p><p class="font-serif text-xl font-bold" style="color: #E57373;">15</p></div>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h4 class="font-serif font-bold text-white truncate">State v. Williams</h4>
+                                <p class="text-xs mt-0.5" style="color: var(--tt-muted);">Criminal · Assault GBH · Johannesburg High Court · 09:00</p>
+                                <div class="flex items-center gap-2 mt-2">
+                                    <span class="text-[10px] px-2 py-0.5 rounded-full tag-crimson">Trial</span>
+                                    <div class="flex-1 max-w-[120px] h-1 rounded-full overflow-hidden" style="background: rgba(255,255,255,0.05);">
+                                        <div class="h-full rounded-full" style="width: 85%; background: linear-gradient(90deg, var(--tt-gold), var(--tt-gold-light));"></div>
+                                    </div>
+                                    <span class="text-[10px]" style="color: var(--tt-gold);">85% prep</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 rounded-xl glass glass-hover cursor-pointer">
+                            <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(201, 169, 97, 0.15); border: 1px solid rgba(201, 169, 97, 0.3);">
+                                <div class="text-center"><p class="text-[10px] uppercase" style="color: var(--tt-gold);">JAN</p><p class="font-serif text-xl font-bold" style="color: var(--tt-gold);">18</p></div>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h4 class="font-serif font-bold text-white truncate">Molefe v. TransUnion</h4>
+                                <p class="text-xs mt-0.5" style="color: var(--tt-muted);">Consumer Protection · Magistrate Court · 10:30</p>
+                                <div class="flex items-center gap-2 mt-2">
+                                    <span class="text-[10px] px-2 py-0.5 rounded-full tag-gold">Hearing</span>
+                                    <div class="flex-1 max-w-[120px] h-1 rounded-full overflow-hidden" style="background: rgba(255,255,255,0.05);">
+                                        <div class="h-full rounded-full" style="width: 60%; background: linear-gradient(90deg, var(--tt-gold), var(--tt-gold-light));"></div>
+                                    </div>
+                                    <span class="text-[10px]" style="color: var(--tt-gold);">60% prep</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 p-4 rounded-xl glass glass-hover cursor-pointer">
+                            <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3);">
+                                <div class="text-center"><p class="text-[10px] uppercase" style="color: #34D399;">JAN</p><p class="font-serif text-xl font-bold" style="color: #34D399;">22</p></div>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h4 class="font-serif font-bold text-white truncate">Estate Nkosi (Customary)</h4>
+                                <p class="text-xs mt-0.5" style="color: var(--tt-muted);">Customary Law · Succession · High Court · 14:00</p>
+                                <div class="flex items-center gap-2 mt-2">
+                                    <span class="text-[10px] px-2 py-0.5 rounded-full tag-success">Settlement</span>
+                                    <div class="flex-1 max-w-[120px] h-1 rounded-full overflow-hidden" style="background: rgba(255,255,255,0.05);">
+                                        <div class="h-full rounded-full" style="width: 95%; background: linear-gradient(90deg, var(--tt-gold), var(--tt-gold-light));"></div>
+                                    </div>
+                                    <span class="text-[10px]" style="color: var(--tt-gold);">95% prep</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="glass-premium rounded-2xl p-6">
+                    <p class="text-[10px] uppercase tracking-[0.3em] mb-1" style="color: var(--tt-gold);">Chambers</p>
+                    <h3 class="font-serif text-xl font-bold text-white mb-5">Quick Actions</h3>
+                    <div class="space-y-3">
+                        <button onclick="switchTab('ai-search')" class="w-full flex items-center gap-3 p-3 rounded-xl glass glass-hover text-left group">
+                            <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(201, 169, 97, 0.15);">
+                                <svg class="w-5 h-5" style="color: var(--tt-gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-semibold text-white">Research Precedents</p>
+                                <p class="text-[11px]" style="color: var(--tt-muted);">AI case law analysis</p>
+                            </div>
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition" style="color: var(--tt-gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                        <button onclick="switchTab('writing')" class="w-full flex items-center gap-3 p-3 rounded-xl glass glass-hover text-left group">
+                            <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(37, 99, 235, 0.15);">
+                                <svg class="w-5 h-5" style="color: #60A5FA;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-semibold text-white">Draft Submission</p>
+                                <p class="text-[11px]" style="color: var(--tt-muted);">Court-ready pleadings</p>
+                            </div>
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition" style="color: var(--tt-gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                        <button onclick="switchTab('lawcommunitycap')" class="w-full flex items-center gap-3 p-3 rounded-xl glass glass-hover text-left group">
+                            <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(16, 185, 129, 0.15);">
+                                <svg class="w-5 h-5" style="color: #34D399;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-semibold text-white">Reserve EV Court Ride</p>
+                                <p class="text-[11px]" style="color: var(--tt-muted);">CommunityCap fleet</p>
+                            </div>
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition" style="color: var(--tt-gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                        <button onclick="switchTab('audio')" class="w-full flex items-center gap-3 p-3 rounded-xl glass glass-hover text-left group">
+                            <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: rgba(139, 26, 26, 0.15);">
+                                <svg class="w-5 h-5" style="color: #E57373;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m0 0a7 7 0 017-7m0 0a7 7 0 017 7m0 0h.01M12 7v5l3 3"/></svg>
+                            </div>
+                            <div class="flex-1">
+                                <p class="text-sm font-semibold text-white">Listen to Briefs</p>
+                                <p class="text-[11px]" style="color: var(--tt-muted);">Custom AI voice</p>
+                            </div>
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition" style="color: var(--tt-gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════ -->
+        <!-- AI CASE SEARCH                                  -->
+        <!-- ═══════════════════════════════════════════════ -->
+        <div id="tab-ai-search" class="tab-panel">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="glass-premium rounded-2xl p-6">
+                        <p class="text-[10px] uppercase tracking-[0.3em] mb-2" style="color: var(--tt-gold);">AI Precedent Engine</p>
+                        <h3 class="font-serif text-2xl font-bold text-white mb-5">Search the South African Legal Corpus</h3>
+                        <div class="relative mb-4">
+                            <input type="text" id="caseSearchInput" placeholder="Describe your legal issue, paste facts, or cite a case..." class="w-full pl-5 pr-28 py-4 rounded-xl text-sm outline-none transition-all focus:ring-2 focus:ring-gold/30" style="background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 169, 97, 0.2); color: var(--tt-text);">
+                            <button onclick="searchCases()" class="absolute right-2 top-1/2 -translate-y-1/2 px-5 py-2.5 rounded-lg btn-gold text-xs flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                                Search
+                            </button>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <button onclick="setSearchEx('Negligence medical malpractice')" class="px-3 py-1.5 rounded-lg text-xs tag-gold transition hover:scale-105">Medical Negligence</button>
+                            <button onclick="setSearchEx('Breach of contract employment')" class="px-3 py-1.5 rounded-lg text-xs tag-gold transition hover:scale-105">Contract Breach</button>
+                            <button onclick="setSearchEx('Unfair dismissal CCMA')" class="px-3 py-1.5 rounded-lg text-xs tag-gold transition hover:scale-105">CCMA Dismissal</button>
+                            <button onclick="setSearchEx('Defamation social media')" class="px-3 py-1.5 rounded-lg text-xs tag-gold transition hover:scale-105">Defamation</button>
+                            <button onclick="setSearchEx('Customary marriage recognition')" class="px-3 py-1.5 rounded-lg text-xs tag-gold transition hover:scale-105">Customary Marriage</button>
+                            <button onclick="setSearchEx('Ubuntu principle delict')" class="px-3 py-1.5 rounded-lg text-xs tag-gold transition hover:scale-105">Ubuntu Principles</button>
+                        </div>
+                    </div>
+
+                    <div id="caseResults" class="space-y-4">
+                        <div class="glass-premium rounded-2xl p-12 text-center">
+                            <div class="w-24 h-24 rounded-full mx-auto mb-5 flex items-center justify-center logo-float" style="background: linear-gradient(135deg, rgba(201, 169, 97, 0.15), rgba(201, 169, 97, 0.05)); border: 1px solid rgba(201, 169, 97, 0.3);">
+                                <svg class="w-12 h-12" style="color: var(--tt-gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"/></svg>
+                            </div>
+                            <h4 class="font-serif text-2xl font-bold text-white mb-2">Corpus Juris Awaits</h4>
+                            <p class="text-sm mb-2" style="color: var(--tt-muted); max-width: 500px; margin: 0 auto;">Search across 9,000+ verified South African cases, including Constitutional Court precedents, customary law authorities, and SCA rulings.</p>
+                            <p class="text-xs mt-4" style="color: var(--tt-gold-dark);"><span class="legal-ornament text-xs">§ § §</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="glass-premium rounded-2xl p-6">
+                        <p class="text-[10px] uppercase tracking-[0.3em] mb-3" style="color: var(--tt-gold);">Refinement</p>
+                        <h4 class="font-serif text-lg font-bold text-white mb-5">Search Parameters</h4>
+                        <div class="space-y-5">
+                            <div>
+                                <label class="text-[10px] uppercase tracking-widest mb-2 block" style="color: var(--tt-gold-dark);">Jurisdiction</label>
+                                <select class="w-full px-3 py-2.5 rounded-lg text-sm outline-none" style="background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 169, 97, 0.2); color: var(--tt-text);">
+                                    <option>All Courts</option>
+                                    <option>Constitutional Court</option>
+                                    <option>Supreme Court of Appeal</option>
+                                    <option>High Court Divisions</option>
+                                    <option>Magistrate Courts</option>
+                                    <option>Traditional Courts</option>
+                                    <option>Labour Courts</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="text-[10px] uppercase tracking-widest mb-2 block" style="color: var(--tt-gold-dark);">Period</label>
+                                <select class="w-full px-3 py-2.5 rounded-lg text-sm outline-none" style="background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 169, 97, 0.2); color: var(--tt-text);">
+                                    <option>Post-Constitutional (1994+)</option>
+                                    <option>Last Decade (2016+)</option>
+                                    <option>Last 5 Years</option>
+                                    <option>All Time</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="text-[10px] uppercase tracking-widest mb-3 block" style="color: var(--tt-gold-dark);">Disposition</label>
+                                <div class="space-y-2">
+                                    <label class="flex items-center gap-3 text-sm cursor-pointer" style="color: var(--tt-text);"><input type="checkbox" checked class="rounded" style="background: rgba(10,22,40,0.6); border-color: var(--tt-gold); color: var(--tt-gold);"> Claimant Prevailed</label>
+                                    <label class="flex items-center gap-3 text-sm cursor-pointer" style="color: var(--tt-text);"><input type="checkbox" checked class="rounded" style="background: rgba(10,22,40,0.6); border-color: var(--tt-gold); color: var(--tt-gold);"> Defendant Prevailed</label>
+                                    <label class="flex items-center gap-3 text-sm cursor-pointer" style="color: var(--tt-text);"><input type="checkbox" class="rounded" style="background: rgba(10,22,40,0.6); border-color: var(--tt-gold); color: var(--tt-gold);"> Settled / Withdrawn</label>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text-[10px] uppercase tracking-widest mb-3 block" style="color: var(--tt-gold-dark);">Legal Tradition</label>
+                                <div class="space-y-2">
+                                    <label class="flex items-center gap-3 text-sm cursor-pointer" style="color: var(--tt-text);"><input type="checkbox" checked class="rounded" style="background: rgba(10,22,40,0.6); border-color: var(--tt-gold); color: var(--tt-gold);"> Roman-Dutch Common Law</label>
+                                    <label class="flex items-center gap-3 text-sm cursor-pointer" style="color: var(--tt-text);"><input type="checkbox" checked class="rounded" style="background: rgba(10,22,40,0.6); border-color: var(--tt-gold); color: var(--tt-gold);"> Customary Law</label>
+                                    <label class="flex items-center gap-3 text-sm cursor-pointer" style="color: var(--tt-text);"><input type="checkbox" class="rounded" style="background: rgba(10,22,40,0.6); border-color: var(--tt-gold); color: var(--tt-gold);"> Statutory</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-premium rounded-2xl p-6">
+                        <p class="text-[10px] uppercase tracking-[0.3em] mb-3" style="color: var(--tt-gold);">Archive</p>
+                        <h4 class="font-serif text-lg font-bold text-white mb-4">Recent Inquiries</h4>
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-white/5 cursor-pointer transition">
+                                <svg class="w-4 h-4 flex-shrink-0" style="color: var(--tt-gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <span class="text-xs truncate" style="color: var(--tt-cream);">Medical negligence duty of care</span>
+                            </div>
+                            <div class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-white/5 cursor-pointer transition">
+                                <svg class="w-4 h-4 flex-shrink-0" style="color: var(--tt-gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <span class="text-xs truncate" style="color: var(--tt-cream);">Customary marriage polygamous</span>
+                            </div>
+                            <div class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-white/5 cursor-pointer transition">
+                                <svg class="w-4 h-4 flex-shrink-0" style="color: var(--tt-gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                <span class="text-xs truncate" style="color: var(--tt-cream);">Fiduciary duty of directors</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════ -->
+        <!-- WRITING / DRAFTING SUITE                        -->
+        <!-- ═══════════════════════════════════════════════ -->
+        <div id="tab-writing" class="tab-panel">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2">
+                    <div class="glass-premium rounded-2xl p-6 mb-6">
+                        <div class="flex items-center justify-between mb-5 flex-wrap gap-3">
+                            <div class="flex gap-2 flex-wrap">
+                                <button onclick="setDocType('opening')" class="doc-btn px-4 py-2 rounded-lg text-xs font-medium transition-all" data-type="opening" style="background: rgba(201, 169, 97, 0.2); color: var(--tt-gold); border: 1px solid rgba(201, 169, 97, 0.4);">Opening Statement</button>
+                                <button onclick="setDocType('affidavit')" class="doc-btn px-4 py-2 rounded-lg text-xs font-medium transition-all" data-type="affidavit" style="background: rgba(255,255,255,0.03); color: var(--tt-muted); border: 1px solid rgba(255,255,255,0.1);">Affidavit</button>
+                                <button onclick="setDocType('submission')" class="doc-btn px-4 py-2 rounded-lg text-xs font-medium transition-all" data-type="submission" style="background: rgba(255,255,255,0.03); color: var(--tt-muted); border: 1px solid rgba(255,255,255,0.1);">Heads of Argument</button>
+                                <button onclick="setDocType('motion')" class="doc-btn px-4 py-2 rounded-lg text-xs font-medium transition-all" data-type="motion" style="background: rgba(255,255,255,0.03); color: var(--tt-muted); border: 1px solid rgba(255,255,255,0.1);">Notice of Motion</button>
+                            </div>
+                            <button onclick="generateContent()" class="px-5 py-2.5 rounded-lg btn-gold text-xs flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                AI Draft
+                            </button>
+                        </div>
+
+                        <input type="text" class="w-full px-4 py-3 rounded-xl font-serif text-xl font-bold mb-4 outline-none" style="background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 169, 97, 0.2); color: var(--tt-text);" value="Opening Statement — State v. Williams">
+
+                        <div class="mb-4 p-4 rounded-xl gold-border-left" style="background: rgba(201, 169, 97, 0.08);">
+                            <p class="text-[10px] uppercase tracking-widest mb-1.5" style="color: var(--tt-gold);">Matter Context</p>
+                            <p class="text-xs" style="color: var(--tt-cream);">Criminal · Assault with intent to do GBH · Johannesburg High Court · Case 2847/2024 · Trial Date: 15 January 2025</p>
+                        </div>
+
+                        <textarea id="writingArea" class="w-full px-5 py-4 rounded-xl text-sm outline-none transition-all focus:border-gold/50 resize-none" style="background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 169, 97, 0.15); color: var(--tt-cream); font-family: 'Cormorant Garamond', serif; font-size: 15px; line-height: 1.8;" rows="16" oninput="updateWordCount()">May it please the Court,
+
+I appear on behalf of the State in this matter, instructed by the Director of Public Prosecutions, South Gauteng Division.
+
+Your Lordship, this case concerns events of 14 March 2024, at approximately 21:30, outside 42 Commissioner Street, Johannesburg. The State will demonstrate beyond reasonable doubt that the accused, Mr. James Williams, committed the offence of assault with intent to do grievous bodily harm upon the complainant, Mr. David Nkosi.
+
+The State shall call three witnesses: the complainant himself, an independent eyewitness Ms. Sarah Molefe, and the investigating officer Captain Themba Shabalala. CCTV footage shall be tendered as Exhibit A, clearly capturing the sequence of events.
+
+Medical evidence, documented by Dr. Patel at Johannesburg General Hospital, establishes the nature and extent of injuries sustained.
+
+We respectfully pray for conviction on the charge as framed.
+
+Respectfully submitted,
+Adv. J. Dlamini
+Counsel for the State</textarea>
+
+                        <div class="flex items-center justify-between mt-4 pt-4 flex-wrap gap-3" style="border-top: 1px solid rgba(201, 169, 97, 0.1);">
+                            <div class="flex items-center gap-4 text-[11px]" style="color: var(--tt-muted);">
+                                <span id="wordCount">156 words</span>
+                                <span>·</span>
+                                <span id="charCount">948 characters</span>
+                                <span>·</span>
+                                <span>Reading time: ~1 min</span>
+                            </div>
+                            <div class="flex gap-2 flex-wrap">
+                                <button onclick="improveWriting()" class="px-3 py-1.5 rounded-lg text-xs tag-gold flex items-center gap-1">✨ Refine</button>
+                                <button onclick="checkGrammar()" class="px-3 py-1.5 rounded-lg text-xs tag-success flex items-center gap-1">✓ Verify</button>
+                                <button onclick="listenToDocument()" class="px-3 py-1.5 rounded-lg text-xs tag-crimson flex items-center gap-1">🔊 Read Aloud</button>
+                                <button onclick="saveDocument()" class="px-3 py-1.5 rounded-lg text-xs tag-blue">💾 Save</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="writingOutput" class="glass-premium rounded-2xl p-6" style="display:none">
+                        <div class="flex items-center gap-3 mb-4 pb-4" style="border-bottom: 1px solid rgba(201, 169, 97, 0.1);">
+                            <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background: linear-gradient(135deg, var(--tt-gold), var(--tt-gold-dark));">
+                                <svg class="w-4 h-4" style="color: var(--tt-navy);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-serif font-bold text-white">Counsel's Recommendation</h4>
+                                <p class="text-[10px] uppercase tracking-wider" style="color: var(--tt-gold-dark);">AI-generated · Review advised</p>
+                            </div>
+                        </div>
+                        <div id="aiSuggestionContent" class="text-sm p-5 rounded-xl" style="background: rgba(10, 22, 40, 0.4); color: var(--tt-cream); line-height: 1.8;"></div>
+                        <div class="flex gap-2 mt-4">
+                            <button onclick="acceptSuggestion()" class="px-5 py-2 rounded-lg btn-gold text-xs font-semibold">Accept & Apply</button>
+                            <button onclick="document.getElementById('writingOutput').style.display='none'" class="px-5 py-2 rounded-lg btn-outline-gold text-xs">Dismiss</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="glass-premium rounded-2xl p-6">
+                        <p class="text-[10px] uppercase tracking-[0.3em] mb-2" style="color: var(--tt-gold);">Precedent Library</p>
+                        <h4 class="font-serif text-lg font-bold text-white mb-4">Chambers Templates</h4>
+                        <div class="space-y-2">
+                            <button onclick="loadTemplate('opening')" class="w-full text-left p-3 rounded-lg glass glass-hover text-sm flex items-center gap-3">
+                                <span class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(201, 169, 97, 0.15);">📜</span>
+                                <div><p class="font-semibold text-xs text-white">Criminal Opening</p><p class="text-[11px]" style="color: var(--tt-muted);">Trial proceedings</p></div>
+                            </button>
+                            <button onclick="loadTemplate('closing')" class="w-full text-left p-3 rounded-lg glass glass-hover text-sm flex items-center gap-3">
+                                <span class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(139, 26, 26, 0.15);">⚖</span>
+                                <div><p class="font-semibold text-xs text-white">Closing Argument</p><p class="text-[11px]" style="color: var(--tt-muted);">Final submissions</p></div>
+                            </button>
+                            <button onclick="loadTemplate('customary')" class="w-full text-left p-3 rounded-lg glass glass-hover text-sm flex items-center gap-3">
+                                <span class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(16, 185, 129, 0.15);">🌍</span>
+                                <div><p class="font-semibold text-xs text-white">Customary Law Brief</p><p class="text-[11px]" style="color: var(--tt-muted);">Traditional court format</p></div>
+                            </button>
+                            <button onclick="loadTemplate('motion')" class="w-full text-left p-3 rounded-lg glass glass-hover text-sm flex items-center gap-3">
+                                <span class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(37, 99, 235, 0.15);">📋</span>
+                                <div><p class="font-semibold text-xs text-white">Motion Court Papers</p><p class="text-[11px]" style="color: var(--tt-muted);">High Court format</p></div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="glass-premium rounded-2xl p-6">
+                        <p class="text-[10px] uppercase tracking-[0.3em] mb-2" style="color: var(--tt-gold);">Authorities</p>
+                        <h4 class="font-serif text-lg font-bold text-white mb-4">Cited Authorities</h4>
+                        <div class="space-y-2">
+                            <div class="p-3 rounded-lg glass glass-hover cursor-pointer">
+                                <p class="text-xs font-serif font-bold" style="color: var(--tt-gold);">S v Makwanyane 1995 (3) SA 391 (CC)</p>
+                                <p class="text-[11px] mt-1" style="color: var(--tt-muted);">Constitutional Court · Bill of Rights</p>
+                            </div>
+                            <div class="p-3 rounded-lg glass glass-hover cursor-pointer">
+                                <p class="text-xs font-serif font-bold" style="color: var(--tt-gold);">Bhe v Magistrate Khayelitsha 2005 (1) SA 580 (CC)</p>
+                                <p class="text-[11px] mt-1" style="color: var(--tt-muted);">Customary succession · Equality</p>
+                            </div>
+                            <div class="p-3 rounded-lg glass glass-hover cursor-pointer">
+                                <p class="text-xs font-serif font-bold" style="color: var(--tt-gold);">Carmichele v Minister of Safety 2001 (4) SA 93 (CC)</p>
+                                <p class="text-[11px] mt-1" style="color: var(--tt-muted);">State duty of care</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════ -->
+        <!-- CASE FILES                                      -->
+        <!-- ═══════════════════════════════════════════════ -->
+        <div id="tab-files" class="tab-panel">
+            <div class="flex items-center justify-between mb-6 flex-wrap gap-4">
+                <div>
+                    <p class="text-[10px] uppercase tracking-[0.3em]" style="color: var(--tt-gold);">Matter Management</p>
+                    <h3 class="font-serif text-3xl font-bold text-white">Case Files</h3>
+                </div>
+                <button onclick="createNewFile()" class="px-5 py-2.5 rounded-lg btn-gold text-xs flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 4v16m8-8H4"/></svg>
+                    Open New Matter
+                </button>
+            </div>
+
+            <div class="flex flex-wrap gap-2 mb-6">
+                <button onclick="filterByStage('all')" class="stage-btn px-4 py-2 rounded-lg text-xs font-medium transition-all" data-stage="all" style="background: rgba(201, 169, 97, 0.2); color: var(--tt-gold); border: 1px solid rgba(201, 169, 97, 0.4);">All Matters</button>
+                <button onclick="filterByStage('new')" class="stage-btn px-4 py-2 rounded-lg text-xs font-medium transition-all" data-stage="new" style="background: rgba(255,255,255,0.03); color: var(--tt-muted); border: 1px solid rgba(255,255,255,0.1);">Intake</button>
+                <button onclick="filterByStage('research')" class="stage-btn px-4 py-2 rounded-lg text-xs font-medium transition-all" data-stage="research" style="background: rgba(255,255,255,0.03); color: var(--tt-muted); border: 1px solid rgba(255,255,255,0.1);">Research</button>
+                <button onclick="filterByStage('drafting')" class="stage-btn px-4 py-2 rounded-lg text-xs font-medium transition-all" data-stage="drafting" style="background: rgba(255,255,255,0.03); color: var(--tt-muted); border: 1px solid rgba(255,255,255,0.1);">Drafting</button>
+                <button onclick="filterByStage('court')" class="stage-btn px-4 py-2 rounded-lg text-xs font-medium transition-all" data-stage="court" style="background: rgba(255,255,255,0.03); color: var(--tt-muted); border: 1px solid rgba(255,255,255,0.1);">Court Ready</button>
+            </div>
+
+            <div id="fileList" class="space-y-3">
+                <div class="file-item glass-premium rounded-2xl p-5 card-hover cursor-pointer" data-stage="court">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(139, 26, 26, 0.15); border: 1px solid rgba(139, 26, 26, 0.3);">
+                            <svg class="w-6 h-6" style="color: #E57373;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"/></svg>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h4 class="font-serif font-bold text-white truncate">State v. Williams</h4>
+                            <p class="text-xs mt-0.5" style="color: var(--tt-muted);">Criminal · Assault GBH · Case 2847/2024</p>
+                            <div class="flex items-center gap-3 mt-2">
+                                <span class="text-[10px] px-2 py-0.5 rounded-full tag-crimson">Court Ready</span>
+                                <span class="text-[10px]" style="color: var(--tt-muted);">Next: 15 Jan 2025</span>
+                            </div>
+                        </div>
+                        <div class="hidden sm:block w-32">
+                            <div class="flex items-center justify-between text-[10px] mb-1"><span style="color: var(--tt-muted);">Preparation</span><span style="color: var(--tt-gold);">85%</span></div>
+                            <div class="w-full h-1.5 rounded-full overflow-hidden" style="background: rgba(255,255,255,0.05);">
+                                <div class="h-full rounded-full" style="width: 85%; background: linear-gradient(90deg, var(--tt-gold), var(--tt-gold-light));"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="file-item glass-premium rounded-2xl p-5 card-hover cursor-pointer" data-stage="drafting">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(201, 169, 97, 0.15); border: 1px solid rgba(201, 169, 97, 0.3);">
+                            <svg class="w-6 h-6" style="color: var(--tt-gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h4 class="font-serif font-bold text-white truncate">Molefe v. TransUnion</h4>
+                            <p class="text-xs mt-0.5" style="color: var(--tt-muted);">Consumer Protection · Credit Bureau Dispute</p>
+                            <div class="flex items-center gap-3 mt-2">
+                                <span class="text-[10px] px-2 py-0.5 rounded-full tag-gold">Drafting</span>
+                                <span class="text-[10px]" style="color: var(--tt-muted);">Next: 18 Jan 2025</span>
+                            </div>
+                        </div>
+                        <div class="hidden sm:block w-32">
+                            <div class="flex items-center justify-between text-[10px] mb-1"><span style="color: var(--tt-muted);">Preparation</span><span style="color: var(--tt-gold);">60%</span></div>
+                            <div class="w-full h-1.5 rounded-full overflow-hidden" style="background: rgba(255,255,255,0.05);">
+                                <div class="h-full rounded-full" style="width: 60%; background: linear-gradient(90deg, var(--tt-gold), var(--tt-gold-light));"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="file-item glass-premium rounded-2xl p-5 card-hover cursor-pointer" data-stage="research">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3);">
+                            <svg class="w-6 h-6" style="color: #34D399;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h4 class="font-serif font-bold text-white truncate">Estate Nkosi (Customary)</h4>
+                            <p class="text-xs mt-0.5" style="color: var(--tt-muted);">Customary Law · Wills & Succession · Bhe principles</p>
+                            <div class="flex items-center gap-3 mt-2">
+                                <span class="text-[10px] px-2 py-0.5 rounded-full tag-success">Research</span>
+                                <span class="text-[10px]" style="color: var(--tt-muted);">Next: 22 Jan 2025</span>
+                            </div>
+                        </div>
+                        <div class="hidden sm:block w-32">
+                            <div class="flex items-center justify-between text-[10px] mb-1"><span style="color: var(--tt-muted);">Preparation</span><span style="color: var(--tt-gold);">40%</span></div>
+                            <div class="w-full h-1.5 rounded-full overflow-hidden" style="background: rgba(255,255,255,0.05);">
+                                <div class="h-full rounded-full" style="width: 40%; background: linear-gradient(90deg, var(--tt-gold), var(--tt-gold-light));"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="file-item glass-premium rounded-2xl p-5 card-hover cursor-pointer" data-stage="new">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(37, 99, 235, 0.15); border: 1px solid rgba(37, 99, 235, 0.3);">
+                            <svg class="w-6 h-6" style="color: #60A5FA;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h4 class="font-serif font-bold text-white truncate">Dhlamini Labour Dispute</h4>
+                            <p class="text-xs mt-0.5" style="color: var(--tt-muted);">Labour Law · CCMA · Unfair Dismissal</p>
+                            <div class="flex items-center gap-3 mt-2">
+                                <span class="text-[10px] px-2 py-0.5 rounded-full tag-blue">Intake</span>
+                                <span class="text-[10px]" style="color: var(--tt-muted);">Opened: 03 Jan 2025</span>
+                            </div>
+                        </div>
+                        <div class="hidden sm:block w-32">
+                            <div class="flex items-center justify-between text-[10px] mb-1"><span style="color: var(--tt-muted);">Preparation</span><span style="color: var(--tt-gold);">15%</span></div>
+                            <div class="w-full h-1.5 rounded-full overflow-hidden" style="background: rgba(255,255,255,0.05);">
+                                <div class="h-full rounded-full" style="width: 15%; background: linear-gradient(90deg, var(--tt-gold), var(--tt-gold-light));"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════ -->
+        <!-- CUSTOMARY LAW                                   -->
+        <!-- ═══════════════════════════════════════════════ -->
+        <div id="tab-customary" class="tab-panel">
+            <div class="glass-premium rounded-2xl p-6 lg:p-8 mb-6">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(201, 169, 97, 0.2), rgba(139, 26, 26, 0.1)); border: 1px solid rgba(201, 169, 97, 0.3);">
+                        <svg class="w-8 h-8" style="color: var(--tt-gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <div>
+                        <p class="text-[10px] uppercase tracking-[0.3em]" style="color: var(--tt-gold);">Umthetho Wokuzwana · Indigenous Jurisprudence</p>
+                        <h3 class="font-serif text-3xl font-bold text-white">South African Customary Law</h3>
+                        <p class="text-xs mt-1" style="color: var(--tt-muted);">Living law · Recognition of Customary Marriages Act 120 of 1998 · Traditional Courts</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <div class="p-6 rounded-2xl card-hover cursor-pointer" style="background: linear-gradient(135deg, rgba(201, 169, 97, 0.1), rgba(201, 169, 97, 0.02)); border: 1px solid rgba(201, 169, 97, 0.2);">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-11 h-11 rounded-lg flex items-center justify-center" style="background: rgba(201, 169, 97, 0.2);">💍</div>
+                            <div><h4 class="font-serif font-bold text-white">Customary Marriages</h4><p class="text-[11px]" style="color: var(--tt-muted);">RCMA 120 of 1998</p></div>
+                        </div>
+                        <p class="text-xs mb-3" style="color: var(--tt-cream);">Validity, registration, and dissolution of customary marriages under constitutional framework.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] px-2 py-0.5 rounded-full tag-gold">Gumede v President</span>
+                            <span class="text-[10px] px-2 py-0.5 rounded-full tag-gold">Mayelane v Ngwenyama</span>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-2xl card-hover cursor-pointer" style="background: linear-gradient(135deg, rgba(139, 26, 26, 0.1), rgba(139, 26, 26, 0.02)); border: 1px solid rgba(139, 26, 26, 0.2);">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-11 h-11 rounded-lg flex items-center justify-center" style="background: rgba(139, 26, 26, 0.2);">🏠</div>
+                            <div><h4 class="font-serif font-bold text-white">Succession & Inheritance</h4><p class="text-[11px]" style="color: var(--tt-muted);">Reform of Customary Law</p></div>
+                        </div>
+                        <p class="text-xs mb-3" style="color: var(--tt-cream);">Male primogeniture abolished. Equal inheritance rights under Bhe principles.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] px-2 py-0.5 rounded-full tag-crimson">Bhe v Khayelitsha</span>
+                            <span class="text-[10px] px-2 py-0.5 rounded-full tag-crimson">Shilubana v Nwamitwa</span>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-2xl card-hover cursor-pointer" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0.02)); border: 1px solid rgba(37, 99, 235, 0.2);">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-11 h-11 rounded-lg flex items-center justify-center" style="background: rgba(37, 99, 235, 0.2);">⚖</div>
+                            <div><h4 class="font-serif font-bold text-white">Traditional Courts</h4><p class="text-[11px]" style="color: var(--tt-muted);">TCB & Jurisdiction</p></div>
+                        </div>
+                        <p class="text-xs mb-3" style="color: var(--tt-cream);">Jurisdiction, procedures, and recognition of traditional dispute resolution mechanisms.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] px-2 py-0.5 rounded-full tag-blue">Alexkor v Richtersveld</span>
+                            <span class="text-[10px] px-2 py-0.5 rounded-full tag-blue">Tongoane v Minister</span>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-2xl card-hover cursor-pointer" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.02)); border: 1px solid rgba(16, 185, 129, 0.2);">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-11 h-11 rounded-lg flex items-center justify-center" style="background: rgba(16, 185, 129, 0.2);">👥</div>
+                            <div><h4 class="font-serif font-bold text-white">Traditional Leadership</h4><p class="text-[11px]" style="color: var(--tt-muted);">TLGFA 2003</p></div>
+                        </div>
+                        <p class="text-xs mb-3" style="color: var(--tt-cream);">Traditional Leadership and Governance Framework Act - roles and succession disputes.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] px-2 py-0.5 rounded-full tag-success">Sigcau v President</span>
+                            <span class="text-[10px] px-2 py-0.5 rounded-full tag-success">Pilane v Pilane</span>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-2xl card-hover cursor-pointer" style="background: linear-gradient(135deg, rgba(201, 169, 97, 0.08), rgba(139, 26, 26, 0.08)); border: 1px solid rgba(201, 169, 97, 0.2);">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-11 h-11 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, rgba(201, 169, 97, 0.2), rgba(139, 26, 26, 0.2));">🌾</div>
+                            <div><h4 class="font-serif font-bold text-white">Land & Communal Rights</h4><p class="text-[11px]" style="color: var(--tt-muted);">IPILRA & CLRA</p></div>
+                        </div>
+                        <p class="text-xs mb-3" style="color: var(--tt-cream);">Customary land tenure, communal property associations, and indigenous protections.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] px-2 py-0.5 rounded-full tag-gold">Richtersveld Community</span>
+                            <span class="text-[10px] px-2 py-0.5 rounded-full tag-crimson">Maledu v Itereleng</span>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-2xl card-hover cursor-pointer" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(201, 169, 97, 0.08)); border: 1px solid rgba(37, 99, 235, 0.2);">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-11 h-11 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(201, 169, 97, 0.2));">👶</div>
+                            <div><h4 class="font-serif font-bold text-white">Family & Lobolo</h4><p class="text-[11px]" style="color: var(--tt-muted);">Children's Act Integration</p></div>
+                        </div>
+                        <p class="text-xs mb-3" style="color: var(--tt-cream);">Lobolo agreements, guardianship, adoption under customary law, and the Children's Act.</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] px-2 py-0.5 rounded-full tag-blue">Mabuza v Mbatha</span>
+                            <span class="text-[10px] px-2 py-0.5 rounded-full tag-gold">S v M</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-premium rounded-2xl p-6">
+                <p class="text-[10px] uppercase tracking-[0.3em] mb-2" style="color: var(--tt-gold);">Customary Corpus</p>
+                <h4 class="font-serif text-xl font-bold text-white mb-5">Search Indigenous Precedents</h4>
+                <div class="relative mb-5">
+                    <input type="text" placeholder="Search customary practices, cases, or principles (e.g., ubuntu, lobolo, ukuthwala)..." class="w-full pl-5 pr-28 py-3.5 rounded-xl text-sm outline-none transition-all" style="background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 169, 97, 0.2); color: var(--tt-text);">
+                    <button class="absolute right-2 top-1/2 -translate-y-1/2 px-5 py-2 rounded-lg btn-gold text-xs">Search</button>
+                </div>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                    <button class="p-4 rounded-xl glass glass-hover text-left">
+                        <p class="text-xs font-serif font-bold text-white">Lobolo Disputes</p>
+                        <p class="text-[11px] mt-1" style="color: var(--tt-muted);">234 indexed cases</p>
+                    </button>
+                    <button class="p-4 rounded-xl glass glass-hover text-left">
+                        <p class="text-xs font-serif font-bold text-white">Ukuthwala</p>
+                        <p class="text-[11px] mt-1" style="color: var(--tt-muted);">45 indexed cases</p>
+                    </button>
+                    <button class="p-4 rounded-xl glass glass-hover text-left">
+                        <p class="text-xs font-serif font-bold text-white">Inkundla Proceedings</p>
+                        <p class="text-[11px] mt-1" style="color: var(--tt-muted);">189 indexed cases</p>
+                    </button>
+                    <button class="p-4 rounded-xl glass glass-hover text-left">
+                        <p class="text-xs font-serif font-bold text-white">Ubuntu Principles</p>
+                        <p class="text-[11px] mt-1" style="color: var(--tt-muted);">312 indexed cases</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════ -->
+        <!-- AMENDMENTS TRACKER                              -->
+        <!-- ═══════════════════════════════════════════════ -->
+        <div id="tab-amendments" class="tab-panel">
+            <div class="glass-premium rounded-2xl p-6 lg:p-8 mb-6">
+                <div class="flex items-center justify-between mb-6 flex-wrap gap-4">
+                    <div>
+                        <p class="text-[10px] uppercase tracking-[0.3em]" style="color: var(--tt-gold);">Statute Revision Service</p>
+                        <h3 class="font-serif text-3xl font-bold text-white">Legal Amendments Tracker</h3>
+                        <p class="text-xs mt-1" style="color: var(--tt-muted);">Constitutional amendments and statutory changes affecting each legal fraternity</p>
+                    </div>
+                    <div class="flex gap-3 flex-wrap">
+                        <span class="flex items-center gap-2 text-[10px] px-3 py-1.5 rounded-full tag-crimson"><span class="status-dot critical"></span>Critical</span>
+                        <span class="flex items-center gap-2 text-[10px] px-3 py-1.5 rounded-full tag-gold"><span class="status-dot busy"></span>Pending</span>
+                        <span class="flex items-center gap-2 text-[10px] px-3 py-1.5 rounded-full tag-success"><span class="status-dot online"></span>Enacted</span>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="amendment-badge p-6 rounded-2xl card-hover" style="background: linear-gradient(135deg, rgba(139, 26, 26, 0.08), rgba(139, 26, 26, 0.02)); border: 1px solid rgba(139, 26, 26, 0.2);">
+                        <div class="flex items-start justify-between mb-3 flex-wrap gap-2">
+                            <div class="flex items-center gap-3">
+                                <span class="text-[10px] px-3 py-1 rounded-full tag-crimson uppercase tracking-wider font-bold">Critical</span>
+                                <span class="text-[11px]" style="color: var(--tt-muted);">Constitution Eighteenth Amendment Bill</span>
+                            </div>
+                            <span class="text-[11px] font-serif" style="color: var(--tt-gold);">2024 Session</span>
+                        </div>
+                        <h4 class="font-serif text-lg font-bold text-white mb-2">Expropriation Without Compensation</h4>
+                        <p class="text-xs mb-4" style="color: var(--tt-cream);">Proposed amendment to Section 25 of the Constitution. Affects property law practitioners, conveyancers, land rights advocates, and banking/finance sectors.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-[10px] px-2.5 py-1 rounded-full tag-crimson">Property Law</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-full tag-crimson">Conveyancing</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-full tag-crimson">Land Rights</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-full tag-crimson">Banking & Finance</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="flex-1 h-2 rounded-full overflow-hidden" style="background: rgba(255,255,255,0.05);">
+                                <div class="h-full rounded-full" style="width: 35%; background: linear-gradient(90deg, #8B1A1A, #DC2626);"></div>
+                            </div>
+                            <span class="text-[10px]" style="color: var(--tt-muted);">Parliamentary review · 35%</span>
+                        </div>
+                    </div>
+
+                    <div class="amendment-badge p-6 rounded-2xl card-hover" style="background: linear-gradient(135deg, rgba(201, 169, 97, 0.08), rgba(201, 169, 97, 0.02)); border: 1px solid rgba(201, 169, 97, 0.2);">
+                        <div class="flex items-start justify-between mb-3 flex-wrap gap-2">
+                            <div class="flex items-center gap-3">
+                                <span class="text-[10px] px-3 py-1 rounded-full tag-gold uppercase tracking-wider font-bold">Pending</span>
+                                <span class="text-[11px]" style="color: var(--tt-muted);">Legal Practice Amendment Bill</span>
+                            </div>
+                            <span class="text-[11px] font-serif" style="color: var(--tt-gold);">2024 Session</span>
+                        </div>
+                        <h4 class="font-serif text-lg font-bold text-white mb-2">Legal Practice Act Amendment</h4>
+                        <p class="text-xs mb-4" style="color: var(--tt-cream);">Changes to candidate attorney requirements, LPC regulations, continuing professional development obligations, and trust account management.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-[10px] px-2.5 py-1 rounded-full tag-gold">All Practitioners</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-full tag-gold">Candidate Attorneys</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-full tag-gold">LPC Registered</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="flex-1 h-2 rounded-full overflow-hidden" style="background: rgba(255,255,255,0.05);">
+                                <div class="h-full rounded-full" style="width: 70%; background: linear-gradient(90deg, var(--tt-gold-dark), var(--tt-gold));"></div>
+                            </div>
+                            <span class="text-[10px]" style="color: var(--tt-muted);">Public comment period · 70%</span>
+                        </div>
+                    </div>
+
+                    <div class="amendment-badge p-6 rounded-2xl card-hover" style="background: linear-gradient(135deg, rgba(201, 169, 97, 0.08), rgba(201, 169, 97, 0.02)); border: 1px solid rgba(201, 169, 97, 0.2);">
+                        <div class="flex items-start justify-between mb-3 flex-wrap gap-2">
+                            <div class="flex items-center gap-3">
+                                <span class="text-[10px] px-3 py-1 rounded-full tag-gold uppercase tracking-wider font-bold">Pending</span>
+                                <span class="text-[11px]" style="color: var(--tt-muted);">Traditional Courts Bill [B1—2017]</span>
+                            </div>
+                            <span class="text-[11px] font-serif" style="color: var(--tt-gold);">Re-introduced 2024</span>
+                        </div>
+                        <h4 class="font-serif text-lg font-bold text-white mb-2">Traditional Courts Bill</h4>
+                        <p class="text-xs mb-4" style="color: var(--tt-cream);">Formal recognition of traditional courts and dispute resolution. Critical for customary law practitioners, traditional leaders, and rural legal advisors.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-[10px] px-2.5 py-1 rounded-full tag-gold">Customary Law</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-full tag-gold">Traditional Courts</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-full tag-gold">Rural Practice</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="flex-1 h-2 rounded-full overflow-hidden" style="background: rgba(255,255,255,0.05);">
+                                <div class="h-full rounded-full" style="width: 50%; background: linear-gradient(90deg, var(--tt-gold-dark), var(--tt-gold));"></div>
+                            </div>
+                            <span class="text-[10px]" style="color: var(--tt-muted);">NCOP Committee · 50%</span>
+                        </div>
+                    </div>
+
+                    <div class="amendment-badge p-6 rounded-2xl card-hover" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(16, 185, 129, 0.02)); border: 1px solid rgba(16, 185, 129, 0.2);">
+                        <div class="flex items-start justify-between mb-3 flex-wrap gap-2">
+                            <div class="flex items-center gap-3">
+                                <span class="text-[10px] px-3 py-1 rounded-full tag-success uppercase tracking-wider font-bold">Enacted</span>
+                                <span class="text-[11px]" style="color: var(--tt-muted);">POPIA Amendment Regulations</span>
+                            </div>
+                            <span class="text-[11px] font-serif" style="color: var(--tt-gold);">1 January 2025</span>
+                        </div>
+                        <h4 class="font-serif text-lg font-bold text-white mb-2">POPIA Enforcement Amendments</h4>
+                        <p class="text-xs mb-4" style="color: var(--tt-cream);">Enhanced data protection requirements for legal practices. All practitioners must update client data handling, file retention, and confidentiality procedures.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-[10px] px-2.5 py-1 rounded-full tag-success">All Practitioners</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-full tag-success">Data Privacy</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-full tag-success">Compliance</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="flex-1 h-2 rounded-full overflow-hidden" style="background: rgba(255,255,255,0.05);">
+                                <div class="h-full rounded-full" style="width: 100%; background: linear-gradient(90deg, var(--tt-success), #34D399);"></div>
+                            </div>
+                            <span class="text-[10px]" style="color: var(--tt-success);">In force · Effective 1 Jan 2025</span>
+                        </div>
+                    </div>
+
+                    <div class="amendment-badge p-6 rounded-2xl card-hover" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(16, 185, 129, 0.02)); border: 1px solid rgba(16, 185, 129, 0.2);">
+                        <div class="flex items-start justify-between mb-3 flex-wrap gap-2">
+                            <div class="flex items-center gap-3">
+                                <span class="text-[10px] px-3 py-1 rounded-full tag-success uppercase tracking-wider font-bold">Enacted</span>
+                                <span class="text-[11px]" style="color: var(--tt-muted);">Reform of Customary Law of Succession Act</span>
+                            </div>
+                            <span class="text-[11px] font-serif" style="color: var(--tt-gold);">Full Implementation</span>
+                        </div>
+                        <h4 class="font-serif text-lg font-bold text-white mb-2">Customary Succession Reform</h4>
+                        <p class="text-xs mb-4" style="color: var(--tt-cream);">Further amendments ensuring gender equality in customary inheritance. Critical for estate practitioners and customary law specialists.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-[10px] px-2.5 py-1 rounded-full tag-success">Customary Law</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-full tag-success">Estates & Wills</span>
+                            <span class="text-[10px] px-2.5 py-1 rounded-full tag-success">Gender Equality</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="flex-1 h-2 rounded-full overflow-hidden" style="background: rgba(255,255,255,0.05);">
+                                <div class="h-full rounded-full" style="width: 100%; background: linear-gradient(90deg, var(--tt-success), #34D399);"></div>
+                            </div>
+                            <span class="text-[10px]" style="color: var(--tt-success);">Enacted · Fully in force</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════ -->
+        <!-- LAWCOMMUNITYCAP                                 -->
+        <!-- ═══════════════════════════════════════════════ -->
+        <div id="tab-lawcommunitycap" class="tab-panel">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2">
+                    <div class="glass-premium rounded-2xl p-6 lg:p-8 mb-6">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-16 h-16 rounded-2xl flex items-center justify-center logo-float" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(201, 169, 97, 0.1)); border: 1px solid rgba(16, 185, 129, 0.3);">
+                                <svg class="w-8 h-8" style="color: #34D399;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-[10px] uppercase tracking-[0.3em]" style="color: var(--tt-gold);">Sustainable Legal Mobility</p>
+                                <h3 class="font-serif text-2xl font-bold text-white">LawCommunityCap</h3>
+                                <p class="text-xs mt-0.5" style="color: var(--tt-muted);">The legal fraternity's electric court commute service</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div>
+                                <label class="text-[10px] uppercase tracking-widest mb-2 flex items-center gap-2" style="color: var(--tt-gold-dark);"><span class="w-2 h-2 rounded-full bg-emerald-400"></span>Chambers / Pick-up</label>
+                                <input type="text" value="42 Commissioner Street, Johannesburg CBD" class="w-full px-4 py-3 rounded-xl text-sm outline-none" style="background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 169, 97, 0.2); color: var(--tt-text);">
+                            </div>
+                            <div>
+                                <label class="text-[10px] uppercase tracking-widest mb-2 flex items-center gap-2" style="color: var(--tt-gold-dark);"><span class="w-2 h-2 rounded-full" style="background: var(--tt-crimson);"></span>Court Destination</label>
+                                <select class="w-full px-4 py-3 rounded-xl text-sm outline-none" style="background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 169, 97, 0.2); color: var(--tt-text);">
+                                    <option>Johannesburg High Court</option>
+                                    <option>Magistrate Court · Johannesburg CBD</option>
+                                    <option>Labour Court · Johannesburg</option>
+                                    <option>Constitutional Court · Braamfontein</option>
+                                    <option>Pretoria High Court</option>
+                                    <option>Sandton Magistrate Court</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-4 mb-6">
+                            <div>
+                                <label class="text-[10px] uppercase tracking-widest mb-2 block" style="color: var(--tt-gold-dark);">Appearance Date</label>
+                                <input type="date" class="w-full px-3 py-3 rounded-xl text-sm outline-none" style="background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 169, 97, 0.2); color: var(--tt-text);">
+                            </div>
+                            <div>
+                                <label class="text-[10px] uppercase tracking-widest mb-2 block" style="color: var(--tt-gold-dark);">Roll Call Time</label>
+                                <input type="time" class="w-full px-3 py-3 rounded-xl text-sm outline-none" style="background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 169, 97, 0.2); color: var(--tt-text);">
+                            </div>
+                            <div>
+                                <label class="text-[10px] uppercase tracking-widest mb-2 block" style="color: var(--tt-gold-dark);">Matter Reference</label>
+                                <input type="text" placeholder="Case 2847/2024" class="w-full px-3 py-3 rounded-xl text-sm outline-none" style="background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 169, 97, 0.2); color: var(--tt-text);">
+                            </div>
+                        </div>
+
+                        <p class="text-[10px] uppercase tracking-widest mb-3" style="color: var(--tt-gold-dark);">Select Fleet Class</p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                            <div class="ride-option selected rounded-xl p-5 cursor-pointer" style="background: rgba(201, 169, 97, 0.08); border-color: var(--tt-gold);" onclick="selectRide(this)">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="w-11 h-11 rounded-lg flex items-center justify-center" style="background: rgba(16, 185, 129, 0.15);">🚗</div>
+                                    <span class="font-serif text-lg font-bold" style="color: var(--tt-gold);">R85</span>
+                                </div>
+                                <h5 class="font-serif font-bold text-white text-sm">Standard EV</h5>
+                                <p class="text-[11px] mt-1" style="color: var(--tt-muted);">Tesla Model 3 · 15 min ETA</p>
+                                <div class="flex items-center gap-2 mt-3"><span class="status-dot online"></span><span class="text-[10px]" style="color: var(--tt-muted);">Available now</span></div>
+                            </div>
+                            <div class="ride-option rounded-xl p-5 cursor-pointer" style="background: rgba(10, 22, 40, 0.4); border-color: rgba(255,255,255,0.1);" onclick="selectRide(this)">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="w-11 h-11 rounded-lg flex items-center justify-center" style="background: rgba(37, 99, 235, 0.15);">🚘</div>
+                                    <span class="font-serif text-lg font-bold" style="color: var(--tt-gold);">R150</span>
+                                </div>
+                                <h5 class="font-serif font-bold text-white text-sm">Chambers EV</h5>
+                                <p class="text-[11px] mt-1" style="color: var(--tt-muted);">Mercedes EQS · 12 min ETA</p>
+                                <div class="flex items-center gap-2 mt-3"><span class="status-dot online"></span><span class="text-[10px]" style="color: var(--tt-muted);">Available now</span></div>
+                            </div>
+                            <div class="ride-option rounded-xl p-5 cursor-pointer" style="background: rgba(10, 22, 40, 0.4); border-color: rgba(255,255,255,0.1);" onclick="selectRide(this)">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="w-11 h-11 rounded-lg flex items-center justify-center" style="background: rgba(139, 26, 26, 0.15);">🚐</div>
+                                    <span class="font-serif text-lg font-bold" style="color: var(--tt-gold);">R45</span>
+                                </div>
+                                <h5 class="font-serif font-bold text-white text-sm">Shared Bar</h5>
+                                <p class="text-[11px] mt-1" style="color: var(--tt-muted);">BYD Atto 3 · 20 min ETA</p>
+                                <div class="flex items-center gap-2 mt-3"><span class="status-dot busy"></span><span class="text-[10px]" style="color: var(--tt-muted);">3 seats available</span></div>
+                            </div>
+                        </div>
+
+                        <button onclick="bookRide()" class="w-full py-4 rounded-xl btn-gold text-sm flex items-center justify-center gap-2 font-serif font-bold">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            Reserve Court Commute
+                        </button>
+                    </div>
+
+                    <!-- Court Drop Gallery -->
+                    <div class="glass-premium rounded-2xl p-6">
+                        <p class="text-[10px] uppercase tracking-[0.3em] mb-2" style="color: var(--tt-gold);">Court Arrivals · Gallery</p>
+                        <h4 class="font-serif text-xl font-bold text-white mb-5">Practitioner Moments</h4>
+                        <div class="grid grid-cols-2 lg:grid-cols-3 gap-3">
+                            <div class="relative rounded-xl overflow-hidden aspect-video group cursor-pointer">
+                                <img src="https://image.qwenlm.ai/public_source/41f0f1f7-37a5-4e7c-a189-29abc677d3de/1f3a44265-42a5-4fc0-87f9-6cf4fe6e9055.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(10, 22, 40, 0.95), transparent);"></div>
+                                <div class="absolute bottom-3 left-3 right-3"><p class="font-serif text-xs font-bold text-white">Johannesburg High Court</p></div>
+                            </div>
+                            <div class="relative rounded-xl overflow-hidden aspect-video group cursor-pointer">
+                                <img src="https://image.qwenlm.ai/public_source/41f0f1f7-37a5-4e7c-a189-29abc677d3de/1525ec7ca-c913-41e7-bbe0-8cfa1c4b4241.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(10, 22, 40, 0.95), transparent);"></div>
+                                <div class="absolute bottom-3 left-3 right-3"><p class="font-serif text-xs font-bold text-white">In-transit case prep</p></div>
+                            </div>
+                            <div class="relative rounded-xl overflow-hidden aspect-video group cursor-pointer">
+                                <img src="https://image.qwenlm.ai/public_source/41f0f1f7-37a5-4e7c-a189-29abc677d3de/1f3a44265-42a5-4fc0-87f9-6cf4fe6e9055.png" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" style="object-position: right;">
+                                <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(10, 22, 40, 0.95), transparent);"></div>
+                                <div class="absolute bottom-3 left-3 right-3"><p class="font-serif text-xs font-bold text-white">Constitutional Court</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="glass-premium rounded-2xl p-6">
+                        <p class="text-[10px] uppercase tracking-[0.3em] mb-2" style="color: var(--tt-gold);">Practitioner Stats</p>
+                        <h4 class="font-serif text-lg font-bold text-white mb-5">Your Impact</h4>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between pb-3" style="border-bottom: 1px solid rgba(201, 169, 97, 0.1);">
+                                <span class="text-xs" style="color: var(--tt-muted);">Total Commutes</span>
+                                <span class="font-serif font-bold text-white">47</span>
+                            </div>
+                            <div class="flex items-center justify-between pb-3" style="border-bottom: 1px solid rgba(201, 169, 97, 0.1);">
+                                <span class="text-xs" style="color: var(--tt-muted);">CO₂ Avoided</span>
+                                <span class="font-serif font-bold" style="color: #34D399;">142 kg</span>
+                            </div>
+                            <div class="flex items-center justify-between pb-3" style="border-bottom: 1px solid rgba(201, 169, 97, 0.1);">
+                                <span class="text-xs" style="color: var(--tt-muted);">Billable Hours Saved</span>
+                                <span class="font-serif font-bold text-white">23 hrs</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs" style="color: var(--tt-muted);">Bar Points</span>
+                                <span class="font-serif font-bold gradient-text-gold">2,350</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-premium rounded-2xl p-6">
+                        <p class="text-[10px] uppercase tracking-[0.3em] mb-2" style="color: var(--tt-gold);">Why CommunityCap</p>
+                        <h4 class="font-serif text-lg font-bold text-white mb-5">The Advantage</h4>
+                        <ul class="space-y-3 text-xs" style="color: var(--tt-cream);">
+                            <li class="flex items-start gap-3"><span style="color: var(--tt-gold);">§</span><span>100% electric fleet — carbon-neutral practice</span></li>
+                            <li class="flex items-start gap-3"><span style="color: var(--tt-gold);">§</span><span>Vetted drivers trained in court etiquette</span></li>
+                            <li class="flex items-start gap-3"><span style="color: var(--tt-gold);">§</span><span>Wi-Fi enabled for in-transit preparation</span></li>
+                            <li class="flex items-start gap-3"><span style="color: var(--tt-gold);">§</span><span>Robes & gown accommodation in premium class</span></li>
+                            <li class="flex items-start gap-3"><span style="color: var(--tt-gold);">§</span><span>Exclusive legal fraternity rates & priority</span></li>
+                            <li class="flex items-start gap-3"><span style="color: var(--tt-gold);">§</span><span>Integrated with your matter calendar</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════ -->
+        <!-- IOT TRUST & SECURITY                            -->
+        <!-- ═══════════════════════════════════════════════ -->
+        <div id="tab-iot-security" class="tab-panel">
+            <div class="glass-premium rounded-2xl p-6 lg:p-8 mb-6">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-16 h-16 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(201, 169, 97, 0.1)); border: 1px solid rgba(37, 99, 235, 0.3);">
+                        <svg class="w-8 h-8" style="color: #60A5FA;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    </div>
+                    <div>
+                        <p class="text-[10px] uppercase tracking-[0.3em]" style="color: var(--tt-gold);">Client-Attorney Privilege · Chain of Custody</p>
+                        <h3 class="font-serif text-3xl font-bold text-white">IoT Trust & Security</h3>
+                        <p class="text-xs mt-1" style="color: var(--tt-muted);">Blockchain-verified security for privileged communications and court bundles</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                    <div class="iot-card p-5 rounded-xl glass-premium card-hover">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[10px] uppercase tracking-wider" style="color: var(--tt-gold-dark);">Encryption</span>
+                            <span class="status-dot online"></span>
+                        </div>
+                        <p class="font-serif text-2xl font-bold" style="color: var(--tt-gold);">AES-256</p>
+                        <p class="text-[11px] mt-1" style="color: var(--tt-muted);">End-to-end privileged</p>
+                    </div>
+                    <div class="iot-card p-5 rounded-xl glass-premium card-hover">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[10px] uppercase tracking-wider" style="color: var(--tt-gold-dark);">Blockchain</span>
+                            <span class="status-dot online"></span>
+                        </div>
+                        <p class="font-serif text-2xl font-bold text-white">12 Nodes</p>
+                        <p class="text-[11px] mt-1" style="color: var(--tt-muted);">Verification active</p>
+                    </div>
+                    <div class="iot-card p-5 rounded-xl glass-premium card-hover">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[10px] uppercase tracking-wider" style="color: var(--tt-gold-dark);">Biometric</span>
+                            <span class="status-dot online"></span>
+                        </div>
+                        <p class="font-serif text-2xl font-bold" style="color: #34D399;">Active</p>
+                        <p class="text-[11px] mt-1" style="color: var(--tt-muted);">Face + Fingerprint</p>
+                    </div>
+                    <div class="iot-card p-5 rounded-xl glass-premium card-hover">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-[10px] uppercase tracking-wider" style="color: var(--tt-gold-dark);">Audit Log</span>
+                            <span class="status-dot online"></span>
+                        </div>
+                        <p class="font-serif text-2xl font-bold text-white">1,247</p>
+                        <p class="text-[11px] mt-1" style="color: var(--tt-muted);">Verified today</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="glass-premium rounded-2xl p-6">
+                        <p class="text-[10px] uppercase tracking-[0.3em] mb-2" style="color: var(--tt-gold);">Chain of Custody</p>
+                        <h4 class="font-serif text-xl font-bold text-white mb-5">Document Verification</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3 p-3 rounded-xl" style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2);">
+                                <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(16, 185, 129, 0.15);">
+                                    <svg class="w-4 h-4" style="color: #34D399;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs font-serif font-bold text-white truncate">State v. Williams · Opening Statement</p>
+                                    <p class="text-[10px]" style="color: var(--tt-muted);">0x7a3f...8b2c · Verified 2m ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 rounded-xl" style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2);">
+                                <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(16, 185, 129, 0.15);">
+                                    <svg class="w-4 h-4" style="color: #34D399;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs font-serif font-bold text-white truncate">Molefe v. TransUnion · Founding Affidavit</p>
+                                    <p class="text-[10px]" style="color: var(--tt-muted);">0x4d1e...9f3a · Verified 15m ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 rounded-xl" style="background: rgba(201, 169, 97, 0.05); border: 1px solid rgba(201, 169, 97, 0.2);">
+                                <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(201, 169, 97, 0.15);">
+                                    <svg class="w-4 h-4" style="color: var(--tt-gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 8v4m0 4h.01"/></svg>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs font-serif font-bold text-white truncate">Estate Nkosi · Draft Will</p>
+                                    <p class="text-[10px]" style="color: var(--tt-muted);">0x2b8c...7e1d · Awaiting verification</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-premium rounded-2xl p-6">
+                        <p class="text-[10px] uppercase tracking-[0.3em] mb-2" style="color: var(--tt-gold);">Chambers Infrastructure</p>
+                        <h4 class="font-serif text-xl font-bold text-white mb-5">IoT Device Status</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-3 rounded-xl glass">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-lg">🔒</span>
+                                    <div><p class="text-xs font-semibold text-white">Chambers Smart Lock</p><p class="text-[10px]" style="color: var(--tt-muted);">Secured · Last access 30m ago</p></div>
+                                </div>
+                                <span class="status-dot online"></span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 rounded-xl glass">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-lg">📹</span>
+                                    <div><p class="text-xs font-semibold text-white">Filing Room CCTV</p><p class="text-[10px]" style="color: var(--tt-muted);">Recording · 24/7 monitoring</p></div>
+                                </div>
+                                <span class="status-dot online"></span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 rounded-xl glass">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-lg">🖨️</span>
+                                    <div><p class="text-xs font-semibold text-white">Secure Court Bundle Printer</p><p class="text-[10px]" style="color: var(--tt-muted);">Online · 3 bundles queued</p></div>
+                                </div>
+                                <span class="status-dot online"></span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 rounded-xl glass">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-lg">🚗</span>
+                                    <div><p class="text-xs font-semibold text-white">CommunityCap GPS Tracker</p><p class="text-[10px]" style="color: var(--tt-muted);">Active · Route encrypted</p></div>
+                                </div>
+                                <span class="status-dot online"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════ -->
+        <!-- AUDIO OUTPUT                                    -->
+        <!-- ═══════════════════════════════════════════════ -->
+        <div id="tab-audio" class="tab-panel">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2">
+                    <div class="glass-premium rounded-2xl p-6 lg:p-8 mb-6">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-16 h-16 rounded-2xl flex items-center justify-center logo-float" style="background: linear-gradient(135deg, rgba(139, 26, 26, 0.2), rgba(201, 169, 97, 0.1)); border: 1px solid rgba(139, 26, 26, 0.3);">
+                                <svg class="w-8 h-8" style="color: #E57373;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m0 0a7 7 0 017-7m0 0a7 7 0 017 7m0 0h.01M12 7v5l3 3"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-[10px] uppercase tracking-[0.3em]" style="color: var(--tt-gold);">Bespoke Narration</p>
+                                <h3 class="font-serif text-3xl font-bold text-white">AI Audio Output</h3>
+                                <p class="text-xs mt-1" style="color: var(--tt-muted);">Listen to briefs, authorities and dictations with custom voice synthesis</p>
+                            </div>
+                        </div>
+
+                        <!-- Voice Selection -->
+                        <p class="text-[10px] uppercase tracking-widest mb-3" style="color: var(--tt-gold-dark);">Select Voice Persona</p>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+                            <div class="voice-option selected rounded-xl p-4 cursor-pointer text-center" style="background: rgba(201, 169, 97, 0.05);" onclick="selectVoice(this, 'professional')">
+                                <div class="w-14 h-14 rounded-full mx-auto mb-3 flex items-center justify-center" style="background: linear-gradient(135deg, var(--tt-gold), var(--tt-gold-dark));">
+                                    <span class="text-2xl">👨‍⚖️</span>
+                                </div>
+                                <p class="text-xs font-serif font-bold text-white">Senior Counsel</p>
+                                <p class="text-[10px] mt-1" style="color: var(--tt-muted);">Authoritative, measured</p>
+                            </div>
+                            <div class="voice-option rounded-xl p-4 cursor-pointer text-center" style="background: rgba(10, 22, 40, 0.4);" onclick="selectVoice(this, 'professional-female')">
+                                <div class="w-14 h-14 rounded-full mx-auto mb-3 flex items-center justify-center" style="background: linear-gradient(135deg, #E57373, var(--tt-crimson));">
+                                    <span class="text-2xl">👩‍⚖️</span>
+                                </div>
+                                <p class="text-xs font-serif font-bold text-white">Advocate</p>
+                                <p class="text-[10px] mt-1" style="color: var(--tt-muted);">Clear, commanding</p>
+                            </div>
+                            <div class="voice-option rounded-xl p-4 cursor-pointer text-center" style="background: rgba(10, 22, 40, 0.4);" onclick="selectVoice(this, 'clone')">
+                                <div class="w-14 h-14 rounded-full mx-auto mb-3 flex items-center justify-center" style="background: linear-gradient(135deg, #60A5FA, var(--tt-blue));">
+                                    <span class="text-2xl">🎙️</span>
+                                </div>
+                                <p class="text-xs font-serif font-bold text-white">Your Voice</p>
+                                <p class="text-[10px] mt-1" style="color: var(--tt-muted);">AI cloned · 30s sample</p>
+                            </div>
+                            <div class="voice-option rounded-xl p-4 cursor-pointer text-center" style="background: rgba(10, 22, 40, 0.4);" onclick="selectVoice(this, 'zulu')">
+                                <div class="w-14 h-14 rounded-full mx-auto mb-3 flex items-center justify-center" style="background: linear-gradient(135deg, #34D399, var(--tt-success));">
+                                    <span class="text-2xl">🌍</span>
+                                </div>
+                                <p class="text-xs font-serif font-bold text-white">Indigenous</p>
+                                <p class="text-[10px] mt-1" style="color: var(--tt-muted);">Zulu · Xhosa · Sotho</p>
+                            </div>
+                        </div>
+
+                        <!-- Voice Clone Upload -->
+                        <div class="p-5 rounded-xl mb-6 text-center" style="background: rgba(10, 22, 40, 0.4); border: 1px dashed rgba(201, 169, 97, 0.3);">
+                            <div class="w-12 h-12 rounded-full mx-auto mb-3 flex items-center justify-center" style="background: rgba(201, 169, 97, 0.15);">
+                                <svg class="w-6 h-6" style="color: var(--tt-gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m0 0a7 7 0 017-7m0 0a7 7 0 017 7m0 0h.01"/></svg>
+                            </div>
+                            <p class="text-sm font-serif font-bold text-white mb-1">Voice Cloning Studio</p>
+                            <p class="text-[11px] mb-3" style="color: var(--tt-muted);">Record a 30-second sample to create your personalized AI voice</p>
+                            <button class="px-5 py-2 rounded-lg btn-gold text-xs">Upload Voice Sample</button>
+                        </div>
+
+                        <!-- Audio Player -->
+                        <div class="p-5 rounded-xl mb-5" style="background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 169, 97, 0.15);">
+                            <div class="flex items-center gap-4 mb-4">
+                                <button onclick="togglePlay()" id="playBtn" class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg" style="background: linear-gradient(135deg, var(--tt-gold), var(--tt-gold-dark)); box-shadow: 0 0 20px var(--gold-glow);">
+                                    <svg class="w-5 h-5 ml-0.5" style="color: var(--tt-navy);" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </button>
+                                <div class="flex-1 min-w-0">
+                                    <p class="font-serif font-bold text-white truncate">Opening Statement · State v. Williams</p>
+                                    <p class="text-[11px]" style="color: var(--tt-muted);">Senior Counsel Voice · 2:34</p>
+                                </div>
+                            </div>
+                            <div class="w-full h-1.5 rounded-full overflow-hidden mb-2" style="background: rgba(201, 169, 97, 0.1);">
+                                <div id="audioProgress" class="h-full rounded-full transition-all" style="width: 0%; background: linear-gradient(90deg, var(--tt-gold), var(--tt-gold-light));"></div>
+                            </div>
+                            <div class="flex items-center justify-between text-[11px]" style="color: var(--tt-muted);">
+                                <span id="audioTime">0:00</span>
+                                <span>2:34</span>
+                            </div>
+                            <div class="waveform mt-3 justify-center" id="waveform"></div>
+                        </div>
+
+                        <!-- Text to Speech -->
+                        <div class="relative mb-4">
+                            <textarea placeholder="Enter text to narrate, or select a matter document..." class="w-full px-5 py-4 rounded-xl text-sm outline-none resize-none" style="background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 169, 97, 0.15); color: var(--tt-cream); font-family: 'Cormorant Garamond', serif; font-size: 15px;" rows="4">May it please the Court, I appear on behalf of the State in this matter. The evidence will demonstrate, beyond reasonable doubt, that the accused committed the offence as charged.</textarea>
+                        </div>
+                        <button onclick="generateAudio()" class="w-full py-3.5 rounded-xl btn-gold text-sm font-serif font-bold flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m0 0a7 7 0 017-7m0 0a7 7 0 017 7m0 0h.01"/></svg>
+                            Synthesize Narration
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="glass-premium rounded-2xl p-6">
+                        <p class="text-[10px] uppercase tracking-[0.3em] mb-2" style="color: var(--tt-gold);">Delivery Parameters</p>
+                        <h4 class="font-serif text-lg font-bold text-white mb-5">Voice Settings</h4>
+                        <div class="space-y-5">
+                            <div>
+                                <label class="text-[10px] uppercase tracking-widest mb-2 flex justify-between" style="color: var(--tt-gold-dark);"><span>Pace</span><span id="speedVal" style="color: var(--tt-gold);">1.0×</span></label>
+                                <input type="range" min="0.5" max="2" step="0.1" value="1" class="w-full" oninput="document.getElementById('speedVal').textContent=this.value+'×'">
+                            </div>
+                            <div>
+                                <label class="text-[10px] uppercase tracking-widest mb-2 flex justify-between" style="color: var(--tt-gold-dark);"><span>Tone</span><span id="pitchVal" style="color: var(--tt-gold);">0</span></label>
+                                <input type="range" min="-10" max="10" step="1" value="0" class="w-full" oninput="document.getElementById('pitchVal').textContent=this.value">
+                            </div>
+                            <div>
+                                <label class="text-[10px] uppercase tracking-widest mb-2 block" style="color: var(--tt-gold-dark);">Language</label>
+                                <select class="w-full px-3 py-2.5 rounded-lg text-sm outline-none" style="background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 169, 97, 0.2); color: var(--tt-text);">
+                                    <option>English (South African)</option>
+                                    <option>isiZulu</option>
+                                    <option>isiXhosa</option>
+                                    <option>Afrikaans</option>
+                                    <option>Sesotho</option>
+                                    <option>Setswana</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-premium rounded-2xl p-6">
+                        <p class="text-[10px] uppercase tracking-[0.3em] mb-2" style="color: var(--tt-gold);">Library</p>
+                        <h4 class="font-serif text-lg font-bold text-white mb-5">Narrated Briefs</h4>
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-3 p-3 rounded-xl glass glass-hover cursor-pointer">
+                                <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(201, 169, 97, 0.15); color: var(--tt-gold);">▶</div>
+                                <div class="flex-1 min-w-0"><p class="text-xs font-serif font-bold text-white truncate">Case Summary · State v. Williams</p><p class="text-[10px]" style="color: var(--tt-muted);">2:34 · Senior Counsel</p></div>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 rounded-xl glass glass-hover cursor-pointer">
+                                <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(139, 26, 26, 0.15); color: #E57373;">▶</div>
+                                <div class="flex-1 min-w-0"><p class="text-xs font-serif font-bold text-white truncate">Brief · Molefe v. TransUnion</p><p class="text-[10px]" style="color: var(--tt-muted);">5:12 · Advocate</p></div>
+                            </div>
+                            <div class="flex items-center gap-3 p-3 rounded-xl glass glass-hover cursor-pointer">
+                                <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: rgba(16, 185, 129, 0.15); color: #34D399;">▶</div>
+                                <div class="flex-1 min-w-0"><p class="text-xs font-serif font-bold text-white truncate">Customary Law Overview</p><p class="text-[10px]" style="color: var(--tt-muted);">8:45 · isiZulu</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════════════ -->
+        <!-- LEGAL MART                                      -->
+        <!-- ═══════════════════════════════════════════════ -->
+        <div id="tab-legal-mart" class="tab-panel">
+            <div class="flex items-center justify-between mb-6 flex-wrap gap-4">
+                <div>
+                    <p class="text-[10px] uppercase tracking-[0.3em]" style="color: var(--tt-gold);">The Bar's Market</p>
+                    <h3 class="font-serif text-3xl font-bold text-white">Legal Mart</h3>
+                </div>
+                <div class="relative flex-1 max-w-md">
+                    <input type="text" placeholder="Search authorities, services, attire..." class="w-full pl-12 pr-4 py-3 rounded-xl text-sm outline-none" style="background: rgba(10, 22, 40, 0.6); border: 1px solid rgba(201, 169, 97, 0.2); color: var(--tt-text);">
+                    <svg class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2" style="color: var(--tt-gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </div>
+            </div>
+
+            <div class="flex gap-2 flex-wrap mb-6">
+                <button onclick="filterProducts('all')" class="product-filter px-4 py-2 rounded-lg text-xs font-medium transition-all" data-cat="all" style="background: rgba(201, 169, 97, 0.2); color: var(--tt-gold); border: 1px solid rgba(201, 169, 97, 0.4);">All Categories</button>
+                <button onclick="filterProducts('books')" class="product-filter px-4 py-2 rounded-lg text-xs font-medium transition-all" data-cat="books" style="background: rgba(255,255,255,0.03); color: var(--tt-muted); border: 1px solid rgba(255,255,255,0.1);">Law Reports</button>
+                <button onclick="filterProducts('templates')" class="product-filter px-4 py-2 rounded-lg text-xs font-medium transition-all" data-cat="templates" style="background: rgba(255,255,255,0.03); color: var(--tt-muted); border: 1px solid rgba(255,255,255,0.1);">Precedents</button>
+                <button onclick="filterProducts('services')" class="product-filter px-4 py-2 rounded-lg text-xs font-medium transition-all" data-cat="services" style="background: rgba(255,255,255,0.03); color: var(--tt-muted); border: 1px solid rgba(255,255,255,0.1);">Services</button>
+                <button onclick="filterProducts('attire')" class="product-filter px-4 py-2 rounded-lg text-xs font-medium transition-all" data-cat="attire" style="background: rgba(255,255,255,0.03); color: var(--tt-muted); border: 1px solid rgba(255,255,255,0.1);">Court Attire</button>
+                <button onclick="filterProducts('tech')" class="product-filter px-4 py-2 rounded-lg text-xs font-medium transition-all" data-cat="tech" style="background: rgba(255,255,255,0.03); color: var(--tt-muted); border: 1px solid rgba(255,255,255,0.1);">Technology</button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5" id="productGrid">
+                <div class="product-card glass-premium rounded-2xl overflow-hidden card-hover" data-cat="books">
+                    <div class="h-48 flex items-center justify-center relative" style="background: linear-gradient(135deg, rgba(201, 169, 97, 0.3), rgba(10, 22, 40, 0.9));">
+                        <span class="text-6xl">📖</span>
+                        <span class="absolute top-3 right-3 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider" style="background: var(--tt-gold); color: var(--tt-navy);">Definitive</span>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-[10px] uppercase tracking-widest" style="color: var(--tt-gold-dark);">Law Reports</span>
+                        <h4 class="font-serif font-bold text-white mt-1 mb-2">Silberberg & Schoeman's Law of Sales</h4>
+                        <p class="text-[11px] mb-4" style="color: var(--tt-muted);">The definitive South African sales law authority</p>
+                        <div class="flex items-center justify-between">
+                            <span class="font-serif text-xl font-bold gradient-text-gold">R850</span>
+                            <button onclick="addToCart('Law of Sales')" class="px-4 py-2 rounded-lg btn-gold text-[11px]">Acquire</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card glass-premium rounded-2xl overflow-hidden card-hover" data-cat="templates">
+                    <div class="h-48 flex items-center justify-center relative" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(10, 22, 40, 0.9));">
+                        <span class="text-6xl">📜</span>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-[10px] uppercase tracking-widest" style="color: var(--tt-gold-dark);">Precedents</span>
+                        <h4 class="font-serif font-bold text-white mt-1 mb-2">Complete Pleadings Bundle</h4>
+                        <p class="text-[11px] mb-4" style="color: var(--tt-muted);">50+ court-ready pleadings, High Court format</p>
+                        <div class="flex items-center justify-between">
+                            <span class="font-serif text-xl font-bold gradient-text-gold">R350</span>
+                            <button onclick="addToCart('Pleadings Bundle')" class="px-4 py-2 rounded-lg btn-gold text-[11px]">Acquire</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card glass-premium rounded-2xl overflow-hidden card-hover" data-cat="services">
+                    <div class="h-48 flex items-center justify-center relative" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(10, 22, 40, 0.9));">
+                        <span class="text-6xl">⚖</span>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-[10px] uppercase tracking-widest" style="color: var(--tt-gold-dark);">Services</span>
+                        <h4 class="font-serif font-bold text-white mt-1 mb-2">Senior Counsel Review</h4>
+                        <p class="text-[11px] mb-4" style="color: var(--tt-muted);">1-hour expert review of your brief</p>
+                        <div class="flex items-center justify-between">
+                            <span class="font-serif text-xl font-bold gradient-text-gold">R1,500</span>
+                            <button onclick="addToCart('SC Review')" class="px-4 py-2 rounded-lg btn-gold text-[11px]">Book</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card glass-premium rounded-2xl overflow-hidden card-hover" data-cat="attire">
+                    <div class="h-48 flex items-center justify-center relative" style="background: linear-gradient(135deg, rgba(139, 26, 26, 0.3), rgba(10, 22, 40, 0.9));">
+                        <span class="text-6xl">🥋</span>
+                        <span class="absolute top-3 right-3 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider" style="background: var(--tt-crimson); color: var(--tt-cream);">Bespoke</span>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-[10px] uppercase tracking-widest" style="color: var(--tt-gold-dark);">Court Attire</span>
+                        <h4 class="font-serif font-bold text-white mt-1 mb-2">Advocate's Robe Set</h4>
+                        <p class="text-[11px] mb-4" style="color: var(--tt-muted);">Premium robe, bib, and bands · Tailored</p>
+                        <div class="flex items-center justify-between">
+                            <span class="font-serif text-xl font-bold gradient-text-gold">R2,800</span>
+                            <button onclick="addToCart('Robe Set')" class="px-4 py-2 rounded-lg btn-gold text-[11px]">Acquire</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card glass-premium rounded-2xl overflow-hidden card-hover" data-cat="tech">
+                    <div class="h-48 flex items-center justify-center relative" style="background: linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(10, 22, 40, 0.9));">
+                        <span class="text-6xl">💼</span>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-[10px] uppercase tracking-widest" style="color: var(--tt-gold-dark);">Technology</span>
+                        <h4 class="font-serif font-bold text-white mt-1 mb-2">Court Bundle Tablet</h4>
+                        <p class="text-[11px] mb-4" style="color: var(--tt-muted);">Pre-loaded with ThutoTech · S Pen</p>
+                        <div class="flex items-center justify-between">
+                            <span class="font-serif text-xl font-bold gradient-text-gold">R12,500</span>
+                            <button onclick="addToCart('Court Tablet')" class="px-4 py-2 rounded-lg btn-gold text-[11px]">Acquire</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card glass-premium rounded-2xl overflow-hidden card-hover" data-cat="books">
+                    <div class="h-48 flex items-center justify-center relative" style="background: linear-gradient(135deg, rgba(139, 26, 26, 0.3), rgba(10, 22, 40, 0.9));">
+                        <span class="text-6xl">📚</span>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-[10px] uppercase tracking-widest" style="color: var(--tt-gold-dark);">Law Reports</span>
+                        <h4 class="font-serif font-bold text-white mt-1 mb-2">Criminal Procedure Handbook</h4>
+                        <p class="text-[11px] mb-4" style="color: var(--tt-muted);">2025 Edition · Complete CPA guide</p>
+                        <div class="flex items-center justify-between">
+                            <span class="font-serif text-xl font-bold gradient-text-gold">R680</span>
+                            <button onclick="addToCart('Criminal Handbook')" class="px-4 py-2 rounded-lg btn-gold text-[11px]">Acquire</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card glass-premium rounded-2xl overflow-hidden card-hover" data-cat="services">
+                    <div class="h-48 flex items-center justify-center relative" style="background: linear-gradient(135deg, rgba(201, 169, 97, 0.3), rgba(10, 22, 40, 0.9));">
+                        <span class="text-6xl">👥</span>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-[10px] uppercase tracking-widest" style="color: var(--tt-gold-dark);">Services</span>
+                        <h4 class="font-serif font-bold text-white mt-1 mb-2">Paralegal Support</h4>
+                        <p class="text-[11px] mb-4" style="color: var(--tt-muted);">Monthly retainer · Dedicated paralegal</p>
+                        <div class="flex items-center justify-between">
+                            <span class="font-serif text-xl font-bold gradient-text-gold">R3,500<span class="text-xs">/mo</span></span>
+                            <button onclick="addToCart('Paralegal')" class="px-4 py-2 rounded-lg btn-gold text-[11px]">Retain</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card glass-premium rounded-2xl overflow-hidden card-hover" data-cat="attire">
+                    <div class="h-48 flex items-center justify-center relative" style="background: linear-gradient(135deg, rgba(10, 22, 40, 0.9), rgba(201, 169, 97, 0.15));">
+                        <span class="text-6xl">⚫</span>
+                    </div>
+                    <div class="p-5">
+                        <span class="text-[10px] uppercase tracking-widest" style="color: var(--tt-gold-dark);">Court Attire</span>
+                        <h4 class="font-serif font-bold text-white mt-1 mb-2">Attorney's Formal Suit</h4>
+                        <p class="text-[11px] mb-4" style="color: var(--tt-muted);">Italian wool · Charcoal · Tailored</p>
+                        <div class="flex items-center justify-between">
+                            <span class="font-serif text-xl font-bold gradient-text-gold">R4,200</span>
+                            <button onclick="addToCart('Attorney Suit')" class="px-4 py-2 rounded-lg btn-gold text-[11px]">Acquire</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- MOBILE BOTTOM NAVIGATION                            -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <nav class="mobile-nav fixed bottom-0 left-0 right-0 z-50 hidden lg:hidden" style="background: linear-gradient(180deg, rgba(10, 22, 40, 0.95) 0%, rgba(10, 22, 40, 1) 100%); border-top: 1px solid rgba(201, 169, 97, 0.2); backdrop-filter: blur(20px);">
+        <div class="flex items-center justify-around py-2">
+            <button onclick="switchTab('dashboard')" class="mobile-btn flex flex-col items-center gap-1 py-2 px-3" data-tab="dashboard" style="color: var(--tt-gold);">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                <span class="text-[10px] uppercase tracking-wider">Home</span>
+            </button>
+            <button onclick="switchTab('ai-search')" class="mobile-btn flex flex-col items-center gap-1 py-2 px-3" data-tab="ai-search" style="color: var(--tt-muted);">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                <span class="text-[10px] uppercase tracking-wider">Search</span>
+            </button>
+            <button onclick="switchTab('writing')" class="mobile-btn flex flex-col items-center gap-1 py-2 px-3" data-tab="writing" style="color: var(--tt-muted);">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                <span class="text-[10px] uppercase tracking-wider">Draft</span>
+            </button>
+            <button onclick="switchTab('lawcommunitycap')" class="mobile-btn flex flex-col items-center gap-1 py-2 px-3" data-tab="lawcommunitycap" style="color: var(--tt-muted);">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                <span class="text-[10px] uppercase tracking-wider">Ride</span>
+            </button>
+            <button onclick="switchTab('legal-mart')" class="mobile-btn flex flex-col items-center gap-1 py-2 px-3" data-tab="legal-mart" style="color: var(--tt-muted);">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                <span class="text-[10px] uppercase tracking-wider">Mart</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- SUCCESS MODAL                                       -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div id="successModal" class="fixed inset-0 backdrop-blur-sm z-50 hidden items-center justify-center p-4" style="background: rgba(10, 22, 40, 0.85);">
+        <div class="glass-premium rounded-3xl p-8 max-w-md w-full text-center animate-scaleIn" style="border: 1px solid rgba(201, 169, 97, 0.3);">
+            <div class="w-20 h-20 rounded-full mx-auto mb-5 flex items-center justify-center logo-float" style="background: linear-gradient(135deg, rgba(201, 169, 97, 0.2), rgba(201, 169, 97, 0.05)); border: 2px solid var(--tt-gold);">
+                <svg class="w-10 h-10" style="color: var(--tt-gold);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <p class="text-[10px] uppercase tracking-[0.3em] mb-2" style="color: var(--tt-gold);">Confirmed</p>
+            <h3 class="font-serif text-2xl font-bold text-white mb-2" id="successTitle">Success!</h3>
+            <p class="text-sm mb-6" style="color: var(--tt-cream);" id="successMessage">Your action was completed.</p>
+            <button onclick="closeModal()" class="px-8 py-3 rounded-xl btn-gold text-sm font-serif font-bold w-full">Proceed</button>
+        </div>
+    </div>
+
+    <script>
+        // ═══ TAB SWITCHING ═══
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+            document.getElementById('tab-' + tabId).classList.add('active');
+
+            document.querySelectorAll('.nav-btn').forEach(b => {
+                b.style.background = 'transparent';
+                b.style.color = 'var(--tt-muted)';
+                b.style.borderLeftColor = 'transparent';
+            });
+            const navBtn = document.getElementById('nav-' + tabId);
+            if (navBtn) { 
+                navBtn.style.background = 'rgba(201, 169, 97, 0.1)';
+                navBtn.style.color = 'var(--tt-gold)';
+                navBtn.style.borderLeftColor = 'var(--tt-gold)';
+            }
+
+            document.querySelectorAll('.mobile-btn').forEach(b => b.style.color = 'var(--tt-muted)');
+            const mobBtn = document.querySelector(`[data-tab="${tabId}"]`);
+            if (mobBtn) mobBtn.style.color = 'var(--tt-gold)';
+
+            const titles = {
+                'dashboard': ['Dashboard', 'Legal Intelligence Platform'],
+                'ai-search': ['Case Search', 'AI Precedent Engine'],
+                'writing': ['Drafting Suite', 'Court-Ready Pleadings'],
+                'files': ['Case Files', 'Matter Management'],
+                'customary': ['Customary Law', 'Indigenous Jurisprudence'],
+                'amendments': ['Amendments', 'Statute Revision Service'],
+                'lawcommunitycap': ['CommunityCap', 'Sustainable Legal Mobility'],
+                'iot-security': ['IoT Trust', 'Chain of Custody'],
+                'audio': ['Audio Voice', 'Bespoke Narration'],
+                'legal-mart': ['Legal Mart', 'The Bar\'s Market']
+            };
+            document.getElementById('pageTitle').textContent = titles[tabId][0];
+            document.getElementById('pageSubtitle').textContent = titles[tabId][1];
+            document.getElementById('notifPanel').classList.add('hidden');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // ═══ USER ROLE ═══
+        function switchUserRole() {
+            const role = document.getElementById('userRole').value;
+            const info = {
+                'student': ['Student Dashboard', 'LLB Curriculum Support'],
+                'intern': ['Intern Dashboard', 'Pupillage & Supervision'],
+                'practitioner': ['Practitioner Dashboard', 'Chambers & Court Practice']
+            };
+            document.getElementById('pageTitle').textContent = info[role][0];
+            document.getElementById('pageSubtitle').textContent = info[role][1];
+        }
+        function setUserRole(role) {
+            document.getElementById('userRole').value = role;
+            switchUserRole();
+        }
+
+        // ═══ NOTIFICATIONS ═══
+        function toggleNotif() { document.getElementById('notifPanel').classList.toggle('hidden'); }
+
+        // ═══ AI CASE SEARCH ═══
+        function setSearchEx(q) { document.getElementById('caseSearchInput').value = q; searchCases(); }
+        function searchCases() {
+            const q = document.getElementById('caseSearchInput').value;
+            if (!q) return;
+            document.getElementById('caseResults').innerHTML = `<div class="glass-premium rounded-2xl p-10 text-center"><div class="spinner-gold mx-auto mb-5"></div><h4 class="font-serif text-xl font-bold text-white mb-2">Searching the Corpus...</h4><p class="text-sm" style="color: var(--tt-muted);">Analyzing across 9,000+ cases, including customary law authorities</p><p class="text-[10px] uppercase tracking-widest mt-4" style="color: var(--tt-gold-dark);">⟡ ⟡ ⟡</p></div>`;
+            setTimeout(() => {
+                document.getElementById('caseResults').innerHTML = `
+                    <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+                        <p class="text-sm"><span style="color: var(--tt-gold); font-weight: 600;">5 authorities</span> <span style="color: var(--tt-muted);">found matching your inquiry</span></p>
+                        <div class="flex gap-2">
+                            <button class="text-[10px] px-3 py-1.5 rounded-lg btn-outline-gold uppercase tracking-wider">Relevance</button>
+                            <button class="text-[10px] px-3 py-1.5 rounded-lg btn-outline-gold uppercase tracking-wider">Recency</button>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="glass-premium rounded-2xl p-6 card-hover">
+                            <div class="flex items-start gap-4">
+                                <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(201, 169, 97, 0.2), rgba(201, 169, 97, 0.05)); border: 1px solid rgba(201, 169, 97, 0.3);">
+                                    <span class="font-serif text-xl font-bold" style="color: var(--tt-gold);">98%</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-serif font-bold text-white mb-1">Carmichele v Minister of Safety & Security 2001 (4) SA 93 (CC)</h4>
+                                    <p class="text-[11px] mb-3" style="color: var(--tt-muted);">Constitutional Court · Negligence · State Duty of Care · 2001</p>
+                                    <p class="text-xs mb-4" style="color: var(--tt-cream);">The Constitutional Court held that the common law must be developed in light of the Bill of Rights to impose a duty of care on state officials to protect individuals from foreseeable harm by third parties.</p>
+                                    <div class="flex gap-2 flex-wrap mb-4">
+                                        <span class="text-[10px] px-2.5 py-1 rounded-full tag-success">Claimant Prevailed</span>
+                                        <span class="text-[10px] px-2.5 py-1 rounded-full tag-gold">Binding Precedent</span>
+                                        <span class="text-[10px] px-2.5 py-1 rounded-full tag-blue">Constitutional</span>
+                                    </div>
+                                    <div class="flex gap-2 flex-wrap">
+                                        <button onclick="switchTab('writing')" class="px-3 py-1.5 rounded-lg btn-gold text-[11px]">Cite in Draft</button>
+                                        <button class="px-3 py-1.5 rounded-lg btn-outline-gold text-[11px]">Read Full Judgment</button>
+                                        <button class="px-3 py-1.5 rounded-lg btn-outline-gold text-[11px]">Add to Matter</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="glass-premium rounded-2xl p-6 card-hover">
+                            <div class="flex items-start gap-4">
+                                <div class="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(201, 169, 97, 0.2), rgba(201, 169, 97, 0.05)); border: 1px solid rgba(201, 169, 97, 0.3);">
+                                    <span class="font-serif text-xl font-bold" style="color: var(--tt-gold);">94%</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-serif font-bold text-white mb-1">Bhe v Magistrate Khayelitsha 2005 (1) SA 580 (CC)</h4>
+                                    <p class="text-[11px] mb-3" style="color: var(--tt-muted);">Customary Law · Succession · Equality Clause · 2005</p>
+                                    <p class="text-xs mb-4" style="color: var(--tt-cream);">The Constitutional Court declared the rule of male primogeniture in customary succession unconstitutional, establishing equal inheritance rights under the Bill of Rights.</p>
+                                    <div class="flex gap-2 flex-wrap mb-4">
+                                        <span class="text-[10px] px-2.5 py-1 rounded-full tag-success">Customary Law</span>
+                                        <span class="text-[10px] px-2.5 py-1 rounded-full tag-gold">Constitutional</span>
+                                        <span class="text-[10px] px-2.5 py-1 rounded-full tag-crimson">Landmark</span>
+                                    </div>
+                                    <div class="flex gap-2 flex-wrap">
+                                        <button onclick="switchTab('writing')" class="px-3 py-1.5 rounded-lg btn-gold text-[11px]">Cite in Draft</button>
+                                        <button class="px-3 py-1.5 rounded-lg btn-outline-gold text-[11px]">Read Full Judgment</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+            }, 1500);
+        }
+
+        // ═══ WRITING ═══
+        function setDocType(t) {
+            document.querySelectorAll('.doc-btn').forEach(b => {
+                b.style.background = 'rgba(255,255,255,0.03)';
+                b.style.color = 'var(--tt-muted)';
+                b.style.borderColor = 'rgba(255,255,255,0.1)';
+            });
+            const active = document.querySelector(`[data-type="${t}"]`);
+            if (active) {
+                active.style.background = 'rgba(201, 169, 97, 0.2)';
+                active.style.color = 'var(--tt-gold)';
+                active.style.borderColor = 'rgba(201, 169, 97, 0.4)';
+            }
+        }
+        function generateContent() {
+            document.getElementById('writingOutput').style.display = 'block';
+            document.getElementById('aiSuggestionContent').innerHTML = `<div class="flex items-center gap-3"><div class="spinner-gold"></div><span class="text-sm" style="color: var(--tt-muted);">Consulting authorities and drafting...</span></div>`;
+            setTimeout(() => {
+                document.getElementById('aiSuggestionContent').innerHTML = `<p style="font-family: 'Cormorant Garamond', serif; font-size: 15px; line-height: 1.8;">May it please the Court,<br><br>I appear on behalf of the State, instructed by the Director of Public Prosecutions. The evidence will demonstrate, beyond reasonable doubt, that the accused committed the offence as charged.<br><br>The State shall present:<br>1. Eyewitness testimony of Ms. Sarah Molefe<br>2. Medical evidence of injuries sustained<br>3. CCTV footage (Exhibit A)<br>4. Expert testimony on causation<br><br>Respectfully submitted,<br>Adv. J. Dlamini · Counsel for the State</p>`;
+            }, 1500);
+        }
+        function improveWriting() {
+            document.getElementById('writingOutput').style.display = 'block';
+            document.getElementById('aiSuggestionContent').innerHTML = `<div class="space-y-3">
+                <div class="p-3 rounded-xl" style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2);"><p class="text-xs font-semibold mb-1" style="color: #34D399;">✓ Strengthened Legal Terminology</p><p class="text-[11px]" style="color: var(--tt-muted);">Replaced "committed" with "perpetrated deliberate unlawful conduct"</p></div>
+                <div class="p-3 rounded-xl" style="background: rgba(201, 169, 97, 0.05); border: 1px solid rgba(201, 169, 97, 0.2);"><p class="text-xs font-semibold mb-1" style="color: var(--tt-gold);">✓ Added Authority</p><p class="text-[11px]" style="color: var(--tt-muted);">S v Zuma 1995 · Burden of proof principles</p></div>
+                <div class="p-3 rounded-xl" style="background: rgba(37, 99, 235, 0.05); border: 1px solid rgba(37, 99, 235, 0.2);"><p class="text-xs font-semibold mb-1" style="color: #60A5FA;">✓ Improved Structure</p><p class="text-[11px]" style="color: var(--tt-muted);">Reorganized evidence presentation for forensic impact</p></div>
+            </div>`;
+        }
+        function checkGrammar() { 
+            document.getElementById('writingOutput').style.display = 'block'; 
+            document.getElementById('aiSuggestionContent').innerHTML = `<div class="p-4 rounded-xl" style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2);"><p class="text-sm font-semibold mb-2" style="color: #34D399;">✓ Verification Complete — No Issues Detected</p><p class="text-[11px]" style="color: var(--tt-muted);">Readability: Professional · Tone: Formal · Style: Court Standard · Citations: Verified</p></div>`; 
+        }
+        function listenToDocument() { switchTab('audio'); }
+        function saveDocument() { showSuccess('Brief Saved', 'Your draft has been secured to your matter file with blockchain verification.'); }
+        function acceptSuggestion() { document.getElementById('writingOutput').style.display = 'none'; showSuccess('Applied', 'Counsel\'s recommendation has been applied to your draft.'); }
+        function loadTemplate(t) { showSuccess('Precedent Loaded', t + ' template applied. Customise as required.'); }
+        function updateWordCount() { 
+            const t = document.getElementById('writingArea').value; 
+            document.getElementById('wordCount').textContent = (t.trim() ? t.trim().split(/\s+/).length : 0) + ' words'; 
+            document.getElementById('charCount').textContent = t.length.toLocaleString() + ' chars'; 
+        }
+
+        // ═══ FILES ═══
+        function filterByStage(s) {
+            document.querySelectorAll('.stage-btn').forEach(b => {
+                b.style.background = 'rgba(255,255,255,0.03)';
+                b.style.color = 'var(--tt-muted)';
+                b.style.borderColor = 'rgba(255,255,255,0.1)';
+            });
+            const active = document.querySelector(`[data-stage="${s}"]`);
+            if (active) {
+                active.style.background = 'rgba(201, 169, 97, 0.2)';
+                active.style.color = 'var(--tt-gold)';
+                active.style.borderColor = 'rgba(201, 169, 97, 0.4)';
+            }
+            document.querySelectorAll('.file-item').forEach(f => { f.style.display = (s === 'all' || f.dataset.stage === s) ? 'block' : 'none'; });
+        }
+        function createNewFile() { showSuccess('New Matter Opened', 'A new file has been created in your chambers. Begin with client intake.'); }
+
+        // ═══ AUDIO ═══
+        function selectVoice(el) {
+            document.querySelectorAll('.voice-option').forEach(v => v.classList.remove('selected'));
+            el.classList.add('selected');
+        }
+        let isPlaying = false;
+        let playInterval;
+        function togglePlay() {
+            isPlaying = !isPlaying;
+            const btn = document.getElementById('playBtn');
+            if (isPlaying) {
+                btn.innerHTML = `<svg class="w-5 h-5" style="color: var(--tt-navy);" fill="currentColor" viewBox="0 0 24 24"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>`;
+                generateWaveform();
+                let progress = parseFloat(document.getElementById('audioProgress').style.width) || 0;
+                playInterval = setInterval(() => {
+                    progress += 0.5;
+                    if (progress >= 100) { progress = 0; isPlaying = false; clearInterval(playInterval); btn.innerHTML = `<svg class="w-5 h-5 ml-0.5" style="color: var(--tt-navy);" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`; }
+                    document.getElementById('audioProgress').style.width = progress + '%';
+                    const sec = Math.floor(progress * 1.54);
+                    document.getElementById('audioTime').textContent = '0:' + (sec < 10 ? '0' : '') + sec;
+                }, 500);
+            } else {
+                btn.innerHTML = `<svg class="w-5 h-5 ml-0.5" style="color: var(--tt-navy);" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`;
+                clearInterval(playInterval);
+            }
+        }
+        function generateWaveform() {
+            const wf = document.getElementById('waveform');
+            wf.innerHTML = '';
+            for (let i = 0; i < 40; i++) {
+                const bar = document.createElement('div');
+                bar.className = 'waveform-bar';
+                bar.style.height = (Math.random() * 30 + 10) + 'px';
+                bar.style.animationDelay = (i * 0.05) + 's';
+                bar.style.opacity = isPlaying ? 1 : 0.3;
+                wf.appendChild(bar);
+            }
+        }
+        function generateAudio() { showSuccess('Narration Synthesized', 'Your document has been rendered with your selected voice persona.'); }
+
+        // ═══ RIDE ═══
+        function selectRide(el) {
+            document.querySelectorAll('.ride-option').forEach(r => {
+                r.classList.remove('selected');
+                r.style.background = 'rgba(10, 22, 40, 0.4)';
+                r.style.borderColor = 'rgba(255,255,255,0.1)';
+            });
+            el.classList.add('selected');
+            el.style.background = 'rgba(201, 169, 97, 0.08)';
+            el.style.borderColor = 'var(--tt-gold)';
+        }
+        function bookRide() { showSuccess('Commute Reserved', 'Your LawCommunityCap EV is confirmed. Driver arrives 5 minutes prior to scheduled roll call.'); }
+
+        // ═══ LEGAL MART ═══
+        function filterProducts(cat) {
+            document.querySelectorAll('.product-filter').forEach(f => {
+                f.style.background = 'rgba(255,255,255,0.03)';
+                f.style.color = 'var(--tt-muted)';
+                f.style.borderColor = 'rgba(255,255,255,0.1)';
+            });
+            const active = document.querySelector(`[data-cat="${cat}"]`);
+            if (active) {
+                active.style.background = 'rgba(201, 169, 97, 0.2)';
+                active.style.color = 'var(--tt-gold)';
+                active.style.borderColor = 'rgba(201, 169, 97, 0.4)';
+            }
+            document.querySelectorAll('.product-card').forEach(c => { c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none'; });
+        }
+        function addToCart(p) { showSuccess('Added to Cart', p + ' has been added to your procurement list.'); }
+
+        function toggleAudioPreview() { showSuccess('Audio Preview', 'Custom voice AI configured. Proceed to Audio Voice for bespoke narration.'); }
+
+        // ═══ MODAL ═══
+        function showSuccess(title, msg) {
+            document.getElementById('successTitle').textContent = title;
+            document.getElementById('successMessage').textContent = msg;
+            const m = document.getElementById('successModal');
+            m.classList.remove('hidden'); m.classList.add('flex');
+        }
+        function closeModal() { const m = document.getElementById('successModal'); m.classList.add('hidden'); m.classList.remove('flex'); }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateWordCount();
+            generateWaveform();
+        });
+    </script>
+</body>
+</html>
+
