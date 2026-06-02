@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Navigation -->
-<nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
-  <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-    <div class="flex items-center gap-2">
-      <!-- MatricMate Logo -->
-      <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white font-bold text-xl">
-        M
-      </div>
-      <span class="text-xl font-bold text-slate-900">MatricMate <span class="text-blue-600">AI</span></span>
-    </div>
-    <a href="#pricing" class="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-blue-700 transition">Upgrade to Premium</a>
-  </div>
-</nav>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MatricMate AI - Your 24/7 AI tutor for South African Matric exams">
+    <title>MatricMate AI - Your 24/7 Matric Tutor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .chat-box { height: 400px; overflow-y: auto; scroll-behavior: smooth; }
+        .msg-ai { background: #ffffff; border: 1px solid #e2e8f0; }
+        .msg-user { background: #2563eb; color: white; }
+        .msg-timestamp { font-size: 0.7rem; opacity: 0.7; }
+        .fade-in { animation: fadeIn 0.3s ease-in; }
+        .typing-indicator { display: flex; gap: 4px; align-items: center; }
+        .typing-dot { width: 8px; height: 8px; border-radius: 50%; background: #94a3b8; animation: typing 1.4s infinite; }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes typing { 0%, 60%, 100% { opacity: 0.5; } 30% { opacity: 1; } }
+        .scroll-to-bottom { opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+        .scroll-to-bottom.visible { opacity: 1; pointer-events: auto; }
+    </style>
 </head>
 <body class="text-slate-800">
 
@@ -39,13 +48,11 @@
     <section class="max-w-3xl mx-auto px-4 mb-16">
         <div class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden flex flex-col h-[600px]">
             <!-- Chat Header -->
-<div class="bg-slate-900 text-white px-6 py-4 flex items-center gap-3">
-  <div class="w-8 h-8 bg-blue-600 rounded-xl flex items-center justify-center text-white font-bold text-lg">
-    M
-  </div>
-  <span class="font-semibold">MatricMate AI is online</span>
-  <span id="usageBadge" class="ml-auto text-xs bg-blue-500 px-2 py-1 rounded-full">Free Trial: 5 Questions Left</span>
-</div>
+            <div class="bg-slate-900 text-white px-6 py-4 flex items-center gap-3 flex-shrink-0">
+                <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse" aria-label="Status: online"></div>
+                <span class="font-semibold">MatricMate AI is online</span>
+                <span id="usageBadge" class="ml-auto text-xs bg-blue-500 px-2 py-1 rounded-full" role="status" aria-live="polite">Free Trial: 5 Questions Left</span>
+            </div>
             
             <!-- Chat Messages Container -->
             <div class="flex-1 flex flex-col relative">
@@ -152,15 +159,11 @@
     </section>
 
     <!-- Footer -->
-  <!-- Footer -->
-<footer class="bg-slate-900 border-t border-slate-800 py-8 px-4 text-center text-slate-500 text-sm">
-  <div class="flex justify-center items-center gap-2 mb-3">
-    <div class="w-6 h-6 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold">M</div>
-    <span class="font-bold text-white">MatricMate AI</span>
-  </div>
-  <p>&copy; 2026 ThutoTech PTY LTD. Proudly South African. 🇿🇦</p>
-  <p class="mt-2">Need help? Email support@thutotech.co.za</p>
-</footer>
+    <footer class="bg-slate-900 border-t border-slate-800 py-8 px-4 text-center text-slate-500 text-sm">
+        <p>&copy; 2026 ThutoTech PTY LTD. Proudly South African. 🇿🇦</p>
+        <p class="mt-2">Need help? <a href="mailto:support@thutotech.co.za" class="text-blue-400 hover:underline">Email support@thutotech.co.za</a></p>
+        <p class="mt-4 text-xs">📱 This app stores your question count locally. Your data is private and not stored on our servers.</p>
+    </footer>
 
     <!-- THE AI BRAIN CONNECTION -->
     <script>
@@ -171,75 +174,116 @@
             MAX_INPUT_LENGTH: 500,
             REQUEST_TIMEOUT_MS: 30000,
             RATE_LIMIT_MS: 1000,
+            MAX_MESSAGES_IN_DOM: 50, // Limit messages to prevent memory bloat
+            SCROLL_THROTTLE_MS: 150,
+            INPUT_DEBOUNCE_MS: 300,
+            LOCALSTORAGE_DEBOUNCE_MS: 500,
+        };
+
+        // ============ DOM CACHE ============
+        const DOM = {
+            chatInput: null,
+            sendBtn: null,
+            charCount: null,
+            chatMessages: null,
+            scrollBtn: null,
+            usageBadge: null,
+            examplesContainer: null,
+            weeklyBtn: null,
+            monthlyBtn: null,
+            pricingSection: null,
         };
 
         // ============ STATE ============
         let isLoading = false;
         let lastRequestTime = 0;
+        let cachedQuestionCount = 0;
+        let scrollThrottleTimeout = null;
+        let inputDebounceTimeout = null;
+        let storageTimeout = null;
 
         // ============ INITIALIZATION ============
         document.addEventListener('DOMContentLoaded', () => {
+            cacheDOM();
+            cachedQuestionCount = parseInt(localStorage.getItem('matricmate_count') || 0);
             initializeEventListeners();
             initializeBadge();
             hideExamplesIfLimitReached();
         });
 
-        function initializeEventListeners() {
-            const chatInput = document.getElementById('chatInput');
-            const sendBtn = document.getElementById('sendBtn');
-            const chatBox = document.getElementById('chatMessages');
+        // Cache all DOM references
+        function cacheDOM() {
+            DOM.chatInput = document.getElementById('chatInput');
+            DOM.sendBtn = document.getElementById('sendBtn');
+            DOM.charCount = document.getElementById('charCount');
+            DOM.chatMessages = document.getElementById('chatMessages');
+            DOM.scrollBtn = document.getElementById('scrollToBottom');
+            DOM.usageBadge = document.getElementById('usageBadge');
+            DOM.examplesContainer = document.getElementById('examplesContainer');
+            DOM.weeklyBtn = document.getElementById('weeklyBtn');
+            DOM.monthlyBtn = document.getElementById('monthlyBtn');
+            DOM.pricingSection = document.getElementById('pricing');
+        }
 
+        function initializeEventListeners() {
             // Send button
-            sendBtn.addEventListener('click', sendMessage);
+            DOM.sendBtn.addEventListener('click', sendMessage);
 
             // Enter key to send
-            chatInput.addEventListener('keypress', (e) => {
+            DOM.chatInput.addEventListener('keypress', (e) => {
                 if (e.key === 'Enter' && !e.shiftKey) {
                     e.preventDefault();
                     sendMessage();
                 }
             });
 
-            // Character counter
-            chatInput.addEventListener('input', (e) => {
-                const count = e.target.value.length;
-                document.getElementById('charCount').textContent = `${count} / ${CONFIG.MAX_INPUT_LENGTH}`;
+            // Character counter with debounce
+            DOM.chatInput.addEventListener('input', (e) => {
+                clearTimeout(inputDebounceTimeout);
+                inputDebounceTimeout = setTimeout(() => {
+                    const count = e.target.value.length;
+                    DOM.charCount.textContent = `${count} / ${CONFIG.MAX_INPUT_LENGTH}`;
+                }, CONFIG.INPUT_DEBOUNCE_MS);
             });
 
-            // Scroll to bottom button
-            const scrollBtn = document.getElementById('scrollToBottom');
-            chatBox.addEventListener('scroll', () => {
-                const isAtBottom = chatBox.scrollHeight - chatBox.scrollTop - chatBox.clientHeight < 10;
-                scrollBtn.classList.toggle('visible', !isAtBottom);
+            // Scroll to bottom button with throttle
+            DOM.chatMessages.addEventListener('scroll', () => {
+                if (scrollThrottleTimeout) return;
+                
+                scrollThrottleTimeout = setTimeout(() => {
+                    const isAtBottom = DOM.chatMessages.scrollHeight - DOM.chatMessages.scrollTop - DOM.chatMessages.clientHeight < 10;
+                    DOM.scrollBtn.classList.toggle('visible', !isAtBottom);
+                    scrollThrottleTimeout = null;
+                }, CONFIG.SCROLL_THROTTLE_MS);
             });
 
-            scrollBtn.addEventListener('click', () => {
-                chatBox.scrollTop = chatBox.scrollHeight;
+            DOM.scrollBtn.addEventListener('click', () => {
+                requestAnimationFrame(() => {
+                    DOM.chatMessages.scrollTop = DOM.chatMessages.scrollHeight;
+                });
             });
 
             // Example buttons
             document.querySelectorAll('.example-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
-                    document.getElementById('chatInput').value = btn.dataset.question;
+                    DOM.chatInput.value = btn.dataset.question;
                     sendMessage();
                 });
             });
 
             // Upgrade buttons
-            document.getElementById('weeklyBtn').addEventListener('click', () => {
+            DOM.weeklyBtn.addEventListener('click', () => {
                 showUpgradeModal('Weekly', 'R29', 'reginald@thutotech.co.za');
             });
 
-            document.getElementById('monthlyBtn').addEventListener('click', () => {
+            DOM.monthlyBtn.addEventListener('click', () => {
                 showUpgradeModal('Monthly', 'R99', 'reginald@thutotech.co.za');
             });
         }
 
         // ============ CHAT FUNCTIONALITY ============
         async function sendMessage() {
-            const input = document.getElementById('chatInput');
-            const message = input.value.trim();
-            const sendBtn = document.getElementById('sendBtn');
+            const message = DOM.chatInput.value.trim();
 
             // Validation
             if (!message) {
@@ -259,22 +303,22 @@
             }
 
             // Check free trial limit
-            if (!canSendMessage()) {
+            if (cachedQuestionCount >= CONFIG.FREE_TIER_LIMIT) {
                 addMessageToChat("🔒 You've used your 5 free questions! Please upgrade to keep learning.", 'ai');
-                document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
+                DOM.pricingSection.scrollIntoView({ behavior: 'smooth' });
                 return;
             }
 
             // Disable input
             isLoading = true;
-            sendBtn.disabled = true;
-            sendBtn.textContent = 'Sending...';
-            input.disabled = true;
+            DOM.sendBtn.disabled = true;
+            DOM.sendBtn.textContent = 'Sending...';
+            DOM.chatInput.disabled = true;
 
             // Show user message
             addMessageToChat(message, 'user');
-            input.value = '';
-            document.getElementById('charCount').textContent = '0 / ' + CONFIG.MAX_INPUT_LENGTH;
+            DOM.chatInput.value = '';
+            DOM.charCount.textContent = '0 / ' + CONFIG.MAX_INPUT_LENGTH;
 
             // Show typing indicator
             const typingId = 'typing-' + Date.now();
@@ -329,30 +373,28 @@
             } finally {
                 // Re-enable input
                 isLoading = false;
-                sendBtn.disabled = false;
-                sendBtn.textContent = 'Send';
-                input.disabled = false;
-                input.focus();
+                DOM.sendBtn.disabled = false;
+                DOM.sendBtn.textContent = 'Send';
+                DOM.chatInput.disabled = false;
+                DOM.chatInput.focus();
                 lastRequestTime = Date.now();
             }
         }
 
-        function canSendMessage() {
-            const count = parseInt(localStorage.getItem('matricmate_count') || 0);
-            return count < CONFIG.FREE_TIER_LIMIT;
-        }
-
         function incrementQuestionCount() {
-            let count = parseInt(localStorage.getItem('matricmate_count') || 0);
-            count++;
-            localStorage.setItem('matricmate_count', count);
-            updateBadge(CONFIG.FREE_TIER_LIMIT - count);
+            cachedQuestionCount++;
+            updateBadge(CONFIG.FREE_TIER_LIMIT - cachedQuestionCount);
             hideExamplesIfLimitReached();
+            
+            // Debounce localStorage write to avoid blocking
+            clearTimeout(storageTimeout);
+            storageTimeout = setTimeout(() => {
+                localStorage.setItem('matricmate_count', cachedQuestionCount);
+            }, CONFIG.LOCALSTORAGE_DEBOUNCE_MS);
         }
 
         // ============ UI HELPERS ============
         function addMessageToChat(text, sender) {
-            const chatBox = document.getElementById('chatMessages');
             const div = document.createElement('div');
             const timestamp = new Date().toLocaleTimeString('en-ZA', { hour: '2-digit', minute: '2-digit' });
 
@@ -369,12 +411,20 @@
 
             div.appendChild(p);
             div.appendChild(time);
-            chatBox.appendChild(div);
-            chatBox.scrollTop = chatBox.scrollHeight;
+            DOM.chatMessages.appendChild(div);
+
+            // Trim old messages if exceeds limit
+            while (DOM.chatMessages.children.length > CONFIG.MAX_MESSAGES_IN_DOM) {
+                DOM.chatMessages.removeChild(DOM.chatMessages.firstChild);
+            }
+
+            // Scroll to bottom using requestAnimationFrame for better performance
+            requestAnimationFrame(() => {
+                DOM.chatMessages.scrollTop = DOM.chatMessages.scrollHeight;
+            });
         }
 
         function addTypingIndicator(id) {
-            const chatBox = document.getElementById('chatMessages');
             const div = document.createElement('div');
             div.id = id;
             div.className = 'msg-ai p-4 rounded-2xl rounded-tl-none max-w-[85%] md:max-w-[70%] fade-in shadow-sm';
@@ -384,37 +434,41 @@
             indicator.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
             
             div.appendChild(indicator);
-            chatBox.appendChild(div);
-            chatBox.scrollTop = chatBox.scrollHeight;
+            DOM.chatMessages.appendChild(div);
+
+            // Trim old messages if exceeds limit
+            while (DOM.chatMessages.children.length > CONFIG.MAX_MESSAGES_IN_DOM) {
+                DOM.chatMessages.removeChild(DOM.chatMessages.firstChild);
+            }
+
+            requestAnimationFrame(() => {
+                DOM.chatMessages.scrollTop = DOM.chatMessages.scrollHeight;
+            });
         }
 
         function updateBadge(remaining) {
-            const badge = document.getElementById('usageBadge');
             if (remaining <= 0) {
-                badge.textContent = "🔒 Free Trial Expired";
-                badge.className = "ml-auto text-xs bg-red-500 px-2 py-1 rounded-full";
+                DOM.usageBadge.textContent = "🔒 Free Trial Expired";
+                DOM.usageBadge.className = "ml-auto text-xs bg-red-500 px-2 py-1 rounded-full";
             } else if (remaining === 1) {
-                badge.textContent = "⚠️ Last question!";
-                badge.className = "ml-auto text-xs bg-orange-500 px-2 py-1 rounded-full";
+                DOM.usageBadge.textContent = "⚠️ Last question!";
+                DOM.usageBadge.className = "ml-auto text-xs bg-orange-500 px-2 py-1 rounded-full";
             } else if (remaining <= 2) {
-                badge.textContent = `⚠️ ${remaining} Questions Left`;
-                badge.className = "ml-auto text-xs bg-orange-500 px-2 py-1 rounded-full";
+                DOM.usageBadge.textContent = `⚠️ ${remaining} Questions Left`;
+                DOM.usageBadge.className = "ml-auto text-xs bg-orange-500 px-2 py-1 rounded-full";
             } else {
-                badge.textContent = `Free Trial: ${remaining} Questions Left`;
-                badge.className = "ml-auto text-xs bg-blue-500 px-2 py-1 rounded-full";
+                DOM.usageBadge.textContent = `Free Trial: ${remaining} Questions Left`;
+                DOM.usageBadge.className = "ml-auto text-xs bg-blue-500 px-2 py-1 rounded-full";
             }
         }
 
         function initializeBadge() {
-            const count = parseInt(localStorage.getItem('matricmate_count') || 0);
-            updateBadge(CONFIG.FREE_TIER_LIMIT - count);
+            updateBadge(CONFIG.FREE_TIER_LIMIT - cachedQuestionCount);
         }
 
         function hideExamplesIfLimitReached() {
-            const count = parseInt(localStorage.getItem('matricmate_count') || 0);
-            const examplesContainer = document.getElementById('examplesContainer');
-            if (count >= CONFIG.FREE_TIER_LIMIT) {
-                examplesContainer.style.display = 'none';
+            if (cachedQuestionCount >= CONFIG.FREE_TIER_LIMIT) {
+                DOM.examplesContainer.style.display = 'none';
             }
         }
 
