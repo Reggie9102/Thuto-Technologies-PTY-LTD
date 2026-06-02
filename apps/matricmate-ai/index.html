@@ -3,25 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MatricMate AI - Your 24/7 AI tutor for South African Matric exams">
     <title>MatricMate AI - Your 24/7 Matric Tutor</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
-        .chat-box { height: 400px; overflow-y: auto; }
+        .chat-box { height: 400px; overflow-y: auto; scroll-behavior: smooth; }
         .msg-ai { background: #ffffff; border: 1px solid #e2e8f0; }
         .msg-user { background: #2563eb; color: white; }
+        .msg-timestamp { font-size: 0.7rem; opacity: 0.7; }
         .fade-in { animation: fadeIn 0.3s ease-in; }
+        .typing-indicator { display: flex; gap: 4px; align-items: center; }
+        .typing-dot { width: 8px; height: 8px; border-radius: 50%; background: #94a3b8; animation: typing 1.4s infinite; }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes typing { 0%, 60%, 100% { opacity: 0.5; } 30% { opacity: 1; } }
+        .scroll-to-bottom { opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+        .scroll-to-bottom.visible { opacity: 1; pointer-events: auto; }
     </style>
 </head>
 <body class="text-slate-800">
 
     <!-- Navigation -->
-    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50" role="navigation">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold">M</div>
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold" aria-label="MatricMate logo">M</div>
                 <span class="text-xl font-bold text-slate-900">MatricMate <span class="text-blue-600">AI</span></span>
             </div>
             <a href="#pricing" class="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-blue-700 transition">Upgrade to Premium</a>
@@ -37,29 +46,67 @@
 
     <!-- AI Chat Interface -->
     <section class="max-w-3xl mx-auto px-4 mb-16">
-        <div class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+        <div class="bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden flex flex-col h-[600px]">
             <!-- Chat Header -->
-            <div class="bg-slate-900 text-white px-6 py-4 flex items-center gap-3">
-                <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+            <div class="bg-slate-900 text-white px-6 py-4 flex items-center gap-3 flex-shrink-0">
+                <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse" aria-label="Status: online"></div>
                 <span class="font-semibold">MatricMate AI is online</span>
-                <span id="usageBadge" class="ml-auto text-xs bg-blue-500 px-2 py-1 rounded-full">Free Trial: 5 Questions Left</span>
+                <span id="usageBadge" class="ml-auto text-xs bg-blue-500 px-2 py-1 rounded-full" role="status" aria-live="polite">Free Trial: 5 Questions Left</span>
             </div>
             
-            <!-- Chat Messages -->
-            <div id="chatMessages" class="chat-box p-6 space-y-4 bg-slate-50">
-                <div class="msg-ai p-4 rounded-2xl rounded-tl-none max-w-[85%] fade-in shadow-sm">
-                    <p class="text-sm">👋 Hey there! I'm MatricMate. Ask me anything about your matric subjects. Try asking: <em>"How do I balance chemical equations?"</em></p>
+            <!-- Chat Messages Container -->
+            <div class="flex-1 flex flex-col relative">
+                <div id="chatMessages" class="chat-box p-6 space-y-4 bg-slate-50 flex-1" role="log" aria-label="Chat messages" aria-live="polite">
+                    <div class="msg-ai p-4 rounded-2xl rounded-tl-none max-w-[85%] md:max-w-[70%] fade-in shadow-sm">
+                        <p class="text-sm">👋 Hey there! I'm MatricMate. Ask me anything about your matric subjects.</p>
+                    </div>
+                </div>
+
+                <!-- Scroll to Bottom Button -->
+                <button id="scrollToBottom" class="scroll-to-bottom absolute bottom-20 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-4 py-2 rounded-full text-xs hover:bg-blue-700 transition z-40" aria-label="Scroll to bottom">
+                    ↓ New messages
+                </button>
+            </div>
+
+            <!-- Quick Examples -->
+            <div id="examplesContainer" class="px-6 py-4 bg-slate-100 border-t border-slate-200 flex-shrink-0">
+                <p class="text-xs text-slate-600 mb-2 font-semibold">Try asking:</p>
+                <div class="flex flex-wrap gap-2">
+                    <button class="example-btn text-xs bg-white text-slate-700 px-3 py-1 rounded-lg border border-slate-300 hover:bg-slate-50 transition" data-question="How do I balance chemical equations?">
+                        Chemical equations
+                    </button>
+                    <button class="example-btn text-xs bg-white text-slate-700 px-3 py-1 rounded-lg border border-slate-300 hover:bg-slate-50 transition" data-question="Explain photosynthesis in simple terms">
+                        Photosynthesis
+                    </button>
+                    <button class="example-btn text-xs bg-white text-slate-700 px-3 py-1 rounded-lg border border-slate-300 hover:bg-slate-50 transition" data-question="How do I solve quadratic equations?">
+                        Quadratic equations
+                    </button>
                 </div>
             </div>
 
             <!-- Chat Input -->
-            <div class="p-4 border-t border-slate-200 bg-white">
+            <div class="p-4 border-t border-slate-200 bg-white flex-shrink-0">
                 <div class="flex gap-2">
-                    <input type="text" id="chatInput" placeholder="Ask a matric question..." class="flex-1 px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-b[...]
-                    <button onclick="sendMessage()" class="bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold text-sm hover:bg-blue-700 transition flex items-center gap-2">
-                        Send <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 1[...]
+                    <input 
+                        type="text" 
+                        id="chatInput" 
+                        placeholder="Ask a matric question..." 
+                        class="flex-1 px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                        maxlength="500"
+                        aria-label="Chat message input"
+                    />
+                    <button 
+                        id="sendBtn" 
+                        class="bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold text-sm hover:bg-blue-700 transition flex items-center gap-2 disabled:bg-slate-400 disabled:cursor-not-allowed"
+                        aria-label="Send message"
+                    >
+                        <span id="sendBtnText">Send</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8m0 8l-6-4m6 4l6-4"/>
+                        </svg>
                     </button>
                 </div>
+                <p class="text-xs text-slate-500 mt-2" id="charCount">0 / 500</p>
             </div>
         </div>
     </section>
@@ -81,7 +128,7 @@
                     <li class="flex items-center gap-2">✅ All Matric Subjects</li>
                     <li class="flex items-center gap-2 text-slate-400">❌ Exam Past Papers</li>
                 </ul>
-                <button class="w-full py-3 border-2 border-slate-200 rounded-xl font-semibold text-slate-500 cursor-default">Current Plan</button>
+                <button class="w-full py-3 border-2 border-slate-200 rounded-xl font-semibold text-slate-500 cursor-default" aria-label="Current plan selected">Current Plan</button>
             </div>
 
             <!-- Weekly Tier -->
@@ -94,7 +141,7 @@
                     <li class="flex items-center gap-2">✅ Step-by-step Maths help</li>
                     <li class="flex items-center gap-2">✅ Essay grading & tips</li>
                 </ul>
-                <button onclick="alert('Payment gateway coming soon! Email reginald@thutotech.co.za to activate.')" class="w-full py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue[...]
+                <button id="weeklyBtn" class="w-full py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition">Upgrade Now</button>
             </div>
 
             <!-- Monthly Tier -->
@@ -106,7 +153,7 @@
                     <li class="flex items-center gap-2">✅ Voice-notes (Audio AI)</li>
                     <li class="flex items-center gap-2">✅ Priority support</li>
                 </ul>
-                <button onclick="alert('Payment gateway coming soon! Email reginald@thutotech.co.za to activate.')" class="w-full py-3 border-2 border-blue-600 text-blue-600 rounded-xl font-semib[...]
+                <button id="monthlyBtn" class="w-full py-3 border-2 border-blue-600 text-blue-600 rounded-xl font-semibold hover:bg-blue-50 transition">Upgrade Now</button>
             </div>
         </div>
     </section>
@@ -114,83 +161,269 @@
     <!-- Footer -->
     <footer class="bg-slate-900 border-t border-slate-800 py-8 px-4 text-center text-slate-500 text-sm">
         <p>&copy; 2026 ThutoTech PTY LTD. Proudly South African. 🇿🇦</p>
-        <p class="mt-2">Need help? Email support@thutotech.co.za</p>
+        <p class="mt-2">Need help? <a href="mailto:support@thutotech.co.za" class="text-blue-400 hover:underline">Email support@thutotech.co.za</a></p>
+        <p class="mt-4 text-xs">📱 This app stores your question count locally. Your data is private and not stored on our servers.</p>
     </footer>
 
     <!-- THE AI BRAIN CONNECTION -->
     <script>
-        const WORKER_URL = 'https://matricmate-brain.reginaldmahlangu.workers.dev';
+        // ============ CONFIGURATION ============
+        const CONFIG = {
+            WORKER_URL: 'https://matricmate-brain.reginaldmahlangu.workers.dev',
+            FREE_TIER_LIMIT: 5,
+            MAX_INPUT_LENGTH: 500,
+            REQUEST_TIMEOUT_MS: 30000,
+            RATE_LIMIT_MS: 1000,
+        };
 
+        // ============ STATE ============
+        let isLoading = false;
+        let lastRequestTime = 0;
+
+        // ============ INITIALIZATION ============
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeEventListeners();
+            initializeBadge();
+            hideExamplesIfLimitReached();
+        });
+
+        function initializeEventListeners() {
+            const chatInput = document.getElementById('chatInput');
+            const sendBtn = document.getElementById('sendBtn');
+            const chatBox = document.getElementById('chatMessages');
+
+            // Send button
+            sendBtn.addEventListener('click', sendMessage);
+
+            // Enter key to send
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
+            });
+
+            // Character counter
+            chatInput.addEventListener('input', (e) => {
+                const count = e.target.value.length;
+                document.getElementById('charCount').textContent = `${count} / ${CONFIG.MAX_INPUT_LENGTH}`;
+            });
+
+            // Scroll to bottom button
+            const scrollBtn = document.getElementById('scrollToBottom');
+            chatBox.addEventListener('scroll', () => {
+                const isAtBottom = chatBox.scrollHeight - chatBox.scrollTop - chatBox.clientHeight < 10;
+                scrollBtn.classList.toggle('visible', !isAtBottom);
+            });
+
+            scrollBtn.addEventListener('click', () => {
+                chatBox.scrollTop = chatBox.scrollHeight;
+            });
+
+            // Example buttons
+            document.querySelectorAll('.example-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.getElementById('chatInput').value = btn.dataset.question;
+                    sendMessage();
+                });
+            });
+
+            // Upgrade buttons
+            document.getElementById('weeklyBtn').addEventListener('click', () => {
+                showUpgradeModal('Weekly', 'R29', 'reginald@thutotech.co.za');
+            });
+
+            document.getElementById('monthlyBtn').addEventListener('click', () => {
+                showUpgradeModal('Monthly', 'R99', 'reginald@thutotech.co.za');
+            });
+        }
+
+        // ============ CHAT FUNCTIONALITY ============
         async function sendMessage() {
             const input = document.getElementById('chatInput');
             const message = input.value.trim();
-            if (!message) return;
+            const sendBtn = document.getElementById('sendBtn');
 
-            // 1. Check Free Trial Limit
-            let count = localStorage.getItem('matricmate_count') || 0;
-            count = parseInt(count);
-            if (count >= 5) {
-                addMessageToChat("🔒 You've used your 5 free questions! Please upgrade to the R29 Weekly Pass to keep learning.", 'ai');
-                document.getElementById('pricing').scrollIntoView({behavior: 'smooth'});
-                return; 
+            // Validation
+            if (!message) {
+                alert('Please enter a question');
+                return;
             }
 
-            // 2. Show user message
+            if (message.length > CONFIG.MAX_INPUT_LENGTH) {
+                alert(`Question too long. Max ${CONFIG.MAX_INPUT_LENGTH} characters.`);
+                return;
+            }
+
+            // Rate limiting
+            if (Date.now() - lastRequestTime < CONFIG.RATE_LIMIT_MS) {
+                alert('Please wait a moment before sending another question.');
+                return;
+            }
+
+            // Check free trial limit
+            if (!canSendMessage()) {
+                addMessageToChat("🔒 You've used your 5 free questions! Please upgrade to keep learning.", 'ai');
+                document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
+                return;
+            }
+
+            // Disable input
+            isLoading = true;
+            sendBtn.disabled = true;
+            sendBtn.textContent = 'Sending...';
+            input.disabled = true;
+
+            // Show user message
             addMessageToChat(message, 'user');
             input.value = '';
+            document.getElementById('charCount').textContent = '0 / ' + CONFIG.MAX_INPUT_LENGTH;
 
-            // 3. Show typing
+            // Show typing indicator
             const typingId = 'typing-' + Date.now();
-            addMessageToChat('<span class="typing-dots">Thinking...</span>', 'ai', typingId);
+            addTypingIndicator(typingId);
 
             try {
-                const response = await fetch(WORKER_URL, {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), CONFIG.REQUEST_TIMEOUT_MS);
+
+                const response = await fetch(CONFIG.WORKER_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ prompt: message })
+                    body: JSON.stringify({ prompt: message }),
+                    signal: controller.signal
                 });
+
+                clearTimeout(timeoutId);
+
+                if (!response.ok) {
+                    throw new Error(`Worker responded with status ${response.status}`);
+                }
+
                 const data = await response.json();
-                
-                // Remove typing, add answer
-                document.getElementById(typingId).remove();
-                addMessageToChat(data.answer || "Sorry, I couldn't connect to the brain.", 'ai');
+
+                // Remove typing indicator
+                const typingElement = document.getElementById(typingId);
+                if (typingElement) typingElement.remove();
+
+                // Add response
+                if (data.answer) {
+                    addMessageToChat(data.answer, 'ai');
+                } else {
+                    addMessageToChat("I received your question but got an empty response. Please try again.", 'ai');
+                }
 
                 // Update counter
-                count++;
-                localStorage.setItem('matricmate_count', count);
-                updateBadge(5 - count);
+                incrementQuestionCount();
 
             } catch (error) {
-                document.getElementById(typingId).remove();
-                addMessageToChat("Network error. Please check your connection.", 'ai');
+                // Remove typing indicator
+                const typingElement = document.getElementById(typingId);
+                if (typingElement) typingElement.remove();
+
+                // Show error message
+                if (error.name === 'AbortError') {
+                    addMessageToChat("⏱️ Request timed out. Please check your connection and try again.", 'ai');
+                } else if (error instanceof TypeError) {
+                    addMessageToChat("❌ Network error. Please check your internet connection.", 'ai');
+                } else {
+                    addMessageToChat(`Error: ${error.message || 'Unable to get response. Please try again.'}`, 'ai');
+                }
+            } finally {
+                // Re-enable input
+                isLoading = false;
+                sendBtn.disabled = false;
+                sendBtn.textContent = 'Send';
+                input.disabled = false;
+                input.focus();
+                lastRequestTime = Date.now();
             }
         }
 
-        function addMessageToChat(text, sender, id = '') {
+        function canSendMessage() {
+            const count = parseInt(localStorage.getItem('matricmate_count') || 0);
+            return count < CONFIG.FREE_TIER_LIMIT;
+        }
+
+        function incrementQuestionCount() {
+            let count = parseInt(localStorage.getItem('matricmate_count') || 0);
+            count++;
+            localStorage.setItem('matricmate_count', count);
+            updateBadge(CONFIG.FREE_TIER_LIMIT - count);
+            hideExamplesIfLimitReached();
+        }
+
+        // ============ UI HELPERS ============
+        function addMessageToChat(text, sender) {
+            const chatBox = document.getElementById('chatMessages');
+            const div = document.createElement('div');
+            const timestamp = new Date().toLocaleTimeString('en-ZA', { hour: '2-digit', minute: '2-digit' });
+
+            div.className = `p-4 rounded-2xl max-w-[85%] md:max-w-[70%] fade-in shadow-sm ${sender === 'user' ? 'msg-user ml-auto rounded-tr-none' : 'msg-ai rounded-tl-none'}`;
+
+            // Use textContent for safety (prevents XSS)
+            const p = document.createElement('p');
+            p.className = 'text-sm';
+            p.textContent = text;
+
+            const time = document.createElement('span');
+            time.className = 'msg-timestamp block mt-1';
+            time.textContent = timestamp;
+
+            div.appendChild(p);
+            div.appendChild(time);
+            chatBox.appendChild(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function addTypingIndicator(id) {
             const chatBox = document.getElementById('chatMessages');
             const div = document.createElement('div');
             div.id = id;
-            div.className = `p-4 rounded-2xl max-w-[85%] fade-in shadow-sm ${sender === 'user' ? 'msg-user ml-auto rounded-tr-none' : 'msg-ai rounded-tl-none'}`;
-            div.innerHTML = `<p class="text-sm">${text}</p>`;
+            div.className = 'msg-ai p-4 rounded-2xl rounded-tl-none max-w-[85%] md:max-w-[70%] fade-in shadow-sm';
+            
+            const indicator = document.createElement('div');
+            indicator.className = 'typing-indicator';
+            indicator.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+            
+            div.appendChild(indicator);
             chatBox.appendChild(div);
             chatBox.scrollTop = chatBox.scrollHeight;
         }
 
         function updateBadge(remaining) {
             const badge = document.getElementById('usageBadge');
-            if(remaining <= 0) {
-                badge.innerText = "Free Trial Expired";
+            if (remaining <= 0) {
+                badge.textContent = "🔒 Free Trial Expired";
                 badge.className = "ml-auto text-xs bg-red-500 px-2 py-1 rounded-full";
+            } else if (remaining === 1) {
+                badge.textContent = "⚠️ Last question!";
+                badge.className = "ml-auto text-xs bg-orange-500 px-2 py-1 rounded-full";
+            } else if (remaining <= 2) {
+                badge.textContent = `⚠️ ${remaining} Questions Left`;
+                badge.className = "ml-auto text-xs bg-orange-500 px-2 py-1 rounded-full";
             } else {
-                badge.innerText = `Free Trial: ${remaining} Questions Left`;
+                badge.textContent = `Free Trial: ${remaining} Questions Left`;
+                badge.className = "ml-auto text-xs bg-blue-500 px-2 py-1 rounded-full";
             }
         }
 
-        // Init badge on load
-        window.onload = () => {
-            let count = localStorage.getItem('matricmate_count') || 0;
-            updateBadge(5 - parseInt(count));
-        };
+        function initializeBadge() {
+            const count = parseInt(localStorage.getItem('matricmate_count') || 0);
+            updateBadge(CONFIG.FREE_TIER_LIMIT - count);
+        }
+
+        function hideExamplesIfLimitReached() {
+            const count = parseInt(localStorage.getItem('matricmate_count') || 0);
+            const examplesContainer = document.getElementById('examplesContainer');
+            if (count >= CONFIG.FREE_TIER_LIMIT) {
+                examplesContainer.style.display = 'none';
+            }
+        }
+
+        function showUpgradeModal(plan, price, email) {
+            alert(`✨ Upgrading to ${plan} Plan (${price})\n\nPayment gateway coming soon!\n\nTo activate now, email: ${email}\n\nInclude your preferred payment method.`);
+        }
     </script>
 </body>
 </html>
