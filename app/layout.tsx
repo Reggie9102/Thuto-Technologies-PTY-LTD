@@ -1,25 +1,19 @@
-import type { Metadata } from 'next';
-import './globals.css';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
+import type { Metadata } from 'next'
+import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Thuto Technologies',
-  description: 'AI-Augmented Education for South Africa',
-};
+  title: 'ThutoTech | AI-Augmented Education for South Africa',
+  description: 'A Reggie Express Company - Empowering teachers, guiding learners, bridging education and innovation.',
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="en">
-      <body>
-        <Navigation />
-        {children}
-        <Footer />
-      </body>
+      <body>{children}</body>
     </html>
-  );
+  )
 }
