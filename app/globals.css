@@ -9,10 +9,14 @@
   --bg-dark: #0A0E1A;
   --bg-panel: #151B2E;
   --bg-card: #1E2642;
+  --bg-hover: #2A3355;
   --border: #2A3355;
   --text-primary: #F1F5F9;
   --text-secondary: #94A3B8;
   --text-muted: #64748B;
+  --success: #10B981;
+  --bg-card: #1E2642;
+  --text-hover: #2A3355;
 }
 
 * {
