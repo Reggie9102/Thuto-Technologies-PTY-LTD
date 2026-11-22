@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ThutoTech — AI Education Platform for South Africa</title>
-<meta name="description" content="ThutoTech builds AI tools for South African learners and teachers. From Foundation Phase through Matric and beyond. Founded by a PhD researcher. Offline-first. POPIA-compliant. 11 SA languages.">
+<meta name="description" content="ThutoTech builds AI tools for South African learners and teachers. From Grade 1 to Graduation. Founded by a PhD researcher. Offline-first. POPIA-compliant. 11 SA languages.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -666,6 +666,36 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
   .footer-grid{grid-template-columns:1fr}
   .founder-photo{max-width:250px;margin:0 auto}
 }
+
+/* ============ TT/QW/DEPLOY/2026/011 ADDITIONS ============ */
+.product-status.project{background:rgba(30,58,138,.08);color:var(--research-blue)}
+.status-pill.project .dot{background:var(--research-blue)}
+.product-card[data-accent="electric"]{--card-accent:var(--electric-cyan)}
+.product-card[data-accent="electric"] .product-icon{background:rgba(0,217,255,.12);color:var(--electric-cyan)}
+.product-card[data-accent="electric"] .product-link{color:var(--market-cyan-dark)}
+.product-links{display:flex;flex-wrap:wrap;gap:1.2rem;align-items:center}
+.filter-row{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-bottom:2.5rem}
+.filter-chip{
+  padding:8px 16px;border-radius:20px;border:1px solid var(--gray-200);
+  background:var(--white);color:var(--gray-600);font-size:.78rem;font-weight:600;
+  cursor:pointer;transition:var(--transition);font-family:inherit;
+}
+.filter-chip:hover{border-color:var(--market-cyan);color:var(--market-cyan)}
+.filter-chip.active{background:var(--corporate-navy);color:var(--white);border-color:var(--corporate-navy)}
+.layer-legend{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-bottom:2rem}
+.layer-legend span{
+  padding:4px 12px;border-radius:10px;background:var(--gray-100);
+  color:var(--gray-500);font-size:.68rem;font-weight:600;
+}
+.infra-strip{
+  margin-top:2.5rem;background:var(--gray-50);border:1px solid var(--gray-200);
+  border-radius:var(--radius-lg);padding:1.5rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+}
+.infra-strip h4{color:var(--corporate-navy);font-size:1rem;margin-bottom:.3rem}
+.infra-strip p{color:var(--gray-500);font-size:.85rem;max-width:640px}
+.footer-legal{display:flex;flex-direction:column;gap:.5rem;max-width:1000px}
+.footer-legal p{color:rgba(255,255,255,.5);font-size:.8rem;line-height:1.6}
 </style>
 </head>
 <body>
@@ -716,7 +746,7 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
         <i class="fas fa-microscope"></i>
         PhD-backed · Built in South Africa · For South Africa
       </div>
-      <h1>AI for <span class="accent">Every South African Learner</span>, from Grade R to Graduation</h1>
+      <h1>AI for <span class="accent">Every South African Learner</span>, from Grade 1 to Graduation</h1>
       <p class="hero-sub">ThutoTech builds a vertically-integrated AI platform for South African education — from Foundation Phase teachers to Matric learners to university students. Offline-first. POPIA-compliant. 11 official languages. Grounded in real doctoral research.</p>
       
       <div class="hero-founder">
@@ -744,10 +774,10 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
       </div>
       
       <div class="hero-stats">
-        <div class="stat-item"><h3>10</h3><p>Live Products</p></div>
-        <div class="stat-item"><h3>3</h3><p>Ecosystem Layers</p></div>
+        <div class="stat-item"><h3>20</h3><p>Products & Projects</p></div>
+        <div class="stat-item"><h3>7</h3><p>Ecosystem Layers</p></div>
         <div class="stat-item"><h3>11</h3><p>SA Languages</p></div>
-        <div class="stat-item"><h3>100%</h3><p>POPIA-compliant</p></div>
+        <div class="stat-item"><h3>100%</h3><p>POPIA Governed</p></div>
       </div>
     </div>
     
@@ -776,7 +806,7 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
       <i class="fas fa-building"></i>
       <div>
         <strong>REGGIE EXPRESS (Pty) Ltd</strong>
-        <small>Reg: K2024698680</small>
+        <small>Reg 2024/698680/07</small>
       </div>
     </div>
     <div class="trust-item">
@@ -815,185 +845,387 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
   <div class="container">
     <div class="section-header">
       <span class="section-tag gold"><i class="fas fa-rocket"></i> What We're Building</span>
-      <h2>Today's Live Products</h2>
-      <p>Ten products, each serving a different stage of the South African learner journey. Every product feeds the next — creating a closed-loop ecosystem that grows with every learner.</p>
+      <h2>The Ecosystem Grid</h2>
+      <p>Twenty products and projects, each serving a different stage of the South African learner journey. Every product feeds the next — creating a closed-loop ecosystem that grows with every learner.</p>
     </div>
     
     <div class="status-legend">
-      <span class="status-pill live"><span class="dot"></span> Live / Public Beta</span>
-      <span class="status-pill pilot"><span class="dot"></span> Active Pilot</span>
-      <span class="status-pill beta"><span class="dot"></span> Building</span>
-      <span class="status-pill roadmap"><span class="dot"></span> Roadmap</span>
+      <span class="status-pill live"><span class="dot"></span> LIVE — deployed and reachable</span>
+      <span class="status-pill pilot"><span class="dot"></span> PILOT — deployed, bounded users</span>
+      <span class="status-pill beta"><span class="dot"></span> BUILDING — designed/partially built</span>
+      <span class="status-pill project"><span class="dot"></span> PROJECT — infrastructure programme</span>
+    </div>
+    
+    <div class="layer-legend">
+      <span>1 Foundational</span><span>2 Secondary</span><span>3 Student & Transactional</span><span>4 Supervision & Research</span><span>5 Agentic & Governance</span><span>6 Wellness & Mobility</span><span>7 Community & City</span>
+    </div>
+    
+    <div class="filter-row" role="tablist" aria-label="Filter products">
+      <button class="filter-chip active" data-filter="all" type="button">All (20)</button>
+      <button class="filter-chip" data-filter="foundation" type="button">Foundation</button>
+      <button class="filter-chip" data-filter="workspaces" type="button">Workspaces</button>
+      <button class="filter-chip" data-filter="secondary-student" type="button">Secondary & Student</button>
+      <button class="filter-chip" data-filter="research-agentic" type="button">Research & Agentic</button>
+      <button class="filter-chip" data-filter="wellness-mobility" type="button">Wellness & Mobility</button>
+      <button class="filter-chip" data-filter="community-city" type="button">Community & City</button>
     </div>
     
     <div class="products-grid">
-      <!-- Fundisa AI -->
-      <div class="product-card" data-accent="gold">
+      <!-- 01 Fundisa AI -->
+      <div class="product-card" data-accent="gold" data-layer="foundation">
         <span class="product-status beta"><span class="dot" style="background:var(--warning);width:6px;height:6px;border-radius:50%;"></span> BUILDING</span>
         <div class="product-icon"><i class="fas fa-chalkboard-teacher"></i></div>
-        <div class="product-layer">Foundational · Standalone Subsidiary</div>
+        <div class="product-layer">Foundational Layer · Licensed Subsidiary</div>
         <h3>Fundisa AI</h3>
-        <p>CAPS-aligned AI teaching platform covering Grade 1 through University. Operated by FUNDISA.AI (Pty) Ltd [2026/442896/07]. CTO: Mpho Makhuvha. Alibaba Cloud infrastructure.</p>
+        <p>CAPS-aligned AI teaching and learning platform covering Grade 1 through University. Hosts Teacher Studio, Learner App, MatricPrep, StudentMart SA and the postgraduate Student Studio. Operated by Fundisa.ai (Pty) Ltd under licence from Reggie Express.</p>
         <div class="product-tags">
-          <span class="product-tag">Grade 1–University</span>
-          <span class="product-tag">fundisa.ai</span>
+          <span class="product-tag">Grade 1 – University</span>
+          <span class="product-tag">CAPS-Aligned</span>
           <span class="product-tag">Alibaba Cloud</span>
         </div>
-        <a href="https://www.fundisaai.co.za" target="_blank" rel="noopener noreferrer" class="product-link">
-          Visit Fundisa AI <i class="fas fa-arrow-right"></i>
+        <a href="https://chat.qwen.ai/s/deploy/t_a893fe67-ab37-4d6d-a769-a5030a0061e7" target="_blank" rel="noopener noreferrer" class="product-link">
+          Launch Platform <i class="fas fa-arrow-right"></i>
         </a>
       </div>
 
-      <!-- Fundisa.AI+ -->
-      <div class="product-card" data-accent="orange">
+      <!-- 02 Fundisa.AI+ -->
+      <div class="product-card" data-accent="emerald" data-layer="foundation">
         <span class="product-status beta"><span class="dot" style="background:var(--warning);width:6px;height:6px;border-radius:50%;"></span> BUILDING</span>
-        <div class="product-icon"><i class="fas fa-play-circle"></i></div>
-        <div class="product-layer">EdTech Media · Netflix for African Learning</div>
+        <div class="product-icon"><i class="fas fa-film"></i></div>
+        <div class="product-layer">EdTech Media Layer</div>
         <h3>Fundisa.AI+</h3>
-        <p>Streaming platform reviving African folklore, indigenous storytelling, and oral teaching traditions erased by Anglo-Saxon curricula. 11 official languages.</p>
+        <p>Streaming platform reviving African folklore, indigenous storytelling and oral pedagogy displaced by colonial curricula. Video, audio and interactive lessons across 11 official languages.</p>
         <div class="product-tags">
           <span class="product-tag">Streaming</span>
           <span class="product-tag">African Folklore</span>
-          <span class="product-tag">fundisaai.co.za</span>
+          <span class="product-tag">11 Languages</span>
         </div>
         <a href="https://www.fundisaai.co.za" target="_blank" rel="noopener noreferrer" class="product-link">
-          Explore Fundisa.AI+ <i class="fas fa-arrow-right"></i>
+          Visit fundisaai.co.za <i class="fas fa-arrow-right"></i>
         </a>
       </div>
 
-      <!-- MatricMate AI -->
-      <div class="product-card" data-accent="orange">
+      <!-- 03 FundisaWork -->
+      <div class="product-card" data-accent="gold" data-layer="workspaces">
+        <span class="product-status beta"><span class="dot" style="background:var(--warning);width:6px;height:6px;border-radius:50%;"></span> BUILDING</span>
+        <div class="product-icon"><i class="fas fa-briefcase"></i></div>
+        <div class="product-layer">Educator Workspace · School, Department & Corporate</div>
+        <h3>FundisaWork</h3>
+        <p>Teacher-facing operating workspace. Approvals queue for lesson plans and assessment packs, student equity and risk analytics, curriculum flow mapping across the academic year. Built for HoDs, principals, district officials and corporate wellness partners.</p>
+        <div class="product-tags">
+          <span class="product-tag">Approvals Queue</span>
+          <span class="product-tag">Equity Analytics</span>
+          <span class="product-tag">Curriculum Flows</span>
+        </div>
+        <a href="apps/fundisawork/" class="product-link">
+          Open FundisaWork <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- 04 FundaWork -->
+      <div class="product-card" data-accent="electric" data-layer="workspaces">
+        <span class="product-status beta"><span class="dot" style="background:var(--warning);width:6px;height:6px;border-radius:50%;"></span> BUILDING</span>
+        <div class="product-icon"><i class="fas fa-user-graduate"></i></div>
+        <div class="product-layer">Learner Workspace · Frictionless Blueprint</div>
+        <h3>FundaWork</h3>
+        <p>Learner-facing operating workspace. Daily study blueprint, weekly goals, personalised intervention plans, multilingual AI tutor and low-data offline mode. Turns semester overload into an executable day-by-day plan.</p>
+        <div class="product-tags">
+          <span class="product-tag">Study Blueprint</span>
+          <span class="product-tag">Offline Mode</span>
+          <span class="product-tag">Multilingual Tutor</span>
+        </div>
+        <a href="apps/fundawork/" class="product-link">
+          Open FundaWork <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- 05 MatricPrep -->
+      <div class="product-card" data-accent="orange" data-layer="secondary-student">
         <span class="product-status live"><span class="dot" style="background:var(--success);width:6px;height:6px;border-radius:50%;"></span> LIVE</span>
         <div class="product-icon"><i class="fas fa-book-open"></i></div>
-        <div class="product-layer">Secondary</div>
-        <h3>MatricMate AI</h3>
-        <p>Personalised AI tutor for Grade 10–12 NSC/IEB prep. Past papers, adaptive quizzes, essay marking, live tutor matching via StudentMart.</p>
+        <div class="product-layer">Secondary Layer</div>
+        <h3>MatricPrep</h3>
+        <p>Personalised matric preparation for NSC and IEB candidates. Official past papers with memoranda, adaptive quizzes, worked solutions and essay marking. Delivered on the Fundisa.ai platform under licence.</p>
         <div class="product-tags">
           <span class="product-tag">Grade 10–12</span>
           <span class="product-tag">NSC & IEB</span>
+          <span class="product-tag">Past Papers</span>
         </div>
-        <a href="#" class="product-link">
-          Try MatricMate <i class="fas fa-arrow-right"></i>
+        <a href="https://chat.qwen.ai/s/deploy/t_704c0095-e241-48a6-9ba1-f00111629462" target="_blank" rel="noopener noreferrer" class="product-link">
+          Launch MatricPrep <i class="fas fa-arrow-right"></i>
         </a>
       </div>
 
-      <!-- StudentMart SA -->
-      <div class="product-card" data-accent="cyan">
+      <!-- 06 Student Studio -->
+      <div class="product-card" data-accent="cyan" data-layer="secondary-student">
+        <span class="product-status pilot"><span class="dot" style="background:var(--market-cyan);width:6px;height:6px;border-radius:50%;"></span> PILOT</span>
+        <div class="product-icon"><i class="fas fa-microscope"></i></div>
+        <div class="product-layer">Student Layer · Postgraduate</div>
+        <h3>Student Studio</h3>
+        <p>Postgraduate-facing studio inside the Fundisa.ai platform. Literature synthesis, supervision preparation, submission planning and mark modelling for Masters and doctoral candidates. Delivered on the Fundisa.ai platform under licence.</p>
+        <div class="product-tags">
+          <span class="product-tag">Postgraduate</span>
+          <span class="product-tag">Masters & PhD</span>
+          <span class="product-tag">In Pilot</span>
+        </div>
+        <a href="https://chat.qwen.ai/s/deploy/t_25cfd528-6559-4625-812b-23ee60e15c9d" target="_blank" rel="noopener noreferrer" class="product-link">
+          Open Student Studio <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- 07 Student Support Suite -->
+      <div class="product-card" data-accent="emerald" data-layer="wellness-mobility">
+        <span class="product-status live"><span class="dot" style="background:var(--success);width:6px;height:6px;border-radius:50%;"></span> LIVE</span>
+        <div class="product-icon"><i class="fas fa-hands-helping"></i></div>
+        <div class="product-layer">Student Layer · Holistic Support</div>
+        <h3>Student Support Suite</h3>
+        <p>Integrated mental health support, psychometric assessment, tutoring and academic advising for students in exam season and beyond. Designed and governed by an HPCSA-registered practitioner. Absorbs the former Mental Health Central offering.</p>
+        <div class="product-tags">
+          <span class="product-tag">Mental Health</span>
+          <span class="product-tag">Psychometrist</span>
+          <span class="product-tag">Academic Advisor</span>
+          <span class="product-tag">Tutoring</span>
+        </div>
+        <a href="https://chat.qwen.ai/s/deploy/t_7ece638a-5fbb-473d-b328-10dd4fdcf791" target="_blank" rel="noopener noreferrer" class="product-link">
+          Open Support Suite <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- 08 StudentMart SA -->
+      <div class="product-card" data-accent="cyan" data-layer="secondary-student">
         <span class="product-status pilot"><span class="dot" style="background:var(--market-cyan);width:6px;height:6px;border-radius:50%;"></span> PILOT</span>
         <div class="product-icon"><i class="fas fa-store"></i></div>
-        <div class="product-layer">Transactional · Standalone Domain</div>
+        <div class="product-layer">Transactional Layer · Standalone Domain</div>
         <h3>StudentMart SA</h3>
-        <p>Campus marketplace. 2.5% of every transaction feeds the Thuto Student Funding Pool. Powered by Yoco & Zapper.</p>
+        <p>Campus marketplace where students buy, sell, tutor and find services. A planned 2.5% levy on transactions flows to the Thuto Student Funding Pool. Delivered on the Fundisa.ai platform under licence.</p>
         <div class="product-tags">
-          <span class="product-tag">studentmart.co.za</span>
-          <span class="product-tag">Tertiary</span>
-          <span class="product-tag">Fund Pool</span>
+          <span class="product-tag">Marketplace</span>
+          <span class="product-tag">Student Funding Pool</span>
+          <span class="product-tag">Beta</span>
         </div>
         <a href="https://www.studentmart.co.za" target="_blank" rel="noopener noreferrer" class="product-link">
           Browse Marketplace <i class="fas fa-arrow-right"></i>
         </a>
       </div>
 
-      <!-- ThutoBots -->
-      <div class="product-card" data-accent="research">
+      <!-- 09 Thuto Research Studio -->
+      <div class="product-card" data-accent="research" data-layer="research-agentic">
         <span class="product-status live"><span class="dot" style="background:var(--success);width:6px;height:6px;border-radius:50%;"></span> LIVE</span>
-        <div class="product-icon"><i class="fas fa-robot"></i></div>
-        <div class="product-layer">Agentic AI Orchestration</div>
-        <h3>ThutoBots</h3>
-        <p>Sovereign AI agents for WhatsApp tutoring, township safety reporting, and ops monitoring. Built on Qwen + MCP. Case studies for Agentic AI Course.</p>
+        <div class="product-icon"><i class="fas fa-flask"></i></div>
+        <div class="product-layer">Supervision Layer</div>
+        <h3>Thuto Research Studio</h3>
+        <p>Applied research at the intersection of AI, education and public interest. Literature synthesis, supervision support, multilingual NLP and peer-reviewed output under African conditions. Research IP, publications and grants remain with Reggie Express.</p>
         <div class="product-tags">
-          <span class="product-tag">WhatsApp</span>
-          <span class="product-tag">Qwen + MCP</span>
-          <span class="product-tag">Sovereign</span>
+          <span class="product-tag">Postgrad</span>
+          <span class="product-tag">Multilingual NLP</span>
+          <span class="product-tag">Publications</span>
         </div>
-        <a href="https://chat.qwen.ai/s/deploy/t_7ece638a-5fbb-473d-b328-10dd4fdcf791" target="_blank" rel="noopener noreferrer" class="product-link">
-          Chat with ThutoBots <i class="fas fa-arrow-right"></i>
+        <a href="https://chat.qwen.ai/s/deploy/t_6e759a45-a1af-4941-9b5e-8fbe56fb8633" target="_blank" rel="noopener noreferrer" class="product-link">
+          Open Research Studio <i class="fas fa-arrow-right"></i>
         </a>
       </div>
 
-      <!-- TownshipCommunityMart -->
-      <div class="product-card" data-accent="emerald">
+      <!-- 10 Frictionless Learner Dashboard -->
+      <div class="product-card" data-accent="research" data-layer="research-agentic">
+        <span class="product-status live"><span class="dot" style="background:var(--success);width:6px;height:6px;border-radius:50%;"></span> LIVE</span>
+        <div class="product-icon"><i class="fas fa-chart-line"></i></div>
+        <div class="product-layer">Research Framework · Doctoral</div>
+        <h3>Frictionless Learner Dashboard</h3>
+        <p>Daily study blueprint grounded in embodied pedagogy and iteratively refined through conference feedback. Converts semester overload into an executable day-by-day plan. Core artefact of ongoing doctoral research at the University of Pretoria.</p>
+        <div class="product-tags">
+          <span class="product-tag">Study Blueprint</span>
+          <span class="product-tag">Embodied Pedagogy</span>
+          <span class="product-tag">PhD Research</span>
+        </div>
+        <a href="https://chat.qwen.ai/s/deploy/t_ff0cd997-7485-407b-8959-7efa575a9191" target="_blank" rel="noopener noreferrer" class="product-link">
+          Open Dashboard <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- 11 ThutoTech Agentic AI -->
+      <div class="product-card" data-accent="electric" data-layer="research-agentic">
+        <span class="product-status live"><span class="dot" style="background:var(--success);width:6px;height:6px;border-radius:50%;"></span> LIVE</span>
+        <div class="product-icon"><i class="fas fa-robot"></i></div>
+        <div class="product-layer">Agentic Orchestration Layer</div>
+        <h3>ThutoTech Agentic AI</h3>
+        <p>Sovereign agent swarm for WhatsApp tutoring, community safety reporting and operations monitoring. Built on Qwen and Model Context Protocol. Doubles as the live lab for the Agentic AI Engineering course.</p>
+        <div class="product-tags">
+          <span class="product-tag">Qwen + MCP</span>
+          <span class="product-tag">WhatsApp</span>
+          <span class="product-tag">Ops Agents</span>
+        </div>
+        <a href="https://chat.qwen.ai/s/deploy/t_11acc5dd-d20f-4d2f-b433-154526a8f809" target="_blank" rel="noopener noreferrer" class="product-link">
+          Launch ThutoBots <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- 12 Agentic AI Engineering Course -->
+      <div class="product-card" data-accent="orange" data-layer="research-agentic">
+        <span class="product-status beta"><span class="dot" style="background:var(--warning);width:6px;height:6px;border-radius:50%;"></span> BUILDING</span>
+        <div class="product-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div class="product-layer">Upskilling Layer · ThutoTech × Alibaba Cloud</div>
+        <h3>Agentic AI Engineering Course</h3>
+        <p>Twelve-week certification in agentic AI engineering. Qwen model family, Model Context Protocol, tool use, RAG, multi-agent orchestration, evaluation, POPIA compliance and production deployment. Eight build projects drawn from the live ecosystem.</p>
+        <div class="product-tags">
+          <span class="product-tag">Qwen + MCP</span>
+          <span class="product-tag">12 Weeks</span>
+          <span class="product-tag">8 Projects</span>
+        </div>
+        <a href="apps/agentic-ai-course/" class="product-link">
+          View Course <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- 13 Thuto AI Academy -->
+      <div class="product-card" data-accent="gold" data-layer="research-agentic">
+        <span class="product-status beta"><span class="dot" style="background:var(--warning);width:6px;height:6px;border-radius:50%;"></span> BUILDING</span>
+        <div class="product-icon"><i class="fas fa-certificate"></i></div>
+        <div class="product-layer">Credential Layer</div>
+        <h3>Thuto AI Academy</h3>
+        <p>Teacher professional development stacking free Google AI Educator Series badges with FundisaAI CAPS practice labs. SACE provider endorsement application planned for the Q4 window opening 18 January 2027. No endorsement claimed before it is granted.</p>
+        <div class="product-tags">
+          <span class="product-tag">SACE Application Planned</span>
+          <span class="product-tag">CPD Pathway</span>
+          <span class="product-tag">Google Badges</span>
+        </div>
+        <a href="apps/agentic-ai-course/" class="product-link">
+          View Programme <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- 14 ThutoTech Legal Intelligence -->
+      <div class="product-card" data-accent="navy" data-layer="research-agentic">
+        <span class="product-status live"><span class="dot" style="background:var(--success);width:6px;height:6px;border-radius:50%;"></span> LIVE</span>
+        <div class="product-icon"><i class="fas fa-balance-scale"></i></div>
+        <div class="product-layer">Governance & Compliance Layer</div>
+        <h3>ThutoTech Legal Intelligence</h3>
+        <p>Contracts, CIPC and SARS compliance, POPIA analysis, shareholder agreements and consent registers. Keeps every entity in the conglomerate legally separated and audit-ready.</p>
+        <div class="product-tags">
+          <span class="product-tag">POPIA</span>
+          <span class="product-tag">CIPC</span>
+          <span class="product-tag">Contracts</span>
+          <span class="product-tag">Consent Register</span>
+        </div>
+        <a href="https://thutotech-legal.pages.dev/" target="_blank" rel="noopener noreferrer" class="product-link">
+          Open Legal Intelligence <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- 15 CampusLift -->
+      <div class="product-card" data-accent="emerald" data-layer="wellness-mobility">
+        <span class="product-status pilot"><span class="dot" style="background:var(--market-cyan);width:6px;height:6px;border-radius:50%;"></span> PILOT</span>
+        <div class="product-icon"><i class="fas fa-car-side"></i></div>
+        <div class="product-layer">Mobility Layer</div>
+        <h3>CampusLift</h3>
+        <p>Verified student ride-sharing between campus, home and tutorials. GPS-tracked trips, panic buttons and SAPS integration. Transparent pricing, no surge.</p>
+        <div class="product-tags">
+          <span class="product-tag">GPS-Tracked</span>
+          <span class="product-tag">Panic Button</span>
+          <span class="product-tag">No Surge</span>
+        </div>
+        <div class="product-links">
+          <a href="apps/CampusLift/index.html" class="product-link">Open Platform <i class="fas fa-arrow-right"></i></a>
+          <a href="https://chat.qwen.ai/s/deploy/t_c9449cc4-7d0c-4095-ba5f-35fd63c0edfe" target="_blank" rel="noopener noreferrer" class="product-link">Launch App <i class="fas fa-external-link-alt"></i></a>
+        </div>
+      </div>
+
+      <!-- 16 TownshipMart -->
+      <div class="product-card" data-accent="orange" data-layer="community-city">
         <span class="product-status pilot"><span class="dot" style="background:var(--market-cyan);width:6px;height:6px;border-radius:50%;"></span> PILOT</span>
         <div class="product-icon"><i class="fas fa-people-group"></i></div>
-        <div class="product-layer">Community Sovereignty</div>
-        <h3>TownshipCommunityMart</h3>
-        <p>Verified resident marketplace and transport safety system for SA townships. Home Affairs integrated. Demerit system. POPIA-compliant data sovereignty.</p>
+        <div class="product-layer">Community Sovereignty Layer</div>
+        <h3>TownshipMart</h3>
+        <p>Verified resident marketplace and transport safety system for Alexandra, Soweto, Thembisa, Soshanguve, Temba and Thokoza. Demerit tracking, community alerts and local-first economic circulation.</p>
         <div class="product-tags">
           <span class="product-tag">Township Economy</span>
           <span class="product-tag">Transport Safety</span>
+          <span class="product-tag">Resident Verified</span>
         </div>
-        <a href="apps/Township-Community/" class="product-link">
-          Explore Township Mart <i class="fas fa-arrow-right"></i>
-        </a>
+        <div class="product-links">
+          <a href="https://chat.qwen.ai/s/deploy/t_500e2962-7c53-46b8-9839-d2685394f23f" target="_blank" rel="noopener noreferrer" class="product-link">Launch TownshipMart <i class="fas fa-external-link-alt"></i></a>
+          <a href="apps/Township-Community/index.html" class="product-link">Full Dashboard <i class="fas fa-arrow-right"></i></a>
+        </div>
       </div>
 
-      <!-- CityCommunityMart -->
-      <div class="product-card" data-accent="navy">
+      <!-- 17 CityCommunityMart -->
+      <div class="product-card" data-accent="navy" data-layer="community-city">
         <span class="product-status pilot"><span class="dot" style="background:var(--market-cyan);width:6px;height:6px;border-radius:50%;"></span> PILOT</span>
         <div class="product-icon"><i class="fas fa-city"></i></div>
-        <div class="product-layer">Society 4.0 Smart City Infrastructure</div>
+        <div class="product-layer">Society 4.0 Smart City Layer</div>
         <h3>CityCommunityMart</h3>
-        <p>B2B/B2G procurement, AI mass transit, and decentralized utility grids for SA metros. Aligned with Madlanga Commission. R850M grant eligible.</p>
+        <p>Community-controlled B2B and B2G procurement, mass transit orchestration and decentralised utility grids for metros and emerging cities. Layered to mirror national, provincial, metro and ward governance.</p>
         <div class="product-tags">
           <span class="product-tag">Smart City</span>
-          <span class="product-tag">B2B Procurement</span>
+          <span class="product-tag">B2B / B2G</span>
+          <span class="product-tag">Ward Governance</span>
+        </div>
+        <a href="apps/City-Community/index.html" class="product-link">
+          Open Platform <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- 18 Township Renewal & Smart Infrastructure -->
+      <div class="product-card" data-accent="research" data-layer="community-city">
+        <span class="product-status project"><span class="dot" style="background:var(--research-blue);width:6px;height:6px;border-radius:50%;"></span> PROJECT</span>
+        <div class="product-icon"><i class="fas fa-road"></i></div>
+        <div class="product-layer">Infrastructure Programme</div>
+        <h3>Township Renewal & Smart Infrastructure</h3>
+        <p>Three-pillar township renewal model: China–SA EV assembly and solar charging networks, AI traffic control with intelligent road demarcation, and damage-proportional road-use taxation. Feeds directly into TownshipMart safety and demerit systems. Grant-eligible; no award assumed.</p>
+        <div class="product-tags">
           <span class="product-tag">EV Fleet</span>
+          <span class="product-tag">AI Traffic</span>
+          <span class="product-tag">Road Equity</span>
+          <span class="product-tag">Grant-Eligible</span>
         </div>
-        <a href="apps/City-Community/" class="product-link">
-          Explore City Mart <i class="fas fa-arrow-right"></i>
+        <a href="https://chat.qwen.ai/s/deploy/t_ee988175-8542-4d42-b8bd-6f585d52b77f" target="_blank" rel="noopener noreferrer" class="product-link">
+          View Project <i class="fas fa-arrow-right"></i>
         </a>
       </div>
 
-      <!-- Agentic AI Course -->
-      <div class="product-card" data-accent="research">
+      <!-- 19 ThutoTech Media Studio -->
+      <div class="product-card" data-accent="electric" data-layer="research-agentic">
         <span class="product-status live"><span class="dot" style="background:var(--success);width:6px;height:6px;border-radius:50%;"></span> LIVE</span>
-        <div class="product-icon"><i class="fas fa-microchip"></i></div>
-        <div class="product-layer">Upskilling · ThutoTech x Alibaba Cloud</div>
-        <h3>Agentic AI Course</h3>
-        <p>SA's first Agentic AI Engineering certification. Master Qwen, MCP, multi-agent orchestration on Alibaba Cloud. 12 weeks, 8 projects, $500 cloud credits.</p>
+        <div class="product-icon"><i class="fas fa-video"></i></div>
+        <div class="product-layer">Qwen AI Solutions · Media Generation</div>
+        <h3>ThutoTech Media Studio</h3>
+        <p>AI video and image generation powering Fundisa.AI+ storytelling, CAPS visual materials and marketplace creative. Consistent characters, voice and lip-sync across official languages.</p>
         <div class="product-tags">
-          <span class="product-tag">Alibaba Cloud</span>
-          <span class="product-tag">Qwen + MCP</span>
-          <span class="product-tag">Certification</span>
+          <span class="product-tag">Qwen Video</span>
+          <span class="product-tag">Image Generation</span>
+          <span class="product-tag">Fundisa.AI+</span>
         </div>
-        <a href="apps/agentic-ai-course/" class="product-link">
-          View the Course <i class="fas fa-arrow-right"></i>
+        <a href="https://chat.qwen.ai/s/deploy/t_10bdd131-e825-4682-89cd-24f8b913d5e5" target="_blank" rel="noopener noreferrer" class="product-link">
+          Launch Media Studio <i class="fas fa-arrow-right"></i>
         </a>
       </div>
 
-      <!-- Thuto AI Academy -->
-      <div class="product-card" data-accent="gold">
-        <span class="product-status beta"><span class="dot" style="background:var(--warning);width:6px;height:6px;border-radius:50%;"></span> BUILDING</span>
-        <div class="product-icon"><i class="fas fa-certificate"></i></div>
-        <div class="product-layer">Upskilling</div>
-        <h3>Thuto AI Academy</h3>
-        <p>ETDP SETA-aligned certifications in AI-enhanced teaching, prompt engineering, and education technology. SACE CPD points.</p>
+      <!-- 20 ThutoTech Commerce Engine -->
+      <div class="product-card" data-accent="orange" data-layer="research-agentic">
+        <span class="product-status live"><span class="dot" style="background:var(--success);width:6px;height:6px;border-radius:50%;"></span> LIVE</span>
+        <div class="product-icon"><i class="fas fa-cart-shopping"></i></div>
+        <div class="product-layer">Qwen AI Solutions · Commerce & Advertising</div>
+        <h3>ThutoTech Commerce Engine</h3>
+        <p>Turns a single product asset into a full campaign — copy, imagery and video. Powers seller listings across StudentMart, TownshipMart and CityCommunityMart.</p>
         <div class="product-tags">
-          <span class="product-tag">Teachers</span>
-          <span class="product-tag">ETDP SETA</span>
-          <span class="product-tag">CPD Credits</span>
+          <span class="product-tag">Qwen E-Commerce</span>
+          <span class="product-tag">SME Enablement</span>
+          <span class="product-tag">Campaign Automation</span>
         </div>
-        <a href="#" class="product-link">
-          Learn more <i class="fas fa-arrow-right"></i>
+        <a href="https://chat.qwen.ai/s/deploy/t_8ccadf74-3a0d-4d12-b5bf-e84914403a8d" target="_blank" rel="noopener noreferrer" class="product-link">
+          Launch Commerce Engine <i class="fas fa-arrow-right"></i>
         </a>
       </div>
+    </div>
 
-      <!-- CampusLift -->
-      <div class="product-card" data-accent="emerald">
-        <span class="product-status pilot"><span class="dot" style="background:var(--market-cyan);width:6px;height:6px;border-radius:50%;"></span> PILOT</span>
-        <div class="product-icon"><i class="fas fa-car-side"></i></div>
-        <div class="product-layer">Mobility</div>
-        <h3>CampusLift</h3>
-        <p>Verified student ride-sharing. GPS-tracked with panic buttons and SAPS integration. Affordable, transparent, no surge pricing.</p>
-        <div class="product-tags">
-          <span class="product-tag">Students</span>
-          <span class="product-tag">GPS-tracked</span>
-          <span class="product-tag">Panic Button</span>
-        </div>
-        <a href="#" class="product-link">
-          Learn more <i class="fas fa-arrow-right"></i>
-        </a>
+    <!-- Underpinning Infrastructure strip (IoT Grid capability, not a 21st card) -->
+    <div class="infra-strip">
+      <div>
+        <h4>Underpinning Infrastructure</h4>
+        <p>ThutoTech IoT Grid — sensor network and edge inference for school safety nodes, township monitoring and city utilities.</p>
       </div>
+      <a href="https://chat.qwen.ai/s/deploy/t_603bdefa-b28e-487f-9db2-efc5520fb095" target="_blank" rel="noopener noreferrer" class="product-link">
+        View IoT Grid <i class="fas fa-arrow-right"></i>
+      </a>
     </div>
   </div>
 </section>
@@ -1023,8 +1255,8 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
           <div class="flywheel-step">
             <div class="flywheel-step-num">2</div>
             <div>
-              <h4>2.5% flows to the Student Funding Pool</h4>
-              <p>Every transaction contributes a small slice to the collective fund.</p>
+              <h4>2.5% (planned) flows to the Student Funding Pool</h4>
+              <p>Every transaction would contribute a small slice to the collective fund. Levy designed, not activated.</p>
             </div>
           </div>
           <div class="flywheel-step">
@@ -1210,7 +1442,7 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
         <div class="research-pillar-icon"><i class="fas fa-book-reader"></i></div>
         <div>
           <h4>Fundisa AI Research</h4>
-          <p>Investigating how primary school teachers adopt AI tools when they reduce admin by 70% without compromising CAPS compliance.</p>
+          <p>Investigating how primary school teachers adopt AI tools when they reduce admin by a modelled 70% without compromising CAPS compliance.</p>
         </div>
       </div>
       
@@ -1255,8 +1487,8 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
         <div class="roadmap-content">
           <div class="phase">Phase 1 · Completed</div>
           <h4>Foundational Layer</h4>
-          <p>Fundisa AI launched for primary teachers. CAPS-aligned lesson generation working end-to-end. SASAMS/LURITS sync live.</p>
-          <span class="status-tag live">LIVE</span>
+          <p>Fundisa AI scope spans Grade 1 through University; platform build under way with servers currently paused pending administrative and financial regularisation. CAPS-aligned lesson generation designed end-to-end. SASAMS/LURITS sync planned.</p>
+          <span class="status-tag building">BUILDING</span>
         </div>
         <div class="roadmap-node done">✓</div>
         <div class="roadmap-spacer"></div>
@@ -1268,7 +1500,7 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
         <div class="roadmap-content">
           <div class="phase">Phase 2 · Current</div>
           <h4>Secondary + Transactional Layers</h4>
-          <p>MatricMate AI live for NSC/IEB prep. StudentMart in pilot with campus students. 2.5% fund pool active.</p>
+          <p>MatricPrep live for NSC/IEB prep. StudentMart in pilot with campus students. 2.5% fund pool designed, not activated.</p>
           <span class="status-tag building">BUILDING</span>
         </div>
       </div>
@@ -1276,9 +1508,9 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
       <div class="roadmap-item">
         <div class="roadmap-content">
           <div class="phase">Phase 3 · Next</div>
-          <h4>ETDP SETA Accreditation</h4>
-          <p>Thuto AI Academy formalises teacher upskilling with SETA-accredited certifications. Research Studio publishes first peer-reviewed papers.</p>
-          <span class="status-tag planned">PLANNED · 2025 H2</span>
+          <h4>Teacher Credential Layer</h4>
+          <p>Thuto AI Academy formalises teacher upskilling; SACE provider endorsement application planned for the Q4 window opening 18 January 2027. Research Studio publishes first peer-reviewed papers.</p>
+          <span class="status-tag planned">PLANNED · Q1 2027</span>
         </div>
         <div class="roadmap-node next">3</div>
         <div class="roadmap-spacer"></div>
@@ -1290,7 +1522,7 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
         <div class="roadmap-content">
           <div class="phase">Phase 4 · Future</div>
           <h4>Mobility & Wellness Layers</h4>
-          <p>CampusLift scales across universities. Mental Health Central launches free peer-support for students. Frictionless Learner enables zero-admin enrolment.</p>
+          <p>CampusLift scales across universities. Student Support Suite launches free peer-support for students. Frictionless Learner enables zero-admin enrolment.</p>
           <span class="status-tag planned">PLANNED · 2026</span>
         </div>
       </div>
@@ -1299,7 +1531,7 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
         <div class="roadmap-content">
           <div class="phase">Phase 5 · Vision</div>
           <h4>Full Ecosystem Integration</h4>
-          <p>Every product feeds every other. A learner's journey from Grade R through Matric, university, and into professional practice — supported by one sovereign stack.</p>
+          <p>Every product feeds every other. A learner's journey from Grade 1 through Matric, university, and into professional practice — supported by one sovereign stack.</p>
           <span class="status-tag planned">PLANNED · 2027+</span>
         </div>
         <div class="roadmap-node next">5</div>
@@ -1331,7 +1563,7 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
         
         <div class="founder-credentials">
           <span class="credential"><i class="fas fa-microscope"></i> PhD Candidate · AI in Education</span>
-          <span class="credential"><i class="fas fa-building"></i> REGGIE EXPRESS K2024698680</span>
+          <span class="credential"><i class="fas fa-building"></i> REGGIE EXPRESS 2024/698680/07</span>
           <span class="credential"><i class="fas fa-flag"></i> Proudly South African</span>
           <span class="credential"><i class="fas fa-handshake"></i> Building in Public</span>
         </div>
@@ -1373,7 +1605,7 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
           <i class="fas fa-layer-group"></i> A REGGIE EXPRESS Company
         </div>
         <div class="footer-reggie">
-          REGGIE EXPRESS (Pty) Ltd · Reg: K2024698680
+          REGGIE EXPRESS (Pty) Ltd · Reg 2024/698680/07 · SARS 9759296198
         </div>
         <div class="footer-social">
           <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -1416,18 +1648,20 @@ h1,h2,h3,h4,h5{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spa
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 ThutoTech — A REGGIE EXPRESS (Pty) Ltd company.
-        <span class="sa-flag">
-          <span style="background:#DE3831;"></span>
-          <span style="background:#002395;"></span>
-          <span style="background:#007A4D;"></span>
-          <span style="background:#FFB612;"></span>
-          <span style="background:#000000;"></span>
-          <span style="background:#FFFFFF;"></span>
-        </span>
-      </p>
-      <p>Fundisa.AI (Pty) Ltd [2026/442896/07] operates as a standalone subsidiary under licence from Reggie Express (Pty) Ltd [2024/698680/07]. Content and curriculum copyright Reggie Express (Pty) Ltd.</p>
-      <p>Built with ❤️ in South Africa · PhD-backed · POPIA-compliant · Offline-first</p>
+      <div class="footer-legal">
+        <p>© 2026 ThutoTech · REGGIE EXPRESS (Pty) Ltd · Reg 2024/698680/07 · SARS 9759296198
+          <span class="sa-flag">
+            <span style="background:#DE3831;"></span>
+            <span style="background:#002395;"></span>
+            <span style="background:#007A4D;"></span>
+            <span style="background:#FFB612;"></span>
+            <span style="background:#000000;"></span>
+            <span style="background:#FFFFFF;"></span>
+          </span>
+        </p>
+        <p>Fundisa.ai (Pty) Ltd, Reg 2026/442896/07, a ThutoTech ecosystem company. Fundisa AI, MatricPrep, Student Studio and StudentMart SA are delivered on the Fundisa.ai platform under licence. Content and curriculum copyright Reggie Express (Pty) Ltd, Reg 2024/698680/07.</p>
+        <p>Proudly South African · POPIA Governed · We answer in public. We build in the open.</p>
+      </div>
     </div>
   </div>
 </footer>
@@ -1448,6 +1682,18 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 document.querySelectorAll('.mobile-toggle').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelector('.nav-links').classList.toggle('show');
+  });
+});
+
+// Product grid filter chips (vanilla JS, no dependencies)
+document.querySelectorAll('.filter-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    const filter = chip.dataset.filter;
+    document.querySelectorAll('.products-grid .product-card').forEach(card => {
+      card.style.display = (filter === 'all' || card.dataset.layer === filter) ? '' : 'none';
+    });
   });
 });
 </script>
