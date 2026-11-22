@@ -1,0 +1,18 @@
+name: assemble-tt011
+on:
+  push:
+    branches: [tt011]
+permissions:
+  contents: write
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Assemble (no-op if scaffolding already removed)
+        run: |
+          if [ ! -f .github/scripts/assemble.sh ]; then
+            echo "No assembly script present — nothing to do."
+            exit 0
+          fi
+          bash .github/scripts/assemble.sh
