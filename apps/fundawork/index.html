@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FUNDAWORK · Learner Workspace — ThutoTech</title>
+<meta name="description" content="FUNDAWORK: learner workspace with a daily study blueprint, weekly goals, intervention recommendations and an offline mode. PIN or QR login. No personal child data collected.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --navy:#0A2E5A;--navy-deep:#001F3F;--navy-light:#1A4A7F;
+  --cyan:#00D9FF;--gold:#D4AF37;--orange:#FF6B35;--emerald:#28A492;
+  --market-cyan:#28A9E1;--research-blue:#1E3A8A;
+  --success:#10B981;--warning:#F59E0B;--error:#EF4444;
+  --white:#FFFFFF;
+  --ink:#E6F1FF;--ink-dim:rgba(230,241,255,.65);--ink-faint:rgba(230,241,255,.4);
+  --card:rgba(255,255,255,.05);--card-border:rgba(0,217,255,.18);
+  --radius:14px;--radius-lg:20px;
+  --transition:all .3s cubic-bezier(.4,0,.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px}
+body{
+  font-family:'Inter',sans-serif;color:var(--ink);
+  background:linear-gradient(160deg,#0A2E5A 0%,#06264a 40%,#001F3F 100%);
+  background-attachment:fixed;line-height:1.6;min-height:100vh;overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-.02em}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit}
+
+/* HEADER */
+header.app{position:sticky;top:0;z-index:100;background:rgba(0,31,63,.85);backdrop-filter:blur(14px);border-bottom:1px solid rgba(0,217,255,.15);padding:.7rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:.6rem;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:9px}
+.brand .mark{background:linear-gradient(135deg,var(--cyan),var(--market-cyan));color:#001F3F;padding:3px 11px;border-radius:8px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.9rem}
+.brand .sub{font-size:.62rem;color:var(--ink-faint);letter-spacing:1.5px;text-transform:uppercase;font-weight:600}
+.hdr-tools{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap}
+.hdr-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:18px;background:var(--card);border:1px solid var(--card-border);font-size:.72rem;font-weight:600;color:var(--ink)}
+.hdr-chip i{color:var(--cyan)}
+.hdr-chip select{background:transparent;color:var(--ink);border:none;font-family:inherit;font-size:.72rem;cursor:pointer;outline:none}
+.hdr-chip select option{color:#0A2E5A}
+.streak i{color:var(--orange)}
+.toggle{cursor:pointer;user-select:none}
+.toggle input{display:none}
+.toggle .track{width:38px;height:21px;border-radius:12px;background:rgba(255,255,255,.12);position:relative;transition:var(--transition);display:inline-block;vertical-align:middle}
+.toggle .track::after{content:'';position:absolute;top:2.5px;left:3px;width:16px;height:16px;border-radius:50%;background:var(--ink-dim);transition:var(--transition)}
+.toggle input:checked + .track{background:rgba(0,217,255,.3)}
+.toggle input:checked + .track::after{left:19px;background:var(--cyan)}
+.toggle .off-label{font-size:.66rem;color:var(--ink-faint);margin-left:6px;font-weight:600}
+
+/* LAYOUT */
+main{max-width:640px;margin:0 auto;padding:1.4rem 1rem 2rem;display:flex;flex-direction:column;gap:1.1rem}
+.card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius-lg);padding:1.2rem 1.3rem;backdrop-filter:blur(8px)}
+.card h2{font-size:1rem;display:flex;align-items:center;gap:9px;margin-bottom:.9rem;color:var(--ink)}
+.card h2 i{color:var(--cyan)}
+.badge{font-size:.58rem;font-weight:700;letter-spacing:1px;padding:2px 9px;border-radius:8px;background:rgba(245,158,11,.12);color:var(--warning);margin-left:auto}
+.sample-tag{font-size:.6rem;color:var(--ink-faint);font-weight:600}
+
+/* PROGRESS RINGS */
+.rings{display:flex;gap:1.6rem;justify-content:center;flex-wrap:wrap}
+.ring-wrap{text-align:center}
+.ring-wrap svg{width:110px;height:110px;transform:rotate(-90deg)}
+.ring-bg{fill:none;stroke:rgba(255,255,255,.1);stroke-width:9}
+.ring-val{fill:none;stroke:var(--cyan);stroke-width:9;stroke-linecap:round;transition:stroke-dashoffset .5s cubic-bezier(.4,0,.2,1)}
+.ring-wrap.gold .ring-val{stroke:var(--gold)}
+.ring-label{font-size:.72rem;color:var(--ink-dim);margin-top:.3rem;font-weight:600}
+.ring-value{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:var(--ink);margin-top:-46px;margin-bottom:26px}
+
+/* TASKS */
+.task-list{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.task{display:flex;align-items:center;gap:11px;padding:.7rem .9rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);transition:var(--transition)}
+.task:hover{border-color:var(--card-border)}
+.task input[type=checkbox]{appearance:none;width:22px;height:22px;min-width:22px;border:2px solid var(--cyan);border-radius:7px;cursor:pointer;position:relative;transition:var(--transition)}
+.task input[type=checkbox]:checked{background:var(--cyan);border-color:var(--cyan)}
+.task input[type=checkbox]:checked::after{content:'\f00c';font-family:'Font Awesome 6 Free';font-weight:900;color:#001F3F;font-size:.72rem;position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.task .t-name{flex:1;font-size:.85rem}
+.task.done .t-name{text-decoration:line-through;color:var(--ink-faint)}
+.task .t-dur{font-size:.66rem;font-weight:700;padding:3px 9px;border-radius:10px;background:rgba(0,217,255,.1);color:var(--cyan)}
+.task .t-del{background:none;border:none;color:var(--ink-faint);cursor:pointer;font-size:.85rem;padding:4px}
+.task .t-del:hover{color:var(--error)}
+#addTask{margin-top:.8rem;width:100%;padding:.65rem;border-radius:var(--radius);border:1.5px dashed rgba(0,217,255,.35);background:transparent;color:var(--cyan);font-weight:600;font-size:.8rem;cursor:pointer;transition:var(--transition)}
+#addTask:hover{background:rgba(0,217,255,.08)}
+#addForm{display:none;margin-top:.8rem;flex-direction:column;gap:.5rem}
+#addForm.show{display:flex}
+#addForm input{padding:.6rem .8rem;border-radius:10px;border:1px solid var(--card-border);background:rgba(255,255,255,.06);color:var(--ink);font-family:inherit;font-size:.82rem;outline:none}
+#addForm input::placeholder{color:var(--ink-faint)}
+#addForm button{padding:.6rem;border-radius:10px;border:none;background:var(--cyan);color:#001F3F;font-weight:700;font-size:.8rem;cursor:pointer}
+
+/* INTERVENTION */
+.reco{border-left:3px solid var(--warning);padding:.9rem 1rem;background:rgba(245,158,11,.07);border-radius:0 12px 12px 0;font-size:.8rem;color:var(--ink-dim)}
+.reco strong{color:var(--ink)}
+.reco .cta{display:inline-flex;align-items:center;gap:6px;margin-top:.6rem;color:var(--cyan);font-weight:700;font-size:.75rem}
+
+/* TUTOR */
+.lang-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.9rem}
+.lang-chip{padding:4px 11px;border-radius:16px;border:1px solid var(--card-border);background:rgba(255,255,255,.04);color:var(--ink-dim);font-size:.68rem;font-weight:600;cursor:pointer;transition:var(--transition)}
+.lang-chip.active{background:rgba(0,217,255,.18);color:var(--cyan);border-color:var(--cyan)}
+.chat-stub{display:flex;flex-direction:column;gap:.6rem}
+.chat-stub textarea{width:100%;min-height:70px;padding:.7rem .9rem;border-radius:12px;border:1px solid var(--card-border);background:rgba(255,255,255,.05);color:var(--ink-faint);font-family:inherit;font-size:.82rem;resize:vertical;outline:none}
+.chat-note{display:flex;align-items:center;gap:8px;font-size:.72rem;color:var(--warning);font-weight:600}
+.chat-note i{color:var(--warning)}
+
+/* OFFLINE */
+.off-copy{font-size:.8rem;color:var(--ink-dim)}
+.off-copy strong{color:var(--ink)}
+.sw-status{display:flex;align-items:center;gap:8px;margin-top:.8rem;font-size:.7rem;font-weight:600}
+.sw-status .dot{width:9px;height:9px;border-radius:50%;background:var(--error)}
+.sw-status.ok .dot{background:var(--success)}
+.sw-status.ok{color:var(--success)}
+.sw-status:not(.ok){color:var(--ink-faint)}
+
+/* A11Y */
+.a11y-row{display:flex;gap:.5rem;flex-wrap:wrap}
+.a11y-btn{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:18px;border:1px solid var(--card-border);background:rgba(255,255,255,.04);color:var(--ink-dim);font-size:.72rem;font-weight:600;cursor:pointer;transition:var(--transition)}
+.a11y-btn:hover{color:var(--cyan)}
+.a11y-btn.active{background:rgba(0,217,255,.18);color:var(--cyan);border-color:var(--cyan)}
+
+/* PRIVACY + FOOTER */
+.privacy{display:flex;gap:9px;align-items:flex-start;font-size:.72rem;color:var(--ink-dim);border:1px dashed rgba(0,217,255,.25);border-radius:var(--radius);padding:.9rem 1rem}
+.privacy i{color:var(--emerald);margin-top:3px}
+footer.app{background:rgba(0,17,38,.9);padding:1.6rem 1rem 2.4rem}
+.f-legal{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:.4rem;text-align:center}
+.f-legal p{font-size:.68rem;color:var(--ink-faint);line-height:1.6}
+.f-links{display:flex;justify-content:center;gap:1.4rem;margin-bottom:1rem;font-size:.74rem;font-weight:600}
+.f-links a{color:var(--ink-dim);display:inline-flex;align-items:center;gap:6px}
+.f-links a:hover{color:var(--cyan)}
+
+/* Dyslexia-friendly font + high contrast modes */
+body.dyslexia body, body.dyslexia{font-family:'Comic Sans MS','OpenDyslexic',Verdana,sans-serif;letter-spacing:.03em;word-spacing:.12em}
+body.high-contrast{--ink:#FFFFFF;--ink-dim:#FFFFFF;--ink-faint:rgba(255,255,255,.75);--card:rgba(0,0,0,.5);--card-border:#00D9FF;--cyan:#7CEBFF}
+body.speaking .read-target{outline:2px solid var(--gold);outline-offset:3px}
+
+@media (max-width:420px){
+  .rings{gap:1rem}
+  .ring-wrap svg{width:92px;height:92px}
+}
+</style>
+</head>
+<body>
+<!-- HEADER -->
+<header class="app">
+  <div class="brand">
+    <span class="mark">FUNDAWORK</span>
+    <span class="sub">Learner Workspace · FUNDA</span>
+  </div>
+  <div class="hdr-tools">
+    <span class="hdr-chip streak"><i class="fas fa-fire"></i> <span id="streakVal">3</span> days</span>
+    <span class="hdr-chip"><i class="fas fa-language"></i>
+      <select id="langSel" aria-label="Language">
+        <option>isiZulu</option><option>isiXhosa</option><option>Afrikaans</option><option>Setswana</option>
+        <option>Sesotho</option><option>Sepedi</option><option>Xitsonga</option><option>siSwati</option>
+        <option>Tshivenda</option><option>isiNdebele</option><option selected>English</option>
+      </select>
+    </span>
+    <span class="hdr-chip toggle"><i class="fas fa-plane"></i>
+      <label><input type="checkbox" id="offlineToggle"><span class="track"></span><span class="off-label">Offline</span></label>
+    </span>
+  </div>
+</header>
+
+<main>
+  <!-- DAILY BLUEPRINT -->
+  <section class="card read-target" id="blueprint">
+    <h2><i class="fas fa-list-check"></i> Daily Study Blueprint <span class="badge" id="bpDate">Today</span></h2>
+    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:.9rem">
+      <div class="ring-wrap" style="text-align:left">
+        <svg viewBox="0 0 110 110" aria-hidden="true">
+          <circle class="ring-bg" cx="55" cy="55" r="47"></circle>
+          <circle class="ring-val" id="dayRing" cx="55" cy="55" r="47" stroke-dasharray="295.3" stroke-dashoffset="295.3"></circle>
+        </svg>
+      </div>
+      <div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700"><span id="doneCount">0</span>/<span id="totalCount">0</span></div>
+        <div class="sample-tag">tasks done today</div>
+      </div>
+    </div>
+    <ul class="task-list" id="taskList"></ul>
+    <button id="addTask"><i class="fas fa-plus"></i> Add task</button>
+    <form id="addForm">
+      <input id="newTaskName" type="text" placeholder="Task name (e.g. Revision — Mathematics)" required>
+      <input id="newTaskDur" type="number" min="1" max="240" placeholder="Minutes (e.g. 20)">
+      <button type="submit"><i class="fas fa-check"></i> Add to blueprint</button>
+    </form>
+  </section>
+
+  <!-- WEEKLY GOALS -->
+  <section class="card">
+    <h2><i class="fas fa-bullseye"></i> Weekly Goals <span class="badge">SAMPLE</span></h2>
+    <div class="rings">
+      <div class="ring-wrap">
+        <svg viewBox="0 0 110 110" aria-hidden="true">
+          <circle class="ring-bg" cx="55" cy="55" r="47"></circle>
+          <circle class="ring-val" cx="55" cy="55" r="47" stroke-dasharray="295.3" stroke-dashoffset="147.6"></circle>
+        </svg>
+        <div class="ring-value">50%</div>
+        <div class="ring-label">Weekly progress</div>
+      </div>
+      <div class="ring-wrap gold">
+        <svg viewBox="0 0 110 110" aria-hidden="true">
+          <circle class="ring-bg" cx="55" cy="55" r="47"></circle>
+          <circle class="ring-val" cx="55" cy="55" r="47" stroke-dasharray="295.3" stroke-dashoffset="206.7"></circle>
+        </svg>
+        <div class="ring-value">30%</div>
+        <div class="ring-label">Weekly goals</div>
+      </div>
+    </div>
+    <p class="sample-tag" style="text-align:center;margin-top:.8rem">Sample values. Your real progress appears as you complete tasks.</p>
+  </section>
+
+  <!-- INTERVENTION -->
+  <section class="card">
+    <h2><i class="fas fa-compass"></i> Personalised Intervention</h2>
+    <div class="reco">
+      <strong>Low score detected — Science quiz (58%)</strong><br>
+      Recommended remediation path: revisit the Energy &amp; Change unit summary, then retry the 10-question practice set before Friday. This is a recommendation, not a diagnosis.
+      <span class="cta"><i class="fas fa-arrow-right"></i> Start remediation path</span>
+    </div>
+  </section>
+
+  <!-- TUTOR -->
+  <section class="card">
+    <h2><i class="fas fa-robot"></i> Multilingual AI Tutor</h2>
+    <div class="lang-chips" id="langChips">
+      <span class="lang-chip">isiZulu</span><span class="lang-chip">isiXhosa</span><span class="lang-chip">Afrikaans</span>
+      <span class="lang-chip">Setswana</span><span class="lang-chip">Sesotho</span><span class="lang-chip">Sepedi</span>
+      <span class="lang-chip">Xitsonga</span><span class="lang-chip">siSwati</span><span class="lang-chip">Tshivenda</span>
+      <span class="lang-chip">isiNdebele</span><span class="lang-chip active">English</span>
+    </div>
+    <div class="chat-stub">
+      <textarea id="tutorInput" disabled placeholder="Ask your tutor anything about today's work…" aria-label="Tutor message"></textarea>
+      <div class="chat-note"><i class="fas fa-plug-circle-xmark"></i> Tutor connects when the Fundisa.ai platform service resumes.</div>
+    </div>
+  </section>
+
+  <!-- OFFLINE -->
+  <section class="card">
+    <h2><i class="fas fa-wifi-slash"></i> Low-Data / Offline Mode</h2>
+    <p class="off-copy">When Offline Mode is on, <strong>cached lessons stay available</strong> on your device and use almost no data. Your work <strong>syncs automatically when you reconnect</strong>.</p>
+    <div class="sw-status" id="swStatus"><span class="dot"></span><span id="swStatusText">Checking offline cache…</span></div>
+  </section>
+
+  <!-- ACCESSIBILITY -->
+  <section class="card">
+    <h2><i class="fas fa-universal-access"></i> Accessibility</h2>
+    <div class="a11y-row">
+      <button class="a11y-btn" id="readAloud"><i class="fas fa-volume-high"></i> Read aloud</button>
+      <button class="a11y-btn" id="dysFont"><i class="fas fa-a"></i> Dyslexia-friendly font</button>
+      <button class="a11y-btn" id="hiContrast"><i class="fas fa-circle-half-stroke"></i> High contrast</button>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section class="privacy">
+    <i class="fas fa-lock"></i>
+    <span>PIN or QR login. No personal child data collected. Progress stays on your device unless you choose to sync.</span>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="app">
+  <div class="f-links">
+    <a href="../fundisawork/"><i class="fas fa-briefcase"></i> FundisaWork (educators)</a>
+    <a href="https://www.thutotech.co.za/" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-left"></i> thutotech.co.za</a>
+  </div>
+  <div class="f-legal">
+    <p>© 2026 ThutoTech · REGGIE EXPRESS (Pty) Ltd · Reg 2024/698680/07 · SARS 9759296198</p>
+    <p>Fundisa.ai (Pty) Ltd, Reg 2026/442896/07, a ThutoTech ecosystem company. Fundisa AI, MatricPrep, Student Studio and StudentMart SA are delivered on the Fundisa.ai platform under licence. Content and curriculum copyright Reggie Express (Pty) Ltd, Reg 2024/698680/07.</p>
+    <p>Proudly South African · POPIA Governed · We answer in public. We build in the open.</p>
+  </div>
+</footer>
+
+<script>
+// Daily Study Blueprint — localStorage persistence
+var LS_KEY = 'fundawork.tasks.v1';
+var defaults = [
+  {name:'Revision — Mathematics', dur:32, done:false},
+  {name:'Practice quiz — Science', dur:11, done:false},
+  {name:'Reading — Home Language', dur:13, done:false},
+  {name:'Flashcards — History', dur:25, done:false}
+];
+function loadTasks(){
+  try{ var v = JSON.parse(localStorage.getItem(LS_KEY)); if (Array.isArray(v)) return v; }catch(e){}
+  return defaults.slice();
+}
+function saveTasks(tasks){ try{ localStorage.setItem(LS_KEY, JSON.stringify(tasks)); }catch(e){} }
+var tasks = loadTasks();
+
+var taskList = document.getElementById('taskList');
+var dayRing = document.getElementById('dayRing');
+var CIRC = 2 * Math.PI * 47;
+
+function renderTasks(){
+  taskList.innerHTML = '';
+  tasks.forEach(function(t, i){
+    var li = document.createElement('li');
+    li.className = 'task' + (t.done ? ' done' : '');
+    var cb = document.createElement('input');
+    cb.type = 'checkbox'; cb.checked = !!t.done; cb.setAttribute('aria-label', t.name);
+    cb.addEventListener('change', function(){
+      tasks[i].done = cb.checked;
+      saveTasks(tasks);
+      renderTasks();
+    });
+    var name = document.createElement('span');
+    name.className = 't-name'; name.textContent = t.name;
+    var dur = document.createElement('span');
+    dur.className = 't-dur'; dur.textContent = t.dur + ' min';
+    var del = document.createElement('button');
+    del.className = 't-del'; del.innerHTML = '<i class="fas fa-xmark"></i>';
+    del.setAttribute('aria-label', 'Delete ' + t.name);
+    del.addEventListener('click', function(){
+      tasks.splice(i,1); saveTasks(tasks); renderTasks();
+    });
+    li.appendChild(cb); li.appendChild(name); li.appendChild(dur); li.appendChild(del);
+    taskList.appendChild(li);
+  });
+  var done = tasks.filter(function(t){return t.done;}).length;
+  document.getElementById('doneCount').textContent = done;
+  document.getElementById('totalCount').textContent = tasks.length;
+  dayRing.style.strokeDashoffset = tasks.length ? String(CIRC * (1 - done/tasks.length)) : String(CIRC);
+  var d = new Date();
+  document.getElementById('bpDate').textContent = d.toLocaleDateString(undefined,{weekday:'short', day:'numeric', month:'short'});
+}
+renderTasks();
+
+// Add task form
+var addForm = document.getElementById('addForm');
+document.getElementById('addTask').addEventListener('click', function(){ addForm.classList.toggle('show'); });
+addForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  var name = document.getElementById('newTaskName').value.trim();
+  var dur = parseInt(document.getElementById('newTaskDur').value, 10) || 15;
+  if (!name) return;
+  tasks.push({name:name, dur:dur, done:false});
+  saveTasks(tasks); renderTasks();
+  addForm.classList.remove('show');
+  addForm.reset();
+});
+
+// Language chips + header selector stay in sync
+var chips = document.querySelectorAll('.lang-chip');
+chips.forEach(function(c){
+  c.addEventListener('click', function(){
+    chips.forEach(function(x){ x.classList.remove('active'); });
+    c.classList.add('active');
+    var sel = document.getElementById('langSel');
+    if (sel){ sel.value = c.textContent.trim(); }
+  });
+});
+</script>
+<script>
+// Service worker — real static cache of the page shell
+var offlineToggle = document.getElementById('offlineToggle');
+var swStatus = document.getElementById('swStatus');
+var swStatusText = document.getElementById('swStatusText');
+
+function setSwUi(ok){
+  swStatus.classList.toggle('ok', ok);
+  swStatusText.textContent = ok
+    ? 'Offline cache active — page shell cached, syncs on reconnect.'
+    : 'Offline cache unavailable (requires HTTPS and a supported browser).';
+}
+if ('serviceWorker' in navigator && location.protocol === 'https:') {
+  navigator.serviceWorker.register('sw.js').then(function(reg){
+    setSwUi(!!reg.active || !!reg.installing);
+    offlineToggle.checked = true;
+    reg.addEventListener('updatefound', function(){ setSwUi(true); });
+    return navigator.serviceWorker.ready.then(function(){ setSwUi(true); });
+  }).catch(function(){ setSwUi(false); });
+} else {
+  setSwUi(false);
+}
+offlineToggle.addEventListener('change', function(){
+  var on = offlineToggle.checked;
+  swStatusText.textContent = on
+    ? (swStatus.classList.contains('ok') ? 'Offline cache active — page shell cached, syncs on reconnect.' : 'Offline Mode on. Cached lessons stay available; syncs on reconnect.')
+    : 'Offline Mode off — using normal connection.';
+});
+
+// Accessibility controls
+document.getElementById('readAloud').addEventListener('click', function(){
+  var btn = this;
+  if (!('speechSynthesis' in window)) { alert('Read-aloud is not supported in this browser.'); return; }
+  if (speechSynthesis.speaking) {
+    speechSynthesis.cancel();
+    btn.classList.remove('active');
+    document.body.classList.remove('speaking');
+    return;
+  }
+  var target = document.getElementById('blueprint');
+  var text = target.innerText.replace(/\s+/g,' ').trim();
+  var u = new SpeechSynthesisUtterance(text);
+  u.lang = 'en-ZA';
+  u.onend = function(){ btn.classList.remove('active'); document.body.classList.remove('speaking'); };
+  btn.classList.add('active');
+  document.body.classList.add('speaking');
+  speechSynthesis.speak(u);
+});
+
+document.getElementById('dysFont').addEventListener('click', function(){
+  this.classList.toggle('active');
+  document.body.classList.toggle('dyslexia');
+});
+document.getElementById('hiContrast').addEventListener('click', function(){
+  this.classList.toggle('active');
+  document.body.classList.toggle('high-contrast');
+});
+</script>
+</body>
+</html>
