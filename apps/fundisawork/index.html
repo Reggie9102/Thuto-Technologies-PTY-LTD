@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FUNDISAWORK · Educator Workspace — ThutoTech</title>
+<meta name="description" content="FUNDISAWORK: teacher-facing operating workspace for approvals, equity analytics and curriculum flows. Demonstration interface; no production learner data processed. POPIA-governed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --navy:#0A2E5A;--navy-light:#1A4A7F;--navy-dark:#061A33;
+  --gold:#D4AF37;--gold-light:#E5C44A;--gold-dark:#B8961F;
+  --orange:#FF6B35;--cyan:#00D9FF;--market-cyan:#28A9E1;
+  --research-blue:#1E3A8A;--emerald:#28A492;
+  --success:#10B981;--warning:#F59E0B;--error:#EF4444;
+  --white:#FFFFFF;--gray-50:#F8FAFC;--gray-100:#F1F5F9;--gray-200:#E2E8F0;
+  --gray-300:#CBD5E1;--gray-400:#94A3B8;--gray-500:#64748B;--gray-600:#475569;--gray-700:#334155;
+  --radius:14px;--radius-lg:20px;
+  --transition:all .3s cubic-bezier(.4,0,.2,1);
+  --shadow-sm:0 1px 3px rgba(10,46,90,.08);--shadow-md:0 4px 20px rgba(10,46,90,.1);--shadow-lg:0 10px 40px rgba(10,46,90,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;color:var(--gray-700);background:var(--gray-50);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-.02em}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit}
+
+/* TOP BAR */
+.topbar{background:var(--navy);color:#fff;padding:.7rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem;position:sticky;top:0;z-index:100;box-shadow:var(--shadow-md)}
+.topbar .brand{display:flex;align-items:center;gap:10px}
+.topbar .brand .mark{background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--navy);padding:4px 12px;border-radius:8px;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:.5px}
+.topbar .brand .sub{font-size:.72rem;color:rgba(255,255,255,.65);letter-spacing:1px;text-transform:uppercase;font-weight:600}
+.role-select{display:flex;align-items:center;gap:8px;font-size:.8rem;color:rgba(255,255,255,.8)}
+.role-select select{padding:6px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:#fff;font-family:inherit;font-size:.8rem;cursor:pointer}
+.role-select select option{color:var(--gray-700);background:#fff}
+
+/* LAYOUT */
+.workspace{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+.rail{background:#fff;border-right:1px solid var(--gray-200);padding:1.5rem 0;display:flex;flex-direction:column;gap:2px}
+.rail-label{font-size:.62rem;font-weight:700;letter-spacing:1.5px;color:var(--gray-400);text-transform:uppercase;padding:0 1.5rem;margin-bottom:.5rem}
+.rail a{display:flex;align-items:center;gap:10px;padding:9px 1.5rem;color:var(--gray-600);font-size:.85rem;font-weight:500;transition:var(--transition);border-left:3px solid transparent;cursor:pointer}
+.rail a i{width:18px;text-align:center;color:var(--gray-400)}
+.rail a:hover{background:var(--gray-50);color:var(--navy)}
+.rail a.active{background:rgba(212,175,55,.08);color:var(--navy);border-left-color:var(--gold);font-weight:600}
+.rail a.active i{color:var(--gold-dark)}
+.rail .rail-legal{margin-top:auto;padding:1rem 1.5rem;font-size:.62rem;color:var(--gray-400);line-height:1.5}
+.main{padding:2rem;display:flex;flex-direction:column;gap:1.8rem;max-width:1200px}
+
+/* PANELS */
+.panel{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);overflow:hidden}
+.panel-head{padding:1.1rem 1.5rem;border-bottom:1px solid var(--gray-200);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.6rem}
+.panel-head h2{font-size:1.05rem;color:var(--navy);display:flex;align-items:center;gap:9px}
+.panel-head h2 i{color:var(--gold-dark)}
+.panel-head .badge{font-size:.62rem;font-weight:700;padding:3px 10px;border-radius:8px;background:var(--gray-100);color:var(--gray-500);letter-spacing:.5px}
+.panel-body{padding:1.5rem}
+
+/* TABLE */
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+th{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gray-400);text-align:left;padding:.7rem .9rem;border-bottom:1px solid var(--gray-200)}
+td{padding:.8rem .9rem;border-bottom:1px solid var(--gray-100);color:var(--gray-600)}
+tr:hover td{background:var(--gray-50)}
+.status-chip{display:inline-flex;align-items:center;gap:5px;padding:2px 10px;border-radius:10px;font-size:.68rem;font-weight:700}
+.status-awaiting{background:rgba(245,158,11,.1);color:var(--warning)}
+.status-returned{background:rgba(239,68,68,.08);color:var(--error)}
+.status-approved{background:rgba(16,185,129,.1);color:var(--success)}
+.act-btn{padding:5px 12px;border-radius:8px;border:1px solid var(--gray-200);background:#fff;color:var(--navy);font-size:.72rem;font-weight:600;cursor:pointer;transition:var(--transition)}
+.act-btn:hover{border-color:var(--gold);color:var(--gold-dark)}
+
+/* DRAWER */
+.drawer-overlay{position:fixed;inset:0;background:rgba(6,26,51,.4);z-index:200;display:none}
+.drawer{position:fixed;top:0;right:-460px;width:440px;max-width:92vw;height:100vh;background:#fff;z-index:201;transition:right .35s cubic-bezier(.4,0,.2,1);box-shadow:var(--shadow-lg);display:flex;flex-direction:column}
+.drawer.open{right:0}
+.drawer-overlay.open{display:block}
+.drawer-head{padding:1.2rem 1.5rem;border-bottom:1px solid var(--gray-200);display:flex;justify-content:space-between;align-items:center}
+.drawer-head h3{font-size:1rem;color:var(--navy)}
+.drawer-head button{background:none;border:none;font-size:1.2rem;color:var(--gray-400);cursor:pointer}
+.drawer-body{padding:1.5rem;overflow-y:auto;flex:1}
+.drawer-body h4{font-size:.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--gray-400);margin:1.2rem 0 .5rem}
+.drawer-body h4:first-child{margin-top:0}
+.drawer-body p{font-size:.85rem;color:var(--gray-600)}
+.drawer-meta{display:flex;flex-direction:column;gap:.4rem}
+.drawer-meta span{font-size:.8rem;color:var(--gray-600)}
+.drawer-meta span strong{color:var(--navy)}
+.artifact-list{list-style:none}
+.artifact-list li{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--gray-600);padding:.45rem 0;border-bottom:1px dashed var(--gray-100)}
+.artifact-list i{color:var(--market-cyan)}
+.drawer-foot{padding:1.2rem 1.5rem;border-top:1px solid var(--gray-200);display:flex;gap:.8rem}
+.btn-approve{flex:1;padding:10px;border-radius:10px;border:none;background:var(--success);color:#fff;font-weight:600;font-size:.85rem;cursor:pointer}
+.btn-return{flex:1;padding:10px;border-radius:10px;border:none;background:#fff;border:1.5px solid var(--error);color:var(--error);font-weight:600;font-size:.85rem;cursor:pointer}
+
+/* BANNERS + NOTICES */
+.sample-banner{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);color:#92600A;font-size:.75rem;font-weight:600;padding:.6rem 1rem;border-radius:10px;display:flex;align-items:center;gap:8px}
+.eq-banner{background:rgba(30,58,138,.06);border:1px solid rgba(30,58,138,.2);color:var(--research-blue);font-size:.78rem;font-weight:600;padding:.7rem 1.1rem;border-radius:10px;margin-bottom:1.2rem;display:flex;align-items:center;gap:8px}
+.toggle-group{display:flex;gap:.5rem;flex-wrap:wrap}
+.toggle-btn{padding:6px 14px;border-radius:18px;border:1px solid var(--gray-200);background:#fff;font-size:.72rem;font-weight:600;color:var(--gray-500);cursor:pointer;transition:var(--transition)}
+.toggle-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.chart-wrap{width:100%;overflow-x:auto}
+.chart-wrap svg{width:100%;height:auto;min-width:520px}
+.legend-row{display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:.8rem;font-size:.72rem;color:var(--gray-500)}
+.legend-row span{display:inline-flex;align-items:center;gap:6px}
+.legend-row i{width:10px;height:10px;border-radius:3px;display:inline-block}
+
+/* SWIMLANES */
+.swimlanes{display:flex;flex-direction:column;gap:.8rem;overflow-x:auto}
+.lane{display:flex;align-items:center;gap:.6rem;min-width:640px}
+.lane-label{width:110px;min-width:110px;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gray-400)}
+.lane-track{display:flex;gap:.5rem;flex:1;align-items:center}
+.lane::after{content:'\f061';font-family:'Font Awesome 6 Free';font-weight:900;color:var(--gray-300);font-size:.7rem}
+.node{padding:.5rem .9rem;border-radius:10px;font-size:.72rem;font-weight:600;cursor:pointer;border:1.5px solid transparent;transition:var(--transition);color:#fff}
+.node.on-track{background:var(--gold);color:var(--navy)}
+.node.behind{background:var(--navy)}
+.node.ahead{background:var(--emerald)}
+.node:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.node-detail{font-size:.78rem;color:var(--gray-500);margin-top:1rem;padding:.7rem 1rem;background:var(--gray-50);border-radius:10px;display:none}
+.node-detail.show{display:block}
+
+/* TILES */
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.tile{border:1px dashed var(--gray-300);border-radius:var(--radius);padding:1.2rem;text-align:center;background:var(--gray-50)}
+.tile i{font-size:1.4rem;color:var(--gray-400);margin-bottom:.5rem}
+.tile h4{font-size:.85rem;color:var(--gray-600);margin-bottom:.6rem}
+.planned-badge{display:inline-flex;align-items:center;gap:5px;padding:2px 10px;border-radius:10px;background:rgba(245,158,11,.1);color:var(--warning);font-size:.62rem;font-weight:700;letter-spacing:1px}
+
+/* CORPORATE PANEL */
+.corp-copy{font-size:.85rem;color:var(--gray-600);margin-bottom:1rem}
+.corp-copy strong{color:var(--navy)}
+.corp-points{list-style:none}
+.corp-points li{display:flex;gap:9px;font-size:.82rem;color:var(--gray-600);margin-bottom:.55rem}
+.corp-points i{color:var(--emerald);margin-top:4px}
+
+/* FOOTER NOTICE */
+.ws-footer{margin-top:auto;background:var(--navy-dark);color:rgba(255,255,255,.6);padding:.9rem 1.5rem;font-size:.72rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ws-footer i{color:var(--gold)}
+.ws-footer a{color:rgba(255,255,255,.55)}
+.ws-footer a:hover{color:var(--gold)}
+.backlinks{display:flex;gap:1.2rem}
+
+@media (max-width:900px){
+  .workspace{grid-template-columns:1fr}
+  .rail{flex-direction:row;flex-wrap:wrap;padding:.5rem;position:sticky;top:58px;background:#fff;z-index:90;border-bottom:1px solid var(--gray-200)}
+  .rail a{padding:7px 12px;border-left:none;border-radius:10px}
+  .rail a.active{border-left:none}
+  .rail .rail-label,.rail .rail-legal{display:none}
+  .tiles{grid-template-columns:1fr}
+  .main{padding:1.2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="brand">
+    <span class="mark">FUNDISAWORK</span>
+    <span class="sub">Educator Workspace · FUNDISA</span>
+  </div>
+  <div class="role-select">
+    <i class="fas fa-user-shield" style="color:var(--gold-light)"></i>
+    <label for="roleSel">Viewing as</label>
+    <select id="roleSel">
+      <option value="teacher">Teacher</option>
+      <option value="hod">HoD</option>
+      <option value="principal">Principal</option>
+      <option value="district">District</option>
+      <option value="corporate">Corporate Partner</option>
+    </select>
+  </div>
+</header>
+
+<div class="workspace">
+  <!-- LEFT RAIL -->
+  <nav class="rail" aria-label="Workspace navigation">
+    <div class="rail-label">Workspace</div>
+    <a class="active" data-nav="dashboard"><i class="fas fa-gauge-high"></i> Dashboard</a>
+    <a data-nav="approvals"><i class="fas fa-clipboard-check"></i> Approvals</a>
+    <a data-nav="classes"><i class="fas fa-users"></i> Classes</a>
+    <a data-nav="curriculum"><i class="fas fa-book-open"></i> Curriculum</a>
+    <a data-nav="equity"><i class="fas fa-chart-line"></i> Equity &amp; Risk</a>
+    <a data-nav="reports"><i class="fas fa-file-lines"></i> Reports</a>
+    <a data-nav="staff"><i class="fas fa-graduation-cap"></i> Staff Development</a>
+    <a data-nav="settings"><i class="fas fa-gear"></i> Settings</a>
+    <div class="rail-legal">Demonstration interface. POPIA-governed.</div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div id="panel-dashboard">
+      <div class="panel">
+        <div class="panel-head">
+          <h2><i class="fas fa-gauge-high"></i> Dashboard</h2>
+          <span class="badge">SAMPLE DATA</span>
+        </div>
+        <div class="panel-body">
+          <div class="sample-banner"><i class="fas fa-circle-info"></i> Demonstration workspace. All figures shown are sample data.</div>
+          <p style="margin-top:1rem;font-size:.88rem;color:var(--gray-600)">Welcome to the FUNDISAWORK educator workspace shell. Use the role selector to preview how panels change for Teacher, HoD, Principal, District and Corporate Partner views.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-approvals">
+      <div class="panel">
+        <div class="panel-head">
+          <h2><i class="fas fa-clipboard-check"></i> Approvals Queue</h2>
+          <span class="badge">SAMPLE DATA</span>
+        </div>
+        <div class="panel-body" style="padding:0">
+          <table>
+            <thead>
+              <tr><th>Item</th><th>Type</th><th>Submitted by</th><th>Status</th><th>Action</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Lesson Plan — Grade 5 Mathematics</td><td>Lesson Plan</td><td>T. Nkosi</td>
+                <td><span class="status-chip status-awaiting"><i class="fas fa-clock"></i> Awaiting HoD</span></td>
+                <td><button class="act-btn" data-item="lp-g5-maths">Review</button></td>
+              </tr>
+              <tr>
+                <td>Lesson Plan — Grade 4 Natural Sciences</td><td>Lesson Plan</td><td>L. Dlamini</td>
+                <td><span class="status-chip status-returned"><i class="fas fa-rotate-left"></i> Returned</span></td>
+                <td><button class="act-btn" data-item="lp-g4-nsc">Revise</button></td>
+              </tr>
+              <tr>
+                <td>Term 2 Assessment Pack</td><td>Assessment Pack</td><td>M. Sithole</td>
+                <td><span class="status-chip status-approved"><i class="fas fa-check"></i> Approved</span></td>
+                <td><button class="act-btn" data-item="ap-t2">View</button></td>
+              </tr>
+              <tr>
+                <td>CAPS Pacing Adjustment</td><td>Pacing Adjustment</td><td>K. Mabaso</td>
+                <td><span class="status-chip status-awaiting"><i class="fas fa-clock"></i> Awaiting Principal</span></td>
+                <td><button class="act-btn" data-item="pa-caps">Review</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-equity">
+      <div class="panel">
+        <div class="panel-head">
+          <h2><i class="fas fa-chart-line"></i> Student Equity &amp; Risk Analytics</h2>
+          <div class="toggle-group">
+            <button class="toggle-btn active" data-q="overall">Overall</button>
+            <button class="toggle-btn" data-q="quartile">Quartile Disaggregation</button>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="eq-banner"><i class="fas fa-triangle-exclamation"></i> Illustrative model. Not live learner data.</div>
+          <div class="chart-wrap">
+            <svg viewBox="0 0 560 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrative socioeconomic support metrics over time">
+              <line x1="40" y1="230" x2="540" y2="230" stroke="#CBD5E1" stroke-width="1"/>
+              <line x1="40" y1="20" x2="40" y2="230" stroke="#CBD5E1" stroke-width="1"/>
+              <text x="300" y="252" text-anchor="middle" font-family="Inter" font-size="10" fill="#94A3B8">Term weeks (illustrative)</text>
+              <text x="16" y="130" text-anchor="middle" font-family="Inter" font-size="10" fill="#94A3B8" transform="rotate(-90 16 130)">Support index</text>
+              <g font-family="Inter" font-size="10" fill="#94A3B8">
+                <text x="40" y="244">W1</text><text x="160" y="244">W4</text><text x="280" y="244">W7</text><text x="400" y="244">W10</text><text x="520" y="244">W13</text>
+              </g>
+              <g id="chartOverall">
+                <path d="M 40 190 L 160 175 L 280 150 L 400 120 L 520 90" fill="none" stroke="#0A2E5A" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="40" cy="190" r="4" fill="#0A2E5A"/><circle cx="160" cy="175" r="4" fill="#0A2E5A"/><circle cx="280" cy="150" r="4" fill="#0A2E5A"/><circle cx="400" cy="120" r="4" fill="#0A2E5A"/><circle cx="520" cy="90" r="4" fill="#0A2E5A"/>
+              </g>
+              <g id="chartQuartile" style="display:none">
+                <path d="M 40 210 L 160 195 L 280 170 L 400 140 L 520 105" fill="none" stroke="#D4AF37" stroke-width="3" stroke-linecap="round"/>
+                <path d="M 40 170 L 160 155 L 280 130 L 400 100 L 520 72" fill="none" stroke="#28A492" stroke-width="3" stroke-linecap="round"/>
+                <text x="44" y="205" font-family="Inter" font-size="9" fill="#B8961F">Q1</text>
+                <text x="44" y="165" font-family="Inter" font-size="9" fill="#28A492">Q4</text>
+              </g>
+            </svg>
+          </div>
+          <div class="legend-row">
+            <span><i style="background:var(--navy)"></i> Support index — overall</span>
+            <span><i style="background:var(--gold)"></i> Q1 (most support)</span>
+            <span><i style="background:var(--emerald)"></i> Q4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-curriculum">
+      <div class="panel">
+        <div class="panel-head">
+          <h2><i class="fas fa-book-open"></i> Curriculum Flows</h2>
+          <span class="badge">SAMPLE DATA</span>
+        </div>
+        <div class="panel-body">
+          <div class="swimlanes">
+            <div class="lane">
+              <div class="lane-label">Academic Year</div>
+              <div class="lane-track">
+                <span class="node on-track" data-node="Academic Year 2026 · pacing on track, 84% coverage">2026</span>
+              </div>
+            </div>
+            <div class="lane">
+              <div class="lane-label">Term</div>
+              <div class="lane-track">
+                <span class="node on-track" data-node="Term 1 · completed, on track">T1</span>
+                <span class="node on-track" data-node="Term 2 · on track, 78% pacing coverage">T2</span>
+                <span class="node behind" data-node="Term 3 · pacing behind plan by 1.5 weeks">T3</span>
+                <span class="node ahead" data-node="Term 4 · planned ahead of baseline">T4</span>
+              </div>
+            </div>
+            <div class="lane">
+              <div class="lane-label">Week</div>
+              <div class="lane-track">
+                <span class="node on-track" data-node="Week 1–4 · foundation units, on track">W1–4</span>
+                <span class="node on-track" data-node="Week 5–8 · core content, on track">W5–8</span>
+                <span class="node behind" data-node="Week 9–10 · assessment window, behind">W9–10</span>
+              </div>
+            </div>
+            <div class="lane">
+              <div class="lane-label">Subject</div>
+              <div class="lane-track">
+                <span class="node on-track" data-node="Mathematics · pacing on track">Maths</span>
+                <span class="node behind" data-node="Natural Sciences · pacing behind">NS Tech</span>
+                <span class="node ahead" data-node="Home Language · pacing ahead">HL</span>
+                <span class="node on-track" data-node="Social Sciences · pacing on track">SS</span>
+              </div>
+            </div>
+            <div class="lane">
+              <div class="lane-label">Unit</div>
+              <div class="lane-track">
+                <span class="node on-track" data-node="Unit 3: Fractions · 92% coverage">Unit 3</span>
+                <span class="node behind" data-node="Unit 4: Ecosystems · 61% coverage, behind">Unit 4</span>
+                <span class="node ahead" data-node="Unit 2: Comprehension · 105% coverage, ahead">Unit 2</span>
+              </div>
+            </div>
+          </div>
+          <div class="node-detail" id="nodeDetail">Select a node to view pacing coverage.</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-institutional">
+      <div class="panel">
+        <div class="panel-head">
+          <h2><i class="fas fa-school"></i> Institutional Integration</h2>
+          <span class="badge">PRINCIPAL / DISTRICT VIEW</span>
+        </div>
+        <div class="panel-body">
+          <div class="tiles">
+            <div class="tile"><i class="fas fa-id-card"></i><h4>SASAMS Sync</h4><span class="planned-badge">PLANNED</span></div>
+            <div class="tile"><i class="fas fa-database"></i><h4>LURITS Sync</h4><span class="planned-badge">PLANNED</span></div>
+            <div class="tile"><i class="fas fa-server"></i><h4>Offline Server</h4><span class="planned-badge">PLANNED</span></div>
+          </div>
+          <p style="margin-top:1rem;font-size:.78rem;color:var(--gray-500)">No live sync is simulated. These integrations are planned, not activated.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-corporate">
+      <div class="panel">
+        <div class="panel-head">
+          <h2><i class="fas fa-handshake"></i> Corporate Partner View</h2>
+          <span class="badge">CORPORATE VIEW</span>
+        </div>
+        <div class="panel-body">
+          <p class="corp-copy">FUNDISAWORK supports <strong>employee family-support benefit</strong> programmes offered by wellness and lifestyle partners. Partners see <strong>anonymised aggregate engagement only</strong> — no individual learner records are shared, ever, in line with POPIA.</p>
+          <ul class="corp-points">
+            <li><i class="fas fa-check"></i> Aggregate participation reporting only (counts, not identities)</li>
+            <li><i class="fas fa-check"></i> No individual learner records accessible to any partner</li>
+            <li><i class="fas fa-check"></i> Partner category referenced generically; no signed partner is named</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- FOOTER NOTICE -->
+<footer class="ws-footer">
+  <i class="fas fa-shield-halved"></i>
+  <span>Demonstration interface. No production learner data is processed here. POPIA-governed. Information Officer obligations apply.</span>
+  <span class="backlinks" style="margin-left:auto">
+    <a href="https://www.thutotech.co.za/" target="_blank" rel="noopener noreferrer"><i class="fas fa-arrow-left"></i> thutotech.co.za</a>
+    <a href="../fundawork/"><i class="fas fa-user-graduate"></i> FundaWork (learners)</a>
+  </span>
+</footer>
+
+<!-- DRAWER -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-head">
+    <h3 id="drawerTitle">Item detail</h3>
+    <button id="drawerClose" aria-label="Close"><i class="fas fa-xmark"></i></button>
+  </div>
+  <div class="drawer-body" id="drawerBody"></div>
+  <div class="drawer-foot">
+    <button class="btn-approve" id="btnApprove"><i class="fas fa-check"></i> Approve</button>
+    <button class="btn-return" id="btnReturn"><i class="fas fa-rotate-left"></i> Return for revision</button>
+  </div>
+</aside>
+
+<script>
+var ITEMS = {
+  'lp-g5-maths': {
+    title: 'Lesson Plan — Grade 5 Mathematics',
+    meta: {'Type':'Lesson Plan','Submitted by':'T. Nkosi','Status':'Awaiting HoD','Submitted':'Sample — this week'},
+    caps: 'CAPS alignment: Term 2, Unit 3 (Fractions). All four content milestones mapped. Assessment standards covered: 5.1.3, 5.1.4.',
+    artifacts: ['Lesson plan document (draft)','Worksheet set — 12 questions','Memorandum draft','Differentiation notes (three tiers)']
+  },
+  'lp-g4-nsc': {
+    title: 'Lesson Plan — Grade 4 Natural Sciences',
+    meta: {'Type':'Lesson Plan','Submitted by':'L. Dlamini','Status':'Returned','Submitted':'Sample — last week'},
+    caps: 'CAPS alignment: Term 2, Unit 4 (Ecosystems). Two milestones unmapped. Returned with alignment notes.',
+    artifacts: ['Lesson plan document (rev. 2)','Practical activity sheet','Safety checklist']
+  },
+  'ap-t2': {
+    title: 'Term 2 Assessment Pack',
+    meta: {'Type':'Assessment Pack','Submitted by':'M. Sithole','Status':'Approved','Submitted':'Sample — two weeks ago'},
+    caps: 'CAPS alignment: full Term 2 coverage across six subjects. Approved without revisions.',
+    artifacts: ['Assessment papers ×6','Memoranda ×6','Moderation sheet','Mark schedule template']
+  },
+  'pa-caps': {
+    title: 'CAPS Pacing Adjustment',
+    meta: {'Type':'Pacing Adjustment','Submitted by':'K. Mabaso','Status':'Awaiting Principal','Submitted':'Sample — this week'},
+    caps: 'Requests a one-week pacing extension for Natural Sciences Unit 4 to close a 1.5-week coverage gap.',
+    artifacts: ['Pacing comparison table','Coverage justification note','Revised term planner']
+  }
+};
+</script>
+<script>
+// Role selector changes visible panels
+var ROLE_PANELS = {
+  teacher:     ['panel-dashboard','panel-approvals','panel-classes','panel-curriculum'],
+  hod:         ['panel-dashboard','panel-approvals','panel-classes','panel-curriculum','panel-equity'],
+  principal:   ['panel-dashboard','panel-approvals','panel-curriculum','panel-equity','panel-institutional'],
+  district:    ['panel-dashboard','panel-equity','panel-institutional','panel-reports'],
+  corporate:   ['panel-corporate']
+};
+function applyRole(role){
+  var show = ROLE_PANELS[role] || ROLE_PANELS.teacher;
+  ['panel-dashboard','panel-approvals','panel-equity','panel-curriculum','panel-institutional','panel-corporate'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) el.style.display = show.indexOf(id) >= 0 ? '' : 'none';
+  });
+}
+document.getElementById('roleSel').addEventListener('change', function(){ applyRole(this.value); });
+applyRole('teacher');
+
+// Left rail navigation (scrolls to panel if visible; informational otherwise)
+document.querySelectorAll('.rail a').forEach(function(a){
+  a.addEventListener('click', function(){
+    document.querySelectorAll('.rail a').forEach(function(x){ x.classList.remove('active'); });
+    a.classList.add('active');
+  });
+});
+
+// Drawer
+var drawer = document.getElementById('drawer');
+var overlay = document.getElementById('drawerOverlay');
+var currentItem = null;
+function openDrawer(key){
+  var it = ITEMS[key]; if (!it) return;
+  currentItem = key;
+  document.getElementById('drawerTitle').textContent = it.title;
+  var body = document.getElementById('drawerBody');
+  body.innerHTML =
+    '<h4>Item</h4><div class="drawer-meta">' +
+    Object.keys(it.meta).map(function(k){ return '<span><strong>' + k + ':</strong> ' + it.meta[k] + '</span>'; }).join('') +
+    '</div><h4>CAPS alignment</h4><p>' + it.caps + '</p>' +
+    '<h4>Generated artefacts</h4><ul class="artifact-list">' +
+    it.artifacts.map(function(x){ return '<li><i class="fas fa-file-lines"></i> ' + x + '</li>'; }).join('') +
+    '</ul><p style="margin-top:1rem;font-size:.7rem;color:var(--gray-400)">Sample data. Client-side demonstration only.</p>';
+  drawer.classList.add('open'); overlay.classList.add('open');
+  drawer.setAttribute('aria-hidden','false');
+}
+function closeDrawer(){
+  drawer.classList.remove('open'); overlay.classList.remove('open');
+  drawer.setAttribute('aria-hidden','true');
+}
+document.querySelectorAll('.act-btn').forEach(function(b){
+  b.addEventListener('click', function(){ openDrawer(b.dataset.item); });
+});
+document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+overlay.addEventListener('click', closeDrawer);
+document.getElementById('btnApprove').addEventListener('click', function(){
+  alert('Demo only: approval would be recorded here. No data is sent.');
+  closeDrawer();
+});
+document.getElementById('btnReturn').addEventListener('click', function(){
+  alert('Demo only: item would be returned for revision here. No data is sent.');
+  closeDrawer();
+});
+
+// Equity chart toggle
+document.querySelectorAll('.toggle-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.toggle-btn').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    document.getElementById('chartOverall').style.display  = btn.dataset.q === 'overall' ? '' : 'none';
+    document.getElementById('chartQuartile').style.display = btn.dataset.q === 'quartile' ? '' : 'none';
+  });
+});
+
+// Curriculum lane nodes
+var nodeDetail = document.getElementById('nodeDetail');
+document.querySelectorAll('.node').forEach(function(n){
+  n.addEventListener('click', function(){
+    nodeDetail.textContent = n.dataset.node;
+    nodeDetail.classList.add('show');
+  });
+});
+</script>
+</body>
+</html>
