@@ -30,10 +30,11 @@ Deployment = `git push origin main` → GitHub Pages serves the repo root. Nothi
 
 ## Copy & compliance rules
 
-- Facts that must stay verbatim: "A REGGIE EXPRESS Company", Reggie Express (Pty) Ltd Reg **K2024698680**; FUNDISA.AI (Pty) Ltd **[2026/442896/07]**, CTO Mpho Makhuvha; claims of POPIA-compliance, offline-first, 11 SA languages, CAPS-alignment, PhD-backed founder.
-- Hero stat `<h3>10</h3>` must always equal the real number of `.product-card` blocks; keep the "Ten products" intro paragraph in sync if the count changes.
+- Facts that must stay verbatim: "A REGGIE EXPRESS Company"; FUNDISA.AI (Pty) Ltd **[2026/442896/07]**, CTO Mpho Makhuvha; POPIA-compliance, offline-first, 11 SA languages, CAPS-alignment, PhD-backed founder.
+- COMPANY REGISTRATION `K2024698680` IS WRONG — owner confirmed 2026-11-23. It must NOT appear anywhere (site, docs, footer). Do not re-add it or invent a replacement until the owner supplies the correct number.
 - Never invent product statuses (LIVE/PILOT/BUILDING), client names, partnerships, or regulatory claims. Ask the user.
-- External links in cards: fundisaai.co.za, studentmart.co.za, chat.qwen.ai deep link for ThutoBots — keep working.
+- External links in cards: fundisaai.co.za and studentmart.co.za keep working.
+- RULE (owner, 2026-11-23): deployed Qwen outputs (chat.qwen.ai/s/deploy/...) must NEVER appear as external anchors on the site. They are hosted in index form as code: the TT.deployedApps registry + console launcher inside index.html (Mental Health Central #wellness + ThutoBots point at it), or a re-hosted apps/<product>/index.html page. chat.qwen.ai also sends X-Frame-Options: SAMEORIGIN, so cross-origin iframes render blank — launcher code is the only compliant embed pattern until an app is re-hosted at a same-origin path (then the launcher auto-embeds it).
 
 ## Known issues (punch list)
 
