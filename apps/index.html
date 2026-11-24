@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apps Directory — ThutoTech</title>
+  <meta name="description" content="Explore the nine static applications in the ThutoTech ecosystem. Each app is served from apps/name/index.html on GitHub Pages without a build step.">
+  <meta name="theme-color" content="#0A2E5A">
+  <style>
+    :root {
+      color-scheme: light;
+      --navy: #0A2E5A;
+      --navy-deep: #061C38;
+      --gold: #D4AF37;
+      --orange: #FF6B35;
+      --cyan: #28A9E1;
+      --blue: #1E3A8A;
+      --emerald: #28A492;
+      --ink: #15243A;
+      --muted: #607087;
+      --paper: #F5F8FC;
+      --surface: #FFFFFF;
+      --line: #DCE5F0;
+      --focus: #0B67B2;
+      --shadow: 0 18px 45px rgba(10, 46, 90, 0.09);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at 8% 8%, rgba(40, 169, 225, 0.12), transparent 28rem),
+        radial-gradient(circle at 95% 0%, rgba(212, 175, 55, 0.13), transparent 25rem),
+        var(--paper);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 20;
+      padding: 10px 16px;
+      border-radius: 10px;
+      background: var(--surface);
+      color: var(--navy);
+      font-weight: 800;
+      transform: translateY(-160%);
+      transition: transform 160ms ease;
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .shell {
+      width: min(1180px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding-block: 26px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--navy);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--navy);
+      color: #FFFFFF;
+      box-shadow: 0 8px 20px rgba(10, 46, 90, 0.2);
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .header-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .quiet-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--navy);
+      font-size: 0.86rem;
+      font-weight: 800;
+      text-decoration: none;
+      transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+    }
+
+    .quiet-link:hover {
+      border-color: rgba(10, 46, 90, 0.28);
+      background: var(--surface);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(34px, 6vw, 72px);
+      border-radius: 30px;
+      background:
+        linear-gradient(135deg, rgba(10, 46, 90, 0.98), rgba(30, 58, 138, 0.94)),
+        var(--navy);
+      color: #FFFFFF;
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      position: absolute;
+      right: -80px;
+      bottom: -130px;
+      width: 360px;
+      height: 360px;
+      border: 54px solid rgba(255, 255, 255, 0.06);
+      border-radius: 50%;
+      content: "";
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+      gap: clamp(32px, 6vw, 72px);
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 16px;
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 24px;
+      height: 2px;
+      background: currentColor;
+      content: "";
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(2.35rem, 5.4vw, 4.9rem);
+      line-height: 1.03;
+      letter-spacing: -0.055em;
+    }
+
+    .hero-copy {
+      max-width: 700px;
+      margin: 22px 0 0;
+      color: #D8E5F5;
+      font-size: clamp(1rem, 1.7vw, 1.16rem);
+    }
+
+    .path-panel {
+      padding: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 18px;
+      background: rgba(3, 20, 43, 0.34);
+      backdrop-filter: blur(8px);
+    }
+
+    .path-label {
+      margin: 0 0 12px;
+      color: #AFC5DF;
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .path-panel code {
+      display: block;
+      overflow-wrap: anywhere;
+      color: #FFFFFF;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.78rem;
+      line-height: 1.75;
+    }
+
+    .path-arrow {
+      display: block;
+      margin: 5px 0;
+      color: var(--gold);
+      font-weight: 900;
+    }
+
+    .hero-meta {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 34px;
+    }
+
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.07);
+      color: #E7F0FA;
+      font-size: 0.8rem;
+      font-weight: 750;
+    }
+
+    .meta-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 0 4px rgba(40, 164, 146, 0.16);
+    }
+
+    .directory { padding-block: 58px 26px; }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(1.65rem, 3vw, 2.3rem);
+      line-height: 1.15;
+      letter-spacing: -0.035em;
+    }
+
+    .section-heading p {
+      max-width: 580px;
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+
+    .result-count {
+      flex: 0 0 auto;
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-weight: 800;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: minmax(240px, 1fr) auto;
+      gap: 18px;
+      align-items: center;
+      margin-bottom: 28px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.76);
+    }
+
+    .search-wrap { position: relative; }
+
+    .search-wrap svg {
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      width: 18px;
+      height: 18px;
+      color: var(--muted);
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .search-wrap input {
+      width: 100%;
+      min-height: 46px;
+      padding: 11px 15px 11px 44px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface);
+      color: var(--ink);
+      font: inherit;
+      font-size: 0.94rem;
+    }
+
+    .search-wrap input::placeholder { color: #7B899B; }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-button {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--muted);
+      cursor: pointer;
+      font: inherit;
+      font-size: 0.83rem;
+      font-weight: 850;
+      transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+
+    .filter-button:hover {
+      border-color: rgba(10, 46, 90, 0.3);
+      color: var(--navy);
+    }
+
+    .filter-button[aria-pressed="true"] {
+      border-color: var(--navy);
+      background: var(--navy);
+      color: #FFFFFF;
+    }
+
+    .app-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .app-card {
+      --accent: var(--cyan);
+      position: relative;
+      display: flex;
+      min-height: 318px;
+      flex-direction: column;
+      overflow: hidden;
+      padding: 25px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 8px 24px rgba(10, 46, 90, 0.045);
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .app-card::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--accent);
+      content: "";
+    }
+
+    .app-card:hover {
+      border-color: color-mix(in srgb, var(--accent) 42%, var(--line));
+      box-shadow: 0 18px 38px rgba(10, 46, 90, 0.11);
+      transform: translateY(-4px);
+    }
+
+    .app-card[data-category="learning"] { --accent: var(--gold); }
+    .app-card[data-category="community"] { --accent: var(--orange); }
+    .app-card[data-category="research"] { --accent: var(--cyan); }
+    .app-card[data-category="legal"] { --accent: var(--emerald); }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .app-monogram {
+      display: grid;
+      width: 50px;
+      height: 50px;
+      place-items: center;
+      border-radius: 15px;
+      background: color-mix(in srgb, var(--accent) 15%, #FFFFFF);
+      color: var(--navy);
+      font-size: 0.83rem;
+      font-weight: 950;
+      letter-spacing: -0.02em;
+    }
+
+    .category-label {
+      color: var(--muted);
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .app-card h3 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 1.28rem;
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+    }
+
+    .app-card p {
+      margin: 11px 0 18px;
+      color: var(--muted);
+      font-size: 0.91rem;
+    }
+
+    .app-path {
+      display: block;
+      overflow: hidden;
+      margin-top: auto;
+      color: #7A8799;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.71rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid var(--line);
+      color: var(--navy);
+      font-size: 0.88rem;
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .card-link svg {
+      width: 18px;
+      height: 18px;
+      transition: transform 160ms ease;
+    }
+
+    .card-link:hover svg { transform: translateX(3px); }
+
+    .deployment-note {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      align-items: start;
+      margin-top: 28px;
+      padding: 22px;
+      border: 1px solid #C8E4DE;
+      border-radius: 18px;
+      background: #EEF9F6;
+      color: #22594F;
+    }
+
+    .note-icon {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--emerald);
+      color: #FFFFFF;
+      font-weight: 900;
+    }
+
+    .deployment-note h2 {
+      margin: 0 0 4px;
+      color: #173F39;
+      font-size: 1rem;
+    }
+
+    .deployment-note p { margin: 0; font-size: 0.9rem; }
+
+    .empty-state {
+      display: none;
+      padding: 52px 24px;
+      border: 1px dashed #B9C8D9;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.55);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .empty-state h3 { margin: 0 0 6px; color: var(--navy); }
+    .empty-state p { margin: 0; }
+
+    .app-card[hidden],
+    .empty-state[hidden] { display: none !important; }
+
+    .site-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin-top: 42px;
+      padding-block: 26px 34px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.83rem;
+    }
+
+    .footer-back {
+      color: var(--navy);
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .footer-back:hover { text-decoration: underline; }
+
+    @media (max-width: 940px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .path-panel { max-width: 620px; }
+      .app-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .controls { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .shell { width: min(100% - 24px, 1180px); }
+      .site-header { align-items: flex-start; padding-block: 18px; }
+      .header-links { flex-direction: column; align-items: flex-end; }
+      .quiet-link { padding: 7px 10px; font-size: 0.76rem; }
+      .brand small { display: none; }
+      .hero { padding: 30px 23px; border-radius: 22px; }
+      .hero-meta { margin-top: 24px; }
+      .directory { padding-top: 38px; }
+      .section-heading { align-items: flex-start; flex-direction: column; gap: 10px; }
+      .app-grid { grid-template-columns: 1fr; }
+      .app-card { min-height: 0; }
+      .deployment-note { grid-template-columns: 1fr; }
+      .site-footer { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --ink: #E8EEF7;
+        --muted: #A7B6C9;
+        --paper: #081426;
+        --surface: #10213A;
+        --line: #263B56;
+        --focus: #65BFFF;
+        --shadow: 0 18px 45px rgba(0, 0, 0, 0.24);
+      }
+      body { background: var(--paper); }
+      .brand, .section-heading h2, .app-card h3, .empty-state h3 { color: #F4F8FD; }
+      .quiet-link, .controls, .empty-state { background: rgba(16, 33, 58, 0.82); }
+      .search-wrap input, .filter-button { background: #0C1C32; }
+      .app-monogram { background: color-mix(in srgb, var(--accent) 20%, #10213A); color: #FFFFFF; }
+      .filter-button[aria-pressed="true"] { background: var(--cyan); color: #061C38; border-color: var(--cyan); }
+      .deployment-note { border-color: #285B52; background: #0D2B27; color: #B9DDD5; }
+      .deployment-note h2 { color: #DDF4EE; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#directory">Skip to apps</a>
+
+  <header class="site-header shell">
+    <a class="brand" href="../" aria-label="ThutoTech ecosystem home">
+      <span class="brand-mark" aria-hidden="true">TT</span>
+      <span>ThutoTech<small>Application directory</small></span>
+    </a>
+    <nav class="header-links" aria-label="Directory navigation">
+      <a class="quiet-link" href="../">Back to ecosystem</a>
+      <a class="quiet-link" href="https://github.com/Reggie9102/Thuto-Technologies-PTY-LTD/tree/main/apps" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">ThutoTech apps</p>
+          <h1 id="page-title">Nine apps. One predictable path.</h1>
+          <p class="hero-copy">Explore the applications in the ThutoTech ecosystem. Each app is a self-contained static page served directly from its own folder on GitHub Pages.</p>
+        </div>
+        <aside class="path-panel" aria-label="Deployment path pattern">
+          <p class="path-label">Deployment pattern</p>
+          <code>apps/&lt;name&gt;/index.html</code>
+          <span class="path-arrow" aria-hidden="true">↓</span>
+          <code>https://reggie9102.github.io/<wbr>Thuto-Technologies-PTY-LTD/<wbr>apps/&lt;name&gt;/</code>
+        </aside>
+      </div>
+      <div class="hero-meta" aria-label="Directory facts">
+        <span class="meta-pill"><span class="meta-dot" aria-hidden="true"></span>9 app folders</span>
+        <span class="meta-pill">GitHub Pages</span>
+        <span class="meta-pill">No build step</span>
+        <span class="meta-pill">Relative app links</span>
+      </div>
+    </section>
+
+    <section class="directory" id="directory" aria-labelledby="directory-title">
+      <div class="section-heading">
+        <div>
+          <h2 id="directory-title">Browse the ecosystem</h2>
+          <p>Search by app name, purpose, or folder. Links keep the existing folder names so current URLs and bookmarks continue to work.</p>
+        </div>
+        <p class="result-count" id="result-count" aria-live="polite">Showing 9 of 9 apps</p>
+      </div>
+
+      <div class="controls">
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+          <label for="app-search" class="sr-only" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">Search apps</label>
+          <input id="app-search" type="search" placeholder="Search apps, topics, or folders…" autocomplete="off">
+        </div>
+        <div class="filters" role="group" aria-label="Filter apps by category">
+          <button class="filter-button" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter-button" type="button" data-filter="learning" aria-pressed="false">Learning</button>
+          <button class="filter-button" type="button" data-filter="community" aria-pressed="false">Community</button>
+          <button class="filter-button" type="button" data-filter="research" aria-pressed="false">Research</button>
+          <button class="filter-button" type="button" data-filter="legal" aria-pressed="false">Legal</button>
+        </div>
+      </div>
+
+      <div class="app-grid" id="app-grid">
+        <article class="app-card" data-category="community" data-search="campuslift campus rides transport student travel">
+          <div class="card-top"><span class="app-monogram" aria-hidden="true">CL</span><span class="category-label">Community</span></div>
+          <h3>CampusLift</h3>
+          <p>Student-to-student ride discovery and campus travel coordination.</p>
+          <code class="app-path">apps/CampusLift/</code>
+          <a class="card-link" href="CampusLift/">Open CampusLift <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        </article>
+
+        <article class="app-card" data-category="community" data-search="city community citycommunitymart metro commerce services local dashboard">
+          <div class="card-top"><span class="app-monogram" aria-hidden="true">CC</span><span class="category-label">Community</span></div>
+          <h3>City Community</h3>
+          <p>A metro community dashboard for local commerce, services, and connection.</p>
+          <code class="app-path">apps/City-Community/</code>
+          <a class="card-link" href="City-Community/">Open City Community <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        </article>
+
+        <article class="app-card" data-category="learning" data-search="thuto ai academy teacher learning education certification development">
+          <div class="card-top"><span class="app-monogram" aria-hidden="true">TA</span><span class="category-label">Learning</span></div>
+          <h3>Thuto AI Academy</h3>
+          <p>Learning resources and teacher development for AI-supported education.</p>
+          <code class="app-path">apps/Thuto-AI-Academy/</code>
+          <a class="card-link" href="Thuto-AI-Academy/">Open Thuto AI Academy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        </article>
+
+        <article class="app-card" data-category="research" data-search="thuto research studio postgraduate audio research storytelling workspace">
+          <div class="card-top"><span class="app-monogram" aria-hidden="true">RS</span><span class="category-label">Research</span></div>
+          <h3>Thuto Research Studio</h3>
+          <p>A workspace for postgraduate audio research and research storytelling.</p>
+          <code class="app-path">apps/Thuto-Research-Studio/</code>
+          <a class="card-link" href="Thuto-Research-Studio/">Open Research Studio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        </article>
+
+        <article class="app-card" data-category="community" data-search="township townshipcommunitymart community marketplace transport economic sovereignty safe">
+          <div class="card-top"><span class="app-monogram" aria-hidden="true">TC</span><span class="category-label">Community</span></div>
+          <h3>Township Community</h3>
+          <p>Community commerce and safe transport for township economies.</p>
+          <code class="app-path">apps/Township-Community/</code>
+          <a class="card-link" href="Township-Community/">Open Township Community <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        </article>
+
+        <article class="app-card" data-category="learning" data-search="fundisa ai teaching primary schools classroom teacher intelligence">
+          <div class="card-top"><span class="app-monogram" aria-hidden="true">FA</span><span class="category-label">Learning</span></div>
+          <h3>Fundisa AI</h3>
+          <p>Teaching intelligence and classroom tools for primary schools.</p>
+          <code class="app-path">apps/fundisa-ai/</code>
+          <a class="card-link" href="fundisa-ai/">Open Fundisa AI <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        </article>
+
+        <article class="app-card" data-category="legal" data-search="thuto legal platform legal intelligence cloudflare pages workspace support">
+          <div class="card-top"><span class="app-monogram" aria-hidden="true">LP</span><span class="category-label">Legal</span></div>
+          <h3>Thuto Legal</h3>
+          <p>A legal intelligence workspace, also deployed separately on Cloudflare Pages.</p>
+          <code class="app-path">apps/legal-platform/</code>
+          <a class="card-link" href="legal-platform/">Open repository copy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        </article>
+
+        <article class="app-card" data-category="learning" data-search="matricmate ai matric tutor study practice learning student">
+          <div class="card-top"><span class="app-monogram" aria-hidden="true">MM</span><span class="category-label">Learning</span></div>
+          <h3>MatricMate AI</h3>
+          <p>AI-supported Matric study, tutoring, and practice.</p>
+          <code class="app-path">apps/matricmate-ai/</code>
+          <a class="card-link" href="matricmate-ai/">Open MatricMate AI <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        </article>
+
+        <article class="app-card" data-category="community" data-search="studentmart studentmart-port campus marketplace buy sell students commerce">
+          <div class="card-top"><span class="app-monogram" aria-hidden="true">SM</span><span class="category-label">Community</span></div>
+          <h3>StudentMart</h3>
+          <p>A student marketplace for buying and selling on campus.</p>
+          <code class="app-path">apps/studentmart-port/</code>
+          <a class="card-link" href="studentmart-port/">Open StudentMart <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        </article>
+      </div>
+
+      <div class="empty-state" id="empty-state" hidden>
+        <h3>No matching apps</h3>
+        <p>Try another search term or choose a different category.</p>
+      </div>
+
+      <aside class="deployment-note" aria-labelledby="deployment-title">
+        <span class="note-icon" aria-hidden="true">i</span>
+        <div>
+          <h2 id="deployment-title">Stable URLs, no paid hosting required</h2>
+          <p>Folder names are intentionally unchanged to preserve existing public URLs. The relative links also work on the custom domain. Thuto Legal keeps its separate Cloudflare Pages deployment; this directory links to the repository copy.</p>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer shell">
+    <a class="footer-back" href="../">← Back to ThutoTech</a>
+    <span>Static HTML · GitHub Pages · No build step</span>
+  </footer>
+
+  <script>
+    (() => {
+      const searchInput = document.getElementById('app-search');
+      const cards = Array.from(document.querySelectorAll('.app-card'));
+      const filterButtons = Array.from(document.querySelectorAll('.filter-button'));
+      const resultCount = document.getElementById('result-count');
+      const emptyState = document.getElementById('empty-state');
+      let activeFilter = 'all';
+
+      function updateResults() {
+        const query = searchInput.value.trim().toLowerCase();
+        let visibleCount = 0;
+
+        cards.forEach((card) => {
+          const matchesFilter = activeFilter === 'all' || card.dataset.category === activeFilter;
+          const searchableText = `${card.textContent} ${card.dataset.search}`.toLowerCase();
+          const matchesSearch = !query || searchableText.includes(query);
+          const isVisible = matchesFilter && matchesSearch;
+          card.hidden = !isVisible;
+          if (isVisible) visibleCount += 1;
+        });
+
+        resultCount.textContent = `Showing ${visibleCount} of ${cards.length} apps`;
+        emptyState.hidden = visibleCount !== 0;
+      }
+
+      filterButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          activeFilter = button.dataset.filter;
+          filterButtons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+          updateResults();
+        });
+      });
+
+      searchInput.addEventListener('input', updateResults);
+      searchInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          searchInput.value = '';
+          updateResults();
+        }
+      });
+
+      updateResults();
+    })();
+  </script>
+</body>
+</html>
