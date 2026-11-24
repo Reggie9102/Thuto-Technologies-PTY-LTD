@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mental Health Central — a private, in-house wellness console for students.">
+  <title>Mental Health Central | ThutoTech</title>
+
+  <!--
+    Save as mental-health-central.html.
+    Replace both highlighted Qwen links with:
+    href="mental-health-central.html"
+
+    This is a standalone local wellness console, not a copy of the Qwen app.
+    It makes no external requests and stores data only in this browser.
+  -->
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #071426;
+      --bg-soft: #0b1d34;
+      --panel: #0e223c;
+      --panel-light: #122a49;
+      --line: rgba(148, 180, 209, 0.16);
+      --text: #eef5fb;
+      --muted: #9fb2c7;
+      --mint: #55e6bd;
+      --mint-dark: #123d35;
+      --cyan: #67cdf3;
+      --gold: #e7c96a;
+      --rose: #f3a6b9;
+      --danger: #ff9b9b;
+      --radius: 22px;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --serif: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 85% 8%, rgba(85, 230, 189, 0.1), transparent 30rem),
+        radial-gradient(circle at 5% 50%, rgba(103, 205, 243, 0.08), transparent 28rem),
+        var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--mint);
+      outline-offset: 4px;
+    }
+
+    ::selection {
+      background: var(--mint);
+      color: var(--bg);
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 100;
+      padding: 10px 16px;
+      border-radius: 10px;
+      background: var(--text);
+      color: var(--bg);
+      font-weight: 800;
+      transform: translateY(-160%);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--line);
+      background: rgba(7, 20, 38, 0.88);
+      backdrop-filter: blur(18px);
+    }
+
+    .header-inner {
+      display: flex;
+      min-height: 76px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      flex: none;
+      place-items: center;
+      border: 1px solid rgba(85, 230, 189, 0.3);
+      border-radius: 14px;
+      background: linear-gradient(145deg, rgba(85, 230, 189, 0.18), rgba(103, 205, 243, 0.08));
+      color: var(--mint);
+    }
+
+    .brand-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .brand strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      line-height: 1.1;
+    }
+
+    .brand small {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.66rem;
+      font-weight: 750;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav a {
+      padding: 8px 12px;
+      border-radius: 9px;
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-weight: 650;
+      text-decoration: none;
+      transition: background 160ms ease, color 160ms ease;
+    }
+
+    .nav a:hover {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+    }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border: 0;
+      border-radius: 11px;
+      background: var(--mint);
+      color: #06251e;
+      font-size: 0.84rem;
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .header-cta:hover {
+      filter: brightness(1.07);
+    }
+
+    main {
+      padding-top: 54px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+      gap: clamp(40px, 7vw, 90px);
+      align-items: center;
+      min-height: 610px;
+      padding: 50px 0 84px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 20px;
+      color: var(--mint);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+      content: "";
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--serif);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(3rem, 6vw, 5.7rem);
+    }
+
+    h1 em {
+      color: var(--mint);
+      font-style: normal;
+    }
+
+    .hero-copy {
+      max-width: 660px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.5vw, 1.12rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 50px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 12px 20px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: transparent;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 750;
+      text-decoration: none;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+
+    .button:hover {
+      border-color: rgba(85, 230, 189, 0.45);
+      background: rgba(85, 230, 189, 0.07);
+      transform: translateY(-2px);
+    }
+
+    .button.primary {
+      border-color: var(--mint);
+      background: var(--mint);
+      color: #06251e;
+    }
+
+    .button.primary:hover {
+      background: #73edc9;
+    }
+
+    .button.small {
+      min-height: 40px;
+      padding: 8px 13px;
+      font-size: 0.78rem;
+    }
+
+    .button.danger {
+      border-color: rgba(255, 155, 155, 0.25);
+      color: var(--danger);
+    }
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .trust-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 650;
+    }
+
+    .trust-chip svg {
+      width: 14px;
+      height: 14px;
+      color: var(--mint);
+    }
+
+    .breath-card {
+      position: relative;
+      overflow: hidden;
+      padding: 28px;
+      border: 1px solid rgba(85, 230, 189, 0.18);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 50% 42%, rgba(85, 230, 189, 0.12), transparent 45%),
+        linear-gradient(155deg, var(--panel-light), var(--bg-soft));
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .breath-card::after {
+      position: absolute;
+      right: -90px;
+      bottom: -110px;
+      width: 260px;
+      height: 260px;
+      border: 1px solid rgba(85, 230, 189, 0.1);
+      border-radius: 50%;
+      content: "";
+      pointer-events: none;
+    }
+
+    .card-label {
+      color: var(--muted);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .breath-orb-wrap {
+      display: grid;
+      min-height: 250px;
+      place-items: center;
+      padding: 18px 0;
+    }
+
+    .breath-orb {
+      position: relative;
+      display: grid;
+      width: 154px;
+      height: 154px;
+      place-items: center;
+      border: 1px solid rgba(85, 230, 189, 0.36);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(85, 230, 189, 0.22), rgba(85, 230, 189, 0.03) 70%);
+      box-shadow:
+        0 0 0 18px rgba(85, 230, 189, 0.035),
+        0 0 0 38px rgba(85, 230, 189, 0.02),
+        0 0 60px rgba(85, 230, 189, 0.12);
+      transition: transform 4s ease-in-out;
+    }
+
+    .breath-orb.inhale {
+      transform: scale(1.16);
+    }
+
+    .breath-orb.hold {
+      transform: scale(1.16);
+    }
+
+    .breath-orb.exhale {
+      transform: scale(0.88);
+      transition-duration: 6s;
+    }
+
+    .breath-orb.rest {
+      transform: scale(0.88);
+      transition-duration: 2s;
+    }
+
+    .breath-text {
+      position: relative;
+      z-index: 1;
+    }
+
+    .breath-text strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .breath-text span {
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .breath-controls {
+      display: flex;
+      justify-content: center;
+      gap: 9px;
+    }
+
+    .breath-note {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+
+    .section {
+      padding: 86px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section.alt {
+      background: rgba(255, 255, 255, 0.018);
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 30px;
+    }
+
+    .section-heading h2 {
+      max-width: 700px;
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+    }
+
+    .section-heading p {
+      max-width: 470px;
+      margin: 12px 0 0;
+      color: var(--muted);
+    }
+
+    .section-index {
+      color: rgba(159, 178, 199, 0.45);
+      font-family: var(--mono, ui-monospace, monospace);
+      font-size: 0.74rem;
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(155deg, rgba(18, 42, 73, 0.75), rgba(11, 29, 52, 0.75));
+      box-shadow: 0 16px 44px rgba(0, 0, 0, 0.12);
+    }
+
+    .panel-pad {
+      padding: clamp(22px, 4vw, 34px);
+    }
+
+    .mood-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .mood-button {
+      display: flex;
+      min-height: 126px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 10px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.025);
+      color: var(--muted);
+      transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+    }
+
+    .mood-button:hover {
+      border-color: rgba(85, 230, 189, 0.35);
+      transform: translateY(-3px);
+    }
+
+    .mood-button[aria-pressed="true"] {
+      border-color: var(--mood-color, var(--mint));
+      background: color-mix(in srgb, var(--mood-color, var(--mint)) 10%, transparent);
+      color: var(--text);
+    }
+
+    .mood-face {
+      position: relative;
+      width: 38px;
+      height: 38px;
+      border: 2px solid var(--mood-color, var(--mint));
+      border-radius: 50%;
+      opacity: 0.9;
+    }
+
+    .mood-face::before {
+      position: absolute;
+      top: 11px;
+      left: 9px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--mood-color, var(--mint));
+      box-shadow: 12px 0 var(--mood-color, var(--mint));
+      content: "";
+    }
+
+    .mood-face::after {
+      position: absolute;
+      bottom: 8px;
+      left: 10px;
+      width: 14px;
+      height: 7px;
+      border-bottom: 2px solid var(--mood-color, var(--mint));
+      border-radius: 50%;
+      content: "";
+    }
+
+    .mood-button[data-mood="1"] .mood-face::after,
+    .mood-button[data-mood="2"] .mood-face::after {
+      top: 24px;
+      bottom: auto;
+      border-top: 2px solid var(--mood-color, var(--mint));
+      border-bottom: 0;
+    }
+
+    .mood-button[data-mood="3"] .mood-face::after {
+      width: 13px;
+      height: 0;
+      border-radius: 0;
+    }
+
+    .mood-button strong {
+      font-size: 0.82rem;
+    }
+
+    .mood-response {
+      min-height: 58px;
+      margin: 22px 0 18px;
+      padding: 15px 17px;
+      border-left: 3px solid var(--mint);
+      border-radius: 0 12px 12px 0;
+      background: rgba(85, 230, 189, 0.055);
+      color: #cfe0dc;
+      font-size: 0.9rem;
+    }
+
+    .field-label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    textarea,
+    input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(4, 15, 29, 0.55);
+      color: var(--text);
+      padding: 13px 15px;
+      resize: vertical;
+    }
+
+    textarea {
+      min-height: 112px;
+    }
+
+    textarea::placeholder,
+    input::placeholder {
+      color: #6f849b;
+    }
+
+    textarea:focus,
+    input:focus {
+      border-color: rgba(85, 230, 189, 0.55);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(85, 230, 189, 0.09);
+    }
+
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .privacy-note {
+      color: var(--muted);
+      font-size: 0.74rem;
+    }
+
+    .history {
+      display: grid;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .history-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 13px 15px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .history-item strong {
+      display: block;
+      font-size: 0.84rem;
+    }
+
+    .history-item span {
+      color: var(--muted);
+      font-size: 0.72rem;
+    }
+
+    .history-item p {
+      margin: 5px 0 0;
+      color: #c5d3e1;
+      font-size: 0.8rem;
+    }
+
+    .breathing-layout {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .breath-stage {
+      display: grid;
+      min-height: 390px;
+      place-items: center;
+      padding: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(85, 230, 189, 0.18);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 50% 45%, rgba(85, 230, 189, 0.13), transparent 42%),
+        var(--bg-soft);
+      text-align: center;
+    }
+
+    .large-orb {
+      position: relative;
+      display: grid;
+      width: 180px;
+      height: 180px;
+      place-items: center;
+      border: 1px solid rgba(85, 230, 189, 0.35);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(85, 230, 189, 0.2), rgba(85, 230, 189, 0.02) 70%);
+      box-shadow:
+        0 0 0 22px rgba(85, 230, 189, 0.035),
+        0 0 0 48px rgba(85, 230, 189, 0.018);
+      transition: transform 4s ease-in-out;
+    }
+
+    .large-orb.inhale,
+    .large-orb.hold {
+      transform: scale(1.15);
+    }
+
+    .large-orb.exhale {
+      transform: scale(0.86);
+      transition-duration: 6s;
+    }
+
+    .large-orb.rest {
+      transform: scale(0.86);
+      transition-duration: 2s;
+    }
+
+    .large-orb strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      font-weight: 600;
+    }
+
+    .large-orb span {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .breath-guide h3 {
+      margin: 0 0 10px;
+      font-size: 1.6rem;
+    }
+
+    .breath-guide > p {
+      margin: 0 0 20px;
+      color: var(--muted);
+    }
+
+    .phase-list {
+      display: grid;
+      gap: 9px;
+      margin: 0 0 24px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .phase-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 11px 13px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .phase-list li.active {
+      border-color: rgba(85, 230, 189, 0.45);
+      background: rgba(85, 230, 189, 0.07);
+      color: var(--text);
+    }
+
+    .phase-list b {
+      color: var(--mint);
+      font-family: ui-monospace, monospace;
+      font-size: 0.78rem;
+    }
+
+    .journal-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .journal-list {
+      display: grid;
+      gap: 12px;
+      max-height: 520px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .journal-entry {
+      padding: 17px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .journal-entry-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .journal-entry time {
+      color: var(--muted);
+      font-size: 0.72rem;
+    }
+
+    .journal-entry p {
+      margin: 0;
+      color: #d5e0ea;
+      font-size: 0.86rem;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .empty-state {
+      padding: 38px 20px;
+      border: 1px dashed var(--line);
+      border-radius: 16px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .empty-state strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--text);
+      font-family: var(--serif);
+      font-size: 1.15rem;
+    }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .resource-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--panel);
+    }
+
+    .resource-summary {
+      display: flex;
+      min-height: 160px;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 22px;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .resource-summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .resource-icon {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      margin-bottom: 18px;
+      border-radius: 13px;
+      background: rgba(85, 230, 189, 0.09);
+      color: var(--mint);
+    }
+
+    .resource-icon svg {
+      width: 21px;
+      height: 21px;
+    }
+
+    .resource-summary strong {
+      font-family: var(--serif);
+      font-size: 1.18rem;
+      font-weight: 600;
+    }
+
+    .resource-summary span {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .resource-body {
+      padding: 0 22px 22px;
+      color: #c9d7e4;
+      font-size: 0.84rem;
+    }
+
+    .resource-body ol,
+    .resource-body ul {
+      margin: 0;
+      padding-left: 19px;
+    }
+
+    .resource-body li + li {
+      margin-top: 7px;
+    }
+
+    .crisis-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      margin-top: 20px;
+      padding: 25px;
+      border: 1px solid rgba(243, 166, 185, 0.25);
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(94, 35, 55, 0.38), rgba(41, 24, 42, 0.35));
+    }
+
+    .crisis-card h3 {
+      margin: 0 0 7px;
+      color: #ffe8ee;
+      font-size: 1.3rem;
+    }
+
+    .crisis-card p {
+      margin: 0;
+      color: #dfbdc7;
+      font-size: 0.84rem;
+    }
+
+    .crisis-number {
+      color: #ffe8ee;
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      white-space: nowrap;
+    }
+
+    .crisis-number small {
+      display: block;
+      color: #dfbdc7;
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    footer {
+      padding: 34px 0 42px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.76rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-inner strong {
+      color: var(--text);
+    }
+
+    .toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 80;
+      max-width: min(380px, calc(100% - 40px));
+      padding: 13px 17px;
+      border: 1px solid rgba(85, 230, 189, 0.3);
+      border-radius: 12px;
+      background: #102a36;
+      box-shadow: var(--shadow);
+      color: var(--text);
+      font-size: 0.84rem;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .nav {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: 0;
+        padding-top: 30px;
+      }
+
+      .breath-card {
+        max-width: 620px;
+      }
+
+      .breathing-layout,
+      .journal-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .resource-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .resource-summary {
+        min-height: 0;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .container {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .header-inner {
+        min-height: 68px;
+      }
+
+      .brand small {
+        display: none;
+      }
+
+      .header-cta {
+        padding: 9px 12px;
+        font-size: 0.76rem;
+      }
+
+      main {
+        padding-top: 26px;
+      }
+
+      .hero {
+        gap: 34px;
+        padding-bottom: 58px;
+      }
+
+      h1 {
+        font-size: clamp(2.6rem, 13vw, 4rem);
+      }
+
+      .section {
+        padding: 62px 0;
+      }
+
+      .section-heading {
+        align-items: start;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .section-index {
+        display: none;
+      }
+
+      .mood-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .mood-button:last-child {
+        grid-column: 1 / -1;
+      }
+
+      .crisis-card {
+        grid-template-columns: 1fr;
+      }
+
+      .crisis-number small {
+        text-align: left;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 6px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+
+      .breath-orb,
+      .large-orb {
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to wellness console</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#overview" aria-label="Mental Health Central home">
+        <span class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3 4.5 6v5.4c0 4.5 3.1 8.1 7.5 9.6 4.4-1.5 7.5-5.1 7.5-9.6V6L12 3Z"></path>
+            <path d="M12 8.2c-1.5-1-3.6-1.2-5.2-.7v6.7c0 2.6 1.8 4.6 5.2 5.6 3.4-1 5.2-3 5.2-5.6V7.5c-1.6-.5-3.7-.3-5.2.7Z"></path>
+            <path d="M12 8.2v11.6"></path>
+          </svg>
+        </span>
+        <span>
+          <strong>Mental Health Central</strong>
+          <small>ThutoTech · In-house console</small>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Console navigation">
+        <a href="#overview">Overview</a>
+        <a href="#check-in">Check-in</a>
+        <a href="#breathe">Breathe</a>
+        <a href="#journal">Journal</a>
+        <a href="#support">Support</a>
+      </nav>
+
+      <a class="header-cta" href="#check-in">Begin check-in</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="container hero" id="overview" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">Mental Health Central · Index 001</p>
+        <h1 id="hero-title">Your wellness companion, <em>hosted in-house.</em></h1>
+        <p class="hero-copy">
+          A calm, private space to check in with yourself, steady your breathing,
+          capture your thoughts, and find practical support. No external chat links,
+          no account required, and no information leaves this browser.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button primary" href="#check-in">
+            Start a check-in
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14"></path>
+              <path d="m13 6 6 6-6 6"></path>
+            </svg>
+          </a>
+          <a class="button" href="#breathe">Try a breathing exercise</a>
+        </div>
+
+        <div class="trust-row" aria-label="Console privacy features">
+          <span class="trust-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3 4.5 6v5.4c0 4.5 3.1 8.1 7.5 9.6 4.4-1.5 7.5-5.1 7.5-9.6V6L12 3Z"></path></svg>
+            Private on this device
+          </span>
+          <span class="trust-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            No external redirects
+          </span>
+          <span class="trust-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v4l3 2"></path></svg>
+            Free for students
+          </span>
+        </div>
+      </div>
+
+      <aside class="breath-card" aria-label="Quick breathing preview">
+        <div class="card-label">A moment for yourself</div>
+        <div class="breath-orb-wrap">
+          <div class="breath-orb" id="heroBreathOrb" aria-hidden="true">
+            <div class="breath-text">
+              <strong id="heroBreathPhase">Breathe</strong>
+              <span id="heroBreathCount">4 seconds</span>
+            </div>
+          </div>
+        </div>
+        <div class="breath-controls">
+          <button class="button primary small" id="heroBreathButton" type="button">Start breathing</button>
+          <a class="button small" href="#breathe">Open exercise</a>
+        </div>
+        <p class="breath-note">Inhale for 4 · Hold for 4 · Exhale for 6</p>
+      </aside>
+    </section>
+
+    <section class="section" id="check-in" aria-labelledby="check-in-title">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Private check-in</p>
+            <h2 id="check-in-title">How are you feeling today?</h2>
+            <p>There is no right answer. Choose the feeling that is closest to where you are right now.</p>
+          </div>
+          <span class="section-index">01 / CHECK-IN</span>
+        </div>
+
+        <div class="panel panel-pad">
+          <div class="mood-grid" role="group" aria-label="Choose your current mood">
+            <button class="mood-button" type="button" data-mood="1" data-label="Very low" style="--mood-color:#f3a6b9" aria-pressed="false">
+              <span class="mood-face" aria-hidden="true"></span>
+              <strong>Very low</strong>
+            </button>
+            <button class="mood-button" type="button" data-mood="2" data-label="Low" style="--mood-color:#e7c96a" aria-pressed="false">
+              <span class="mood-face" aria-hidden="true"></span>
+              <strong>Low</strong>
+            </button>
+            <button class="mood-button" type="button" data-mood="3" data-label="Okay" style="--mood-color:#67cdf3" aria-pressed="false">
+              <span class="mood-face" aria-hidden="true"></span>
+              <strong>Okay</strong>
+            </button>
+            <button class="mood-button" type="button" data-mood="4" data-label="Good" style="--mood-color:#55e6bd" aria-pressed="false">
+              <span class="mood-face" aria-hidden="true"></span>
+              <strong>Good</strong>
+            </button>
+            <button class="mood-button" type="button" data-mood="5" data-label="Great" style="--mood-color:#a8f0d3" aria-pressed="false">
+              <span class="mood-face" aria-hidden="true"></span>
+              <strong>Great</strong>
+            </button>
+          </div>
+
+          <div class="mood-response" id="moodResponse" aria-live="polite">
+            Select a mood to receive a gentle reflection prompt.
+          </div>
+
+          <label class="field-label" for="moodNote">Anything you want to remember about today?</label>
+          <textarea id="moodNote" placeholder="A few words is enough..."></textarea>
+
+          <div class="form-row">
+            <span class="privacy-note">Saved only in this browser. You can clear it at any time.</span>
+            <button class="button primary" id="saveMood" type="button" disabled>Save check-in</button>
+          </div>
+
+          <div class="history" id="moodHistory" aria-label="Recent check-ins"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="breathe" aria-labelledby="breathe-title">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Guided breathing</p>
+            <h2 id="breathe-title">Slow down. One breath at a time.</h2>
+            <p>Follow the circle through a simple 4–4–6 breathing cycle. Stop if you feel light-headed or uncomfortable.</p>
+          </div>
+          <span class="section-index">02 / BREATHE</span>
+        </div>
+
+        <div class="breathing-layout">
+          <div class="breath-stage">
+            <div class="large-orb" id="breathOrb" aria-hidden="true">
+              <div>
+                <strong id="breathPhase">Ready</strong>
+                <span id="breathCount">Begin when you are comfortable</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-pad breath-guide">
+            <h3>A gentle reset</h3>
+            <p>Sit comfortably, relax your shoulders, and let your breathing follow the guide.</p>
+
+            <ol class="phase-list" id="phaseList">
+              <li data-phase="0"><span>Inhale through your nose</span><b>4 seconds</b></li>
+              <li data-phase="1"><span>Hold gently</span><b>4 seconds</b></li>
+              <li data-phase="2"><span>Exhale slowly</span><b>6 seconds</b></li>
+              <li data-phase="3"><span>Rest naturally</span><b>2 seconds</b></li>
+            </ol>
+
+            <div class="hero-actions">
+              <button class="button primary" id="breathButton" type="button">Start exercise</button>
+              <button class="button" id="breathReset" type="button">Reset</button>
+            </div>
+
+            <p class="privacy-note" style="margin-top:18px">
+              This exercise is for relaxation and is not a substitute for professional medical care.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="journal" aria-labelledby="journal-title">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Private journal</p>
+            <h2 id="journal-title">Give your thoughts a place to land.</h2>
+            <p>Write freely. Your entries stay on this device and are not sent to an AI service or any server.</p>
+          </div>
+          <span class="section-index">03 / JOURNAL</span>
+        </div>
+
+        <div class="journal-layout">
+          <div class="panel panel-pad">
+            <label class="field-label" for="journalEntry">Today’s reflection</label>
+            <textarea id="journalEntry" placeholder="What is taking up space in your mind today?"></textarea>
+            <div class="form-row">
+              <span class="privacy-note">Be kind to yourself. You do not have to share this.</span>
+              <button class="button primary" id="saveJournal" type="button" disabled>Save entry</button>
+            </div>
+          </div>
+
+          <div class="journal-list" id="journalList" aria-label="Saved journal entries"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="support" aria-labelledby="support-title">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Practical support</p>
+            <h2 id="support-title">Small tools for difficult moments.</h2>
+            <p>Open a card for a short exercise you can try immediately.</p>
+          </div>
+          <span class="section-index">04 / SUPPORT</span>
+        </div>
+
+        <div class="resource-grid">
+          <details class="resource-card">
+            <summary class="resource-summary">
+              <span class="resource-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="M12 7v5l3 2"></path>
+                </svg>
+              </span>
+              <strong>5–4–3–2–1 grounding</strong>
+              <span>Reconnect with the present moment.</span>
+            </summary>
+            <div class="resource-body">
+              <ol>
+                <li>Name 5 things you can see.</li>
+                <li>Name 4 things you can feel.</li>
+                <li>Name 3 things you can hear.</li>
+                <li>Name 2 things you can smell.</li>
+                <li>Name 1 thing you can taste.</li>
+              </ol>
+            </div>
+          </details>
+
+          <details class="resource-card">
+            <summary class="resource-summary">
+              <span class="resource-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 5h16v14H4z"></path>
+                  <path d="M8 9h8M8 13h5"></path>
+                </svg>
+              </span>
+              <strong>Study stress reset</strong>
+              <span>Make the next task feel manageable.</span>
+            </summary>
+            <div class="resource-body">
+              <ol>
+                <li>Write down the one task that feels most urgent.</li>
+                <li>Break it into a step that takes ten minutes.</li>
+                <li>Remove one distraction from your space.</li>
+                <li>Work for ten minutes, then take a short break.</li>
+              </ol>
+            </div>
+          </details>
+
+          <details class="resource-card">
+            <summary class="resource-summary">
+              <span class="resource-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"></path>
+                </svg>
+              </span>
+              <strong>Wind-down routine</strong>
+              <span>Prepare your mind and body for rest.</span>
+            </summary>
+            <div class="resource-body">
+              <ol>
+                <li>Put your phone out of easy reach.</li>
+                <li>Dim the lights and lower stimulating noise.</li>
+                <li>Write tomorrow’s first task on paper.</li>
+                <li>Take five slow breaths before getting into bed.</li>
+              </ol>
+            </div>
+          </details>
+        </div>
+
+        <div class="crisis-card">
+          <div>
+            <h3>You do not have to face a crisis alone.</h3>
+            <p>
+              If you are in immediate danger, contact local emergency services.
+              In South Africa, the SADAG Suicide Crisis Helpline is available on
+              <strong> 0800 567 567</strong>.
+            </p>
+          </div>
+          <div class="crisis-number">
+            0800 567 567
+            <small>SADAG crisis line</small>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span><strong>Mental Health Central</strong> · A ThutoTech wellness space.</span>
+      <span>Local tools only · Not a replacement for professional care.</span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const $ = (selector, root = document) => root.querySelector(selector);
+      const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+
+      const storage = {
+        get(key, fallback) {
+          try {
+            const value = localStorage.getItem(key);
+            return value ? JSON.parse(value) : fallback;
+          } catch {
+            return fallback;
+          }
+        },
+        set(key, value) {
+          try {
+            localStorage.setItem(key, JSON.stringify(value));
+            return true;
+          } catch {
+            return false;
+          }
+        }
+      };
+
+      let toastTimer;
+
+      function showToast(message) {
+        const toast = $("#toast");
+        toast.textContent = message;
+        toast.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove("show"), 3200);
+      }
+
+      function formatDate(value) {
+        return new Intl.DateTimeFormat("en-ZA", {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit"
+        }).format(new Date(value));
+      }
+
+      const moodMessages = {
+        1: "Thank you for being honest about how heavy today feels. You do not have to solve everything at once. Consider reaching out to someone you trust or a qualified support service.",
+        2: "It sounds like today has been difficult. Try lowering the bar: one small act of care, such as water, food, a short walk, or a message to someone safe.",
+        3: "An okay day is still worth noticing. A short pause, a few slow breaths, or writing down one thing on your mind may help you feel more grounded.",
+        4: "It is good that you are feeling positive. Take a moment to notice what has been supporting you so you can return to it when you need it.",
+        5: "That is wonderful to hear. Enjoy this moment and consider saving a few words about what made today feel good."
+      };
+
+      let selectedMood = null;
+      let moodEntries = storage.get("mhc-mood-checkins", []);
+
+      $$(".mood-button").forEach(button => {
+        button.addEventListener("click", () => {
+          selectedMood = Number(button.dataset.mood);
+          $$(".mood-button").forEach(item => item.setAttribute("aria-pressed", String(item === button)));
+          $("#moodResponse").textContent = moodMessages[selectedMood];
+          $("#saveMood").disabled = false;
+        });
+      });
+
+      function renderMoodHistory() {
+        const container = $("#moodHistory");
+        container.replaceChildren();
+
+        if (!moodEntries.length) return;
+
+        moodEntries.slice(0, 5).forEach(entry => {
+          const item = document.createElement("div");
+          item.className = "history-item";
+
+          const content = document.createElement("div");
+          const title = document.createElement("strong");
+          title.textContent = entry.label;
+          const date = document.createElement("span");
+          date.textContent = formatDate(entry.date);
+          content.append(title, date);
+
+          if (entry.note) {
+            const note = document.createElement("p");
+            note.textContent = entry.note;
+            content.append(note);
+          }
+
+          const remove = document.createElement("button");
+          remove.type = "button";
+          remove.className = "button danger small";
+          remove.textContent = "Remove";
+          remove.addEventListener("click", () => {
+            moodEntries = moodEntries.filter(item => item.id !== entry.id);
+            storage.set("mhc-mood-checkins", moodEntries);
+            renderMoodHistory();
+            showToast("Check-in removed.");
+          });
+
+          item.append(content, remove);
+          container.append(item);
+        });
+      }
+
+      $("#saveMood").addEventListener("click", () => {
+        if (!selectedMood) return;
+
+        moodEntries.unshift({
+          id: Date.now(),
+          mood: selectedMood,
+          label: $(".mood-button[aria-pressed='true']").dataset.label,
+          note: $("#moodNote").value.trim(),
+          date: new Date().toISOString()
+        });
+
+        moodEntries = moodEntries.slice(0, 30);
+        const saved = storage.set("mhc-mood-checkins", moodEntries);
+        renderMoodHistory();
+        $("#moodNote").value = "";
+        showToast(saved ? "Your check-in was saved on this device." : "Your browser could not save this check-in.");
+      });
+
+      renderMoodHistory();
+
+      const phases = [
+        { name: "Inhale", duration: 4 },
+        { name: "Hold", duration: 4 },
+        { name: "Exhale", duration: 6 },
+        { name: "Rest", duration: 2 }
+      ];
+
+      let breathing = false;
+      let phaseIndex = 0;
+      let secondsLeft = phases[0].duration;
+      let breathingTimer = null;
+      let heroTimer = null;
+      let heroRunning = false;
+      let heroPhase = 0;
+      let heroSeconds = phases[0].duration;
+
+      function renderBreathing() {
+        const phase = phases[phaseIndex];
+        $("#breathPhase").textContent = breathing ? phase.name : "Ready";
+        $("#breathCount").textContent = breathing ? `${secondsLeft} ${secondsLeft === 1 ? "second" : "seconds"}` : "Begin when you are comfortable";
+        $("#breathOrb").className = `large-orb ${breathing ? phase.name.toLowerCase() : ""}`;
+        $("#breathButton").textContent = breathing ? "Pause exercise" : phaseIndex || secondsLeft !== phases[0].duration ? "Resume exercise" : "Start exercise";
+        $$("#phaseList li").forEach((item, index) => item.classList.toggle("active", breathing && index === phaseIndex));
+      }
+
+      function stopBreathing() {
+        breathing = false;
+        clearInterval(breathingTimer);
+        breathingTimer = null;
+        renderBreathing();
+      }
+
+      function advanceBreathing() {
+        phaseIndex = (phaseIndex + 1) % phases.length;
+        secondsLeft = phases[phaseIndex].duration;
+        renderBreathing();
+      }
+
+      $("#breathButton").addEventListener("click", () => {
+        if (breathing) {
+          stopBreathing();
+          return;
+        }
+
+        breathing = true;
+        renderBreathing();
+        breathingTimer = setInterval(() => {
+          secondsLeft -= 1;
+          if (secondsLeft <= 0) {
+            advanceBreathing();
+          } else {
+            renderBreathing();
+          }
+        }, 1000);
+      });
+
+      $("#breathReset").addEventListener("click", () => {
+        stopBreathing();
+        phaseIndex = 0;
+        secondsLeft = phases[0].duration;
+        renderBreathing();
+      });
+
+      function renderHeroBreath() {
+        const phase = phases[heroPhase];
+        $("#heroBreathPhase").textContent = heroRunning ? phase.name : "Breathe";
+        $("#heroBreathCount").textContent = heroRunning ? `${heroSeconds} ${heroSeconds === 1 ? "second" : "seconds"}` : "4 seconds";
+        $("#heroBreathOrb").className = `breath-orb ${heroRunning ? phase.name.toLowerCase() : ""}`;
+        $("#heroBreathButton").textContent = heroRunning ? "Pause" : "Start breathing";
+      }
+
+      $("#heroBreathButton").addEventListener("click", () => {
+        heroRunning = !heroRunning;
+        clearInterval(heroTimer);
+        heroTimer = null;
+
+        if (heroRunning) {
+          renderHeroBreath();
+          heroTimer = setInterval(() => {
+            heroSeconds -= 1;
+            if (heroSeconds <= 0) {
+              heroPhase = (heroPhase + 1) % phases.length;
+              heroSeconds = phases[heroPhase].duration;
+            }
+            renderHeroBreath();
+          }, 1000);
+        } else {
+          renderHeroBreath();
+        }
+      });
+
+      let journalEntries = storage.get("mhc-journal-entries", []);
+
+      function renderJournal() {
+        const container = $("#journalList");
+        container.replaceChildren();
+
+        if (!journalEntries.length) {
+          const empty = document.createElement("div");
+          empty.className = "empty-state";
+          empty.innerHTML = "<strong>Your journal is clear.</strong>Write a reflection when you feel ready.";
+          container.append(empty);
+          return;
+        }
+
+        journalEntries.forEach(entry => {
+          const article = document.createElement("article");
+          article.className = "journal-entry";
+
+          const header = document.createElement("div");
+          header.className = "journal-entry-header";
+
+          const time = document.createElement("time");
+          time.dateTime = entry.date;
+          time.textContent = formatDate(entry.date);
+
+          const remove = document.createElement("button");
+          remove.type = "button";
+          remove.className = "button danger small";
+          remove.textContent = "Delete";
+          remove.addEventListener("click", () => {
+            journalEntries = journalEntries.filter(item => item.id !== entry.id);
+            storage.set("mhc-journal-entries", journalEntries);
+            renderJournal();
+            showToast("Journal entry deleted.");
+          });
+
+          const text = document.createElement("p");
+          text.textContent = entry.text;
+
+          header.append(time, remove);
+          article.append(header, text);
+          container.append(article);
+        });
+      }
+
+      $("#journalEntry").addEventListener("input", event => {
+        $("#saveJournal").disabled = !event.target.value.trim();
+      });
+
+      $("#saveJournal").addEventListener("click", () => {
+        const text = $("#journalEntry").value.trim();
+        if (!text) return;
+
+        journalEntries.unshift({
+          id: Date.now(),
+          text,
+          date: new Date().toISOString()
+        });
+
+        journalEntries = journalEntries.slice(0, 100);
+        const saved = storage.set("mhc-journal-entries", journalEntries);
+        $("#journalEntry").value = "";
+        $("#saveJournal").disabled = true;
+        renderJournal();
+        showToast(saved ? "Your reflection was saved on this device." : "Your browser could not save this entry.");
+      });
+
+      renderJournal();
+    })();
+  </script>
+</body>
+</html>
