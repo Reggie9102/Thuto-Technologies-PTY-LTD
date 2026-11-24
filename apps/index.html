@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Apps Directory — ThutoTech</title>
-  <meta name="description" content="Explore the nine static applications in the ThutoTech ecosystem. Each app is served from apps/name/index.html on GitHub Pages without a build step.">
+  <meta name="description" content="Explore the static applications in the ThutoTech ecosystem. Each app is served from apps/name/index.html on GitHub Pages without a build step.">
   <meta name="theme-color" content="#0A2E5A">
   <style>
     :root {
@@ -411,6 +411,7 @@
     .app-card[data-category="learning"] { --accent: var(--gold); }
     .app-card[data-category="community"] { --accent: var(--orange); }
     .app-card[data-category="research"] { --accent: var(--cyan); }
+    .app-card[data-category="work"] { --accent: var(--blue); }
     .app-card[data-category="legal"] { --accent: var(--emerald); }
 
     .card-top {
@@ -626,7 +627,7 @@
       <div class="hero-grid">
         <div>
           <p class="eyebrow">ThutoTech apps</p>
-          <h1 id="page-title">Nine apps. One predictable path.</h1>
+          <h1 id="page-title">Ten apps. One predictable path.</h1>
           <p class="hero-copy">Explore the applications in the ThutoTech ecosystem. Each app is a self-contained static page served directly from its own folder on GitHub Pages.</p>
         </div>
         <aside class="path-panel" aria-label="Deployment path pattern">
@@ -637,7 +638,7 @@
         </aside>
       </div>
       <div class="hero-meta" aria-label="Directory facts">
-        <span class="meta-pill"><span class="meta-dot" aria-hidden="true"></span>9 app folders</span>
+        <span class="meta-pill"><span class="meta-dot" aria-hidden="true"></span>10 listed apps</span>
         <span class="meta-pill">GitHub Pages</span>
         <span class="meta-pill">No build step</span>
         <span class="meta-pill">Relative app links</span>
@@ -650,7 +651,7 @@
           <h2 id="directory-title">Browse the ecosystem</h2>
           <p>Search by app name, purpose, or folder. Links keep the existing folder names so current URLs and bookmarks continue to work.</p>
         </div>
-        <p class="result-count" id="result-count" aria-live="polite">Showing 9 of 9 apps</p>
+        <p class="result-count" id="result-count" aria-live="polite">Showing 10 of 10 apps</p>
       </div>
 
       <div class="controls">
@@ -664,6 +665,7 @@
           <button class="filter-button" type="button" data-filter="learning" aria-pressed="false">Learning</button>
           <button class="filter-button" type="button" data-filter="community" aria-pressed="false">Community</button>
           <button class="filter-button" type="button" data-filter="research" aria-pressed="false">Research</button>
+          <button class="filter-button" type="button" data-filter="work" aria-pressed="false">Work</button>
           <button class="filter-button" type="button" data-filter="legal" aria-pressed="false">Legal</button>
         </div>
       </div>
@@ -709,12 +711,20 @@
           <a class="card-link" href="Township-Community/">Open Township Community <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
         </article>
 
-        <article class="app-card" data-category="learning" data-search="fundisa ai teaching primary schools classroom teacher intelligence">
+        <article class="app-card" data-category="learning" data-search="fundisa ai workspace fundisa funda wellness teaching primary schools classroom learning">
           <div class="card-top"><span class="app-monogram" aria-hidden="true">FA</span><span class="category-label">Learning</span></div>
-          <h3>Fundisa AI</h3>
-          <p>Teaching intelligence and classroom tools for primary schools.</p>
-          <code class="app-path">apps/fundisa-ai/</code>
-          <a class="card-link" href="fundisa-ai/">Open Fundisa AI <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+          <h3>Fundisa AI Workspace</h3>
+          <p>A unified workspace for Fundisa, Funda, and Wellness learning tools.</p>
+          <code class="app-path">apps/fundisa-ai-workspace/</code>
+          <a class="card-link" href="./fundisa-ai-workspace/">Open Fundisa AI Workspace <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+        </article>
+
+        <article class="app-card" data-category="work" data-search="frictionless work workspace productivity planning creating workflow tasks focus">
+          <div class="card-top"><span class="app-monogram" aria-hidden="true">FW</span><span class="category-label">Work</span></div>
+          <h3>Frictionless Work</h3>
+          <p>A focused workspace for planning, creating, and keeping work moving.</p>
+          <code class="app-path">apps/frictionless-work/</code>
+          <a class="card-link" href="./frictionless-work/">Open Frictionless Work <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
         </article>
 
         <article class="app-card" data-category="legal" data-search="thuto legal platform legal intelligence cloudflare pages workspace support">
@@ -751,7 +761,7 @@
         <span class="note-icon" aria-hidden="true">i</span>
         <div>
           <h2 id="deployment-title">Stable URLs, no paid hosting required</h2>
-          <p>Folder names are intentionally unchanged to preserve existing public URLs. The relative links also work on the custom domain. Thuto Legal keeps its separate Cloudflare Pages deployment; this directory links to the repository copy.</p>
+          <p>Existing folder names are intentionally unchanged to preserve public URLs. The relative links also work on the custom domain. The Fundisa AI and Frictionless Work landing pages open their externally hosted workspaces, while Thuto Legal keeps its separate Cloudflare Pages deployment.</p>
         </div>
       </aside>
     </section>
