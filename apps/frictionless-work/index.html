@@ -622,7 +622,7 @@ footer a{color:var(--civic-lt)}
         <a href="#configure">Configure a trial</a><br><a href="#connectors">Connector registry</a><br><a href="#pricing">Modelled pricing</a><br><a href="#trials">Trial console</a><br><a href="https://thutotech-legal.pages.dev/" target="_blank" rel="noopener">ThutoLegal ↗</a>
       </div>
       <div><b>Contact &amp; register</b>
-        <a href="mailto:reggie@thutotech.co.za">reggie@thutotech.co.za</a><br>+27 73 175 9016<br>www.thutotech.co.za<br>www.fundisaai.co.za
+        <a href="mailto:admin@thutotech.co.za">admin@thutotech.co.za</a><br>+27 73 175 9016<br>www.thutotech.co.za<br>www.fundisaai.co.za
         <div style="margin-top:9px"><button class="btn sm ghost" id="footProv">Provenance register</button></div>
       </div>
     </div>
@@ -638,7 +638,7 @@ footer a{color:var(--civic-lt)}
 <div class="modal" id="modal" role="dialog" aria-hidden="true"></div>
 <div class="toasts" id="toasts"></div>
 
-<script>
+<script nonce="">
 "use strict";
 const $=(s,r)=>(r||document).querySelector(s), $$=(s,r)=>Array.from((r||document).querySelectorAll(s));
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -887,7 +887,7 @@ const S={
   {id:"t3",org:"Kgosi Logistics (Pty) Ltd",ind:"transport",seats:8,daysTotal:14,daysLeft:6,credits:4000,used:3610,conns:["telem","saiot","sanral"],status:"active",created:dstr(-8),contact:"ops@example.co.za",resid:"def",note:"Waybill exception run each morning at 05:30.",prio:3},
   {id:"t4",org:"Glenhazel Primary",ind:"education",seats:6,daysTotal:30,daysLeft:30,credits:3000,used:0,conns:["caps","papers","popia"],status:"pending",created:dstr(0),contact:"hod@example.school.za",resid:"za",note:"Awaiting guardian consent evening before go-live.",prio:4},
   {id:"t5",org:"Hatfield Wellness Collective",ind:"wellness",seats:4,daysTotal:14,daysLeft:0,credits:2000,used:1980,conns:["crisis","booking"],status:"expired",created:dstr(-14),contact:"care@example.org.za",resid:"za",note:"Trial lapsed. Extend or archive.",prio:5},
-  {id:"t6",org:"Reggie Express · ESD Office",ind:"corporate",seats:5,daysTotal:30,daysLeft:27,credits:4000,used:640,conns:["cipc","sars","etender"],status:"active",created:dstr(-3),contact:"reggie@thutotech.co.za",resid:"def",note:"Eligibility matrix against live call texts.",prio:6},
+  {id:"t6",org:"Reggie Express · ESD Office",ind:"corporate",seats:5,daysTotal:30,daysLeft:27,credits:4000,used:640,conns:["cipc","sars","etender"],status:"active",created:dstr(-3),contact:"admin@thutotech.co.za",resid:"def",note:"Eligibility matrix against live call texts.",prio:6},
   {id:"t7",org:"Norta DeSyCo OÜ · Research",ind:"corporate",seats:3,daysTotal:30,daysLeft:12,credits:3000,used:1120,conns:["cipc"],status:"paused",created:dstr(-18),contact:"research@example.eu",resid:"eu",note:"Paused pending Annexure A signature. Synthetic only.",prio:7},
   {id:"t8",org:"Sabelo Freight & Courier",ind:"transport",seats:15,daysTotal:30,daysLeft:9,credits:8000,used:7420,conns:["telem","enatis","aarto"],status:"active",created:dstr(-21),contact:"dispatch@example.co.za",resid:"def",note:"Credit burn high — top-up or reduce parallel runs.",prio:8}
  ],
