@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sprint Console — work companion · ThutoTech</title>
+<meta name="description" content="Sprint Console: a focused-work companion to Frictionless Work. Pick your industry, run the sprint, ship the deliverable.">
+<style>
+:root{
+  --navy:#0A2E5A;--deep:#061C38;--gold:#D4AF37;--blue:#1E3A8A;--cyan:#28A9E1;
+  --ink:#15243A;--muted:#607087;--paper:#F5F8FC;--surface:#fff;--line:#DCE5F0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:15px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:600;line-height:1.15}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;background:none;border:none;color:inherit}
+.shell{width:min(960px,calc(100% - 32px));margin-inline:auto}
+.topbar{background:linear-gradient(135deg,#1E3A8A,var(--deep));color:#fff;padding:14px 0;border-bottom:3px solid var(--gold)}
+.topbar-in{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{font-size:.62rem;font-weight:800;letter-spacing:.18em;padding:3px 8px;border:1px solid rgba(255,255,255,.35);border-radius:5px}
+.topbar h1{font-size:1.15rem;color:#fff}
+.comp{margin-left:auto;display:inline-flex;align-items:center;gap:7px;font-size:.72rem;font-weight:800;padding:7px 12px;border-radius:999px;background:rgba(212,175,55,.16);border:1px solid rgba(212,175,55,.5);color:var(--gold);transition:.2s}
+.comp:hover{background:rgba(212,175,55,.3)}
+main{padding:26px 0 60px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 24px rgba(10,46,90,.06);padding:20px}
+.klabel{font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.hero{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.hero-main{flex:1 1 320px}
+.eyebrow{font-size:.66rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.hero-main h2{font-size:1.5rem;color:var(--navy);margin-bottom:6px}
+.hero-main p{font-size:.9rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.card h3{font-size:1rem;color:var(--navy);margin-bottom:10px}
+select{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:10px;font:inherit;background:var(--surface)}
+select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(30,58,138,.15)}
+.clock{display:grid;place-items:center;gap:10px;padding:6px 0}
+.dial{position:relative;width:170px;height:170px}
+.dial svg{transform:rotate(-90deg)}
+.dial b{position:absolute;inset:0;display:grid;place-items:center;font-family:ui-monospace,Consolas,monospace;font-size:2rem;color:var(--navy)}
+.cbtns{display:flex;gap:8px}
+.cbtn{padding:9px 16px;border-radius:999px;font-weight:800;font-size:.8rem;border:1px solid var(--line);background:var(--surface);transition:.16s}
+.cbtn:hover{border-color:var(--blue)}
+.cbtn.go{background:var(--blue);color:#fff;border-color:var(--blue)}
+.cbtn.go:hover{filter:brightness(1.1)}
+.step{display:flex;align-items:center;gap:11px;padding:9px 11px;border:1px solid var(--line);border-radius:11px;margin-bottom:7px;cursor:pointer;transition:.16s}
+.step:hover{border-color:var(--gold)}
+.step.done{opacity:.55;text-decoration:line-through}
+.sk{width:18px;height:18px;border-radius:5px;border:2px solid #9DB2CC;flex:none;display:grid;place-items:center;font-size:.65rem;font-weight:900;color:#fff}
+.step.done .sk{background:#28A492;border-color:#28A492}
+.statrow{display:flex;gap:8px;flex-wrap:wrap}
+.stat{flex:1;min-width:100px;background:rgba(30,58,138,.05);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.stat b{display:block;font-family:Georgia,serif;font-size:1.25rem;color:var(--navy)}
+.stat span{font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.note{border-left:3px solid var(--gold);background:rgba(212,175,55,.08);padding:10px 12px;border-radius:0 10px 10px 0;font-size:.78rem;line-height:1.5}
+.log{max-height:150px;overflow-y:auto;font-family:ui-monospace,Consolas,monospace;font-size:.72rem;color:var(--muted);line-height:1.7}
+footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);font-size:.78rem}
+footer .flinks{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+footer .flinks a{font-weight:800;color:var(--navy)}
+footer .flinks a:hover{color:var(--gold)}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="shell topbar-in">
+    <span class="badge">THUTOTECH</span>
+    <h1>Sprint Console</h1>
+    <span class="badge">FOCUS · ON-DEVICE</span>
+    <a class="comp" href="../frictionless-work/">COMPANION · Frictionless Work →</a>
+  </div>
+</header>
+<main class="shell">
+  <section class="hero">
+    <div class="card hero-main">
+      <div class="eyebrow">Pick · focus · ship</div>
+      <h2>One sprint. One deliverable.</h2>
+      <p>Choose your industry, and the console loads its deliverable checklist. Run 25-minute sprints against the clock, tick steps as you ship, then take the finished work into Frictionless Work.</p>
+    </div>
+    <div class="card" style="flex:0 1 300px">
+      <div class="klabel">Session stats · this device</div>
+      <div class="statrow">
+        <div class="stat"><b id="stSprints">0</b><span>sprints done</span></div>
+        <div class="stat"><b id="stMins">0</b><span>focus minutes</span></div>
+        <div class="stat"><b id="stSteps">0%</b><span>deliverable</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="grid">
+    <section class="card">
+      <h3>Sprint timer</h3>
+      <div class="clock">
+        <div class="dial">
+          <svg width="170" height="170" viewBox="0 0 170 170">
+            <circle cx="85" cy="85" r="74" fill="none" stroke="#E2EAF3" stroke-width="12"/>
+            <circle id="arc" cx="85" cy="85" r="74" fill="none" stroke="#1E3A8A" stroke-width="12" stroke-linecap="round" stroke-dasharray="464.9" stroke-dashoffset="0" style="transition:stroke-dashoffset 1s linear"/>
+          </svg>
+          <b id="clockText">25:00</b>
+        </div>
+        <div class="cbtns">
+          <button class="cbtn go" id="startBtn">▶ Start sprint</button>
+          <button class="cbtn" id="resetBtn">↺ Reset</button>
+          <button class="cbtn" id="brkBtn">☕ 5-min break</button>
+        </div>
+        <div class="klabel" id="phaseLabel">industry deliverable loaded below</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Deliverable checklist</h3>
+      <select id="industry" aria-label="Choose your industry">
+        <option value="edu">Education · lesson pack (CAPS)</option>
+        <option value="legal">Legal · POPIA request file</option>
+        <option value="retail">Retail / student commerce · listing</option>
+        <option value="community">Community · programme brief</option>
+        <option value="research">Research · source note</option>
+      </select>
+      <div id="steps" style="margin-top:12px"></div>
+      <div class="note" style="margin-top:10px">Finish the checklist, then move the deliverable into <a href="../frictionless-work/" style="font-weight:800;color:var(--navy)">Frictionless Work</a> — six industries, six deliverables, one working trial.</div>
+    </section>
+
+    <section class="card" style="grid-column:1/-1">
+      <div class="klabel">Sprint log</div>
+      <div class="log" id="log"><div>no sprints yet — start the first one ▲</div></div>
+    </section>
+  </div>
+</main>
+<footer class="shell">
+  <div class="flinks">
+    <a href="../frictionless-work/">Frictionless Work (full workspace)</a>
+    <a href="../">ThutoTech ecosystem</a>
+    <a href="../index.html">Apps directory</a>
+  </div>
+  <div>Sprint Console is a focused-work companion to Frictionless Work — run sprints, tick deliverables, then move the finished work into your full workspace. Progress stays on this device · POPIA governed · admin@thutotech.co.za</div>
+</footer>
+<script>
+(function(){
+  "use strict";
+  var KEY = "sprintConsole.v1";
+  var STEPS = {
+    edu:["Draft the CAPS-aligned outcome","Write worked examples","Verify every calculation","Add home-language glossary","Export under 50 KB pack"],
+    legal:["Identify the data subject right","Gather supporting records","Draft the request letter","Record deadline (30 days)","File and set follow-up"],
+    retail:["Photograph the item honestly","Set a fair price","Write the listing description","Agree a safe campus meeting point","Confirm and rate the trade"],
+    community:["Name the community need","List who benefits and how","Draft the programme brief","Estimate cost per participant","Share for comment"],
+    research:["Capture full source citation","Summarise the claim in 3 lines","Note the method and limits","Link to your argument","Flag for verification"]
+  };
+  var state = load();
+  function load(){ try{ return JSON.parse(localStorage.getItem(KEY)) || fresh(); }catch(e){ return fresh(); } }
+  function fresh(){ return { industry:"edu", done:{}, sprints:0, mins:0, log:[] }; }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+  /* checklist */
+  var stepsEl = document.getElementById("steps");
+  function renderSteps(){
+    stepsEl.innerHTML = STEPS[state.industry].map(function(s,i){
+      var k = state.industry+":"+i;
+      return '<div class="step'+(state.done[k]?" done":"")+'" data-k="'+k+'" role="checkbox" aria-checked="'+!!state.done[k]+'" tabindex="0">'+
+        '<span class="sk">'+(state.done[k]?"✓":"")+'</span><span style="flex:1;font-size:.85rem">'+s+'</span></div>';
+    }).join("");
+    var total = STEPS[state.industry].length, d = 0;
+    for(var i=0;i<total;i++) if(state.done[state.industry+":"+i]) d++;
+    document.getElementById("stSteps").textContent = Math.round(d/total*100)+"%";
+    Array.prototype.forEach.call(stepsEl.querySelectorAll(".step"),function(row){
+      var flip = function(){
+        var k = row.dataset.k;
+        state.done[k] = !state.done[k];
+        save(); renderSteps();
+      };
+      row.addEventListener("click",flip);
+      row.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key==" "){e.preventDefault();flip();} });
+    });
+  }
+  document.getElementById("industry").value = state.industry;
+  document.getElementById("industry").addEventListener("change",function(){
+    state.industry = this.value; save(); renderSteps();
+  });
+
+  /* timer */
+  var TOTAL = 25*60, left = TOTAL, tick = null, mode = "sprint";
+  var arc = document.getElementById("arc"), clockText = document.getElementById("clockText");
+  function paint(){
+    var m = Math.floor(left/60), s = left%60;
+    clockText.textContent = m+":"+String(s).padStart(2,"0");
+    var frac = mode==="break" ? (left/(5*60)) : (left/TOTAL);
+    arc.style.strokeDashoffset = String(464.9*(1-frac));
+    arc.setAttribute("stroke", mode==="break" ? "#28A492" : "#1E3A8A");
+  }
+  function log(line){
+    state.log.unshift(line); state.log = state.log.slice(0,30);
+    document.getElementById("log").innerHTML = state.log.map(function(l){ return "<div>"+l+"</div>"; }).join("");
+  }
+  function stop(finished){
+    clearInterval(tick); tick = null;
+    document.getElementById("startBtn").textContent = "▶ Start sprint";
+    if(finished){
+      if(mode==="sprint"){
+        state.sprints++; state.mins += 25;
+        document.getElementById("stSprints").textContent = state.sprints;
+        document.getElementById("stMins").textContent = state.mins;
+        log(new Date().toLocaleTimeString()+" · sprint complete ✓ "+state.industry+" deliverable");
+      } else { log(new Date().toLocaleTimeString()+" · break over — back to it"); }
+      save();
+    }
+  }
+  document.getElementById("startBtn").addEventListener("click",function(){
+    if(tick){ stop(false); return; }
+    if(left===0){ left = mode==="break"?5*60:TOTAL; }
+    this.textContent = "⏸ Pause";
+    tick = setInterval(function(){
+      left--;
+      paint();
+      if(left<=0){ stop(true); left = mode==="break"?TOTAL:5*60; mode = mode==="break"?"sprint":"break";
+        document.getElementById("phaseLabel").textContent = mode==="break" ? "take the 5-minute break" : "next sprint ready";
+      }
+    },1000);
+  });
+  document.getElementById("resetBtn").addEventListener("click",function(){
+    stop(false); mode = "sprint"; left = TOTAL; paint();
+    document.getElementById("phaseLabel").textContent = "industry deliverable loaded below";
+  });
+  document.getElementById("brkBtn").addEventListener("click",function(){
+    stop(false); mode = "break"; left = 5*60; paint();
+    document.getElementById("phaseLabel").textContent = "break running — stand, stretch, water";
+    document.getElementById("startBtn").textContent = "▶ Start break";
+  });
+  document.getElementById("stSprints").textContent = state.sprints;
+  document.getElementById("stMins").textContent = state.mins;
+  if(state.log.length) document.getElementById("log").innerHTML = state.log.map(function(l){ return "<div>"+l+"</div>"; }).join("");
+  paint(); renderSteps();
+})();
+</script>
+</body>
+</html>
