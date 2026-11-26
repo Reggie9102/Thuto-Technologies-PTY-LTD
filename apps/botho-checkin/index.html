@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Botho Check-in — wellness companion · ThutoTech</title>
+<meta name="description" content="Botho Check-in: a private, low-data wellness companion to Mental Health Central. Check in, breathe, reflect.">
+<style>
+:root{
+  --navy:#0A2E5A;--deep:#061C38;--gold:#D4AF37;--teal:#28A492;--cyan:#28A9E1;--violet:#7C5CE0;
+  --ink:#15243A;--muted:#607087;--paper:#F5F8FC;--surface:#fff;--line:#DCE5F0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:15px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:600;line-height:1.15}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;background:none;border:none;color:inherit}
+.shell{width:min(920px,calc(100% - 32px));margin-inline:auto}
+.topbar{background:linear-gradient(135deg,#123c33,#0A2E5A 70%,var(--deep));color:#fff;padding:14px 0;border-bottom:3px solid var(--teal)}
+.topbar-in{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{font-size:.62rem;font-weight:800;letter-spacing:.18em;padding:3px 8px;border:1px solid rgba(255,255,255,.35);border-radius:5px}
+.topbar h1{font-size:1.15rem;color:#fff}
+.comp{margin-left:auto;display:inline-flex;align-items:center;gap:7px;font-size:.72rem;font-weight:800;padding:7px 12px;border-radius:999px;background:rgba(40,169,146,.16);border:1px solid rgba(40,169,146,.55);color:#6fe0c8;transition:.2s}
+.comp:hover{background:rgba(40,169,146,.32)}
+main{padding:26px 0 60px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 24px rgba(10,46,90,.06);padding:20px}
+.klabel{font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.hero{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.hero-main{flex:1 1 320px}
+.eyebrow{font-size:.66rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
+.hero-main h2{font-size:1.5rem;color:var(--navy);margin-bottom:6px}
+.hero-main p{font-size:.9rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px}
+.card h3{font-size:1rem;color:var(--navy);margin-bottom:10px}
+.moods{display:flex;gap:8px;justify-content:space-between}
+.mood{flex:1;aspect-ratio:1;display:grid;place-items:center;font-size:1.7rem;border:1px solid var(--line);border-radius:14px;cursor:pointer;transition:.16s;background:var(--surface)}
+.mood:hover{border-color:var(--teal);transform:translateY(-2px)}
+.mood.sel{border-color:var(--teal);background:rgba(40,169,146,.1);box-shadow:0 0 0 3px rgba(40,169,146,.15)}
+.ribbon{display:flex;gap:4px;align-items:flex-end;height:64px;margin-top:12px}
+.bar{flex:1;border-radius:5px 5px 0 0;background:linear-gradient(180deg,var(--teal),#1d7d70);min-height:6px;transition:height .3s}
+.bar.empty{background:#E2EAF3}
+textarea{width:100%;min-height:74px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;font:inherit;resize:vertical}
+textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(40,169,146,.18)}
+.breath{display:grid;place-items:center;gap:10px;padding:8px 0}
+.orb{width:130px;height:130px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#7fe0c8,var(--teal) 60%,#1d7d70);display:grid;place-items:center;color:#fff;font-weight:800;font-size:.8rem;transition:transform 4s ease-in-out;box-shadow:0 14px 34px rgba(40,169,146,.35)}
+.orb.hold{transform:scale(1.28)}
+.bbtn{padding:9px 18px;border-radius:999px;background:var(--teal);color:#fff;font-weight:800;font-size:.8rem}
+.bbtn:hover{filter:brightness(1.08)}
+.phase{font-size:.72rem;color:var(--muted);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.note{border-left:3px solid var(--violet);background:rgba(124,92,224,.07);padding:10px 12px;border-radius:0 10px 10px 0;font-size:.78rem;line-height:1.5}
+.crisis{border-left:3px solid #FF6B35;background:rgba(255,107,53,.07);padding:10px 12px;border-radius:0 10px 10px 0;font-size:.78rem}
+.saved{font-size:.72rem;color:#28A492;font-weight:800;margin-top:8px;min-height:1em}
+footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);font-size:.78rem}
+footer .flinks{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+footer .flinks a{font-weight:800;color:var(--navy)}
+footer .flinks a:hover{color:var(--teal)}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="shell topbar-in">
+    <span class="badge">THUTOTECH</span>
+    <h1>Botho Check-in</h1>
+    <span class="badge" style="border-color:rgba(111,224,200,.5);color:#6fe0c8">CONFIDENTIAL · ON-DEVICE ONLY</span>
+    <a class="comp" href="../fundisa-ai-workspace/">COMPANION · Mental Health Central →</a>
+  </div>
+</header>
+<main class="shell">
+  <section class="hero">
+    <div class="card hero-main">
+      <div class="eyebrow">A calm minute · wherever you are</div>
+      <h2>Check in. Breathe. Reflect.</h2>
+      <p>A private, low-data companion to Mental Health Central. Nothing you write here is uploaded, tracked, or shared — entries live only in this browser.</p>
+    </div>
+    <div class="card" style="flex:0 1 300px">
+      <div class="klabel">Last 14 days · mood ribbon</div>
+      <div class="ribbon" id="ribbon"></div>
+      <div style="display:flex;justify-content:space-between;font-size:.66rem;color:var(--muted);margin-top:6px"><span>2 weeks ago</span><span>today</span></div>
+    </div>
+  </section>
+
+  <div class="grid">
+    <section class="card">
+      <div class="klabel">How are you, right now?</div>
+      <div class="moods" id="moods"></div>
+      <div style="margin-top:12px">
+        <textarea id="moodNote" placeholder="One line about today (optional, private)…"></textarea>
+        <div class="saved" id="moodSaved"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Box breathing · 4-4-4-4</h3>
+      <div class="breath">
+        <div class="orb" id="orb">ready</div>
+        <div class="phase" id="phase">tap start when you're settled</div>
+        <button class="bbtn" id="breathBtn">Start 2 minutes</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h3>Botho reflection</h3>
+      <div class="note" style="margin-bottom:10px">Three gentle prompts. Answer one or all — there is no wrong voice here.</div>
+      <div id="journal"></div>
+      <div class="saved" id="journalSaved"></div>
+    </section>
+
+    <section class="card">
+      <h3>When today is heavy</h3>
+      <div class="crisis" style="margin-bottom:10px"><b>This companion is not a crisis service.</b> If you are in danger or thinking of harming yourself, contact a trusted adult or a crisis line now — do not wait for an app.</div>
+      <div style="font-size:.8rem;color:var(--muted);line-height:1.7">
+        <b style="color:var(--navy)">South African crisis lines</b><br>
+        SADAG 24-hour helpline · 0800 567 567<br>
+        Childline South Africa · 116 (free, 24h)<br>
+        LifeLine · 0861 322 322
+      </div>
+      <div class="note" style="margin-top:12px">For ongoing support and the full care pathway, open <a href="../fundisa-ai-workspace/" style="font-weight:800;color:var(--violet)">Mental Health Central</a>.</div>
+    </section>
+  </div>
+</main>
+<footer class="shell">
+  <div class="flinks">
+    <a href="../fundisa-ai-workspace/">Mental Health Central (full workspace)</a>
+    <a href="../">ThutoTech ecosystem</a>
+    <a href="../index.html">Apps directory</a>
+  </div>
+  <div>Botho Check-in is a wellness companion — not a crisis service, not a diagnosis. Your entries never leave this device. Built on relational care, not surveillance · POPIA governed · admin@thutotech.co.za</div>
+</footer>
+<script>
+(function(){
+  "use strict";
+  var KEY = "bothoCheckin.v1";
+  var state = load();
+  function load(){ try{ return JSON.parse(localStorage.getItem(KEY)) || fresh(); }catch(e){ return fresh(); } }
+  function fresh(){ return { days:{}, journal:["","",""] }; }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+  function todayKey(){ var d=new Date(); return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate(); }
+
+  /* mood check-in */
+  var EMOJI = ["😞","🙁","😐","🙂","😊"];
+  var moods = document.getElementById("moods");
+  moods.innerHTML = EMOJI.map(function(e,i){
+    return '<button class="mood" data-v="'+(i+1)+'" aria-label="mood '+(i+1)+' of 5">'+e+'</button>';
+  }).join("");
+  function flash(el, msg){ el.textContent = msg; setTimeout(function(){ el.textContent=""; }, 2600); }
+  Array.prototype.forEach.call(moods.querySelectorAll(".mood"),function(b){
+    b.addEventListener("click",function(){
+      Array.prototype.forEach.call(moods.querySelectorAll(".mood"),function(x){ x.classList.remove("sel"); });
+      b.classList.add("sel");
+      state.days[todayKey()] = { v:+b.dataset.v, note:document.getElementById("moodNote").value };
+      save(); renderRibbon(); flash(document.getElementById("moodSaved"),"Saved on this device ✓");
+    });
+  });
+  document.getElementById("moodNote").addEventListener("input",function(){
+    var t = state.days[todayKey()]; if(t){ t.note = this.value; save(); }
+  });
+
+  /* ribbon */
+  function renderRibbon(){
+    var r = document.getElementById("ribbon"), out = "";
+    for(var i=13;i>=0;i--){
+      var d = new Date(); d.setDate(d.getDate()-i);
+      var k = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+      var v = state.days[k] ? state.days[k].v : 0;
+      var h = v ? (8 + v*11) : 6;
+      out += '<div class="bar'+(v?"":" empty")+'" style="height:'+h+'px" title="'+(v?v+"/5":"no entry")+'"></div>';
+    }
+    r.innerHTML = out;
+    var t = state.days[todayKey()];
+    if(t){ Array.prototype.forEach.call(moods.querySelectorAll(".mood"),function(x){ x.classList.toggle("sel",+x.dataset.v===t.v); }); document.getElementById("moodNote").value = t.note||""; }
+  }
+
+  /* box breathing */
+  var orb = document.getElementById("orb"), phase = document.getElementById("phase"), bbtn = document.getElementById("breathBtn");
+  var timer = null, running = false;
+  var CYCLE = [["Breathe in", 4000],["Hold", 4000],["Breathe out", 4000],["Hold", 4000]];
+  function stopBreath(){
+    running = false; clearInterval(timer); orb.classList.remove("hold");
+    orb.textContent = "ready"; phase.textContent = "tap start when you're settled";
+    bbtn.textContent = "Start 2 minutes";
+  }
+  bbtn.addEventListener("click",function(){
+    if(running){ stopBreath(); return; }
+    running = true; bbtn.textContent = "Stop";
+    var remaining = 120, i = 0;
+    orb.classList.add("hold"); orb.textContent = CYCLE[0][0]; phase.textContent = "in…";
+    timer = setInterval(function(){
+      remaining -= 4;
+      if(remaining <= 0){ stopBreath(); phase.textContent="well breathed ✓"; return; }
+      i = (i+1)%4;
+      orb.textContent = CYCLE[i][0];
+      phase.textContent = CYCLE[i][0].toLowerCase()+" · "+Math.floor(remaining/60)+":"+String(remaining%60).padStart(2,"0")+" left";
+      orb.classList.toggle("hold", i===1 || i===3);
+    }, 4000);
+  });
+
+  /* journal */
+  var PROMPTS = [
+    "One thing that went right today…",
+    "One thing you're carrying…",
+    "One small kindness you can show yourself…"
+  ];
+  var j = document.getElementById("journal");
+  j.innerHTML = PROMPTS.map(function(p,i){
+    return '<div style="margin-bottom:8px"><div style="font-size:.75rem;font-weight:800;color:var(--navy);margin-bottom:4px">'+p+'</div>'+
+      '<textarea data-j="'+i+'" rows="2" placeholder="private…"></textarea></div>';
+  }).join("");
+  Array.prototype.forEach.call(j.querySelectorAll("textarea"),function(ta){
+    ta.addEventListener("input",function(){
+      state.journal[+ta.dataset.j] = ta.value;
+      save(); flash(document.getElementById("journalSaved"),"Saved on this device ✓");
+    });
+  });
+  state.journal.forEach(function(v,i){
+    var ta = j.querySelector('textarea[data-j="'+i+'"]'); if(ta) ta.value = v;
+  });
+
+  renderRibbon();
+})();
+</script>
+</body>
+</html>
