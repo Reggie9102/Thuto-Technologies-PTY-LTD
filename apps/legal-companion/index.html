@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Legal Companion — POPIA toolkit · ThutoTech</title>
+<meta name="description" content="Legal Companion: a POPIA data-subject request builder and contract readiness checklist, companion to Thuto Legal.">
+<style>
+:root{
+  --navy:#0A2E5A;--deep:#061C38;--gold:#D4AF37;--emerald:#28A492;
+  --ink:#15243A;--muted:#607087;--paper:#F5F8FC;--surface:#fff;--line:#DCE5F0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:15px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:600;line-height:1.15}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;background:none;border:none;color:inherit}
+.shell{width:min(940px,calc(100% - 32px));margin-inline:auto}
+.topbar{background:linear-gradient(135deg,#123f38,var(--deep));color:#fff;padding:14px 0;border-bottom:3px solid var(--emerald)}
+.topbar-in{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{font-size:.62rem;font-weight:800;letter-spacing:.18em;padding:3px 8px;border:1px solid rgba(255,255,255,.35);border-radius:5px}
+.topbar h1{font-size:1.15rem;color:#fff}
+.comp{margin-left:auto;display:inline-flex;align-items:center;gap:7px;font-size:.72rem;font-weight:800;padding:7px 12px;border-radius:999px;background:rgba(40,169,146,.16);border:1px solid rgba(40,169,146,.55);color:#6fe0c8;transition:.2s}
+.comp:hover{background:rgba(40,169,146,.32)}
+main{padding:26px 0 60px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 24px rgba(10,46,90,.06);padding:20px}
+.klabel{font-size:.62rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.hero{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.hero-main{flex:1 1 320px}
+.eyebrow{font-size:.66rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--emerald);margin-bottom:6px}
+.hero-main h2{font-size:1.5rem;color:var(--navy);margin-bottom:6px}
+.hero-main p{font-size:.9rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.card h3{font-size:1rem;color:var(--navy);margin-bottom:10px}
+input[type=text],select,textarea{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:10px;font:inherit;background:var(--surface)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--emerald);box-shadow:0 0 0 3px rgba(40,169,146,.15)}
+.field{margin-bottom:10px}
+.field label{display:block;font-size:.7rem;font-weight:800;color:var(--navy);margin-bottom:4px;letter-spacing:.04em}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 16px;border-radius:999px;font-weight:800;font-size:.8rem;border:1px solid var(--line);background:var(--surface);transition:.16s}
+.btn:hover{border-color:var(--emerald)}
+.btn.go{background:var(--emerald);color:#fff;border-color:var(--emerald)}
+.btn.go:hover{filter:brightness(1.08)}
+.chk{display:flex;align-items:center;gap:11px;padding:9px 11px;border:1px solid var(--line);border-radius:11px;margin-bottom:7px;cursor:pointer;transition:.16s}
+.chk:hover{border-color:var(--emerald)}
+.chk.done{opacity:.55;text-decoration:line-through}
+.ck{width:18px;height:18px;border-radius:5px;border:2px solid #9DB2CC;flex:none;display:grid;place-items:center;font-size:.65rem;font-weight:900;color:#fff}
+.chk.done .ck{background:var(--emerald);border-color:var(--emerald)}
+.matter{display:flex;gap:11px;align-items:center;padding:10px 12px;border:1px solid var(--line);border-radius:11px;margin-bottom:8px}
+.matter b{flex:1;font-size:.85rem;color:var(--navy)}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:.6rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:6px}
+.p-open{background:#FDF1D8;color:#8A5D05;border:1px solid #F0CF8A}
+.p-done{background:#E4F6EA;color:#15653A;border:1px solid #9FDCB6}
+.p-deadline{background:#FDE8E8;color:#A01D22;border:1px solid #F3B0B2}
+pre#letterOut{margin-top:12px;padding:14px;border-radius:12px;background:var(--deep);color:#D9E7F5;font-family:ui-monospace,Consolas,monospace;font-size:.72rem;line-height:1.7;white-space:pre-wrap;display:none}
+.statrow{display:flex;gap:8px;flex-wrap:wrap}
+.stat{flex:1;min-width:96px;background:rgba(40,169,146,.06);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.stat b{display:block;font-family:Georgia,serif;font-size:1.25rem;color:var(--navy)}
+.stat span{font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.note{border-left:3px solid var(--emerald);background:rgba(40,169,146,.07);padding:10px 12px;border-radius:0 10px 10px 0;font-size:.78rem;line-height:1.5}
+footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);font-size:.78rem}
+footer .flinks{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+footer .flinks a{font-weight:800;color:var(--navy)}
+footer .flinks a:hover{color:var(--emerald)}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="shell topbar-in">
+    <span class="badge">THUTOTECH</span>
+    <h1>Legal Companion</h1>
+    <span class="badge">TEMPLATE · NOT LEGAL ADVICE</span>
+    <a class="comp" href="../legal-platform/">COMPANION · Thuto Legal →</a>
+  </div>
+</header>
+<main class="shell">
+  <section class="hero">
+    <div class="card hero-main">
+      <div class="eyebrow">Rights, deadlines, discipline</div>
+      <h2>POPIA requests, built in minutes.</h2>
+      <p>Generate a compliant data-subject request letter, track the 30-day clock, and keep your contracts annexure-ready — then move the file into Thuto Legal for the full intelligence platform.</p>
+    </div>
+    <div class="card" style="flex:0 1 280px">
+      <div class="klabel">This device</div>
+      <div class="statrow">
+        <div class="stat"><b id="stOpen">0</b><span>open matters</span></div>
+        <div class="stat"><b id="stDays">0</b><span>days tracked</span></div>
+        <div class="stat"><b id="stReady">0%</b><span>contract ready</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="grid">
+    <section class="card">
+      <h3>Data-subject request builder</h3>
+      <div class="field"><label>Your name</label><input type="text" id="fName" placeholder="e.g. N. Dlamini"></div>
+      <div class="field"><label>Data subject (if requesting for a minor, add guardian relationship)</label><input type="text" id="fSubject" placeholder="e.g. L. Dlamini (child, guardian: requester)"></div>
+      <div class="field"><label>Responsible party (organisation)</label><input type="text" id="fOrg" placeholder="e.g. Example Academy"></div>
+      <div class="field"><label>Request type</label>
+        <select id="fType">
+          <option value="access">Access — what you hold about me</option>
+          <option value="correction">Correction — fix inaccurate records</option>
+          <option value="deletion">Deletion — remove my personal information</option>
+          <option value="objection">Objection — stop further processing</option>
+        </select>
+      </div>
+      <div class="field"><label>Reference / account (optional)</label><input type="text" id="fRef" placeholder="learner no., admission no."></div>
+      <button class="btn go" id="genBtn">✉ Generate letter</button>
+      <pre id="letterOut"></pre>
+      <button class="btn" id="dlBtn" style="display:none;margin-top:10px">↓ Download .txt</button>
+    </section>
+
+    <section class="card">
+      <h3>Matter tracker · 30-day clock</h3>
+      <div style="display:flex;gap:8px;margin-bottom:12px">
+        <input type="text" id="mTitle" placeholder="New matter…" style="flex:1">
+        <button class="btn go" id="mAdd">+ Add</button>
+      </div>
+      <div id="matterList"></div>
+      <div class="note" style="margin-top:10px">The responsible party must respond within 30 days of a complete request. Mark the deadline date when you send — the tracker keeps the countdown on this device.</div>
+    </section>
+
+    <section class="card" style="grid-column:1/-1">
+      <h3>Contract readiness · annexure discipline</h3>
+      <div id="readyList"></div>
+    </section>
+  </div>
+</main>
+<footer class="shell">
+  <div class="flinks">
+    <a href="../legal-platform/">Thuto Legal (full platform)</a>
+    <a href="../">ThutoTech ecosystem</a>
+    <a href="../index.html">Apps directory</a>
+  </div>
+  <div>Legal Companion generates plain-language request templates and readiness checklists. It is not legal advice and does not create an attorney-client relationship — verify deadlines and wording with the responsible officer. Entries stay on this device · POPIA governed · admin@thutotech.co.za</div>
+</footer>
+<script>
+(function(){
+  "use strict";
+  var KEY = "legalCompanion.v1";
+  var state = load();
+  function load(){ try{ return JSON.parse(localStorage.getItem(KEY)) || fresh(); }catch(e){ return fresh(); } }
+  function fresh(){ return { matters:[], ready:{}, sent:0 }; }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+  function esc(s){ return String(s||"").replace(/[&<>"]/g,function(m){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[m]; }); }
+
+  /* request builder */
+  var TYPES = {
+    access:["confirm what personal information you hold about the data subject","provide a description of that information","identify any third parties who have received it"],
+    correction:["correct the inaccurate personal information described below","confirm the correction in writing"],
+    deletion:["delete the personal information described below","confirm deletion in writing, noting any lawful basis for retention"],
+    objection:["stop further processing of the personal information described below","confirm cessation of processing in writing"]
+  };
+  var letterText = "";
+  document.getElementById("genBtn").addEventListener("click",function(){
+    var name = document.getElementById("fName").value.trim() || "[your name]";
+    var subj = document.getElementById("fSubject").value.trim() || name;
+    var org = document.getElementById("fOrg").value.trim() || "[responsible party]";
+    var ref = document.getElementById("fRef").value.trim();
+    var type = document.getElementById("fType").value;
+    var acts = TYPES[type];
+    var today = new Date().toLocaleDateString("en-ZA");
+    var due = new Date(Date.now()+30*86400000).toLocaleDateString("en-ZA");
+    letterText =
+"POPIA DATA-SUBJECT REQUEST\n\n"+
+"Date: "+today+"\n"+
+"From: "+name+"\n"+
+"To: The Information Officer, "+org+"\n"+
+(ref?"Reference: "+ref+"\n":"")+
+"Data subject: "+subj+"\n\n"+
+"1. I am exercising my right as a data subject under the Protection of Personal Information Act, 2013 (Act 4 of 2013).\n\n"+
+"2. I request that you:\n"+
+acts.map(function(a,i){ return "   2."+(i+1)+" "+a+";"; }).join("\n")+"\n\n"+
+"3. This request is made in terms of section 23 (access), and related rights of correction, deletion and objection under the Act.\n\n"+
+"4. Please respond within the 30-day period provided for in the Act, i.e. by "+due+".\n\n"+
+"5. I may be contacted at the address from which this request is sent.\n\n"+
+"Regards,\n"+name+"\n\n"+
+"-- generated by ThutoTech Legal Companion (template, not legal advice) --";
+    var out = document.getElementById("letterOut");
+    out.style.display = "block";
+    out.textContent = letterText;
+    document.getElementById("dlBtn").style.display = "inline-flex";
+  });
+  document.getElementById("dlBtn").addEventListener("click",function(){
+    var blob = new Blob([letterText],{type:"text/plain"});
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "popia-request.txt";
+    a.click();
+  });
+
+  /* matter tracker */
+  var READY = [
+    "All parties and registration numbers identified",
+    "Responsibilities matrix agreed (who does what)",
+    "Intellectual property ownership stated per contribution",
+    "Data protection and POPIA clauses reviewed",
+    "Signature blocks complete for every signatory",
+    "Annexures referenced and attached",
+    "Version and date on every page"
+  ];
+  var mt = document.getElementById("matterList");
+  function renderMatters(){
+    mt.innerHTML = state.matters.map(function(m){
+      var days = m.deadline ? Math.ceil((m.deadline - Date.now())/86400000) : null;
+      var pill = m.closed ? '<span class="pill p-done">closed</span>'
+        : (days!==null && days<=7 ? '<span class="pill p-deadline">'+(days>=0?days+"d left":"overdue")+'</span>'
+        : '<span class="pill p-open">open</span>');
+      return '<div class="matter"><b>'+esc(m.title)+'</b>'+pill+
+        '<button class="btn" data-toggle="'+m.id+'" style="padding:5px 10px;font-size:.7rem">'+(m.closed?"reopen":"close")+'</button></div>';
+    }).join("") || '<div style="font-size:.8rem;color:var(--muted)">no matters yet — add the request you just generated</div>';
+    Array.prototype.forEach.call(mt.querySelectorAll("[data-toggle]"),function(b){
+      b.addEventListener("click",function(){
+        var m = state.matters.filter(function(x){ return String(x.id)===b.dataset.toggle; })[0];
+        if(m){ m.closed = !m.closed; save(); renderMatters(); renderStats(); }
+      });
+    });
+    renderStats();
+  }
+  document.getElementById("mAdd").addEventListener("click",function(){
+    var t = document.getElementById("mTitle").value.trim();
+    if(!t) return;
+    state.matters.unshift({ id:Date.now(), title:t, closed:false, deadline:null });
+    document.getElementById("mTitle").value = "";
+    save(); renderMatters();
+  });
+
+  /* contract readiness */
+  var rl = document.getElementById("readyList");
+  function renderReady(){
+    rl.innerHTML = READY.map(function(s,i){
+      return '<div class="chk'+(state.ready[i]?" done":"")+'" data-i="'+i+'" role="checkbox" aria-checked="'+!!state.ready[i]+'" tabindex="0">'+
+        '<span class="ck">'+(state.ready[i]?"✓":"")+'</span><span style="flex:1;font-size:.85rem">'+s+'</span></div>';
+    }).join("");
+    var d = 0; for(var i=0;i<READY.length;i++) if(state.ready[i]) d++;
+    document.getElementById("stReady").textContent = Math.round(d/READY.length*100)+"%";
+    Array.prototype.forEach.call(rl.querySelectorAll(".chk"),function(row){
+      var flip = function(){ var i=+row.dataset.i; state.ready[i]=!state.ready[i]; save(); renderReady(); };
+      row.addEventListener("click",flip);
+      row.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key==" "){e.preventDefault();flip();} });
+    });
+  }
+
+  function renderStats(){
+    document.getElementById("stOpen").textContent = state.matters.filter(function(m){ return !m.closed; }).length;
+    document.getElementById("stDays").textContent = state.matters.length*30;
+  }
+  renderMatters(); renderReady();
+})();
+</script>
+</body>
+</html>
