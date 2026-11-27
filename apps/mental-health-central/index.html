@@ -512,10 +512,16 @@ function mhcTrail(){
   var h=MHC.store('mhc_history')||[];
   document.getElementById('stCount').textContent=h.length;
   var emo={5:'😄',4:'🙂',3:'😐',2:'😔',1:'😫'};
-  document.getElementById('stLast').textContent=h.length?emo[h[h.length1-0-1].s]:'—';
-  var streak=0,cur=new Date();
-  for(;;){var key=cur.toISOString().slice(0,10);
-    if(h.some(function(e){return e.d===key})){streak++;cur.setDate(cur.getDate()-1)}else break}
+  var last=h.length?h[h.length-1]:null;
+  document.getElementById('stLast').textContent=last?emo[last.s]:'—';
+  var cur=new Date();
+  var today=cur.toISOString().slice(0,10);
+  if(!h.some(function(e){return e.d===today})) cur.setDate(cur.getDate()-1);
+  var streak=0;
+  for(;;){
+    var key=cur.toISOString().slice(0,10);
+    if(h.some(function(e){return e.d===key})){streak++;cur.setDate(cur.getDate()-1)}else break;
+  }
   document.getElementById('stStreak').textContent=streak;
 }
 /* ---------- box breathing ---------- */
