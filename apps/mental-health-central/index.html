@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mental Health Central · A Reggie Express Initiative</title>
+<meta name="description" content="100% free, confidential mental health support for every South African student. Crisis lines, Wellness AI, breathing tools, counselling and campus support — always free, POPIA-compliant, in 11 SA languages.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%235f7f57'/><path d='M16 24c-5-4-8-7-8-10.5C8 10.5 10.5 9 12.5 9c1.5 0 2.8.8 3.5 2 .7-1.2 2-2 3.5-0C21.5 9 24 10.5 24 13.5c0 3.5-3 6.5-8 10.5z' fill='%23eaf3e6'/></svg>">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/css/inter@latest/index.css">
+<style>
+:root{
+  --cream:#f4f1e8; --cream-2:#fbfaf6; --sage:#cfdcc4; --sage-2:#e6ecdc; --sage-3:#dcead2;
+  --ink:#26362a; --ink-2:#4c5c48; --mut:#6d7a68;
+  --green:#5f7f57; --green-d:#4c6b45; --green-l:#8fae87; --green-xl:#b7cfae;
+  --red:#d64545; --red-d:#b93a3a; --line:#e5e2d4; --card:#fbfaf6;
+  --ease:cubic-bezier(.22,1,.36,1); --disp:'Inter',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
+body{font-family:var(--disp);background:var(--cream);color:var(--ink);line-height:1.6;font-size:16px}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;border:none;background:none;cursor:pointer}
+img,svg{display:block}
+:focus-visible{outline:3px solid var(--green);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+.stripes{background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.07) 0 14px,transparent 14px 28px)}
+/* ---------- nav ---------- */
+#mhcNav{position:sticky;top:0;z-index:60;background:rgba(244,241,232,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+#mhcNav .wrap{display:flex;align-items:center;gap:22px;padding-top:10px;padding-bottom:10px}
+.logo{display:flex;align-items:center;gap:10px;margin-right:6px}
+.logo i{width:38px;height:38px;border-radius:11px;background:linear-gradient(140deg,var(--green-l),var(--green-d));display:grid;place-items:center;font-size:19px;box-shadow:0 4px 10px rgba(76,107,69,.35)}
+.logo b{font-size:15px;letter-spacing:-.01em;display:block;line-height:1.15}
+.logo span{font-size:10.5px;color:var(--mut);display:block}
+#mhcNav nav{display:flex;gap:4px;flex-wrap:wrap}
+#mhcNav nav a{font-size:13px;padding:7px 12px;border-radius:9px;color:var(--ink-2);transition:background .25s,color .25s}
+#mhcNav nav a:hover{background:var(--sage-3)}
+#mhcNav nav a.act{background:var(--sage-3);color:var(--green-d);font-weight:600}
+.navR{margin-left:auto;display:flex;gap:10px;align-items:center}
+.pill{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:8px 14px;font-size:12px;font-weight:600}
+.pill.out{border:1px solid var(--line);background:var(--cream-2);color:var(--ink-2)}
+.pill.crisis{background:var(--red);color:#fff;box-shadow:0 6px 16px rgba(214,69,69,.35)}
+.pill.crisis:hover{background:var(--red-d)}
+/* ---------- hero ---------- */
+.hero{background:linear-gradient(180deg,#f6f3ea 0%,var(--sage) 100%);padding:86px 0 74px;text-align:center}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--cream-2);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:12px;font-weight:700;color:var(--ink-2)}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(95,127,87,.2)}
+.hero h1{font-size:clamp(34px,5.4vw,62px);font-weight:800;letter-spacing:-.02em;line-height:1.08;margin:22px auto 18px;max-width:16ch}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--green),#5b8fa8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:56ch;margin:0 auto;color:var(--ink-2);font-size:16.5px}
+.ctaRow{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:9px;border-radius:13px;padding:14px 24px;font-weight:700;font-size:14.5px;transition:transform .3s var(--ease),box-shadow .3s,background .3s}
+.btn:hover{transform:translateY(-2px)}
+.btn-green{background:linear-gradient(140deg,var(--green),var(--green-d));color:#fff;box-shadow:0 10px 24px rgba(76,107,69,.35)}
+.btn-white{background:var(--cream-2);border:1px solid var(--line);color:var(--ink)}
+.btn-red{background:var(--red);color:#fff}
+.btn-sm{padding:10px 16px;font-size:13px;border-radius:10px}
+.trust{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin-top:34px;font-size:12.5px;color:var(--ink-2);font-weight:600}
+/* ---------- crisis band ---------- */
+.crisis{background-color:var(--red);color:#fff;padding:44px 0;text-align:center}
+.crisis h2{font-size:clamp(20px,2.6vw,28px);font-weight:800}
+.crisis p{font-size:13.5px;opacity:.92;margin:8px 0 22px}
+.crisisRow{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.crisisRow a{background:#fff;color:var(--red-d);font-weight:800;font-size:13.5px;border-radius:11px;padding:12px 18px;box-shadow:0 6px 16px rgba(0,0,0,.18);transition:transform .25s var(--ease)}
+.crisisRow a:hover{transform:translateY(-2px)}
+/* ---------- sections ---------- */
+section{padding:84px 0}
+.secHead{text-align:center;max-width:64ch;margin:0 auto 46px}
+.tag{display:inline-block;background:var(--sage-3);color:var(--green-d);border-radius:999px;padding:6px 14px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.secHead h2{font-size:clamp(26px,3.6vw,40px);font-weight:800;letter-spacing:-.015em;margin:14px 0 10px}
+.secHead p{color:var(--ink-2);font-size:15px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;box-shadow:0 3px 10px rgba(38,54,42,.05);transition:transform .35s var(--ease),box-shadow .35s}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(38,54,42,.1)}
+.tile{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-size:22px;margin-bottom:16px}
+.card h3{font-size:17px;font-weight:800;margin-bottom:8px}
+.card p{font-size:13.5px;color:var(--ink-2)}
+.card .go{display:inline-block;margin-top:14px;font-size:13px;font-weight:700;color:var(--green-d)}
+.card .go:hover{text-decoration:underline}
+/* ---------- tools ---------- */
+#tools{background:var(--cream)}
+.breathBox{display:grid;place-items:center;gap:18px;padding:10px 0 4px}
+#bCircle{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--green-l),var(--green-d));display:grid;place-items:center;color:#fff;font-weight:800;font-size:15px;text-align:center;box-shadow:0 16px 34px rgba(76,107,69,.35);transform:scale(.85);transition:transform 4s var(--ease)}
+.moodRow{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 14px}
+.mood{border:1px solid var(--line);background:var(--cream-2);border-radius:13px;padding:10px 12px;display:grid;justify-items:center;gap:5px;font-size:11px;font-weight:700;color:var(--ink-2);transition:transform .25s var(--ease),border-color .25s,background .25s}
+.mood span{font-size:22px}
+.mood:hover{transform:translateY(-3px)}
+.mood[aria-pressed="true"]{border-color:var(--green);background:var(--sage-3);color:var(--green-d)}
+textarea,input[type="text"]{width:100%;border:1px solid var(--line);background:var(--cream-2);border-radius:11px;padding:12px 14px;font:inherit;font-size:13.5px;color:var(--ink);resize:vertical}
+textarea:focus,input:focus{outline:2px solid var(--green-l)}
+.note{font-size:11.5px;color:var(--mut);margin-top:10px}
+/* ---------- chat preview ---------- */
+.chatCard{max-width:760px;margin:0 auto;background:var(--cream-2);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 10px 26px rgba(38,54,42,.08)}
+.chatHead{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.chatHead i{width:42px;height:42px;border-radius:12px;background:linear-gradient(140deg,var(--green-l),var(--green-d));display:grid;place-items:center;font-size:20px}
+.chatHead b{font-size:15px}
+.chatHead small{display:block;font-size:11.5px;color:var(--mut)}
+.dotOn{width:8px;height:8px;border-radius:50%;background:#3fae62;display:inline-block;margin-right:5px}
+.bubble{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:13.5px;color:var(--ink-2)}
+.bubble.me{background:var(--sage-3);border-color:var(--sage-3);margin-left:14%}
+.bubble.bot{margin-right:10%}
+.chipMini{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.chipMini button{background:var(--cream);border:1px solid var(--line);border-radius:999px;padding:7px 12px;font-size:12px;font-weight:600;color:var(--ink-2)}
+/* ---------- helplines ---------- */
+#helplines{background:linear-gradient(180deg,var(--sage) 0%,var(--cream) 100%)}
+.hl{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:15px;padding:20px}
+.hl i{width:42px;height:42px;flex:none;border-radius:12px;display:grid;place-items:center;font-size:19px}
+.hl b{font-size:14.5px;font-weight:800;display:block}
+.hl p{font-size:12.5px;color:var(--ink-2);margin:4px 0 10px}
+.hlPills{display:flex;gap:8px;flex-wrap:wrap}
+.hlPills a,.hlPills span{border-radius:8px;padding:6px 10px;font-size:11.5px;font-weight:800}
+.hlPills a.tel{background:#fdeaea;color:var(--red-d)}
+.hlPills a.tel:hover{background:#f8d7d7}
+.hlPills span{background:var(--sage-3);color:var(--green-d)}
+/* ---------- library ---------- */
+.lib details{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:20px;transition:box-shadow .3s}
+.lib details[open]{box-shadow:0 12px 26px rgba(38,54,42,.1)}
+.lib summary{cursor:pointer;list-style:none}
+.lib summary::-webkit-details-marker{display:none}
+.lib summary i{font-size:24px;display:block;margin-bottom:10px}
+.lib h3{font-size:14.5px;font-weight:800;margin-bottom:6px}
+.lib p{font-size:12.5px;color:var(--ink-2)}
+.lib .body{margin-top:12px;border-top:1px dashed var(--line);padding-top:12px;font-size:12.5px;color:var(--ink-2)}
+.lib .body ul{margin:6px 0 0 18px}
+/* ---------- counselling ---------- */
+.couns{background-color:var(--green);color:#fff;padding:70px 0;text-align:center}
+.couns h2{font-size:clamp(24px,3.2vw,34px);font-weight:800}
+.couns p{font-size:14px;opacity:.94;max-width:52ch;margin:10px auto 28px}
+.counsTiles{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+.counsTiles div{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:14px;padding:18px 22px;max-width:210px;font-size:12px}
+.counsTiles b{display:block;font-size:13.5px;margin:8px 0 4px}
+/* ---------- campus ---------- */
+.campus .card{text-align:center;padding:22px 16px}
+.campus .abbr{width:52px;height:44px;margin:0 auto 12px;border-radius:11px;background:var(--sage-3);color:var(--green-d);display:grid;place-items:center;font-weight:800;font-size:14px}
+.campus b{font-size:13.5px;display:block}
+.campus small{font-size:11.5px;color:var(--mut)}
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:#e9efe4;padding:56px 0 34px;text-align:center}
+footer .flogo{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:15px}
+footer .flogo i{width:34px;height:34px;border-radius:10px;background:linear-gradient(140deg,var(--green-l),var(--green-d));display:grid;place-items:center;font-size:16px}
+footer p{font-size:12px;color:#b9c6b2;margin:6px auto;max-width:70ch}
+footer p b{color:#e9efe4}
+.fBadges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:20px 0}
+.fBadges span{border:1px solid rgba(233,239,228,.3);border-radius:999px;padding:6px 12px;font-size:11px;font-weight:700}
+.fLinks{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:14px 0 8px;font-size:12px}
+.fLinks a:hover{text-decoration:underline}
+/* ---------- CONSOLE ---------- */
+#viewConsole{min-height:100svh;background:var(--sage-2)}
+.conBar{position:sticky;top:0;z-index:60;background:var(--green-d);color:#fff}
+.conBar .wrap{display:flex;align-items:center;gap:16px;padding-top:12px;padding-bottom:12px}
+.conBar a.back{font-size:13px;font-weight:700;background:rgba(255,255,255,.14);border-radius:10px;padding:8px 14px}
+.conBar a.back:hover{background:rgba(255,255,255,.24)}
+.conBar b{font-size:15px;letter-spacing:.02em}
+.conBar .pill.crisis{margin-left:auto}
+.conGrid{display:grid;grid-template-columns:1.05fr .95fr;gap:20px;padding:34px 0 70px}
+.conGrid .card{box-shadow:0 8px 22px rgba(38,54,42,.08)}
+.conTitle{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:800;margin-bottom:6px}
+.conTitle i{font-size:19px}
+#chatLog{display:grid;gap:10px;max-height:330px;overflow-y:auto;padding:4px 2px;margin:12px 0}
+.typing{display:inline-flex;gap:4px;padding:12px 14px}
+.typing i{width:7px;height:7px;border-radius:50%;background:var(--green-l);animation:tp 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes tp{0%,100%{opacity:.3;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+.chatIn{display:flex;gap:10px}
+.chatIn input{flex:1}
+.bridge{background:linear-gradient(150deg,#eef4e6,#dfe9d3);border:1px solid var(--sage-3)}
+.bridge .btn-green{width:100%;justify-content:center}
+.statRow{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px}
+.stat{background:var(--cream-2);border:1px solid var(--line);border-radius:12px;padding:12px 16px;flex:1;min-width:110px;text-align:center}
+.stat b{display:block;font-size:22px;font-weight:800;color:var(--green-d)}
+.stat span{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);font-weight:700}
+.okMsg{background:var(--sage-3);color:var(--green-d);border-radius:10px;padding:10px 12px;font-size:12.5px;font-weight:700;margin-top:12px;display:none}
+.okMsg.show{display:block}
+@media (max-width:960px){
+  .grid3,.grid4{grid-template-columns:1fr 1fr}.conGrid{grid-template-columns:1fr}
+  #mhcNav nav{display:none}
+}
+@media (max-width:600px){.grid3,.grid4,.grid2{grid-template-columns:1fr}.navR .pill.out{display:none}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<!-- ==================== PUBLIC SITE ==================== -->
+<div id="viewSite">
+<header id="mhcNav">
+  <div class="wrap">
+    <a class="logo" href="#/"><i>💚</i><span><b>Mental Health Central</b><span>A Reggie Express Initiative</span></span></a>
+    <nav aria-label="Primary">
+      <a href="#support" class="act">Support</a>
+      <a href="#tools">Wellness</a>
+      <a href="#/console">AI Check-in</a>
+      <a href="#helplines">Helplines</a>
+      <a href="#campus">Campus</a>
+    </nav>
+    <div class="navR">
+      <span class="pill out">🚚 Reggie Express</span>
+      <a class="pill crisis" href="tel:0800567567">📞 Crisis: 0800 567 567</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" style="padding-top:70px">
+  <div class="wrap">
+    <span class="badge"><i></i>100% Free · 24/7 · For Every SA Student</span>
+    <h1>Your Mental Health <em>Matters.</em><br>Zero Compromise.</h1>
+    <p>A safe, free, and confidential space for every South African student. Crisis support, AI wellness check-ins, peer tutoring, professional counselling — all at no cost, ever.</p>
+    <div class="ctaRow">
+      <a class="btn btn-green" href="#/console">💚 Open the Wellness Console</a>
+      <a class="btn btn-white" href="#crisis">🚨 I Need Help Now</a>
+    </div>
+    <div class="trust">
+      <span>🔒 100% Confidential</span><span>🛡️ POPIA Compliant</span><span>💚 Always Free</span><span>🌍 11 SA Languages</span>
+    </div>
+  </div>
+</section>
+
+<div class="crisis stripes" id="crisis">
+  <div class="wrap">
+    <h2>🚨 In Immediate Danger? Call Now</h2>
+    <p>If you or someone you know is in crisis, reach out immediately. You are not alone.</p>
+    <div class="crisisRow">
+      <a href="tel:0800567567">📞 SADAG: 0800 567 567</a>
+      <a href="tel:0800055555">📞 Childline: 08000 55 555</a>
+      <a href="tel:10111">🚔 SAPS: 10111</a>
+      <a href="sms:32312">💬 SMS 32312</a>
+    </div>
+  </div>
+</div>
+
+<section id="support">
+  <div class="wrap">
+    <div class="secHead">
+      <span class="tag">How can we help?</span>
+      <h2>Support That Meets You Where You Are</h2>
+      <p>From a quick check-in to professional counselling — choose what you need, when you need it.</p>
+    </div>
+    <div class="grid3">
+      <div class="card"><div class="tile" style="background:#e4f0dc">🤖</div><h3>AI Wellness Check-in</h3><p>A gentle, confidential chat with Thandi, our Wellness AI. Ask anything about stress, anxiety, sleep, or just talk.</p><a class="go" href="#/console">Start chatting →</a></div>
+      <div class="card"><div class="tile" style="background:#f6e3d7">👥</div><h3>Free Counselling</h3><p>Book a free session with a registered counsellor. Online or on-campus. 100% confidential.</p><a class="go" href="#counselling">Book a session →</a></div>
+      <div class="card"><div class="tile" style="background:#e7ecf6">🤝</div><h3>Peer Support</h3><p>Connect with trained peer supporters who understand student life. Sometimes you just need to talk.</p><a class="go" href="#campus">Find a peer →</a></div>
+      <div class="card"><div class="tile" style="background:#f3e6f0">🧘</div><h3>Self-Care Tools</h3><p>Guided breathing, mood tracking, meditation, and journaling — all free, all private on your device.</p><a class="go" href="#tools">Try the tools →</a></div>
+      <div class="card"><div class="tile" style="background:#e4efe9">📚</div><h3>Learning Library</h3><p>Articles, podcasts, and guides on anxiety, depression, relationships, and academic stress.</p><a class="go" href="#library">Explore resources →</a></div>
+      <div class="card"><div class="tile" style="background:#e9f0da">📞</div><h3>24/7 Helplines</h3><p>Trained counsellors available around the clock. Call, WhatsApp, or SMS — whatever works for you.</p><a class="go" href="#helplines">View helplines →</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="tools" style="padding-top:0">
+  <div class="wrap">
+    <div class="secHead">
+      <span class="tag">Daily wellness</span>
+      <h2>Tools To Help You Feel Better</h2>
+      <p>Simple, evidence-based exercises you can use anytime — right here, right now.</p>
+    </div>
+    <div class="grid2" style="max-width:900px;margin:0 auto">
+      <div class="card">
+        <h3>🫁 Box Breathing</h3>
+        <p style="margin-bottom:14px">Used by many SEALs &amp; therapists. Calms anxiety in under 2 minutes.</p>
+        <div class="breathBox">
+          <div id="bCircle" aria-live="polite">Ready</div>
+          <button class="btn btn-green btn-sm" id="bStart">Start Breathing</button>
+        </div>
+      </div>
+      <div class="card">
+        <h3>🌤️ Daily Mood Check</h3>
+        <p style="margin-bottom:12px">How are you feeling right now? Your data stays private — only you can see it.</p>
+        <div class="moodRow" id="moodRowSite" role="group" aria-label="Mood selection">
+          <button class="mood" data-s="5" aria-pressed="false"><span>😄</span>Amazing</button>
+          <button class="mood" data-s="4" aria-pressed="false"><span>🙂</span>Good</button>
+          <button class="mood" data-s="3" aria-pressed="false"><span>😐</span>Okay</button>
+          <button class="mood" data-s="2" aria-pressed="false"><span>😔</span>Low</button>
+          <button class="mood" data-s="1" aria-pressed="false"><span>😫</span>Struggling</button>
+        </div>
+        <textarea id="moodNoteSite" rows="2" placeholder="What's on your mind? (Optional — this is just for you)"></textarea>
+        <button class="btn btn-green btn-sm" style="width:100%;justify-content:center;margin-top:12px" id="moodSaveSite">🔒 Save Today's Check-in</button>
+        <div class="okMsg" id="moodOkSite">Saved on this device only. Be kind to yourself today. 💚</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="secHead">
+      <span class="tag">AI companion</span>
+      <h2>Meet Thandi, Your Wellness AI</h2>
+      <p>Confidential. Kind. Here to listen. Ask anything — or just talk. Thandi lives inside your Wellness Console.</p>
+    </div>
+    <div class="chatCard">
+      <div class="chatHead"><i>💚</i><div><b>Thandi</b><small><span class="dotOn"></span>Online now · Your mental health companion</small></div></div>
+      <div class="bubble bot">Sawubona! 🌿 I'm Thandi, your wellness companion. I'm here to listen — no judgment, no pressure. How are you feeling today? Open the console and tell me what's on your mind.</div>
+      <div class="chipMini"><button>📚 Stressed about exams</button><button>🧡 Feeling lonely</button><button>😴 Can't sleep</button><button>💬 Just want to talk</button></div>
+      <div class="ctaRow" style="justify-content:flex-start;margin-top:18px"><a class="btn btn-green btn-sm" href="#/console">Open the Wellness Console →</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="helplines" style="padding-top:70px">
+  <div class="wrap">
+    <div class="secHead">
+      <span class="tag">24/7 support</span>
+      <h2>Real People. Real Help. Anytime.</h2>
+      <p>South Africa's trusted helplines — staffed by trained counsellors, completely free.</p>
+    </div>
+    <div class="grid2">
+      <div class="hl"><i style="background:#fde3e3">📞</i><div><b>SADAG Suicide Crisis Line</b><p>South Africa's leading mental health organisation. 24/7 crisis support.</p><div class="hlPills"><a class="tel" href="tel:0800567567">📞 0800 567 567</a><span>SMS 31010</span></div></div></div>
+      <div class="hl"><i style="background:#e3ecfd">🧒</i><div><b>Childline South Africa</b><p>For children and teens. Talk to someone who cares, any time.</p><div class="hlPills"><a class="tel" href="tel:0800055555">📞 08000 55 555</a><span>childline.org.za</span></div></div></div>
+      <div class="hl"><i style="background:#e0f2e9">💬</i><div><b>SADAG WhatsApp</b><p>Prefer texting? Chat with a counsellor via WhatsApp — free &amp; private.</p><div class="hlPills"><span>💬 078 534 1200</span><span>24/7</span></div></div></div>
+      <div class="hl"><i style="background:#fdeaf2">🛡️</i><div><b>GBV Command Centre</b><p>Gender-based violence support. Safe, confidential, multilingual.</p><div class="hlPills"><a class="tel" href="tel:0800428428">📞 0800 428 428</a><span>*120*7867#</span></div></div></div>
+      <div class="hl"><i style="background:#e6e3f6">💙</i><div><b>Lifeline South Africa</b><p>Crisis support, trauma counselling, and emotional support.</p><div class="hlPills"><a class="tel" href="tel:0861322322">📞 0861 322 322</a><span>Free</span></div></div></div>
+      <div class="hl"><i style="background:#fdf0dc">🎓</i><div><b>Adcock Student Helpline</b><p>Specifically for students. Academic stress, anxiety, homelessness.</p><div class="hlPills"><a class="tel" href="tel:0800456789">📞 0800 456 789</a><span>Mon–Sun 8am–8pm</span></div></div></div>
+      <div class="hl"><i style="background:#dff0f4">📱</i><div><b>Dr BSafe SMS Line</b><p>No airtime? No problem. Free SMS support for mental health.</p><div class="hlPills"><a class="tel" href="sms:31012">💬 SMS: 31012</a><span>Free</span></div></div></div>
+      <div class="hl"><i style="background:#f6e3d7">🌱</i><div><b>Substance Abuse Helpline</b><p>SANCA. Support for addiction, substance abuse, and recovery.</p><div class="hlPills"><a class="tel" href="tel:08002532931">📞 0800 253 2931</a><span>Confidential</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="library" class="lib" style="padding-top:0">
+  <div class="wrap">
+    <div class="secHead">
+      <span class="tag">Learning library</span>
+      <h2>Understand What You're Going Through</h2>
+      <p>Trusted, science-backed resources written for students.</p>
+    </div>
+    <div class="grid4">
+      <details><summary><i>😰</i><h3>Anxiety &amp; Panic</h3><p>What it is, why it happens, and 7 proven ways to calm your mind.</p></summary><div class="body"><ul><li>Name it: "this is anxiety, not danger."</li><li>Box breathing (4-4-4-4) in your console.</li><li>5-4-3-2-1 grounding: see, touch, hear, smell, taste.</li><li>Cut caffeine after 14:00.</li></ul></div></details>
+      <details><summary><i>😔</i><h3>Depression</h3><p>You're not weak, you're not alone. Here's what helps.</p></summary><div class="body"><ul><li>Small wins count: shower, walk, one message.</li><li>Sunlight before 10:00 lifts mood chemistry.</li><li>Free counselling is one tap away — use it.</li></ul></div></details>
+      <details><summary><i>😴</i><h3>Sleep Better</h3><p>The student sleep guide. Fall asleep faster, wake up refreshed.</p></summary><div class="body"><ul><li>Same wake-up time, even weekends.</li><li>Screens down 30 min before bed.</li><li>Bed = sleep only, not studying.</li></ul></div></details>
+      <details><summary><i>📚</i><h3>Exam Stress</h3><p>Healthy study habits that reduce anxiety and boost performance.</p></summary><div class="body"><ul><li>25-min focus blocks, 5-min movement breaks.</li><li>Practice papers &gt; re-reading notes.</li><li>Pair your study plan with your energy: open your Fundisa AI workspace from the console bridge.</li></ul></div></details>
+      <details><summary><i>💗</i><h3>Relationships</h3><p>Healthy vs unhealthy. Boundaries. Breakups. Friendship drama.</p></summary><div class="body"><ul><li>Boundaries are respect, not rejection.</li><li>Conflict: attack the problem, not the person.</li><li>Any fear in a relationship = get support now.</li></ul></div></details>
+      <details><summary><i>🏠</i><h3>Family Issues</h3><p>When home is hard. Coping with conflict, loss, and responsibility.</p></summary><div class="body"><ul><li>You can love family and still need space.</li><li>Peer supporters get it — talk to one.</li><li>Home violence? GBV Command Centre: 0800 428 428.</li></ul></div></details>
+      <details><summary><i>💸</i><h3>Money Stress</h3><p>Financial anxiety is real. Resources, bursaries, and support.</p></summary><div class="body"><ul><li>Campus financial aid offices exist for exactly this.</li><li>StudentMart SA lists subsidised devices &amp; data.</li><li>Write the number down — fear shrinks when it's concrete.</li></ul></div></details>
+      <details><summary><i>🌈</i><h3>Identity &amp; LGBTQ+</h3><p>Safe spaces, affirming resources, and community support.</p></summary><div class="body"><ul><li>You belong, exactly as you are.</li><li>Affirming counsellors available via free counselling.</li><li>Peer support groups on most campuses.</li></ul></div></details>
+    </div>
+  </div>
+</section>
+
+<div class="couns stripes" id="counselling">
+  <div class="wrap">
+    <h2>Free Professional Counselling</h2>
+    <p>Every student deserves access to a registered counsellor. We make it happen — online, on-campus, or by phone.</p>
+    <div class="counsTiles">
+      <div>💚<b>100% Free</b>No cost, ever. Covered by Reggie Express.</div>
+      <div>🔒<b>POPIA Compliant</b>Your data is yours. Always confidential.</div>
+      <div>🌍<b>11 Languages</b>Talk in your home language.</div>
+    </div>
+    <a class="btn btn-white" href="#/console">📅 Book a Free Session</a>
+  </div>
+</div>
+
+<section id="campus" class="campus">
+  <div class="wrap">
+    <div class="secHead">
+      <span class="tag">On campus</span>
+      <h2>Student Support At Your Institution</h2>
+      <p>Every major SA university has free counselling. Here's how to find yours.</p>
+    </div>
+    <div class="grid4">
+      <div class="card"><div class="abbr">UP</div><b>University of Pretoria</b><small>Student Support Services</small></div>
+      <div class="card"><div class="abbr">W</div><b>Wits University</b><small>Counselling &amp; Careers</small></div>
+      <div class="card"><div class="abbr">UCT</div><b>University of Cape Town</b><small>Student Wellness Service</small></div>
+      <div class="card"><div class="abbr">SU</div><b>Stellenbosch University</b><small>Centre for Student Counselling</small></div>
+      <div class="card"><div class="abbr">UJ</div><b>University of Johannesburg</b><small>Psychological Services</small></div>
+      <div class="card"><div class="abbr">UKZN</div><b>UKZN</b><small>Counselling Centre</small></div>
+      <div class="card"><div class="abbr">NWU</div><b>North-West University</b><small>Student Development</small></div>
+      <div class="card"><div class="abbr">RU</div><b>Rhodes University</b><small>Counselling Centre</small></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="flogo"><i>💚</i>Mental Health Central</span>
+    <p>A <b>Reggie Express</b> initiative. 100% free mental health support for every South African student — always.<br>
+    Founded by Reginald M. Kanyane · PhD Candidate, University of Pretoria.<br>
+    In partnership with SADAG, Lifeline, and campus wellness services across SA.</p>
+    <div class="fBadges"><span>🚚 Reggie Express</span><span>🇿🇦 Proudly SA</span><span>💚 100% Free</span><span>🔒 POPIA Compliant</span><span>🌍 11 Languages</span><span>📞 24/7 Helplines</span></div>
+    <div class="fLinks">
+      <a href="https://www.thutotech.co.za">ThutoTech.co.za</a>
+      <a href="https://www.thutotech.co.za/apps/fundisa-ai-workspace/">Fundisa AI Workspace</a>
+      <a href="#/console">Wellness Console</a>
+      <a href="https://www.thutotech.co.za">Privacy Policy</a>
+      <a href="https://www.thutotech.co.za">Terms of Use</a>
+      <a href="mailto:hello@thutotech.co.za">Contact</a>
+    </div>
+    <p>© 2026 Reggie Express (Pty) Ltd. Mental Health Central is not a substitute for emergency medical services.<br>If you're in immediate danger, call 10111 or go to your nearest hospital.</p>
+  </div>
+</footer>
+</div>
+
+<!-- ==================== WELLNESS CONSOLE (internal route #/console) ==================== -->
+<div id="viewConsole" hidden>
+  <div class="conBar">
+    <div class="wrap">
+      <a class="back" href="#/">← Mental Health Central</a>
+      <b>💚 Wellness Console</b>
+      <a class="pill crisis" href="tel:0800567567">📞 Crisis: 0800 567 567</a>
+    </div>
+  </div>
+  <div class="wrap conGrid">
+    <div style="display:grid;gap:20px">
+      <div class="card">
+        <div class="conTitle">🌤️ Daily Check-in</div>
+        <p class="note" style="margin:0 0 12px">Stored on this device only — POPIA-friendly by design.</p>
+        <div class="moodRow" id="moodRowCon" role="group" aria-label="Mood selection">
+          <button class="mood" data-s="5" aria-pressed="false"><span>😄</span>Amazing</button>
+          <button class="mood" data-s="4" aria-pressed="false"><span>🙂</span>Good</button>
+          <button class="mood" data-s="3" aria-pressed="false"><span>😐</span>Okay</button>
+          <button class="mood" data-s="2" aria-pressed="false"><span>😔</span>Low</button>
+          <button class="mood" data-s="1" aria-pressed="false"><span>😫</span>Struggling</button>
+        </div>
+        <textarea id="moodNoteCon" rows="3" placeholder="What's on your mind? (Optional — this is just for you)"></textarea>
+        <button class="btn btn-green btn-sm" style="width:100%;justify-content:center;margin-top:12px" id="moodSaveCon">🔒 Save Today's Check-in</button>
+        <div class="okMsg" id="moodOkCon">Saved on this device only. Be kind to yourself today. 💚</div>
+      </div>
+      <div class="card">
+        <div class="conTitle">🫁 Box Breathing</div>
+        <p class="note" style="margin:0 0 8px">4 in · 4 hold · 4 out · 4 hold. Two minutes is enough.</p>
+        <div class="breathBox">
+          <div id="bCircleCon" aria-live="polite">Ready</div>
+          <button class="btn btn-green btn-sm" id="bStartCon">Start Breathing</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="conTitle">📈 My Wellness Trail</div>
+        <div class="statRow">
+          <div class="stat"><b id="stCount">0</b><span>Check-ins</span></div>
+          <div class="stat"><b id="stLast">—</b><span>Last mood</span></div>
+          <div class="stat"><b id="stStreak">0</b><span>Day streak</span></div>
+        </div>
+        <p class="note">Your trail never leaves this browser. Clearing site data removes it forever.</p>
+      </div>
+    </div>
+    <div style="display:grid;gap:20px">
+      <div class="card">
+        <div class="chatHead"><i>💚</i><div><b>Thandi · Wellness AI</b><small><span class="dotOn"></span>Online · confidential companion</small></div></div>
+        <div id="chatLog" aria-live="polite"></div>
+        <div class="chipMini" id="chatChips">
+          <button data-q="Stressed about exams">📚 Stressed about exams</button>
+          <button data-q="Feeling lonely">🧡 Feeling lonely</button>
+          <button data-q="Can't sleep">😴 Can't sleep</button>
+          <button data-q="Just want to talk">💬 Just want to talk</button>
+        </div>
+        <div class="chatIn" style="margin-top:12px">
+          <input type="text" id="chatInput" placeholder="Type your message to Thandi…" aria-label="Message Thandi">
+          <button class="btn btn-green btn-sm" id="chatSend">Send ➤</button>
+        </div>
+        <p class="note">Thandi is a support companion, not a crisis service. In danger? Use the red crisis button above.</p>
+      </div>
+      <div class="card bridge">
+        <div class="conTitle">🔗 Study–Wellness Bridge</div>
+        <p style="font-size:13.5px;color:var(--ink-2);margin-bottom:14px">Exam stress hits harder when your study plan fights your energy. Open your <b>Fundisa AI Workspace</b> to rebuild your week around your wellbeing — calmer blocks, home-language notes, offline-first sync.</p>
+        <a class="btn btn-green" href="https://www.thutotech.co.za/apps/fundisa-ai-workspace/" target="_blank" rel="noopener">🎓 Open Fundisa AI Workspace</a>
+        <p class="note">Links to thutotech.co.za/apps/fundisa-ai-workspace — your learning &amp; wellness plan, in one place.</p>
+      </div>
+      <div class="card">
+        <div class="conTitle">📞 Quick Helplines</div>
+        <div class="hlPills" style="margin-top:8px">
+          <a class="tel" href="tel:0800567567">SADAG 0800 567 567</a>
+          <a class="tel" href="tel:0800055555">Childline 08000 55 555</a>
+          <a class="tel" href="tel:10111">SAPS 10111</a>
+          <a class="tel" href="sms:32312">SMS 32312</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+var MHC={
+  store:function(k,v){try{if(v===undefined)return JSON.parse(localStorage.getItem(k));localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}},
+  reduced:matchMedia('(prefers-reduced-motion: reduce)').matches
+};
+/* ---------- router: #/console is INTERNAL, never external ---------- */
+var vS=document.getElementById('viewSite'),vC=document.getElementById('viewConsole');
+function mhcRoute(){
+  var con=(location.hash==='#/console');
+  vS.hidden=con; vC.hidden=!con;
+  window.scrollTo(0,0);
+  if(con){mhcTrail(); if(!chatSeeded)mhcChatSeed();}
+}
+addEventListener('hashchange',mhcRoute);
+/* ---------- mood check-in (shared engine, two surfaces) ---------- */
+var mSel={site:null,con:null};
+function bindMood(rowId,key){
+  var row=document.getElementById(rowId);
+  row.querySelectorAll('.mood').forEach(function(b){
+    b.addEventListener('click',function(){
+      row.querySelectorAll('.mood').forEach(function(x){x.setAttribute('aria-pressed','false')});
+      b.setAttribute('aria-pressed','true'); mSel[key]=parseInt(b.dataset.s,10);
+    });
+  });
+}
+bindMood('moodRowSite','site'); bindMood('moodRowCon','con');
+function saveMood(key,okId,noteId){
+  var s=mSel[key]; if(!s){alert('Pick a mood first 💚');return}
+  var h=MHC.store('mhc_history')||[];
+  var today=new Date().toISOString().slice(0,10);
+  h=h.filter(function(e){return e.d!==today});
+  h.push({d:today,s:s,n:(document.getElementById(noteId).value||'').slice(0,400)});
+  MHC.store('mhc_history',h.slice(-90));
+  var ok=document.getElementById(okId); ok.classList.add('show'); setTimeout(function(){ok.classList.remove('show')},4000);
+  mhcTrail();
+}
+document.getElementById('moodSaveSite').addEventListener('click',function(){saveMood('site','moodOkSite','moodNoteSite')});
+document.getElementById('moodSaveCon').addEventListener('click',function(){saveMood('con','moodOkCon','moodNoteCon')});
+function mhcTrail(){
+  var h=MHC.store('mhc_history')||[];
+  document.getElementById('stCount').textContent=h.length;
+  var emo={5:'😄',4:'🙂',3:'😐',2:'😔',1:'😫'};
+  document.getElementById('stLast').textContent=h.length?emo[h[h.length1-0-1].s]:'—';
+  var streak=0,cur=new Date();
+  for(;;){var key=cur.toISOString().slice(0,10);
+    if(h.some(function(e){return e.d===key})){streak++;cur.setDate(cur.getDate()-1)}else break}
+  document.getElementById('stStreak').textContent=streak;
+}
+/* ---------- box breathing ---------- */
+function bindBreath(circleId,btnId){
+  var c=document.getElementById(circleId),b=document.getElementById(btnId),run=false,timer=null,ph=0,rem=0;
+  var P=[{t:'Inhale',s:4,sc:1.15},{t:'Hold',s:4,sc:1.15},{t:'Exhale',s:4,sc:.8},{t:'Hold',s:4,sc:.8}];
+  function tick(){
+    rem--; if(rem<0){ph=(ph+1)%P.length;startPhase()} else paint();
+  }
+  function paint(){c.textContent=P[ph].t+'\n'+rem+'s'}
+  function startPhase(){
+    rem=P[ph].s; paint();
+    if(!MHC.reduced){c.style.transitionDuration=P[ph].s+'s';c.style.transform='scale('+P[ph].sc+')'}
+  }
+  b.addEventListener('click',function(){
+    run=!run;
+    if(run){b.textContent='Stop';ph=0;startPhase();timer=setInterval(tick,1000)}
+    else{b.textContent='Start Breathing';clearInterval(timer);c.textContent='Ready';if(!MHC.reduced)c.style.transform='scale(.85)'}
+  });
+}
+bindBreath('bCircle','bStart'); bindBreath('bCircleCon','bStartCon');
+/* ---------- Thandi (local, rule-based, crisis-safe) ---------- */
+var chatLog=document.getElementById('chatLog'),chatSeeded=false;
+var CRISIS=['suicide','kill myself','end my life','hurt myself','self-harm','self harm','want to die','no reason to live'];
+function botSay(html,actions){
+  var d=document.createElement('div'); d.className='bubble bot'; d.innerHTML=html;
+  if(actions){var row=document.createElement('div');row.className='chipMini';
+    actions.forEach(function(a){var bt=document.createElement('button');bt.textContent=a.label;
+      bt.addEventListener('click',function(){if(a.href)window.open(a.href,'_blank','noopener');else if(a.q)userSay(a.q);else if(a.hash){location.hash=a.hash}});
+      row.appendChild(bt)});
+    d.appendChild(row)}
+  chatLog.appendChild(d); chatLog.scrollTop=chatLog.scrollHeight;
+}
+function userSay(txt){
+  var d=document.createElement('div'); d.className='bubble me'; d.textContent=txt;
+  chatLog.appendChild(d); chatLog.scrollTop=chatLog.scrollHeight;
+  var ty=document.createElement('div'); ty.className='bubble bot typing'; ty.innerHTML='<i></i><i></i><i></i>';
+  chatLog.appendChild(ty); chatLog.scrollTop=chatLog.scrollHeight;
+  setTimeout(function(){ty.remove(); thandiReply(txt)},750);
+}
+function thandiReply(txt){
+  var t=txt.toLowerCase();
+  if(CRISIS.some(function(k){return t.indexOf(k)>-1})){
+    botSay("I'm really glad you told me, and I'm not going anywhere. 💚 What you're feeling right now is bigger than what I can hold with you — please let a trained human help too, right now:<br><b>SADAG 0800 567 567</b> (24/7) · <b>SMS 32312</b> · in danger: <b>10111</b>.",
+      [{label:'📞 Call SADAG now',href:'tel:0800567567'},{label:'Stay with me & breathe',q:'Help me breathe'}]);
+    return}
+  if(t.indexOf('exam')>-1||t.indexOf('stress')>-1||t.indexOf('test')>-1||t.indexOf('assign')>-1){
+    botSay("Exam stress is so real — your body is trying to protect something that matters. 📚 Two things that help today: (1) two minutes of box breathing right here in the console, (2) a study plan that matches your energy, not fights it.",
+      [{label:'🫁 Start breathing',q:'Help me breathe'},{label:'🎓 Open Fundisa AI Workspace',href:'https://www.thutotech.co.za/apps/fundisa-ai-workspace/'}]);
+    return}
+  if(t.indexOf('sleep')>-1||t.indexOf('insomnia')>-1||t.indexOf('tired')>-1){
+    botSay("Sleep is the first thing stress steals. 😴 Tonight: same wake-up time tomorrow, screens down 30 minutes before bed, and bed = sleep only (not notes). Want the full student sleep guide?",
+      [{label:'📚 Sleep Better guide',hash:'#/'}]);
+    return}
+  if(t.indexOf('lonely')>-1||t.indexOf('alone')>-1||t.indexOf('friend')>-1){
+    botSay("Loneliness on a crowded campus is one of the heaviest feelings there is. 🧡 You're not weird for feeling it. Trained peer supporters — students who've been there — are free and confidential.",
+      [{label:'🤝 Find peer support on campus',hash:'#/'}]);
+    return}
+  if(t.indexOf('sad')>-1||t.indexOf('depress')>-1||t.indexOf('cry')>-1||t.indexOf('hopeless')>-1){
+    botSay("That sounds heavy, and I'm sorry you're carrying it. 💚 Sadness this big deserves more than a chatbot — a registered counsellor, for free, in your home language. Would you like me to point you there?",
+      [{label:'📅 Book free counselling',hash:'#/'}]);
+    return}
+  if(t.indexOf('anxious')>-1||t.indexOf('anxiety')>-1||t.indexOf('panic')>-1||t.indexOf('breath')>-1){
+    botSay("Let's slow the wave together. 🫁 Try this now: inhale 4 seconds, hold 4, exhale 4, hold 4 — four rounds. I'll wait. Your heart rate follows your breath, not your thoughts.",
+      [{label:'🫁 Do it with me',hash:'#/'}]);
+    return}
+  if(t.indexOf('money')>-1||t.indexOf('fees')>-1||t.indexOf('bursar')>-1){
+    botSay("Money stress is mental load too. 💸 Campus financial aid offices exist for exactly this moment — and StudentMart SA lists subsidised devices and data bundles for students.",
+      [{label:'💸 Money Stress guide',hash:'#/'}]);
+    return}
+  if(t.indexOf('family')>-1||t.indexOf('home')>-1||t.indexOf('parents')>-1){
+    botSay("Home is supposed to be where you rest — when it isn't, everything costs double. 🏠 You can love your family and still need space. Want the family-issues guide or a counsellor?",
+      [{label:'🏠 Family guide',hash:'#/'}]);
+    return}
+  if(t.indexOf('hi')===0||t.indexOf('hello')>-1||t.indexOf('sawubona')>-1||t.indexOf('hey')===0){
+    botSay("Sawubona! 🌿 Thank you for checking in on yourself — that's strength, not softness. What's the biggest thing on your mind today?");
+    return}
+  botSay("I hear you. 💚 You don't have to have the right words here — this space is yours. Would it help to talk about stress, sleep, people, or just sit with it together for a minute?",
+    [{label:'📚 Exams',q:'Stressed about exams'},{label:'😴 Sleep',q:"Can't sleep"},{label:'💬 Just talk',q:'Just want to talk'}]);
+}
+function mhcChatSeed(){
+  chatSeeded=true;
+  botSay("Sawubona! 🌿 I'm Thandi, your wellness companion. I'm here to listen — no judgment, no pressure. How are you feeling today? You can pick an option below, or just tell me what's on your mind.");
+}
+document.getElementById('chatSend').addEventListener('click',function(){
+  var i=document.getElementById('chatInput'),v=i.value.trim(); if(!v)return; i.value=''; userSay(v);
+});
+document.getElementById('chatInput').addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();document.getElementById('chatSend').click()}});
+document.getElementById('chatChips').querySelectorAll('button').forEach(function(b){
+  b.addEventListener('click',function(){userSay(b.dataset.q)});
+});
+/* ---------- init ---------- */
+mhcRoute();
+})();
+</script>
+<noscript><style>#viewConsole{display:none}</style></noscript>
+</body>
+</html>
