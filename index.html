@@ -234,6 +234,11 @@ body.motion-paused .band svg,body.motion-paused .mtrack,body.motion-paused .ring
 .award img{width:240px;height:auto;border-radius:10px;border:1px solid rgba(217,164,65,.3)}
 .webinar .media-shot{margin:0;border:0;background:transparent}.webinar img{display:block;width:100%;height:auto;border-radius:12px}
 .govgrid .media-shot{margin:0}
+.mind-embed{margin-top:44px;border:1px solid rgba(69,196,176,.32);border-radius:18px;overflow:hidden;background:var(--off);box-shadow:0 30px 80px rgba(0,0,0,.28)}
+.mind-embed iframe{display:block;width:100%;min-height:960px;border:0;background:var(--off)}
+.mind-embed-note{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:18px;color:rgba(244,244,242,.65);font-size:13px}
+.mind-embed-note a{color:var(--mind);border-bottom:1px solid rgba(69,196,176,.45);padding-bottom:2px}
+@media(max-width:600px){.mind-embed{border-radius:12px}.mind-embed iframe{min-height:720px}}
 footer{position:relative;overflow:hidden}
 #ttFootBand{height:84px;overflow:hidden;border-top:1px solid rgba(63,224,240,.12)}
 .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:44px;padding:60px 0 40px}
@@ -559,14 +564,14 @@ footer{position:relative;overflow:hidden}
 
 <section class="page" data-page="mind" id="pgMind">
   <div class="wrap">
-    <p class="kicker" data-reveal>Mental Health Central · Wellbeing Layer</p>
-    <h1 class="page-title" data-reveal>Wellbeing inside every support plan.</h1>
-    <p class="lede" data-reveal>Screening signals, referral pathways and caregiver guidance — so no learner's struggle stays invisible in the data.</p>
-    <div class="pillars" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
-      <div class="ncard" style="--accent:#45C4B0;border-color:rgba(69,196,176,.35)" data-reveal><span class="tagno">W·01</span><h3>Screen</h3><p>Light-touch wellbeing check-ins embedded in the learner app, scored against validated scales.</p></div>
-      <div class="ncard" style="--accent:#45C4B0;border-color:rgba(69,196,176,.35)" data-reveal><span class="tagno">W·02</span><h3>Support</h3><p>Psychoeducation modules and coaching pathways for learners, teachers and caregivers.</p></div>
-      <div class="ncard" style="--accent:#45C4B0;border-color:rgba(69,196,176,.35)" data-reveal><span class="tagno">W·03</span><h3>Refer</h3><p>Warm handoffs to school-based support teams and provincial resources, with consent logged.</p></div>
+    <p class="kicker" data-reveal>Mental Health Central · Live App</p>
+    <h1 class="page-title" data-reveal>Wellbeing support, right here.</h1>
+    <p class="lede" data-reveal>Check in with Thandi, track your wellness, practise breathing exercises and find trusted support — inside the Mental Health Central app.</p>
+    <div class="ctarow" data-reveal><a class="btn btn-ghost" href="apps/mental-health-central/" target="_blank" rel="noopener">Open full app in a new tab</a></div>
+    <div class="mind-embed">
+      <iframe id="ttMindFrame" src="apps/mental-health-central/" title="Mental Health Central wellbeing app" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </div>
+    <p class="mind-embed-note"><span>Your check-ins stay on this device. The embedded app is the same app used on the standalone page.</span><a href="apps/mental-health-central/">Open standalone app</a></p>
   </div>
 </section>
 
@@ -701,8 +706,8 @@ footer{position:relative;overflow:hidden}
   var motionPaused=false;
 
   try{
-    var titles={home:'ThutoTech — Bridging Education & Innovation',fundisa:'Fundisa AI — One Platform, Every Grade',matric:'MatricMate AI — NSC Exam Readiness',studentmart:'StudentMart SA — Learner Commerce',research:'Thuto Research Studio — Comprehensive Support Reports',mind:'Mental Health Central — Wellbeing Layer',governance:'ThutoTech — Ethical Sovereign AI Governance',apps:'ThutoTech Apps — Official App Directory',ecosystem:'ThutoTech Ecosystem & Brand System'};
-    var descriptions={home:'ThutoTech connects ten education and innovation apps through teacher-steered, CAPS-aligned, POPIA-compliant, offline-first AI for South Africa.',fundisa:'Fundisa AI combines a Teacher Studio, learner app, multilingual generation and offline-first sync for Grades 1–12 and university.',matric:'MatricMate AI offers past-paper practice, adaptive study plans and weekly NSC readiness scoring.',studentmart:'StudentMart SA curates devices, data bundles and CAPS-aligned study materials at ecosystem pricing.',research:'Thuto Research Studio turns assessment data into comprehensive, teacher-steered support reports and field evidence.',mind:'Mental Health Central provides screening, psychoeducation, referral pathways and caregiver guidance.',governance:'ThutoTech governance covers data privacy, algorithmic fairness and ethical human-in-the-loop AI.',apps:'Open the ten deployed apps in the official ThutoTech directory, spanning teaching, learning, research, community and learner support.',ecosystem:'Explore the core ThutoTech platforms, ten-app directory, shared governance and brand system.'};
+    var titles={home:'ThutoTech — Bridging Education & Innovation',fundisa:'Fundisa AI — One Platform, Every Grade',matric:'MatricMate AI — NSC Exam Readiness',studentmart:'StudentMart SA — Learner Commerce',research:'Thuto Research Studio — Comprehensive Support Reports',mind:'Mental Health Central — Wellbeing App',governance:'ThutoTech — Ethical Sovereign AI Governance',apps:'ThutoTech Apps — Official App Directory',ecosystem:'ThutoTech Ecosystem & Brand System'};
+    var descriptions={home:'ThutoTech connects ten education and innovation apps through teacher-steered, CAPS-aligned, POPIA-compliant, offline-first AI for South Africa.',fundisa:'Fundisa AI combines a Teacher Studio, learner app, multilingual generation and offline-first sync for Grades 1–12 and university.',matric:'MatricMate AI offers past-paper practice, adaptive study plans and weekly NSC readiness scoring.',studentmart:'StudentMart SA curates devices, data bundles and CAPS-aligned study materials at ecosystem pricing.',research:'Thuto Research Studio turns assessment data into comprehensive, teacher-steered support reports and field evidence.',mind:'Use Mental Health Central for private mood check-ins, wellness tracking, breathing tools, Thandi support and trusted helplines.',governance:'ThutoTech governance covers data privacy, algorithmic fairness and ethical human-in-the-loop AI.',apps:'Open the ten deployed apps in the official ThutoTech directory, spanning teaching, learning, research, community and learner support.',ecosystem:'Explore the core ThutoTech platforms, ten-app directory, shared governance and brand system.'};
     var pages=document.querySelectorAll('section.page');
     var navLinks=document.querySelectorAll('[data-nav]');
     var metaDescription=document.querySelector('meta[name="description"]');
@@ -798,9 +803,36 @@ footer{position:relative;overflow:hidden}
     desktopQuery.addEventListener('change',syncEngineMode);
     syncEngineMode();
 
+    var mindFrame=document.getElementById('ttMindFrame');
+    var mindFrameObserver;
+    function fitMindFrame(){
+      if(!mindFrame)return;
+      try{
+        var doc=mindFrame.contentDocument;
+        if(!doc||!doc.body)return;
+        if(mindFrameObserver)mindFrameObserver.disconnect();
+        mindFrame.style.height='720px';
+        var height=Math.max(720,Math.ceil(doc.documentElement.scrollHeight));
+        mindFrame.style.height=height+'px';
+        if('MutationObserver' in window){
+          mindFrameObserver=new MutationObserver(fitMindFrame);
+          mindFrameObserver.observe(doc.body,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:['hidden']});
+        }
+      }catch(e){}
+    }
+    if(mindFrame){
+      mindFrame.addEventListener('load',function(){
+        fitMindFrame();
+        try{mindFrame.contentWindow.addEventListener('hashchange',function(){requestAnimationFrame(fitMindFrame)})}catch(e){}
+      });
+      addEventListener('resize',fitMindFrame,{passive:true});
+      fitMindFrame();
+    }
+
     function showRoute(route,moveFocus){
       if(!titles[route])route='home';
       pages.forEach(function(page){page.classList.toggle('on',page.getAttribute('data-page')===route)});
+      if(route==='mind')requestAnimationFrame(fitMindFrame);
       document.body.dataset.route=route;
       document.title=titles[route];
       if(metaDescription)metaDescription.content=descriptions[route];
