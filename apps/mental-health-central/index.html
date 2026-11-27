@@ -481,7 +481,7 @@ function mhcRoute(){
   var con=(location.hash==='#/console');
   vS.hidden=con; vC.hidden=!con;
   window.scrollTo(0,0);
-  if(con){mhcTrail(); if(!chatSeeded)mhcChatSeed();}
+  if(con){(); if(!chatSeeded)mhcChatSeed();}
 }
 addEventListener('hashchange',mhcRoute);
 /* ---------- mood check-in (shared engine, two surfaces) ---------- */
